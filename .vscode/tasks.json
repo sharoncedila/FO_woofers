@@ -1,0 +1,11 @@
+{
+    "version": "2.0.0",
+    "tasks": [
+        {
+            "label": "Update Android Emulator",
+            "type": "shell",
+            "command": "emulator -avd Nexus_6P_API_30 -no-snapshot -no-boot-anim &"
+        }
+    ]
+    
+}
