@@ -1,6 +1,13 @@
 import 'package:flutter/material.dart';
+import 'package:woofers/components/feeds_card.dart';
 import 'package:woofers/components/profile_page_template.dart';
-import 'package:woofers/pages/my_profile_page.dart';
+import 'package:woofers/pages/chatlist_page.dart';
+import 'package:woofers/pages/chatroom_page.dart';
+import 'package:woofers/pages/dog_profile_page.dart';
+import 'package:woofers/pages/edit_my_dog.dart';
+import 'package:woofers/pages/edit_my_profile_page.dart';
+import 'package:woofers/pages/feeds_page.dart';
+import 'package:woofers/pages/user_profile_page.dart';
 import 'pages/login_page.dart';
 import 'pages/register_page.dart';
 import 'components/dropdown.dart';
@@ -17,7 +24,7 @@ class MyApp extends StatelessWidget {
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
+    return const MaterialApp(
       debugShowCheckedModeBanner: false,
       home: RegisterPage(),
     );

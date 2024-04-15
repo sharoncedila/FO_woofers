@@ -1,6 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
+import 'package:woofers/class/account.dart';
+import 'package:woofers/pages/feeds_page.dart';
+import 'package:woofers/services/login/login_service.dart';
+import 'package:woofers/interfaces/login/login_interface.dart';
 import 'package:woofers/pages/register_page.dart';
+import 'package:email_validator/email_validator.dart';
 
 class LoginPage extends StatelessWidget {
   const LoginPage({super.key});
@@ -48,18 +53,20 @@ class LoginForm extends StatefulWidget {
   const LoginForm({super.key});
 
   @override
-  LoginFormState createState() {
-    return LoginFormState();
-  }
+  _LoginFormState createState() => _LoginFormState();
 }
 
-class LoginFormState extends State<LoginForm> {
+class _LoginFormState extends State<LoginForm> {
   // Create a global key that uniquely identifies the Form widget
   // and allows validation of the form.
   //
   // Note: This is a GlobalKey<FormState>,
   // not a GlobalKey<LoginFormState>.
   final _formKey = GlobalKey<FormState>();
+  bool passwordVisible=true;
+  final ILogin _loginService = LoginService();
+  final _emailController = TextEditingController();
+  final _passwordController = TextEditingController();
 
   @override
   Widget build(BuildContext context) {
@@ -75,6 +82,8 @@ class LoginFormState extends State<LoginForm> {
           Padding(
             padding: const EdgeInsets.symmetric(horizontal: 25),
             child: TextFormField(
+              //controller email
+              controller : _emailController,
               decoration: InputDecoration(
                 enabledBorder: const OutlineInputBorder(
                   borderSide: BorderSide(color: Colors.white),
@@ -89,7 +98,11 @@ class LoginFormState extends State<LoginForm> {
               ),
               validator: (value){
                 if (value == null || value.isEmpty) {
-                  return 'Please enter valid email';
+                  return 'Please fill email field';
+                }
+                bool isvalid = EmailValidator.validate(value);
+                if (isvalid == false) {
+                  return 'Please check inserted email';
                 }
                 return null;
               },
@@ -101,6 +114,9 @@ class LoginFormState extends State<LoginForm> {
           Padding(
             padding: const EdgeInsets.symmetric(horizontal: 25),
             child: TextFormField(
+	      //controller password
+              controller : _passwordController,
+              obscureText: passwordVisible,
               decoration: InputDecoration(
                 enabledBorder: const OutlineInputBorder(
                   borderSide: BorderSide(color: Colors.white),
@@ -112,10 +128,43 @@ class LoginFormState extends State<LoginForm> {
                 filled: true,
                 hintText: 'Password',
                 hintStyle: TextStyle(color: Colors.grey[500]),
+                suffixIcon: IconButton(
+                  icon: Icon(passwordVisible
+                      ? Icons.visibility
+                      : Icons.visibility_off),
+                  onPressed: () {
+                    setState(
+                      () {
+                        passwordVisible = !passwordVisible;
+                      },
+                    );
+                  },
+                ),
+                alignLabelWithHint: false,
               ),
-              validator: (value){
-                if (value == null || value.isEmpty) {
-                  return 'Please enter valid password';
+              keyboardType: TextInputType.visiblePassword,
+                  textInputAction: TextInputAction.done,
+              validator: (_password){
+                if (_password == null || _password.isEmpty) {
+                  return 'Please fill password field';
+                }
+                if (_password.length < 8) {
+                  return 'Password must contain more than equal to 8 characters';
+                }
+                if (!_password.contains(RegExp(r'[A-Z]'))) {
+                  return 'Password must contain at least 1 uppercase letter';
+                }
+                // Contains at least one lowercase letter
+                if (!_password.contains(RegExp(r'[a-z]'))) {
+                  return 'Password must contain at least 1 lowercase letter';
+                }
+                // Contains at least one digit
+                if (!_password.contains(RegExp(r'[0-9]'))) {
+                  return 'Password must contain at least 1 digit';
+                }
+                // Contains at least one special character
+                if (!_password.contains(RegExp(r'[!@#%^&*(),.?":{}|<>]'))) {
+                  return 'Password must contain at least 1 special character';
                 }
                 return null;
               },
@@ -138,13 +187,16 @@ class LoginFormState extends State<LoginForm> {
                 ),
               ),
             child: const Text('Login'),
-            onPressed: () {
+            onPressed: () async {
               if (_formKey.currentState!.validate()) {
               // If the form is valid, display a snackbar. In the real world,
               // you'd often call a server or save the information in a database.
-                ScaffoldMessenger.of(context).showSnackBar(
-                  const SnackBar(content: Text('Processing Data')),
-              );
+                Account? user = await _loginService.login(
+                  _emailController.text,
+                  _passwordController.text
+                  );
+                Navigator.of(context).pushReplacement(
+                  MaterialPageRoute(builder: (_) => FeedsPage()));
               }
             },
           ),

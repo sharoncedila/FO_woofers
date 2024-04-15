@@ -3,8 +3,8 @@ import 'package:flutter/widgets.dart';
 import 'package:woofers/pages/login_page.dart';
 import 'package:email_validator/email_validator.dart';
 
-class RegisterPage extends StatelessWidget {
-  const RegisterPage({super.key});
+class EditMyProfile extends StatelessWidget {
+  const EditMyProfile({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -19,14 +19,14 @@ class RegisterPage extends StatelessWidget {
                 const SizedBox(height: 50),
               // logo
               Image.asset(
-                'assets/woofers_icon/woofers.jpg',
+                'assets/profile_picture/person1.jpg',
                 width: 100, height: 100,
               ),
 
               const SizedBox(height: 10),
               // WOOFERS
-              const Text(
-                'WOOFERS',
+              Text(
+                'Person1',
                 style: TextStyle(
                   color: Colors.blue,
                   fontWeight: FontWeight.bold,
@@ -35,7 +35,7 @@ class RegisterPage extends StatelessWidget {
                   ),
               ),
 
-              const RegisterForm(),
+              const EditMyProfileForm(),
               ],
             ),
           )
@@ -45,70 +45,24 @@ class RegisterPage extends StatelessWidget {
   }
 }
 
-class RegisterForm extends StatefulWidget {
-  const RegisterForm({super.key});
+class EditMyProfileForm extends StatefulWidget {
+  const EditMyProfileForm({super.key});
 
   @override
-  _RegisterFormState createState() => _RegisterFormState();
+  EditMyProfileFormState createState() {
+    return EditMyProfileFormState();
   }
+}
 
-class _RegisterFormState extends State<RegisterForm> {
+class EditMyProfileFormState extends State<EditMyProfileForm> {
   // Create a global key that uniquely identifies the Form widget
   // and allows validation of the form.
   //
   // Note: This is a GlobalKey<FormState>,
-  // not a GlobalKey<RegisterFormState>.
+  // not a GlobalKey<EditMyProfileFormState>.
   final _formKey = GlobalKey<FormState>();
-  TextEditingController usernameController = TextEditingController();
-  TextEditingController emailController = TextEditingController();
-  TextEditingController passwordController = TextEditingController();
-  TextEditingController phonenumberController = TextEditingController();
-  TextEditingController confirmPasswordController = TextEditingController();
-  TextEditingController provinceController = TextEditingController();
   bool passwordVisible=true;
   String _password='';
-
-  String? valueProvince = 'Province';
-  List<String> listProvince = [
-    "Bali",
-    "Bangka Belitung",
-    "Banten",
-    "Bengkulu",
-    "DKI Jakarta",
-    "Daerah Istimewa Yogyakarta",
-    "Gorontalo",
-    "Jambi",
-    "Jawa Barat",
-    "Jawa Tengah",
-    "Jawa Timur",
-    "Kalimantan Barat",
-    "Kalimantan Selatan",
-    "Kalimantan Tengah",
-    "Kalimantan Timur",
-    "Kalimantan Utara",
-    "Kepulauan Riau",
-    "Lampung",
-    "Maluku",
-    "Maluku Utara",
-    "Nanggroe Aceh Darussalam",
-    "Nusa Tenggara Barat",
-    "Nusa Tenggara Timur",
-    "Papua",
-    "Papua Barat Daya",
-    "Papua Barat",
-    "Papua Pegunungan",
-    "Papua Selatan",
-    "Papua Tengah",
-    "Riau",
-    "Sulawesi Barat",
-    "Sulawesi Selatan",
-    "Sulawesi Tengah",
-    "Sulawesi Tenggara",
-    "Sulawesi Utara",
-    "Sumatera Barat",
-    "Sumatera Selatan",
-    "Sumatera Utara"
-  ];
 
   @override
   Widget build(BuildContext context) {
@@ -124,9 +78,8 @@ class _RegisterFormState extends State<RegisterForm> {
           Padding(
             padding: const EdgeInsets.symmetric(horizontal: 25),
             child: TextFormField(
-              controller: usernameController,
               decoration: InputDecoration(
-                enabledBorder: const OutlineInputBorder(
+                enabledBorder: OutlineInputBorder(
                   borderSide: BorderSide(color: Colors.white),
                 ),
                 focusedBorder: OutlineInputBorder(
@@ -151,9 +104,8 @@ class _RegisterFormState extends State<RegisterForm> {
           Padding(
             padding: const EdgeInsets.symmetric(horizontal: 25),
             child: TextFormField(
-              controller: emailController,
               decoration: InputDecoration(
-                enabledBorder: const OutlineInputBorder(
+                enabledBorder: OutlineInputBorder(
                   borderSide: BorderSide(color: Colors.white),
                 ),
                 focusedBorder: OutlineInputBorder(
@@ -178,31 +130,6 @@ class _RegisterFormState extends State<RegisterForm> {
           ),
 
           // province form field
-const SizedBox(height: 15),
-          Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 25),
-            child: TextFormField(
-              decoration: InputDecoration(
-                enabledBorder: OutlineInputBorder(
-                  borderSide: BorderSide(color: Colors.white),
-                ),
-                focusedBorder: OutlineInputBorder(
-                  borderSide: BorderSide(color: Colors.grey.shade400),
-                ),
-                fillColor: Colors.grey.shade200,
-                filled: true,
-                hintText: 'Province',
-                hintStyle: TextStyle(color: Colors.grey[500])
-              ),
-              validator: (value){
-                if (value == null || value.isEmpty) {
-                  return 'Please fill province field';
-                }
-                return null;
-              },
-            ),
-          ),
-
           const SizedBox(height: 15),
           Padding(
             padding: const EdgeInsets.symmetric(horizontal: 25),
@@ -233,10 +160,9 @@ const SizedBox(height: 15),
           Padding(
             padding: const EdgeInsets.symmetric(horizontal: 25),
             child: TextFormField(
-              controller: phonenumberController,
               keyboardType: TextInputType.number,
               decoration: InputDecoration(
-                enabledBorder: const OutlineInputBorder(
+                enabledBorder: OutlineInputBorder(
                   borderSide: BorderSide(color: Colors.white),
                 ),
                 focusedBorder: OutlineInputBorder(
@@ -271,7 +197,6 @@ const SizedBox(height: 15),
           Padding(
             padding: const EdgeInsets.symmetric(horizontal: 25),
             child: TextFormField(
-	      controller: passwordController,
               obscureText: passwordVisible,
               decoration: InputDecoration(
                 enabledBorder: const OutlineInputBorder(
@@ -332,7 +257,6 @@ const SizedBox(height: 15),
           Padding(
             padding: const EdgeInsets.symmetric(horizontal: 25),
             child: TextFormField(
-	      controller: confirmPasswordController,
               obscureText: passwordVisible,
               decoration: InputDecoration(
                 enabledBorder: const OutlineInputBorder(
@@ -406,7 +330,7 @@ const SizedBox(height: 15),
                   },
                 ),
               ),
-            child: const Text('Register'),
+            child: const Text('Save'),
             onPressed: () {
               if (_formKey.currentState!.validate()) {
               // If the form is valid, display a snackbar. In the real world,
@@ -419,38 +343,6 @@ const SizedBox(height: 15),
           ),
         ),
 
-        // login now
-        const SizedBox(height: 10),
-              // login now
-        Row(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            Text(
-              'Have an account? ',
-              style: TextStyle(
-                color: Colors.grey[700],
-              ),
-            ),
-            Padding(
-              padding: const EdgeInsets.all(0.7),
-              child: TextButton(
-                child: const Text(
-                  'Login now',
-                  style: TextStyle(
-                    color: Colors.blue,
-                    fontWeight: FontWeight.bold,
-                  ),
-                ),
-                onPressed: () {
-                  Navigator.push(
-                    context,
-                    MaterialPageRoute(builder: (context) => const LoginPage()),
-                  );
-                },
-              ),
-            ),
-          ],
-        )
         ],
       ),
       ),

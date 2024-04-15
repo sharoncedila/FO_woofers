@@ -1,14 +1,12 @@
 import 'package:flutter/material.dart';
-import 'package:woofers/pages/chatlist_page.dart';
-import 'package:woofers/pages/adoption_page.dart';
-import 'package:woofers/pages/feeds_page.dart';
-import 'package:woofers/pages/my_profile_page.dart';
-void main() {
-  runApp(const ProfileTemplate());
-}
+import 'package:woofers/components/bottom_menu.dart';
+import 'package:woofers/components/dog_card.dart';
+import 'package:woofers/pages/login_page.dart';
+import 'package:woofers/pages/dog_profile_page.dart';
+import 'package:woofers/pages/user_profile_page.dart';
 
-class ProfileTemplate extends StatelessWidget {
-  const ProfileTemplate({super.key});
+class ProfilePageTemplate extends StatelessWidget {
+  const ProfilePageTemplate({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -17,20 +15,35 @@ class ProfileTemplate extends StatelessWidget {
         length: 2,
         child: Scaffold(
           appBar: AppBar(
-            toolbarHeight: 100,
-            bottom: TabBar(
+            bottom: const TabBar(
               tabs: [
-                // Tab(icon: Icon(Icons.message_outlined),),
-                // Tab(icon: Image(image: AssetImage('assets/woofers_icon/adoption.jpg'))),
-                // Tab(icon: Image(image: AssetImage('assets/woofers_icon/feeds.jpg'))),
-                // Tab(icon: Image(image: AssetImage('assets/woofers_icon/profile.jpg'))),
+                Tab(
+                  icon: Image(
+                    image: AssetImage('assets/profile_picture/person1.jpg'),
+                    width: 40,
+                    height: 40,
+                  ),
+                  text: "Person1",
+                ),
+                Tab(
+                  icon: Image(
+                    image: AssetImage('assets/dog_picture/dog1.jpg'),
+                    width: 40,
+                    height: 40,
+                  ),
+                  text: "Dog1",
+                ),
                 // IconButton(
                 //   onPressed: () {
                 //     Navigator.push(
                 //       context, MaterialPageRoute(builder: (context) => const ChatListPage()),
                 //     );
                 //   },
-                //   icon: const Icon(Icons.message_outlined),
+                //   icon: Image.asset(
+                //     'assets/woofers_icon/adoption.jpg',
+                //     width: 75,
+                //     height: 75,
+                //   ),
                 // ),
                 // IconButton(
                 //   onPressed: () {
@@ -38,34 +51,24 @@ class ProfileTemplate extends StatelessWidget {
                 //       context, MaterialPageRoute(builder: (context) => const ChatListPage()),
                 //     );
                 //   },
-                //   icon: Image.asset('assets/woofers_icon/adoption.jpg'),
+                //   icon: Image.asset(
+                //     'assets/woofers_icon/adoption.jpg',
+                //     width: 75,
+                //     height: 75,
+                //   ),
                 // ),
-                IconButton(
-                  onPressed: () {
-                    Navigator.push(
-                      context, MaterialPageRoute(builder: (context) => const ChatListPage()),
-                    );
-                  },
-                  icon: Image.asset(
-                    'assets/woofers_icon/adoption.jpg',
-                    width: 75,
-                    height: 75,
-                  ),
-                ),
-                IconButton(
-                  onPressed: () {
-                    Navigator.push(
-                      context, MaterialPageRoute(builder: (context) => const ChatListPage()),
-                    );
-                  },
-                  icon: Image.asset(
-                    'assets/woofers_icon/adoption.jpg',
-                    width: 75,
-                    height: 75,
-                  ),
-                ),
               ],
             ),
+          ),
+          body: const TabBarView(
+            children: [
+              // ChatListPage(),
+              // AdoptionPage(),
+              // FeedsPage(),
+              UserProfilePage(),
+              DogCard(),
+              // FirstRoute(),
+            ],
           ),
         ),
       ),
