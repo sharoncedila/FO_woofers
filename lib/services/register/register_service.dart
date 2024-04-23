@@ -1,12 +1,12 @@
 import 'package:dio/dio.dart';
 import 'package:woofers/class/account.dart';
-import 'package:woofers/interfaces/register/register_interface.dart';
+// import 'package:woofers/interfaces/register/register_interface.dart';
 
-class RegisterService extends IRegister{
+class RegisterService {
   @override
   Future<Account?> register(String username, String email, String provinceName, String phoneNumber, String Password) async{
     try {
-      const api = 'http://192.168.100.10:8081/woofers/accounts/register';
+      const api = 'http://192.168.51.53:8080/woofers/accounts/register';
       final data = {
         "username" : username,
         "email" : email,

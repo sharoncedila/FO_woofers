@@ -22,4 +22,17 @@ class Account {
     this.image,
     this.accessToken
   });
+
+
+  Account.fromJson(Map json)
+      : accountId = json['accountId'],
+        username = json['username'],
+        fullName = json['fullName'],
+        email = json['email'],
+        password = json['password'],
+        phoneNumber = json['phoneNumber'],
+        description = json['description'],
+        provinceName = json['provinceName'],
+        image = json['image'],
+        accessToken = json['accessToken'];
 }

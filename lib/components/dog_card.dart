@@ -40,7 +40,7 @@ class DogCardDetail extends StatelessWidget {
             },
             child: SizedBox(
               width: MediaQuery.of(context).size.width / 2,
-              height: 275,
+              height: 250,
               child: Column(
                 children: [
                   ClipRRect(
@@ -57,58 +57,40 @@ class DogCardDetail extends StatelessWidget {
                   ),
                   const ListTile(
                     title: Text(
-                      'Melbourne Cricket Stadium',
+                      'Nama Anjeng',
                       style: TextStyle(
                         color: Colors.white,
                       ),
-                    ),
-                    subtitle: Text(
-                      'Australia',
-                      style: TextStyle(
-                        color: Colors.grey,
-                      ),
+                      textAlign: TextAlign.center,
                     ),
                   ),
-                  Padding(
+                  const Padding(
                     padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 10),
-                      child: Row(
-                        children: [
-                          Expanded(
-                            child: TextButton(
-                              style: TextButton.styleFrom(
-                                  backgroundColor: Colors.white),
-                              onPressed: () {},
-                              child: const Text(
-                                "Edit",
-                                style: TextStyle(
-                                  color: Colors.black,
-                                  fontSize: 12,
-                                  // fontWeight: FontWeight.w300,
-                                ),
-                              ),
-                            ),
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        const Text(
+                          "breed",
+                          style: TextStyle(
+                            color: Colors.white,
+                            fontSize: 12,
+                            // fontWeight: FontWeight.w300,
                           ),
-                          const SizedBox(
-                            width: 5,
+                          textAlign: TextAlign.center,
+                        ),
+                        SizedBox(width: 15,),
+                        const Text(
+                          "age",
+                          style: TextStyle(
+                            color: Colors.white,
+                            fontSize: 12,
+                            // fontWeight: FontWeight.w300,
                           ),
-                          Expanded(
-                            child: TextButton(
-                              style: TextButton.styleFrom(
-                                  backgroundColor: Colors.red),
-                              onPressed: () {},
-                              child: const Text(
-                                "Delete",
-                                style: TextStyle(
-                                  color: Colors.white,
-                                  fontSize: 12,
-                                  // fontWeight: FontWeight.w300,
-                                ),
-                              ),
-                            ),
-                          ),
-                        ],
-                      ),
-                      ),
+                          textAlign: TextAlign.center,
+                        ),
+                      ],
+                    ),
+                  ),
                 ],
               ),
             )

@@ -65,7 +65,7 @@ class _FeedsPageState extends State<FeedsPage> {
                   onPressed: () {
                     Navigator.push(
                       context,
-                      MaterialPageRoute(builder: (context) => const AddFeeds()),
+                      MaterialPageRoute(builder: (context) => const AddFeedsPage()),
                     );
                   },
                 ),
@@ -107,7 +107,7 @@ class _FeedsPageState extends State<FeedsPage> {
                             ],
                             image: const DecorationImage(
                                 image:
-                                    NetworkImage('assets/dog_picture/dog1.jpg'),
+                                    AssetImage('assets/dog_picture/dog1.jpg'),
                                 fit: BoxFit.cover),
                             borderRadius: BorderRadius.circular(20)),
                       ),
@@ -135,7 +135,7 @@ class _FeedsPageState extends State<FeedsPage> {
                                   Row(
                                     children: [
                                       const CircleAvatar(
-                                        backgroundImage: NetworkImage(
+                                        backgroundImage: AssetImage(
                                             'assets/profile_picture/person1.jpg'),
                                       ),
                                       const SizedBox(

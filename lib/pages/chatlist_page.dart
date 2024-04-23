@@ -170,7 +170,7 @@ class _ChatListPageState extends State<ChatListPage> {
                                   borderRadius: BorderRadius.circular(30),
                                   image: const DecorationImage(
                                       image:
-                                          NetworkImage('assets/profile_picture/person1.jpg'),
+                                          AssetImage('assets/profile_picture/person1.jpg'),
                                       fit: BoxFit.cover)),
                             ),
                           ),

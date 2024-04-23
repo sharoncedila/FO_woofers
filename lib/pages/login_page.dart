@@ -1,9 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:woofers/class/account.dart';
+import 'package:woofers/components/bottom_menu.dart';
+import 'package:woofers/pages/chatlist_page.dart';
 import 'package:woofers/pages/feeds_page.dart';
 import 'package:woofers/services/login/login_service.dart';
-import 'package:woofers/interfaces/login/login_interface.dart';
+// import 'package:woofers/interfaces/login/login_interface.dart';
 import 'package:woofers/pages/register_page.dart';
 import 'package:email_validator/email_validator.dart';
 
@@ -12,8 +14,8 @@ class LoginPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      home: Scaffold(
+    return SingleChildScrollView(
+      child: Scaffold(
         backgroundColor: Colors.grey[300],
         body: SafeArea(
           child: Center(
@@ -64,7 +66,7 @@ class _LoginFormState extends State<LoginForm> {
   // not a GlobalKey<LoginFormState>.
   final _formKey = GlobalKey<FormState>();
   bool passwordVisible=true;
-  final ILogin _loginService = LoginService();
+  final _loginService = LoginService();
   final _emailController = TextEditingController();
   final _passwordController = TextEditingController();
 
@@ -191,12 +193,12 @@ class _LoginFormState extends State<LoginForm> {
               if (_formKey.currentState!.validate()) {
               // If the form is valid, display a snackbar. In the real world,
               // you'd often call a server or save the information in a database.
-                Account? user = await _loginService.login(
+                await _loginService.login(
                   _emailController.text,
                   _passwordController.text
                   );
                 Navigator.of(context).pushReplacement(
-                  MaterialPageRoute(builder: (_) => FeedsPage()));
+                  MaterialPageRoute(builder: (_) => const ChatListPage()));
               }
             },
           ),
