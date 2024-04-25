@@ -1,6 +1,8 @@
 import 'package:dio/dio.dart';
-import 'package:woofers/class/account.dart';
+// import 'package:woofers/classes/account.dart';
 import 'dart:convert';
+
+import 'package:woofers/model/dog_profile_model.dart';
 
 class RetrieveAccountService{
   @override
@@ -16,8 +18,8 @@ class RetrieveAccountService{
   String? image;
   String? accessToken;
 
-  Future<Account?> retrieveUserData() async{
-    const url = 'http://192.168.123.12:8080/woofers/accounts/profile/view';
+  Future<ResponseDogProfileModel?> retrieveUserData() async{
+    const url = '/accounts/profile/view';
     final dio = Dio();
 
     try {
@@ -42,7 +44,7 @@ class RetrieveAccountService{
         //     provinceName = json['provinceName'],
         //     image = json['image'],
         //     accessToken = json['accessToken'];
-        return Account.fromJson(response.data['output_schema']);
+        return ResponseDogProfileModel.fromJson(response.data['output_schema']);
       // } else {
       //   print('${response.statusCode} : ${response.data.toString()}');
       //   // throw response.statusCode;

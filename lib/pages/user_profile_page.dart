@@ -1,10 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:woofers/class/account.dart';
-import 'package:woofers/components/bottom_menu.dart';
-import 'package:woofers/pages/login_page.dart';
+import 'package:woofers/model/user_profile_model.dart';
 import 'package:woofers/pages/edit_my_profile_page.dart';
+import 'package:woofers/pages/login_page.dart';
 // import 'package:woofers/interfaces/profile/user_profile_interface.dart';
-import 'package:woofers/services/profile/user_profile_services.dart';
+import 'package:woofers/services/account/user_profile_services.dart';
 
 void main() => runApp(const UserProfilePage());
 
@@ -27,7 +26,7 @@ class UserProfilePage extends StatefulWidget {
 
 class _UserProfilePageState extends State<UserProfilePage> {
   // const UserProfilePagetate({Key key}) : super(key: key);
-  final Future<Account?> _account = RetrieveAccountService().retrieveUserData();
+  final Future<ResponseUserProfileModel?> _account = RetrieveAccountService().retrieveUserData();
 
   @override
   Widget build(BuildContext context) {
@@ -73,7 +72,7 @@ class _UserProfilePageState extends State<UserProfilePage> {
                               border: const UnderlineInputBorder(),
                               // hintText : 'Username',
                               hintText : snapshot.data!.username,
-                              
+
                               // hintText: Account.fromJson(snapshot.u),
                               hintStyle: const TextStyle(color: Colors.black),
                             ),

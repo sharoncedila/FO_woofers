@@ -66,7 +66,7 @@ class _RegisterFormState extends State<RegisterForm> {
   TextEditingController confirmPasswordController = TextEditingController();
   TextEditingController provinceController = TextEditingController();
   bool passwordVisible=true;
-  String _password='';
+  final String _password='';
 
   String? valueProvince = 'Province';
   List<String> listProvince = [
@@ -178,30 +178,30 @@ class _RegisterFormState extends State<RegisterForm> {
           ),
 
           // province form field
-const SizedBox(height: 15),
-          Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 25),
-            child: TextFormField(
-              decoration: InputDecoration(
-                enabledBorder: OutlineInputBorder(
-                  borderSide: BorderSide(color: Colors.white),
-                ),
-                focusedBorder: OutlineInputBorder(
-                  borderSide: BorderSide(color: Colors.grey.shade400),
-                ),
-                fillColor: Colors.grey.shade200,
-                filled: true,
-                hintText: 'Province',
-                hintStyle: TextStyle(color: Colors.grey[500])
-              ),
-              validator: (value){
-                if (value == null || value.isEmpty) {
-                  return 'Please fill province field';
-                }
-                return null;
-              },
-            ),
-          ),
+// const SizedBox(height: 15),
+//           Padding(
+//             padding: const EdgeInsets.symmetric(horizontal: 25),
+//             child: TextFormField(
+//               decoration: InputDecoration(
+//                 enabledBorder: OutlineInputBorder(
+//                   borderSide: BorderSide(color: Colors.white),
+//                 ),
+//                 focusedBorder: OutlineInputBorder(
+//                   borderSide: BorderSide(color: Colors.grey.shade400),
+//                 ),
+//                 fillColor: Colors.grey.shade200,
+//                 filled: true,
+//                 hintText: 'Province',
+//                 hintStyle: TextStyle(color: Colors.grey[500])
+//               ),
+//               validator: (value){
+//                 if (value == null || value.isEmpty) {
+//                   return 'Please fill province field';
+//                 }
+//                 return null;
+//               },
+//             ),
+//           ),
 
           const SizedBox(height: 15),
           Padding(
@@ -300,6 +300,7 @@ const SizedBox(height: 15),
               ),
               keyboardType: TextInputType.visiblePassword,
                   textInputAction: TextInputAction.done,
+              // final String password = passwordController.text,
               validator: (_password){
                 if (_password == null || _password.isEmpty) {
                   return 'Please fill password field';
@@ -383,9 +384,9 @@ const SizedBox(height: 15),
                 if (!value.contains(RegExp(r'[!@#%^&*(),.?":{}|<>]'))) {
                   return 'Password must contain at least 1 special character';
                 }
-                if (value != _password) {
-                  return 'Password doesn\'t match';
-                }
+                // if (value != _password) {
+                //   return 'Password doesn\'t match';
+                // }
                 return null;
               },
             ),

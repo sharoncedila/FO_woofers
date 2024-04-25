@@ -1,10 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
-import 'package:woofers/class/account.dart';
+// import 'package:woofers/classes/account.dart';
 import 'package:woofers/components/bottom_menu.dart';
+import 'package:woofers/model/login_model.dart';
 import 'package:woofers/pages/chatlist_page.dart';
 import 'package:woofers/pages/feeds_page.dart';
-import 'package:woofers/services/login/login_service.dart';
+import 'package:woofers/pages/user_profile_page.dart';
+import 'package:woofers/services/account/login_service.dart';
 // import 'package:woofers/interfaces/login/login_interface.dart';
 import 'package:woofers/pages/register_page.dart';
 import 'package:email_validator/email_validator.dart';
@@ -14,11 +16,12 @@ class LoginPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return SingleChildScrollView(
-      child: Scaffold(
+    return MaterialApp(
+      home: Scaffold(
         backgroundColor: Colors.grey[300],
-        body: SafeArea(
-          child: Center(
+        body: // SafeArea(
+          // child: 
+          Center(
             child: Column(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
@@ -45,7 +48,7 @@ class LoginPage extends StatelessWidget {
               ],
             ),
           )
-        ),
+        // ),
       ),
     );
   }
@@ -190,16 +193,40 @@ class _LoginFormState extends State<LoginForm> {
               ),
             child: const Text('Login'),
             onPressed: () async {
+              // if (_formKey.currentState!.validate()) {
+              // // If the form is valid, display a snackbar. In the real world,
+              // // you'd often call a server or save the information in a database.
+              //    _loginService.login(
+              //     _emailController.text,
+              //     _passwordController.text
+              //     ).then((value) {
+              //       Navigator.of(context).pushReplacement(
+              //         MaterialPageRoute(builder: (_) => const BottomMenu()));
+              //     });
+              // }
+
               if (_formKey.currentState!.validate()) {
-              // If the form is valid, display a snackbar. In the real world,
-              // you'd often call a server or save the information in a database.
-                await _loginService.login(
-                  _emailController.text,
-                  _passwordController.text
-                  );
-                Navigator.of(context).pushReplacement(
-                  MaterialPageRoute(builder: (_) => const ChatListPage()));
-              }
+                  final RequestLoginModel req = RequestLoginModel(
+                      email: _emailController.text,
+                      password: _passwordController.text);
+
+                  _loginService
+                      .login(req)
+                      .then((value) => Navigator.of(context).pushReplacement(
+                          MaterialPageRoute(
+                              builder: (_) => const BottomMenu())))
+                      .onError<Exception>((error, stackTrace) {
+                    showDialog(
+                      context: context,
+                      builder: (context) {
+                        //return Text(error.toString());
+                        return SimpleDialog(
+                          children: [Text(error.toString())],
+                        );
+                      },
+                    );
+                  });
+                }
             },
           ),
         ),

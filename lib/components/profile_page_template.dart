@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:woofers/components/bottom_menu.dart';
-import 'package:woofers/components/dog_card.dart';
+import 'package:woofers/components/adoption_card.dart';
+import 'package:woofers/pages/adoption_page.dart';
 import 'package:woofers/pages/login_page.dart';
 import 'package:woofers/pages/dog_profile_page.dart';
 import 'package:woofers/pages/user_profile_page.dart';
@@ -23,7 +24,7 @@ class ProfilePageTemplate extends StatelessWidget {
                     width: 40,
                     height: 40,
                   ),
-                  text: "Person1",
+                  text: "Me",
                 ),
                 Tab(
                   icon: Image(
@@ -31,7 +32,7 @@ class ProfilePageTemplate extends StatelessWidget {
                     width: 40,
                     height: 40,
                   ),
-                  text: "Dog1",
+                  text: "Doggo",
                 ),
                 // IconButton(
                 //   onPressed: () {
@@ -66,7 +67,7 @@ class ProfilePageTemplate extends StatelessWidget {
               // AdoptionPage(),
               // FeedsPage(),
               UserProfilePage(),
-              DogCard(),
+              AdoptionPage(),
               // FirstRoute(),
             ],
           ),

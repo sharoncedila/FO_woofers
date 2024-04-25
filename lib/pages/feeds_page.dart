@@ -24,7 +24,7 @@ import 'package:flutter/material.dart';
 import 'package:woofers/pages/add_feeds_page.dart';
 import 'package:woofers/pages/comment_page.dart';
 import 'package:woofers/pages/notification_page.dart';
-import 'package:woofers/class/account.dart';
+// import 'package:woofers/classes/account.dart';
 
 class FeedsPage extends StatefulWidget {
   const FeedsPage({Key? key}) : super(key: key);
