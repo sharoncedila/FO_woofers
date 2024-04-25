@@ -5,9 +5,7 @@ import 'package:woofers/model/register_model.dart';
 import 'dart:convert';
 
 class RegisterService {
-  @override
-  Future<ResponseRegisterModel?> register(
-      RequestRegisterModel registerReq) async {
+  Future<ResponseRegisterModel?> register(RequestRegisterModel registerReq) async {
     try {
       const api = '/accounts/register';
       final dio = await DioInstance.getInstance();

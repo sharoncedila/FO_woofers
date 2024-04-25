@@ -1,6 +1,15 @@
+<<<<<<< HEAD
 import 'package:email_validator/email_validator.dart';
 import 'package:flutter/material.dart';
 import 'package:woofers/pages/login_page.dart';
+=======
+import 'package:flutter/material.dart';
+import 'package:flutter/widgets.dart';
+import 'package:woofers/model/register_model.dart';
+import 'package:woofers/pages/login_page.dart';
+import 'package:email_validator/email_validator.dart';
+import 'package:woofers/services/account/register_service.dart';
+>>>>>>> UAT
 
 class RegisterPage extends StatelessWidget {
   const RegisterPage({super.key});
@@ -11,16 +20,25 @@ class RegisterPage extends StatelessWidget {
       home: Scaffold(
         backgroundColor: Colors.grey[300],
         body: SafeArea(
+<<<<<<< HEAD
           child: Center(
             child: SingleChildScrollView(
             child: Column(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
                 const SizedBox(height: 50),
+=======
+            child: Center(
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              const SizedBox(height: 50),
+>>>>>>> UAT
               // logo
               Image.asset(
                 'assets/woofers_icon/woofers.jpg',
-                width: 100, height: 100,
+                width: 100,
+                height: 100,
               ),
 
               const SizedBox(height: 10),
@@ -28,18 +46,16 @@ class RegisterPage extends StatelessWidget {
               const Text(
                 'WOOFERS',
                 style: TextStyle(
-                  color: Colors.blue,
-                  fontWeight: FontWeight.bold,
-                  fontSize: 20,
-                  fontFamily: 'San Francisco'
-                  ),
+                    color: Colors.blue,
+                    fontWeight: FontWeight.bold,
+                    fontSize: 20,
+                    fontFamily: 'San Francisco'),
               ),
 
               const RegisterForm(),
-              ],
-            ),
-          )
-        ),
+            ],
+          ),
+        )),
       ),
     ),
     );
@@ -51,7 +67,7 @@ class RegisterForm extends StatefulWidget {
 
   @override
   _RegisterFormState createState() => _RegisterFormState();
-  }
+}
 
 class _RegisterFormState extends State<RegisterForm> {
   // Create a global key that uniquely identifies the Form widget
@@ -60,14 +76,15 @@ class _RegisterFormState extends State<RegisterForm> {
   // Note: This is a GlobalKey<FormState>,
   // not a GlobalKey<RegisterFormState>.
   final _formKey = GlobalKey<FormState>();
-  TextEditingController usernameController = TextEditingController();
-  TextEditingController emailController = TextEditingController();
-  TextEditingController passwordController = TextEditingController();
-  TextEditingController phonenumberController = TextEditingController();
-  TextEditingController confirmPasswordController = TextEditingController();
-  TextEditingController provinceController = TextEditingController();
-  bool passwordVisible=true;
-  final String _password='';
+  final _usernameController = TextEditingController();
+  final _emailController = TextEditingController();
+  final _passwordController = TextEditingController();
+  final _confirmPasswordController = TextEditingController();
+  final _provinceController = TextEditingController();
+  final _phoneNumberController = TextEditingController();
+  bool passwordVisible = true;
+  final String _password = '';
+  final _registerService = RegisterService();
 
   String? valueProvince = 'Province';
   List<String> listProvince = [
@@ -118,67 +135,65 @@ class _RegisterFormState extends State<RegisterForm> {
       key: _formKey,
       child: Center(
         child: Column(
-        mainAxisAlignment: MainAxisAlignment.center,
-        children: [
-          // username form field
-          const SizedBox(height: 50),
-          Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 25),
-            child: TextFormField(
-              controller: usernameController,
-              decoration: InputDecoration(
-                enabledBorder: const OutlineInputBorder(
-                  borderSide: BorderSide(color: Colors.white),
-                ),
-                focusedBorder: OutlineInputBorder(
-                  borderSide: BorderSide(color: Colors.grey.shade400),
-                ),
-                fillColor: Colors.grey.shade200,
-                filled: true,
-                hintText: 'Username',
-                hintStyle: TextStyle(color: Colors.grey[500])
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            // username form field
+            const SizedBox(height: 50),
+            Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 25),
+              child: TextFormField(
+                controller: _usernameController,
+                decoration: InputDecoration(
+                    enabledBorder: const OutlineInputBorder(
+                      borderSide: BorderSide(color: Colors.white),
+                    ),
+                    focusedBorder: OutlineInputBorder(
+                      borderSide: BorderSide(color: Colors.grey.shade400),
+                    ),
+                    fillColor: Colors.grey.shade200,
+                    filled: true,
+                    hintText: 'Username',
+                    hintStyle: TextStyle(color: Colors.grey[500])),
+                validator: (value) {
+                  if (value == null || value.isEmpty) {
+                    return 'Please fill username field';
+                  }
+                  return null;
+                },
               ),
-              validator: (value){
-                if (value == null || value.isEmpty) {
-                  return 'Please fill username field';
-                }
-                return null;
-              },
             ),
-          ),
 
-          // email form field
-          const SizedBox(height: 15),
-          Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 25),
-            child: TextFormField(
-              controller: emailController,
-              decoration: InputDecoration(
-                enabledBorder: const OutlineInputBorder(
-                  borderSide: BorderSide(color: Colors.white),
-                ),
-                focusedBorder: OutlineInputBorder(
-                  borderSide: BorderSide(color: Colors.grey.shade400),
-                ),
-                fillColor: Colors.grey.shade200,
-                filled: true,
-                hintText: 'Email',
-                hintStyle: TextStyle(color: Colors.grey[500])
+            // email form field
+            const SizedBox(height: 15),
+            Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 25),
+              child: TextFormField(
+                controller: _emailController,
+                decoration: InputDecoration(
+                    enabledBorder: const OutlineInputBorder(
+                      borderSide: BorderSide(color: Colors.white),
+                    ),
+                    focusedBorder: OutlineInputBorder(
+                      borderSide: BorderSide(color: Colors.grey.shade400),
+                    ),
+                    fillColor: Colors.grey.shade200,
+                    filled: true,
+                    hintText: 'Email',
+                    hintStyle: TextStyle(color: Colors.grey[500])),
+                validator: (value) {
+                  if (value == null || value.isEmpty) {
+                    return 'Please fill email field';
+                  }
+                  bool isvalid = EmailValidator.validate(value);
+                  if (isvalid == false) {
+                    return 'Please check inserted email';
+                  }
+                  return null;
+                },
               ),
-              validator: (value){
-                if (value == null || value.isEmpty) {
-                  return 'Please fill email field';
-                }
-                bool isvalid = EmailValidator.validate(value);
-                if (isvalid == false) {
-                  return 'Please check inserted email';
-                }
-                return null;
-              },
             ),
-          ),
 
-          // province form field
+            // province form field
 // const SizedBox(height: 15),
 //           Padding(
 //             padding: const EdgeInsets.symmetric(horizontal: 25),
@@ -204,6 +219,7 @@ class _RegisterFormState extends State<RegisterForm> {
 //             ),
 //           ),
 
+<<<<<<< HEAD
           const SizedBox(height: 15),
           Padding(
             padding: const EdgeInsets.symmetric(horizontal: 25),
@@ -219,86 +235,132 @@ class _RegisterFormState extends State<RegisterForm> {
                 filled: true,
                 hintText: 'Province',
                 hintStyle: TextStyle(color: Colors.grey[500])
+=======
+            const SizedBox(height: 15),
+            Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 25),
+              child: TextFormField(
+                controller:_provinceController,
+                decoration: InputDecoration(
+                    enabledBorder: OutlineInputBorder(
+                      borderSide: BorderSide(color: Colors.white),
+                    ),
+                    focusedBorder: OutlineInputBorder(
+                      borderSide: BorderSide(color: Colors.grey.shade400),
+                    ),
+                    fillColor: Colors.grey.shade200,
+                    filled: true,
+                    hintText: 'Province',
+                    hintStyle: TextStyle(color: Colors.grey[500])),
+                validator: (value) {
+                  if (value == null || value.isEmpty) {
+                    return 'Please fill province field';
+                  }
+                  return null;
+                },
+>>>>>>> UAT
               ),
-              validator: (value){
-                if (value == null || value.isEmpty) {
-                  return 'Please fill province field';
-                }
-                return null;
-              },
             ),
-          ),
 
-          // phone number form field
-          const SizedBox(height: 15),
-          Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 25),
-            child: TextFormField(
-              controller: phonenumberController,
-              keyboardType: TextInputType.number,
-              decoration: InputDecoration(
-                enabledBorder: const OutlineInputBorder(
-                  borderSide: BorderSide(color: Colors.white),
-                ),
-                focusedBorder: OutlineInputBorder(
-                  borderSide: BorderSide(color: Colors.grey.shade400),
-                ),
-                fillColor: Colors.grey.shade200,
-                filled: true,
-                hintText: 'Phone Number',
-                hintStyle: TextStyle(color: Colors.grey[500])
+            // phone number form field
+            const SizedBox(height: 15),
+            Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 25),
+              child: TextFormField(
+                controller: _phoneNumberController,
+                keyboardType: TextInputType.number,
+                decoration: InputDecoration(
+                    enabledBorder: const OutlineInputBorder(
+                      borderSide: BorderSide(color: Colors.white),
+                    ),
+                    focusedBorder: OutlineInputBorder(
+                      borderSide: BorderSide(color: Colors.grey.shade400),
+                    ),
+                    fillColor: Colors.grey.shade200,
+                    filled: true,
+                    hintText: 'Phone Number',
+                    hintStyle: TextStyle(color: Colors.grey[500])),
+                validator: (value) {
+                  if (value == null || value.isEmpty) {
+                    return 'Please fill phone number field';
+                  }
+                  const pattern =
+                      r'^[+]*[(]{0,1}[0-9]{1,4}[)]{0,1}[-\s\./0-9]*$';
+                  final regExp = RegExp(pattern);
+                  if (!regExp.hasMatch(value)) {
+                    return 'Please enter number only in this field';
+                  }
+                  if (value.length < 8) {
+                    return 'Phone number should have at least 8 digits';
+                  } else if (value.length > 13) {
+                    return 'Phone number has maximum of 13 digits';
+                  }
+                  return null;
+                },
               ),
-              validator: (value){
-                if (value == null || value.isEmpty) {
-                  return 'Please fill phone number field';
-                }
-                const pattern = r'^[+]*[(]{0,1}[0-9]{1,4}[)]{0,1}[-\s\./0-9]*$';
-                final regExp = RegExp(pattern);
-                if (!regExp.hasMatch(value)) {
-                  return 'Please enter number only in this field';
-                }
-                if (value.length < 8) {
-                  return 'Phone number should have at least 8 digits';
-                } else if (value.length > 13) {
-                  return 'Phone number has maximum of 13 digits';
-                }
-                return null;
-              },
             ),
-          ),
 
-          // password form field
-          const SizedBox(height: 15),
-          Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 25),
-            child: TextFormField(
-	      controller: passwordController,
-              obscureText: passwordVisible,
-              decoration: InputDecoration(
-                enabledBorder: const OutlineInputBorder(
-                  borderSide: BorderSide(color: Colors.white),
+            // password form field
+            const SizedBox(height: 15),
+            Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 25),
+              child: TextFormField(
+                controller: _passwordController,
+                obscureText: passwordVisible,
+                decoration: InputDecoration(
+                  enabledBorder: const OutlineInputBorder(
+                    borderSide: BorderSide(color: Colors.white),
+                  ),
+                  focusedBorder: OutlineInputBorder(
+                    borderSide: BorderSide(color: Colors.grey.shade400),
+                  ),
+                  fillColor: Colors.grey.shade200,
+                  filled: true,
+                  hintText: 'Password',
+                  hintStyle: TextStyle(color: Colors.grey[500]),
+                  suffixIcon: IconButton(
+                    icon: Icon(passwordVisible
+                        ? Icons.visibility
+                        : Icons.visibility_off),
+                    onPressed: () {
+                      setState(
+                        () {
+                          passwordVisible = !passwordVisible;
+                        },
+                      );
+                    },
+                  ),
+                  alignLabelWithHint: false,
                 ),
-                focusedBorder: OutlineInputBorder(
-                  borderSide: BorderSide(color: Colors.grey.shade400),
-                ),
-                fillColor: Colors.grey.shade200,
-                filled: true,
-                hintText: 'Password',
-                hintStyle: TextStyle(color: Colors.grey[500]),
-                suffixIcon: IconButton(
-                  icon: Icon(passwordVisible
-                      ? Icons.visibility
-                      : Icons.visibility_off),
-                  onPressed: () {
-                    setState(
-                      () {
-                        passwordVisible = !passwordVisible;
-                      },
-                    );
-                  },
-                ),
-                alignLabelWithHint: false,
+                keyboardType: TextInputType.visiblePassword,
+                textInputAction: TextInputAction.done,
+                // final String password = passwordController.text,
+                validator: (_password) {
+                  if (_password == null || _password.isEmpty) {
+                    return 'Please fill password field';
+                  }
+                  if (_password.length < 8) {
+                    return 'Password must contain more than equal to 8 characters';
+                  }
+                  if (!_password.contains(RegExp(r'[A-Z]'))) {
+                    return 'Password must contain at least 1 uppercase letter';
+                  }
+                  // Contains at least one lowercase letter
+                  if (!_password.contains(RegExp(r'[a-z]'))) {
+                    return 'Password must contain at least 1 lowercase letter';
+                  }
+                  // Contains at least one digit
+                  if (!_password.contains(RegExp(r'[0-9]'))) {
+                    return 'Password must contain at least 1 digit';
+                  }
+                  // Contains at least one special character
+                  if (!_password.contains(RegExp(r'[!@#%^&*(),.?":{}|<>]'))) {
+                    return 'Password must contain at least 1 special character';
+                  }
+                  return null;
+                },
               ),
+<<<<<<< HEAD
               keyboardType: TextInputType.visiblePassword,
                   textInputAction: TextInputAction.done,
               // final String password = passwordController.text,
@@ -326,74 +388,106 @@ class _RegisterFormState extends State<RegisterForm> {
                 }
                 return null;
               },
+=======
+>>>>>>> UAT
             ),
-          ),
 
-          // confirm password text field
-          const SizedBox(height: 15),
-          Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 25),
-            child: TextFormField(
-	      controller: confirmPasswordController,
-              obscureText: passwordVisible,
-              decoration: InputDecoration(
-                enabledBorder: const OutlineInputBorder(
-                  borderSide: BorderSide(color: Colors.white),
+            // confirm password text field
+            const SizedBox(height: 15),
+            Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 25),
+              child: TextFormField(
+                controller: _confirmPasswordController,
+                obscureText: passwordVisible,
+                decoration: InputDecoration(
+                  enabledBorder: const OutlineInputBorder(
+                    borderSide: BorderSide(color: Colors.white),
+                  ),
+                  focusedBorder: OutlineInputBorder(
+                    borderSide: BorderSide(color: Colors.grey.shade400),
+                  ),
+                  fillColor: Colors.grey.shade200,
+                  filled: true,
+                  hintText: 'Confirm Password',
+                  hintStyle: TextStyle(color: Colors.grey[500]),
+                  suffixIcon: IconButton(
+                    icon: Icon(passwordVisible
+                        ? Icons.visibility
+                        : Icons.visibility_off),
+                    onPressed: () {
+                      setState(
+                        () {
+                          passwordVisible = !passwordVisible;
+                        },
+                      );
+                    },
+                  ),
+                  alignLabelWithHint: false,
                 ),
-                focusedBorder: OutlineInputBorder(
-                  borderSide: BorderSide(color: Colors.grey.shade400),
-                ),
-                fillColor: Colors.grey.shade200,
-                filled: true,
-                hintText: 'Confirm Password',
-                hintStyle: TextStyle(color: Colors.grey[500]),
-                suffixIcon: IconButton(
-                  icon: Icon(passwordVisible
-                      ? Icons.visibility
-                      : Icons.visibility_off),
-                  onPressed: () {
-                    setState(
-                      () {
-                        passwordVisible = !passwordVisible;
-                      },
-                    );
-                  },
-                ),
-                alignLabelWithHint: false,
+                keyboardType: TextInputType.visiblePassword,
+                textInputAction: TextInputAction.done,
+                validator: (value) {
+                  if (value == null || value.isEmpty) {
+                    return 'Please fill password field';
+                  }
+                  if (value.length < 8) {
+                    return 'Password must contain more than equal to 8 characters';
+                  }
+                  if (!value.contains(RegExp(r'[A-Z]'))) {
+                    return 'Password must contain at least 1 uppercase letter';
+                  }
+                  // Contains at least one lowercase letter
+                  if (!value.contains(RegExp(r'[a-z]'))) {
+                    return 'Password must contain at least 1 lowercase letter';
+                  }
+                  // Contains at least one digit
+                  if (!value.contains(RegExp(r'[0-9]'))) {
+                    return 'Password must contain at least 1 digit';
+                  }
+                  // Contains at least one special character
+                  if (!value.contains(RegExp(r'[!@#%^&*(),.?":{}|<>]'))) {
+                    return 'Password must contain at least 1 special character';
+                  }
+                  // if (value != _password) {
+                  //   return 'Password doesn\'t match';
+                  // }
+                  return null;
+                },
               ),
-              keyboardType: TextInputType.visiblePassword,
-                  textInputAction: TextInputAction.done,
-              validator: (value){
-                if (value == null || value.isEmpty) {
-                  return 'Please fill password field';
-                }
-                if (value.length < 8) {
-                  return 'Password must contain more than equal to 8 characters';
-                }
-                if (!value.contains(RegExp(r'[A-Z]'))) {
-                  return 'Password must contain at least 1 uppercase letter';
-                }
-                // Contains at least one lowercase letter
-                if (!value.contains(RegExp(r'[a-z]'))) {
-                  return 'Password must contain at least 1 lowercase letter';
-                }
-                // Contains at least one digit
-                if (!value.contains(RegExp(r'[0-9]'))) {
-                  return 'Password must contain at least 1 digit';
-                }
-                // Contains at least one special character
-                if (!value.contains(RegExp(r'[!@#%^&*(),.?":{}|<>]'))) {
-                  return 'Password must contain at least 1 special character';
-                }
-                // if (value != _password) {
-                //   return 'Password doesn\'t match';
-                // }
-                return null;
-              },
             ),
-          ),
 
-          const SizedBox(height: 50),
+            // const SizedBox(height: 50),
+            // SizedBox(
+            //   width: 200,
+            //   height: 45,
+            //   child: ElevatedButton(
+            //     style: ButtonStyle(
+            //       backgroundColor: MaterialStateProperty.resolveWith<Color?>(
+            //         (Set<MaterialState> states) {
+            //           if (states.contains(MaterialState.pressed)) {
+            //             return Theme.of(context)
+            //                 .colorScheme
+            //                 .primary
+            //                 .withOpacity(0.5);
+            //           }
+            //           return null; // Use the component's default.
+            //         },
+            //       ),
+            //     ),
+            //     child: const Text('Register'),
+            //     onPressed: () {
+            //       if (_formKey.currentState!.validate()) {
+            //         // If the form is valid, display a snackbar. In the real world,
+            //         // you'd often call a server or save the information in a database.
+            //         ScaffoldMessenger.of(context).showSnackBar(
+            //           const SnackBar(content: Text('Processing Data')),
+            //         );
+            //       }
+            //     },
+            //   ),
+            // ),
+
+            const SizedBox(height: 50),
           SizedBox(
             width: 200,
             height: 45,
@@ -408,53 +502,87 @@ class _RegisterFormState extends State<RegisterForm> {
                   },
                 ),
               ),
-            child: const Text('Register'),
-            onPressed: () {
+            child: const Text('Login'),
+            onPressed: () async {
+              // if (_formKey.currentState!.validate()) {
+              // // If the form is valid, display a snackbar. In the real world,
+              // // you'd often call a server or save the information in a database.
+              //    _loginService.login(
+              //     _emailController.text,
+              //     _passwordController.text
+              //     ).then((value) {
+              //       Navigator.of(context).pushReplacement(
+              //         MaterialPageRoute(builder: (_) => const BottomMenu()));
+              //     });
+              // }
+
               if (_formKey.currentState!.validate()) {
-              // If the form is valid, display a snackbar. In the real world,
-              // you'd often call a server or save the information in a database.
-                ScaffoldMessenger.of(context).showSnackBar(
-                  const SnackBar(content: Text('Processing Data')),
-              );
-              }
+                  final RequestRegisterModel req = RequestRegisterModel(
+                      email: _emailController.text,
+                      password: _passwordController.text,
+                      username: _usernameController.text,
+                      provinceName: _provinceController.text,
+                      phoneNumber: _phoneNumberController.text);
+
+                  _registerService
+                      .register(req)
+                      .then((value) => Navigator.of(context).pushReplacement(
+                          MaterialPageRoute(
+                              builder: (_) => const LoginPage())))
+                      .onError<Exception>((error, stackTrace) {
+                    showDialog(
+                      context: context,
+                      builder: (context) {
+                        //return Text(error.toString());
+                        return SimpleDialog(
+                          children: [Text(error.toString())],
+                        );
+                      },
+                    );
+                  });
+                }
             },
           ),
         ),
 
-        // login now
-        const SizedBox(height: 10),
-              // login now
-        Row(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            Text(
-              'Have an account? ',
-              style: TextStyle(
-                color: Colors.grey[700],
-              ),
-            ),
-            Padding(
-              padding: const EdgeInsets.all(0.7),
-              child: TextButton(
-                child: const Text(
-                  'Login now',
+
+
+
+            // login now
+            const SizedBox(height: 10),
+            // login now
+            Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                Text(
+                  'Have an account? ',
                   style: TextStyle(
-                    color: Colors.blue,
-                    fontWeight: FontWeight.bold,
+                    color: Colors.grey[700],
                   ),
                 ),
-                onPressed: () {
-                  Navigator.push(
-                    context,
-                    MaterialPageRoute(builder: (context) => const LoginPage()),
-                  );
-                },
-              ),
-            ),
+                Padding(
+                  padding: const EdgeInsets.all(0.7),
+                  child: TextButton(
+                    child: const Text(
+                      'Login now',
+                      style: TextStyle(
+                        color: Colors.blue,
+                        fontWeight: FontWeight.bold,
+                      ),
+                    ),
+                    onPressed: () {
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                            builder: (context) => const LoginPage()),
+                      );
+                    },
+                  ),
+                ),
+              ],
+            )
           ],
-        )
-        ],
-      ),
+        ),
       ),
     );
   }

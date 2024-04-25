@@ -8,7 +8,6 @@ import 'package:woofers/model/error_schema_model.dart';
 import 'package:woofers/model/login_model.dart';
 
 class LoginService {
-  @override
   Future<ResponseLoginModel?> login(RequestLoginModel loginReq) async {
     try {
       const api = '/accounts/login';
