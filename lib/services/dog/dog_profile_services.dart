@@ -1,30 +1,25 @@
 import 'package:dio/dio.dart';
-// import 'package:woofers/classes/account.dart';
+import 'package:woofers/classes/dio_instance.dart';
 import 'dart:convert';
 
 import 'package:woofers/model/dog_profile_model.dart';
 
 class RetrieveAccountService{
-  @override
 
-    String? accountId;
-  String? username;
-  String? fullName;
-  String? email;
-  String? password;
-  String? phoneNumber;
-  String? description;
-  String? provinceName;
-  String? image;
-  String? accessToken;
+  Future<ResponseDogProfileModel?> retrieveDogProfile() async{
+    try{
+      const api = '/dogs/profile/dog-id';
+      final dio = await DioInstance.getInstance();
 
-  Future<ResponseDogProfileModel?> retrieveUserData() async{
-    const url = '/accounts/profile/view';
-    final dio = Dio();
+      var response = dio.get(api)
+    } catch(error){
+      print(error);
+    }
+  
 
     try {
       final response = await dio.get(
-        url,options: Options(
+        api,options: Options(
           headers: Map.from(
             {"Authorization": "Bearer eyJhbGciOiJIUzI1NiJ9.eyJhY2NvdW50SWQiOiIxMzkxMjMwNWM5ZTU0NzIzIiwidXNlcm5hbWUiOiJTaGFyb24iLCJpYXQiOjE3MTM4MTQxMTMsImV4cCI6MTAzNTM4MTQxMTN9.NT-UGzdbuMpMvwQtjvR3kNNmaeCtZCHCHlqyU0vJZPs"}
             )

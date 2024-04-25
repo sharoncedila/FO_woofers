@@ -67,6 +67,7 @@ class _RegisterFormState extends State<RegisterForm> {
   TextEditingController provinceController = TextEditingController();
   bool passwordVisible=true;
   final String _password='';
+  
 
   String? valueProvince = 'Province';
   List<String> listProvince = [
