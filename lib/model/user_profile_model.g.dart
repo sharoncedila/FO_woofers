@@ -9,13 +9,13 @@ part of 'user_profile_model.dart';
 _$ResponseUserProfileModelImpl _$$ResponseUserProfileModelImplFromJson(
         Map<String, dynamic> json) =>
     _$ResponseUserProfileModelImpl(
-      username: json['username'] as String,
-      fullName: json['fullName'] as String,
-      email: json['email'] as String,
-      provinceName: json['provinceName'] as String,
-      phoneNumber: json['phoneNumber'] as String,
-      description: json['description'] as String,
-      image: json['image'] as String,
+      username: json['username'] as String?,
+      fullName: json['fullName'] as String?,
+      email: json['email'] as String?,
+      provinceName: json['provinceName'] as String?,
+      phoneNumber: json['phoneNumber'] as String?,
+      description: json['description'] as String?,
+      image: json['image'] as String?,
     );
 
 Map<String, dynamic> _$$ResponseUserProfileModelImplToJson(

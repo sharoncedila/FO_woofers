@@ -44,12 +44,9 @@ import 'package:woofers/model/login_model.dart';
 //   }
 // }
 
-
-
-
 class LoginService {
   @override
-  Future<ResponseLoginModel?> login(RequestLoginModel loginReq) async{
+  Future<ResponseLoginModel?> login(RequestLoginModel loginReq) async {
     try {
       const api = '/accounts/login';
       // final data = {
@@ -61,27 +58,31 @@ class LoginService {
       dio.options.connectTimeout = const Duration(milliseconds: 5000);
       var response = await dio.post(api, data: jsonEncode(loginReq.toJson()));
 
-      if(response.statusCode == 200){
-        final errorSchema = ErrorSchema.fromJson(response.data!['error_schema']);
-        if(errorSchema.errorCode != 'WOOF001') {
+      if (response.statusCode == 200) {
+        final errorSchema = ErrorSchema.fromJson(response.data!['errorSchema']);
+        if (errorSchema.errorCode != 'WOF-000') {
           throw Exception(errorSchema.errorMessage);
         }
+
         final body = response.data!['outputSchema'];
+        final accessToken = response.data['outputSchema']['accessToken'];
+
+
         // final account = Account(accountId: body['account_id'], accessToken: body['access_token']);
         // set dio instane = null
         // await prefs.setString('accessToken', accessToken: body['access_token']);
+        // wkt disini udah dpt accessTokennya bener, tapi ga masuk ke prefs
         final SharedPreferences prefs = await SharedPreferences.getInstance();
-        await prefs.setString('access_token', body.accessToken ?? "");
+        await prefs.setString('accessToken', accessToken);
         DioInstance.setNull();
 
         ResponseLoginModel loginResp = ResponseLoginModel.fromJson(body);
         return loginResp;
       }
       return null;
-
-    }catch(e){
-    // TODO
-    // throw Exception(e.toString());
+    } catch (e) {
+      // TODO
+      // throw Exception(e.toString());
     }
   }
 }

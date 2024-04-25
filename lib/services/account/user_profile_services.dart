@@ -40,7 +40,7 @@ class RetrieveAccountService{
       // String accessToken = prefs.getString('access_token') ?? '';
       // response = await dio.post(api);
 
-      final response = await dio.get(api
+      var response = await dio.get(api
         // , options: Options(
         //   headers: Map.from(
         //     {"Authorization": "Bearer"}
