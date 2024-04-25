@@ -1,13 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
-// import 'package:woofers/classes/account.dart';
+import 'package:google_fonts/google_fonts.dart';
+import 'package:hexcolor/hexcolor.dart';
 import 'package:woofers/components/bottom_menu.dart';
 import 'package:woofers/model/login_model.dart';
 import 'package:woofers/pages/chatlist_page.dart';
 import 'package:woofers/pages/feeds_page.dart';
 import 'package:woofers/pages/user_profile_page.dart';
 import 'package:woofers/services/account/login_service.dart';
-// import 'package:woofers/interfaces/login/login_interface.dart';
 import 'package:woofers/pages/register_page.dart';
 import 'package:email_validator/email_validator.dart';
 
@@ -36,13 +36,12 @@ class LoginPage extends StatelessWidget {
 
               const SizedBox(height: 10),
               // WOOFERS
-              const Text(
+              Text(
                 'WOOFERS',
-                style: TextStyle(
-                  color: Colors.blue,
+                style: GoogleFonts.lora(
+                  fontSize: 18,
+                  color: Color.fromRGBO(40,36,36,10000),
                   fontWeight: FontWeight.bold,
-                  fontSize: 20,
-                  fontFamily: 'San Francisco'
                   ),
               ),
 
