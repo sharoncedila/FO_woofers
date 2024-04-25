@@ -9,8 +9,10 @@ part of 'login_model.dart';
 _$ResponseLoginModelImpl _$$ResponseLoginModelImplFromJson(
         Map<String, dynamic> json) =>
     _$ResponseLoginModelImpl(
-      accountId: json['accountId'] as String,
-      accessToken: json['accessToken'] as String,
+      accountId: json['accountId'] as String?,
+      accessToken: json['accessToken'] as String?,
+      errorCode: json['errorCode'] as String?,
+      errorMessage: json['errorMessage'] as String?,
     );
 
 Map<String, dynamic> _$$ResponseLoginModelImplToJson(
@@ -18,13 +20,15 @@ Map<String, dynamic> _$$ResponseLoginModelImplToJson(
     <String, dynamic>{
       'accountId': instance.accountId,
       'accessToken': instance.accessToken,
+      'errorCode': instance.errorCode,
+      'errorMessage': instance.errorMessage,
     };
 
 _$RequestLoginModelImpl _$$RequestLoginModelImplFromJson(
         Map<String, dynamic> json) =>
     _$RequestLoginModelImpl(
-      email: json['email'] as String,
-      password: json['password'] as String,
+      email: json['email'] as String?,
+      password: json['password'] as String?,
     );
 
 Map<String, dynamic> _$$RequestLoginModelImplToJson(
