@@ -28,6 +28,8 @@ mixin _$ResponseUserProfileModel {
   String? get phoneNumber => throw _privateConstructorUsedError;
   String? get description => throw _privateConstructorUsedError;
   String? get image => throw _privateConstructorUsedError;
+  String? get errorCode => throw _privateConstructorUsedError;
+  String? get errorMessage => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -48,7 +50,9 @@ abstract class $ResponseUserProfileModelCopyWith<$Res> {
       String? provinceName,
       String? phoneNumber,
       String? description,
-      String? image});
+      String? image,
+      String? errorCode,
+      String? errorMessage});
 }
 
 /// @nodoc
@@ -72,6 +76,8 @@ class _$ResponseUserProfileModelCopyWithImpl<$Res,
     Object? phoneNumber = freezed,
     Object? description = freezed,
     Object? image = freezed,
+    Object? errorCode = freezed,
+    Object? errorMessage = freezed,
   }) {
     return _then(_value.copyWith(
       username: freezed == username
@@ -102,6 +108,14 @@ class _$ResponseUserProfileModelCopyWithImpl<$Res,
           ? _value.image
           : image // ignore: cast_nullable_to_non_nullable
               as String?,
+      errorCode: freezed == errorCode
+          ? _value.errorCode
+          : errorCode // ignore: cast_nullable_to_non_nullable
+              as String?,
+      errorMessage: freezed == errorMessage
+          ? _value.errorMessage
+          : errorMessage // ignore: cast_nullable_to_non_nullable
+              as String?,
     ) as $Val);
   }
 }
@@ -122,7 +136,9 @@ abstract class _$$ResponseUserProfileModelImplCopyWith<$Res>
       String? provinceName,
       String? phoneNumber,
       String? description,
-      String? image});
+      String? image,
+      String? errorCode,
+      String? errorMessage});
 }
 
 /// @nodoc
@@ -145,6 +161,8 @@ class __$$ResponseUserProfileModelImplCopyWithImpl<$Res>
     Object? phoneNumber = freezed,
     Object? description = freezed,
     Object? image = freezed,
+    Object? errorCode = freezed,
+    Object? errorMessage = freezed,
   }) {
     return _then(_$ResponseUserProfileModelImpl(
       username: freezed == username
@@ -175,6 +193,14 @@ class __$$ResponseUserProfileModelImplCopyWithImpl<$Res>
           ? _value.image
           : image // ignore: cast_nullable_to_non_nullable
               as String?,
+      errorCode: freezed == errorCode
+          ? _value.errorCode
+          : errorCode // ignore: cast_nullable_to_non_nullable
+              as String?,
+      errorMessage: freezed == errorMessage
+          ? _value.errorMessage
+          : errorMessage // ignore: cast_nullable_to_non_nullable
+              as String?,
     ));
   }
 }
@@ -189,7 +215,9 @@ class _$ResponseUserProfileModelImpl implements _ResponseUserProfileModel {
       required this.provinceName,
       required this.phoneNumber,
       required this.description,
-      required this.image});
+      required this.image,
+      required this.errorCode,
+      required this.errorMessage});
 
   factory _$ResponseUserProfileModelImpl.fromJson(Map<String, dynamic> json) =>
       _$$ResponseUserProfileModelImplFromJson(json);
@@ -208,10 +236,14 @@ class _$ResponseUserProfileModelImpl implements _ResponseUserProfileModel {
   final String? description;
   @override
   final String? image;
+  @override
+  final String? errorCode;
+  @override
+  final String? errorMessage;
 
   @override
   String toString() {
-    return 'ResponseUserProfileModel(username: $username, fullName: $fullName, email: $email, provinceName: $provinceName, phoneNumber: $phoneNumber, description: $description, image: $image)';
+    return 'ResponseUserProfileModel(username: $username, fullName: $fullName, email: $email, provinceName: $provinceName, phoneNumber: $phoneNumber, description: $description, image: $image, errorCode: $errorCode, errorMessage: $errorMessage)';
   }
 
   @override
@@ -230,13 +262,17 @@ class _$ResponseUserProfileModelImpl implements _ResponseUserProfileModel {
                 other.phoneNumber == phoneNumber) &&
             (identical(other.description, description) ||
                 other.description == description) &&
-            (identical(other.image, image) || other.image == image));
+            (identical(other.image, image) || other.image == image) &&
+            (identical(other.errorCode, errorCode) ||
+                other.errorCode == errorCode) &&
+            (identical(other.errorMessage, errorMessage) ||
+                other.errorMessage == errorMessage));
   }
 
   @JsonKey(ignore: true)
   @override
   int get hashCode => Object.hash(runtimeType, username, fullName, email,
-      provinceName, phoneNumber, description, image);
+      provinceName, phoneNumber, description, image, errorCode, errorMessage);
 
   @JsonKey(ignore: true)
   @override
@@ -261,7 +297,9 @@ abstract class _ResponseUserProfileModel implements ResponseUserProfileModel {
       required final String? provinceName,
       required final String? phoneNumber,
       required final String? description,
-      required final String? image}) = _$ResponseUserProfileModelImpl;
+      required final String? image,
+      required final String? errorCode,
+      required final String? errorMessage}) = _$ResponseUserProfileModelImpl;
 
   factory _ResponseUserProfileModel.fromJson(Map<String, dynamic> json) =
       _$ResponseUserProfileModelImpl.fromJson;
@@ -280,6 +318,10 @@ abstract class _ResponseUserProfileModel implements ResponseUserProfileModel {
   String? get description;
   @override
   String? get image;
+  @override
+  String? get errorCode;
+  @override
+  String? get errorMessage;
   @override
   @JsonKey(ignore: true)
   _$$ResponseUserProfileModelImplCopyWith<_$ResponseUserProfileModelImpl>

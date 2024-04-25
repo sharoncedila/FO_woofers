@@ -11,7 +11,9 @@ class ResponseUserProfileModel with _$ResponseUserProfileModel {
     required String? provinceName,
     required String? phoneNumber,
     required String? description,
-    required String? image
+    required String? image,
+    required String? errorCode,
+    required String? errorMessage
   }) = _ResponseUserProfileModel;
 
   factory ResponseUserProfileModel.fromJson(Map<String, dynamic> json) => _$ResponseUserProfileModelFromJson(json);

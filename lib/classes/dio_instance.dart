@@ -7,7 +7,6 @@ class DioInstance {
   static Future<Dio> getInstance() async {
     final prefs = await SharedPreferences.getInstance();
     final token = prefs.getString('accessToken');
-    print("Bearer $token");
     if (instance == null) {
       // get acess token dari shared pref
       instance = Dio(BaseOptions(
