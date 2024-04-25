@@ -18,12 +18,12 @@ class LoginPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       home: Scaffold(
-        resizeToAvoidBottomInset: false,
+        //resizeToAvoidBottomInset: false,
         backgroundColor: Colors.grey[300],
         body: // SafeArea(
           // child: 
           Center(
-            //child: SingleChildScrollView(
+            child: SingleChildScrollView(
             child: Column(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
@@ -51,7 +51,7 @@ class LoginPage extends StatelessWidget {
             ),
           ),
          ),
-     // ),
+      ),
     );
   }
 }
@@ -81,6 +81,7 @@ class _LoginFormState extends State<LoginForm> {
     return Form(
       key: _formKey,
       //child: Center(
+        child: SingleChildScrollView(
         child: Column(
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
@@ -268,7 +269,7 @@ class _LoginFormState extends State<LoginForm> {
           )
     ],
       ),
-      //),
+      ),
     );
   }
 }
