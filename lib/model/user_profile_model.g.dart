@@ -16,6 +16,8 @@ _$ResponseUserProfileModelImpl _$$ResponseUserProfileModelImplFromJson(
       phoneNumber: json['phoneNumber'] as String?,
       description: json['description'] as String?,
       image: json['image'] as String?,
+      errorCode: json['errorCode'] as String?,
+      errorMessage: json['errorMessage'] as String?,
     );
 
 Map<String, dynamic> _$$ResponseUserProfileModelImplToJson(
@@ -28,4 +30,6 @@ Map<String, dynamic> _$$ResponseUserProfileModelImplToJson(
       'phoneNumber': instance.phoneNumber,
       'description': instance.description,
       'image': instance.image,
+      'errorCode': instance.errorCode,
+      'errorMessage': instance.errorMessage,
     };
