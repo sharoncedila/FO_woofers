@@ -1,7 +1,6 @@
-import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
-import 'package:woofers/pages/login_page.dart';
 import 'package:email_validator/email_validator.dart';
+import 'package:flutter/material.dart';
+import 'package:woofers/pages/login_page.dart';
 
 class RegisterPage extends StatelessWidget {
   const RegisterPage({super.key});
@@ -13,6 +12,7 @@ class RegisterPage extends StatelessWidget {
         backgroundColor: Colors.grey[300],
         body: SafeArea(
           child: Center(
+            child: SingleChildScrollView(
             child: Column(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
@@ -41,6 +41,7 @@ class RegisterPage extends StatelessWidget {
           )
         ),
       ),
+    ),
     );
   }
 }
@@ -208,7 +209,7 @@ class _RegisterFormState extends State<RegisterForm> {
             padding: const EdgeInsets.symmetric(horizontal: 25),
             child: TextFormField(
               decoration: InputDecoration(
-                enabledBorder: OutlineInputBorder(
+                enabledBorder: const OutlineInputBorder(
                   borderSide: BorderSide(color: Colors.white),
                 ),
                 focusedBorder: OutlineInputBorder(
@@ -301,26 +302,26 @@ class _RegisterFormState extends State<RegisterForm> {
               keyboardType: TextInputType.visiblePassword,
                   textInputAction: TextInputAction.done,
               // final String password = passwordController.text,
-              validator: (_password){
-                if (_password == null || _password.isEmpty) {
+              validator: (password){
+                if (password == null || password.isEmpty) {
                   return 'Please fill password field';
                 }
-                if (_password.length < 8) {
+                if (password.length < 8) {
                   return 'Password must contain more than equal to 8 characters';
                 }
-                if (!_password.contains(RegExp(r'[A-Z]'))) {
+                if (!password.contains(RegExp(r'[A-Z]'))) {
                   return 'Password must contain at least 1 uppercase letter';
                 }
                 // Contains at least one lowercase letter
-                if (!_password.contains(RegExp(r'[a-z]'))) {
+                if (!password.contains(RegExp(r'[a-z]'))) {
                   return 'Password must contain at least 1 lowercase letter';
                 }
                 // Contains at least one digit
-                if (!_password.contains(RegExp(r'[0-9]'))) {
+                if (!password.contains(RegExp(r'[0-9]'))) {
                   return 'Password must contain at least 1 digit';
                 }
                 // Contains at least one special character
-                if (!_password.contains(RegExp(r'[!@#%^&*(),.?":{}|<>]'))) {
+                if (!password.contains(RegExp(r'[!@#%^&*(),.?":{}|<>]'))) {
                   return 'Password must contain at least 1 special character';
                 }
                 return null;
