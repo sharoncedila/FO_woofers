@@ -5,8 +5,10 @@ part 'login_model.g.dart';
 @freezed
 class ResponseLoginModel with _$ResponseLoginModel {
   factory ResponseLoginModel({
-    required String accountId,
-    required String accessToken
+    required String? accountId,
+    required String? accessToken,
+    required String? errorCode,
+    required String? errorMessage
   }) = _ResponseLoginModel;
 
   factory ResponseLoginModel.fromJson(Map<String, dynamic> json) => _$ResponseLoginModelFromJson(json);

@@ -20,8 +20,10 @@ ResponseLoginModel _$ResponseLoginModelFromJson(Map<String, dynamic> json) {
 
 /// @nodoc
 mixin _$ResponseLoginModel {
-  String get accountId => throw _privateConstructorUsedError;
-  String get accessToken => throw _privateConstructorUsedError;
+  String? get accountId => throw _privateConstructorUsedError;
+  String? get accessToken => throw _privateConstructorUsedError;
+  String? get errorCode => throw _privateConstructorUsedError;
+  String? get errorMessage => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -35,7 +37,11 @@ abstract class $ResponseLoginModelCopyWith<$Res> {
           ResponseLoginModel value, $Res Function(ResponseLoginModel) then) =
       _$ResponseLoginModelCopyWithImpl<$Res, ResponseLoginModel>;
   @useResult
-  $Res call({String accountId, String accessToken});
+  $Res call(
+      {String? accountId,
+      String? accessToken,
+      String? errorCode,
+      String? errorMessage});
 }
 
 /// @nodoc
@@ -51,18 +57,28 @@ class _$ResponseLoginModelCopyWithImpl<$Res, $Val extends ResponseLoginModel>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? accountId = null,
-    Object? accessToken = null,
+    Object? accountId = freezed,
+    Object? accessToken = freezed,
+    Object? errorCode = freezed,
+    Object? errorMessage = freezed,
   }) {
     return _then(_value.copyWith(
-      accountId: null == accountId
+      accountId: freezed == accountId
           ? _value.accountId
           : accountId // ignore: cast_nullable_to_non_nullable
-              as String,
-      accessToken: null == accessToken
+              as String?,
+      accessToken: freezed == accessToken
           ? _value.accessToken
           : accessToken // ignore: cast_nullable_to_non_nullable
-              as String,
+              as String?,
+      errorCode: freezed == errorCode
+          ? _value.errorCode
+          : errorCode // ignore: cast_nullable_to_non_nullable
+              as String?,
+      errorMessage: freezed == errorMessage
+          ? _value.errorMessage
+          : errorMessage // ignore: cast_nullable_to_non_nullable
+              as String?,
     ) as $Val);
   }
 }
@@ -75,7 +91,11 @@ abstract class _$$ResponseLoginModelImplCopyWith<$Res>
       __$$ResponseLoginModelImplCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({String accountId, String accessToken});
+  $Res call(
+      {String? accountId,
+      String? accessToken,
+      String? errorCode,
+      String? errorMessage});
 }
 
 /// @nodoc
@@ -89,18 +109,28 @@ class __$$ResponseLoginModelImplCopyWithImpl<$Res>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? accountId = null,
-    Object? accessToken = null,
+    Object? accountId = freezed,
+    Object? accessToken = freezed,
+    Object? errorCode = freezed,
+    Object? errorMessage = freezed,
   }) {
     return _then(_$ResponseLoginModelImpl(
-      accountId: null == accountId
+      accountId: freezed == accountId
           ? _value.accountId
           : accountId // ignore: cast_nullable_to_non_nullable
-              as String,
-      accessToken: null == accessToken
+              as String?,
+      accessToken: freezed == accessToken
           ? _value.accessToken
           : accessToken // ignore: cast_nullable_to_non_nullable
-              as String,
+              as String?,
+      errorCode: freezed == errorCode
+          ? _value.errorCode
+          : errorCode // ignore: cast_nullable_to_non_nullable
+              as String?,
+      errorMessage: freezed == errorMessage
+          ? _value.errorMessage
+          : errorMessage // ignore: cast_nullable_to_non_nullable
+              as String?,
     ));
   }
 }
@@ -109,19 +139,26 @@ class __$$ResponseLoginModelImplCopyWithImpl<$Res>
 @JsonSerializable()
 class _$ResponseLoginModelImpl implements _ResponseLoginModel {
   _$ResponseLoginModelImpl(
-      {required this.accountId, required this.accessToken});
+      {required this.accountId,
+      required this.accessToken,
+      required this.errorCode,
+      required this.errorMessage});
 
   factory _$ResponseLoginModelImpl.fromJson(Map<String, dynamic> json) =>
       _$$ResponseLoginModelImplFromJson(json);
 
   @override
-  final String accountId;
+  final String? accountId;
   @override
-  final String accessToken;
+  final String? accessToken;
+  @override
+  final String? errorCode;
+  @override
+  final String? errorMessage;
 
   @override
   String toString() {
-    return 'ResponseLoginModel(accountId: $accountId, accessToken: $accessToken)';
+    return 'ResponseLoginModel(accountId: $accountId, accessToken: $accessToken, errorCode: $errorCode, errorMessage: $errorMessage)';
   }
 
   @override
@@ -132,12 +169,17 @@ class _$ResponseLoginModelImpl implements _ResponseLoginModel {
             (identical(other.accountId, accountId) ||
                 other.accountId == accountId) &&
             (identical(other.accessToken, accessToken) ||
-                other.accessToken == accessToken));
+                other.accessToken == accessToken) &&
+            (identical(other.errorCode, errorCode) ||
+                other.errorCode == errorCode) &&
+            (identical(other.errorMessage, errorMessage) ||
+                other.errorMessage == errorMessage));
   }
 
   @JsonKey(ignore: true)
   @override
-  int get hashCode => Object.hash(runtimeType, accountId, accessToken);
+  int get hashCode =>
+      Object.hash(runtimeType, accountId, accessToken, errorCode, errorMessage);
 
   @JsonKey(ignore: true)
   @override
@@ -156,16 +198,22 @@ class _$ResponseLoginModelImpl implements _ResponseLoginModel {
 
 abstract class _ResponseLoginModel implements ResponseLoginModel {
   factory _ResponseLoginModel(
-      {required final String accountId,
-      required final String accessToken}) = _$ResponseLoginModelImpl;
+      {required final String? accountId,
+      required final String? accessToken,
+      required final String? errorCode,
+      required final String? errorMessage}) = _$ResponseLoginModelImpl;
 
   factory _ResponseLoginModel.fromJson(Map<String, dynamic> json) =
       _$ResponseLoginModelImpl.fromJson;
 
   @override
-  String get accountId;
+  String? get accountId;
   @override
-  String get accessToken;
+  String? get accessToken;
+  @override
+  String? get errorCode;
+  @override
+  String? get errorMessage;
   @override
   @JsonKey(ignore: true)
   _$$ResponseLoginModelImplCopyWith<_$ResponseLoginModelImpl> get copyWith =>

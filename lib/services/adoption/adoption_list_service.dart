@@ -11,7 +11,6 @@ class RetrieveAdoptionListService {
       if (response.data['outputSchema'] == null) {
         return [];
       }
-      print(response.data['outputSchema']['dogList']);
       return (response.data['outputSchema']['dogList'] as List)
           .map((e) => AdoptionDetail.fromJson(e))
           .toList();
