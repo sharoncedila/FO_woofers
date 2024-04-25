@@ -26,7 +26,8 @@ class UserProfilePage extends StatefulWidget {
 
 class _UserProfilePageState extends State<UserProfilePage> {
   // const UserProfilePagetate({Key key}) : super(key: key);
-  final Future<ResponseUserProfileModel?> _account = RetrieveAccountService().retrieveUserData();
+  final Future<ResponseUserProfileModel?> _account =
+      RetrieveAccountService().retrieveUserData();
 
   @override
   Widget build(BuildContext context) {
@@ -37,10 +38,10 @@ class _UserProfilePageState extends State<UserProfilePage> {
           const SizedBox(height: 10),
           Expanded(
             child: FutureBuilder(
-              future: _account,
-              builder: (context, snapshot){
-                // List<Widget> children;
-                // if (snapshot.hasData) {
+                future: _account,
+                builder: (context, snapshot) {
+                  // List<Widget> children;
+                  // if (snapshot.hasData) {
                   // children = <Widget>[
                   //   const Icon(
                   //     Icons.check_circle_outline,
@@ -52,122 +53,134 @@ class _UserProfilePageState extends State<UserProfilePage> {
                   //     child: Text('Result: ${snapshot.data}'),
                   //   ),
                   // ];
-      
-                if(snapshot.connectionState == ConnectionState.waiting){
-                  return Container(child: Text("sabar ya"),);
-                }
-                if(snapshot.hasError) {
-                  return Container(child: Text("error"),);
-                }
-                if(snapshot.hasData) {
-                  return SingleChildScrollView(
-                    child: Column(
-                      children: [
+
+                  if (snapshot.connectionState == ConnectionState.waiting) {
+                    return Container(
+                      child: Text("sabar ya"),
+                    );
+                  }
+                  if (snapshot.hasError) {
+                    return Container(
+                      child: Text("error"),
+                    );
+                  }
+                  if (snapshot.hasData) {
+                    return SingleChildScrollView(
+                      child: Column(children: [
                         Padding(
-                          padding: const EdgeInsets.symmetric(horizontal: 25, vertical: 10),
+                          padding: const EdgeInsets.symmetric(
+                              horizontal: 25, vertical: 10),
                           child: TextFormField(
                             readOnly: true,
                             enabled: false,
                             decoration: InputDecoration(
                               border: const UnderlineInputBorder(),
                               // hintText : 'Username',
-                              hintText : snapshot.data!.username,
+                              hintText: snapshot.data!.username,
 
                               // hintText: Account.fromJson(snapshot.u),
                               hintStyle: const TextStyle(color: Colors.black),
                             ),
                           ),
                         ),
-
                         Padding(
-                          padding: const EdgeInsets.symmetric(horizontal: 25, vertical: 10),
+                          padding: const EdgeInsets.symmetric(
+                              horizontal: 25, vertical: 10),
                           child: TextFormField(
                             readOnly: true,
                             enabled: false,
                             decoration: InputDecoration(
                               border: const UnderlineInputBorder(),
                               // snapshot.data==null? "Username" : snapshot.data.fulName,
-                              hintText: snapshot.data?.fullName==null? 'Your name' : snapshot.data!.fullName,
+                              hintText: snapshot.data?.fullName == null
+                                  ? 'Your name'
+                                  : snapshot.data!.fullName,
                               // hintText : snapshot.data==null? "Username" : snapshot.data.fulName,
                               hintStyle: const TextStyle(color: Colors.black),
                             ),
                           ),
                         ),
-
                         Padding(
-                          padding: const EdgeInsets.symmetric(horizontal: 25, vertical: 10),
+                          padding: const EdgeInsets.symmetric(
+                              horizontal: 25, vertical: 10),
                           child: TextFormField(
                             readOnly: true,
                             enabled: false,
                             decoration: InputDecoration(
                               border: const UnderlineInputBorder(),
                               // hintText: 'Email',
-                              hintText : snapshot.data?.email==null? 'Your Name' : snapshot.data!.email,
+                              hintText: snapshot.data?.email == null
+                                  ? 'Your Name'
+                                  : snapshot.data!.email,
                               hintStyle: const TextStyle(color: Colors.black),
                             ),
                           ),
                         ),
-
                         Padding(
-                          padding: const EdgeInsets.symmetric(horizontal: 25, vertical: 10),
+                          padding: const EdgeInsets.symmetric(
+                              horizontal: 25, vertical: 10),
                           child: TextFormField(
                             readOnly: true,
                             enabled: false,
                             decoration: InputDecoration(
                               border: const UnderlineInputBorder(),
                               // hintText: 'Province',
-                              hintText : snapshot.data?.provinceName==null? 'Your name' : snapshot.data!.provinceName,
+                              hintText: snapshot.data?.provinceName == null
+                                  ? 'Your name'
+                                  : snapshot.data!.provinceName,
                               hintStyle: const TextStyle(color: Colors.black),
                             ),
                           ),
                         ),
-
                         Padding(
-                          padding: const EdgeInsets.symmetric(horizontal: 25, vertical: 10),
+                          padding: const EdgeInsets.symmetric(
+                              horizontal: 25, vertical: 10),
                           child: TextFormField(
                             readOnly: true,
                             enabled: false,
                             decoration: InputDecoration(
                               border: const UnderlineInputBorder(),
                               // hintText: 'Phone Number',
-                              hintText : snapshot.data?.phoneNumber==null? 'Your name' : snapshot.data!.phoneNumber,
+                              hintText: snapshot.data?.phoneNumber == null
+                                  ? 'Your name'
+                                  : snapshot.data!.phoneNumber,
                               hintStyle: const TextStyle(color: Colors.black),
                             ),
                           ),
                         ),
-
                         Padding(
-                          padding: const EdgeInsets.symmetric(horizontal: 25, vertical: 10),
-                          child: TextFormField(
-                            readOnly: true,
-                            enabled: false,
-                            decoration: InputDecoration(
-                              enabledBorder: const OutlineInputBorder(
-                                borderSide: BorderSide(color: Colors.white),
+                            padding: const EdgeInsets.symmetric(
+                                horizontal: 25, vertical: 10),
+                            child: TextFormField(
+                              readOnly: true,
+                              enabled: false,
+                              decoration: InputDecoration(
+                                enabledBorder: const OutlineInputBorder(
+                                  borderSide: BorderSide(color: Colors.white),
+                                ),
+                                focusedBorder: OutlineInputBorder(
+                                  borderSide:
+                                      BorderSide(color: Colors.grey.shade400),
+                                ),
+                                // fillColor: Colors.grey.shade200,
+                                // filled: true,
+                                // hintText: 'Description',
+                                hintText: snapshot.data?.description == null
+                                    ? 'Your name'
+                                    : snapshot.data!.description,
+                                hintStyle: const TextStyle(color: Colors.black),
                               ),
-                              focusedBorder: OutlineInputBorder(
-                                borderSide: BorderSide(color: Colors.grey.shade400),
-                              ),
-                              // fillColor: Colors.grey.shade200,
-                              // filled: true,
-                              // hintText: 'Description',
-                              hintText : snapshot.data?.description==null? 'Your name' : snapshot.data!.description,
-                              hintStyle: const TextStyle(color: Colors.black),
-                            ),
-                            validator: (value){
-                              if (value == null || value.isEmpty) {
-                                return 'Please enter your description';
-                              }
-                              return null;
-                            },
-                          )
-                        ),
+                              validator: (value) {
+                                if (value == null || value.isEmpty) {
+                                  return 'Please enter your description';
+                                }
+                                return null;
+                              },
+                            )),
+                      ]),
+                    );
+                  }
 
-                      ]
-                    ),
-                  );
-                }
-      
                   // Padding(
                   //   padding: const EdgeInsets.symmetric(horizontal: 25, vertical: 10),
                   //   child: TextFormField(
@@ -262,121 +275,122 @@ class _UserProfilePageState extends State<UserProfilePage> {
                   //     },
                   //   )
                   // );
-                // }
+                  // }
 
-              // handling async
-                // } else if (snapshot.hasError) {
-                //   children = <Widget>[
-                //     const Icon(
-                //       Icons.error_outline,
-                //       color: Colors.red,
-                //       size: 60,
-                //     ),
-                //     Padding(
-                //       padding: const EdgeInsets.only(top: 16),
-                //       child: Text('Error: ${snapshot.error}'),
-                //     ),
-                //   ];
-                // } else {
-                //   children = const <Widget>[
-                //     SizedBox(
-                //       width: 60,
-                //       height: 60,
-                //       child: CircularProgressIndicator(),
-                //     ),
-                //     Padding(
-                //       padding: EdgeInsets.only(top: 16),
-                //       child: Text('Awaiting result...'),
-                //     ),
-                //   ];
-                // }
+                  // handling async
+                  // } else if (snapshot.hasError) {
+                  //   children = <Widget>[
+                  //     const Icon(
+                  //       Icons.error_outline,
+                  //       color: Colors.red,
+                  //       size: 60,
+                  //     ),
+                  //     Padding(
+                  //       padding: const EdgeInsets.only(top: 16),
+                  //       child: Text('Error: ${snapshot.error}'),
+                  //     ),
+                  //   ];
+                  // } else {
+                  //   children = const <Widget>[
+                  //     SizedBox(
+                  //       width: 60,
+                  //       height: 60,
+                  //       child: CircularProgressIndicator(),
+                  //     ),
+                  //     Padding(
+                  //       padding: EdgeInsets.only(top: 16),
+                  //       child: Text('Awaiting result...'),
+                  //     ),
+                  //   ];
+                  // }
 
-                return Center(
-                  child: Column(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    // children: ;
-                  ),
-                );
-              }
-            ),
+                  return Center(
+                    child: Column(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      // children: ;
+                    ),
+                  );
+                }),
           ),
 
           const SizedBox(height: 50),
           SizedBox(
-            // width: 200,
-            // height: 45,
-          //   child: Center(
-          //     child: ElevatedButton(
-          //       style: ButtonStyle(
-          //         backgroundColor: MaterialStateProperty.resolveWith<Color?>(
-          //           (Set<MaterialState> states) {
-          //             if (states.contains(MaterialState.pressed)) {
-          //               return Theme.of(context).colorScheme.primary.withOpacity(0.5);
-          //             }
-          //             return null; // Use the component's default.
-          //           },
-          //         ),
-          //       ),
-          //     child: const Text('Logout'),
-          //     onPressed: () {
-          //       Navigator.push(
-          //         context,
-          //         MaterialPageRoute(builder: (context) => const LoginPage()),
-          //       );
-          //     },
-          //   ),
-          // ),
+              // width: 200,
+              // height: 45,
+              //   child: Center(
+              //     child: ElevatedButton(
+              //       style: ButtonStyle(
+              //         backgroundColor: MaterialStateProperty.resolveWith<Color?>(
+              //           (Set<MaterialState> states) {
+              //             if (states.contains(MaterialState.pressed)) {
+              //               return Theme.of(context).colorScheme.primary.withOpacity(0.5);
+              //             }
+              //             return null; // Use the component's default.
+              //           },
+              //         ),
+              //       ),
+              //     child: const Text('Logout'),
+              //     onPressed: () {
+              //       Navigator.push(
+              //         context,
+              //         MaterialPageRoute(builder: (context) => const LoginPage()),
+              //       );
+              //     },
+              //   ),
+              // ),
 
-          child: Center(
-            child: Row(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                ElevatedButton(
-                  style: ButtonStyle(
-                    backgroundColor: MaterialStateProperty.resolveWith<Color?>(
-                      (Set<MaterialState> states) {
-                        if (states.contains(MaterialState.pressed)) {
-                          return Theme.of(context).colorScheme.primary.withOpacity(0.5);
-                        }
-                        return null; // Use the component's default.
-                      },
-                    ),
+              child: Center(
+            child: Row(mainAxisAlignment: MainAxisAlignment.center, children: [
+              ElevatedButton(
+                style: ButtonStyle(
+                  backgroundColor: MaterialStateProperty.resolveWith<Color?>(
+                    (Set<MaterialState> states) {
+                      if (states.contains(MaterialState.pressed)) {
+                        return Theme.of(context)
+                            .colorScheme
+                            .primary
+                            .withOpacity(0.5);
+                      }
+                      return null; // Use the component's default.
+                    },
                   ),
-                  child: const Text('Edit'),
-                  onPressed: () {
-                    Navigator.push(
-                      context,
-                      MaterialPageRoute(builder: (context) => const EditMyProfile()),
-                    );
-                  },
                 ),
-                const SizedBox(width: 25),
-                ElevatedButton(
-                  style: ButtonStyle(
-                    backgroundColor: MaterialStateProperty.resolveWith<Color?>(
-                      (Set<MaterialState> states) {
-                        if (states.contains(MaterialState.pressed)) {
-                          return Theme.of(context).colorScheme.primary.withOpacity(0.5);
-                        }
-                        return null; // Use the component's default.
-                      },
-                    ),
+                child: const Text('Edit'),
+                onPressed: () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                        builder: (context) => const EditMyProfile()),
+                  );
+                },
+              ),
+              const SizedBox(width: 25),
+              ElevatedButton(
+                style: ButtonStyle(
+                  backgroundColor: MaterialStateProperty.resolveWith<Color?>(
+                    (Set<MaterialState> states) {
+                      if (states.contains(MaterialState.pressed)) {
+                        return Theme.of(context)
+                            .colorScheme
+                            .primary
+                            .withOpacity(0.5);
+                      }
+                      return null; // Use the component's default.
+                    },
                   ),
-                  child: const Text('Logout'),
-                  onPressed: () {
-                    Navigator.push(
-                      context,
-                      MaterialPageRoute(builder: (context) => const LoginPage()),
-                    );
-                  },
                 ),
-              ]
-            ),
-          )
-        ),
+                child: const Text('Logout'),
+                onPressed: () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(builder: (context) => const LoginPage()),
+                  );
+                },
+              ),
+            ]),
+          )),
 
-      // const Expanded(child: BottomMenu()),
-
+          // const Expanded(child: BottomMenu()),
         ],
       ),
     );
