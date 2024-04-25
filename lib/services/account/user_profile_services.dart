@@ -22,7 +22,7 @@ class RetrieveAccountService{
 
   Future<ResponseUserProfileModel?> retrieveUserData() async{
     try {
-      const api = '/woofers/accounts/profile/view';
+      const api = '/accounts/profile/view';
       // final data = {
       //     "email" : email,
       //     "fullName" : fullName,
@@ -47,7 +47,7 @@ class RetrieveAccountService{
         //     )
         //   )
         );
-        return ResponseUserProfileModel.fromJson(response.data['output_schema']);
+        return ResponseUserProfileModel.fromJson(response.data['outputSchema']);
       // } else {
       //   print('${response.statusCode} : ${response.data.toString()}');
       //   // throw response.statusCode;
