@@ -20,13 +20,15 @@ AdoptionDetail _$AdoptionDetailFromJson(Map<String, dynamic> json) {
 
 /// @nodoc
 mixin _$AdoptionDetail {
-  String get dogId => throw _privateConstructorUsedError;
-  String get breedName => throw _privateConstructorUsedError;
-  String get dogName => throw _privateConstructorUsedError;
+  String? get dogId => throw _privateConstructorUsedError;
+  String? get breedName => throw _privateConstructorUsedError;
+  String? get dogName => throw _privateConstructorUsedError;
   String? get gender => throw _privateConstructorUsedError;
-  String get age => throw _privateConstructorUsedError;
+  String? get age => throw _privateConstructorUsedError;
   String? get image => throw _privateConstructorUsedError;
-  String get provinceName => throw _privateConstructorUsedError;
+  String? get provinceName => throw _privateConstructorUsedError;
+  String? get errorCode => throw _privateConstructorUsedError;
+  String? get errorMessage => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -41,13 +43,15 @@ abstract class $AdoptionDetailCopyWith<$Res> {
       _$AdoptionDetailCopyWithImpl<$Res, AdoptionDetail>;
   @useResult
   $Res call(
-      {String dogId,
-      String breedName,
-      String dogName,
+      {String? dogId,
+      String? breedName,
+      String? dogName,
       String? gender,
-      String age,
+      String? age,
       String? image,
-      String provinceName});
+      String? provinceName,
+      String? errorCode,
+      String? errorMessage});
 }
 
 /// @nodoc
@@ -63,43 +67,53 @@ class _$AdoptionDetailCopyWithImpl<$Res, $Val extends AdoptionDetail>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? dogId = null,
-    Object? breedName = null,
-    Object? dogName = null,
+    Object? dogId = freezed,
+    Object? breedName = freezed,
+    Object? dogName = freezed,
     Object? gender = freezed,
-    Object? age = null,
+    Object? age = freezed,
     Object? image = freezed,
-    Object? provinceName = null,
+    Object? provinceName = freezed,
+    Object? errorCode = freezed,
+    Object? errorMessage = freezed,
   }) {
     return _then(_value.copyWith(
-      dogId: null == dogId
+      dogId: freezed == dogId
           ? _value.dogId
           : dogId // ignore: cast_nullable_to_non_nullable
-              as String,
-      breedName: null == breedName
+              as String?,
+      breedName: freezed == breedName
           ? _value.breedName
           : breedName // ignore: cast_nullable_to_non_nullable
-              as String,
-      dogName: null == dogName
+              as String?,
+      dogName: freezed == dogName
           ? _value.dogName
           : dogName // ignore: cast_nullable_to_non_nullable
-              as String,
+              as String?,
       gender: freezed == gender
           ? _value.gender
           : gender // ignore: cast_nullable_to_non_nullable
               as String?,
-      age: null == age
+      age: freezed == age
           ? _value.age
           : age // ignore: cast_nullable_to_non_nullable
-              as String,
+              as String?,
       image: freezed == image
           ? _value.image
           : image // ignore: cast_nullable_to_non_nullable
               as String?,
-      provinceName: null == provinceName
+      provinceName: freezed == provinceName
           ? _value.provinceName
           : provinceName // ignore: cast_nullable_to_non_nullable
-              as String,
+              as String?,
+      errorCode: freezed == errorCode
+          ? _value.errorCode
+          : errorCode // ignore: cast_nullable_to_non_nullable
+              as String?,
+      errorMessage: freezed == errorMessage
+          ? _value.errorMessage
+          : errorMessage // ignore: cast_nullable_to_non_nullable
+              as String?,
     ) as $Val);
   }
 }
@@ -113,13 +127,15 @@ abstract class _$$AdoptionDetailImplCopyWith<$Res>
   @override
   @useResult
   $Res call(
-      {String dogId,
-      String breedName,
-      String dogName,
+      {String? dogId,
+      String? breedName,
+      String? dogName,
       String? gender,
-      String age,
+      String? age,
       String? image,
-      String provinceName});
+      String? provinceName,
+      String? errorCode,
+      String? errorMessage});
 }
 
 /// @nodoc
@@ -133,43 +149,53 @@ class __$$AdoptionDetailImplCopyWithImpl<$Res>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? dogId = null,
-    Object? breedName = null,
-    Object? dogName = null,
+    Object? dogId = freezed,
+    Object? breedName = freezed,
+    Object? dogName = freezed,
     Object? gender = freezed,
-    Object? age = null,
+    Object? age = freezed,
     Object? image = freezed,
-    Object? provinceName = null,
+    Object? provinceName = freezed,
+    Object? errorCode = freezed,
+    Object? errorMessage = freezed,
   }) {
     return _then(_$AdoptionDetailImpl(
-      dogId: null == dogId
+      dogId: freezed == dogId
           ? _value.dogId
           : dogId // ignore: cast_nullable_to_non_nullable
-              as String,
-      breedName: null == breedName
+              as String?,
+      breedName: freezed == breedName
           ? _value.breedName
           : breedName // ignore: cast_nullable_to_non_nullable
-              as String,
-      dogName: null == dogName
+              as String?,
+      dogName: freezed == dogName
           ? _value.dogName
           : dogName // ignore: cast_nullable_to_non_nullable
-              as String,
+              as String?,
       gender: freezed == gender
           ? _value.gender
           : gender // ignore: cast_nullable_to_non_nullable
               as String?,
-      age: null == age
+      age: freezed == age
           ? _value.age
           : age // ignore: cast_nullable_to_non_nullable
-              as String,
+              as String?,
       image: freezed == image
           ? _value.image
           : image // ignore: cast_nullable_to_non_nullable
               as String?,
-      provinceName: null == provinceName
+      provinceName: freezed == provinceName
           ? _value.provinceName
           : provinceName // ignore: cast_nullable_to_non_nullable
-              as String,
+              as String?,
+      errorCode: freezed == errorCode
+          ? _value.errorCode
+          : errorCode // ignore: cast_nullable_to_non_nullable
+              as String?,
+      errorMessage: freezed == errorMessage
+          ? _value.errorMessage
+          : errorMessage // ignore: cast_nullable_to_non_nullable
+              as String?,
     ));
   }
 }
@@ -184,29 +210,35 @@ class _$AdoptionDetailImpl implements _AdoptionDetail {
       required this.gender,
       required this.age,
       required this.image,
-      required this.provinceName});
+      required this.provinceName,
+      required this.errorCode,
+      required this.errorMessage});
 
   factory _$AdoptionDetailImpl.fromJson(Map<String, dynamic> json) =>
       _$$AdoptionDetailImplFromJson(json);
 
   @override
-  final String dogId;
+  final String? dogId;
   @override
-  final String breedName;
+  final String? breedName;
   @override
-  final String dogName;
+  final String? dogName;
   @override
   final String? gender;
   @override
-  final String age;
+  final String? age;
   @override
   final String? image;
   @override
-  final String provinceName;
+  final String? provinceName;
+  @override
+  final String? errorCode;
+  @override
+  final String? errorMessage;
 
   @override
   String toString() {
-    return 'AdoptionDetail(dogId: $dogId, breedName: $breedName, dogName: $dogName, gender: $gender, age: $age, image: $image, provinceName: $provinceName)';
+    return 'AdoptionDetail(dogId: $dogId, breedName: $breedName, dogName: $dogName, gender: $gender, age: $age, image: $image, provinceName: $provinceName, errorCode: $errorCode, errorMessage: $errorMessage)';
   }
 
   @override
@@ -222,13 +254,17 @@ class _$AdoptionDetailImpl implements _AdoptionDetail {
             (identical(other.age, age) || other.age == age) &&
             (identical(other.image, image) || other.image == image) &&
             (identical(other.provinceName, provinceName) ||
-                other.provinceName == provinceName));
+                other.provinceName == provinceName) &&
+            (identical(other.errorCode, errorCode) ||
+                other.errorCode == errorCode) &&
+            (identical(other.errorMessage, errorMessage) ||
+                other.errorMessage == errorMessage));
   }
 
   @JsonKey(ignore: true)
   @override
-  int get hashCode => Object.hash(
-      runtimeType, dogId, breedName, dogName, gender, age, image, provinceName);
+  int get hashCode => Object.hash(runtimeType, dogId, breedName, dogName,
+      gender, age, image, provinceName, errorCode, errorMessage);
 
   @JsonKey(ignore: true)
   @override
@@ -247,31 +283,37 @@ class _$AdoptionDetailImpl implements _AdoptionDetail {
 
 abstract class _AdoptionDetail implements AdoptionDetail {
   factory _AdoptionDetail(
-      {required final String dogId,
-      required final String breedName,
-      required final String dogName,
+      {required final String? dogId,
+      required final String? breedName,
+      required final String? dogName,
       required final String? gender,
-      required final String age,
+      required final String? age,
       required final String? image,
-      required final String provinceName}) = _$AdoptionDetailImpl;
+      required final String? provinceName,
+      required final String? errorCode,
+      required final String? errorMessage}) = _$AdoptionDetailImpl;
 
   factory _AdoptionDetail.fromJson(Map<String, dynamic> json) =
       _$AdoptionDetailImpl.fromJson;
 
   @override
-  String get dogId;
+  String? get dogId;
   @override
-  String get breedName;
+  String? get breedName;
   @override
-  String get dogName;
+  String? get dogName;
   @override
   String? get gender;
   @override
-  String get age;
+  String? get age;
   @override
   String? get image;
   @override
-  String get provinceName;
+  String? get provinceName;
+  @override
+  String? get errorCode;
+  @override
+  String? get errorMessage;
   @override
   @JsonKey(ignore: true)
   _$$AdoptionDetailImplCopyWith<_$AdoptionDetailImpl> get copyWith =>

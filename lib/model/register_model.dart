@@ -5,11 +5,13 @@ part 'register_model.g.dart';
 @freezed
 class ResponseRegisterModel with _$ResponseRegisterModel {
   factory ResponseRegisterModel({
-    required String username,
-    required String email,
-    required String provinceName,
-    required String phoneNumber,
-    required String accountId
+    required String? username,
+    required String? email,
+    required String? provinceName,
+    required String? phoneNumber,
+    required String? accountId,
+    required String? errorCode,
+    required String? errorMessage
   }) = _ResponseRegisterModel;
 
   factory ResponseRegisterModel.fromJson(Map<String, dynamic> json) => _$ResponseRegisterModelFromJson(json);

@@ -8,13 +8,15 @@ part of 'adoption_list_model.dart';
 
 _$AdoptionDetailImpl _$$AdoptionDetailImplFromJson(Map<String, dynamic> json) =>
     _$AdoptionDetailImpl(
-      dogId: json['dogId'] as String,
-      breedName: json['breedName'] as String,
-      dogName: json['dogName'] as String,
+      dogId: json['dogId'] as String?,
+      breedName: json['breedName'] as String?,
+      dogName: json['dogName'] as String?,
       gender: json['gender'] as String?,
-      age: json['age'] as String,
+      age: json['age'] as String?,
       image: json['image'] as String?,
-      provinceName: json['provinceName'] as String,
+      provinceName: json['provinceName'] as String?,
+      errorCode: json['errorCode'] as String?,
+      errorMessage: json['errorMessage'] as String?,
     );
 
 Map<String, dynamic> _$$AdoptionDetailImplToJson(
@@ -27,4 +29,6 @@ Map<String, dynamic> _$$AdoptionDetailImplToJson(
       'age': instance.age,
       'image': instance.image,
       'provinceName': instance.provinceName,
+      'errorCode': instance.errorCode,
+      'errorMessage': instance.errorMessage,
     };

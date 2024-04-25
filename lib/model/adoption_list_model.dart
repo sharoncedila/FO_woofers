@@ -5,13 +5,15 @@ part 'adoption_list_model.g.dart';
 @freezed
 class AdoptionDetail with _$AdoptionDetail {
   factory AdoptionDetail({
-    required String dogId,
-    required String breedName,
-    required String dogName,
+    required String? dogId,
+    required String? breedName,
+    required String? dogName,
     required String? gender,
-    required String age,
+    required String? age,
     required String? image,
-    required String provinceName
+    required String? provinceName,
+    required String? errorCode,
+    required String? errorMessage
   }) = _AdoptionDetail;
 
   factory AdoptionDetail.fromJson(Map<String, dynamic> json) => _$AdoptionDetailFromJson(json);

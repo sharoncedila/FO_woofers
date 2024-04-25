@@ -21,11 +21,13 @@ ResponseRegisterModel _$ResponseRegisterModelFromJson(
 
 /// @nodoc
 mixin _$ResponseRegisterModel {
-  String get username => throw _privateConstructorUsedError;
-  String get email => throw _privateConstructorUsedError;
-  String get provinceName => throw _privateConstructorUsedError;
-  String get phoneNumber => throw _privateConstructorUsedError;
-  String get accountId => throw _privateConstructorUsedError;
+  String? get username => throw _privateConstructorUsedError;
+  String? get email => throw _privateConstructorUsedError;
+  String? get provinceName => throw _privateConstructorUsedError;
+  String? get phoneNumber => throw _privateConstructorUsedError;
+  String? get accountId => throw _privateConstructorUsedError;
+  String? get errorCode => throw _privateConstructorUsedError;
+  String? get errorMessage => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -40,11 +42,13 @@ abstract class $ResponseRegisterModelCopyWith<$Res> {
       _$ResponseRegisterModelCopyWithImpl<$Res, ResponseRegisterModel>;
   @useResult
   $Res call(
-      {String username,
-      String email,
-      String provinceName,
-      String phoneNumber,
-      String accountId});
+      {String? username,
+      String? email,
+      String? provinceName,
+      String? phoneNumber,
+      String? accountId,
+      String? errorCode,
+      String? errorMessage});
 }
 
 /// @nodoc
@@ -61,33 +65,43 @@ class _$ResponseRegisterModelCopyWithImpl<$Res,
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? username = null,
-    Object? email = null,
-    Object? provinceName = null,
-    Object? phoneNumber = null,
-    Object? accountId = null,
+    Object? username = freezed,
+    Object? email = freezed,
+    Object? provinceName = freezed,
+    Object? phoneNumber = freezed,
+    Object? accountId = freezed,
+    Object? errorCode = freezed,
+    Object? errorMessage = freezed,
   }) {
     return _then(_value.copyWith(
-      username: null == username
+      username: freezed == username
           ? _value.username
           : username // ignore: cast_nullable_to_non_nullable
-              as String,
-      email: null == email
+              as String?,
+      email: freezed == email
           ? _value.email
           : email // ignore: cast_nullable_to_non_nullable
-              as String,
-      provinceName: null == provinceName
+              as String?,
+      provinceName: freezed == provinceName
           ? _value.provinceName
           : provinceName // ignore: cast_nullable_to_non_nullable
-              as String,
-      phoneNumber: null == phoneNumber
+              as String?,
+      phoneNumber: freezed == phoneNumber
           ? _value.phoneNumber
           : phoneNumber // ignore: cast_nullable_to_non_nullable
-              as String,
-      accountId: null == accountId
+              as String?,
+      accountId: freezed == accountId
           ? _value.accountId
           : accountId // ignore: cast_nullable_to_non_nullable
-              as String,
+              as String?,
+      errorCode: freezed == errorCode
+          ? _value.errorCode
+          : errorCode // ignore: cast_nullable_to_non_nullable
+              as String?,
+      errorMessage: freezed == errorMessage
+          ? _value.errorMessage
+          : errorMessage // ignore: cast_nullable_to_non_nullable
+              as String?,
     ) as $Val);
   }
 }
@@ -102,11 +116,13 @@ abstract class _$$ResponseRegisterModelImplCopyWith<$Res>
   @override
   @useResult
   $Res call(
-      {String username,
-      String email,
-      String provinceName,
-      String phoneNumber,
-      String accountId});
+      {String? username,
+      String? email,
+      String? provinceName,
+      String? phoneNumber,
+      String? accountId,
+      String? errorCode,
+      String? errorMessage});
 }
 
 /// @nodoc
@@ -121,33 +137,43 @@ class __$$ResponseRegisterModelImplCopyWithImpl<$Res>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? username = null,
-    Object? email = null,
-    Object? provinceName = null,
-    Object? phoneNumber = null,
-    Object? accountId = null,
+    Object? username = freezed,
+    Object? email = freezed,
+    Object? provinceName = freezed,
+    Object? phoneNumber = freezed,
+    Object? accountId = freezed,
+    Object? errorCode = freezed,
+    Object? errorMessage = freezed,
   }) {
     return _then(_$ResponseRegisterModelImpl(
-      username: null == username
+      username: freezed == username
           ? _value.username
           : username // ignore: cast_nullable_to_non_nullable
-              as String,
-      email: null == email
+              as String?,
+      email: freezed == email
           ? _value.email
           : email // ignore: cast_nullable_to_non_nullable
-              as String,
-      provinceName: null == provinceName
+              as String?,
+      provinceName: freezed == provinceName
           ? _value.provinceName
           : provinceName // ignore: cast_nullable_to_non_nullable
-              as String,
-      phoneNumber: null == phoneNumber
+              as String?,
+      phoneNumber: freezed == phoneNumber
           ? _value.phoneNumber
           : phoneNumber // ignore: cast_nullable_to_non_nullable
-              as String,
-      accountId: null == accountId
+              as String?,
+      accountId: freezed == accountId
           ? _value.accountId
           : accountId // ignore: cast_nullable_to_non_nullable
-              as String,
+              as String?,
+      errorCode: freezed == errorCode
+          ? _value.errorCode
+          : errorCode // ignore: cast_nullable_to_non_nullable
+              as String?,
+      errorMessage: freezed == errorMessage
+          ? _value.errorMessage
+          : errorMessage // ignore: cast_nullable_to_non_nullable
+              as String?,
     ));
   }
 }
@@ -160,25 +186,31 @@ class _$ResponseRegisterModelImpl implements _ResponseRegisterModel {
       required this.email,
       required this.provinceName,
       required this.phoneNumber,
-      required this.accountId});
+      required this.accountId,
+      required this.errorCode,
+      required this.errorMessage});
 
   factory _$ResponseRegisterModelImpl.fromJson(Map<String, dynamic> json) =>
       _$$ResponseRegisterModelImplFromJson(json);
 
   @override
-  final String username;
+  final String? username;
   @override
-  final String email;
+  final String? email;
   @override
-  final String provinceName;
+  final String? provinceName;
   @override
-  final String phoneNumber;
+  final String? phoneNumber;
   @override
-  final String accountId;
+  final String? accountId;
+  @override
+  final String? errorCode;
+  @override
+  final String? errorMessage;
 
   @override
   String toString() {
-    return 'ResponseRegisterModel(username: $username, email: $email, provinceName: $provinceName, phoneNumber: $phoneNumber, accountId: $accountId)';
+    return 'ResponseRegisterModel(username: $username, email: $email, provinceName: $provinceName, phoneNumber: $phoneNumber, accountId: $accountId, errorCode: $errorCode, errorMessage: $errorMessage)';
   }
 
   @override
@@ -194,13 +226,17 @@ class _$ResponseRegisterModelImpl implements _ResponseRegisterModel {
             (identical(other.phoneNumber, phoneNumber) ||
                 other.phoneNumber == phoneNumber) &&
             (identical(other.accountId, accountId) ||
-                other.accountId == accountId));
+                other.accountId == accountId) &&
+            (identical(other.errorCode, errorCode) ||
+                other.errorCode == errorCode) &&
+            (identical(other.errorMessage, errorMessage) ||
+                other.errorMessage == errorMessage));
   }
 
   @JsonKey(ignore: true)
   @override
-  int get hashCode => Object.hash(
-      runtimeType, username, email, provinceName, phoneNumber, accountId);
+  int get hashCode => Object.hash(runtimeType, username, email, provinceName,
+      phoneNumber, accountId, errorCode, errorMessage);
 
   @JsonKey(ignore: true)
   @override
@@ -219,25 +255,31 @@ class _$ResponseRegisterModelImpl implements _ResponseRegisterModel {
 
 abstract class _ResponseRegisterModel implements ResponseRegisterModel {
   factory _ResponseRegisterModel(
-      {required final String username,
-      required final String email,
-      required final String provinceName,
-      required final String phoneNumber,
-      required final String accountId}) = _$ResponseRegisterModelImpl;
+      {required final String? username,
+      required final String? email,
+      required final String? provinceName,
+      required final String? phoneNumber,
+      required final String? accountId,
+      required final String? errorCode,
+      required final String? errorMessage}) = _$ResponseRegisterModelImpl;
 
   factory _ResponseRegisterModel.fromJson(Map<String, dynamic> json) =
       _$ResponseRegisterModelImpl.fromJson;
 
   @override
-  String get username;
+  String? get username;
   @override
-  String get email;
+  String? get email;
   @override
-  String get provinceName;
+  String? get provinceName;
   @override
-  String get phoneNumber;
+  String? get phoneNumber;
   @override
-  String get accountId;
+  String? get accountId;
+  @override
+  String? get errorCode;
+  @override
+  String? get errorMessage;
   @override
   @JsonKey(ignore: true)
   _$$ResponseRegisterModelImplCopyWith<_$ResponseRegisterModelImpl>
