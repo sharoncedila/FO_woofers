@@ -23,9 +23,9 @@ mixin _$AdoptionDetail {
   String get dogId => throw _privateConstructorUsedError;
   String get breedName => throw _privateConstructorUsedError;
   String get dogName => throw _privateConstructorUsedError;
-  String get gender => throw _privateConstructorUsedError;
+  String? get gender => throw _privateConstructorUsedError;
   String get age => throw _privateConstructorUsedError;
-  String get image => throw _privateConstructorUsedError;
+  String? get image => throw _privateConstructorUsedError;
   String get provinceName => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
@@ -44,9 +44,9 @@ abstract class $AdoptionDetailCopyWith<$Res> {
       {String dogId,
       String breedName,
       String dogName,
-      String gender,
+      String? gender,
       String age,
-      String image,
+      String? image,
       String provinceName});
 }
 
@@ -66,9 +66,9 @@ class _$AdoptionDetailCopyWithImpl<$Res, $Val extends AdoptionDetail>
     Object? dogId = null,
     Object? breedName = null,
     Object? dogName = null,
-    Object? gender = null,
+    Object? gender = freezed,
     Object? age = null,
-    Object? image = null,
+    Object? image = freezed,
     Object? provinceName = null,
   }) {
     return _then(_value.copyWith(
@@ -84,18 +84,18 @@ class _$AdoptionDetailCopyWithImpl<$Res, $Val extends AdoptionDetail>
           ? _value.dogName
           : dogName // ignore: cast_nullable_to_non_nullable
               as String,
-      gender: null == gender
+      gender: freezed == gender
           ? _value.gender
           : gender // ignore: cast_nullable_to_non_nullable
-              as String,
+              as String?,
       age: null == age
           ? _value.age
           : age // ignore: cast_nullable_to_non_nullable
               as String,
-      image: null == image
+      image: freezed == image
           ? _value.image
           : image // ignore: cast_nullable_to_non_nullable
-              as String,
+              as String?,
       provinceName: null == provinceName
           ? _value.provinceName
           : provinceName // ignore: cast_nullable_to_non_nullable
@@ -116,9 +116,9 @@ abstract class _$$AdoptionDetailImplCopyWith<$Res>
       {String dogId,
       String breedName,
       String dogName,
-      String gender,
+      String? gender,
       String age,
-      String image,
+      String? image,
       String provinceName});
 }
 
@@ -136,9 +136,9 @@ class __$$AdoptionDetailImplCopyWithImpl<$Res>
     Object? dogId = null,
     Object? breedName = null,
     Object? dogName = null,
-    Object? gender = null,
+    Object? gender = freezed,
     Object? age = null,
-    Object? image = null,
+    Object? image = freezed,
     Object? provinceName = null,
   }) {
     return _then(_$AdoptionDetailImpl(
@@ -154,18 +154,18 @@ class __$$AdoptionDetailImplCopyWithImpl<$Res>
           ? _value.dogName
           : dogName // ignore: cast_nullable_to_non_nullable
               as String,
-      gender: null == gender
+      gender: freezed == gender
           ? _value.gender
           : gender // ignore: cast_nullable_to_non_nullable
-              as String,
+              as String?,
       age: null == age
           ? _value.age
           : age // ignore: cast_nullable_to_non_nullable
               as String,
-      image: null == image
+      image: freezed == image
           ? _value.image
           : image // ignore: cast_nullable_to_non_nullable
-              as String,
+              as String?,
       provinceName: null == provinceName
           ? _value.provinceName
           : provinceName // ignore: cast_nullable_to_non_nullable
@@ -196,11 +196,11 @@ class _$AdoptionDetailImpl implements _AdoptionDetail {
   @override
   final String dogName;
   @override
-  final String gender;
+  final String? gender;
   @override
   final String age;
   @override
-  final String image;
+  final String? image;
   @override
   final String provinceName;
 
@@ -250,9 +250,9 @@ abstract class _AdoptionDetail implements AdoptionDetail {
       {required final String dogId,
       required final String breedName,
       required final String dogName,
-      required final String gender,
+      required final String? gender,
       required final String age,
-      required final String image,
+      required final String? image,
       required final String provinceName}) = _$AdoptionDetailImpl;
 
   factory _AdoptionDetail.fromJson(Map<String, dynamic> json) =
@@ -265,284 +265,15 @@ abstract class _AdoptionDetail implements AdoptionDetail {
   @override
   String get dogName;
   @override
-  String get gender;
+  String? get gender;
   @override
   String get age;
   @override
-  String get image;
+  String? get image;
   @override
   String get provinceName;
   @override
   @JsonKey(ignore: true)
   _$$AdoptionDetailImplCopyWith<_$AdoptionDetailImpl> get copyWith =>
       throw _privateConstructorUsedError;
-}
-
-RequestAdoptionListModel _$RequestAdoptionListModelFromJson(
-    Map<String, dynamic> json) {
-  return _RequestAdoptionListModel.fromJson(json);
-}
-
-/// @nodoc
-mixin _$RequestAdoptionListModel {
-  String get dogId => throw _privateConstructorUsedError;
-  String get breedName => throw _privateConstructorUsedError;
-  String get dogName => throw _privateConstructorUsedError;
-  String get gender => throw _privateConstructorUsedError;
-  String get age => throw _privateConstructorUsedError;
-  String get image => throw _privateConstructorUsedError;
-  String get provinceName => throw _privateConstructorUsedError;
-
-  Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
-  @JsonKey(ignore: true)
-  $RequestAdoptionListModelCopyWith<RequestAdoptionListModel> get copyWith =>
-      throw _privateConstructorUsedError;
-}
-
-/// @nodoc
-abstract class $RequestAdoptionListModelCopyWith<$Res> {
-  factory $RequestAdoptionListModelCopyWith(RequestAdoptionListModel value,
-          $Res Function(RequestAdoptionListModel) then) =
-      _$RequestAdoptionListModelCopyWithImpl<$Res, RequestAdoptionListModel>;
-  @useResult
-  $Res call(
-      {String dogId,
-      String breedName,
-      String dogName,
-      String gender,
-      String age,
-      String image,
-      String provinceName});
-}
-
-/// @nodoc
-class _$RequestAdoptionListModelCopyWithImpl<$Res,
-        $Val extends RequestAdoptionListModel>
-    implements $RequestAdoptionListModelCopyWith<$Res> {
-  _$RequestAdoptionListModelCopyWithImpl(this._value, this._then);
-
-  // ignore: unused_field
-  final $Val _value;
-  // ignore: unused_field
-  final $Res Function($Val) _then;
-
-  @pragma('vm:prefer-inline')
-  @override
-  $Res call({
-    Object? dogId = null,
-    Object? breedName = null,
-    Object? dogName = null,
-    Object? gender = null,
-    Object? age = null,
-    Object? image = null,
-    Object? provinceName = null,
-  }) {
-    return _then(_value.copyWith(
-      dogId: null == dogId
-          ? _value.dogId
-          : dogId // ignore: cast_nullable_to_non_nullable
-              as String,
-      breedName: null == breedName
-          ? _value.breedName
-          : breedName // ignore: cast_nullable_to_non_nullable
-              as String,
-      dogName: null == dogName
-          ? _value.dogName
-          : dogName // ignore: cast_nullable_to_non_nullable
-              as String,
-      gender: null == gender
-          ? _value.gender
-          : gender // ignore: cast_nullable_to_non_nullable
-              as String,
-      age: null == age
-          ? _value.age
-          : age // ignore: cast_nullable_to_non_nullable
-              as String,
-      image: null == image
-          ? _value.image
-          : image // ignore: cast_nullable_to_non_nullable
-              as String,
-      provinceName: null == provinceName
-          ? _value.provinceName
-          : provinceName // ignore: cast_nullable_to_non_nullable
-              as String,
-    ) as $Val);
-  }
-}
-
-/// @nodoc
-abstract class _$$RequestAdoptionListModelImplCopyWith<$Res>
-    implements $RequestAdoptionListModelCopyWith<$Res> {
-  factory _$$RequestAdoptionListModelImplCopyWith(
-          _$RequestAdoptionListModelImpl value,
-          $Res Function(_$RequestAdoptionListModelImpl) then) =
-      __$$RequestAdoptionListModelImplCopyWithImpl<$Res>;
-  @override
-  @useResult
-  $Res call(
-      {String dogId,
-      String breedName,
-      String dogName,
-      String gender,
-      String age,
-      String image,
-      String provinceName});
-}
-
-/// @nodoc
-class __$$RequestAdoptionListModelImplCopyWithImpl<$Res>
-    extends _$RequestAdoptionListModelCopyWithImpl<$Res,
-        _$RequestAdoptionListModelImpl>
-    implements _$$RequestAdoptionListModelImplCopyWith<$Res> {
-  __$$RequestAdoptionListModelImplCopyWithImpl(
-      _$RequestAdoptionListModelImpl _value,
-      $Res Function(_$RequestAdoptionListModelImpl) _then)
-      : super(_value, _then);
-
-  @pragma('vm:prefer-inline')
-  @override
-  $Res call({
-    Object? dogId = null,
-    Object? breedName = null,
-    Object? dogName = null,
-    Object? gender = null,
-    Object? age = null,
-    Object? image = null,
-    Object? provinceName = null,
-  }) {
-    return _then(_$RequestAdoptionListModelImpl(
-      dogId: null == dogId
-          ? _value.dogId
-          : dogId // ignore: cast_nullable_to_non_nullable
-              as String,
-      breedName: null == breedName
-          ? _value.breedName
-          : breedName // ignore: cast_nullable_to_non_nullable
-              as String,
-      dogName: null == dogName
-          ? _value.dogName
-          : dogName // ignore: cast_nullable_to_non_nullable
-              as String,
-      gender: null == gender
-          ? _value.gender
-          : gender // ignore: cast_nullable_to_non_nullable
-              as String,
-      age: null == age
-          ? _value.age
-          : age // ignore: cast_nullable_to_non_nullable
-              as String,
-      image: null == image
-          ? _value.image
-          : image // ignore: cast_nullable_to_non_nullable
-              as String,
-      provinceName: null == provinceName
-          ? _value.provinceName
-          : provinceName // ignore: cast_nullable_to_non_nullable
-              as String,
-    ));
-  }
-}
-
-/// @nodoc
-@JsonSerializable()
-class _$RequestAdoptionListModelImpl implements _RequestAdoptionListModel {
-  _$RequestAdoptionListModelImpl(
-      {required this.dogId,
-      required this.breedName,
-      required this.dogName,
-      required this.gender,
-      required this.age,
-      required this.image,
-      required this.provinceName});
-
-  factory _$RequestAdoptionListModelImpl.fromJson(Map<String, dynamic> json) =>
-      _$$RequestAdoptionListModelImplFromJson(json);
-
-  @override
-  final String dogId;
-  @override
-  final String breedName;
-  @override
-  final String dogName;
-  @override
-  final String gender;
-  @override
-  final String age;
-  @override
-  final String image;
-  @override
-  final String provinceName;
-
-  @override
-  String toString() {
-    return 'RequestAdoptionListModel(dogId: $dogId, breedName: $breedName, dogName: $dogName, gender: $gender, age: $age, image: $image, provinceName: $provinceName)';
-  }
-
-  @override
-  bool operator ==(Object other) {
-    return identical(this, other) ||
-        (other.runtimeType == runtimeType &&
-            other is _$RequestAdoptionListModelImpl &&
-            (identical(other.dogId, dogId) || other.dogId == dogId) &&
-            (identical(other.breedName, breedName) ||
-                other.breedName == breedName) &&
-            (identical(other.dogName, dogName) || other.dogName == dogName) &&
-            (identical(other.gender, gender) || other.gender == gender) &&
-            (identical(other.age, age) || other.age == age) &&
-            (identical(other.image, image) || other.image == image) &&
-            (identical(other.provinceName, provinceName) ||
-                other.provinceName == provinceName));
-  }
-
-  @JsonKey(ignore: true)
-  @override
-  int get hashCode => Object.hash(
-      runtimeType, dogId, breedName, dogName, gender, age, image, provinceName);
-
-  @JsonKey(ignore: true)
-  @override
-  @pragma('vm:prefer-inline')
-  _$$RequestAdoptionListModelImplCopyWith<_$RequestAdoptionListModelImpl>
-      get copyWith => __$$RequestAdoptionListModelImplCopyWithImpl<
-          _$RequestAdoptionListModelImpl>(this, _$identity);
-
-  @override
-  Map<String, dynamic> toJson() {
-    return _$$RequestAdoptionListModelImplToJson(
-      this,
-    );
-  }
-}
-
-abstract class _RequestAdoptionListModel implements RequestAdoptionListModel {
-  factory _RequestAdoptionListModel(
-      {required final String dogId,
-      required final String breedName,
-      required final String dogName,
-      required final String gender,
-      required final String age,
-      required final String image,
-      required final String provinceName}) = _$RequestAdoptionListModelImpl;
-
-  factory _RequestAdoptionListModel.fromJson(Map<String, dynamic> json) =
-      _$RequestAdoptionListModelImpl.fromJson;
-
-  @override
-  String get dogId;
-  @override
-  String get breedName;
-  @override
-  String get dogName;
-  @override
-  String get gender;
-  @override
-  String get age;
-  @override
-  String get image;
-  @override
-  String get provinceName;
-  @override
-  @JsonKey(ignore: true)
-  _$$RequestAdoptionListModelImplCopyWith<_$RequestAdoptionListModelImpl>
-      get copyWith => throw _privateConstructorUsedError;
 }

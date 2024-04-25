@@ -8,10 +8,11 @@ class RetrieveAdoptionListService {
       final dio = await DioInstance.getInstance();
 
       final response = await dio.get(api);
-      if (response.data['output_schema'] == null) {
+      if (response.data['outputSchema'] == null) {
         return [];
       }
-      return (response.data['output_schema'] as List)
+      print(response.data['outputSchema']['dogList']);
+      return (response.data['outputSchema']['dogList'] as List)
           .map((e) => AdoptionDetail.fromJson(e))
           .toList();
     } catch (error) {

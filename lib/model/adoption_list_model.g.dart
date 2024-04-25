@@ -11,38 +11,14 @@ _$AdoptionDetailImpl _$$AdoptionDetailImplFromJson(Map<String, dynamic> json) =>
       dogId: json['dogId'] as String,
       breedName: json['breedName'] as String,
       dogName: json['dogName'] as String,
-      gender: json['gender'] as String,
+      gender: json['gender'] as String?,
       age: json['age'] as String,
-      image: json['image'] as String,
+      image: json['image'] as String?,
       provinceName: json['provinceName'] as String,
     );
 
 Map<String, dynamic> _$$AdoptionDetailImplToJson(
         _$AdoptionDetailImpl instance) =>
-    <String, dynamic>{
-      'dogId': instance.dogId,
-      'breedName': instance.breedName,
-      'dogName': instance.dogName,
-      'gender': instance.gender,
-      'age': instance.age,
-      'image': instance.image,
-      'provinceName': instance.provinceName,
-    };
-
-_$RequestAdoptionListModelImpl _$$RequestAdoptionListModelImplFromJson(
-        Map<String, dynamic> json) =>
-    _$RequestAdoptionListModelImpl(
-      dogId: json['dogId'] as String,
-      breedName: json['breedName'] as String,
-      dogName: json['dogName'] as String,
-      gender: json['gender'] as String,
-      age: json['age'] as String,
-      image: json['image'] as String,
-      provinceName: json['provinceName'] as String,
-    );
-
-Map<String, dynamic> _$$RequestAdoptionListModelImplToJson(
-        _$RequestAdoptionListModelImpl instance) =>
     <String, dynamic>{
       'dogId': instance.dogId,
       'breedName': instance.breedName,
