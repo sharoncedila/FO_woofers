@@ -42,7 +42,7 @@ class DogCardDetail extends StatelessWidget {
                   ),
                   ListTile(
                     title: Text(
-                      adoptionDetail.dogName,
+                      adoptionDetail.dogName ?? '',
                       style: TextStyle(
                         color: Colors.white,
                       ),
@@ -55,7 +55,7 @@ class DogCardDetail extends StatelessWidget {
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
                         Text(
-                          adoptionDetail.breedName,
+                          adoptionDetail.breedName ?? '',
                           style: const TextStyle(
                             color: Colors.white,
                             fontSize: 12,
@@ -65,7 +65,7 @@ class DogCardDetail extends StatelessWidget {
                         ),
                         SizedBox(width: 15,),
                         Text(
-                          adoptionDetail.age,
+                          adoptionDetail.age ?? '',
                           style: const TextStyle(
                             color: Colors.white,
                             fontSize: 12,
