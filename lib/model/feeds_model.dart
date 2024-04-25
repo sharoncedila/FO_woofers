@@ -1,0 +1,83 @@
+import 'package:freezed_annotation/freezed_annotation.dart';
+part 'feeds_model.freezed.dart';
+part 'feeds_model.g.dart';
+
+@freezed
+class LeaveCommentRequest with _$LeaveCommentRequest {
+  factory LeaveCommentRequest({
+    required String feedsId,
+    required String content
+  }) = _LeaveCommentRequest;
+
+  factory LeaveCommentRequest.fromJson(Map<String, dynamic> json) => _$LeaveCommentRequestFromJson(json);
+}
+
+@freezed
+class PostFeedsRequest with _$PostFeedsRequest {
+  factory PostFeedsRequest({
+    required String caption,
+    required String image,
+    required String video
+  }) = _PostFeedsRequest;
+
+  factory PostFeedsRequest.fromJson(Map<String, dynamic> json) => _$PostFeedsRequestFromJson(json);
+}
+
+@freezed
+class ViewFeeds with _$ViewFeeds {
+  factory ViewFeeds({
+    required String feedsId,
+    required String accountId,
+    required String username,
+    required String caption,
+    required String image,
+    required String video,
+    required String likesCount,
+    required String postDate,
+  }) = _ViewFeeds;
+
+  factory ViewFeeds.fromJson(Map<String, dynamic> json) => _$ViewFeedsFromJson(json);
+}
+
+@freezed
+class LeaveCommentResponse with _$LeaveCommentResponse {
+  factory LeaveCommentResponse({
+    required String commentId,
+    required String feedsId,
+    required String accountId,
+    required String content,
+    required String commentDate,
+    required String video,
+    required String likesCount,
+    required String postDate,
+  }) = _LeaveCommentResponse;
+
+  factory LeaveCommentResponse.fromJson(Map<String, dynamic> json) => _$LeaveCommentResponseFromJson(json);
+}
+
+@freezed
+class OpenCommentsResponse with _$OpenCommentsResponse {
+  factory OpenCommentsResponse({
+    required String commentList
+  }) = _OpenCommentsResponse;
+
+  factory OpenCommentsResponse.fromJson(Map<String, dynamic> json) => _$OpenCommentsResponseFromJson(json);
+}
+
+@freezed
+class PostFeedsResponse with _$PostFeedsResponse {
+  factory PostFeedsResponse({
+    required String feedsData
+  }) = _PostFeedsResponse;
+
+  factory PostFeedsResponse.fromJson(Map<String, dynamic> json) => _$PostFeedsResponseFromJson(json);
+}
+
+@freezed
+class UploadFeedsResponse with _$UploadFeedsResponse {
+  factory UploadFeedsResponse({
+    required String fileName
+  }) = _UploadFeedsResponse;
+
+  factory UploadFeedsResponse.fromJson(Map<String, dynamic> json) => _$UploadFeedsResponseFromJson(json);
+}
