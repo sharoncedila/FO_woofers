@@ -21,13 +21,13 @@ ResponseUserProfileModel _$ResponseUserProfileModelFromJson(
 
 /// @nodoc
 mixin _$ResponseUserProfileModel {
-  String get username => throw _privateConstructorUsedError;
-  String get fullName => throw _privateConstructorUsedError;
-  String get email => throw _privateConstructorUsedError;
-  String get provinceName => throw _privateConstructorUsedError;
-  String get phoneNumber => throw _privateConstructorUsedError;
-  String get description => throw _privateConstructorUsedError;
-  String get image => throw _privateConstructorUsedError;
+  String? get username => throw _privateConstructorUsedError;
+  String? get fullName => throw _privateConstructorUsedError;
+  String? get email => throw _privateConstructorUsedError;
+  String? get provinceName => throw _privateConstructorUsedError;
+  String? get phoneNumber => throw _privateConstructorUsedError;
+  String? get description => throw _privateConstructorUsedError;
+  String? get image => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -42,13 +42,13 @@ abstract class $ResponseUserProfileModelCopyWith<$Res> {
       _$ResponseUserProfileModelCopyWithImpl<$Res, ResponseUserProfileModel>;
   @useResult
   $Res call(
-      {String username,
-      String fullName,
-      String email,
-      String provinceName,
-      String phoneNumber,
-      String description,
-      String image});
+      {String? username,
+      String? fullName,
+      String? email,
+      String? provinceName,
+      String? phoneNumber,
+      String? description,
+      String? image});
 }
 
 /// @nodoc
@@ -65,43 +65,43 @@ class _$ResponseUserProfileModelCopyWithImpl<$Res,
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? username = null,
-    Object? fullName = null,
-    Object? email = null,
-    Object? provinceName = null,
-    Object? phoneNumber = null,
-    Object? description = null,
-    Object? image = null,
+    Object? username = freezed,
+    Object? fullName = freezed,
+    Object? email = freezed,
+    Object? provinceName = freezed,
+    Object? phoneNumber = freezed,
+    Object? description = freezed,
+    Object? image = freezed,
   }) {
     return _then(_value.copyWith(
-      username: null == username
+      username: freezed == username
           ? _value.username
           : username // ignore: cast_nullable_to_non_nullable
-              as String,
-      fullName: null == fullName
+              as String?,
+      fullName: freezed == fullName
           ? _value.fullName
           : fullName // ignore: cast_nullable_to_non_nullable
-              as String,
-      email: null == email
+              as String?,
+      email: freezed == email
           ? _value.email
           : email // ignore: cast_nullable_to_non_nullable
-              as String,
-      provinceName: null == provinceName
+              as String?,
+      provinceName: freezed == provinceName
           ? _value.provinceName
           : provinceName // ignore: cast_nullable_to_non_nullable
-              as String,
-      phoneNumber: null == phoneNumber
+              as String?,
+      phoneNumber: freezed == phoneNumber
           ? _value.phoneNumber
           : phoneNumber // ignore: cast_nullable_to_non_nullable
-              as String,
-      description: null == description
+              as String?,
+      description: freezed == description
           ? _value.description
           : description // ignore: cast_nullable_to_non_nullable
-              as String,
-      image: null == image
+              as String?,
+      image: freezed == image
           ? _value.image
           : image // ignore: cast_nullable_to_non_nullable
-              as String,
+              as String?,
     ) as $Val);
   }
 }
@@ -116,13 +116,13 @@ abstract class _$$ResponseUserProfileModelImplCopyWith<$Res>
   @override
   @useResult
   $Res call(
-      {String username,
-      String fullName,
-      String email,
-      String provinceName,
-      String phoneNumber,
-      String description,
-      String image});
+      {String? username,
+      String? fullName,
+      String? email,
+      String? provinceName,
+      String? phoneNumber,
+      String? description,
+      String? image});
 }
 
 /// @nodoc
@@ -138,43 +138,43 @@ class __$$ResponseUserProfileModelImplCopyWithImpl<$Res>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? username = null,
-    Object? fullName = null,
-    Object? email = null,
-    Object? provinceName = null,
-    Object? phoneNumber = null,
-    Object? description = null,
-    Object? image = null,
+    Object? username = freezed,
+    Object? fullName = freezed,
+    Object? email = freezed,
+    Object? provinceName = freezed,
+    Object? phoneNumber = freezed,
+    Object? description = freezed,
+    Object? image = freezed,
   }) {
     return _then(_$ResponseUserProfileModelImpl(
-      username: null == username
+      username: freezed == username
           ? _value.username
           : username // ignore: cast_nullable_to_non_nullable
-              as String,
-      fullName: null == fullName
+              as String?,
+      fullName: freezed == fullName
           ? _value.fullName
           : fullName // ignore: cast_nullable_to_non_nullable
-              as String,
-      email: null == email
+              as String?,
+      email: freezed == email
           ? _value.email
           : email // ignore: cast_nullable_to_non_nullable
-              as String,
-      provinceName: null == provinceName
+              as String?,
+      provinceName: freezed == provinceName
           ? _value.provinceName
           : provinceName // ignore: cast_nullable_to_non_nullable
-              as String,
-      phoneNumber: null == phoneNumber
+              as String?,
+      phoneNumber: freezed == phoneNumber
           ? _value.phoneNumber
           : phoneNumber // ignore: cast_nullable_to_non_nullable
-              as String,
-      description: null == description
+              as String?,
+      description: freezed == description
           ? _value.description
           : description // ignore: cast_nullable_to_non_nullable
-              as String,
-      image: null == image
+              as String?,
+      image: freezed == image
           ? _value.image
           : image // ignore: cast_nullable_to_non_nullable
-              as String,
+              as String?,
     ));
   }
 }
@@ -195,19 +195,19 @@ class _$ResponseUserProfileModelImpl implements _ResponseUserProfileModel {
       _$$ResponseUserProfileModelImplFromJson(json);
 
   @override
-  final String username;
+  final String? username;
   @override
-  final String fullName;
+  final String? fullName;
   @override
-  final String email;
+  final String? email;
   @override
-  final String provinceName;
+  final String? provinceName;
   @override
-  final String phoneNumber;
+  final String? phoneNumber;
   @override
-  final String description;
+  final String? description;
   @override
-  final String image;
+  final String? image;
 
   @override
   String toString() {
@@ -255,31 +255,31 @@ class _$ResponseUserProfileModelImpl implements _ResponseUserProfileModel {
 
 abstract class _ResponseUserProfileModel implements ResponseUserProfileModel {
   factory _ResponseUserProfileModel(
-      {required final String username,
-      required final String fullName,
-      required final String email,
-      required final String provinceName,
-      required final String phoneNumber,
-      required final String description,
-      required final String image}) = _$ResponseUserProfileModelImpl;
+      {required final String? username,
+      required final String? fullName,
+      required final String? email,
+      required final String? provinceName,
+      required final String? phoneNumber,
+      required final String? description,
+      required final String? image}) = _$ResponseUserProfileModelImpl;
 
   factory _ResponseUserProfileModel.fromJson(Map<String, dynamic> json) =
       _$ResponseUserProfileModelImpl.fromJson;
 
   @override
-  String get username;
+  String? get username;
   @override
-  String get fullName;
+  String? get fullName;
   @override
-  String get email;
+  String? get email;
   @override
-  String get provinceName;
+  String? get provinceName;
   @override
-  String get phoneNumber;
+  String? get phoneNumber;
   @override
-  String get description;
+  String? get description;
   @override
-  String get image;
+  String? get image;
   @override
   @JsonKey(ignore: true)
   _$$ResponseUserProfileModelImplCopyWith<_$ResponseUserProfileModelImpl>
