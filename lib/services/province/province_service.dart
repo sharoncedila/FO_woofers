@@ -8,20 +8,21 @@ import 'package:woofers/model/province_model.dart';
 
 class RetrieveProvinceService{
 
-  Future<RetrieveAllProvinceResponse?> retrieveAllProvince() async{
+  Future<List<RetrieveAllProvinceResponse>> retrieveAllProvince() async{
     try {
       const api = '/provinces/all';
       final dio = await DioInstance.getInstance();
 
       var response = await dio.get(api);
       final errorSchema = ErrorSchema.fromJson(response.data!['errorSchema']);
-      if (errorSchema.errorCode != 'WOF-000') {
-        return RetrieveAllProvinceResponse.fromJson(response.data['errorSchema']);
-      }else{
-        return RetrieveAllProvinceResponse.fromJson(response.data['outputSchema']);
+      if (response.data['output_schema'] == null) {
+        return [];
       }
+      return (response.data['output_schema'] as List)
+          .map((e) => RetrieveAllProvinceResponse.fromJson(e))
+          .toList();
     } catch (error) {
-      print(error);
+      throw Exception(error);
     }
   }
 

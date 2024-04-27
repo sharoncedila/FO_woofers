@@ -195,18 +195,6 @@ class _LoginFormState extends State<LoginForm> {
               ),
             child: const Text('Login'),
             onPressed: () async {
-              // if (_formKey.currentState!.validate()) {
-              // // If the form is valid, display a snackbar. In the real world,
-              // // you'd often call a server or save the information in a database.
-              //    _loginService.login(
-              //     _emailController.text,
-              //     _passwordController.text
-              //     ).then((value) {
-              //       Navigator.of(context).pushReplacement(
-              //         MaterialPageRoute(builder: (_) => const BottomMenu()));
-              //     });
-              // }
-
               if (_formKey.currentState!.validate()) {
                   final RequestLoginModel req = RequestLoginModel(
                       email: _emailController.text,
