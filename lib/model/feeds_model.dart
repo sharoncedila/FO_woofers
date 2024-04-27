@@ -24,19 +24,20 @@ class PostFeedsRequest with _$PostFeedsRequest {
 }
 
 @freezed
-class ViewFeeds with _$ViewFeeds {
-  factory ViewFeeds({
-    required String feedsId,
-    required String accountId,
-    required String username,
-    required String caption,
-    required String image,
-    required String video,
-    required String likesCount,
-    required String postDate,
-  }) = _ViewFeeds;
+class ViewFeedsResponse with _$ViewFeedsResponse{
+  factory ViewFeedsResponse({
+    required String? feedsId,
+    required String? accountId,
+    required String? username,
+    required String? caption,
+    required String? image,
+    required String? likesCount,
+    required String? postDate,
+    required String? errorCode,
+    required String? errorMessage
+  }) = _ViewFeedsResponse;
 
-  factory ViewFeeds.fromJson(Map<String, dynamic> json) => _$ViewFeedsFromJson(json);
+  factory ViewFeedsResponse.fromJson(Map<String, dynamic> json) => _$ViewFeedsResponseFromJson(json);
 }
 
 @freezed

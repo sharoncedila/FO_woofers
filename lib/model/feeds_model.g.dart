@@ -36,28 +36,32 @@ Map<String, dynamic> _$$PostFeedsRequestImplToJson(
       'video': instance.video,
     };
 
-_$ViewFeedsImpl _$$ViewFeedsImplFromJson(Map<String, dynamic> json) =>
-    _$ViewFeedsImpl(
-      feedsId: json['feedsId'] as String,
-      accountId: json['accountId'] as String,
-      username: json['username'] as String,
-      caption: json['caption'] as String,
-      image: json['image'] as String,
-      video: json['video'] as String,
-      likesCount: json['likesCount'] as String,
-      postDate: json['postDate'] as String,
+_$ViewFeedsResponseImpl _$$ViewFeedsResponseImplFromJson(
+        Map<String, dynamic> json) =>
+    _$ViewFeedsResponseImpl(
+      feedsId: json['feedsId'] as String?,
+      accountId: json['accountId'] as String?,
+      username: json['username'] as String?,
+      caption: json['caption'] as String?,
+      image: json['image'] as String?,
+      likesCount: json['likesCount'] as String?,
+      postDate: json['postDate'] as String?,
+      errorCode: json['errorCode'] as String?,
+      errorMessage: json['errorMessage'] as String?,
     );
 
-Map<String, dynamic> _$$ViewFeedsImplToJson(_$ViewFeedsImpl instance) =>
+Map<String, dynamic> _$$ViewFeedsResponseImplToJson(
+        _$ViewFeedsResponseImpl instance) =>
     <String, dynamic>{
       'feedsId': instance.feedsId,
       'accountId': instance.accountId,
       'username': instance.username,
       'caption': instance.caption,
       'image': instance.image,
-      'video': instance.video,
       'likesCount': instance.likesCount,
       'postDate': instance.postDate,
+      'errorCode': instance.errorCode,
+      'errorMessage': instance.errorMessage,
     };
 
 _$LeaveCommentResponseImpl _$$LeaveCommentResponseImplFromJson(

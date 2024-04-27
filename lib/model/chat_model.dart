@@ -5,8 +5,7 @@ part 'chat_model.g.dart';
 @freezed
 class OpenChatRequest with _$OpenChatRequest {
   factory OpenChatRequest({
-    required String? chatroomId,
-    required String? recipientId
+    required String? recipientId,
   }) = _OpenChatRequest;
 
   factory OpenChatRequest.fromJson(Map<String, dynamic> json) => _$OpenChatRequestFromJson(json);
@@ -29,19 +28,12 @@ class OpenChatResponse with _$OpenChatResponse {
     required String? chatroomId,
     required String? senderId,
     required String? recipientId,
-    required List<String>? messages
+    required List<SendChatResponse>? messages,
+    required String? errorCode,
+    required String? errorMessage
   }) = _OpenChatResponse;
 
   factory OpenChatResponse.fromJson(Map<String, dynamic> json) => _$OpenChatResponseFromJson(json);
-}
-
-@freezed
-class RetrieveChatroomListResponse with _$RetrieveChatroomListResponse {
-  factory RetrieveChatroomListResponse({
-    required List<String>? chatroomList
-  }) = _RetrieveChatroomListResponse;
-
-  factory RetrieveChatroomListResponse.fromJson(Map<String, dynamic> json) => _$RetrieveChatroomListResponseFromJson(json);
 }
 
 @freezed

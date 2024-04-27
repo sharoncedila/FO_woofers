@@ -342,47 +342,50 @@ abstract class _PostFeedsRequest implements PostFeedsRequest {
       throw _privateConstructorUsedError;
 }
 
-ViewFeeds _$ViewFeedsFromJson(Map<String, dynamic> json) {
-  return _ViewFeeds.fromJson(json);
+ViewFeedsResponse _$ViewFeedsResponseFromJson(Map<String, dynamic> json) {
+  return _ViewFeedsResponse.fromJson(json);
 }
 
 /// @nodoc
-mixin _$ViewFeeds {
-  String get feedsId => throw _privateConstructorUsedError;
-  String get accountId => throw _privateConstructorUsedError;
-  String get username => throw _privateConstructorUsedError;
-  String get caption => throw _privateConstructorUsedError;
-  String get image => throw _privateConstructorUsedError;
-  String get video => throw _privateConstructorUsedError;
-  String get likesCount => throw _privateConstructorUsedError;
-  String get postDate => throw _privateConstructorUsedError;
+mixin _$ViewFeedsResponse {
+  String? get feedsId => throw _privateConstructorUsedError;
+  String? get accountId => throw _privateConstructorUsedError;
+  String? get username => throw _privateConstructorUsedError;
+  String? get caption => throw _privateConstructorUsedError;
+  String? get image => throw _privateConstructorUsedError;
+  String? get likesCount => throw _privateConstructorUsedError;
+  String? get postDate => throw _privateConstructorUsedError;
+  String? get errorCode => throw _privateConstructorUsedError;
+  String? get errorMessage => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
-  $ViewFeedsCopyWith<ViewFeeds> get copyWith =>
+  $ViewFeedsResponseCopyWith<ViewFeedsResponse> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class $ViewFeedsCopyWith<$Res> {
-  factory $ViewFeedsCopyWith(ViewFeeds value, $Res Function(ViewFeeds) then) =
-      _$ViewFeedsCopyWithImpl<$Res, ViewFeeds>;
+abstract class $ViewFeedsResponseCopyWith<$Res> {
+  factory $ViewFeedsResponseCopyWith(
+          ViewFeedsResponse value, $Res Function(ViewFeedsResponse) then) =
+      _$ViewFeedsResponseCopyWithImpl<$Res, ViewFeedsResponse>;
   @useResult
   $Res call(
-      {String feedsId,
-      String accountId,
-      String username,
-      String caption,
-      String image,
-      String video,
-      String likesCount,
-      String postDate});
+      {String? feedsId,
+      String? accountId,
+      String? username,
+      String? caption,
+      String? image,
+      String? likesCount,
+      String? postDate,
+      String? errorCode,
+      String? errorMessage});
 }
 
 /// @nodoc
-class _$ViewFeedsCopyWithImpl<$Res, $Val extends ViewFeeds>
-    implements $ViewFeedsCopyWith<$Res> {
-  _$ViewFeedsCopyWithImpl(this._value, this._then);
+class _$ViewFeedsResponseCopyWithImpl<$Res, $Val extends ViewFeedsResponse>
+    implements $ViewFeedsResponseCopyWith<$Res> {
+  _$ViewFeedsResponseCopyWithImpl(this._value, this._then);
 
   // ignore: unused_field
   final $Val _value;
@@ -392,171 +395,185 @@ class _$ViewFeedsCopyWithImpl<$Res, $Val extends ViewFeeds>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? feedsId = null,
-    Object? accountId = null,
-    Object? username = null,
-    Object? caption = null,
-    Object? image = null,
-    Object? video = null,
-    Object? likesCount = null,
-    Object? postDate = null,
+    Object? feedsId = freezed,
+    Object? accountId = freezed,
+    Object? username = freezed,
+    Object? caption = freezed,
+    Object? image = freezed,
+    Object? likesCount = freezed,
+    Object? postDate = freezed,
+    Object? errorCode = freezed,
+    Object? errorMessage = freezed,
   }) {
     return _then(_value.copyWith(
-      feedsId: null == feedsId
+      feedsId: freezed == feedsId
           ? _value.feedsId
           : feedsId // ignore: cast_nullable_to_non_nullable
-              as String,
-      accountId: null == accountId
+              as String?,
+      accountId: freezed == accountId
           ? _value.accountId
           : accountId // ignore: cast_nullable_to_non_nullable
-              as String,
-      username: null == username
+              as String?,
+      username: freezed == username
           ? _value.username
           : username // ignore: cast_nullable_to_non_nullable
-              as String,
-      caption: null == caption
+              as String?,
+      caption: freezed == caption
           ? _value.caption
           : caption // ignore: cast_nullable_to_non_nullable
-              as String,
-      image: null == image
+              as String?,
+      image: freezed == image
           ? _value.image
           : image // ignore: cast_nullable_to_non_nullable
-              as String,
-      video: null == video
-          ? _value.video
-          : video // ignore: cast_nullable_to_non_nullable
-              as String,
-      likesCount: null == likesCount
+              as String?,
+      likesCount: freezed == likesCount
           ? _value.likesCount
           : likesCount // ignore: cast_nullable_to_non_nullable
-              as String,
-      postDate: null == postDate
+              as String?,
+      postDate: freezed == postDate
           ? _value.postDate
           : postDate // ignore: cast_nullable_to_non_nullable
-              as String,
+              as String?,
+      errorCode: freezed == errorCode
+          ? _value.errorCode
+          : errorCode // ignore: cast_nullable_to_non_nullable
+              as String?,
+      errorMessage: freezed == errorMessage
+          ? _value.errorMessage
+          : errorMessage // ignore: cast_nullable_to_non_nullable
+              as String?,
     ) as $Val);
   }
 }
 
 /// @nodoc
-abstract class _$$ViewFeedsImplCopyWith<$Res>
-    implements $ViewFeedsCopyWith<$Res> {
-  factory _$$ViewFeedsImplCopyWith(
-          _$ViewFeedsImpl value, $Res Function(_$ViewFeedsImpl) then) =
-      __$$ViewFeedsImplCopyWithImpl<$Res>;
+abstract class _$$ViewFeedsResponseImplCopyWith<$Res>
+    implements $ViewFeedsResponseCopyWith<$Res> {
+  factory _$$ViewFeedsResponseImplCopyWith(_$ViewFeedsResponseImpl value,
+          $Res Function(_$ViewFeedsResponseImpl) then) =
+      __$$ViewFeedsResponseImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call(
-      {String feedsId,
-      String accountId,
-      String username,
-      String caption,
-      String image,
-      String video,
-      String likesCount,
-      String postDate});
+      {String? feedsId,
+      String? accountId,
+      String? username,
+      String? caption,
+      String? image,
+      String? likesCount,
+      String? postDate,
+      String? errorCode,
+      String? errorMessage});
 }
 
 /// @nodoc
-class __$$ViewFeedsImplCopyWithImpl<$Res>
-    extends _$ViewFeedsCopyWithImpl<$Res, _$ViewFeedsImpl>
-    implements _$$ViewFeedsImplCopyWith<$Res> {
-  __$$ViewFeedsImplCopyWithImpl(
-      _$ViewFeedsImpl _value, $Res Function(_$ViewFeedsImpl) _then)
+class __$$ViewFeedsResponseImplCopyWithImpl<$Res>
+    extends _$ViewFeedsResponseCopyWithImpl<$Res, _$ViewFeedsResponseImpl>
+    implements _$$ViewFeedsResponseImplCopyWith<$Res> {
+  __$$ViewFeedsResponseImplCopyWithImpl(_$ViewFeedsResponseImpl _value,
+      $Res Function(_$ViewFeedsResponseImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? feedsId = null,
-    Object? accountId = null,
-    Object? username = null,
-    Object? caption = null,
-    Object? image = null,
-    Object? video = null,
-    Object? likesCount = null,
-    Object? postDate = null,
+    Object? feedsId = freezed,
+    Object? accountId = freezed,
+    Object? username = freezed,
+    Object? caption = freezed,
+    Object? image = freezed,
+    Object? likesCount = freezed,
+    Object? postDate = freezed,
+    Object? errorCode = freezed,
+    Object? errorMessage = freezed,
   }) {
-    return _then(_$ViewFeedsImpl(
-      feedsId: null == feedsId
+    return _then(_$ViewFeedsResponseImpl(
+      feedsId: freezed == feedsId
           ? _value.feedsId
           : feedsId // ignore: cast_nullable_to_non_nullable
-              as String,
-      accountId: null == accountId
+              as String?,
+      accountId: freezed == accountId
           ? _value.accountId
           : accountId // ignore: cast_nullable_to_non_nullable
-              as String,
-      username: null == username
+              as String?,
+      username: freezed == username
           ? _value.username
           : username // ignore: cast_nullable_to_non_nullable
-              as String,
-      caption: null == caption
+              as String?,
+      caption: freezed == caption
           ? _value.caption
           : caption // ignore: cast_nullable_to_non_nullable
-              as String,
-      image: null == image
+              as String?,
+      image: freezed == image
           ? _value.image
           : image // ignore: cast_nullable_to_non_nullable
-              as String,
-      video: null == video
-          ? _value.video
-          : video // ignore: cast_nullable_to_non_nullable
-              as String,
-      likesCount: null == likesCount
+              as String?,
+      likesCount: freezed == likesCount
           ? _value.likesCount
           : likesCount // ignore: cast_nullable_to_non_nullable
-              as String,
-      postDate: null == postDate
+              as String?,
+      postDate: freezed == postDate
           ? _value.postDate
           : postDate // ignore: cast_nullable_to_non_nullable
-              as String,
+              as String?,
+      errorCode: freezed == errorCode
+          ? _value.errorCode
+          : errorCode // ignore: cast_nullable_to_non_nullable
+              as String?,
+      errorMessage: freezed == errorMessage
+          ? _value.errorMessage
+          : errorMessage // ignore: cast_nullable_to_non_nullable
+              as String?,
     ));
   }
 }
 
 /// @nodoc
 @JsonSerializable()
-class _$ViewFeedsImpl implements _ViewFeeds {
-  _$ViewFeedsImpl(
+class _$ViewFeedsResponseImpl implements _ViewFeedsResponse {
+  _$ViewFeedsResponseImpl(
       {required this.feedsId,
       required this.accountId,
       required this.username,
       required this.caption,
       required this.image,
-      required this.video,
       required this.likesCount,
-      required this.postDate});
+      required this.postDate,
+      required this.errorCode,
+      required this.errorMessage});
 
-  factory _$ViewFeedsImpl.fromJson(Map<String, dynamic> json) =>
-      _$$ViewFeedsImplFromJson(json);
+  factory _$ViewFeedsResponseImpl.fromJson(Map<String, dynamic> json) =>
+      _$$ViewFeedsResponseImplFromJson(json);
 
   @override
-  final String feedsId;
+  final String? feedsId;
   @override
-  final String accountId;
+  final String? accountId;
   @override
-  final String username;
+  final String? username;
   @override
-  final String caption;
+  final String? caption;
   @override
-  final String image;
+  final String? image;
   @override
-  final String video;
+  final String? likesCount;
   @override
-  final String likesCount;
+  final String? postDate;
   @override
-  final String postDate;
+  final String? errorCode;
+  @override
+  final String? errorMessage;
 
   @override
   String toString() {
-    return 'ViewFeeds(feedsId: $feedsId, accountId: $accountId, username: $username, caption: $caption, image: $image, video: $video, likesCount: $likesCount, postDate: $postDate)';
+    return 'ViewFeedsResponse(feedsId: $feedsId, accountId: $accountId, username: $username, caption: $caption, image: $image, likesCount: $likesCount, postDate: $postDate, errorCode: $errorCode, errorMessage: $errorMessage)';
   }
 
   @override
   bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$ViewFeedsImpl &&
+            other is _$ViewFeedsResponseImpl &&
             (identical(other.feedsId, feedsId) || other.feedsId == feedsId) &&
             (identical(other.accountId, accountId) ||
                 other.accountId == accountId) &&
@@ -564,65 +581,72 @@ class _$ViewFeedsImpl implements _ViewFeeds {
                 other.username == username) &&
             (identical(other.caption, caption) || other.caption == caption) &&
             (identical(other.image, image) || other.image == image) &&
-            (identical(other.video, video) || other.video == video) &&
             (identical(other.likesCount, likesCount) ||
                 other.likesCount == likesCount) &&
             (identical(other.postDate, postDate) ||
-                other.postDate == postDate));
+                other.postDate == postDate) &&
+            (identical(other.errorCode, errorCode) ||
+                other.errorCode == errorCode) &&
+            (identical(other.errorMessage, errorMessage) ||
+                other.errorMessage == errorMessage));
   }
 
   @JsonKey(ignore: true)
   @override
   int get hashCode => Object.hash(runtimeType, feedsId, accountId, username,
-      caption, image, video, likesCount, postDate);
+      caption, image, likesCount, postDate, errorCode, errorMessage);
 
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$ViewFeedsImplCopyWith<_$ViewFeedsImpl> get copyWith =>
-      __$$ViewFeedsImplCopyWithImpl<_$ViewFeedsImpl>(this, _$identity);
+  _$$ViewFeedsResponseImplCopyWith<_$ViewFeedsResponseImpl> get copyWith =>
+      __$$ViewFeedsResponseImplCopyWithImpl<_$ViewFeedsResponseImpl>(
+          this, _$identity);
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$ViewFeedsImplToJson(
+    return _$$ViewFeedsResponseImplToJson(
       this,
     );
   }
 }
 
-abstract class _ViewFeeds implements ViewFeeds {
-  factory _ViewFeeds(
-      {required final String feedsId,
-      required final String accountId,
-      required final String username,
-      required final String caption,
-      required final String image,
-      required final String video,
-      required final String likesCount,
-      required final String postDate}) = _$ViewFeedsImpl;
+abstract class _ViewFeedsResponse implements ViewFeedsResponse {
+  factory _ViewFeedsResponse(
+      {required final String? feedsId,
+      required final String? accountId,
+      required final String? username,
+      required final String? caption,
+      required final String? image,
+      required final String? likesCount,
+      required final String? postDate,
+      required final String? errorCode,
+      required final String? errorMessage}) = _$ViewFeedsResponseImpl;
 
-  factory _ViewFeeds.fromJson(Map<String, dynamic> json) =
-      _$ViewFeedsImpl.fromJson;
+  factory _ViewFeedsResponse.fromJson(Map<String, dynamic> json) =
+      _$ViewFeedsResponseImpl.fromJson;
 
   @override
-  String get feedsId;
+  String? get feedsId;
   @override
-  String get accountId;
+  String? get accountId;
   @override
-  String get username;
+  String? get username;
   @override
-  String get caption;
+  String? get caption;
   @override
-  String get image;
+  String? get image;
   @override
-  String get video;
+  String? get likesCount;
   @override
-  String get likesCount;
+  String? get postDate;
   @override
-  String get postDate;
+  String? get errorCode;
+  @override
+  String? get errorMessage;
   @override
   @JsonKey(ignore: true)
-  _$$ViewFeedsImplCopyWith<_$ViewFeedsImpl> get copyWith =>
+  _$$ViewFeedsResponseImplCopyWith<_$ViewFeedsResponseImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
 

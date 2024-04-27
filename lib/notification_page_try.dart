@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:woofers/notification_service.dart';
+import 'package:woofers/services/account/notification_service.dart';
 import 'notification.dart';
 // import 'package:woofers/services/notification_service.dart';
 
