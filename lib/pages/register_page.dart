@@ -1,9 +1,12 @@
+import 'package:email_validator/email_validator.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
+import 'package:woofers/model/province_model.dart';
 import 'package:woofers/model/register_model.dart';
 import 'package:woofers/pages/login_page.dart';
-import 'package:email_validator/email_validator.dart';
 import 'package:woofers/services/account/register_service.dart';
+import 'package:woofers/services/account/user_profile_services.dart';
+import 'package:woofers/services/province/province_service.dart';
 
 class RegisterPage extends StatelessWidget {
   const RegisterPage({super.key});
@@ -72,47 +75,16 @@ class _RegisterFormState extends State<RegisterForm> {
   final String _password = '';
   final _registerService = RegisterService();
 
-  String? valueProvince = 'Province';
-  List<String> listProvince = [
-    "Bali",
-    "Bangka Belitung",
-    "Banten",
-    "Bengkulu",
-    "DKI Jakarta",
-    "Daerah Istimewa Yogyakarta",
-    "Gorontalo",
-    "Jambi",
-    "Jawa Barat",
-    "Jawa Tengah",
-    "Jawa Timur",
-    "Kalimantan Barat",
-    "Kalimantan Selatan",
-    "Kalimantan Tengah",
-    "Kalimantan Timur",
-    "Kalimantan Utara",
-    "Kepulauan Riau",
-    "Lampung",
-    "Maluku",
-    "Maluku Utara",
-    "Nanggroe Aceh Darussalam",
-    "Nusa Tenggara Barat",
-    "Nusa Tenggara Timur",
-    "Papua",
-    "Papua Barat Daya",
-    "Papua Barat",
-    "Papua Pegunungan",
-    "Papua Selatan",
-    "Papua Tengah",
-    "Riau",
-    "Sulawesi Barat",
-    "Sulawesi Selatan",
-    "Sulawesi Tengah",
-    "Sulawesi Tenggara",
-    "Sulawesi Utara",
-    "Sumatera Barat",
-    "Sumatera Selatan",
-    "Sumatera Utara"
-  ];
+  //province
+  Future<List<String>>? _fetchProvincesFuture;
+  String? _selectProvince = '';
+
+  Future<RetrieveAllProvinceResponse?> _fetchProvinces() async {
+    // Call your service method to retrieve province data
+    // For example, using a method named fetchProvinceData() from your service
+    RetrieveAllProvinceResponse? provinces = await RetrieveProvinceService().retrieveAllProvince();
+    return provinces;
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -179,33 +151,7 @@ class _RegisterFormState extends State<RegisterForm> {
               ),
             ),
 
-            // province form field
-// const SizedBox(height: 15),
-//           Padding(
-//             padding: const EdgeInsets.symmetric(horizontal: 25),
-//             child: TextFormField(
-//               decoration: InputDecoration(
-//                 enabledBorder: OutlineInputBorder(
-//                   borderSide: BorderSide(color: Colors.white),
-//                 ),
-//                 focusedBorder: OutlineInputBorder(
-//                   borderSide: BorderSide(color: Colors.grey.shade400),
-//                 ),
-//                 fillColor: Colors.grey.shade200,
-//                 filled: true,
-//                 hintText: 'Province',
-//                 hintStyle: TextStyle(color: Colors.grey[500])
-//               ),
-//               validator: (value){
-//                 if (value == null || value.isEmpty) {
-//                   return 'Please fill province field';
-//                 }
-//                 return null;
-//               },
-//             ),
-//           ),
-
-            const SizedBox(height: 15),
+            /*const SizedBox(height: 15),
             Padding(
               padding: const EdgeInsets.symmetric(horizontal: 25),
               child: TextFormField(
@@ -228,7 +174,110 @@ class _RegisterFormState extends State<RegisterForm> {
                   return null;
                 },
               ),
+            )*/
+
+            /*
+            FutureBuilder<List<String>>(
+      future: _fetchProvincesFuture,
+      builder: (context, snapshot) {
+        if (snapshot.connectionState == ConnectionState.waiting) {
+          // Show a loading indicator while fetching data
+          return CircularProgressIndicator();
+        } else if (snapshot.hasError) {
+          // Handle error if data fetching fails
+          return Text('Error: ${snapshot.error}');
+        } else {
+          // Once data is fetched successfully, display the dropdown
+          return DropdownButtonFormField<String>(
+            value: null, // Set the initial value of the dropdown
+            onChanged: (String? newValue) {
+              // Handle dropdown value change
+            },
+            items: snapshot.data!.map((String province) {
+              // Map fetched data to dropdown menu items
+              return DropdownMenuItem<String>(
+                value: province,
+                child: Text(province),
+              );
+            }).toList(),
+          );
+        }
+      },
+    );
+  }
+             */
+
+            //province dropdown here
+            const SizedBox(height: 15),
+            SingleChildScrollView(
+              child: Padding(
+                padding: const EdgeInsets.symmetric(horizontal: 25),
+                child: FutureBuilder<List<String>>(
+                  future :  _fetchProvincesFuture,
+                  builder: (context, snapshot){
+                    if (snapshot.connectionState == ConnectionState.waiting) {
+                    // Show a loading indicator while fetching data
+                      return CircularProgressIndicator();
+                    }
+                    if (snapshot.hasError) {
+                      return const Text("error");
+                    }
+                    if (!snapshot.hasData) {
+                      return const Text("No data");
+                    }
+                    return DropdownButtonFormField<String>(
+                      value: _selectProvince,
+                      decoration: InputDecoration(
+                      enabledBorder: const OutlineInputBorder(
+                          borderSide: BorderSide(color: Colors.white),
+                      ),
+                      focusedBorder: OutlineInputBorder(
+                        borderSide: BorderSide(color: Colors.grey.shade400),
+                      ),
+                      fillColor: Colors.grey.shade200,
+                      filled: true,
+                  hintText: 'Province',
+                  hintStyle: TextStyle(color: Colors.grey[500]),
+                    )
+                  }
+                ),
+                /*child: DropdownButtonFormField<String>(
+                  value: _selectProvince,
+                  decoration: InputDecoration(
+                  enabledBorder: const OutlineInputBorder(
+                    borderSide: BorderSide(color: Colors.white),
+                  ),
+                  focusedBorder: OutlineInputBorder(
+                    borderSide: BorderSide(color: Colors.grey.shade400),
+                  ),
+                  fillColor: Colors.grey.shade200,
+                  filled: true,
+                  hintText: 'Province',
+                  hintStyle: TextStyle(color: Colors.grey[500]),
+              ),
+              
+              onChanged: (newValue) {
+                setState(() {
+                  _selectProvince = newValue;
+                });
+              },
+              validator: (value) {
+                if (value == null || value.isEmpty) {
+                  return 'Please select a province';
+                }
+                return null;
+              },
+              items: [],
+              /*items: _provinceData.map((province) {
+                return DropdownMenuItem(
+                  value: province,
+                  child: Text(province),
+                );
+              }).toList(),*/
+                        ),*/
+                      ),
             ),
+
 
             // phone number form field
             const SizedBox(height: 15),

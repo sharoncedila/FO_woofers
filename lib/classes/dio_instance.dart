@@ -10,7 +10,7 @@ class DioInstance {
     if (instance == null) {
       // get acess token dari shared pref
       instance = Dio(BaseOptions(
-        baseUrl: 'http://10.88.20.216:8080/woofers',
+        baseUrl: 'http://192.168.100.8:8080/woofers',
         //192.168.249.53
         headers: Map.from({"Authorization": "Bearer $token"}),
       ));
