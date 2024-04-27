@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:woofers/components/adoption_card.dart';
 import 'package:woofers/pages/notification_page.dart';
-import 'package:woofers/services/adoption/adoption_list_service.dart';
+import 'package:woofers/services/adoption/adoption_service.dart';
 
 class AdoptionPage extends StatefulWidget {
   const AdoptionPage({Key? key}) : super(key: key);
@@ -58,7 +58,7 @@ class _AdoptionPageState extends State<AdoptionPage> {
       child: Padding(
         padding: const EdgeInsets.symmetric(horizontal: 25, vertical: 10),
         child: FutureBuilder(
-          future: RetrieveAdoptionListService().retrieveAdoptionList(),
+          future: AdoptionService().retrieveAdoptionList(),
           builder: ((context, snapshot) {
             if (snapshot.connectionState == ConnectionState.waiting) {
               return const Text("sabar ya");
@@ -71,7 +71,9 @@ class _AdoptionPageState extends State<AdoptionPage> {
             }
             final adoptionList = snapshot.data!;
             return Wrap(
-              children: adoptionList.map((e) => DogCardDetail(adoptionDetail: e)).toList(),
+              children: adoptionList
+                  .map((e) => DogCardDetail(adoptionDetail: e))
+                  .toList(),
             );
           }),
         ),
