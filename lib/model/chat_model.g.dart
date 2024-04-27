@@ -9,14 +9,12 @@ part of 'chat_model.dart';
 _$OpenChatRequestImpl _$$OpenChatRequestImplFromJson(
         Map<String, dynamic> json) =>
     _$OpenChatRequestImpl(
-      chatroomId: json['chatroomId'] as String?,
       recipientId: json['recipientId'] as String?,
     );
 
 Map<String, dynamic> _$$OpenChatRequestImplToJson(
         _$OpenChatRequestImpl instance) =>
     <String, dynamic>{
-      'chatroomId': instance.chatroomId,
       'recipientId': instance.recipientId,
     };
 
@@ -43,8 +41,10 @@ _$OpenChatResponseImpl _$$OpenChatResponseImplFromJson(
       senderId: json['senderId'] as String?,
       recipientId: json['recipientId'] as String?,
       messages: (json['messages'] as List<dynamic>?)
-          ?.map((e) => e as String)
+          ?.map((e) => SendChatResponse.fromJson(e as Map<String, dynamic>))
           .toList(),
+      errorCode: json['errorCode'] as String?,
+      errorMessage: json['errorMessage'] as String?,
     );
 
 Map<String, dynamic> _$$OpenChatResponseImplToJson(
@@ -54,20 +54,8 @@ Map<String, dynamic> _$$OpenChatResponseImplToJson(
       'senderId': instance.senderId,
       'recipientId': instance.recipientId,
       'messages': instance.messages,
-    };
-
-_$RetrieveChatroomListResponseImpl _$$RetrieveChatroomListResponseImplFromJson(
-        Map<String, dynamic> json) =>
-    _$RetrieveChatroomListResponseImpl(
-      chatroomList: (json['chatroomList'] as List<dynamic>?)
-          ?.map((e) => e as String)
-          .toList(),
-    );
-
-Map<String, dynamic> _$$RetrieveChatroomListResponseImplToJson(
-        _$RetrieveChatroomListResponseImpl instance) =>
-    <String, dynamic>{
-      'chatroomList': instance.chatroomList,
+      'errorCode': instance.errorCode,
+      'errorMessage': instance.errorMessage,
     };
 
 _$SendChatResponseImpl _$$SendChatResponseImplFromJson(

@@ -9,11 +9,13 @@ part of 'register_model.dart';
 _$ResponseRegisterModelImpl _$$ResponseRegisterModelImplFromJson(
         Map<String, dynamic> json) =>
     _$ResponseRegisterModelImpl(
-      username: json['username'] as String,
-      email: json['email'] as String,
-      provinceName: json['provinceName'] as String,
-      phoneNumber: json['phoneNumber'] as String,
-      accountId: json['accountId'] as String,
+      username: json['username'] as String?,
+      email: json['email'] as String?,
+      provinceName: json['provinceName'] as String?,
+      phoneNumber: json['phoneNumber'] as String?,
+      accountId: json['accountId'] as String?,
+      errorCode: json['errorCode'] as String?,
+      errorMessage: json['errorMessage'] as String?,
     );
 
 Map<String, dynamic> _$$ResponseRegisterModelImplToJson(
@@ -24,6 +26,8 @@ Map<String, dynamic> _$$ResponseRegisterModelImplToJson(
       'provinceName': instance.provinceName,
       'phoneNumber': instance.phoneNumber,
       'accountId': instance.accountId,
+      'errorCode': instance.errorCode,
+      'errorMessage': instance.errorMessage,
     };
 
 _$RequestRegisterModelImpl _$$RequestRegisterModelImplFromJson(
