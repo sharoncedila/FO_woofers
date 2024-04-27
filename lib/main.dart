@@ -1,25 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:woofers/components/adoption_card.dart';
-import 'package:woofers/components/feeds_card.dart';
-import 'package:woofers/components/profile_page_template.dart';
-import 'package:woofers/pages/adoption_page.dart';
-import 'package:woofers/pages/notification_page.dart';
-import 'notification_page_try.dart';
-import 'package:woofers/pages/add_feeds_page.dart';
-import 'package:woofers/pages/chatlist_page.dart';
-import 'package:woofers/pages/chatroom_page.dart';
-import 'package:woofers/pages/dog_profile_page.dart';
-import 'package:woofers/pages/edit_my_dog.dart';
-import 'package:woofers/pages/edit_my_profile_page.dart';
-import 'package:woofers/pages/feeds_page.dart';
-// import 'package:woofers/pages/notification_page.dart';
-// import 'package:woofers/pages/notification_page.dart';
-import 'package:woofers/pages/user_profile_page.dart';
-import 'pages/login_page.dart';
-import 'pages/register_page.dart';
-import 'components/dropdown.dart';
 import 'components/bottom_menu.dart';
-import 'pages/comment_page.dart';
 
 
 void main() {
@@ -34,7 +14,7 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return const MaterialApp(
       debugShowCheckedModeBanner: false,
-      home: LoginPage(),
+      home: BottomMenuBar(),
     );
   }
 }

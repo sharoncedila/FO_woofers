@@ -43,7 +43,7 @@ class DogCardDetail extends StatelessWidget {
                   ListTile(
                     title: Text(
                       adoptionDetail.dogName,
-                      style: TextStyle(
+                      style: const TextStyle(
                         color: Colors.white,
                       ),
                       textAlign: TextAlign.center,
@@ -59,17 +59,15 @@ class DogCardDetail extends StatelessWidget {
                           style: const TextStyle(
                             color: Colors.white,
                             fontSize: 12,
-                            // fontWeight: FontWeight.w300,
                           ),
                           textAlign: TextAlign.center,
                         ),
-                        SizedBox(width: 15,),
+                        const SizedBox(width: 15,),
                         Text(
                           adoptionDetail.age,
                           style: const TextStyle(
                             color: Colors.white,
                             fontSize: 12,
-                            // fontWeight: FontWeight.w300,
                           ),
                           textAlign: TextAlign.center,
                         ),

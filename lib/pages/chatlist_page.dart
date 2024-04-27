@@ -1,34 +1,8 @@
-// import 'package:flutter/material.dart';
-
-// class ChatListPage extends StatelessWidget {
-//   const ChatListPage({super.key});
-
-//   @override
-//   Widget build(BuildContext context) {
-//     return MaterialApp(
-//       home: Scaffold(
-//         backgroundColor: Colors.grey[300],
-//         body: const SafeArea(
-//           child: Text(
-//             'chatlist page nih bos, senggol dong'
-//           )
-//         ),
-//       ),
-//     );
-//   }
-// }
-
-
-
-
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
+import 'package:hexcolor/hexcolor.dart';
 import 'package:woofers/pages/chatroom_page.dart';
-import 'package:woofers/pages/dog_profile_page.dart';
 import 'package:woofers/pages/notification_page.dart';
-// import 'package:flutter_icons/flutter_icons.dart';
-// import 'package:social_ui_kit/data/user_json.dart';
-// import 'package:social_ui_kit/theme/colors.dart';
-
 class ChatListPage extends StatefulWidget {
   const ChatListPage({Key? key}) : super(key: key);
 
@@ -42,18 +16,35 @@ class _ChatListPageState extends State<ChatListPage> {
     return Scaffold(
       backgroundColor: Colors.white,
       appBar:
-          PreferredSize(child: getAppBar(), preferredSize: Size.fromHeight(0)),
+        AppBar(
+          toolbarHeight: 75,
+          elevation: 0,
+          backgroundColor: HexColor("#a0dcdc"),
+          title:
+            Text(
+              "CHATS",
+              style: GoogleFonts.lora(
+                fontSize: 25,
+                fontWeight: FontWeight.bold,
+                color: const Color.fromRGBO(40,36,36,10000),
+              ),
+            ),
+            actions: <Widget>[
+              IconButton(
+                icon: const Icon(Icons.notification_add_rounded),
+                onPressed: () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(builder: (context) => const NotificationPage()),
+                  );
+                },
+              ),
+              const SizedBox(width: 5,)
+            ],
+          ),
       body: ChatList(),
     );
   }
-
-  Widget getAppBar() {
-    return AppBar(
-      elevation: 0,
-      backgroundColor: Colors.white,
-    );
-  }
-
   Widget ChatList() {
     return SingleChildScrollView(
       child: Padding(
@@ -64,40 +55,25 @@ class _ChatListPageState extends State<ChatListPage> {
             const SizedBox(
               height: 15,
             ),
-            Row(
-              children: [
-                const Expanded(
-                  child: Text(
-                    "CHATS", style: TextStyle(fontSize: 25, fontWeight: FontWeight.bold),
-                  ),
-                ),
-                IconButton(
-                  icon: const Icon(Icons.notification_add_rounded),
-                  onPressed: () {
-                    Navigator.push(
-                      context,
-                      MaterialPageRoute(builder: (context) => const NotificationPage()),
-                    );
-                  },
-                ),
-              ],
-            ),
             const SizedBox(
               height: 15,
             ),
+            // search box
             Container(
               width: double.infinity,
               height: 48,
               decoration: BoxDecoration(
-                  color: Colors.white,
-                  borderRadius: BorderRadius.circular(15),
-                  boxShadow: [
-                    BoxShadow(
-                        color: Colors.grey.withOpacity(0.2),
-                        spreadRadius: 2,
-                        blurRadius: 15,
-                        offset: const Offset(0, 1))
-                  ]),
+                color: Colors.white,
+                borderRadius: BorderRadius.circular(15),
+                boxShadow: [
+                  BoxShadow(
+                    color: Colors.grey.withOpacity(0.2),
+                    spreadRadius: 2,
+                    blurRadius: 15,
+                    offset: const Offset(0, 1)
+                  )
+                ]
+              ),
               child: Row(
                 children: [
                   const SizedBox(
@@ -134,15 +110,15 @@ class _ChatListPageState extends State<ChatListPage> {
                     height: 100,
                     width: double.infinity,
                     decoration: BoxDecoration(
-                        boxShadow: [
-                          BoxShadow(
-                              color: Colors.grey.withOpacity(0.15),
-                              spreadRadius: 2,
-                              blurRadius: 15,
-                              offset: const Offset(0, 1))
-                        ],
-                        color: Colors.white.withOpacity(0.6),
-                        borderRadius: BorderRadius.circular(33),
+                      boxShadow: [
+                        BoxShadow(
+                          color: Colors.grey.withOpacity(0.15),
+                          spreadRadius: 2,
+                          blurRadius: 15,
+                          offset: const Offset(0, 1))
+                      ],
+                      color: Colors.white.withOpacity(0.6),
+                      borderRadius: BorderRadius.circular(33),
                     ),
                     child: InkWell(
                       onTap: () {

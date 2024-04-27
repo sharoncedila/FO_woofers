@@ -8,8 +8,7 @@ class NotificationPage2 extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-        home: Scaffold(
+    return Scaffold(
             appBar: AppBar(
               title: Row(
                 mainAxisAlignment: MainAxisAlignment.center,
@@ -73,6 +72,6 @@ class NotificationPage2 extends StatelessWidget {
                     fetchNotifications();
                   },
                   child: const Icon(Icons.refresh),
-                ),));
+                ),);
   }
 }

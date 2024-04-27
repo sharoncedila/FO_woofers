@@ -8,8 +8,7 @@ class EditMyDog extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      home: Scaffold(
+    return Scaffold(
         backgroundColor: Colors.grey[300],
         body: SafeArea(
           child: Center(
@@ -40,7 +39,6 @@ class EditMyDog extends StatelessWidget {
             ),
           )
         ),
-      ),
     );
   }
 }
