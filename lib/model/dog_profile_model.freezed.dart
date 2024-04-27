@@ -400,3 +400,628 @@ abstract class _ResponseDogProfileModel implements ResponseDogProfileModel {
   _$$ResponseDogProfileModelImplCopyWith<_$ResponseDogProfileModelImpl>
       get copyWith => throw _privateConstructorUsedError;
 }
+
+AddDogRequest _$AddDogRequestFromJson(Map<String, dynamic> json) {
+  return _AddDogRequest.fromJson(json);
+}
+
+/// @nodoc
+mixin _$AddDogRequest {
+  String? get dogName => throw _privateConstructorUsedError;
+  String? get breedName => throw _privateConstructorUsedError;
+  String? get dateOfBirth => throw _privateConstructorUsedError;
+  String? get gender => throw _privateConstructorUsedError;
+  String? get provinceName => throw _privateConstructorUsedError;
+  String? get vaccination => throw _privateConstructorUsedError;
+  String? get description => throw _privateConstructorUsedError;
+  String? get isOpenAdopt => throw _privateConstructorUsedError;
+
+  Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
+  @JsonKey(ignore: true)
+  $AddDogRequestCopyWith<AddDogRequest> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class $AddDogRequestCopyWith<$Res> {
+  factory $AddDogRequestCopyWith(
+          AddDogRequest value, $Res Function(AddDogRequest) then) =
+      _$AddDogRequestCopyWithImpl<$Res, AddDogRequest>;
+  @useResult
+  $Res call(
+      {String? dogName,
+      String? breedName,
+      String? dateOfBirth,
+      String? gender,
+      String? provinceName,
+      String? vaccination,
+      String? description,
+      String? isOpenAdopt});
+}
+
+/// @nodoc
+class _$AddDogRequestCopyWithImpl<$Res, $Val extends AddDogRequest>
+    implements $AddDogRequestCopyWith<$Res> {
+  _$AddDogRequestCopyWithImpl(this._value, this._then);
+
+  // ignore: unused_field
+  final $Val _value;
+  // ignore: unused_field
+  final $Res Function($Val) _then;
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? dogName = freezed,
+    Object? breedName = freezed,
+    Object? dateOfBirth = freezed,
+    Object? gender = freezed,
+    Object? provinceName = freezed,
+    Object? vaccination = freezed,
+    Object? description = freezed,
+    Object? isOpenAdopt = freezed,
+  }) {
+    return _then(_value.copyWith(
+      dogName: freezed == dogName
+          ? _value.dogName
+          : dogName // ignore: cast_nullable_to_non_nullable
+              as String?,
+      breedName: freezed == breedName
+          ? _value.breedName
+          : breedName // ignore: cast_nullable_to_non_nullable
+              as String?,
+      dateOfBirth: freezed == dateOfBirth
+          ? _value.dateOfBirth
+          : dateOfBirth // ignore: cast_nullable_to_non_nullable
+              as String?,
+      gender: freezed == gender
+          ? _value.gender
+          : gender // ignore: cast_nullable_to_non_nullable
+              as String?,
+      provinceName: freezed == provinceName
+          ? _value.provinceName
+          : provinceName // ignore: cast_nullable_to_non_nullable
+              as String?,
+      vaccination: freezed == vaccination
+          ? _value.vaccination
+          : vaccination // ignore: cast_nullable_to_non_nullable
+              as String?,
+      description: freezed == description
+          ? _value.description
+          : description // ignore: cast_nullable_to_non_nullable
+              as String?,
+      isOpenAdopt: freezed == isOpenAdopt
+          ? _value.isOpenAdopt
+          : isOpenAdopt // ignore: cast_nullable_to_non_nullable
+              as String?,
+    ) as $Val);
+  }
+}
+
+/// @nodoc
+abstract class _$$AddDogRequestImplCopyWith<$Res>
+    implements $AddDogRequestCopyWith<$Res> {
+  factory _$$AddDogRequestImplCopyWith(
+          _$AddDogRequestImpl value, $Res Function(_$AddDogRequestImpl) then) =
+      __$$AddDogRequestImplCopyWithImpl<$Res>;
+  @override
+  @useResult
+  $Res call(
+      {String? dogName,
+      String? breedName,
+      String? dateOfBirth,
+      String? gender,
+      String? provinceName,
+      String? vaccination,
+      String? description,
+      String? isOpenAdopt});
+}
+
+/// @nodoc
+class __$$AddDogRequestImplCopyWithImpl<$Res>
+    extends _$AddDogRequestCopyWithImpl<$Res, _$AddDogRequestImpl>
+    implements _$$AddDogRequestImplCopyWith<$Res> {
+  __$$AddDogRequestImplCopyWithImpl(
+      _$AddDogRequestImpl _value, $Res Function(_$AddDogRequestImpl) _then)
+      : super(_value, _then);
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? dogName = freezed,
+    Object? breedName = freezed,
+    Object? dateOfBirth = freezed,
+    Object? gender = freezed,
+    Object? provinceName = freezed,
+    Object? vaccination = freezed,
+    Object? description = freezed,
+    Object? isOpenAdopt = freezed,
+  }) {
+    return _then(_$AddDogRequestImpl(
+      dogName: freezed == dogName
+          ? _value.dogName
+          : dogName // ignore: cast_nullable_to_non_nullable
+              as String?,
+      breedName: freezed == breedName
+          ? _value.breedName
+          : breedName // ignore: cast_nullable_to_non_nullable
+              as String?,
+      dateOfBirth: freezed == dateOfBirth
+          ? _value.dateOfBirth
+          : dateOfBirth // ignore: cast_nullable_to_non_nullable
+              as String?,
+      gender: freezed == gender
+          ? _value.gender
+          : gender // ignore: cast_nullable_to_non_nullable
+              as String?,
+      provinceName: freezed == provinceName
+          ? _value.provinceName
+          : provinceName // ignore: cast_nullable_to_non_nullable
+              as String?,
+      vaccination: freezed == vaccination
+          ? _value.vaccination
+          : vaccination // ignore: cast_nullable_to_non_nullable
+              as String?,
+      description: freezed == description
+          ? _value.description
+          : description // ignore: cast_nullable_to_non_nullable
+              as String?,
+      isOpenAdopt: freezed == isOpenAdopt
+          ? _value.isOpenAdopt
+          : isOpenAdopt // ignore: cast_nullable_to_non_nullable
+              as String?,
+    ));
+  }
+}
+
+/// @nodoc
+@JsonSerializable()
+class _$AddDogRequestImpl implements _AddDogRequest {
+  _$AddDogRequestImpl(
+      {required this.dogName,
+      required this.breedName,
+      required this.dateOfBirth,
+      required this.gender,
+      required this.provinceName,
+      required this.vaccination,
+      required this.description,
+      required this.isOpenAdopt});
+
+  factory _$AddDogRequestImpl.fromJson(Map<String, dynamic> json) =>
+      _$$AddDogRequestImplFromJson(json);
+
+  @override
+  final String? dogName;
+  @override
+  final String? breedName;
+  @override
+  final String? dateOfBirth;
+  @override
+  final String? gender;
+  @override
+  final String? provinceName;
+  @override
+  final String? vaccination;
+  @override
+  final String? description;
+  @override
+  final String? isOpenAdopt;
+
+  @override
+  String toString() {
+    return 'AddDogRequest(dogName: $dogName, breedName: $breedName, dateOfBirth: $dateOfBirth, gender: $gender, provinceName: $provinceName, vaccination: $vaccination, description: $description, isOpenAdopt: $isOpenAdopt)';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$AddDogRequestImpl &&
+            (identical(other.dogName, dogName) || other.dogName == dogName) &&
+            (identical(other.breedName, breedName) ||
+                other.breedName == breedName) &&
+            (identical(other.dateOfBirth, dateOfBirth) ||
+                other.dateOfBirth == dateOfBirth) &&
+            (identical(other.gender, gender) || other.gender == gender) &&
+            (identical(other.provinceName, provinceName) ||
+                other.provinceName == provinceName) &&
+            (identical(other.vaccination, vaccination) ||
+                other.vaccination == vaccination) &&
+            (identical(other.description, description) ||
+                other.description == description) &&
+            (identical(other.isOpenAdopt, isOpenAdopt) ||
+                other.isOpenAdopt == isOpenAdopt));
+  }
+
+  @JsonKey(ignore: true)
+  @override
+  int get hashCode => Object.hash(runtimeType, dogName, breedName, dateOfBirth,
+      gender, provinceName, vaccination, description, isOpenAdopt);
+
+  @JsonKey(ignore: true)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$AddDogRequestImplCopyWith<_$AddDogRequestImpl> get copyWith =>
+      __$$AddDogRequestImplCopyWithImpl<_$AddDogRequestImpl>(this, _$identity);
+
+  @override
+  Map<String, dynamic> toJson() {
+    return _$$AddDogRequestImplToJson(
+      this,
+    );
+  }
+}
+
+abstract class _AddDogRequest implements AddDogRequest {
+  factory _AddDogRequest(
+      {required final String? dogName,
+      required final String? breedName,
+      required final String? dateOfBirth,
+      required final String? gender,
+      required final String? provinceName,
+      required final String? vaccination,
+      required final String? description,
+      required final String? isOpenAdopt}) = _$AddDogRequestImpl;
+
+  factory _AddDogRequest.fromJson(Map<String, dynamic> json) =
+      _$AddDogRequestImpl.fromJson;
+
+  @override
+  String? get dogName;
+  @override
+  String? get breedName;
+  @override
+  String? get dateOfBirth;
+  @override
+  String? get gender;
+  @override
+  String? get provinceName;
+  @override
+  String? get vaccination;
+  @override
+  String? get description;
+  @override
+  String? get isOpenAdopt;
+  @override
+  @JsonKey(ignore: true)
+  _$$AddDogRequestImplCopyWith<_$AddDogRequestImpl> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+AddDogResponse _$AddDogResponseFromJson(Map<String, dynamic> json) {
+  return _AddDogResponse.fromJson(json);
+}
+
+/// @nodoc
+mixin _$AddDogResponse {
+  String? get dogId => throw _privateConstructorUsedError;
+  String? get breedName => throw _privateConstructorUsedError;
+  String? get dogName => throw _privateConstructorUsedError;
+  String? get gender => throw _privateConstructorUsedError;
+  String? get dateOfBirth => throw _privateConstructorUsedError;
+  String? get description => throw _privateConstructorUsedError;
+  String? get vaccination => throw _privateConstructorUsedError;
+  String? get image => throw _privateConstructorUsedError;
+  String? get isOpenAdopt => throw _privateConstructorUsedError;
+  String? get provinceName => throw _privateConstructorUsedError;
+
+  Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
+  @JsonKey(ignore: true)
+  $AddDogResponseCopyWith<AddDogResponse> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class $AddDogResponseCopyWith<$Res> {
+  factory $AddDogResponseCopyWith(
+          AddDogResponse value, $Res Function(AddDogResponse) then) =
+      _$AddDogResponseCopyWithImpl<$Res, AddDogResponse>;
+  @useResult
+  $Res call(
+      {String? dogId,
+      String? breedName,
+      String? dogName,
+      String? gender,
+      String? dateOfBirth,
+      String? description,
+      String? vaccination,
+      String? image,
+      String? isOpenAdopt,
+      String? provinceName});
+}
+
+/// @nodoc
+class _$AddDogResponseCopyWithImpl<$Res, $Val extends AddDogResponse>
+    implements $AddDogResponseCopyWith<$Res> {
+  _$AddDogResponseCopyWithImpl(this._value, this._then);
+
+  // ignore: unused_field
+  final $Val _value;
+  // ignore: unused_field
+  final $Res Function($Val) _then;
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? dogId = freezed,
+    Object? breedName = freezed,
+    Object? dogName = freezed,
+    Object? gender = freezed,
+    Object? dateOfBirth = freezed,
+    Object? description = freezed,
+    Object? vaccination = freezed,
+    Object? image = freezed,
+    Object? isOpenAdopt = freezed,
+    Object? provinceName = freezed,
+  }) {
+    return _then(_value.copyWith(
+      dogId: freezed == dogId
+          ? _value.dogId
+          : dogId // ignore: cast_nullable_to_non_nullable
+              as String?,
+      breedName: freezed == breedName
+          ? _value.breedName
+          : breedName // ignore: cast_nullable_to_non_nullable
+              as String?,
+      dogName: freezed == dogName
+          ? _value.dogName
+          : dogName // ignore: cast_nullable_to_non_nullable
+              as String?,
+      gender: freezed == gender
+          ? _value.gender
+          : gender // ignore: cast_nullable_to_non_nullable
+              as String?,
+      dateOfBirth: freezed == dateOfBirth
+          ? _value.dateOfBirth
+          : dateOfBirth // ignore: cast_nullable_to_non_nullable
+              as String?,
+      description: freezed == description
+          ? _value.description
+          : description // ignore: cast_nullable_to_non_nullable
+              as String?,
+      vaccination: freezed == vaccination
+          ? _value.vaccination
+          : vaccination // ignore: cast_nullable_to_non_nullable
+              as String?,
+      image: freezed == image
+          ? _value.image
+          : image // ignore: cast_nullable_to_non_nullable
+              as String?,
+      isOpenAdopt: freezed == isOpenAdopt
+          ? _value.isOpenAdopt
+          : isOpenAdopt // ignore: cast_nullable_to_non_nullable
+              as String?,
+      provinceName: freezed == provinceName
+          ? _value.provinceName
+          : provinceName // ignore: cast_nullable_to_non_nullable
+              as String?,
+    ) as $Val);
+  }
+}
+
+/// @nodoc
+abstract class _$$AddDogResponseImplCopyWith<$Res>
+    implements $AddDogResponseCopyWith<$Res> {
+  factory _$$AddDogResponseImplCopyWith(_$AddDogResponseImpl value,
+          $Res Function(_$AddDogResponseImpl) then) =
+      __$$AddDogResponseImplCopyWithImpl<$Res>;
+  @override
+  @useResult
+  $Res call(
+      {String? dogId,
+      String? breedName,
+      String? dogName,
+      String? gender,
+      String? dateOfBirth,
+      String? description,
+      String? vaccination,
+      String? image,
+      String? isOpenAdopt,
+      String? provinceName});
+}
+
+/// @nodoc
+class __$$AddDogResponseImplCopyWithImpl<$Res>
+    extends _$AddDogResponseCopyWithImpl<$Res, _$AddDogResponseImpl>
+    implements _$$AddDogResponseImplCopyWith<$Res> {
+  __$$AddDogResponseImplCopyWithImpl(
+      _$AddDogResponseImpl _value, $Res Function(_$AddDogResponseImpl) _then)
+      : super(_value, _then);
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? dogId = freezed,
+    Object? breedName = freezed,
+    Object? dogName = freezed,
+    Object? gender = freezed,
+    Object? dateOfBirth = freezed,
+    Object? description = freezed,
+    Object? vaccination = freezed,
+    Object? image = freezed,
+    Object? isOpenAdopt = freezed,
+    Object? provinceName = freezed,
+  }) {
+    return _then(_$AddDogResponseImpl(
+      dogId: freezed == dogId
+          ? _value.dogId
+          : dogId // ignore: cast_nullable_to_non_nullable
+              as String?,
+      breedName: freezed == breedName
+          ? _value.breedName
+          : breedName // ignore: cast_nullable_to_non_nullable
+              as String?,
+      dogName: freezed == dogName
+          ? _value.dogName
+          : dogName // ignore: cast_nullable_to_non_nullable
+              as String?,
+      gender: freezed == gender
+          ? _value.gender
+          : gender // ignore: cast_nullable_to_non_nullable
+              as String?,
+      dateOfBirth: freezed == dateOfBirth
+          ? _value.dateOfBirth
+          : dateOfBirth // ignore: cast_nullable_to_non_nullable
+              as String?,
+      description: freezed == description
+          ? _value.description
+          : description // ignore: cast_nullable_to_non_nullable
+              as String?,
+      vaccination: freezed == vaccination
+          ? _value.vaccination
+          : vaccination // ignore: cast_nullable_to_non_nullable
+              as String?,
+      image: freezed == image
+          ? _value.image
+          : image // ignore: cast_nullable_to_non_nullable
+              as String?,
+      isOpenAdopt: freezed == isOpenAdopt
+          ? _value.isOpenAdopt
+          : isOpenAdopt // ignore: cast_nullable_to_non_nullable
+              as String?,
+      provinceName: freezed == provinceName
+          ? _value.provinceName
+          : provinceName // ignore: cast_nullable_to_non_nullable
+              as String?,
+    ));
+  }
+}
+
+/// @nodoc
+@JsonSerializable()
+class _$AddDogResponseImpl implements _AddDogResponse {
+  _$AddDogResponseImpl(
+      {required this.dogId,
+      required this.breedName,
+      required this.dogName,
+      required this.gender,
+      required this.dateOfBirth,
+      required this.description,
+      required this.vaccination,
+      required this.image,
+      required this.isOpenAdopt,
+      required this.provinceName});
+
+  factory _$AddDogResponseImpl.fromJson(Map<String, dynamic> json) =>
+      _$$AddDogResponseImplFromJson(json);
+
+  @override
+  final String? dogId;
+  @override
+  final String? breedName;
+  @override
+  final String? dogName;
+  @override
+  final String? gender;
+  @override
+  final String? dateOfBirth;
+  @override
+  final String? description;
+  @override
+  final String? vaccination;
+  @override
+  final String? image;
+  @override
+  final String? isOpenAdopt;
+  @override
+  final String? provinceName;
+
+  @override
+  String toString() {
+    return 'AddDogResponse(dogId: $dogId, breedName: $breedName, dogName: $dogName, gender: $gender, dateOfBirth: $dateOfBirth, description: $description, vaccination: $vaccination, image: $image, isOpenAdopt: $isOpenAdopt, provinceName: $provinceName)';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$AddDogResponseImpl &&
+            (identical(other.dogId, dogId) || other.dogId == dogId) &&
+            (identical(other.breedName, breedName) ||
+                other.breedName == breedName) &&
+            (identical(other.dogName, dogName) || other.dogName == dogName) &&
+            (identical(other.gender, gender) || other.gender == gender) &&
+            (identical(other.dateOfBirth, dateOfBirth) ||
+                other.dateOfBirth == dateOfBirth) &&
+            (identical(other.description, description) ||
+                other.description == description) &&
+            (identical(other.vaccination, vaccination) ||
+                other.vaccination == vaccination) &&
+            (identical(other.image, image) || other.image == image) &&
+            (identical(other.isOpenAdopt, isOpenAdopt) ||
+                other.isOpenAdopt == isOpenAdopt) &&
+            (identical(other.provinceName, provinceName) ||
+                other.provinceName == provinceName));
+  }
+
+  @JsonKey(ignore: true)
+  @override
+  int get hashCode => Object.hash(
+      runtimeType,
+      dogId,
+      breedName,
+      dogName,
+      gender,
+      dateOfBirth,
+      description,
+      vaccination,
+      image,
+      isOpenAdopt,
+      provinceName);
+
+  @JsonKey(ignore: true)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$AddDogResponseImplCopyWith<_$AddDogResponseImpl> get copyWith =>
+      __$$AddDogResponseImplCopyWithImpl<_$AddDogResponseImpl>(
+          this, _$identity);
+
+  @override
+  Map<String, dynamic> toJson() {
+    return _$$AddDogResponseImplToJson(
+      this,
+    );
+  }
+}
+
+abstract class _AddDogResponse implements AddDogResponse {
+  factory _AddDogResponse(
+      {required final String? dogId,
+      required final String? breedName,
+      required final String? dogName,
+      required final String? gender,
+      required final String? dateOfBirth,
+      required final String? description,
+      required final String? vaccination,
+      required final String? image,
+      required final String? isOpenAdopt,
+      required final String? provinceName}) = _$AddDogResponseImpl;
+
+  factory _AddDogResponse.fromJson(Map<String, dynamic> json) =
+      _$AddDogResponseImpl.fromJson;
+
+  @override
+  String? get dogId;
+  @override
+  String? get breedName;
+  @override
+  String? get dogName;
+  @override
+  String? get gender;
+  @override
+  String? get dateOfBirth;
+  @override
+  String? get description;
+  @override
+  String? get vaccination;
+  @override
+  String? get image;
+  @override
+  String? get isOpenAdopt;
+  @override
+  String? get provinceName;
+  @override
+  @JsonKey(ignore: true)
+  _$$AddDogResponseImplCopyWith<_$AddDogResponseImpl> get copyWith =>
+      throw _privateConstructorUsedError;
+}
