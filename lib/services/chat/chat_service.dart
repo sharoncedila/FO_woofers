@@ -1,0 +1,48 @@
+import 'package:dio/dio.dart';
+import 'package:shared_preferences/shared_preferences.dart';
+import 'dart:convert';
+
+import 'package:woofers/classes/dio_instance.dart';
+import 'package:woofers/model/chat_model.dart';
+import 'package:woofers/model/error_schema_model.dart';
+import 'package:woofers/model/chatroom_model.dart';
+
+class ChatroomService {
+  Future<List<RetrieveChatlistResponse>?> retrieveChatroomList() async {
+    try {
+      const api = '/chats/chatroom-list';
+      final dio = await DioInstance.getInstance();
+
+      var response = await dio.get(api);
+      final errorSchema = ErrorSchema.fromJson(response.data!['errorSchema']);
+      if (errorSchema.errorCode != 'WOF-000') {
+        return [
+          RetrieveChatlistResponse.fromJson(response.data['errorSchema'])
+        ];
+      } else {
+        return (response.data['outputSchema']['chatroomList'] as List)
+            .map((e) => RetrieveChatlistResponse.fromJson(e))
+            .toList();
+      }
+    } catch (error) {
+      print(error);
+    }
+  }
+
+  Future<OpenChatResponse?> openChatroom(OpenChatRequest request) async {
+    try {
+      const api = '/chats/open-chat';
+      final dio = await DioInstance.getInstance();
+
+      var response = await dio.post(api, data: jsonEncode(request.toJson()));
+      final errorSchema = ErrorSchema.fromJson(response.data!['errorSchema']);
+      if (errorSchema.errorCode != 'WOF-000') {
+        return OpenChatResponse.fromJson(response.data['errorSchema']);
+      } else {
+        return OpenChatResponse.fromJson(response.data['outputSchema']);
+      }
+    } catch (error) {
+      print(error);
+    }
+  }
+}
