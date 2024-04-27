@@ -35,7 +35,7 @@ class _UserProfilePageState extends State<UserProfilePage> {
       body: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: <Widget>[
-          const SizedBox(height: 10),
+          const SizedBox(height: 10), 
           Expanded(
             child: FutureBuilder(
                 future: _account,

@@ -66,13 +66,14 @@ class _RegisterFormState extends State<RegisterForm> {
   final _emailController = TextEditingController();
   final _passwordController = TextEditingController();
   final _confirmPasswordController = TextEditingController();
-  final _provinceController = TextEditingController();
   final _phoneNumberController = TextEditingController();
   bool passwordVisible = true;
-  final String _password = '';
   final _registerService = RegisterService();
+  String? _selectedProvince;
+  final String _province = '';
 
-  get province => null;
+  late List<String?> provinceNames;
+  
 
   @override
   Widget build(BuildContext context) {
@@ -146,10 +147,10 @@ class _RegisterFormState extends State<RegisterForm> {
     padding: const EdgeInsets.symmetric(horizontal: 25),
     child: FutureBuilder(
       future: RetrieveProvinceService().retrieveAllProvince(),
+      //initialData: initialProvinceNames,
       builder: (context, snapshot) {
-        List<String> provinceList = [];
           if (snapshot.connectionState == ConnectionState.waiting) {
-              return const Text("sabar ya");
+              return const Text("Province");
             }
           if (snapshot.hasError) {
             return Text("Error: ${snapshot.error}");
@@ -157,9 +158,28 @@ class _RegisterFormState extends State<RegisterForm> {
           if (!snapshot.hasData) {
              return const Text("No data");
           } 
-        provinceList = snapshot.data as List<String>;
+          final provinceResponse = snapshot.data!;
+        final provinceNames = provinceResponse.provinceList.map((e) => e.provinceName).toList();
+        /*return DropdownButton<String>(
+          value: _selectedProvince,
+          onChanged: (String? newValue) {
+            if (newValue != null){
+              setState((){
+                _selectedProvince = newValue;
+              });
+            }
+          },
+          items: provinceNames.map((province) {
+            print(province);
+            print(province);
+            return DropdownMenuItem<String>(
+              value: province,
+              child: Text(province),
+            );
+          }).toList(),
+        );*/
         return DropdownButtonFormField<String>(
-          value: null,
+          value: _selectedProvince,
           decoration: InputDecoration(
                 enabledBorder: const OutlineInputBorder(
                   borderSide: BorderSide(color: Colors.white),
@@ -172,8 +192,14 @@ class _RegisterFormState extends State<RegisterForm> {
                 hintText: 'Province',
                 hintStyle: TextStyle(color: Colors.grey[500]),
             ),
-          onChanged: (String? newValue) {},
-          items: provinceList.map((province) {
+          onChanged: (String? newValue) {
+            if (newValue != null){
+              setState((){
+                _selectedProvince = newValue;
+              });
+            }
+          },
+          items: provinceNames.map((province) {
             return DropdownMenuItem<String>(
               value: province,
               child: Text(province),
@@ -321,6 +347,7 @@ class _RegisterFormState extends State<RegisterForm> {
                 keyboardType: TextInputType.visiblePassword,
                 textInputAction: TextInputAction.done,
                 validator: (value) {
+                  
                   if (value == null || value.isEmpty) {
                     return 'Please fill password field';
                   }
@@ -342,7 +369,7 @@ class _RegisterFormState extends State<RegisterForm> {
                   if (!value.contains(RegExp(r'[!@#%^&*(),.?":{}|<>]'))) {
                     return 'Password must contain at least 1 special character';
                   }
-                  if (value != _password) {
+                  if (value != _passwordController.text) {
                      return 'Password doesn\'t match';
                   }
                   return null;
@@ -365,14 +392,14 @@ class _RegisterFormState extends State<RegisterForm> {
                   },
                 ),
               ),
-            child: const Text('Login'),
+            child: const Text('Register'),
             onPressed: () async {
               if (_formKey.currentState!.validate()) {
                   final RequestRegisterModel req = RequestRegisterModel(
                       email: _emailController.text,
                       password: _passwordController.text,
                       username: _usernameController.text,
-                      provinceName: _provinceController.text,
+                      provinceName: _selectedProvince!,
                       phoneNumber: _phoneNumberController.text);
 
                   _registerService

@@ -1,17 +1,37 @@
 import 'package:flutter/material.dart';
 import 'package:chat_bubbles/chat_bubbles.dart';
 
-class ChatroomPage extends StatelessWidget {
-  const ChatroomPage({super.key});
+class ChatroomPage extends StatefulWidget {
+  
+  const ChatroomPage({Key? key}) : super(key: key);
+
+  @override
+  _ChatroomPageState createState() => _ChatroomPageState();
+
+}
+
+class _ChatroomPageState extends State<ChatroomPage> {
+  final TextEditingController _messageController = TextEditingController();
+  final String recipientId = "";
+  final String receiverId = "";
+  
+  void sendMessage() async{
+    if(_messageController.text.isNotEmpty){
+      // service for send message
+      //await chatservice.sendMessage(receiverId, );
+    }
+  }
 
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
       home: Scaffold(
+        appBar: AppBar(title: Text('Username'),centerTitle: true,),
         backgroundColor: Colors.grey[300],
-        body: SafeArea(
+        body: SafeArea( 
           child: Column(
             children: [
+              SizedBox(height: 20),
               const BubbleSpecialThree(
                 text: 'Added iMessage shape bubbles',
                 color: Color(0xFF1B97F3),

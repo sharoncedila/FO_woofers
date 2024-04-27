@@ -1,60 +1,3 @@
-// import 'package:flutter/material.dart';
-// import 'package:flutter/cupertino.dart';
-
-// void main() {
-//   runApp(const CupertinoApp(
-//     home: SecondRoute(),
-//   ));
-// }
-
-// // class FirstRoute extends StatelessWidget {
-// //   const FirstRoute({super.key});
-
-// //   @override
-// //   Widget build(BuildContext context) {
-// //     return CupertinoPageScaffold(
-// //       navigationBar: const CupertinoNavigationBar(
-// //         middle: Text('First Route'),
-// //       ),
-// //       child: Center(
-// //         child: CupertinoButton(
-// //           child: const Text('Open route'),
-// //           onPressed: () {
-// //             Navigator.push(
-// //               context,
-// //               CupertinoPageRoute(builder: (context) => const SecondRoute()),
-// //             );
-// //           },
-// //         ),
-// //       ),
-// //     );
-// //   }
-// // }
-
-// class SecondRoute extends StatelessWidget {
-//   const SecondRoute({super.key});
-
-//   @override
-//   Widget build(BuildContext context) {
-//     return CupertinoPageScaffold(
-//       navigationBar: const CupertinoNavigationBar(
-//         middle: Text('Second Route'),
-//       ),
-//       child: Center(
-//         child: CupertinoButton(
-//           onPressed: () {
-//             Navigator.pop(context);
-//           },
-//           child: const Text('Go back!'),
-//         ),
-//       ),
-//     );
-//   }
-// }
-
-
-
-
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:woofers/pages/edit_my_dog.dart';
@@ -72,6 +15,7 @@ class DogProfilePage extends StatelessWidget {
         backgroundColor: Colors.grey[300],
         body: SafeArea(
           child: Center(
+            child: SingleChildScrollView(
             child: Column(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
@@ -84,7 +28,7 @@ class DogProfilePage extends StatelessWidget {
 
               const SizedBox(height: 10),
               // WOOFERS
-              Text(
+              const Text(
                 'Dog1',
                 style: TextStyle(
                   color: Colors.blue,
@@ -100,6 +44,7 @@ class DogProfilePage extends StatelessWidget {
           )
         ),
       ),
+      ),
     );
   }
 }
@@ -109,7 +54,7 @@ class DogProfileDetail extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Column(
+    return Column( 
       crossAxisAlignment: CrossAxisAlignment.start,
       children: <Widget>[
         const SizedBox(height: 10),

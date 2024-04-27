@@ -45,4 +45,8 @@ class ChatroomService {
       print(error);
     }
   }
+
+  Future<OpenChatResponse?> sendMessage (SendChatRequest request) async{
+    
+  }
 }

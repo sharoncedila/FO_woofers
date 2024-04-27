@@ -67,7 +67,7 @@ class ProfilePageTemplate extends StatelessWidget {
               // AdoptionPage(),
               // FeedsPage(),
               UserProfilePage(),
-              AdoptionPage(),
+              //DogListPage(),
               // FirstRoute(),
             ],
           ),

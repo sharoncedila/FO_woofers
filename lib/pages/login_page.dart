@@ -1,15 +1,12 @@
+import 'package:email_validator/email_validator.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:hexcolor/hexcolor.dart';
 import 'package:hexcolor/hexcolor.dart';
 import 'package:woofers/components/bottom_menu.dart';
 import 'package:woofers/model/login_model.dart';
-import 'package:woofers/pages/chatlist_page.dart';
-import 'package:woofers/pages/feeds_page.dart';
-import 'package:woofers/pages/user_profile_page.dart';
-import 'package:woofers/services/account/login_service.dart';
 import 'package:woofers/pages/register_page.dart';
-import 'package:email_validator/email_validator.dart';
+import 'package:woofers/services/account/login_service.dart';
 
 class LoginPage extends StatelessWidget {
   const LoginPage({super.key});
@@ -19,6 +16,7 @@ class LoginPage extends StatelessWidget {
     return MaterialApp(
       home: Scaffold(
         //resizeToAvoidBottomInset: false,
+        //backgroundColor: Color.fromRGBO(160, 220, 220, 1.0),
         backgroundColor: Colors.grey[300],
         body: // SafeArea(
           // child: 
@@ -40,7 +38,8 @@ class LoginPage extends StatelessWidget {
                 'WOOFERS',
                 style: GoogleFonts.lora(
                   fontSize: 18,
-                  color: Color.fromRGBO(40,36,36,10000),
+                  //color: Colors.white,
+                  color: const Color.fromRGBO(40,36,36,10000),
                   fontWeight: FontWeight.bold,
                   ),
               ),
@@ -151,26 +150,26 @@ class _LoginFormState extends State<LoginForm> {
               ),
               keyboardType: TextInputType.visiblePassword,
                   textInputAction: TextInputAction.done,
-              validator: (_password){
-                if (_password == null || _password.isEmpty) {
+              validator: (password){
+                if (password == null || password.isEmpty) {
                   return 'Please fill password field';
                 }
-                if (_password.length < 8) {
+                if (password.length < 8) {
                   return 'Password must contain more than equal to 8 characters';
                 }
-                if (!_password.contains(RegExp(r'[A-Z]'))) {
+                if (!password.contains(RegExp(r'[A-Z]'))) {
                   return 'Password must contain at least 1 uppercase letter';
                 }
                 // Contains at least one lowercase letter
-                if (!_password.contains(RegExp(r'[a-z]'))) {
+                if (!password.contains(RegExp(r'[a-z]'))) {
                   return 'Password must contain at least 1 lowercase letter';
                 }
                 // Contains at least one digit
-                if (!_password.contains(RegExp(r'[0-9]'))) {
+                if (!password.contains(RegExp(r'[0-9]'))) {
                   return 'Password must contain at least 1 digit';
                 }
                 // Contains at least one special character
-                if (!_password.contains(RegExp(r'[!@#%^&*(),.?":{}|<>]'))) {
+                if (!password.contains(RegExp(r'[!@#%^&*(),.?":{}|<>]'))) {
                   return 'Password must contain at least 1 special character';
                 }
                 return null;
@@ -193,7 +192,24 @@ class _LoginFormState extends State<LoginForm> {
                   },
                 ),
               ),
-            child: const Text('Login'),
+
+            /*const SizedBox(
+              height: 50,
+            ),
+            SizedBox(
+              width: 200,
+              height: 45,
+              child: ElevatedButton(
+                style: ButtonStyle(
+                  backgroundColor: MaterialStateProperty.all<Color>(
+                   Colors.blue,
+                  ),
+                ),*/
+            child: 
+            Text(
+              'LOGIN',
+              style: TextStyle(color: Colors.grey[600], fontWeight: FontWeight.bold,fontSize: 18),
+            ),
             onPressed: () async {
               if (_formKey.currentState!.validate()) {
                   final RequestLoginModel req = RequestLoginModel(
@@ -231,7 +247,9 @@ class _LoginFormState extends State<LoginForm> {
               Text(
                 'Don\'t have any account? ',
                 style: TextStyle(
+                  //color: Colors.white,
                   color: Colors.grey[700],
+                  fontWeight: FontWeight.bold,
                 ),
               ),
               Padding(
