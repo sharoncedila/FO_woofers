@@ -17,4 +17,19 @@ class ResponseUserProfileModel with _$ResponseUserProfileModel {
   }) = _ResponseUserProfileModel;
 
   factory ResponseUserProfileModel.fromJson(Map<String, dynamic> json) => _$ResponseUserProfileModelFromJson(json);
-}   
+}
+
+@freezed
+class OtherUserProfileResponse with _$OtherUserProfileResponse{
+  factory OtherUserProfileResponse({
+    required String? fullName,
+    required String? provinceName,
+    required String? phoneNumber,
+    required String? description,
+    required String? image,
+    required String? errorCode,
+    required String? errorMessage
+  }) = _OtherUserProfileResponse;
+
+  factory OtherUserProfileResponse.fromJson(Map<String, dynamic> json) => _$OtherUserProfileResponseFromJson(json);
+}

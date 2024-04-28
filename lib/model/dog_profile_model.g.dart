@@ -88,3 +88,64 @@ Map<String, dynamic> _$$AddDogResponseImplToJson(
       'isOpenAdopt': instance.isOpenAdopt,
       'provinceName': instance.provinceName,
     };
+
+_$EditDogResponseImpl _$$EditDogResponseImplFromJson(
+        Map<String, dynamic> json) =>
+    _$EditDogResponseImpl(
+      dogId: json['dogId'] as String?,
+      breedName: json['breedName'] as String?,
+      dogName: json['dogName'] as String?,
+      gender: json['gender'] as String?,
+      dateOfBirth: json['dateOfBirth'] as String?,
+      description: json['description'] as String?,
+      vaccination: json['vaccination'] as String?,
+      image: json['image'] as String?,
+      isOpenAdopt: json['isOpenAdopt'] as String?,
+      provinceName: json['provinceName'] as String?,
+      errorCode: json['errorCode'] as String?,
+      errorMessage: json['errorMessage'] as String?,
+    );
+
+Map<String, dynamic> _$$EditDogResponseImplToJson(
+        _$EditDogResponseImpl instance) =>
+    <String, dynamic>{
+      'dogId': instance.dogId,
+      'breedName': instance.breedName,
+      'dogName': instance.dogName,
+      'gender': instance.gender,
+      'dateOfBirth': instance.dateOfBirth,
+      'description': instance.description,
+      'vaccination': instance.vaccination,
+      'image': instance.image,
+      'isOpenAdopt': instance.isOpenAdopt,
+      'provinceName': instance.provinceName,
+      'errorCode': instance.errorCode,
+      'errorMessage': instance.errorMessage,
+    };
+
+_$EditDogRequestImpl _$$EditDogRequestImplFromJson(Map<String, dynamic> json) =>
+    _$EditDogRequestImpl(
+      dogId: json['dogId'] as String?,
+      dogName: json['dogName'] as String?,
+      breedName: json['breedName'] as String?,
+      dateOfBirth: json['dateOfBirth'] as String?,
+      gender: json['gender'] as String?,
+      provinceName: json['provinceName'] as String?,
+      vaccination: json['vaccination'] as String?,
+      description: json['description'] as String?,
+      isOpenAdopt: json['isOpenAdopt'] as String?,
+    );
+
+Map<String, dynamic> _$$EditDogRequestImplToJson(
+        _$EditDogRequestImpl instance) =>
+    <String, dynamic>{
+      'dogId': instance.dogId,
+      'dogName': instance.dogName,
+      'breedName': instance.breedName,
+      'dateOfBirth': instance.dateOfBirth,
+      'gender': instance.gender,
+      'provinceName': instance.provinceName,
+      'vaccination': instance.vaccination,
+      'description': instance.description,
+      'isOpenAdopt': instance.isOpenAdopt,
+    };

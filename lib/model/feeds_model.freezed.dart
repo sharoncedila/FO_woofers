@@ -177,7 +177,6 @@ PostFeedsRequest _$PostFeedsRequestFromJson(Map<String, dynamic> json) {
 mixin _$PostFeedsRequest {
   String get caption => throw _privateConstructorUsedError;
   String get image => throw _privateConstructorUsedError;
-  String get video => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -191,7 +190,7 @@ abstract class $PostFeedsRequestCopyWith<$Res> {
           PostFeedsRequest value, $Res Function(PostFeedsRequest) then) =
       _$PostFeedsRequestCopyWithImpl<$Res, PostFeedsRequest>;
   @useResult
-  $Res call({String caption, String image, String video});
+  $Res call({String caption, String image});
 }
 
 /// @nodoc
@@ -209,7 +208,6 @@ class _$PostFeedsRequestCopyWithImpl<$Res, $Val extends PostFeedsRequest>
   $Res call({
     Object? caption = null,
     Object? image = null,
-    Object? video = null,
   }) {
     return _then(_value.copyWith(
       caption: null == caption
@@ -219,10 +217,6 @@ class _$PostFeedsRequestCopyWithImpl<$Res, $Val extends PostFeedsRequest>
       image: null == image
           ? _value.image
           : image // ignore: cast_nullable_to_non_nullable
-              as String,
-      video: null == video
-          ? _value.video
-          : video // ignore: cast_nullable_to_non_nullable
               as String,
     ) as $Val);
   }
@@ -236,7 +230,7 @@ abstract class _$$PostFeedsRequestImplCopyWith<$Res>
       __$$PostFeedsRequestImplCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({String caption, String image, String video});
+  $Res call({String caption, String image});
 }
 
 /// @nodoc
@@ -252,7 +246,6 @@ class __$$PostFeedsRequestImplCopyWithImpl<$Res>
   $Res call({
     Object? caption = null,
     Object? image = null,
-    Object? video = null,
   }) {
     return _then(_$PostFeedsRequestImpl(
       caption: null == caption
@@ -263,10 +256,6 @@ class __$$PostFeedsRequestImplCopyWithImpl<$Res>
           ? _value.image
           : image // ignore: cast_nullable_to_non_nullable
               as String,
-      video: null == video
-          ? _value.video
-          : video // ignore: cast_nullable_to_non_nullable
-              as String,
     ));
   }
 }
@@ -274,8 +263,7 @@ class __$$PostFeedsRequestImplCopyWithImpl<$Res>
 /// @nodoc
 @JsonSerializable()
 class _$PostFeedsRequestImpl implements _PostFeedsRequest {
-  _$PostFeedsRequestImpl(
-      {required this.caption, required this.image, required this.video});
+  _$PostFeedsRequestImpl({required this.caption, required this.image});
 
   factory _$PostFeedsRequestImpl.fromJson(Map<String, dynamic> json) =>
       _$$PostFeedsRequestImplFromJson(json);
@@ -284,12 +272,10 @@ class _$PostFeedsRequestImpl implements _PostFeedsRequest {
   final String caption;
   @override
   final String image;
-  @override
-  final String video;
 
   @override
   String toString() {
-    return 'PostFeedsRequest(caption: $caption, image: $image, video: $video)';
+    return 'PostFeedsRequest(caption: $caption, image: $image)';
   }
 
   @override
@@ -298,13 +284,12 @@ class _$PostFeedsRequestImpl implements _PostFeedsRequest {
         (other.runtimeType == runtimeType &&
             other is _$PostFeedsRequestImpl &&
             (identical(other.caption, caption) || other.caption == caption) &&
-            (identical(other.image, image) || other.image == image) &&
-            (identical(other.video, video) || other.video == video));
+            (identical(other.image, image) || other.image == image));
   }
 
   @JsonKey(ignore: true)
   @override
-  int get hashCode => Object.hash(runtimeType, caption, image, video);
+  int get hashCode => Object.hash(runtimeType, caption, image);
 
   @JsonKey(ignore: true)
   @override
@@ -324,8 +309,7 @@ class _$PostFeedsRequestImpl implements _PostFeedsRequest {
 abstract class _PostFeedsRequest implements PostFeedsRequest {
   factory _PostFeedsRequest(
       {required final String caption,
-      required final String image,
-      required final String video}) = _$PostFeedsRequestImpl;
+      required final String image}) = _$PostFeedsRequestImpl;
 
   factory _PostFeedsRequest.fromJson(Map<String, dynamic> json) =
       _$PostFeedsRequestImpl.fromJson;
@@ -334,8 +318,6 @@ abstract class _PostFeedsRequest implements PostFeedsRequest {
   String get caption;
   @override
   String get image;
-  @override
-  String get video;
   @override
   @JsonKey(ignore: true)
   _$$PostFeedsRequestImplCopyWith<_$PostFeedsRequestImpl> get copyWith =>
@@ -661,9 +643,6 @@ mixin _$LeaveCommentResponse {
   String get accountId => throw _privateConstructorUsedError;
   String get content => throw _privateConstructorUsedError;
   String get commentDate => throw _privateConstructorUsedError;
-  String get video => throw _privateConstructorUsedError;
-  String get likesCount => throw _privateConstructorUsedError;
-  String get postDate => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -682,10 +661,7 @@ abstract class $LeaveCommentResponseCopyWith<$Res> {
       String feedsId,
       String accountId,
       String content,
-      String commentDate,
-      String video,
-      String likesCount,
-      String postDate});
+      String commentDate});
 }
 
 /// @nodoc
@@ -707,9 +683,6 @@ class _$LeaveCommentResponseCopyWithImpl<$Res,
     Object? accountId = null,
     Object? content = null,
     Object? commentDate = null,
-    Object? video = null,
-    Object? likesCount = null,
-    Object? postDate = null,
   }) {
     return _then(_value.copyWith(
       commentId: null == commentId
@@ -732,18 +705,6 @@ class _$LeaveCommentResponseCopyWithImpl<$Res,
           ? _value.commentDate
           : commentDate // ignore: cast_nullable_to_non_nullable
               as String,
-      video: null == video
-          ? _value.video
-          : video // ignore: cast_nullable_to_non_nullable
-              as String,
-      likesCount: null == likesCount
-          ? _value.likesCount
-          : likesCount // ignore: cast_nullable_to_non_nullable
-              as String,
-      postDate: null == postDate
-          ? _value.postDate
-          : postDate // ignore: cast_nullable_to_non_nullable
-              as String,
     ) as $Val);
   }
 }
@@ -761,10 +722,7 @@ abstract class _$$LeaveCommentResponseImplCopyWith<$Res>
       String feedsId,
       String accountId,
       String content,
-      String commentDate,
-      String video,
-      String likesCount,
-      String postDate});
+      String commentDate});
 }
 
 /// @nodoc
@@ -783,9 +741,6 @@ class __$$LeaveCommentResponseImplCopyWithImpl<$Res>
     Object? accountId = null,
     Object? content = null,
     Object? commentDate = null,
-    Object? video = null,
-    Object? likesCount = null,
-    Object? postDate = null,
   }) {
     return _then(_$LeaveCommentResponseImpl(
       commentId: null == commentId
@@ -808,18 +763,6 @@ class __$$LeaveCommentResponseImplCopyWithImpl<$Res>
           ? _value.commentDate
           : commentDate // ignore: cast_nullable_to_non_nullable
               as String,
-      video: null == video
-          ? _value.video
-          : video // ignore: cast_nullable_to_non_nullable
-              as String,
-      likesCount: null == likesCount
-          ? _value.likesCount
-          : likesCount // ignore: cast_nullable_to_non_nullable
-              as String,
-      postDate: null == postDate
-          ? _value.postDate
-          : postDate // ignore: cast_nullable_to_non_nullable
-              as String,
     ));
   }
 }
@@ -832,10 +775,7 @@ class _$LeaveCommentResponseImpl implements _LeaveCommentResponse {
       required this.feedsId,
       required this.accountId,
       required this.content,
-      required this.commentDate,
-      required this.video,
-      required this.likesCount,
-      required this.postDate});
+      required this.commentDate});
 
   factory _$LeaveCommentResponseImpl.fromJson(Map<String, dynamic> json) =>
       _$$LeaveCommentResponseImplFromJson(json);
@@ -850,16 +790,10 @@ class _$LeaveCommentResponseImpl implements _LeaveCommentResponse {
   final String content;
   @override
   final String commentDate;
-  @override
-  final String video;
-  @override
-  final String likesCount;
-  @override
-  final String postDate;
 
   @override
   String toString() {
-    return 'LeaveCommentResponse(commentId: $commentId, feedsId: $feedsId, accountId: $accountId, content: $content, commentDate: $commentDate, video: $video, likesCount: $likesCount, postDate: $postDate)';
+    return 'LeaveCommentResponse(commentId: $commentId, feedsId: $feedsId, accountId: $accountId, content: $content, commentDate: $commentDate)';
   }
 
   @override
@@ -874,18 +808,13 @@ class _$LeaveCommentResponseImpl implements _LeaveCommentResponse {
                 other.accountId == accountId) &&
             (identical(other.content, content) || other.content == content) &&
             (identical(other.commentDate, commentDate) ||
-                other.commentDate == commentDate) &&
-            (identical(other.video, video) || other.video == video) &&
-            (identical(other.likesCount, likesCount) ||
-                other.likesCount == likesCount) &&
-            (identical(other.postDate, postDate) ||
-                other.postDate == postDate));
+                other.commentDate == commentDate));
   }
 
   @JsonKey(ignore: true)
   @override
-  int get hashCode => Object.hash(runtimeType, commentId, feedsId, accountId,
-      content, commentDate, video, likesCount, postDate);
+  int get hashCode => Object.hash(
+      runtimeType, commentId, feedsId, accountId, content, commentDate);
 
   @JsonKey(ignore: true)
   @override
@@ -909,10 +838,7 @@ abstract class _LeaveCommentResponse implements LeaveCommentResponse {
       required final String feedsId,
       required final String accountId,
       required final String content,
-      required final String commentDate,
-      required final String video,
-      required final String likesCount,
-      required final String postDate}) = _$LeaveCommentResponseImpl;
+      required final String commentDate}) = _$LeaveCommentResponseImpl;
 
   factory _LeaveCommentResponse.fromJson(Map<String, dynamic> json) =
       _$LeaveCommentResponseImpl.fromJson;
@@ -928,155 +854,8 @@ abstract class _LeaveCommentResponse implements LeaveCommentResponse {
   @override
   String get commentDate;
   @override
-  String get video;
-  @override
-  String get likesCount;
-  @override
-  String get postDate;
-  @override
   @JsonKey(ignore: true)
   _$$LeaveCommentResponseImplCopyWith<_$LeaveCommentResponseImpl>
-      get copyWith => throw _privateConstructorUsedError;
-}
-
-OpenCommentsResponse _$OpenCommentsResponseFromJson(Map<String, dynamic> json) {
-  return _OpenCommentsResponse.fromJson(json);
-}
-
-/// @nodoc
-mixin _$OpenCommentsResponse {
-  String get commentList => throw _privateConstructorUsedError;
-
-  Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
-  @JsonKey(ignore: true)
-  $OpenCommentsResponseCopyWith<OpenCommentsResponse> get copyWith =>
-      throw _privateConstructorUsedError;
-}
-
-/// @nodoc
-abstract class $OpenCommentsResponseCopyWith<$Res> {
-  factory $OpenCommentsResponseCopyWith(OpenCommentsResponse value,
-          $Res Function(OpenCommentsResponse) then) =
-      _$OpenCommentsResponseCopyWithImpl<$Res, OpenCommentsResponse>;
-  @useResult
-  $Res call({String commentList});
-}
-
-/// @nodoc
-class _$OpenCommentsResponseCopyWithImpl<$Res,
-        $Val extends OpenCommentsResponse>
-    implements $OpenCommentsResponseCopyWith<$Res> {
-  _$OpenCommentsResponseCopyWithImpl(this._value, this._then);
-
-  // ignore: unused_field
-  final $Val _value;
-  // ignore: unused_field
-  final $Res Function($Val) _then;
-
-  @pragma('vm:prefer-inline')
-  @override
-  $Res call({
-    Object? commentList = null,
-  }) {
-    return _then(_value.copyWith(
-      commentList: null == commentList
-          ? _value.commentList
-          : commentList // ignore: cast_nullable_to_non_nullable
-              as String,
-    ) as $Val);
-  }
-}
-
-/// @nodoc
-abstract class _$$OpenCommentsResponseImplCopyWith<$Res>
-    implements $OpenCommentsResponseCopyWith<$Res> {
-  factory _$$OpenCommentsResponseImplCopyWith(_$OpenCommentsResponseImpl value,
-          $Res Function(_$OpenCommentsResponseImpl) then) =
-      __$$OpenCommentsResponseImplCopyWithImpl<$Res>;
-  @override
-  @useResult
-  $Res call({String commentList});
-}
-
-/// @nodoc
-class __$$OpenCommentsResponseImplCopyWithImpl<$Res>
-    extends _$OpenCommentsResponseCopyWithImpl<$Res, _$OpenCommentsResponseImpl>
-    implements _$$OpenCommentsResponseImplCopyWith<$Res> {
-  __$$OpenCommentsResponseImplCopyWithImpl(_$OpenCommentsResponseImpl _value,
-      $Res Function(_$OpenCommentsResponseImpl) _then)
-      : super(_value, _then);
-
-  @pragma('vm:prefer-inline')
-  @override
-  $Res call({
-    Object? commentList = null,
-  }) {
-    return _then(_$OpenCommentsResponseImpl(
-      commentList: null == commentList
-          ? _value.commentList
-          : commentList // ignore: cast_nullable_to_non_nullable
-              as String,
-    ));
-  }
-}
-
-/// @nodoc
-@JsonSerializable()
-class _$OpenCommentsResponseImpl implements _OpenCommentsResponse {
-  _$OpenCommentsResponseImpl({required this.commentList});
-
-  factory _$OpenCommentsResponseImpl.fromJson(Map<String, dynamic> json) =>
-      _$$OpenCommentsResponseImplFromJson(json);
-
-  @override
-  final String commentList;
-
-  @override
-  String toString() {
-    return 'OpenCommentsResponse(commentList: $commentList)';
-  }
-
-  @override
-  bool operator ==(Object other) {
-    return identical(this, other) ||
-        (other.runtimeType == runtimeType &&
-            other is _$OpenCommentsResponseImpl &&
-            (identical(other.commentList, commentList) ||
-                other.commentList == commentList));
-  }
-
-  @JsonKey(ignore: true)
-  @override
-  int get hashCode => Object.hash(runtimeType, commentList);
-
-  @JsonKey(ignore: true)
-  @override
-  @pragma('vm:prefer-inline')
-  _$$OpenCommentsResponseImplCopyWith<_$OpenCommentsResponseImpl>
-      get copyWith =>
-          __$$OpenCommentsResponseImplCopyWithImpl<_$OpenCommentsResponseImpl>(
-              this, _$identity);
-
-  @override
-  Map<String, dynamic> toJson() {
-    return _$$OpenCommentsResponseImplToJson(
-      this,
-    );
-  }
-}
-
-abstract class _OpenCommentsResponse implements OpenCommentsResponse {
-  factory _OpenCommentsResponse({required final String commentList}) =
-      _$OpenCommentsResponseImpl;
-
-  factory _OpenCommentsResponse.fromJson(Map<String, dynamic> json) =
-      _$OpenCommentsResponseImpl.fromJson;
-
-  @override
-  String get commentList;
-  @override
-  @JsonKey(ignore: true)
-  _$$OpenCommentsResponseImplCopyWith<_$OpenCommentsResponseImpl>
       get copyWith => throw _privateConstructorUsedError;
 }
 
@@ -1086,7 +865,17 @@ PostFeedsResponse _$PostFeedsResponseFromJson(Map<String, dynamic> json) {
 
 /// @nodoc
 mixin _$PostFeedsResponse {
-  String get feedsData => throw _privateConstructorUsedError;
+  String? get feedsId => throw _privateConstructorUsedError;
+  String? get accountId => throw _privateConstructorUsedError;
+  String? get username => throw _privateConstructorUsedError;
+  String? get likesCount => throw _privateConstructorUsedError;
+  String? get caption => throw _privateConstructorUsedError;
+  String? get image => throw _privateConstructorUsedError;
+  String? get reportCount => throw _privateConstructorUsedError;
+  String? get postDate => throw _privateConstructorUsedError;
+  String? get deletedAt => throw _privateConstructorUsedError;
+  String? get errorCode => throw _privateConstructorUsedError;
+  String? get errorMessage => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -1100,7 +889,18 @@ abstract class $PostFeedsResponseCopyWith<$Res> {
           PostFeedsResponse value, $Res Function(PostFeedsResponse) then) =
       _$PostFeedsResponseCopyWithImpl<$Res, PostFeedsResponse>;
   @useResult
-  $Res call({String feedsData});
+  $Res call(
+      {String? feedsId,
+      String? accountId,
+      String? username,
+      String? likesCount,
+      String? caption,
+      String? image,
+      String? reportCount,
+      String? postDate,
+      String? deletedAt,
+      String? errorCode,
+      String? errorMessage});
 }
 
 /// @nodoc
@@ -1116,13 +916,63 @@ class _$PostFeedsResponseCopyWithImpl<$Res, $Val extends PostFeedsResponse>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? feedsData = null,
+    Object? feedsId = freezed,
+    Object? accountId = freezed,
+    Object? username = freezed,
+    Object? likesCount = freezed,
+    Object? caption = freezed,
+    Object? image = freezed,
+    Object? reportCount = freezed,
+    Object? postDate = freezed,
+    Object? deletedAt = freezed,
+    Object? errorCode = freezed,
+    Object? errorMessage = freezed,
   }) {
     return _then(_value.copyWith(
-      feedsData: null == feedsData
-          ? _value.feedsData
-          : feedsData // ignore: cast_nullable_to_non_nullable
-              as String,
+      feedsId: freezed == feedsId
+          ? _value.feedsId
+          : feedsId // ignore: cast_nullable_to_non_nullable
+              as String?,
+      accountId: freezed == accountId
+          ? _value.accountId
+          : accountId // ignore: cast_nullable_to_non_nullable
+              as String?,
+      username: freezed == username
+          ? _value.username
+          : username // ignore: cast_nullable_to_non_nullable
+              as String?,
+      likesCount: freezed == likesCount
+          ? _value.likesCount
+          : likesCount // ignore: cast_nullable_to_non_nullable
+              as String?,
+      caption: freezed == caption
+          ? _value.caption
+          : caption // ignore: cast_nullable_to_non_nullable
+              as String?,
+      image: freezed == image
+          ? _value.image
+          : image // ignore: cast_nullable_to_non_nullable
+              as String?,
+      reportCount: freezed == reportCount
+          ? _value.reportCount
+          : reportCount // ignore: cast_nullable_to_non_nullable
+              as String?,
+      postDate: freezed == postDate
+          ? _value.postDate
+          : postDate // ignore: cast_nullable_to_non_nullable
+              as String?,
+      deletedAt: freezed == deletedAt
+          ? _value.deletedAt
+          : deletedAt // ignore: cast_nullable_to_non_nullable
+              as String?,
+      errorCode: freezed == errorCode
+          ? _value.errorCode
+          : errorCode // ignore: cast_nullable_to_non_nullable
+              as String?,
+      errorMessage: freezed == errorMessage
+          ? _value.errorMessage
+          : errorMessage // ignore: cast_nullable_to_non_nullable
+              as String?,
     ) as $Val);
   }
 }
@@ -1135,7 +985,18 @@ abstract class _$$PostFeedsResponseImplCopyWith<$Res>
       __$$PostFeedsResponseImplCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({String feedsData});
+  $Res call(
+      {String? feedsId,
+      String? accountId,
+      String? username,
+      String? likesCount,
+      String? caption,
+      String? image,
+      String? reportCount,
+      String? postDate,
+      String? deletedAt,
+      String? errorCode,
+      String? errorMessage});
 }
 
 /// @nodoc
@@ -1149,13 +1010,63 @@ class __$$PostFeedsResponseImplCopyWithImpl<$Res>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? feedsData = null,
+    Object? feedsId = freezed,
+    Object? accountId = freezed,
+    Object? username = freezed,
+    Object? likesCount = freezed,
+    Object? caption = freezed,
+    Object? image = freezed,
+    Object? reportCount = freezed,
+    Object? postDate = freezed,
+    Object? deletedAt = freezed,
+    Object? errorCode = freezed,
+    Object? errorMessage = freezed,
   }) {
     return _then(_$PostFeedsResponseImpl(
-      feedsData: null == feedsData
-          ? _value.feedsData
-          : feedsData // ignore: cast_nullable_to_non_nullable
-              as String,
+      feedsId: freezed == feedsId
+          ? _value.feedsId
+          : feedsId // ignore: cast_nullable_to_non_nullable
+              as String?,
+      accountId: freezed == accountId
+          ? _value.accountId
+          : accountId // ignore: cast_nullable_to_non_nullable
+              as String?,
+      username: freezed == username
+          ? _value.username
+          : username // ignore: cast_nullable_to_non_nullable
+              as String?,
+      likesCount: freezed == likesCount
+          ? _value.likesCount
+          : likesCount // ignore: cast_nullable_to_non_nullable
+              as String?,
+      caption: freezed == caption
+          ? _value.caption
+          : caption // ignore: cast_nullable_to_non_nullable
+              as String?,
+      image: freezed == image
+          ? _value.image
+          : image // ignore: cast_nullable_to_non_nullable
+              as String?,
+      reportCount: freezed == reportCount
+          ? _value.reportCount
+          : reportCount // ignore: cast_nullable_to_non_nullable
+              as String?,
+      postDate: freezed == postDate
+          ? _value.postDate
+          : postDate // ignore: cast_nullable_to_non_nullable
+              as String?,
+      deletedAt: freezed == deletedAt
+          ? _value.deletedAt
+          : deletedAt // ignore: cast_nullable_to_non_nullable
+              as String?,
+      errorCode: freezed == errorCode
+          ? _value.errorCode
+          : errorCode // ignore: cast_nullable_to_non_nullable
+              as String?,
+      errorMessage: freezed == errorMessage
+          ? _value.errorMessage
+          : errorMessage // ignore: cast_nullable_to_non_nullable
+              as String?,
     ));
   }
 }
@@ -1163,17 +1074,48 @@ class __$$PostFeedsResponseImplCopyWithImpl<$Res>
 /// @nodoc
 @JsonSerializable()
 class _$PostFeedsResponseImpl implements _PostFeedsResponse {
-  _$PostFeedsResponseImpl({required this.feedsData});
+  _$PostFeedsResponseImpl(
+      {required this.feedsId,
+      required this.accountId,
+      required this.username,
+      required this.likesCount,
+      required this.caption,
+      required this.image,
+      required this.reportCount,
+      required this.postDate,
+      required this.deletedAt,
+      required this.errorCode,
+      required this.errorMessage});
 
   factory _$PostFeedsResponseImpl.fromJson(Map<String, dynamic> json) =>
       _$$PostFeedsResponseImplFromJson(json);
 
   @override
-  final String feedsData;
+  final String? feedsId;
+  @override
+  final String? accountId;
+  @override
+  final String? username;
+  @override
+  final String? likesCount;
+  @override
+  final String? caption;
+  @override
+  final String? image;
+  @override
+  final String? reportCount;
+  @override
+  final String? postDate;
+  @override
+  final String? deletedAt;
+  @override
+  final String? errorCode;
+  @override
+  final String? errorMessage;
 
   @override
   String toString() {
-    return 'PostFeedsResponse(feedsData: $feedsData)';
+    return 'PostFeedsResponse(feedsId: $feedsId, accountId: $accountId, username: $username, likesCount: $likesCount, caption: $caption, image: $image, reportCount: $reportCount, postDate: $postDate, deletedAt: $deletedAt, errorCode: $errorCode, errorMessage: $errorMessage)';
   }
 
   @override
@@ -1181,13 +1123,42 @@ class _$PostFeedsResponseImpl implements _PostFeedsResponse {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$PostFeedsResponseImpl &&
-            (identical(other.feedsData, feedsData) ||
-                other.feedsData == feedsData));
+            (identical(other.feedsId, feedsId) || other.feedsId == feedsId) &&
+            (identical(other.accountId, accountId) ||
+                other.accountId == accountId) &&
+            (identical(other.username, username) ||
+                other.username == username) &&
+            (identical(other.likesCount, likesCount) ||
+                other.likesCount == likesCount) &&
+            (identical(other.caption, caption) || other.caption == caption) &&
+            (identical(other.image, image) || other.image == image) &&
+            (identical(other.reportCount, reportCount) ||
+                other.reportCount == reportCount) &&
+            (identical(other.postDate, postDate) ||
+                other.postDate == postDate) &&
+            (identical(other.deletedAt, deletedAt) ||
+                other.deletedAt == deletedAt) &&
+            (identical(other.errorCode, errorCode) ||
+                other.errorCode == errorCode) &&
+            (identical(other.errorMessage, errorMessage) ||
+                other.errorMessage == errorMessage));
   }
 
   @JsonKey(ignore: true)
   @override
-  int get hashCode => Object.hash(runtimeType, feedsData);
+  int get hashCode => Object.hash(
+      runtimeType,
+      feedsId,
+      accountId,
+      username,
+      likesCount,
+      caption,
+      image,
+      reportCount,
+      postDate,
+      deletedAt,
+      errorCode,
+      errorMessage);
 
   @JsonKey(ignore: true)
   @override
@@ -1205,155 +1176,46 @@ class _$PostFeedsResponseImpl implements _PostFeedsResponse {
 }
 
 abstract class _PostFeedsResponse implements PostFeedsResponse {
-  factory _PostFeedsResponse({required final String feedsData}) =
-      _$PostFeedsResponseImpl;
+  factory _PostFeedsResponse(
+      {required final String? feedsId,
+      required final String? accountId,
+      required final String? username,
+      required final String? likesCount,
+      required final String? caption,
+      required final String? image,
+      required final String? reportCount,
+      required final String? postDate,
+      required final String? deletedAt,
+      required final String? errorCode,
+      required final String? errorMessage}) = _$PostFeedsResponseImpl;
 
   factory _PostFeedsResponse.fromJson(Map<String, dynamic> json) =
       _$PostFeedsResponseImpl.fromJson;
 
   @override
-  String get feedsData;
+  String? get feedsId;
+  @override
+  String? get accountId;
+  @override
+  String? get username;
+  @override
+  String? get likesCount;
+  @override
+  String? get caption;
+  @override
+  String? get image;
+  @override
+  String? get reportCount;
+  @override
+  String? get postDate;
+  @override
+  String? get deletedAt;
+  @override
+  String? get errorCode;
+  @override
+  String? get errorMessage;
   @override
   @JsonKey(ignore: true)
   _$$PostFeedsResponseImplCopyWith<_$PostFeedsResponseImpl> get copyWith =>
-      throw _privateConstructorUsedError;
-}
-
-UploadFeedsResponse _$UploadFeedsResponseFromJson(Map<String, dynamic> json) {
-  return _UploadFeedsResponse.fromJson(json);
-}
-
-/// @nodoc
-mixin _$UploadFeedsResponse {
-  String get fileName => throw _privateConstructorUsedError;
-
-  Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
-  @JsonKey(ignore: true)
-  $UploadFeedsResponseCopyWith<UploadFeedsResponse> get copyWith =>
-      throw _privateConstructorUsedError;
-}
-
-/// @nodoc
-abstract class $UploadFeedsResponseCopyWith<$Res> {
-  factory $UploadFeedsResponseCopyWith(
-          UploadFeedsResponse value, $Res Function(UploadFeedsResponse) then) =
-      _$UploadFeedsResponseCopyWithImpl<$Res, UploadFeedsResponse>;
-  @useResult
-  $Res call({String fileName});
-}
-
-/// @nodoc
-class _$UploadFeedsResponseCopyWithImpl<$Res, $Val extends UploadFeedsResponse>
-    implements $UploadFeedsResponseCopyWith<$Res> {
-  _$UploadFeedsResponseCopyWithImpl(this._value, this._then);
-
-  // ignore: unused_field
-  final $Val _value;
-  // ignore: unused_field
-  final $Res Function($Val) _then;
-
-  @pragma('vm:prefer-inline')
-  @override
-  $Res call({
-    Object? fileName = null,
-  }) {
-    return _then(_value.copyWith(
-      fileName: null == fileName
-          ? _value.fileName
-          : fileName // ignore: cast_nullable_to_non_nullable
-              as String,
-    ) as $Val);
-  }
-}
-
-/// @nodoc
-abstract class _$$UploadFeedsResponseImplCopyWith<$Res>
-    implements $UploadFeedsResponseCopyWith<$Res> {
-  factory _$$UploadFeedsResponseImplCopyWith(_$UploadFeedsResponseImpl value,
-          $Res Function(_$UploadFeedsResponseImpl) then) =
-      __$$UploadFeedsResponseImplCopyWithImpl<$Res>;
-  @override
-  @useResult
-  $Res call({String fileName});
-}
-
-/// @nodoc
-class __$$UploadFeedsResponseImplCopyWithImpl<$Res>
-    extends _$UploadFeedsResponseCopyWithImpl<$Res, _$UploadFeedsResponseImpl>
-    implements _$$UploadFeedsResponseImplCopyWith<$Res> {
-  __$$UploadFeedsResponseImplCopyWithImpl(_$UploadFeedsResponseImpl _value,
-      $Res Function(_$UploadFeedsResponseImpl) _then)
-      : super(_value, _then);
-
-  @pragma('vm:prefer-inline')
-  @override
-  $Res call({
-    Object? fileName = null,
-  }) {
-    return _then(_$UploadFeedsResponseImpl(
-      fileName: null == fileName
-          ? _value.fileName
-          : fileName // ignore: cast_nullable_to_non_nullable
-              as String,
-    ));
-  }
-}
-
-/// @nodoc
-@JsonSerializable()
-class _$UploadFeedsResponseImpl implements _UploadFeedsResponse {
-  _$UploadFeedsResponseImpl({required this.fileName});
-
-  factory _$UploadFeedsResponseImpl.fromJson(Map<String, dynamic> json) =>
-      _$$UploadFeedsResponseImplFromJson(json);
-
-  @override
-  final String fileName;
-
-  @override
-  String toString() {
-    return 'UploadFeedsResponse(fileName: $fileName)';
-  }
-
-  @override
-  bool operator ==(Object other) {
-    return identical(this, other) ||
-        (other.runtimeType == runtimeType &&
-            other is _$UploadFeedsResponseImpl &&
-            (identical(other.fileName, fileName) ||
-                other.fileName == fileName));
-  }
-
-  @JsonKey(ignore: true)
-  @override
-  int get hashCode => Object.hash(runtimeType, fileName);
-
-  @JsonKey(ignore: true)
-  @override
-  @pragma('vm:prefer-inline')
-  _$$UploadFeedsResponseImplCopyWith<_$UploadFeedsResponseImpl> get copyWith =>
-      __$$UploadFeedsResponseImplCopyWithImpl<_$UploadFeedsResponseImpl>(
-          this, _$identity);
-
-  @override
-  Map<String, dynamic> toJson() {
-    return _$$UploadFeedsResponseImplToJson(
-      this,
-    );
-  }
-}
-
-abstract class _UploadFeedsResponse implements UploadFeedsResponse {
-  factory _UploadFeedsResponse({required final String fileName}) =
-      _$UploadFeedsResponseImpl;
-
-  factory _UploadFeedsResponse.fromJson(Map<String, dynamic> json) =
-      _$UploadFeedsResponseImpl.fromJson;
-
-  @override
-  String get fileName;
-  @override
-  @JsonKey(ignore: true)
-  _$$UploadFeedsResponseImplCopyWith<_$UploadFeedsResponseImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
