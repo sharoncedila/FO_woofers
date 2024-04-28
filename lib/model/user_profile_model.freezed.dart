@@ -327,3 +327,276 @@ abstract class _ResponseUserProfileModel implements ResponseUserProfileModel {
   _$$ResponseUserProfileModelImplCopyWith<_$ResponseUserProfileModelImpl>
       get copyWith => throw _privateConstructorUsedError;
 }
+
+OtherUserProfileResponse _$OtherUserProfileResponseFromJson(
+    Map<String, dynamic> json) {
+  return _OtherUserProfileResponse.fromJson(json);
+}
+
+/// @nodoc
+mixin _$OtherUserProfileResponse {
+  String? get fullName => throw _privateConstructorUsedError;
+  String? get provinceName => throw _privateConstructorUsedError;
+  String? get phoneNumber => throw _privateConstructorUsedError;
+  String? get description => throw _privateConstructorUsedError;
+  String? get image => throw _privateConstructorUsedError;
+  String? get errorCode => throw _privateConstructorUsedError;
+  String? get errorMessage => throw _privateConstructorUsedError;
+
+  Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
+  @JsonKey(ignore: true)
+  $OtherUserProfileResponseCopyWith<OtherUserProfileResponse> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class $OtherUserProfileResponseCopyWith<$Res> {
+  factory $OtherUserProfileResponseCopyWith(OtherUserProfileResponse value,
+          $Res Function(OtherUserProfileResponse) then) =
+      _$OtherUserProfileResponseCopyWithImpl<$Res, OtherUserProfileResponse>;
+  @useResult
+  $Res call(
+      {String? fullName,
+      String? provinceName,
+      String? phoneNumber,
+      String? description,
+      String? image,
+      String? errorCode,
+      String? errorMessage});
+}
+
+/// @nodoc
+class _$OtherUserProfileResponseCopyWithImpl<$Res,
+        $Val extends OtherUserProfileResponse>
+    implements $OtherUserProfileResponseCopyWith<$Res> {
+  _$OtherUserProfileResponseCopyWithImpl(this._value, this._then);
+
+  // ignore: unused_field
+  final $Val _value;
+  // ignore: unused_field
+  final $Res Function($Val) _then;
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? fullName = freezed,
+    Object? provinceName = freezed,
+    Object? phoneNumber = freezed,
+    Object? description = freezed,
+    Object? image = freezed,
+    Object? errorCode = freezed,
+    Object? errorMessage = freezed,
+  }) {
+    return _then(_value.copyWith(
+      fullName: freezed == fullName
+          ? _value.fullName
+          : fullName // ignore: cast_nullable_to_non_nullable
+              as String?,
+      provinceName: freezed == provinceName
+          ? _value.provinceName
+          : provinceName // ignore: cast_nullable_to_non_nullable
+              as String?,
+      phoneNumber: freezed == phoneNumber
+          ? _value.phoneNumber
+          : phoneNumber // ignore: cast_nullable_to_non_nullable
+              as String?,
+      description: freezed == description
+          ? _value.description
+          : description // ignore: cast_nullable_to_non_nullable
+              as String?,
+      image: freezed == image
+          ? _value.image
+          : image // ignore: cast_nullable_to_non_nullable
+              as String?,
+      errorCode: freezed == errorCode
+          ? _value.errorCode
+          : errorCode // ignore: cast_nullable_to_non_nullable
+              as String?,
+      errorMessage: freezed == errorMessage
+          ? _value.errorMessage
+          : errorMessage // ignore: cast_nullable_to_non_nullable
+              as String?,
+    ) as $Val);
+  }
+}
+
+/// @nodoc
+abstract class _$$OtherUserProfileResponseImplCopyWith<$Res>
+    implements $OtherUserProfileResponseCopyWith<$Res> {
+  factory _$$OtherUserProfileResponseImplCopyWith(
+          _$OtherUserProfileResponseImpl value,
+          $Res Function(_$OtherUserProfileResponseImpl) then) =
+      __$$OtherUserProfileResponseImplCopyWithImpl<$Res>;
+  @override
+  @useResult
+  $Res call(
+      {String? fullName,
+      String? provinceName,
+      String? phoneNumber,
+      String? description,
+      String? image,
+      String? errorCode,
+      String? errorMessage});
+}
+
+/// @nodoc
+class __$$OtherUserProfileResponseImplCopyWithImpl<$Res>
+    extends _$OtherUserProfileResponseCopyWithImpl<$Res,
+        _$OtherUserProfileResponseImpl>
+    implements _$$OtherUserProfileResponseImplCopyWith<$Res> {
+  __$$OtherUserProfileResponseImplCopyWithImpl(
+      _$OtherUserProfileResponseImpl _value,
+      $Res Function(_$OtherUserProfileResponseImpl) _then)
+      : super(_value, _then);
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? fullName = freezed,
+    Object? provinceName = freezed,
+    Object? phoneNumber = freezed,
+    Object? description = freezed,
+    Object? image = freezed,
+    Object? errorCode = freezed,
+    Object? errorMessage = freezed,
+  }) {
+    return _then(_$OtherUserProfileResponseImpl(
+      fullName: freezed == fullName
+          ? _value.fullName
+          : fullName // ignore: cast_nullable_to_non_nullable
+              as String?,
+      provinceName: freezed == provinceName
+          ? _value.provinceName
+          : provinceName // ignore: cast_nullable_to_non_nullable
+              as String?,
+      phoneNumber: freezed == phoneNumber
+          ? _value.phoneNumber
+          : phoneNumber // ignore: cast_nullable_to_non_nullable
+              as String?,
+      description: freezed == description
+          ? _value.description
+          : description // ignore: cast_nullable_to_non_nullable
+              as String?,
+      image: freezed == image
+          ? _value.image
+          : image // ignore: cast_nullable_to_non_nullable
+              as String?,
+      errorCode: freezed == errorCode
+          ? _value.errorCode
+          : errorCode // ignore: cast_nullable_to_non_nullable
+              as String?,
+      errorMessage: freezed == errorMessage
+          ? _value.errorMessage
+          : errorMessage // ignore: cast_nullable_to_non_nullable
+              as String?,
+    ));
+  }
+}
+
+/// @nodoc
+@JsonSerializable()
+class _$OtherUserProfileResponseImpl implements _OtherUserProfileResponse {
+  _$OtherUserProfileResponseImpl(
+      {required this.fullName,
+      required this.provinceName,
+      required this.phoneNumber,
+      required this.description,
+      required this.image,
+      required this.errorCode,
+      required this.errorMessage});
+
+  factory _$OtherUserProfileResponseImpl.fromJson(Map<String, dynamic> json) =>
+      _$$OtherUserProfileResponseImplFromJson(json);
+
+  @override
+  final String? fullName;
+  @override
+  final String? provinceName;
+  @override
+  final String? phoneNumber;
+  @override
+  final String? description;
+  @override
+  final String? image;
+  @override
+  final String? errorCode;
+  @override
+  final String? errorMessage;
+
+  @override
+  String toString() {
+    return 'OtherUserProfileResponse(fullName: $fullName, provinceName: $provinceName, phoneNumber: $phoneNumber, description: $description, image: $image, errorCode: $errorCode, errorMessage: $errorMessage)';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$OtherUserProfileResponseImpl &&
+            (identical(other.fullName, fullName) ||
+                other.fullName == fullName) &&
+            (identical(other.provinceName, provinceName) ||
+                other.provinceName == provinceName) &&
+            (identical(other.phoneNumber, phoneNumber) ||
+                other.phoneNumber == phoneNumber) &&
+            (identical(other.description, description) ||
+                other.description == description) &&
+            (identical(other.image, image) || other.image == image) &&
+            (identical(other.errorCode, errorCode) ||
+                other.errorCode == errorCode) &&
+            (identical(other.errorMessage, errorMessage) ||
+                other.errorMessage == errorMessage));
+  }
+
+  @JsonKey(ignore: true)
+  @override
+  int get hashCode => Object.hash(runtimeType, fullName, provinceName,
+      phoneNumber, description, image, errorCode, errorMessage);
+
+  @JsonKey(ignore: true)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$OtherUserProfileResponseImplCopyWith<_$OtherUserProfileResponseImpl>
+      get copyWith => __$$OtherUserProfileResponseImplCopyWithImpl<
+          _$OtherUserProfileResponseImpl>(this, _$identity);
+
+  @override
+  Map<String, dynamic> toJson() {
+    return _$$OtherUserProfileResponseImplToJson(
+      this,
+    );
+  }
+}
+
+abstract class _OtherUserProfileResponse implements OtherUserProfileResponse {
+  factory _OtherUserProfileResponse(
+      {required final String? fullName,
+      required final String? provinceName,
+      required final String? phoneNumber,
+      required final String? description,
+      required final String? image,
+      required final String? errorCode,
+      required final String? errorMessage}) = _$OtherUserProfileResponseImpl;
+
+  factory _OtherUserProfileResponse.fromJson(Map<String, dynamic> json) =
+      _$OtherUserProfileResponseImpl.fromJson;
+
+  @override
+  String? get fullName;
+  @override
+  String? get provinceName;
+  @override
+  String? get phoneNumber;
+  @override
+  String? get description;
+  @override
+  String? get image;
+  @override
+  String? get errorCode;
+  @override
+  String? get errorMessage;
+  @override
+  @JsonKey(ignore: true)
+  _$$OtherUserProfileResponseImplCopyWith<_$OtherUserProfileResponseImpl>
+      get copyWith => throw _privateConstructorUsedError;
+}

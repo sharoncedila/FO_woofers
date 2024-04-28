@@ -25,4 +25,22 @@ class RetrieveAccountService{
     }
   }
 
+
+  Future<OtherUserProfileResponse?> viewOtherUserProfile(String accountId) async{
+    try {
+      String api = '/accounts/profile/other/$accountId';
+      final dio = await DioInstance.getInstance();
+
+      var response = await dio.get(api);
+      final errorSchema = ErrorSchema.fromJson(response.data!['errorSchema']);
+      if (errorSchema.errorCode != 'WOF-000') {
+        return OtherUserProfileResponse.fromJson(response.data['errorSchema']);
+      }else{
+        return OtherUserProfileResponse.fromJson(response.data['outputSchema']);
+      }
+    } catch (error) {
+      print(error);
+    }
+  }
+
 }

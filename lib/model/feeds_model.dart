@@ -16,8 +16,7 @@ class LeaveCommentRequest with _$LeaveCommentRequest {
 class PostFeedsRequest with _$PostFeedsRequest {
   factory PostFeedsRequest({
     required String caption,
-    required String image,
-    required String video
+    required String image
   }) = _PostFeedsRequest;
 
   factory PostFeedsRequest.fromJson(Map<String, dynamic> json) => _$PostFeedsRequestFromJson(json);
@@ -47,38 +46,27 @@ class LeaveCommentResponse with _$LeaveCommentResponse {
     required String feedsId,
     required String accountId,
     required String content,
-    required String commentDate,
-    required String video,
-    required String likesCount,
-    required String postDate,
+    required String commentDate
   }) = _LeaveCommentResponse;
 
   factory LeaveCommentResponse.fromJson(Map<String, dynamic> json) => _$LeaveCommentResponseFromJson(json);
 }
 
 @freezed
-class OpenCommentsResponse with _$OpenCommentsResponse {
-  factory OpenCommentsResponse({
-    required String commentList
-  }) = _OpenCommentsResponse;
-
-  factory OpenCommentsResponse.fromJson(Map<String, dynamic> json) => _$OpenCommentsResponseFromJson(json);
-}
-
-@freezed
-class PostFeedsResponse with _$PostFeedsResponse {
+class PostFeedsResponse with _$PostFeedsResponse{
   factory PostFeedsResponse({
-    required String feedsData
+    required String? feedsId,
+    required String? accountId,
+    required String? username,
+    required String? likesCount,
+    required String? caption,
+    required String? image,
+    required String? reportCount,
+    required String? postDate,
+    required String? deletedAt,
+    required String? errorCode,
+    required String? errorMessage
   }) = _PostFeedsResponse;
 
   factory PostFeedsResponse.fromJson(Map<String, dynamic> json) => _$PostFeedsResponseFromJson(json);
-}
-
-@freezed
-class UploadFeedsResponse with _$UploadFeedsResponse {
-  factory UploadFeedsResponse({
-    required String fileName
-  }) = _UploadFeedsResponse;
-
-  factory UploadFeedsResponse.fromJson(Map<String, dynamic> json) => _$UploadFeedsResponseFromJson(json);
 }

@@ -33,3 +33,27 @@ Map<String, dynamic> _$$ResponseUserProfileModelImplToJson(
       'errorCode': instance.errorCode,
       'errorMessage': instance.errorMessage,
     };
+
+_$OtherUserProfileResponseImpl _$$OtherUserProfileResponseImplFromJson(
+        Map<String, dynamic> json) =>
+    _$OtherUserProfileResponseImpl(
+      fullName: json['fullName'] as String?,
+      provinceName: json['provinceName'] as String?,
+      phoneNumber: json['phoneNumber'] as String?,
+      description: json['description'] as String?,
+      image: json['image'] as String?,
+      errorCode: json['errorCode'] as String?,
+      errorMessage: json['errorMessage'] as String?,
+    );
+
+Map<String, dynamic> _$$OtherUserProfileResponseImplToJson(
+        _$OtherUserProfileResponseImpl instance) =>
+    <String, dynamic>{
+      'fullName': instance.fullName,
+      'provinceName': instance.provinceName,
+      'phoneNumber': instance.phoneNumber,
+      'description': instance.description,
+      'image': instance.image,
+      'errorCode': instance.errorCode,
+      'errorMessage': instance.errorMessage,
+    };
