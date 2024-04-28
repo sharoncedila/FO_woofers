@@ -1,4 +1,8 @@
 import 'package:flutter/material.dart';
+<<<<<<< HEAD
+=======
+import 'package:woofers/components/my_dog_card.dart';
+>>>>>>> SYE_20240425
 import 'package:woofers/pages/dog_list_page.dart';
 import 'package:woofers/pages/user_profile_page.dart';
 
@@ -15,7 +19,7 @@ class ProfilePageTemplate extends StatelessWidget {
             tabs: [
               Tab(
                 icon: Image(
-                  image: AssetImage('assets/woofers_icon/profile.jpg'),
+                  image: AssetImage('assets/woofers_icon/profileImageTemplate.png'),
                   width: 40,
                   height: 40,
                 ),
@@ -34,12 +38,12 @@ class ProfilePageTemplate extends StatelessWidget {
         ),
         body: const TabBarView(
           children: [
-            // ChatListPage(),
-            // AdoptionPage(),
-            // FeedsPage(),
             UserProfilePage(),
             DogListPage(),
+<<<<<<< HEAD
             // FirstRoute(),
+=======
+>>>>>>> SYE_20240425
           ],
         ),
       ),

@@ -40,6 +40,26 @@ class DogService {
     } catch (error) {
       print(error);
     }
+<<<<<<< HEAD
     return null;
   } 
+=======
+  }
+
+  Future<List<ResponseDogProfileModel>> retrieveDogList(String accountId) async {
+    late Response response;
+    try {
+      String api = '/account-dog/account-id/$accountId';
+      final dio = await DioInstance.getInstance();
+
+       response = await dio.get(api);
+        return (response.data['outputSchema']['dogList'] as List)
+            .map((e) => ResponseDogProfileModel.fromJson(e))
+            .toList();
+    } catch (error) {
+      final errorSchema = ErrorSchema.fromJson(response.data['errorSchema']);
+      throw Exception(error);
+    }
+  }
+>>>>>>> SYE_20240425
 }

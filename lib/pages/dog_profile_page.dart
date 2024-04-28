@@ -1,13 +1,26 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+<<<<<<< HEAD
 import 'package:woofers/pages/edit_my_dog.dart';
+=======
+import 'package:hexcolor/hexcolor.dart';
+import 'package:woofers/pages/add_feeds_page.dart';
+import 'package:woofers/pages/comment_page.dart';
+import 'package:woofers/pages/notification_page.dart';
+>>>>>>> SYE_20240425
 
-class DogProfilePage extends StatelessWidget {
-  const DogProfilePage({super.key});
+class DogProfilePage extends StatefulWidget {
+  const DogProfilePage({Key? key}) : super(key: key);
 
+  @override
+  _DogProfilePageState createState() => _DogProfilePageState();
+}
+
+class _DogProfilePageState extends State<DogProfilePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+<<<<<<< HEAD
         backgroundColor: Colors.white,
         body: SafeArea(
           child: Center(
@@ -419,139 +432,187 @@ class DogProfileDetail extends StatelessWidget {
               hintText: 'Name',
               hintStyle: TextStyle(color: Colors.black),
             ),
+=======
+      backgroundColor: Colors.white,
+      appBar: AppBar(
+        toolbarHeight: 75,
+        elevation: 0,
+        backgroundColor: HexColor("#a0dcdc"),
+        title: Text(
+          "WOOFERS",
+          style: GoogleFonts.lora(
+            fontSize: 25,
+            fontWeight: FontWeight.bold,
+            color: const Color.fromRGBO(40, 36, 36, 10000),
+>>>>>>> SYE_20240425
           ),
         ),
-        Padding(
-          padding: const EdgeInsets.symmetric(horizontal: 25, vertical: 10),
-          child: TextFormField(
-            readOnly: true,
-            enabled: false,
-            decoration: const InputDecoration(
-              border: UnderlineInputBorder(),
-              hintText: 'Breed',
-              hintStyle: TextStyle(color: Colors.black),
-            ),
-          ),
-        ),
-        Padding(
-          padding: const EdgeInsets.symmetric(horizontal: 25, vertical: 10),
-          child: TextFormField(
-            readOnly: true,
-            enabled: false,
-            decoration: const InputDecoration(
-              border: UnderlineInputBorder(),
-              hintText: 'Date of Birth',
-              hintStyle: TextStyle(color: Colors.black),
-            ),
-          ),
-        ),
-        Padding(
-          padding: const EdgeInsets.symmetric(horizontal: 25, vertical: 10),
-          child: TextFormField(
-            readOnly: true,
-            enabled: false,
-            decoration: const InputDecoration(
-              border: UnderlineInputBorder(),
-              hintText: 'Province',
-              hintStyle: TextStyle(color: Colors.black),
-            ),
-          ),
-        ),
-        Padding(
-          padding: const EdgeInsets.symmetric(horizontal: 25, vertical: 10),
-          child: TextFormField(
-            readOnly: true,
-            enabled: false,
-            decoration: const InputDecoration(
-              border: UnderlineInputBorder(),
-              hintText: 'Vaccine',
-              hintStyle: TextStyle(color: Colors.black),
-            ),
-          ),
-        ),
-        Padding(
-          padding: const EdgeInsets.symmetric(horizontal: 25, vertical: 10),
-          child: TextFormField(
-            readOnly: true,
-            enabled: false,
-            decoration: InputDecoration(
-              enabledBorder: const OutlineInputBorder(
-                borderSide: BorderSide(color: Colors.white),
-              ),
-              focusedBorder: OutlineInputBorder(
-                borderSide: BorderSide(color: Colors.grey.shade400),
-              ),
-              // fillColor: Colors.grey.shade200,
-              // filled: true,
-              hintText: 'Description',
-              hintStyle: TextStyle(color: Colors.black),
-            ),
-            validator: (value) {
-              if (value == null || value.isEmpty) {
-                return 'Please enter your description';
-              }
-              return null;
+        actions: <Widget>[
+          IconButton(
+            icon: const Icon(Icons.notification_add_rounded),
+            onPressed: () {
+              Navigator.push(
+                context,
+                MaterialPageRoute(
+                    builder: (context) => const NotificationPage()),
+              );
             },
           ),
-        ),
-        const SizedBox(height: 50),
-        SizedBox(
-            width: 200,
-            height: 45,
-              child: Center(
-                child: ElevatedButton(
-                  style: ButtonStyle(
-                    backgroundColor: MaterialStateProperty.resolveWith<Color?>(
-                      (Set<MaterialState> states) {
-                        if (states.contains(MaterialState.pressed)) {
-                          return Theme.of(context).colorScheme.primary.withOpacity(0.5);
-                        }
-                        return null; // Use the component's default.
-                      },
-                    ),
-                  ),
-                child: const Text('Logout'),
-                onPressed: () {
-                  Navigator.push(
-                    context,
-                    MaterialPageRoute(builder: (context) => const LoginPage()),
-                  );
-                },
-              ),
-            ),
-
-        child: Center(
-          child: Row(mainAxisAlignment: MainAxisAlignment.center, children: [
-            ElevatedButton(
-              style: ButtonStyle(
-                backgroundColor: MaterialStateProperty.resolveWith<Color?>(
-                  (Set<MaterialState> states) {
-                    if (states.contains(MaterialState.pressed)) {
-                      return Theme.of(context)
-                          .colorScheme
-                          .primary
-                          .withOpacity(0.5);
-                    }
-                    return null; // Use the component's default.
-                  },
-                ),
-              ),
-              child: const Text('Edit'),
-              onPressed: () {
-                Navigator.push(
-                  context,
-                  MaterialPageRoute(builder: (context) => const EditMyDog()),
-                );
-              },
-            ),
-          ]
-        )
+          IconButton(
+            icon: const Icon(Icons.add_to_photos),
+            onPressed: () {
+              Navigator.push(
+                context,
+                MaterialPageRoute(
+                    builder: (context) => const AddDogProfilePage()),
+              );
+            },
+          ),
+        ],
       ),
-        */
+      body: feedsList(),
+    );
+  }
 
-
-
-      ],
+  Widget feedsList() {
+    return SingleChildScrollView(
+      child: Padding(
+        padding: const EdgeInsets.only(left: 25, right: 25),
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            const SizedBox(
+              height: 15,
+            ),
+            Column(
+              children: List.generate(5, (index) {
+                return Container(
+                    padding: const EdgeInsets.only(bottom: 25),
+                    child: Column(
+                      children: [
+                        Stack(
+                          children: [
+                            Container(
+                              width: double.infinity,
+                              height: 288,
+                              decoration: BoxDecoration(
+                                  image: const DecorationImage(
+                                      image: AssetImage(
+                                          'assets/dog_picture/dog1.jpg'),
+                                      fit: BoxFit.cover),
+                                  borderRadius: BorderRadius.circular(20)),
+                            ),
+                            Container(
+                              width: double.infinity,
+                              height: 288,
+                              decoration: BoxDecoration(
+                                borderRadius: BorderRadius.circular(20),
+                              ),
+                              child: Padding(
+                                padding: const EdgeInsets.all(15),
+                                child: Column(
+                                  mainAxisAlignment:
+                                      MainAxisAlignment.spaceBetween,
+                                  children: [
+                                    // profile, nama orang, waktu
+                                    Row(
+                                      mainAxisAlignment:
+                                          MainAxisAlignment.spaceBetween,
+                                      children: [
+                                        Row(
+                                          children: [
+                                            const CircleAvatar(
+                                              backgroundImage: AssetImage(
+                                                  'assets/profile_picture/person1.jpg'),
+                                            ),
+                                            const SizedBox(
+                                              width: 12,
+                                            ),
+                                            Column(
+                                              crossAxisAlignment:
+                                                  CrossAxisAlignment.start,
+                                              children: [
+                                                const Text(
+                                                  'Sharon Cedila',
+                                                  style: TextStyle(
+                                                      fontSize: 15,
+                                                      color: Colors.white),
+                                                ),
+                                                const SizedBox(
+                                                  height: 3,
+                                                ),
+                                                Text(
+                                                  '10.43',
+                                                  style: TextStyle(
+                                                      fontSize: 13,
+                                                      color: Colors.white
+                                                          .withOpacity(0.8)),
+                                                ),
+                                              ],
+                                            )
+                                          ],
+                                        ),
+                                      ],
+                                    ),
+                                    // heart and comment
+                                  ],
+                                ),
+                              ),
+                            ),
+                          ],
+                        ),
+                        Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            Row(
+                              mainAxisAlignment: MainAxisAlignment.start,
+                              children: [
+                                IconButton(
+                                  icon: const Icon(
+                                    Icons.favorite_border,
+                                    color: Colors.black,
+                                    size: 20,
+                                  ),
+                                  onPressed: () {
+                                    Navigator.push(
+                                      context,
+                                      MaterialPageRoute(
+                                          builder: (context) =>
+                                              const CommentPage()),
+                                    );
+                                  },
+                                ),
+                                IconButton(
+                                  icon: const Icon(
+                                    Icons.comment_outlined,
+                                    color: Colors.black,
+                                    size: 20,
+                                  ),
+                                  onPressed: () {
+                                    Navigator.push(
+                                      context,
+                                      MaterialPageRoute(
+                                          builder: (context) =>
+                                              const CommentPage()),
+                                    );
+                                  },
+                                ),
+                              ],
+                            ),
+                            const Text(
+                              "     1 like",
+                              style:
+                                  TextStyle(color: Colors.grey, fontSize: 12),
+                            )
+                          ],
+                        )
+                      ],
+                    ));
+              }),
+            )
+          ],
+        ),
+      ),
     );
   }
 }

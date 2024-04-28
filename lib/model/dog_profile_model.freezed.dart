@@ -21,8 +21,8 @@ ResponseDogProfileModel _$ResponseDogProfileModelFromJson(
 
 /// @nodoc
 mixin _$ResponseDogProfileModel {
-  String? get dogId => throw _privateConstructorUsedError;
-  String? get dogName => throw _privateConstructorUsedError;
+  String get dogId => throw _privateConstructorUsedError;
+  String get dogName => throw _privateConstructorUsedError;
   String? get breedName => throw _privateConstructorUsedError;
   String? get dateOfBirth => throw _privateConstructorUsedError;
   String? get gender => throw _privateConstructorUsedError;
@@ -30,9 +30,7 @@ mixin _$ResponseDogProfileModel {
   String? get vaccination => throw _privateConstructorUsedError;
   String? get description => throw _privateConstructorUsedError;
   String? get image => throw _privateConstructorUsedError;
-  String? get isOpenAdopt => throw _privateConstructorUsedError;
-  String? get errorCode => throw _privateConstructorUsedError;
-  String? get errorMessage => throw _privateConstructorUsedError;
+  bool get isOpenAdopt => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -47,8 +45,8 @@ abstract class $ResponseDogProfileModelCopyWith<$Res> {
       _$ResponseDogProfileModelCopyWithImpl<$Res, ResponseDogProfileModel>;
   @useResult
   $Res call(
-      {String? dogId,
-      String? dogName,
+      {String dogId,
+      String dogName,
       String? breedName,
       String? dateOfBirth,
       String? gender,
@@ -56,9 +54,7 @@ abstract class $ResponseDogProfileModelCopyWith<$Res> {
       String? vaccination,
       String? description,
       String? image,
-      String? isOpenAdopt,
-      String? errorCode,
-      String? errorMessage});
+      bool isOpenAdopt});
 }
 
 /// @nodoc
@@ -75,8 +71,8 @@ class _$ResponseDogProfileModelCopyWithImpl<$Res,
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? dogId = freezed,
-    Object? dogName = freezed,
+    Object? dogId = null,
+    Object? dogName = null,
     Object? breedName = freezed,
     Object? dateOfBirth = freezed,
     Object? gender = freezed,
@@ -84,19 +80,17 @@ class _$ResponseDogProfileModelCopyWithImpl<$Res,
     Object? vaccination = freezed,
     Object? description = freezed,
     Object? image = freezed,
-    Object? isOpenAdopt = freezed,
-    Object? errorCode = freezed,
-    Object? errorMessage = freezed,
+    Object? isOpenAdopt = null,
   }) {
     return _then(_value.copyWith(
-      dogId: freezed == dogId
+      dogId: null == dogId
           ? _value.dogId
           : dogId // ignore: cast_nullable_to_non_nullable
-              as String?,
-      dogName: freezed == dogName
+              as String,
+      dogName: null == dogName
           ? _value.dogName
           : dogName // ignore: cast_nullable_to_non_nullable
-              as String?,
+              as String,
       breedName: freezed == breedName
           ? _value.breedName
           : breedName // ignore: cast_nullable_to_non_nullable
@@ -125,18 +119,10 @@ class _$ResponseDogProfileModelCopyWithImpl<$Res,
           ? _value.image
           : image // ignore: cast_nullable_to_non_nullable
               as String?,
-      isOpenAdopt: freezed == isOpenAdopt
+      isOpenAdopt: null == isOpenAdopt
           ? _value.isOpenAdopt
           : isOpenAdopt // ignore: cast_nullable_to_non_nullable
-              as String?,
-      errorCode: freezed == errorCode
-          ? _value.errorCode
-          : errorCode // ignore: cast_nullable_to_non_nullable
-              as String?,
-      errorMessage: freezed == errorMessage
-          ? _value.errorMessage
-          : errorMessage // ignore: cast_nullable_to_non_nullable
-              as String?,
+              as bool,
     ) as $Val);
   }
 }
@@ -151,8 +137,8 @@ abstract class _$$ResponseDogProfileModelImplCopyWith<$Res>
   @override
   @useResult
   $Res call(
-      {String? dogId,
-      String? dogName,
+      {String dogId,
+      String dogName,
       String? breedName,
       String? dateOfBirth,
       String? gender,
@@ -160,9 +146,7 @@ abstract class _$$ResponseDogProfileModelImplCopyWith<$Res>
       String? vaccination,
       String? description,
       String? image,
-      String? isOpenAdopt,
-      String? errorCode,
-      String? errorMessage});
+      bool isOpenAdopt});
 }
 
 /// @nodoc
@@ -178,8 +162,8 @@ class __$$ResponseDogProfileModelImplCopyWithImpl<$Res>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? dogId = freezed,
-    Object? dogName = freezed,
+    Object? dogId = null,
+    Object? dogName = null,
     Object? breedName = freezed,
     Object? dateOfBirth = freezed,
     Object? gender = freezed,
@@ -187,19 +171,17 @@ class __$$ResponseDogProfileModelImplCopyWithImpl<$Res>
     Object? vaccination = freezed,
     Object? description = freezed,
     Object? image = freezed,
-    Object? isOpenAdopt = freezed,
-    Object? errorCode = freezed,
-    Object? errorMessage = freezed,
+    Object? isOpenAdopt = null,
   }) {
     return _then(_$ResponseDogProfileModelImpl(
-      dogId: freezed == dogId
+      dogId: null == dogId
           ? _value.dogId
           : dogId // ignore: cast_nullable_to_non_nullable
-              as String?,
-      dogName: freezed == dogName
+              as String,
+      dogName: null == dogName
           ? _value.dogName
           : dogName // ignore: cast_nullable_to_non_nullable
-              as String?,
+              as String,
       breedName: freezed == breedName
           ? _value.breedName
           : breedName // ignore: cast_nullable_to_non_nullable
@@ -228,18 +210,10 @@ class __$$ResponseDogProfileModelImplCopyWithImpl<$Res>
           ? _value.image
           : image // ignore: cast_nullable_to_non_nullable
               as String?,
-      isOpenAdopt: freezed == isOpenAdopt
+      isOpenAdopt: null == isOpenAdopt
           ? _value.isOpenAdopt
           : isOpenAdopt // ignore: cast_nullable_to_non_nullable
-              as String?,
-      errorCode: freezed == errorCode
-          ? _value.errorCode
-          : errorCode // ignore: cast_nullable_to_non_nullable
-              as String?,
-      errorMessage: freezed == errorMessage
-          ? _value.errorMessage
-          : errorMessage // ignore: cast_nullable_to_non_nullable
-              as String?,
+              as bool,
     ));
   }
 }
@@ -257,17 +231,15 @@ class _$ResponseDogProfileModelImpl implements _ResponseDogProfileModel {
       required this.vaccination,
       required this.description,
       required this.image,
-      required this.isOpenAdopt,
-      required this.errorCode,
-      required this.errorMessage});
+      required this.isOpenAdopt});
 
   factory _$ResponseDogProfileModelImpl.fromJson(Map<String, dynamic> json) =>
       _$$ResponseDogProfileModelImplFromJson(json);
 
   @override
-  final String? dogId;
+  final String dogId;
   @override
-  final String? dogName;
+  final String dogName;
   @override
   final String? breedName;
   @override
@@ -283,15 +255,11 @@ class _$ResponseDogProfileModelImpl implements _ResponseDogProfileModel {
   @override
   final String? image;
   @override
-  final String? isOpenAdopt;
-  @override
-  final String? errorCode;
-  @override
-  final String? errorMessage;
+  final bool isOpenAdopt;
 
   @override
   String toString() {
-    return 'ResponseDogProfileModel(dogId: $dogId, dogName: $dogName, breedName: $breedName, dateOfBirth: $dateOfBirth, gender: $gender, provinceName: $provinceName, vaccination: $vaccination, description: $description, image: $image, isOpenAdopt: $isOpenAdopt, errorCode: $errorCode, errorMessage: $errorMessage)';
+    return 'ResponseDogProfileModel(dogId: $dogId, dogName: $dogName, breedName: $breedName, dateOfBirth: $dateOfBirth, gender: $gender, provinceName: $provinceName, vaccination: $vaccination, description: $description, image: $image, isOpenAdopt: $isOpenAdopt)';
   }
 
   @override
@@ -314,11 +282,7 @@ class _$ResponseDogProfileModelImpl implements _ResponseDogProfileModel {
                 other.description == description) &&
             (identical(other.image, image) || other.image == image) &&
             (identical(other.isOpenAdopt, isOpenAdopt) ||
-                other.isOpenAdopt == isOpenAdopt) &&
-            (identical(other.errorCode, errorCode) ||
-                other.errorCode == errorCode) &&
-            (identical(other.errorMessage, errorMessage) ||
-                other.errorMessage == errorMessage));
+                other.isOpenAdopt == isOpenAdopt));
   }
 
   @JsonKey(ignore: true)
@@ -334,9 +298,7 @@ class _$ResponseDogProfileModelImpl implements _ResponseDogProfileModel {
       vaccination,
       description,
       image,
-      isOpenAdopt,
-      errorCode,
-      errorMessage);
+      isOpenAdopt);
 
   @JsonKey(ignore: true)
   @override
@@ -355,8 +317,8 @@ class _$ResponseDogProfileModelImpl implements _ResponseDogProfileModel {
 
 abstract class _ResponseDogProfileModel implements ResponseDogProfileModel {
   factory _ResponseDogProfileModel(
-      {required final String? dogId,
-      required final String? dogName,
+      {required final String dogId,
+      required final String dogName,
       required final String? breedName,
       required final String? dateOfBirth,
       required final String? gender,
@@ -364,17 +326,15 @@ abstract class _ResponseDogProfileModel implements ResponseDogProfileModel {
       required final String? vaccination,
       required final String? description,
       required final String? image,
-      required final String? isOpenAdopt,
-      required final String? errorCode,
-      required final String? errorMessage}) = _$ResponseDogProfileModelImpl;
+      required final bool isOpenAdopt}) = _$ResponseDogProfileModelImpl;
 
   factory _ResponseDogProfileModel.fromJson(Map<String, dynamic> json) =
       _$ResponseDogProfileModelImpl.fromJson;
 
   @override
-  String? get dogId;
+  String get dogId;
   @override
-  String? get dogName;
+  String get dogName;
   @override
   String? get breedName;
   @override
@@ -390,11 +350,7 @@ abstract class _ResponseDogProfileModel implements ResponseDogProfileModel {
   @override
   String? get image;
   @override
-  String? get isOpenAdopt;
-  @override
-  String? get errorCode;
-  @override
-  String? get errorMessage;
+  bool get isOpenAdopt;
   @override
   @JsonKey(ignore: true)
   _$$ResponseDogProfileModelImplCopyWith<_$ResponseDogProfileModelImpl>

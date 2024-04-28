@@ -1,5 +1,8 @@
 import 'dart:convert';
+<<<<<<< HEAD
 
+=======
+>>>>>>> SYE_20240425
 import 'package:woofers/classes/dio_instance.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:woofers/model/error_schema_model.dart';
@@ -18,8 +21,10 @@ class LoginService {
         return ResponseLoginModel.fromJson(response.data['errorSchema']);
       }else{
         final accessToken = response.data['outputSchema']['accessToken'];
+        final accountId = response.data['outputSchema']['accountId'];
         final SharedPreferences prefs = await SharedPreferences.getInstance();
         await prefs.setString('accessToken', accessToken);
+        await prefs.setString('accountId', accountId);
         DioInstance.setNull();
         return ResponseLoginModel.fromJson(response.data['outputSchema']);
       }

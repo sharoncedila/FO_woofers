@@ -36,34 +36,38 @@ class _UserProfilePageState extends State<UserProfilePage> {
                     return const Center(child: Text("Retrieving your data..."));
                   }
                   if (snapshot.hasError) {
-                    return const Center(child: Text("error"));
+                    return const Center(child: Text("Error"));
                   }
                   if (snapshot.hasData) {
                     return SingleChildScrollView(
                       child: Column(children: [
-
                         // user profile picture
                         const SizedBox(height: 15),
                         FutureBuilder(
-                          future: RetrieveAccountService().retrieveUserData(),
-                          builder: (context, snapshot) {
-                            if (snapshot.connectionState == ConnectionState.waiting) {
-                              return const Image(
-                                image: AssetImage('assets/woofers_icon/profile.jpg'),
-                                width: 150, height: 150,
-                              );
-                            }
+                            future: RetrieveAccountService().retrieveUserData(),
+                            builder: (context, snapshot) {
+                              if (snapshot.connectionState ==
+                                  ConnectionState.waiting) {
+                                return const Image(
+                                  image: AssetImage(
+                                      'assets/woofers_icon/profile.jpg'),
+                                  width: 150,
+                                  height: 150,
+                                );
+                              }
 
-                            final imageURL = snapshot.data!.image;
-                            if (imageURL == null) {
-                              return const Image(
-                                image: AssetImage('assets/woofers_icon/profileImageTemplate.png'),
-                                width: 150, height: 150,
-                              );
-                            }
-                            return ImageNetwork(urlImage: imageURL, width: 150, height: 150);
-                          }
-                        ),
+                              final imageURL = snapshot.data!.image;
+                              if (imageURL == null) {
+                                return const Image(
+                                  image: AssetImage(
+                                      'assets/woofers_icon/profileImageTemplate.png'),
+                                  width: 150,
+                                  height: 150,
+                                );
+                              }
+                              return ImageNetwork(
+                                  urlImage: imageURL, width: 150, height: 150);
+                            }),
 
                         // username
                         const SizedBox(height: 20),
@@ -174,7 +178,7 @@ class _UserProfilePageState extends State<UserProfilePage> {
                             ),
                             const Image(
                               image:
-                                  AssetImage('assets/woofers_icon/profile.jpg'),
+                                  AssetImage('assets/woofers_icon/email.png'),
                               width: 35,
                               height: 35,
                             ),
@@ -222,8 +226,8 @@ class _UserProfilePageState extends State<UserProfilePage> {
                               width: 15,
                             ),
                             const Image(
-                              image:
-                                  AssetImage('assets/woofers_icon/profile.jpg'),
+                              image: AssetImage(
+                                  'assets/woofers_icon/province.png'),
                               width: 35,
                               height: 35,
                             ),
@@ -273,7 +277,7 @@ class _UserProfilePageState extends State<UserProfilePage> {
                             ),
                             const Image(
                               image:
-                                  AssetImage('assets/woofers_icon/profile.jpg'),
+                                  AssetImage('assets/woofers_icon/phone.png'),
                               width: 35,
                               height: 35,
                             ),
@@ -322,8 +326,8 @@ class _UserProfilePageState extends State<UserProfilePage> {
                               width: 15,
                             ),
                             const Image(
-                              image:
-                                  AssetImage('assets/woofers_icon/profile.jpg'),
+                              image: AssetImage(
+                                  'assets/woofers_icon/description.png'),
                               width: 35,
                               height: 35,
                             ),
@@ -375,14 +379,16 @@ class _UserProfilePageState extends State<UserProfilePage> {
                   );
                 }),
           ),
-
-          const SizedBox(height: 50),
-          SizedBox(
+          const SizedBox(height: 25),
+          Padding(
+              padding: const EdgeInsets.symmetric(vertical: 15),
               child: Center(
-                child: Row(mainAxisAlignment: MainAxisAlignment.center, children: [
+                child:
+                    Row(mainAxisAlignment: MainAxisAlignment.center, children: [
                   ElevatedButton(
                     style: ButtonStyle(
-                      backgroundColor: MaterialStateProperty.resolveWith<Color?>(
+                      backgroundColor:
+                          MaterialStateProperty.resolveWith<Color?>(
                         (Set<MaterialState> states) {
                           if (states.contains(MaterialState.pressed)) {
                             return Theme.of(context)
@@ -406,7 +412,8 @@ class _UserProfilePageState extends State<UserProfilePage> {
                   const SizedBox(width: 25),
                   ElevatedButton(
                     style: ButtonStyle(
-                      backgroundColor: MaterialStateProperty.resolveWith<Color?>(
+                      backgroundColor:
+                          MaterialStateProperty.resolveWith<Color?>(
                         (Set<MaterialState> states) {
                           if (states.contains(MaterialState.pressed)) {
                             return Theme.of(context)
@@ -422,14 +429,13 @@ class _UserProfilePageState extends State<UserProfilePage> {
                     onPressed: () {
                       Navigator.push(
                         context,
-                        MaterialPageRoute(builder: (context) => const LoginPage()),
+                        MaterialPageRoute(
+                            builder: (context) => const LoginPage()),
                       );
                     },
                   ),
-                ]
-              ),
-            )
-          ),
+                ]),
+              )),
         ],
       ),
     );
