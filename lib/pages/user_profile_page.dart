@@ -1,9 +1,11 @@
 import 'package:flutter/material.dart';
+import 'package:woofers/components/image_network.dart';
 import 'package:woofers/model/user_profile_model.dart';
 import 'package:woofers/pages/edit_my_profile_page.dart';
 import 'package:woofers/pages/login_page.dart';
 // import 'package:woofers/interfaces/profile/user_profile_interface.dart';
 import 'package:woofers/services/account/user_profile_services.dart';
+import 'package:google_fonts/google_fonts.dart';
 
 void main() => runApp(const UserProfilePage());
 
@@ -11,17 +13,7 @@ class UserProfilePage extends StatefulWidget {
   const UserProfilePage({super.key});
 
   @override
-  // _ContactListWidgetState createState() => _ContactListWidgetState();
   _UserProfilePageState createState() => _UserProfilePageState();
-  // Widget build(BuildContext context) {
-  //   return const MaterialApp(
-  //     home: Scaffold(
-  //       body: Center(
-  //         child: ProfilePage(accountId),
-  //       ),
-  //     ),
-  //   );
-  // }
 }
 
 class _UserProfilePageState extends State<UserProfilePage> {
@@ -40,271 +32,342 @@ class _UserProfilePageState extends State<UserProfilePage> {
             child: FutureBuilder(
                 future: _account,
                 builder: (context, snapshot) {
-                  // List<Widget> children;
-                  // if (snapshot.hasData) {
-                  // children = <Widget>[
-                  //   const Icon(
-                  //     Icons.check_circle_outline,
-                  //     color: Colors.green,
-                  //     size: 60,
-                  //   ),
-                  //   Padding(
-                  //     padding: const EdgeInsets.only(top: 16),
-                  //     child: Text('Result: ${snapshot.data}'),
-                  //   ),
-                  // ];
-
                   if (snapshot.connectionState == ConnectionState.waiting) {
-                    return Container(
-                      child: Text("sabar ya"),
-                    );
+                    return const Center(child: Text("Retrieving your data..."));
                   }
                   if (snapshot.hasError) {
-                    return Container(
-                      child: Text("error"),
-                    );
+                    return const Center(child: Text("error"));
                   }
                   if (snapshot.hasData) {
                     return SingleChildScrollView(
                       child: Column(children: [
-                        Padding(
-                          padding: const EdgeInsets.symmetric(
-                              horizontal: 25, vertical: 10),
-                          child: TextFormField(
-                            readOnly: true,
-                            enabled: false,
-                            decoration: InputDecoration(
-                              border: const UnderlineInputBorder(),
-                              // hintText : 'Username',
-                              hintText: snapshot.data!.username,
 
-                              // hintText: Account.fromJson(snapshot.u),
-                              hintStyle: const TextStyle(color: Colors.black),
-                            ),
-                          ),
+                        // user profile picture
+                        const SizedBox(height: 15),
+                        FutureBuilder(
+                          future: RetrieveAccountService().retrieveUserData(),
+                          builder: (context, snapshot) {
+                            if (snapshot.connectionState == ConnectionState.waiting) {
+                              return const Image(
+                                image: AssetImage('assets/woofers_icon/profile.jpg'),
+                                width: 150, height: 150,
+                              );
+                            }
+
+                            final imageURL = snapshot.data!.image;
+                            if (imageURL == null) {
+                              return const Image(
+                                image: AssetImage('assets/woofers_icon/profileImageTemplate.png'),
+                                width: 150, height: 150,
+                              );
+                            }
+                            return ImageNetwork(urlImage: imageURL, width: 150, height: 150);
+                          }
                         ),
-                        Padding(
-                          padding: const EdgeInsets.symmetric(
-                              horizontal: 25, vertical: 10),
-                          child: TextFormField(
-                            readOnly: true,
-                            enabled: false,
-                            decoration: InputDecoration(
-                              border: const UnderlineInputBorder(),
-                              // snapshot.data==null? "Username" : snapshot.data.fulName,
-                              hintText: snapshot.data?.fullName == null
-                                  ? 'Your name'
-                                  : snapshot.data!.fullName,
-                              // hintText : snapshot.data==null? "Username" : snapshot.data.fulName,
-                              hintStyle: const TextStyle(color: Colors.black),
+
+                        // username
+                        const SizedBox(height: 20),
+                        Row(
+                          children: [
+                            const SizedBox(
+                              width: 15,
                             ),
-                          ),
-                        ),
-                        Padding(
-                          padding: const EdgeInsets.symmetric(
-                              horizontal: 25, vertical: 10),
-                          child: TextFormField(
-                            readOnly: true,
-                            enabled: false,
-                            decoration: InputDecoration(
-                              border: const UnderlineInputBorder(),
-                              // hintText: 'Email',
-                              hintText: snapshot.data?.email == null
-                                  ? 'Your Name'
-                                  : snapshot.data!.email,
-                              hintStyle: const TextStyle(color: Colors.black),
+                            const Image(
+                              image:
+                                  AssetImage('assets/woofers_icon/profile.jpg'),
+                              width: 35,
+                              height: 35,
                             ),
-                          ),
-                        ),
-                        Padding(
-                          padding: const EdgeInsets.symmetric(
-                              horizontal: 25, vertical: 10),
-                          child: TextFormField(
-                            readOnly: true,
-                            enabled: false,
-                            decoration: InputDecoration(
-                              border: const UnderlineInputBorder(),
-                              // hintText: 'Province',
-                              hintText: snapshot.data?.provinceName == null
-                                  ? 'Your name'
-                                  : snapshot.data!.provinceName,
-                              hintStyle: const TextStyle(color: Colors.black),
+                            const SizedBox(
+                              width: 20,
                             ),
-                          ),
+                            Expanded(
+                                child: Column(
+                                    mainAxisAlignment: MainAxisAlignment.start,
+                                    crossAxisAlignment:
+                                        CrossAxisAlignment.start,
+                                    children: [
+                                  Text(
+                                    "username",
+                                    style: TextStyle(
+                                      color: Colors.black.withOpacity(0.5),
+                                    ),
+                                  ),
+                                  SizedBox(
+                                    height: 25,
+                                    child: TextFormField(
+                                      readOnly: true,
+                                      enabled: false,
+                                      decoration: InputDecoration(
+                                        border: const UnderlineInputBorder(),
+                                        // labelText: 'Username',
+                                        labelText:
+                                            snapshot.data?.username == null
+                                                ? ""
+                                                : snapshot.data!.username,
+                                        labelStyle: GoogleFonts.newsCycle(
+                                          color: Colors.black,
+                                        ),
+                                      ),
+                                    ),
+                                  ),
+                                ]))
+                          ],
                         ),
-                        Padding(
-                          padding: const EdgeInsets.symmetric(
-                              horizontal: 25, vertical: 10),
-                          child: TextFormField(
-                            readOnly: true,
-                            enabled: false,
-                            decoration: InputDecoration(
-                              border: const UnderlineInputBorder(),
-                              // hintText: 'Phone Number',
-                              hintText: snapshot.data?.phoneNumber == null
-                                  ? 'Your name'
-                                  : snapshot.data!.phoneNumber,
-                              hintStyle: const TextStyle(color: Colors.black),
+
+                        // full name
+                        const SizedBox(height: 15),
+                        Row(
+                          children: [
+                            const SizedBox(
+                              width: 15,
                             ),
-                          ),
+                            const Image(
+                              image:
+                                  AssetImage('assets/woofers_icon/profile.jpg'),
+                              width: 35,
+                              height: 35,
+                            ),
+                            const SizedBox(
+                              width: 20,
+                            ),
+                            Expanded(
+                                child: Column(
+                                    mainAxisAlignment: MainAxisAlignment.start,
+                                    crossAxisAlignment:
+                                        CrossAxisAlignment.start,
+                                    children: [
+                                  Text(
+                                    "full name",
+                                    style: TextStyle(
+                                      color: Colors.black.withOpacity(0.5),
+                                    ),
+                                  ),
+                                  SizedBox(
+                                    height: 25,
+                                    child: TextFormField(
+                                      readOnly: true,
+                                      enabled: false,
+                                      decoration: InputDecoration(
+                                        border: const UnderlineInputBorder(),
+                                        // labelText: 'Username',
+                                        labelText:
+                                            snapshot.data?.fullName == null
+                                                ? ""
+                                                : snapshot.data!.fullName,
+                                        labelStyle: GoogleFonts.newsCycle(
+                                          color: Colors.black,
+                                        ),
+                                      ),
+                                    ),
+                                  ),
+                                ]))
+                          ],
                         ),
-                        Padding(
-                            padding: const EdgeInsets.symmetric(
-                                horizontal: 25, vertical: 10),
-                            child: TextFormField(
-                              readOnly: true,
-                              enabled: false,
-                              decoration: InputDecoration(
-                                enabledBorder: const OutlineInputBorder(
-                                  borderSide: BorderSide(color: Colors.white),
-                                ),
-                                focusedBorder: OutlineInputBorder(
-                                  borderSide:
-                                      BorderSide(color: Colors.grey.shade400),
-                                ),
-                                // fillColor: Colors.grey.shade200,
-                                // filled: true,
-                                // hintText: 'Description',
-                                hintText: snapshot.data?.description == null
-                                    ? 'Your name'
-                                    : snapshot.data!.description,
-                                hintStyle: const TextStyle(color: Colors.black),
-                              ),
-                              validator: (value) {
-                                if (value == null || value.isEmpty) {
-                                  return 'Please enter your description';
-                                }
-                                return null;
-                              },
-                            )),
+
+                        // email
+                        const SizedBox(height: 15),
+                        Row(
+                          children: [
+                            const SizedBox(
+                              width: 15,
+                            ),
+                            const Image(
+                              image:
+                                  AssetImage('assets/woofers_icon/profile.jpg'),
+                              width: 35,
+                              height: 35,
+                            ),
+                            const SizedBox(
+                              width: 20,
+                            ),
+                            Expanded(
+                                child: Column(
+                                    mainAxisAlignment: MainAxisAlignment.start,
+                                    crossAxisAlignment:
+                                        CrossAxisAlignment.start,
+                                    children: [
+                                  Text(
+                                    "email",
+                                    style: TextStyle(
+                                      color: Colors.black.withOpacity(0.5),
+                                    ),
+                                  ),
+                                  SizedBox(
+                                    height: 25,
+                                    child: TextFormField(
+                                      readOnly: true,
+                                      enabled: false,
+                                      decoration: InputDecoration(
+                                        border: const UnderlineInputBorder(),
+                                        // labelText: 'Username',
+                                        labelText: snapshot.data?.email == null
+                                            ? ""
+                                            : snapshot.data!.email,
+                                        labelStyle: GoogleFonts.newsCycle(
+                                          color: Colors.black,
+                                        ),
+                                      ),
+                                    ),
+                                  ),
+                                ]))
+                          ],
+                        ),
+
+                        // province name
+                        const SizedBox(height: 15),
+                        Row(
+                          children: [
+                            const SizedBox(
+                              width: 15,
+                            ),
+                            const Image(
+                              image:
+                                  AssetImage('assets/woofers_icon/profile.jpg'),
+                              width: 35,
+                              height: 35,
+                            ),
+                            const SizedBox(
+                              width: 20,
+                            ),
+                            Expanded(
+                                child: Column(
+                                    mainAxisAlignment: MainAxisAlignment.start,
+                                    crossAxisAlignment:
+                                        CrossAxisAlignment.start,
+                                    children: [
+                                  Text(
+                                    "province name",
+                                    style: TextStyle(
+                                      color: Colors.black.withOpacity(0.5),
+                                    ),
+                                  ),
+                                  SizedBox(
+                                    height: 25,
+                                    child: TextFormField(
+                                      readOnly: true,
+                                      enabled: false,
+                                      decoration: InputDecoration(
+                                        border: const UnderlineInputBorder(),
+                                        // labelText: 'Username',
+                                        labelText:
+                                            snapshot.data?.provinceName == null
+                                                ? ""
+                                                : snapshot.data!.provinceName,
+                                        labelStyle: GoogleFonts.newsCycle(
+                                          color: Colors.black,
+                                        ),
+                                      ),
+                                    ),
+                                  ),
+                                ]))
+                          ],
+                        ),
+
+                        // phone number
+                        const SizedBox(height: 15),
+                        Row(
+                          children: [
+                            const SizedBox(
+                              width: 15,
+                            ),
+                            const Image(
+                              image:
+                                  AssetImage('assets/woofers_icon/profile.jpg'),
+                              width: 35,
+                              height: 35,
+                            ),
+                            const SizedBox(
+                              width: 20,
+                            ),
+                            Expanded(
+                                child: Column(
+                                    mainAxisAlignment: MainAxisAlignment.start,
+                                    crossAxisAlignment:
+                                        CrossAxisAlignment.start,
+                                    children: [
+                                  Text(
+                                    "phone number",
+                                    style: TextStyle(
+                                      color: Colors.black.withOpacity(0.5),
+                                    ),
+                                  ),
+                                  SizedBox(
+                                    height: 25,
+                                    child: TextFormField(
+                                      readOnly: true,
+                                      enabled: false,
+                                      decoration: InputDecoration(
+                                        border: const UnderlineInputBorder(),
+                                        // labelText: 'Username',
+                                        labelText:
+                                            snapshot.data?.phoneNumber == null
+                                                ? ""
+                                                : snapshot.data!.phoneNumber,
+                                        labelStyle: GoogleFonts.newsCycle(
+                                          color: Colors.black,
+                                        ),
+                                      ),
+                                    ),
+                                  ),
+                                ]))
+                          ],
+                        ),
+
+                        // description
+                        const SizedBox(height: 15),
+                        Row(
+                          children: [
+                            const SizedBox(
+                              width: 15,
+                            ),
+                            const Image(
+                              image:
+                                  AssetImage('assets/woofers_icon/profile.jpg'),
+                              width: 35,
+                              height: 35,
+                            ),
+                            const SizedBox(
+                              width: 20,
+                            ),
+                            Expanded(
+                                child: Column(
+                                    mainAxisAlignment: MainAxisAlignment.start,
+                                    crossAxisAlignment:
+                                        CrossAxisAlignment.start,
+                                    children: [
+                                  Text(
+                                    "description",
+                                    style: TextStyle(
+                                      color: Colors.black.withOpacity(0.5),
+                                    ),
+                                  ),
+                                  SizedBox(
+                                    height: 25,
+                                    child: TextFormField(
+                                      readOnly: true,
+                                      enabled: false,
+                                      decoration: InputDecoration(
+                                        border: const UnderlineInputBorder(),
+                                        // labelText: 'Username',
+                                        labelText:
+                                            snapshot.data?.description == null
+                                                ? ""
+                                                : snapshot.data!.description,
+                                        labelStyle: GoogleFonts.newsCycle(
+                                          color: Colors.black,
+                                        ),
+                                      ),
+                                    ),
+                                  ),
+                                ]))
+                          ],
+                        ),
                       ]),
                     );
                   }
 
-                  // Padding(
-                  //   padding: const EdgeInsets.symmetric(horizontal: 25, vertical: 10),
-                  //   child: TextFormField(
-                  //     readOnly: true,
-                  //     enabled: false,
-                  //     decoration: InputDecoration(
-                  //       border: const UnderlineInputBorder(),
-                  //       // hintText : 'Username',
-                  //       // hintText : ,
-                  //       // hintText: Account.fromJson(snapshot.u),
-                  //       hintStyle: const TextStyle(color: Colors.black),
-                  //     ),
-                  //   ),
-                  // );
-
-                  // Padding(
-                  //   padding: const EdgeInsets.symmetric(horizontal: 25, vertical: 10),
-                  //   child: TextFormField(
-                  //     readOnly: true,
-                  //     enabled: false,
-                  //     decoration: const InputDecoration(
-                  //       border: UnderlineInputBorder(),
-                  //       hintText: 'Your Name',
-                  //       // hintText : snapshot.data==null? "Username" : snapshot.data.fulName,
-                  //       hintStyle: TextStyle(color: Colors.black),
-                  //     ),
-                  //   ),
-                  // );
-
-                  // Padding(
-                  //   padding: const EdgeInsets.symmetric(horizontal: 25, vertical: 10),
-                  //   child: TextFormField(
-                  //     readOnly: true,
-                  //     enabled: false,
-                  //     decoration: const InputDecoration(
-                  //       border: UnderlineInputBorder(),
-                  //       hintText: 'Email',
-                  //       // hintText : snapshot.data!.email,
-                  //       hintStyle: TextStyle(color: Colors.black),
-                  //     ),
-                  //   ),
-                  // );
-
-                  // Padding(
-                  //   padding: const EdgeInsets.symmetric(horizontal: 25, vertical: 10),
-                  //   child: TextFormField(
-                  //     readOnly: true,
-                  //     enabled: false,
-                  //     decoration: const InputDecoration(
-                  //       border: UnderlineInputBorder(),
-                  //       hintText: 'Province',
-                  //       hintStyle: TextStyle(color: Colors.black),
-                  //     ),
-                  //   ),
-                  // );
-
-                  // Padding(
-                  //   padding: const EdgeInsets.symmetric(horizontal: 25, vertical: 10),
-                  //   child: TextFormField(
-                  //     readOnly: true,
-                  //     enabled: false,
-                  //     decoration: const InputDecoration(
-                  //       border: UnderlineInputBorder(),
-                  //       hintText: 'Phone Number',
-                  //       hintStyle: TextStyle(color: Colors.black),
-                  //     ),
-                  //   ),
-                  // );
-
-                  // Padding(
-                  //   padding: const EdgeInsets.symmetric(horizontal: 25, vertical: 10),
-                  //   child: TextFormField(
-                  //     readOnly: true,
-                  //     enabled: false,
-                  //     decoration: InputDecoration(
-                  //       enabledBorder: const OutlineInputBorder(
-                  //         borderSide: BorderSide(color: Colors.white),
-                  //       ),
-                  //       focusedBorder: OutlineInputBorder(
-                  //         borderSide: BorderSide(color: Colors.grey.shade400),
-                  //       ),
-                  //       // fillColor: Colors.grey.shade200,
-                  //       // filled: true,
-                  //       hintText: 'Description',
-                  //       hintStyle: TextStyle(color: Colors.black),
-                  //     ),
-                  //     validator: (value){
-                  //       if (value == null || value.isEmpty) {
-                  //         return 'Please enter your description';
-                  //       }
-                  //       return null;
-                  //     },
-                  //   )
-                  // );
-                  // }
-
-                  // handling async
-                  // } else if (snapshot.hasError) {
-                  //   children = <Widget>[
-                  //     const Icon(
-                  //       Icons.error_outline,
-                  //       color: Colors.red,
-                  //       size: 60,
-                  //     ),
-                  //     Padding(
-                  //       padding: const EdgeInsets.only(top: 16),
-                  //       child: Text('Error: ${snapshot.error}'),
-                  //     ),
-                  //   ];
-                  // } else {
-                  //   children = const <Widget>[
-                  //     SizedBox(
-                  //       width: 60,
-                  //       height: 60,
-                  //       child: CircularProgressIndicator(),
-                  //     ),
-                  //     Padding(
-                  //       padding: EdgeInsets.only(top: 16),
-                  //       child: Text('Awaiting result...'),
-                  //     ),
-                  //   ];
-                  // }
-
-                  return Center(
+                  return const Center(
                     child: Column(
                       mainAxisAlignment: MainAxisAlignment.center,
                       // children: ;
@@ -315,178 +378,60 @@ class _UserProfilePageState extends State<UserProfilePage> {
 
           const SizedBox(height: 50),
           SizedBox(
-              // width: 200,
-              // height: 45,
-              //   child: Center(
-              //     child: ElevatedButton(
-              //       style: ButtonStyle(
-              //         backgroundColor: MaterialStateProperty.resolveWith<Color?>(
-              //           (Set<MaterialState> states) {
-              //             if (states.contains(MaterialState.pressed)) {
-              //               return Theme.of(context).colorScheme.primary.withOpacity(0.5);
-              //             }
-              //             return null; // Use the component's default.
-              //           },
-              //         ),
-              //       ),
-              //     child: const Text('Logout'),
-              //     onPressed: () {
-              //       Navigator.push(
-              //         context,
-              //         MaterialPageRoute(builder: (context) => const LoginPage()),
-              //       );
-              //     },
-              //   ),
-              // ),
-
               child: Center(
-            child: Row(mainAxisAlignment: MainAxisAlignment.center, children: [
-              ElevatedButton(
-                style: ButtonStyle(
-                  backgroundColor: MaterialStateProperty.resolveWith<Color?>(
-                    (Set<MaterialState> states) {
-                      if (states.contains(MaterialState.pressed)) {
-                        return Theme.of(context)
-                            .colorScheme
-                            .primary
-                            .withOpacity(0.5);
-                      }
-                      return null; // Use the component's default.
+                child: Row(mainAxisAlignment: MainAxisAlignment.center, children: [
+                  ElevatedButton(
+                    style: ButtonStyle(
+                      backgroundColor: MaterialStateProperty.resolveWith<Color?>(
+                        (Set<MaterialState> states) {
+                          if (states.contains(MaterialState.pressed)) {
+                            return Theme.of(context)
+                                .colorScheme
+                                .primary
+                                .withOpacity(0.5);
+                          }
+                          return null; // Use the component's default.
+                        },
+                      ),
+                    ),
+                    child: const Text('Edit'),
+                    onPressed: () {
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                            builder: (context) => const EditMyProfile()),
+                      );
                     },
                   ),
-                ),
-                child: const Text('Edit'),
-                onPressed: () {
-                  Navigator.push(
-                    context,
-                    MaterialPageRoute(
-                        builder: (context) => const EditMyProfile()),
-                  );
-                },
-              ),
-              const SizedBox(width: 25),
-              ElevatedButton(
-                style: ButtonStyle(
-                  backgroundColor: MaterialStateProperty.resolveWith<Color?>(
-                    (Set<MaterialState> states) {
-                      if (states.contains(MaterialState.pressed)) {
-                        return Theme.of(context)
-                            .colorScheme
-                            .primary
-                            .withOpacity(0.5);
-                      }
-                      return null; // Use the component's default.
+                  const SizedBox(width: 25),
+                  ElevatedButton(
+                    style: ButtonStyle(
+                      backgroundColor: MaterialStateProperty.resolveWith<Color?>(
+                        (Set<MaterialState> states) {
+                          if (states.contains(MaterialState.pressed)) {
+                            return Theme.of(context)
+                                .colorScheme
+                                .primary
+                                .withOpacity(0.5);
+                          }
+                          return null; // Use the component's default.
+                        },
+                      ),
+                    ),
+                    child: const Text('Logout'),
+                    onPressed: () {
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(builder: (context) => const LoginPage()),
+                      );
                     },
                   ),
-                ),
-                child: const Text('Logout'),
-                onPressed: () {
-                  Navigator.push(
-                    context,
-                    MaterialPageRoute(builder: (context) => const LoginPage()),
-                  );
-                },
+                ]
               ),
-            ]),
-          )),
-
-          // const Expanded(child: BottomMenu()),
+            )
+          ),
         ],
       ),
     );
   }
 }
-
-
-/*
-Padding(
-          padding: const EdgeInsets.symmetric(horizontal: 25, vertical: 10),
-          child: TextFormField(
-            readOnly: true,
-            enabled: false,
-            decoration: const InputDecoration(
-              border: UnderlineInputBorder(),
-              hintText: 'Username',
-              hintStyle: TextStyle(color: Colors.black),
-            ),
-          ),
-        ),
-
-        Padding(
-          padding: const EdgeInsets.symmetric(horizontal: 25, vertical: 10),
-          child: TextFormField(
-            readOnly: true,
-            enabled: false,
-            decoration: const InputDecoration(
-              border: UnderlineInputBorder(),
-              hintText: 'Your Name',
-              hintStyle: TextStyle(color: Colors.black),
-            ),
-          ),
-        ),
-
-        Padding(
-          padding: const EdgeInsets.symmetric(horizontal: 25, vertical: 10),
-          child: TextFormField(
-            readOnly: true,
-            enabled: false,
-            decoration: const InputDecoration(
-              border: UnderlineInputBorder(),
-              hintText: 'Email',
-              hintStyle: TextStyle(color: Colors.black),
-            ),
-          ),
-        ),
-
-        Padding(
-          padding: const EdgeInsets.symmetric(horizontal: 25, vertical: 10),
-          child: TextFormField(
-            readOnly: true,
-            enabled: false,
-            decoration: const InputDecoration(
-              border: UnderlineInputBorder(),
-              hintText: 'Province',
-              hintStyle: TextStyle(color: Colors.black),
-            ),
-          ),
-        ),
-
-        Padding(
-          padding: const EdgeInsets.symmetric(horizontal: 25, vertical: 10),
-          child: TextFormField(
-            readOnly: true,
-            enabled: false,
-            decoration: const InputDecoration(
-              border: UnderlineInputBorder(),
-              hintText: 'Phone Number',
-              hintStyle: TextStyle(color: Colors.black),
-            ),
-          ),
-        ),
-
-        Padding(
-          padding: const EdgeInsets.symmetric(horizontal: 25, vertical: 10),
-          child: TextFormField(
-            readOnly: true,
-            enabled: false,
-            decoration: InputDecoration(
-              enabledBorder: const OutlineInputBorder(
-                borderSide: BorderSide(color: Colors.white),
-              ),
-              focusedBorder: OutlineInputBorder(
-                borderSide: BorderSide(color: Colors.grey.shade400),
-              ),
-              // fillColor: Colors.grey.shade200,
-              // filled: true,
-              hintText: 'Description',
-              hintStyle: TextStyle(color: Colors.black),
-            ),
-            validator: (value){
-              if (value == null || value.isEmpty) {
-                return 'Please enter your description';
-              }
-              return null;
-            },
-          ),
-        ),
-*/

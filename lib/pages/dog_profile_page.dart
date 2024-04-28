@@ -1,62 +1,6 @@
-// import 'package:flutter/material.dart';
-// import 'package:flutter/cupertino.dart';
-
-// void main() {
-//   runApp(const CupertinoApp(
-//     home: SecondRoute(),
-//   ));
-// }
-
-// // class FirstRoute extends StatelessWidget {
-// //   const FirstRoute({super.key});
-
-// //   @override
-// //   Widget build(BuildContext context) {
-// //     return CupertinoPageScaffold(
-// //       navigationBar: const CupertinoNavigationBar(
-// //         middle: Text('First Route'),
-// //       ),
-// //       child: Center(
-// //         child: CupertinoButton(
-// //           child: const Text('Open route'),
-// //           onPressed: () {
-// //             Navigator.push(
-// //               context,
-// //               CupertinoPageRoute(builder: (context) => const SecondRoute()),
-// //             );
-// //           },
-// //         ),
-// //       ),
-// //     );
-// //   }
-// // }
-
-// class SecondRoute extends StatelessWidget {
-//   const SecondRoute({super.key});
-
-//   @override
-//   Widget build(BuildContext context) {
-//     return CupertinoPageScaffold(
-//       navigationBar: const CupertinoNavigationBar(
-//         middle: Text('Second Route'),
-//       ),
-//       child: Center(
-//         child: CupertinoButton(
-//           onPressed: () {
-//             Navigator.pop(context);
-//           },
-//           child: const Text('Go back!'),
-//         ),
-//       ),
-//     );
-//   }
-// }
-
-
-
-
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:woofers/pages/edit_my_dog.dart';
 import 'package:woofers/pages/login_page.dart';
 import 'package:email_validator/email_validator.dart';
@@ -67,39 +11,36 @@ class DogProfilePage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      home: Scaffold(
-        backgroundColor: Colors.grey[300],
+    return Scaffold(
+        backgroundColor: Colors.white,
         body: SafeArea(
-          child: Center(
-            child: Column(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                const SizedBox(height: 50),
+            child: Center(
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              const SizedBox(height: 50),
               // logo
               Image.asset(
                 'assets/dog_picture/dog1.jpg',
-                width: 100, height: 100,
+                width: 100,
+                height: 100,
               ),
 
               const SizedBox(height: 10),
               // WOOFERS
               Text(
-                'Dog1',
-                style: TextStyle(
-                  color: Colors.blue,
+                'Nama Ashu',
+                style: GoogleFonts.lora(
+                  color: const Color.fromRGBO(160, 220, 220, 1),
                   fontWeight: FontWeight.bold,
                   fontSize: 20,
-                  fontFamily: 'San Francisco'
-                  ),
+                ),
               ),
 
               const DogProfileDetail(),
-              ],
-            ),
-          )
-        ),
-      ),
+            ],
+          ),
+        )),
     );
   }
 }
@@ -112,7 +53,363 @@ class DogProfileDetail extends StatelessWidget {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: <Widget>[
+        // dog name
         const SizedBox(height: 10),
+        Row(
+          children: [
+            const SizedBox(
+              width: 15,
+            ),
+            const Image(
+              image: AssetImage('assets/woofers_icon/profile.jpg'),
+              width: 35,
+              height: 35,
+            ),
+            const SizedBox(
+              width: 10,
+            ),
+            Expanded(
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.start,
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Text(
+                    "name",
+                    style: TextStyle(
+                      color: Colors.black.withOpacity(0.5),
+                    ),
+                  ),
+                  SizedBox(
+                    height: 25,
+                    child: TextFormField(
+                      readOnly: true,
+                      enabled: false,
+                      decoration: InputDecoration(
+                        border: const UnderlineInputBorder(),
+                        labelText: 'Nama Ashu',
+                        // hintText: snapshot.data!.username,
+                        labelStyle: GoogleFonts.newsCycle(
+                          color: Colors.black,
+                        ),
+                      ),
+                    ),
+                  ),
+                ]
+              )
+            )
+          ],
+        ),
+
+        // dog breed
+        const SizedBox(height: 10),
+        Row(
+          children: [
+            const SizedBox(
+              width: 15,
+            ),
+            const Image(
+              image: AssetImage('assets/woofers_icon/profile.jpg'),
+              width: 35,
+              height: 35,
+            ),
+            const SizedBox(
+              width: 10,
+            ),
+            Expanded(
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.start,
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Text(
+                    "breed",
+                    style: TextStyle(
+                      color: Colors.black.withOpacity(0.5),
+                    ),
+                  ),
+                  SizedBox(
+                    height: 25,
+                    child: TextFormField(
+                      readOnly: true,
+                      enabled: false,
+                      decoration: InputDecoration(
+                        border: const UnderlineInputBorder(),
+                        labelText: 'Dog Breed',
+                        // hintText: snapshot.data!.username,
+                        labelStyle: GoogleFonts.newsCycle(
+                          color: Colors.black,
+                        ),
+                      ),
+                    ),
+                  ),
+                ]
+              )
+            )
+          ],
+        ),
+
+        // dog birth of date
+        const SizedBox(height: 10),
+        Row(
+          children: [
+            const SizedBox(
+              width: 15,
+            ),
+            const Image(
+              image: AssetImage('assets/woofers_icon/profile.jpg'),
+              width: 35,
+              height: 35,
+            ),
+            const SizedBox(
+              width: 10,
+            ),
+            Expanded(
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.start,
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Text(
+                    "date of birth",
+                    style: TextStyle(
+                      color: Colors.black.withOpacity(0.5),
+                    ),
+                  ),
+                  SizedBox(
+                    height: 25,
+                    child: TextFormField(
+                      readOnly: true,
+                      enabled: false,
+                      decoration: InputDecoration(
+                        border: const UnderlineInputBorder(),
+                        labelText: 'Date of Birth',
+                        // hintText: snapshot.data!.username,
+                        labelStyle: GoogleFonts.newsCycle(
+                          color: Colors.black,
+                        ),
+                      ),
+                    ),
+                  ),
+                ]
+              )
+            )
+          ],
+        ),
+
+        // dog gender
+        const SizedBox(height: 10),
+        Row(
+          children: [
+            const SizedBox(
+              width: 15,
+            ),
+            const Image(
+              image: AssetImage('assets/woofers_icon/profile.jpg'),
+              width: 35,
+              height: 35,
+            ),
+            const SizedBox(
+              width: 10,
+            ),
+            Expanded(
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.start,
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Text(
+                    "gender",
+                    style: TextStyle(
+                      color: Colors.black.withOpacity(0.5),
+                    ),
+                  ),
+                  SizedBox(
+                    height: 25,
+                    child: TextFormField(
+                      readOnly: true,
+                      enabled: false,
+                      decoration: InputDecoration(
+                        border: const UnderlineInputBorder(),
+                        labelText: 'Gender',
+                        // hintText: snapshot.data!.username,
+                        labelStyle: GoogleFonts.newsCycle(
+                          color: Colors.black,
+                        ),
+                      ),
+                    ),
+                  ),
+                ]
+              )
+            )
+          ],
+        ),
+
+        // dog province
+        const SizedBox(height: 10),
+        Row(
+          children: [
+            const SizedBox(
+              width: 15,
+            ),
+            const Image(
+              image: AssetImage('assets/woofers_icon/profile.jpg'),
+              width: 35,
+              height: 35,
+            ),
+            const SizedBox(
+              width: 10,
+            ),
+            Expanded(
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.start,
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Text(
+                    "province",
+                    style: TextStyle(
+                      color: Colors.black.withOpacity(0.5),
+                    ),
+                  ),
+                  SizedBox(
+                    height: 25,
+                    child: TextFormField(
+                      readOnly: true,
+                      enabled: false,
+                      decoration: InputDecoration(
+                        border: const UnderlineInputBorder(),
+                        labelText: 'Province',
+                        // hintText: snapshot.data!.username,
+                        labelStyle: GoogleFonts.newsCycle(
+                          color: Colors.black,
+                        ),
+                      ),
+                    ),
+                  ),
+                ]
+              )
+            )
+          ],
+        ),
+
+        // dog vaccination list
+        const SizedBox(height: 10),
+        Row(
+          children: [
+            const SizedBox(
+              width: 15,
+            ),
+            const Image(
+              image: AssetImage('assets/woofers_icon/profile.jpg'),
+              width: 35,
+              height: 35,
+            ),
+            const SizedBox(
+              width: 10,
+            ),
+            Expanded(
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.start,
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Text(
+                    "vaccine",
+                    style: TextStyle(
+                      color: Colors.black.withOpacity(0.5),
+                    ),
+                  ),
+                  SizedBox(
+                    height: 25,
+                    child: TextFormField(
+                      readOnly: true,
+                      enabled: false,
+                      decoration: InputDecoration(
+                        border: const UnderlineInputBorder(),
+                        labelText: 'Rabies Vaccine, Canine Distemper Vaccine, Canine Parvovirus Vaccine, Canine Adenovirus Type 1 and Type 2 (CAV-1 and CAV-2) Vaccine',
+                        // hintText: snapshot.data!.username,
+                        labelStyle: GoogleFonts.newsCycle(
+                          color: Colors.black,
+                        ),
+                      ),
+                    ),
+                  ),
+                ]
+              )
+            )
+          ],
+        ),
+
+        // dog description
+        const SizedBox(height: 10),
+        Row(
+          children: [
+            const SizedBox(
+              width: 15,
+            ),
+            const Image(
+              image: AssetImage('assets/woofers_icon/profile.jpg'),
+              width: 35,
+              height: 35,
+            ),
+            const SizedBox(
+              width: 10,
+            ),
+            Expanded(
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.start,
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Text(
+                    "description",
+                    style: TextStyle(
+                      color: Colors.black.withOpacity(0.5),
+                    ),
+                  ),
+                  SizedBox(
+                    height: 25,
+                    child: TextFormField(
+                      readOnly: true,
+                      enabled: false,
+                      decoration: InputDecoration(
+                        border: const UnderlineInputBorder(),
+                        labelText: 'dog description',
+                        // hintText: snapshot.data!.username,
+                        labelStyle: GoogleFonts.newsCycle(
+                          color: Colors.black,
+                        ),
+                      ),
+                    ),
+                  ),
+                ]
+              )
+            )
+          ],
+        ),
+
+
+        const SizedBox(height: 50),
+        SizedBox(
+          width: MediaQuery.of(context).size.width / 1.1,
+          height: 45,
+          child: ElevatedButton(
+            style: ButtonStyle(
+              backgroundColor: MaterialStateProperty.resolveWith(
+                (Set<MaterialState> states) {
+                  if (states.contains(MaterialState.pressed)) {
+                    return Theme.of(context).colorScheme.primary.withOpacity(0.5);
+                  }
+                  return null; // Use the component's default.
+                },
+              ),
+            ),
+          child: const Text('Edit'),
+          onPressed: () async {
+            Navigator.push(
+              context,
+              MaterialPageRoute(builder: (context) => const EditMyDog()),
+            );
+          },
+        ),
+      ),
+
+
+      /* unused
         Padding(
           padding: const EdgeInsets.symmetric(horizontal: 25, vertical: 10),
           child: TextFormField(
@@ -125,7 +422,6 @@ class DogProfileDetail extends StatelessWidget {
             ),
           ),
         ),
-
         Padding(
           padding: const EdgeInsets.symmetric(horizontal: 25, vertical: 10),
           child: TextFormField(
@@ -138,7 +434,6 @@ class DogProfileDetail extends StatelessWidget {
             ),
           ),
         ),
-
         Padding(
           padding: const EdgeInsets.symmetric(horizontal: 25, vertical: 10),
           child: TextFormField(
@@ -151,7 +446,6 @@ class DogProfileDetail extends StatelessWidget {
             ),
           ),
         ),
-
         Padding(
           padding: const EdgeInsets.symmetric(horizontal: 25, vertical: 10),
           child: TextFormField(
@@ -164,7 +458,6 @@ class DogProfileDetail extends StatelessWidget {
             ),
           ),
         ),
-
         Padding(
           padding: const EdgeInsets.symmetric(horizontal: 25, vertical: 10),
           child: TextFormField(
@@ -177,7 +470,6 @@ class DogProfileDetail extends StatelessWidget {
             ),
           ),
         ),
-
         Padding(
           padding: const EdgeInsets.symmetric(horizontal: 25, vertical: 10),
           child: TextFormField(
@@ -195,7 +487,7 @@ class DogProfileDetail extends StatelessWidget {
               hintText: 'Description',
               hintStyle: TextStyle(color: Colors.black),
             ),
-            validator: (value){
+            validator: (value) {
               if (value == null || value.isEmpty) {
                 return 'Please enter your description';
               }
@@ -203,62 +495,61 @@ class DogProfileDetail extends StatelessWidget {
             },
           ),
         ),
-
         const SizedBox(height: 50),
         SizedBox(
-          // width: 200,
-          // height: 45,
-        //   child: Center(
-        //     child: ElevatedButton(
-        //       style: ButtonStyle(
-        //         backgroundColor: MaterialStateProperty.resolveWith<Color?>(
-        //           (Set<MaterialState> states) {
-        //             if (states.contains(MaterialState.pressed)) {
-        //               return Theme.of(context).colorScheme.primary.withOpacity(0.5);
-        //             }
-        //             return null; // Use the component's default.
-        //           },
-        //         ),
-        //       ),
-        //     child: const Text('Logout'),
-        //     onPressed: () {
-        //       Navigator.push(
-        //         context,
-        //         MaterialPageRoute(builder: (context) => const LoginPage()),
-        //       );
-        //     },
-        //   ),
-        // ),
-
-
-
-        child: Center(
-          child: Row(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              ElevatedButton(
-                style: ButtonStyle(
-                  backgroundColor: MaterialStateProperty.resolveWith<Color?>(
-                    (Set<MaterialState> states) {
-                      if (states.contains(MaterialState.pressed)) {
-                        return Theme.of(context).colorScheme.primary.withOpacity(0.5);
-                      }
-                      return null; // Use the component's default.
-                    },
+            width: 200,
+            height: 45,
+              child: Center(
+                child: ElevatedButton(
+                  style: ButtonStyle(
+                    backgroundColor: MaterialStateProperty.resolveWith<Color?>(
+                      (Set<MaterialState> states) {
+                        if (states.contains(MaterialState.pressed)) {
+                          return Theme.of(context).colorScheme.primary.withOpacity(0.5);
+                        }
+                        return null; // Use the component's default.
+                      },
+                    ),
                   ),
-                ),
-                child: const Text('Edit'),
+                child: const Text('Logout'),
                 onPressed: () {
                   Navigator.push(
                     context,
-                    MaterialPageRoute(builder: (context) => const EditMyDog()),
+                    MaterialPageRoute(builder: (context) => const LoginPage()),
                   );
                 },
               ),
-            ]
-          ),
+            ),
+
+        child: Center(
+          child: Row(mainAxisAlignment: MainAxisAlignment.center, children: [
+            ElevatedButton(
+              style: ButtonStyle(
+                backgroundColor: MaterialStateProperty.resolveWith<Color?>(
+                  (Set<MaterialState> states) {
+                    if (states.contains(MaterialState.pressed)) {
+                      return Theme.of(context)
+                          .colorScheme
+                          .primary
+                          .withOpacity(0.5);
+                    }
+                    return null; // Use the component's default.
+                  },
+                ),
+              ),
+              child: const Text('Edit'),
+              onPressed: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(builder: (context) => const EditMyDog()),
+                );
+              },
+            ),
+          ]
         )
       ),
+        */
+
 
 
       ],

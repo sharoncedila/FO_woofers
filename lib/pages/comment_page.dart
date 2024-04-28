@@ -1,13 +1,7 @@
-import 'package:flutter/cupertino.dart';
-import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
-import 'package:woofers/pages/chatroom_page.dart';
-import 'package:woofers/pages/dog_profile_page.dart';
-import 'package:woofers/pages/notification_page.dart';
 import 'package:chat_bubbles/chat_bubbles.dart';
-// import 'package:flutter_icons/flutter_icons.dart';
-// import 'package:social_ui_kit/data/user_json.dart';
-// import 'package:social_ui_kit/theme/colors.dart';
+import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
+import 'package:hexcolor/hexcolor.dart';
 
 class CommentPage extends StatefulWidget {
   const CommentPage({Key? key}) : super(key: key);
@@ -22,66 +16,84 @@ class _CommentPageState extends State<CommentPage> {
     return Scaffold(
       backgroundColor: Colors.white,
       appBar:
-          PreferredSize(child: getAppBar(), preferredSize: Size.fromHeight(0)),
-      body: CommentList(),
-    );
-  }
-
-  Widget getAppBar() {
-    return AppBar(
-      elevation: 0,
-      backgroundColor: Colors.white,
-    );
-  }
-
-  Widget CommentList() {
-    return SingleChildScrollView(
-      child: Padding(
-        padding: const EdgeInsets.only(left: 25, right: 25),
-        child: Column(
-          // crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            const SizedBox(
-              height: 15,
+        AppBar(
+          toolbarHeight: 75,
+          elevation: 0,
+          backgroundColor: HexColor("#a0dcdc"),
+          centerTitle: true,
+          title:
+            Text(
+              "COMMENTS",
+              style: GoogleFonts.lora(
+                fontSize: 25,
+                fontWeight: FontWeight.bold,
+                color: const Color.fromRGBO(40,36,36,10000),
+              ),
+              textAlign: TextAlign.center,
             ),
-            const Row(
-              children: [
-                Expanded(
-                  child: Text(
-                    "COMMENTS", style: TextStyle(fontSize: 25, fontWeight: FontWeight.bold),
-                  ),
-                ),
+          ),
+      body: Stack(
+        children: [
+          CommentList(),
+          Align(
+            alignment: FractionalOffset.bottomCenter,
+            child: MessageBar(
+              onSend: (_) => print(_),
+              actions: [
+                // InkWell(
+                //   child: Icon(
+                //     Icons.add,
+                //     color: Colors.black,
+                //     size: 24,
+                //   ),
+                //   onTap: () {},
+                // ),
+                // Padding(
+                //   padding: EdgeInsets.only(left: 8, right: 8),
+                //   child: InkWell(
+                //     child: Icon(
+                //       Icons.camera_alt,
+                //       color: Colors.green,
+                //       size: 24,
+                //     ),
+                //     onTap: () {},
+                //   ),
+                // ),
               ],
             ),
-            const SizedBox(
-              height: 15,
-            ),
-            Column(
-              children: List.generate(2, (index) {
-                return Padding(
-                  padding: const EdgeInsets.only(bottom: 1),
-                  child: Container(
-                    height: 100,
-                    width: double.infinity,
-                    // decoration: BoxDecoration(
-                        // boxShadow: [
-                        //   BoxShadow(
-                        //       color: Colors.grey.withOpacity(0.15),
-                        //       spreadRadius: 2,
-                        //       blurRadius: 15,
-                        //       offset: const Offset(0, 1))
-                        // ],
-                        // color: Colors.white.withOpacity(0.6),
-                        // borderRadius: BorderRadius.circular(33),
-                    // ),
-                    // child: InkWell(
-                      // onTap: () {
-                      //   Navigator.push(
-                      //     context,
-                      //     MaterialPageRoute(builder: (context) => const ChatroomPage()),
-                      //   );
-                      // },
+          )
+        ],
+      )
+      
+    );
+  }
+  Widget CommentList() {
+    return SingleChildScrollView(
+        child: Padding(
+          padding: const EdgeInsets.only(left: 25, right: 25),
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              Column(
+                children: List.generate(10, (index) {
+                  return Padding(
+                    padding: const EdgeInsets.only(bottom: 1),
+                    child: Container(
+                      height: 100,
+                      width: double.infinity,
+                      decoration: BoxDecoration(
+                        boxShadow: [
+                          BoxShadow(
+                            color: Colors.grey.withOpacity(0.15),
+                            spreadRadius: 2,
+                            blurRadius: 15,
+                            offset: const Offset(0, 1))
+                        ],
+                        color: Colors.white.withOpacity(0.6),
+                        borderRadius: BorderRadius.circular(33),
+                      ),
                       child: Row(
+                        //comment box-nya
                       children: [
                         const SizedBox(
                           width: 20,
@@ -130,101 +142,13 @@ class _CommentPageState extends State<CommentPage> {
                         )
                       ],
                       ),
-                    // ),
-                  ),
-                );
-              }),
-            ),
-
-            // Padding(padding: padding),
-
-            // Row(
-              // Align:
-              // Stack(
-              //   children: <Widget>[
-              //     Align(
-              //       alignment: Alignment.bottomCenter,
-              //       child: Container(
-              //         padding: const EdgeInsets.only(left: 10,bottom: 10,top: 10),
-              //         height: 60,
-              //         width: double.infinity,
-              //         color: Colors.white,
-              //         child: Row(
-              //           children: <Widget>[
-              //             Expanded(
-              //               child: TextField(
-              //                 decoration: InputDecoration(
-              //                   hintText: "Write message...",
-              //                   hintStyle: TextStyle(color: Colors.black54),
-              //                   border: InputBorder.none
-              //                 ),
-              //               ),
-              //             ),
-              //             SizedBox(width: 15,),
-              //             FloatingActionButton(
-              //               onPressed: (){},
-              //               child: Icon(Icons.send,color: Colors.white,size: 18,),
-              //               backgroundColor: Colors.blue,
-              //               elevation: 0,
-              //             ),
-              //           ],
-              //         ),
-              //       ),
-              //     ),
-              //   ],
-              // ),
-            // ),
-
-              // const Expanded(
-              //   child: Text('Text'),
-              //   //Align(
-              //   //   alignment: FractionalOffset.bottomCenter,
-              //   //   child: Text('teng tong'),
-              //   // )
-              // ),
-
-
-            MessageBar(
-              // onSend: (_) => print(_),
-              // actions: [
-                // InkWell(
-                //   child: Icon(
-                //     Icons.add,
-                //     color: Colors.black,
-                //     size: 24,
-                //   ),
-                //   onTap: () {},
-                // ),
-                // Padding(
-                //   padding: EdgeInsets.only(left: 8, right: 8),
-                //   child: InkWell(
-                //     child: Icon(
-                //       Icons.camera_alt,
-                //       color: Colors.green,
-                //       size: 24,
-                //     ),
-                //     onTap: () {},
-                //   ),
-                // ),
-              // ],
-            ),
-
-            // const Expanded(
-            //   child: Align(
-            //     alignment: FractionalOffset.bottomCenter,
-            //     // child: Text(''),
-            //   )
-
-            // )
-
-          ],
+                    ),
+                  );
+                }),
+              )
+            ],
+          ),
         ),
-
-        
-
-      ),
-
-      
-    );
+      );
   }
 }

@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:woofers/model/adoption_model.dart';
+import 'package:woofers/model/adoption_list_model.dart';
 import 'package:woofers/pages/dog_profile_page.dart';
 
 class DogCardDetail extends StatelessWidget {
@@ -42,8 +42,8 @@ class DogCardDetail extends StatelessWidget {
                   ),
                   ListTile(
                     title: Text(
-                      adoptionDetail.dogName ?? '',
-                      style: TextStyle(
+                      adoptionDetail.dogName,
+                      style: const TextStyle(
                         color: Colors.white,
                       ),
                       textAlign: TextAlign.center,
@@ -55,21 +55,19 @@ class DogCardDetail extends StatelessWidget {
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
                         Text(
-                          adoptionDetail.breedName ?? '',
+                          adoptionDetail.breedName,
                           style: const TextStyle(
                             color: Colors.white,
                             fontSize: 12,
-                            // fontWeight: FontWeight.w300,
                           ),
                           textAlign: TextAlign.center,
                         ),
-                        SizedBox(width: 15,),
+                        const SizedBox(width: 15,),
                         Text(
-                          adoptionDetail.age ?? '',
+                          adoptionDetail.age,
                           style: const TextStyle(
                             color: Colors.white,
                             fontSize: 12,
-                            // fontWeight: FontWeight.w300,
                           ),
                           textAlign: TextAlign.center,
                         ),
