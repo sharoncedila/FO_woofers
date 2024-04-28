@@ -4,7 +4,7 @@ import 'package:hexcolor/hexcolor.dart';
 import 'package:woofers/pages/chatroom_page.dart';
 import 'package:woofers/pages/notification_page.dart';
 class ChatListPage extends StatefulWidget {
-  const ChatListPage({Key? key}) : super(key: key);
+  const ChatListPage({super.key});
 
   @override
   _ChatListPageState createState() => _ChatListPageState();

@@ -1,4 +1,3 @@
-import 'package:dio/dio.dart';
 import 'package:woofers/classes/dio_instance.dart';
 import 'package:woofers/model/error_schema_model.dart';
 import 'package:woofers/model/register_model.dart';
@@ -21,5 +20,6 @@ class RegisterService {
     } catch (error) {
       print(error);
     }
+    return null;
   }
 }

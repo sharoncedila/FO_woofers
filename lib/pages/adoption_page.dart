@@ -4,7 +4,7 @@ import 'package:woofers/pages/notification_page.dart';
 import 'package:woofers/services/adoption/adoption_service.dart';
 
 class AdoptionPage extends StatefulWidget {
-  const AdoptionPage({Key? key}) : super(key: key);
+  const AdoptionPage({super.key});
 
   @override
   _AdoptionPageState createState() => _AdoptionPageState();

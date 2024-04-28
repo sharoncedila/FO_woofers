@@ -1,7 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
-import 'package:woofers/pages/login_page.dart';
-import 'package:email_validator/email_validator.dart';
 
 class EditMyDog extends StatelessWidget {
   const EditMyDog({super.key});
@@ -24,7 +21,7 @@ class EditMyDog extends StatelessWidget {
 
               const SizedBox(height: 10),
               // WOOFERS
-              Text(
+              const Text(
                 'Dog1',
                 style: TextStyle(
                   color: Colors.blue,
@@ -60,7 +57,7 @@ class EditMyDogFormState extends State<EditMyDogForm> {
   // not a GlobalKey<EditMyDogFormState>.
   final _formKey = GlobalKey<FormState>();
   bool passwordVisible=true;
-  String _password='';
+  final String _password='';
 
   @override
   Widget build(BuildContext context) {
@@ -77,7 +74,7 @@ class EditMyDogFormState extends State<EditMyDogForm> {
             padding: const EdgeInsets.symmetric(horizontal: 25),
             child: TextFormField(
               decoration: InputDecoration(
-                enabledBorder: OutlineInputBorder(
+                enabledBorder: const OutlineInputBorder(
                   borderSide: BorderSide(color: Colors.white),
                 ),
                 focusedBorder: OutlineInputBorder(
@@ -103,7 +100,7 @@ class EditMyDogFormState extends State<EditMyDogForm> {
             padding: const EdgeInsets.symmetric(horizontal: 25),
             child: TextFormField(
               decoration: InputDecoration(
-                enabledBorder: OutlineInputBorder(
+                enabledBorder: const OutlineInputBorder(
                   borderSide: BorderSide(color: Colors.white),
                 ),
                 focusedBorder: OutlineInputBorder(
@@ -129,7 +126,7 @@ class EditMyDogFormState extends State<EditMyDogForm> {
             padding: const EdgeInsets.symmetric(horizontal: 25),
             child: TextFormField(
               decoration: InputDecoration(
-                enabledBorder: OutlineInputBorder(
+                enabledBorder: const OutlineInputBorder(
                   borderSide: BorderSide(color: Colors.white),
                 ),
                 focusedBorder: OutlineInputBorder(
@@ -155,7 +152,7 @@ class EditMyDogFormState extends State<EditMyDogForm> {
             padding: const EdgeInsets.symmetric(horizontal: 25),
             child: TextFormField(
               decoration: InputDecoration(
-                enabledBorder: OutlineInputBorder(
+                enabledBorder: const OutlineInputBorder(
                   borderSide: BorderSide(color: Colors.white),
                 ),
                 focusedBorder: OutlineInputBorder(
@@ -181,7 +178,7 @@ class EditMyDogFormState extends State<EditMyDogForm> {
             padding: const EdgeInsets.symmetric(horizontal: 25),
             child: TextFormField(
               decoration: InputDecoration(
-                enabledBorder: OutlineInputBorder(
+                enabledBorder: const OutlineInputBorder(
                   borderSide: BorderSide(color: Colors.white),
                 ),
                 focusedBorder: OutlineInputBorder(
@@ -207,7 +204,7 @@ class EditMyDogFormState extends State<EditMyDogForm> {
             padding: const EdgeInsets.symmetric(horizontal: 25),
             child: TextFormField(
               decoration: InputDecoration(
-                enabledBorder: OutlineInputBorder(
+                enabledBorder: const OutlineInputBorder(
                   borderSide: BorderSide(color: Colors.white),
                 ),
                 focusedBorder: OutlineInputBorder(
@@ -233,7 +230,7 @@ class EditMyDogFormState extends State<EditMyDogForm> {
             padding: const EdgeInsets.symmetric(horizontal: 25),
             child: TextFormField(
               decoration: InputDecoration(
-                enabledBorder: OutlineInputBorder(
+                enabledBorder: const OutlineInputBorder(
                   borderSide: BorderSide(color: Colors.white),
                 ),
                 focusedBorder: OutlineInputBorder(

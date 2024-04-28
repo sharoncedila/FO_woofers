@@ -1,17 +1,16 @@
-import 'package:chat_bubbles/chat_bubbles.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:hexcolor/hexcolor.dart';
 import 'package:woofers/pages/feeds_page.dart';
 
 class AddFeedsPage extends StatefulWidget {
-  const AddFeedsPage({Key? key}) : super(key: key);
+  const AddFeedsPage({super.key});
 
   @override
   _AddFeedsPageState createState() => _AddFeedsPageState();
 }
 
-class _AddFeedsPageState extends State<AddFeedsPage> {
+class _AddFeedsPageState extends State<AddFeedsPage> { 
   @override
   Widget build(BuildContext context) {
     return Scaffold(

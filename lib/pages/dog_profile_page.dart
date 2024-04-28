@@ -1,10 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:woofers/pages/edit_my_dog.dart';
-import 'package:woofers/pages/login_page.dart';
-import 'package:email_validator/email_validator.dart';
-import 'package:woofers/pages/edit_my_profile_page.dart';
 
 class DogProfilePage extends StatelessWidget {
   const DogProfilePage({super.key});
@@ -14,20 +10,12 @@ class DogProfilePage extends StatelessWidget {
     return Scaffold(
         backgroundColor: Colors.white,
         body: SafeArea(
-<<<<<<< HEAD
           child: Center(
             child: SingleChildScrollView(
             child: Column(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
                 const SizedBox(height: 50),
-=======
-            child: Center(
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              const SizedBox(height: 50),
->>>>>>> UAT
               // logo
               Image.asset(
                 'assets/dog_picture/dog1.jpg',
@@ -37,35 +25,21 @@ class DogProfilePage extends StatelessWidget {
 
               const SizedBox(height: 10),
               // WOOFERS
-<<<<<<< HEAD
               const Text(
                 'Dog1',
                 style: TextStyle(
                   color: Colors.blue,
-=======
-              Text(
-                'Nama Ashu',
-                style: GoogleFonts.lora(
-                  color: const Color.fromRGBO(160, 220, 220, 1),
->>>>>>> UAT
                   fontWeight: FontWeight.bold,
                   fontSize: 20,
                 ),
               ),
 
               const DogProfileDetail(),
-<<<<<<< HEAD
               ],
             ),
           )
         ),
       ),
-      ),
-=======
-            ],
-          ),
-        )),
->>>>>>> UAT
     );
   }
 }

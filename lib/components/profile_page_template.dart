@@ -1,8 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:woofers/components/image_network.dart';
-import 'package:woofers/pages/adoption_page.dart';
+import 'package:woofers/pages/dog_list_page.dart';
 import 'package:woofers/pages/user_profile_page.dart';
-import 'package:woofers/services/account/user_profile_services.dart';
 
 class ProfilePageTemplate extends StatelessWidget {
   const ProfilePageTemplate({super.key});
@@ -21,7 +19,7 @@ class ProfilePageTemplate extends StatelessWidget {
                   width: 40,
                   height: 40,
                 ),
-                text: "Doggo",
+                text: "Me",
               ),
               Tab(
                 icon: Image(
@@ -29,46 +27,8 @@ class ProfilePageTemplate extends StatelessWidget {
                   width: 40,
                   height: 40,
                 ),
-<<<<<<< HEAD
-                // IconButton(
-                //   onPressed: () {
-                //     Navigator.push(
-                //       context, MaterialPageRoute(builder: (context) => const ChatListPage()),
-                //     );
-                //   },
-                //   icon: Image.asset(
-                //     'assets/woofers_icon/adoption.jpg',
-                //     width: 75,
-                //     height: 75,
-                //   ),
-                // ),
-                // IconButton(
-                //   onPressed: () {
-                //     Navigator.push(
-                //       context, MaterialPageRoute(builder: (context) => const ChatListPage()),
-                //     );
-                //   },
-                //   icon: Image.asset(
-                //     'assets/woofers_icon/adoption.jpg',
-                //     width: 75,
-                //     height: 75,
-                //   ),
-                // ),
-              ],
-            ),
-          ),
-          body: const TabBarView(
-            children: [
-              // ChatListPage(),
-              // AdoptionPage(),
-              // FeedsPage(),
-              UserProfilePage(),
-              //DogListPage(),
-              // FirstRoute(),
-=======
                 text: "Doggo",
               ),
->>>>>>> UAT
             ],
           ),
         ),
@@ -78,7 +38,7 @@ class ProfilePageTemplate extends StatelessWidget {
             // AdoptionPage(),
             // FeedsPage(),
             UserProfilePage(),
-            AdoptionPage(),
+            DogListPage(),
             // FirstRoute(),
           ],
         ),

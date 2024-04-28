@@ -1,5 +1,3 @@
-import 'package:dio/dio.dart';
-import 'package:shared_preferences/shared_preferences.dart';
 import 'dart:convert';
 
 import 'package:woofers/classes/dio_instance.dart';
@@ -24,6 +22,7 @@ class AccountService{
     } catch (error) {
       print(error);
     }
+    return null;
 
   }
 }

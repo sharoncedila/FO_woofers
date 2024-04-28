@@ -1,5 +1,3 @@
-import 'package:dio/dio.dart';
-import 'package:shared_preferences/shared_preferences.dart';
 import 'dart:convert';
 
 import 'package:woofers/classes/dio_instance.dart';
@@ -27,6 +25,7 @@ class ChatroomService {
     } catch (error) {
       print(error);
     }
+    return null;
   }
 
   Future<OpenChatResponse?> openChatroom(OpenChatRequest request) async {
@@ -44,9 +43,12 @@ class ChatroomService {
     } catch (error) {
       print(error);
     }
+    return null;
   }
 
   Future<OpenChatResponse?> sendMessage (SendChatRequest request) async{
+    return null;
+  
     
   }
 }

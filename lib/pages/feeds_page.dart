@@ -6,7 +6,7 @@ import 'package:woofers/pages/comment_page.dart';
 import 'package:woofers/pages/notification_page.dart';
 
 class FeedsPage extends StatefulWidget {
-  const FeedsPage({Key? key}) : super(key: key);
+  const FeedsPage({super.key});
 
   @override
   _FeedsPageState createState() => _FeedsPageState();

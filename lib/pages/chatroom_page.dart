@@ -3,7 +3,7 @@ import 'package:chat_bubbles/chat_bubbles.dart';
 
 class ChatroomPage extends StatefulWidget {
   
-  const ChatroomPage({Key? key}) : super(key: key);
+  const ChatroomPage({super.key});
 
   @override
   _ChatroomPageState createState() => _ChatroomPageState();
@@ -26,12 +26,12 @@ class _ChatroomPageState extends State<ChatroomPage> {
   Widget build(BuildContext context) {
     return MaterialApp(
       home: Scaffold(
-        appBar: AppBar(title: Text('Username'),centerTitle: true,),
+        appBar: AppBar(title: const Text('Username'),centerTitle: true,),
         backgroundColor: Colors.grey[300],
         body: SafeArea( 
           child: Column(
             children: [
-              SizedBox(height: 20),
+              const SizedBox(height: 20),
               const BubbleSpecialThree(
                 text: 'Added iMessage shape bubbles',
                 color: Color(0xFF1B97F3),
@@ -53,7 +53,7 @@ class _ChatroomPageState extends State<ChatroomPage> {
                   alignment: FractionalOffset.bottomCenter,
                   child: MessageBar(
                     onSend: (_) => print(_),
-                    actions: [
+                    actions: const [
                       // InkWell(
                       //   child: Icon(
                       //     Icons.add,

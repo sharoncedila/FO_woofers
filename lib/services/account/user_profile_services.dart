@@ -1,6 +1,3 @@
-import 'package:dio/dio.dart';
-import 'package:shared_preferences/shared_preferences.dart';
-import 'dart:convert';
 
 import 'package:woofers/classes/dio_instance.dart';
 import 'package:woofers/model/error_schema_model.dart';
@@ -22,5 +19,6 @@ class RetrieveAccountService {
     } catch (error) {
       print(error);
     }
+    return null;
   }
 }

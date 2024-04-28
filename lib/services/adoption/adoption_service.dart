@@ -38,5 +38,6 @@ class AdoptionService {
     } catch (error) {
       print(error);
     }
+    return null;
   }
 }

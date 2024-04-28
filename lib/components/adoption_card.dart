@@ -1,17 +1,20 @@
 import 'package:flutter/material.dart';
-import 'package:woofers/model/adoption_list_model.dart';
+import 'package:woofers/model/adoption_model.dart';
 import 'package:woofers/pages/dog_profile_page.dart';
 
 class DogCardDetail extends StatelessWidget {
   final AdoptionDetail adoptionDetail;
-  const DogCardDetail({super.key, required this.adoptionDetail,});
+  const DogCardDetail({
+    super.key,
+    required this.adoptionDetail,
+  });
 
   @override
   Widget build(BuildContext context) {
     return Padding(
         padding: const EdgeInsets.symmetric(horizontal: 25, vertical: 10),
         child: Card(
-         /* child: Hero(
+          /* child: Hero(
             tag: adoptionDetail.dogName ?? '',
             child: Material(
               child: InkWell(onTap: () {
@@ -40,71 +43,73 @@ class DogCardDetail extends StatelessWidget {
           ),
           color: Colors.black,
           child: InkWell(
-            onTap: () {
-              Navigator.push(
-                context,
-                MaterialPageRoute(builder: (context) => const DogProfilePage()),
-              );
-            },
-            child: SizedBox(
-              width: MediaQuery.of(context).size.width / 2,
-              height: 250,
-              child: Column(
-                children: [
-                  ClipRRect(
-                    borderRadius: const BorderRadius.only(
-                      topRight: Radius.circular(20),
-                      topLeft: Radius.circular(20),
-                    ),
-                    child: Image.asset(
-                      'assets/dog_picture/dog1.jpg',
-                      height: 150,
-                      fit: BoxFit.cover,
-                      width: double.infinity,
-                    ),
-                  ),
-                  ListTile(
-                    title: Text( 
-                      adoptionDetail.dogName ?? '',
-                      style: TextStyle(
-                        color: Colors.white,
+              onTap: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                      builder: (context) => const DogProfilePage()),
+                );
+              },
+              child: SizedBox(
+                width: MediaQuery.of(context).size.width / 2,
+                height: 250,
+                child: Column(
+                  children: [
+                    ClipRRect(
+                      borderRadius: const BorderRadius.only(
+                        topRight: Radius.circular(20),
+                        topLeft: Radius.circular(20),
                       ),
-                      textAlign: TextAlign.center,
+                      child: Image.asset(
+                        'assets/dog_picture/dog1.jpg',
+                        height: 150,
+                        fit: BoxFit.cover,
+                        width: double.infinity,
+                      ),
                     ),
-                  ),
-                  Padding(
-                    padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 10),
-                    child: Row(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: [
-                        Text(
-                          adoptionDetail.breedName ?? '',
-                          style: const TextStyle(
-                            color: Colors.white,
-                            fontSize: 12,
-                            // fontWeight: FontWeight.w300,
-                          ),
-                          textAlign: TextAlign.center,
+                    ListTile(
+                      title: Text(
+                        adoptionDetail.dogName ?? '',
+                        style: const TextStyle(
+                          color: Colors.white,
                         ),
-                        SizedBox(width: 15,),
-                        Text(
-                          adoptionDetail.age ?? '',
-                          style: const TextStyle(
-                            color: Colors.white,
-                            fontSize: 12,
-                            // fontWeight: FontWeight.w300,
-                          ),
-                          textAlign: TextAlign.center,
-                        ),
-                      ],
+                        textAlign: TextAlign.center,
+                      ),
                     ),
-                  ),
-                ],
-              ),
-            )
-          ),
-    )
-    );
+                    Padding(
+                      padding: const EdgeInsets.symmetric(
+                          horizontal: 20, vertical: 10),
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          Text(
+                            adoptionDetail.breedName ?? '',
+                            style: const TextStyle(
+                              color: Colors.white,
+                              fontSize: 12,
+                              // fontWeight: FontWeight.w300,
+                            ),
+                            textAlign: TextAlign.center,
+                          ),
+                          const SizedBox(
+                            width: 15,
+                          ),
+                          Text(
+                            adoptionDetail.age ?? '',
+                            style: const TextStyle(
+                              color: Colors.white,
+                              fontSize: 12,
+                              // fontWeight: FontWeight.w300,
+                            ),
+                            textAlign: TextAlign.center,
+                          ),
+                        ],
+                      ),
+                    ),
+                  ],
+                ),
+              )),
+        ));
   }
 }
 

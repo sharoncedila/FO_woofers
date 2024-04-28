@@ -1,8 +1,6 @@
 import 'package:email_validator/email_validator.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:hexcolor/hexcolor.dart';
-import 'package:hexcolor/hexcolor.dart';
 import 'package:woofers/components/bottom_menu.dart';
 import 'package:woofers/model/login_model.dart';
 import 'package:woofers/pages/register_page.dart';
@@ -19,36 +17,37 @@ class LoginPage extends StatelessWidget {
         //backgroundColor: Color.fromRGBO(160, 220, 220, 1.0),
         backgroundColor: Colors.grey[300],
         body: // SafeArea(
-          // child: 
-          Center(
-            child: SingleChildScrollView(
+            // child:
+            Center(
+          child: SingleChildScrollView(
             child: Column(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
                 const SizedBox(height: 50),
-              // logo
-              Image.asset(
-                'assets/woofers_icon/woofers.jpg',
-                width: 100, height: 100,
-              ),
+                // logo
+                Image.asset(
+                  'assets/woofers_icon/woofers.jpg',
+                  width: 100,
+                  height: 100,
+                ),
 
-              const SizedBox(height: 10),
-              // WOOFERS
-              Text(
-                'WOOFERS',
-                style: GoogleFonts.lora(
-                  fontSize: 18,
-                  //color: Colors.white,
-                  color: const Color.fromRGBO(40,36,36,10000),
-                  fontWeight: FontWeight.bold,
+                const SizedBox(height: 10),
+                // WOOFERS
+                Text(
+                  'WOOFERS',
+                  style: GoogleFonts.lora(
+                    fontSize: 18,
+                    //color: Colors.white,
+                    color: const Color.fromRGBO(40, 36, 36, 10000),
+                    fontWeight: FontWeight.bold,
                   ),
-              ),
+                ),
 
-              const LoginForm(),
+                const LoginForm(),
               ],
             ),
           ),
-         ),
+        ),
       ),
     );
   }
@@ -68,7 +67,7 @@ class _LoginFormState extends State<LoginForm> {
   // Note: This is a GlobalKey<FormState>,
   // not a GlobalKey<LoginFormState>.
   final _formKey = GlobalKey<FormState>();
-  bool passwordVisible=true;
+  bool passwordVisible = true;
   final _loginService = LoginService();
   final _emailController = TextEditingController();
   final _passwordController = TextEditingController();
@@ -79,121 +78,123 @@ class _LoginFormState extends State<LoginForm> {
     return Form(
       key: _formKey,
       //child: Center(
-        child: SingleChildScrollView(
+      child: SingleChildScrollView(
         child: Column(
-        mainAxisAlignment: MainAxisAlignment.center,
-        children: [
-          // email form field
-          const SizedBox(height: 50),
-          Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 25),
-            child: TextFormField(
-              //controller email
-              controller : _emailController,
-              decoration: InputDecoration(
-                enabledBorder: const OutlineInputBorder(
-                  borderSide: BorderSide(color: Colors.white),
-                ),
-                focusedBorder: OutlineInputBorder(
-                  borderSide: BorderSide(color: Colors.grey.shade400),
-                ),
-                fillColor: Colors.grey.shade200,
-                filled: true,
-                hintText: 'Email',
-                hintStyle: TextStyle(color: Colors.grey[500])
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            // email form field
+            const SizedBox(height: 50),
+            Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 25),
+              child: TextFormField(
+                //controller email
+                controller: _emailController,
+                decoration: InputDecoration(
+                    enabledBorder: const OutlineInputBorder(
+                      borderSide: BorderSide(color: Colors.white),
+                    ),
+                    focusedBorder: OutlineInputBorder(
+                      borderSide: BorderSide(color: Colors.grey.shade400),
+                    ),
+                    fillColor: Colors.grey.shade200,
+                    filled: true,
+                    hintText: 'Email',
+                    hintStyle: TextStyle(color: Colors.grey[500])),
+                validator: (value) {
+                  if (value == null || value.isEmpty) {
+                    return 'Please fill email field';
+                  }
+                  bool isvalid = EmailValidator.validate(value);
+                  if (isvalid == false) {
+                    return 'Please check inserted email';
+                  }
+                  return null;
+                },
               ),
-              validator: (value){
-                if (value == null || value.isEmpty) {
-                  return 'Please fill email field';
-                }
-                bool isvalid = EmailValidator.validate(value);
-                if (isvalid == false) {
-                  return 'Please check inserted email';
-                }
-                return null;
-              },
             ),
-          ),
 
-          // password form field
-          const SizedBox(height: 15),
-          Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 25),
-            child: TextFormField(
-	      //controller password
-              controller : _passwordController,
-              obscureText: passwordVisible,
-              decoration: InputDecoration(
-                enabledBorder: const OutlineInputBorder(
-                  borderSide: BorderSide(color: Colors.white),
+            // password form field
+            const SizedBox(height: 15),
+            Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 25),
+              child: TextFormField(
+                //controller password
+                controller: _passwordController,
+                obscureText: passwordVisible,
+                decoration: InputDecoration(
+                  enabledBorder: const OutlineInputBorder(
+                    borderSide: BorderSide(color: Colors.white),
+                  ),
+                  focusedBorder: OutlineInputBorder(
+                    borderSide: BorderSide(color: Colors.grey.shade400),
+                  ),
+                  fillColor: Colors.grey.shade200,
+                  filled: true,
+                  hintText: 'Password',
+                  hintStyle: TextStyle(color: Colors.grey[500]),
+                  suffixIcon: IconButton(
+                    icon: Icon(passwordVisible
+                        ? Icons.visibility
+                        : Icons.visibility_off),
+                    onPressed: () {
+                      setState(
+                        () {
+                          passwordVisible = !passwordVisible;
+                        },
+                      );
+                    },
+                  ),
+                  alignLabelWithHint: false,
                 ),
-                focusedBorder: OutlineInputBorder(
-                  borderSide: BorderSide(color: Colors.grey.shade400),
-                ),
-                fillColor: Colors.grey.shade200,
-                filled: true,
-                hintText: 'Password',
-                hintStyle: TextStyle(color: Colors.grey[500]),
-                suffixIcon: IconButton(
-                  icon: Icon(passwordVisible
-                      ? Icons.visibility
-                      : Icons.visibility_off),
-                  onPressed: () {
-                    setState(
-                      () {
-                        passwordVisible = !passwordVisible;
-                      },
-                    );
-                  },
-                ),
-                alignLabelWithHint: false,
+                keyboardType: TextInputType.visiblePassword,
+                textInputAction: TextInputAction.done,
+                validator: (password) {
+                  if (password == null || password.isEmpty) {
+                    return 'Please fill password field';
+                  }
+                  if (password.length < 8) {
+                    return 'Password must contain more than equal to 8 characters';
+                  }
+                  if (!password.contains(RegExp(r'[A-Z]'))) {
+                    return 'Password must contain at least 1 uppercase letter';
+                  }
+                  // Contains at least one lowercase letter
+                  if (!password.contains(RegExp(r'[a-z]'))) {
+                    return 'Password must contain at least 1 lowercase letter';
+                  }
+                  // Contains at least one digit
+                  if (!password.contains(RegExp(r'[0-9]'))) {
+                    return 'Password must contain at least 1 digit';
+                  }
+                  // Contains at least one special character
+                  if (!password.contains(RegExp(r'[!@#%^&*(),.?":{}|<>]'))) {
+                    return 'Password must contain at least 1 special character';
+                  }
+                  return null;
+                },
               ),
-              keyboardType: TextInputType.visiblePassword,
-                  textInputAction: TextInputAction.done,
-              validator: (password){
-                if (password == null || password.isEmpty) {
-                  return 'Please fill password field';
-                }
-                if (password.length < 8) {
-                  return 'Password must contain more than equal to 8 characters';
-                }
-                if (!password.contains(RegExp(r'[A-Z]'))) {
-                  return 'Password must contain at least 1 uppercase letter';
-                }
-                // Contains at least one lowercase letter
-                if (!password.contains(RegExp(r'[a-z]'))) {
-                  return 'Password must contain at least 1 lowercase letter';
-                }
-                // Contains at least one digit
-                if (!password.contains(RegExp(r'[0-9]'))) {
-                  return 'Password must contain at least 1 digit';
-                }
-                // Contains at least one special character
-                if (!password.contains(RegExp(r'[!@#%^&*(),.?":{}|<>]'))) {
-                  return 'Password must contain at least 1 special character';
-                }
-                return null;
-              },
             ),
-          ),
 
-          const SizedBox(height: 50),
-          SizedBox(
-            width: 200,
-            height: 45,
-            child: ElevatedButton(
-              style: ButtonStyle(
-                backgroundColor: MaterialStateProperty.resolveWith<Color?>(
-                  (Set<MaterialState> states) {
-                    if (states.contains(MaterialState.pressed)) {
-                      return Theme.of(context).colorScheme.primary.withOpacity(0.5);
-                    }
-                    return null; // Use the component's default.
-                  },
+            const SizedBox(height: 50),
+            SizedBox(
+              width: 200,
+              height: 45,
+              child: ElevatedButton(
+                style: ButtonStyle(
+                  backgroundColor: MaterialStateProperty.resolveWith<Color?>(
+                    (Set<MaterialState> states) {
+                      if (states.contains(MaterialState.pressed)) {
+                        return Theme.of(context)
+                            .colorScheme
+                            .primary
+                            .withOpacity(0.5);
+                      }
+                      return null; // Use the component's default.
+                    },
+                  ),
                 ),
-              ),
 
-            /*const SizedBox(
+                /*const SizedBox(
               height: 50,
             ),
             SizedBox(
@@ -205,75 +206,78 @@ class _LoginFormState extends State<LoginForm> {
                    Colors.blue,
                   ),
                 ),*/
-            child: 
-            Text(
-              'LOGIN',
-              style: TextStyle(color: Colors.grey[600], fontWeight: FontWeight.bold,fontSize: 18),
-            ),
-            onPressed: () async {
-              if (_formKey.currentState!.validate()) {
-                  final RequestLoginModel req = RequestLoginModel(
-                      email: _emailController.text,
-                      password: _passwordController.text);
-
-                  _loginService
-                      .login(req)
-                      .then((value) => Navigator.of(context).pushReplacement(
-                          MaterialPageRoute(
-                              builder: (_) => const BottomMenu())))
-                      .onError<Exception>((error, stackTrace) {
-                    showDialog(
-                      context: context,
-                      builder: (context) {
-                        //return Text(error.toString());
-                        return SimpleDialog(
-                          children: [Text(error.toString())],
-                        );
-                      },
-                    );
-                  });
-                }
-            },
-          ),
-        ),
-
-        // register now
-        const SizedBox(height: 10),
-          // register now
-
-          Row(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              Text(
-                'Don\'t have any account? ',
-                style: TextStyle(
-                  //color: Colors.white,
-                  color: Colors.grey[700],
-                  fontWeight: FontWeight.bold,
-                ),
-              ),
-              Padding(
-                padding: const EdgeInsets.all(0.7),
-                child: TextButton(
-                  child: const Text(
-                    'Register now',
-                    style: TextStyle(
-                      color: Colors.blue,
+                child: Text(
+                  'LOGIN',
+                  style: TextStyle(
+                      color: Colors.grey[600],
                       fontWeight: FontWeight.bold,
-                    ),
-                  ),
-                  onPressed: () {
-                    Navigator.push(
-                      context,
-                      MaterialPageRoute(builder: (context) => const RegisterPage()),
-                    );
-                  },
+                      fontSize: 18),
                 ),
+                onPressed: () async {
+                  if (_formKey.currentState!.validate()) {
+                    final RequestLoginModel req = RequestLoginModel(
+                        email: _emailController.text,
+                        password: _passwordController.text);
+
+                    _loginService
+                        .login(req)
+                        .then((value) => Navigator.of(context).pushReplacement(
+                            MaterialPageRoute(
+                                builder: (_) => const BottomMenuBar())))
+                        .onError<Exception>((error, stackTrace) {
+                      showDialog(
+                        context: context,
+                        builder: (context) {
+                          //return Text(error.toString());
+                          return SimpleDialog(
+                            children: [Text(error.toString())],
+                          );
+                        },
+                      );
+                    });
+                  }
+                },
               ),
-            ],
-          )
-    ],
-      ),
+            ),
+
+            // register now
+            const SizedBox(height: 10),
+            // register now
+
+            Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                Text(
+                  'Don\'t have any account? ',
+                  style: TextStyle(
+                    //color: Colors.white,
+                    color: Colors.grey[700],
+                    fontWeight: FontWeight.bold,
+                  ),
+                ),
+                Padding(
+                  padding: const EdgeInsets.all(0.7),
+                  child: TextButton(
+                    child: const Text(
+                      'Register now',
+                      style: TextStyle(
+                        color: Colors.blue,
+                        fontWeight: FontWeight.bold,
+                      ),
+                    ),
+                    onPressed: () {
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                            builder: (context) => const RegisterPage()),
+                      );
+                    },
+                  ),
+                ),
+              ],
+            )
+          ],
+        ),
       ),
     );
   }

@@ -4,7 +4,7 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:hexcolor/hexcolor.dart';
 
 class CommentPage extends StatefulWidget {
-  const CommentPage({Key? key}) : super(key: key);
+  const CommentPage({super.key});
 
   @override
   _CommentPageState createState() => _CommentPageState();
@@ -39,7 +39,7 @@ class _CommentPageState extends State<CommentPage> {
             alignment: FractionalOffset.bottomCenter,
             child: MessageBar(
               onSend: (_) => print(_),
-              actions: [
+              actions: const [
                 // InkWell(
                 //   child: Icon(
                 //     Icons.add,

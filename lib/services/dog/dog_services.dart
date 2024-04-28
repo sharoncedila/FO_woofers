@@ -1,4 +1,3 @@
-import 'package:dio/dio.dart';
 import 'package:woofers/classes/dio_instance.dart';
 import 'dart:convert';
 
@@ -22,6 +21,7 @@ class DogService {
     } catch (error) {
       print(error);
     }
+    return null;
   }
 
   Future<AddDogResponse?> addNewDog(AddDogRequest request) async{
@@ -40,5 +40,6 @@ class DogService {
     } catch (error) {
       print(error);
     }
+    return null;
   } 
 }
