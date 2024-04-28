@@ -186,6 +186,12 @@ class _RegisterFormState extends State<RegisterForm> {
                           child: Text(province),
                         );
                       }).toList(),
+                      validator: (value) {
+                        if (value == null || value.isEmpty) {
+                          return 'Please choose your province';
+                        }
+                        return null;
+                      },
                     );
                   },
                 ),

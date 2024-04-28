@@ -1,8 +1,4 @@
 import 'dart:convert';
-<<<<<<< HEAD
-
-=======
->>>>>>> SYE_20240425
 import 'package:woofers/classes/dio_instance.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:woofers/model/error_schema_model.dart';

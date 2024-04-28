@@ -16,7 +16,7 @@ class UserProfilePage extends StatefulWidget {
   _UserProfilePageState createState() => _UserProfilePageState();
 }
 
-class _UserProfilePageState extends State<UserProfilePage> {
+class _UserProfilePageState extends State<UserProfilePage> { 
   // const UserProfilePagetate({Key key}) : super(key: key);
   final Future<ResponseUserProfileModel?> _account =
       RetrieveAccountService().retrieveUserData();
@@ -65,6 +65,7 @@ class _UserProfilePageState extends State<UserProfilePage> {
                                   height: 150,
                                 );
                               }
+                              //masi kena disini err
                               return ImageNetwork(
                                   urlImage: imageURL, width: 150, height: 150);
                             }),

@@ -8,12 +8,12 @@ class ResponseDogProfileModel with _$ResponseDogProfileModel {
     required String dogId,
     required String dogName,
     required String? breedName,
-    required String? dateOfBirth,
+    String? dateOfBirth,
     required String? gender,
     required String? provinceName,
     required String? vaccination,
-    required String? description,
-    required String? image,
+    String? description,
+    String? image,
     required bool isOpenAdopt,
   }) = _ResponseDogProfileModel;
 

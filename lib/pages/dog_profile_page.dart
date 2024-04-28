@@ -1,16 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
-<<<<<<< HEAD
+import 'package:woofers/pages/add_dog_page.dart';
 import 'package:woofers/pages/edit_my_dog.dart';
-=======
 import 'package:hexcolor/hexcolor.dart';
 import 'package:woofers/pages/add_feeds_page.dart';
 import 'package:woofers/pages/comment_page.dart';
 import 'package:woofers/pages/notification_page.dart';
->>>>>>> SYE_20240425
 
 class DogProfilePage extends StatefulWidget {
-  const DogProfilePage({Key? key}) : super(key: key);
+  const DogProfilePage({super.key});
 
   @override
   _DogProfilePageState createState() => _DogProfilePageState();
@@ -20,15 +18,14 @@ class _DogProfilePageState extends State<DogProfilePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-<<<<<<< HEAD
-        backgroundColor: Colors.white,
-        body: SafeArea(
-          child: Center(
+      backgroundColor: Colors.white,
+      body: SafeArea(
+        child: Center(
             child: SingleChildScrollView(
-            child: Column(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                const SizedBox(height: 50),
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              const SizedBox(height: 50),
               // logo
               Image.asset(
                 'assets/dog_picture/dog1.jpg',
@@ -48,10 +45,9 @@ class _DogProfilePageState extends State<DogProfilePage> {
               ),
 
               const DogProfileDetail(),
-              ],
-            ),
-          )
-        ),
+            ],
+          ),
+        )),
       ),
     );
   }
@@ -62,7 +58,7 @@ class DogProfileDetail extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Column( 
+    return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: <Widget>[
         // dog name
@@ -81,10 +77,10 @@ class DogProfileDetail extends StatelessWidget {
               width: 10,
             ),
             Expanded(
-              child: Column(
-                mainAxisAlignment: MainAxisAlignment.start,
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
+                child: Column(
+                    mainAxisAlignment: MainAxisAlignment.start,
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
                   Text(
                     "name",
                     style: TextStyle(
@@ -106,9 +102,7 @@ class DogProfileDetail extends StatelessWidget {
                       ),
                     ),
                   ),
-                ]
-              )
-            )
+                ]))
           ],
         ),
 
@@ -128,10 +122,10 @@ class DogProfileDetail extends StatelessWidget {
               width: 10,
             ),
             Expanded(
-              child: Column(
-                mainAxisAlignment: MainAxisAlignment.start,
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
+                child: Column(
+                    mainAxisAlignment: MainAxisAlignment.start,
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
                   Text(
                     "breed",
                     style: TextStyle(
@@ -153,9 +147,7 @@ class DogProfileDetail extends StatelessWidget {
                       ),
                     ),
                   ),
-                ]
-              )
-            )
+                ]))
           ],
         ),
 
@@ -175,10 +167,10 @@ class DogProfileDetail extends StatelessWidget {
               width: 10,
             ),
             Expanded(
-              child: Column(
-                mainAxisAlignment: MainAxisAlignment.start,
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
+                child: Column(
+                    mainAxisAlignment: MainAxisAlignment.start,
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
                   Text(
                     "date of birth",
                     style: TextStyle(
@@ -200,9 +192,7 @@ class DogProfileDetail extends StatelessWidget {
                       ),
                     ),
                   ),
-                ]
-              )
-            )
+                ]))
           ],
         ),
 
@@ -222,10 +212,10 @@ class DogProfileDetail extends StatelessWidget {
               width: 10,
             ),
             Expanded(
-              child: Column(
-                mainAxisAlignment: MainAxisAlignment.start,
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
+                child: Column(
+                    mainAxisAlignment: MainAxisAlignment.start,
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
                   Text(
                     "gender",
                     style: TextStyle(
@@ -247,9 +237,7 @@ class DogProfileDetail extends StatelessWidget {
                       ),
                     ),
                   ),
-                ]
-              )
-            )
+                ]))
           ],
         ),
 
@@ -269,10 +257,10 @@ class DogProfileDetail extends StatelessWidget {
               width: 10,
             ),
             Expanded(
-              child: Column(
-                mainAxisAlignment: MainAxisAlignment.start,
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
+                child: Column(
+                    mainAxisAlignment: MainAxisAlignment.start,
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
                   Text(
                     "province",
                     style: TextStyle(
@@ -294,9 +282,7 @@ class DogProfileDetail extends StatelessWidget {
                       ),
                     ),
                   ),
-                ]
-              )
-            )
+                ]))
           ],
         ),
 
@@ -316,10 +302,10 @@ class DogProfileDetail extends StatelessWidget {
               width: 10,
             ),
             Expanded(
-              child: Column(
-                mainAxisAlignment: MainAxisAlignment.start,
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
+                child: Column(
+                    mainAxisAlignment: MainAxisAlignment.start,
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
                   Text(
                     "vaccine",
                     style: TextStyle(
@@ -333,7 +319,8 @@ class DogProfileDetail extends StatelessWidget {
                       enabled: false,
                       decoration: InputDecoration(
                         border: const UnderlineInputBorder(),
-                        labelText: 'Rabies Vaccine, Canine Distemper Vaccine, Canine Parvovirus Vaccine, Canine Adenovirus Type 1 and Type 2 (CAV-1 and CAV-2) Vaccine',
+                        labelText:
+                            'Rabies Vaccine, Canine Distemper Vaccine, Canine Parvovirus Vaccine, Canine Adenovirus Type 1 and Type 2 (CAV-1 and CAV-2) Vaccine',
                         // hintText: snapshot.data!.username,
                         labelStyle: GoogleFonts.newsCycle(
                           color: Colors.black,
@@ -341,9 +328,7 @@ class DogProfileDetail extends StatelessWidget {
                       ),
                     ),
                   ),
-                ]
-              )
-            )
+                ]))
           ],
         ),
 
@@ -363,10 +348,10 @@ class DogProfileDetail extends StatelessWidget {
               width: 10,
             ),
             Expanded(
-              child: Column(
-                mainAxisAlignment: MainAxisAlignment.start,
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
+                child: Column(
+                    mainAxisAlignment: MainAxisAlignment.start,
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
                   Text(
                     "description",
                     style: TextStyle(
@@ -388,12 +373,9 @@ class DogProfileDetail extends StatelessWidget {
                       ),
                     ),
                   ),
-                ]
-              )
-            )
+                ]))
           ],
         ),
-
 
         const SizedBox(height: 50),
         SizedBox(
@@ -404,24 +386,30 @@ class DogProfileDetail extends StatelessWidget {
               backgroundColor: MaterialStateProperty.resolveWith(
                 (Set<MaterialState> states) {
                   if (states.contains(MaterialState.pressed)) {
-                    return Theme.of(context).colorScheme.primary.withOpacity(0.5);
+                    return Theme.of(context)
+                        .colorScheme
+                        .primary
+                        .withOpacity(0.5);
                   }
                   return null; // Use the component's default.
                 },
               ),
             ),
-          child: const Text('Edit'),
-          onPressed: () async {
-            Navigator.push(
-              context,
-              MaterialPageRoute(builder: (context) => const EditMyDog()),
-            );
-          },
+            child: const Text('Edit'),
+            onPressed: () async {
+              Navigator.push(
+                context,
+                MaterialPageRoute(builder: (context) => const EditMyDog()),
+              );
+            },
+          ),
         ),
-      ),
+      ],
+    );
+  }
+}
 
-
-      /* unused
+/* unused
         Padding(
           padding: const EdgeInsets.symmetric(horizontal: 25, vertical: 10),
           child: TextFormField(
@@ -432,7 +420,6 @@ class DogProfileDetail extends StatelessWidget {
               hintText: 'Name',
               hintStyle: TextStyle(color: Colors.black),
             ),
-=======
       backgroundColor: Colors.white,
       appBar: AppBar(
         toolbarHeight: 75,
@@ -444,7 +431,6 @@ class DogProfileDetail extends StatelessWidget {
             fontSize: 25,
             fontWeight: FontWeight.bold,
             color: const Color.fromRGBO(40, 36, 36, 10000),
->>>>>>> SYE_20240425
           ),
         ),
         actions: <Widget>[
@@ -615,4 +601,4 @@ class DogProfileDetail extends StatelessWidget {
       ),
     );
   }
-}
+}*/

@@ -1,6 +1,7 @@
-import 'package:woofers/classes/dio_instance.dart';
 import 'dart:convert';
 
+import 'package:http/http.dart';
+import 'package:woofers/classes/dio_instance.dart';
 import 'package:woofers/model/dog_profile_model.dart';
 import 'package:woofers/model/error_schema_model.dart';
 
@@ -24,7 +25,7 @@ class DogService {
     return null;
   }
 
-  Future<AddDogResponse?> addNewDog(AddDogRequest request) async{
+  Future<AddDogResponse?> addNewDog(AddDogRequest request) async {
     try {
       String api = '/dogs/add';
       final dio = await DioInstance.getInstance();
@@ -40,26 +41,23 @@ class DogService {
     } catch (error) {
       print(error);
     }
-<<<<<<< HEAD
     return null;
-  } 
-=======
   }
 
-  Future<List<ResponseDogProfileModel>> retrieveDogList(String accountId) async {
-    late Response response;
+  Future<List<ResponseDogProfileModel>> retrieveDogList(
+      String accountId) async {
+    late var response;
     try {
       String api = '/account-dog/account-id/$accountId';
       final dio = await DioInstance.getInstance();
 
-       response = await dio.get(api);
-        return (response.data['outputSchema']['dogList'] as List)
-            .map((e) => ResponseDogProfileModel.fromJson(e))
-            .toList();
+      response = await dio.get(api);
+      return (response.data['outputSchema']['dogList'] as List)
+          .map((e) => ResponseDogProfileModel.fromJson(e))
+          .toList();
     } catch (error) {
       final errorSchema = ErrorSchema.fromJson(response.data['errorSchema']);
       throw Exception(error);
     }
   }
->>>>>>> SYE_20240425
 }

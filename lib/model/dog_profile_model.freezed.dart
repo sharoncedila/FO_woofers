@@ -225,12 +225,12 @@ class _$ResponseDogProfileModelImpl implements _ResponseDogProfileModel {
       {required this.dogId,
       required this.dogName,
       required this.breedName,
-      required this.dateOfBirth,
+      this.dateOfBirth,
       required this.gender,
       required this.provinceName,
       required this.vaccination,
-      required this.description,
-      required this.image,
+      this.description,
+      this.image,
       required this.isOpenAdopt});
 
   factory _$ResponseDogProfileModelImpl.fromJson(Map<String, dynamic> json) =>
@@ -320,12 +320,12 @@ abstract class _ResponseDogProfileModel implements ResponseDogProfileModel {
       {required final String dogId,
       required final String dogName,
       required final String? breedName,
-      required final String? dateOfBirth,
+      final String? dateOfBirth,
       required final String? gender,
       required final String? provinceName,
       required final String? vaccination,
-      required final String? description,
-      required final String? image,
+      final String? description,
+      final String? image,
       required final bool isOpenAdopt}) = _$ResponseDogProfileModelImpl;
 
   factory _ResponseDogProfileModel.fromJson(Map<String, dynamic> json) =

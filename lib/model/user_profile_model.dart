@@ -9,7 +9,7 @@ class ResponseUserProfileModel with _$ResponseUserProfileModel {
     required String? fullName,
     required String? email,
     required String? provinceName,
-    required String? phoneNumber,
+    required String? phoneNumber, 
     required String? description,
     required String? image,
     required String? errorCode,

@@ -79,7 +79,7 @@ class _ChatListPageState extends State<ChatListPage> {
                   const SizedBox(
                     width: 5,
                   ),
-                  IconButton(
+                  IconButton( 
                       onPressed: () {},
                       icon: const Icon(
                         Icons.search,
