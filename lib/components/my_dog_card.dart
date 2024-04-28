@@ -1,23 +1,16 @@
 import 'package:flutter/material.dart';
+import 'package:woofers/model/dog_profile_model.dart';
 import 'package:woofers/pages/dog_profile_page.dart';
+import 'package:woofers/pages/user_profile_page.dart';
 
 /// Flutter code sample for [Card].
 
-void main() => runApp(const FeedsCard());
-
-class FeedsCard extends StatelessWidget {
-  const FeedsCard({super.key});
-
-  @override
-  Widget build(BuildContext context) {
-    return const Scaffold(
-        body: FeedsCardDetail(),
-    );
-  }
-}
-
-class FeedsCardDetail extends StatelessWidget {
-  const FeedsCardDetail({super.key});
+class MyDogCard extends StatelessWidget {
+  final ResponseDogProfileModel dogProfile;
+  const MyDogCard({
+    super.key,
+    required this.dogProfile,
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -53,18 +46,29 @@ class FeedsCardDetail extends StatelessWidget {
                       width: double.infinity,
                     ),
                   ),
-                  const ListTile(
+                  ListTile(
                     title: Text(
-                      'Melbourne Cricket Stadium',
-                      style: TextStyle(
+                      // 'Melbourne Cricket Stadium',
+                      dogProfile.dogName ?? '',
+                      style: const TextStyle(
                         color: Colors.white,
                       ),
                     ),
-                    subtitle: Text(
-                      'Australia',
-                      style: TextStyle(
-                        color: Colors.grey,
-                      ),
+                    subtitle: Row(
+                      children: [
+                        Text(
+                          dogProfile.breedName ?? '',
+                          style: const TextStyle(
+                            color: Colors.grey,
+                          ),
+                        ),
+                        Text(
+                          dogProfile.dateOfBirth ?? '',
+                          style: const TextStyle(
+                            color: Colors.grey,
+                          ),
+                        ),
+                      ]
                     ),
                   ),
                   Padding(

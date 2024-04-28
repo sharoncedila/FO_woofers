@@ -28,9 +28,9 @@ class _BottomMenuBarState extends State<BottomMenuBar> {
         selectedIndex: currentPageIndex,
         destinations: const <Widget>[
           NavigationDestination(
-            selectedIcon: Icon(Icons.home),
-            icon: Icon(Icons.home_outlined),
-            label: 'Home',
+            selectedIcon: Icon(Icons.chat),
+            icon: Icon(Icons.chat),
+            label: 'Chat',
           ),
           NavigationDestination(
             icon: Image(

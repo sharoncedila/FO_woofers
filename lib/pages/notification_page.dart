@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:woofers/pages/dog_profile_page.dart';
+import 'package:woofers/pages/user_profile_page.dart';
 
 class NotificationPage extends StatelessWidget {
   const NotificationPage({super.key});
@@ -77,7 +78,7 @@ class NotificationPage extends StatelessWidget {
                             Navigator.push(
                               context,
                               MaterialPageRoute(
-                                builder: (context) => const DogProfilePage()
+                                builder: (context) => const UserProfilePage()
                               ),
                             );
                           },
@@ -158,7 +159,7 @@ class NotificationPage extends StatelessWidget {
                             Navigator.push(
                               context,
                               MaterialPageRoute(
-                                builder: (context) => const DogProfilePage()
+                                builder: (context) => const UserProfilePage()
                               ),
                             );
                           },
@@ -239,7 +240,7 @@ class NotificationPage extends StatelessWidget {
                             Navigator.push(
                               context,
                               MaterialPageRoute(
-                                builder: (context) => const DogProfilePage()
+                                builder: (context) => const UserProfilePage()
                               ),
                             );
                           },
@@ -320,7 +321,7 @@ class NotificationPage extends StatelessWidget {
                             Navigator.push(
                               context,
                               MaterialPageRoute(
-                                builder: (context) => const DogProfilePage()
+                                builder: (context) => const UserProfilePage()
                               ),
                             );
                           },

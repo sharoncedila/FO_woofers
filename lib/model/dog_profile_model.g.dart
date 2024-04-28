@@ -9,8 +9,8 @@ part of 'dog_profile_model.dart';
 _$ResponseDogProfileModelImpl _$$ResponseDogProfileModelImplFromJson(
         Map<String, dynamic> json) =>
     _$ResponseDogProfileModelImpl(
-      dogId: json['dogId'] as String?,
-      dogName: json['dogName'] as String?,
+      dogId: json['dogId'] as String,
+      dogName: json['dogName'] as String,
       breedName: json['breedName'] as String?,
       dateOfBirth: json['dateOfBirth'] as String?,
       gender: json['gender'] as String?,
@@ -18,9 +18,7 @@ _$ResponseDogProfileModelImpl _$$ResponseDogProfileModelImplFromJson(
       vaccination: json['vaccination'] as String?,
       description: json['description'] as String?,
       image: json['image'] as String?,
-      isOpenAdopt: json['isOpenAdopt'] as String?,
-      errorCode: json['errorCode'] as String?,
-      errorMessage: json['errorMessage'] as String?,
+      isOpenAdopt: json['isOpenAdopt'] as bool,
     );
 
 Map<String, dynamic> _$$ResponseDogProfileModelImplToJson(
@@ -36,8 +34,6 @@ Map<String, dynamic> _$$ResponseDogProfileModelImplToJson(
       'description': instance.description,
       'image': instance.image,
       'isOpenAdopt': instance.isOpenAdopt,
-      'errorCode': instance.errorCode,
-      'errorMessage': instance.errorMessage,
     };
 
 _$AddDogRequestImpl _$$AddDogRequestImplFromJson(Map<String, dynamic> json) =>

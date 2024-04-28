@@ -7,17 +7,17 @@ import 'package:woofers/pages/login_page.dart';
 import 'package:woofers/services/account/user_profile_services.dart';
 import 'package:google_fonts/google_fonts.dart';
 
-void main() => runApp(const UserProfilePage());
+void main() => runApp(const AddDogPage());
 
-class UserProfilePage extends StatefulWidget {
-  const UserProfilePage({super.key});
+class AddDogPage extends StatefulWidget {
+  const AddDogPage({super.key});
 
   @override
-  _UserProfilePageState createState() => _UserProfilePageState();
+  _AddDogPageState createState() => _AddDogPageState();
 }
 
-class _UserProfilePageState extends State<UserProfilePage> {
-  // const UserProfilePagetate({Key key}) : super(key: key);
+class _AddDogPageState extends State<AddDogPage> {
+  // const AddDogPagetate({Key key}) : super(key: key);
   final Future<ResponseUserProfileModel?> _account =
       RetrieveAccountService().retrieveUserData();
 

@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:woofers/pages/dog_profile_page.dart';
+import 'package:woofers/pages/login_page.dart';
 import 'components/bottom_menu.dart';
 
 
