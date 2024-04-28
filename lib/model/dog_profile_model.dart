@@ -31,7 +31,7 @@ class AddDogRequest with _$AddDogRequest {
     required String? provinceName,
     required String? vaccination,
     required String? description,
-    required String? isOpenAdopt,
+    required bool? isOpenAdopt,
   }) = _AddDogRequest;
 
   factory AddDogRequest.fromJson(Map<String, dynamic> json) =>
@@ -55,4 +55,27 @@ class AddDogResponse with _$AddDogResponse {
 
   factory AddDogResponse.fromJson(Map<String, dynamic> json) =>
       _$AddDogResponseFromJson(json);
+}
+
+
+
+
+// di profile page detail
+@freezed
+class RetrieveDogProfileDetail with _$RetrieveDogProfileDetail {
+  factory RetrieveDogProfileDetail({
+    required String dogId,
+    required String dogName,
+    required String? breedName,
+    required String? dateOfBirth,
+    required String? gender,
+    required String? provinceName,
+    required String? vaccination,
+    required String? description,
+    required String? image,
+    required String? isOpenAdopt,
+  }) = _RetrieveDogProfileDetail;
+
+  factory RetrieveDogProfileDetail.fromJson(Map<String, dynamic> json) =>
+      _$RetrieveDogProfileDetailFromJson(json);
 }

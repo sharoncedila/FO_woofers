@@ -24,6 +24,26 @@ class DogService {
     }
   }
 
+// di profile page dog detail
+  Future<RetrieveDogProfileDetail?> RetrieveDogProfileDetailPage (String dogId) async {
+    try {
+      String api = '/dogs/profile/dog-id/$dogId';
+      final dio = await DioInstance.getInstance();
+
+      var response = await dio.get(api);
+      final errorSchema = ErrorSchema.fromJson(response.data['errorSchema']);
+
+      if (errorSchema.errorCode != 'WOF-000') {
+        return RetrieveDogProfileDetail.fromJson(response.data['errorSchema']);
+      } else {
+        return RetrieveDogProfileDetail.fromJson(response.data['outputSchema']);
+      }
+    } catch (error) {
+      print(error);
+    }
+  }
+
+
   Future<AddDogResponse?> addNewDog(AddDogRequest request) async{
     try {
       String api = '/dogs/add';

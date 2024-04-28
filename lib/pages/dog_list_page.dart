@@ -25,7 +25,7 @@ class _DogListPageState extends State<DogListPage> {
           future: geToken(),
           builder: (context, snapshot) {
             if (snapshot.connectionState == ConnectionState.waiting) {
-              return const Center(child: Text("Retrieving your data..."));
+              return const Center(child: Text("Retrieving your dog list data 1"));
             }
             if (snapshot.hasError) {
               return const Center(child: Text("Error accountID"));
@@ -42,7 +42,7 @@ class _DogListPageState extends State<DogListPage> {
                     builder: (context, snapshot) {
                       if (snapshot.connectionState == ConnectionState.waiting) {
                         return const Center(
-                            child: Text("Retrieving your data..."));
+                            child: Text("Retrieving your dog list data 2"));
                       }
                       if (snapshot.hasError) {
                         return const Center(child: Text("Error dogList"));

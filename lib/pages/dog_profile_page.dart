@@ -1,18 +1,18 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:hexcolor/hexcolor.dart';
-import 'package:woofers/pages/add_feeds_page.dart';
+import 'package:woofers/pages/add_dog_page.dart';
 import 'package:woofers/pages/comment_page.dart';
 import 'package:woofers/pages/notification_page.dart';
+import 'package:woofers/services/dog/dog_services.dart';
 
-class DogProfilePage extends StatefulWidget {
-  const DogProfilePage({Key? key}) : super(key: key);
+class DogProfilePage extends StatelessWidget {
+  final String dogId;
+  const DogProfilePage({
+    super.key,
+    required this.dogId,
+  });
 
-  @override
-  _DogProfilePageState createState() => _DogProfilePageState();
-}
-
-class _DogProfilePageState extends State<DogProfilePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -46,154 +46,161 @@ class _DogProfilePageState extends State<DogProfilePage> {
               Navigator.push(
                 context,
                 MaterialPageRoute(
-                    builder: (context) => const AddDogProfilePage()),
+                    builder: (context) => const AddDogPage()),
               );
             },
           ),
         ],
       ),
-      body: feedsList(),
+      body: dogProfileDetail(),
     );
   }
 
-  Widget feedsList() {
+  Widget dogProfileDetail() {
     return SingleChildScrollView(
-      child: Padding(
-        padding: const EdgeInsets.only(left: 25, right: 25),
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            const SizedBox(
-              height: 15,
-            ),
-            Column(
-              children: List.generate(5, (index) {
-                return Container(
-                    padding: const EdgeInsets.only(bottom: 25),
-                    child: Column(
-                      children: [
-                        Stack(
+      child: FutureBuilder(
+        future: DogService().RetrieveDogProfileDetailPage(dogId),
+        builder: (context, snapshot) {
+          if (snapshot.connectionState == ConnectionState.waiting) {
+            return const Center(child: Text("Retrieving your data..."));
+          }
+          if (snapshot.hasError) {
+            return const Center(child: Text("Error"));
+          }
+          if (!snapshot.hasData) {
+            return const Center(child: Text("no data available for this dog"));
+          }
+          return SingleChildScrollView(
+            padding: const EdgeInsets.only(left: 25, right: 25),
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Container(
+                        padding: const EdgeInsets.only(bottom: 25),
+                        child: Column(
                           children: [
-                            Container(
-                              width: double.infinity,
-                              height: 288,
-                              decoration: BoxDecoration(
-                                  image: const DecorationImage(
-                                      image: AssetImage(
-                                          'assets/dog_picture/dog1.jpg'),
-                                      fit: BoxFit.cover),
-                                  borderRadius: BorderRadius.circular(20)),
-                            ),
-                            Container(
-                              width: double.infinity,
-                              height: 288,
-                              decoration: BoxDecoration(
-                                borderRadius: BorderRadius.circular(20),
-                              ),
-                              child: Padding(
-                                padding: const EdgeInsets.all(15),
-                                child: Column(
-                                  mainAxisAlignment:
-                                      MainAxisAlignment.spaceBetween,
-                                  children: [
-                                    // profile, nama orang, waktu
-                                    Row(
+                            Stack(
+                              children: [
+                                Container(
+                                  width: double.infinity,
+                                  height: 288,
+                                  decoration: BoxDecoration(
+                                      image: const DecorationImage(
+                                          image: AssetImage(
+                                              'assets/dog_picture/dog1.jpg'),
+                                          fit: BoxFit.cover),
+                                      borderRadius: BorderRadius.circular(20)),
+                                ),
+                                Container(
+                                  width: double.infinity,
+                                  height: 288,
+                                  decoration: BoxDecoration(
+                                    borderRadius: BorderRadius.circular(20),
+                                  ),
+                                  child: Padding(
+                                    padding: const EdgeInsets.all(15),
+                                    child: Column(
                                       mainAxisAlignment:
                                           MainAxisAlignment.spaceBetween,
                                       children: [
+                                        // profile, nama orang, waktu
                                         Row(
+                                          mainAxisAlignment:
+                                              MainAxisAlignment.spaceBetween,
                                           children: [
-                                            const CircleAvatar(
-                                              backgroundImage: AssetImage(
-                                                  'assets/profile_picture/person1.jpg'),
-                                            ),
-                                            const SizedBox(
-                                              width: 12,
-                                            ),
-                                            Column(
-                                              crossAxisAlignment:
-                                                  CrossAxisAlignment.start,
+                                            Row(
                                               children: [
-                                                const Text(
-                                                  'Sharon Cedila',
-                                                  style: TextStyle(
-                                                      fontSize: 15,
-                                                      color: Colors.white),
+                                                const CircleAvatar(
+                                                  backgroundImage: AssetImage(
+                                                      'assets/profile_picture/person1.jpg'),
                                                 ),
                                                 const SizedBox(
-                                                  height: 3,
+                                                  width: 12,
                                                 ),
-                                                Text(
-                                                  '10.43',
-                                                  style: TextStyle(
-                                                      fontSize: 13,
-                                                      color: Colors.white
-                                                          .withOpacity(0.8)),
-                                                ),
+                                                Column(
+                                                  crossAxisAlignment:
+                                                      CrossAxisAlignment.start,
+                                                  children: [
+                                                    Text(
+                                                      snapshot.data?.dogName==null?"gagalambildata":snapshot.data!.dogName,
+                                                      style: const TextStyle(
+                                                          fontSize: 15,
+                                                          color: Colors.black),
+                                                    ),
+                                                    const SizedBox(
+                                                      height: 3,
+                                                    ),
+                                                    Text(
+                                                      '10.43',
+                                                      style: TextStyle(
+                                                          fontSize: 13,
+                                                          color: Colors.white
+                                                              .withOpacity(0.8)),
+                                                    ),
+                                                  ],
+                                                )
                                               ],
-                                            )
+                                            ),
                                           ],
                                         ),
+                                        // heart and comment
                                       ],
                                     ),
-                                    // heart and comment
-                                  ],
-                                ),
-                              ),
-                            ),
-                          ],
-                        ),
-                        Column(
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          children: [
-                            Row(
-                              mainAxisAlignment: MainAxisAlignment.start,
-                              children: [
-                                IconButton(
-                                  icon: const Icon(
-                                    Icons.favorite_border,
-                                    color: Colors.black,
-                                    size: 20,
                                   ),
-                                  onPressed: () {
-                                    Navigator.push(
-                                      context,
-                                      MaterialPageRoute(
-                                          builder: (context) =>
-                                              const CommentPage()),
-                                    );
-                                  },
-                                ),
-                                IconButton(
-                                  icon: const Icon(
-                                    Icons.comment_outlined,
-                                    color: Colors.black,
-                                    size: 20,
-                                  ),
-                                  onPressed: () {
-                                    Navigator.push(
-                                      context,
-                                      MaterialPageRoute(
-                                          builder: (context) =>
-                                              const CommentPage()),
-                                    );
-                                  },
                                 ),
                               ],
                             ),
-                            const Text(
-                              "     1 like",
-                              style:
-                                  TextStyle(color: Colors.grey, fontSize: 12),
+                            Column(
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              children: [
+                                Row(
+                                  mainAxisAlignment: MainAxisAlignment.start,
+                                  children: [
+                                    IconButton(
+                                      icon: const Icon(
+                                        Icons.favorite_border,
+                                        color: Colors.black,
+                                        size: 20,
+                                      ),
+                                      onPressed: () {
+                                        Navigator.push(
+                                          context,
+                                          MaterialPageRoute(
+                                              builder: (context) =>
+                                                  const CommentPage()),
+                                        );
+                                      },
+                                    ),
+                                    IconButton(
+                                      icon: const Icon(
+                                        Icons.comment_outlined,
+                                        color: Colors.black,
+                                        size: 20,
+                                      ),
+                                      onPressed: () {
+                                        Navigator.push(
+                                          context,
+                                          MaterialPageRoute(
+                                              builder: (context) =>
+                                                  const CommentPage()),
+                                        );
+                                      },
+                                    ),
+                                  ],
+                                ),
+                                const Text(
+                                  "     1 like",
+                                  style:
+                                      TextStyle(color: Colors.grey, fontSize: 12),
+                                )
+                              ],
                             )
                           ],
-                        )
-                      ],
-                    ));
-              }),
-            )
-          ],
-        ),
+                        )),
+              ],
+            ),
+          );
+        }
       ),
     );
   }

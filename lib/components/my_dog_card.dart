@@ -26,7 +26,7 @@ class MyDogCard extends StatelessWidget {
             onTap: () {
               Navigator.push(
                 context,
-                MaterialPageRoute(builder: (context) => const DogProfilePage()),
+                MaterialPageRoute(builder: (context) => DogProfilePage(dogId: dogProfile.dogId)),
               );
             },
             child: SizedBox(
