@@ -1,403 +1,66 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:woofers/pages/dog_profile_page.dart';
-import 'package:woofers/pages/user_profile_page.dart';
+import 'package:hexcolor/hexcolor.dart';
+import 'package:woofers/components/notification.card.dart';
+import 'package:woofers/services/account/notification_service.dart';
 
-class NotificationPage extends StatelessWidget {
+class NotificationPage extends StatefulWidget {
   const NotificationPage({super.key});
 
   @override
+  _NotificationPageState createState() => _NotificationPageState();
+}
+
+class _NotificationPageState extends State<NotificationPage> {
+  @override
   Widget build(BuildContext context) {
     return Scaffold(
-        backgroundColor: Colors.white,
-        body: SafeArea(
-          child: SingleChildScrollView(
-            child: Column(children: [
-              // user profile page
-              Row(
-                children: [
-                  const SizedBox(
-                    width: 10,
-                  ),
-                  const Image(
-                    image: AssetImage('assets/woofers_icon/profile.jpg'),
-                    width: 35,
-                    height: 35,
-                  ),
-                  const SizedBox(
-                    width: 20,
-                  ),
-                  Expanded(
-                    child: Column(
-                      mainAxisAlignment: MainAxisAlignment.start,
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        Text(
-                          "username",
-                          style: TextStyle(
-                            color: Colors.black.withOpacity(0.5),
-                          ),
-                        ),
-                        SizedBox(
-                          height: 25,
-                          child: TextFormField(
-                            readOnly: true,
-                            enabled: false,
-                            decoration: InputDecoration(
-                              border: const UnderlineInputBorder(),
-                              labelText: 'Username',
-                              // hintText: snapshot.data!.username,
-                              labelStyle: GoogleFonts.newsCycle(
-                                color: Colors.black,
-                              ),
-                            ),
-                          ),
-                        ),
-                      ]
-                    )
-                  )
-                ],
-              ),
-
-              // adoption list card
-              Container(
-                alignment: Alignment.center,
-                child: Wrap(
-                  children: [
-                    // 1
-                    Padding(
-                      padding: const EdgeInsets.symmetric(horizontal: 5, vertical: 5),
-                      child: Card(
-                        shadowColor: Colors.black,
-                        shape: RoundedRectangleBorder(
-                          borderRadius: BorderRadius.circular(20.0),
-                        ),
-                        color: const Color.fromRGBO(160, 220, 220, 10),
-                        child: InkWell(
-                          onTap: () {
-                            Navigator.push(
-                              context,
-                              MaterialPageRoute(
-                                builder: (context) => const UserProfilePage()
-                              ),
-                            );
-                          },
-                          child: SizedBox(
-                            width: MediaQuery.of(context).size.width / 2.25,
-                            height: 200,
-                            child: Column(
-                              children: [
-                                ClipRRect(
-                                  borderRadius: const BorderRadius.only(
-                                    topRight: Radius.circular(20),
-                                    topLeft: Radius.circular(20),
-                                  ),
-                                  child: Image.asset(
-                                    'assets/dog_picture/dog1.jpg',
-                                    height: 150,
-                                    fit: BoxFit.cover,
-                                    width: double.infinity,
-                                  ),
-                                ),
-                                const SizedBox(height: 5),
-                                const Text(
-                                  'Nama Ashu',
-                                  style: TextStyle(
-                                    color: Colors.white,
-                                  ),
-                                  textAlign: TextAlign.center,
-                                ),
-                                const SizedBox(
-                                  height: 1,
-                                ),
-                                const Padding(
-                                  padding: EdgeInsets.symmetric(
-                                      horizontal: 1, vertical: 1),
-                                  child: Row(
-                                    mainAxisAlignment: MainAxisAlignment.center,
-                                    children: [
-                                      Text(
-                                        'Golden Retriever',
-                                        style: TextStyle(
-                                          color: Colors.white,
-                                          fontSize: 12,
-                                        ),
-                                        textAlign: TextAlign.center,
-                                      ),
-                                      SizedBox(
-                                        width: 15,
-                                      ),
-                                      Text(
-                                        '8',
-                                        style: TextStyle(
-                                          color: Colors.white,
-                                          fontSize: 12,
-                                        ),
-                                        textAlign: TextAlign.center,
-                                      ),
-                                    ],
-                                  ),
-                                ),
-                              ],
-                            ),
-                          )
-                        )
-                      ),
-                    ),
-
-                    // 2
-                    Padding(
-                      padding: const EdgeInsets.symmetric(horizontal: 5, vertical: 5),
-                      child: Card(
-                        shadowColor: Colors.black,
-                        shape: RoundedRectangleBorder(
-                          borderRadius: BorderRadius.circular(20.0),
-                        ),
-                        color: const Color.fromRGBO(160, 220, 220, 10),
-                        child: InkWell(
-                          onTap: () {
-                            Navigator.push(
-                              context,
-                              MaterialPageRoute(
-                                builder: (context) => const UserProfilePage()
-                              ),
-                            );
-                          },
-                          child: SizedBox(
-                            width: MediaQuery.of(context).size.width / 2.25,
-                            height: 200,
-                            child: Column(
-                              children: [
-                                ClipRRect(
-                                  borderRadius: const BorderRadius.only(
-                                    topRight: Radius.circular(20),
-                                    topLeft: Radius.circular(20),
-                                  ),
-                                  child: Image.asset(
-                                    'assets/dog_picture/dog1.jpg',
-                                    height: 150,
-                                    fit: BoxFit.cover,
-                                    width: double.infinity,
-                                  ),
-                                ),
-                                const SizedBox(height: 5),
-                                const Text(
-                                  'Nama Ashu',
-                                  style: TextStyle(
-                                    color: Colors.white,
-                                  ),
-                                  textAlign: TextAlign.center,
-                                ),
-                                const SizedBox(
-                                  height: 1,
-                                ),
-                                const Padding(
-                                  padding: EdgeInsets.symmetric(
-                                      horizontal: 1, vertical: 1),
-                                  child: Row(
-                                    mainAxisAlignment: MainAxisAlignment.center,
-                                    children: [
-                                      Text(
-                                        'Golden Retriever',
-                                        style: TextStyle(
-                                          color: Colors.white,
-                                          fontSize: 12,
-                                        ),
-                                        textAlign: TextAlign.center,
-                                      ),
-                                      SizedBox(
-                                        width: 15,
-                                      ),
-                                      Text(
-                                        '8',
-                                        style: TextStyle(
-                                          color: Colors.white,
-                                          fontSize: 12,
-                                        ),
-                                        textAlign: TextAlign.center,
-                                      ),
-                                    ],
-                                  ),
-                                ),
-                              ],
-                            ),
-                          )
-                        )
-                      ),
-                    ),
-
-                    // 3
-                    Padding(
-                      padding: const EdgeInsets.symmetric(horizontal: 5, vertical: 5),
-                      child: Card(
-                        shadowColor: Colors.black,
-                        shape: RoundedRectangleBorder(
-                          borderRadius: BorderRadius.circular(20.0),
-                        ),
-                        color: const Color.fromRGBO(160, 220, 220, 10),
-                        child: InkWell(
-                          onTap: () {
-                            Navigator.push(
-                              context,
-                              MaterialPageRoute(
-                                builder: (context) => const UserProfilePage()
-                              ),
-                            );
-                          },
-                          child: SizedBox(
-                            width: MediaQuery.of(context).size.width / 2.25,
-                            height: 200,
-                            child: Column(
-                              children: [
-                                ClipRRect(
-                                  borderRadius: const BorderRadius.only(
-                                    topRight: Radius.circular(20),
-                                    topLeft: Radius.circular(20),
-                                  ),
-                                  child: Image.asset(
-                                    'assets/dog_picture/dog1.jpg',
-                                    height: 150,
-                                    fit: BoxFit.cover,
-                                    width: double.infinity,
-                                  ),
-                                ),
-                                const SizedBox(height: 5),
-                                const Text(
-                                  'Nama Ashu',
-                                  style: TextStyle(
-                                    color: Colors.white,
-                                  ),
-                                  textAlign: TextAlign.center,
-                                ),
-                                const SizedBox(
-                                  height: 1,
-                                ),
-                                const Padding(
-                                  padding: EdgeInsets.symmetric(
-                                      horizontal: 1, vertical: 1),
-                                  child: Row(
-                                    mainAxisAlignment: MainAxisAlignment.center,
-                                    children: [
-                                      Text(
-                                        'Golden Retriever',
-                                        style: TextStyle(
-                                          color: Colors.white,
-                                          fontSize: 12,
-                                        ),
-                                        textAlign: TextAlign.center,
-                                      ),
-                                      SizedBox(
-                                        width: 15,
-                                      ),
-                                      Text(
-                                        '8',
-                                        style: TextStyle(
-                                          color: Colors.white,
-                                          fontSize: 12,
-                                        ),
-                                        textAlign: TextAlign.center,
-                                      ),
-                                    ],
-                                  ),
-                                ),
-                              ],
-                            ),
-                          )
-                        )
-                      ),
-                    ),
-
-                    // 4
-                    Padding(
-                      padding: const EdgeInsets.symmetric(horizontal: 5, vertical: 5),
-                      child: Card(
-                        shadowColor: Colors.black,
-                        shape: RoundedRectangleBorder(
-                          borderRadius: BorderRadius.circular(20.0),
-                        ),
-                        color: const Color.fromRGBO(160, 220, 220, 10),
-                        child: InkWell(
-                          onTap: () {
-                            Navigator.push(
-                              context,
-                              MaterialPageRoute(
-                                builder: (context) => const UserProfilePage()
-                              ),
-                            );
-                          },
-                          child: SizedBox(
-                            width: MediaQuery.of(context).size.width / 2.25,
-                            height: 200,
-                            child: Column(
-                              children: [
-                                ClipRRect(
-                                  borderRadius: const BorderRadius.only(
-                                    topRight: Radius.circular(20),
-                                    topLeft: Radius.circular(20),
-                                  ),
-                                  child: Image.asset(
-                                    'assets/dog_picture/dog1.jpg',
-                                    height: 150,
-                                    fit: BoxFit.cover,
-                                    width: double.infinity,
-                                  ),
-                                ),
-                                const SizedBox(height: 5),
-                                const Text(
-                                  'Nama Ashu',
-                                  style: TextStyle(
-                                    color: Colors.white,
-                                  ),
-                                  textAlign: TextAlign.center,
-                                ),
-                                const SizedBox(
-                                  height: 1,
-                                ),
-                                const Padding(
-                                  padding: EdgeInsets.symmetric(
-                                      horizontal: 1, vertical: 1),
-                                  child: Row(
-                                    mainAxisAlignment: MainAxisAlignment.center,
-                                    children: [
-                                      Text(
-                                        'Golden Retriever',
-                                        style: TextStyle(
-                                          color: Colors.white,
-                                          fontSize: 12,
-                                        ),
-                                        textAlign: TextAlign.center,
-                                      ),
-                                      SizedBox(
-                                        width: 15,
-                                      ),
-                                      Text(
-                                        '8',
-                                        style: TextStyle(
-                                          color: Colors.white,
-                                          fontSize: 12,
-                                        ),
-                                        textAlign: TextAlign.center,
-                                      ),
-                                    ],
-                                  ),
-                                ),
-                              ],
-                            ),
-                          )
-                        )
-                      ),
-                    ),
-
-                  ],
-                ),
-              ),
-
-
-
-
-            ]),
+      backgroundColor: Colors.white,
+      appBar: AppBar(
+        toolbarHeight: 75,
+        elevation: 0,
+        backgroundColor: HexColor("#a0dcdc"),
+        title: Text(
+          "WOOFERS",
+          style: GoogleFonts.lora(
+            fontSize: 25,
+            fontWeight: FontWeight.bold,
+            color: const Color.fromRGBO(40, 36, 36, 10000),
           ),
         ),
+        centerTitle: true,
+      ),
+      body: notificationList(),
+    );
+  }
+
+  Widget notificationList() {
+    return SingleChildScrollView(
+      child: Center(
+        child: Padding(
+          padding: const EdgeInsets.symmetric(horizontal: 5, vertical: 10),
+          child: FutureBuilder(
+            future: NotificationService().retrieveNotificationList(),
+            builder: ((context, snapshot) {
+              if (snapshot.connectionState == ConnectionState.waiting) {
+                return const Center(child: Text("Retrieving your data..."));
+              }
+              if (snapshot.hasError) {
+                return const Center(child: Text("Error"));
+              }
+              if (!snapshot.hasData) {
+                return const Text("No data");
+              }
+              final adoptionList = snapshot.data!;
+              return Wrap(
+                children: adoptionList
+                    .map((e) => NotificationCardDetail(notificationDetail: e))
+                    .toList(),
+              );
+            }),
+          ),
+        ),
+      ),
     );
   }
 }

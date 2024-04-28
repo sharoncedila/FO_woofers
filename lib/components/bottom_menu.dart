@@ -3,6 +3,7 @@ import 'package:woofers/components/profile_page_template.dart';
 import 'package:woofers/pages/adoption_page.dart';
 import 'package:woofers/pages/chatlist_page.dart';
 import 'package:woofers/pages/feeds_page.dart';
+import 'package:woofers/pages/notification_page.dart';
 
 class BottomMenuBar extends StatefulWidget {
   const BottomMenuBar({super.key});

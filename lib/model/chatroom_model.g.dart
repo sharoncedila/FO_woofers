@@ -6,32 +6,76 @@ part of 'chatroom_model.dart';
 // JsonSerializableGenerator
 // **************************************************************************
 
-_$RetrieveChatlistResponseImpl _$$RetrieveChatlistResponseImplFromJson(
+_$OpenChatRequestImpl _$$OpenChatRequestImplFromJson(
         Map<String, dynamic> json) =>
-    _$RetrieveChatlistResponseImpl(
-      rowId: json['rowId'] as String?,
+    _$OpenChatRequestImpl(
+      recipientId: json['recipientId'] as String?,
+    );
+
+Map<String, dynamic> _$$OpenChatRequestImplToJson(
+        _$OpenChatRequestImpl instance) =>
+    <String, dynamic>{
+      'recipientId': instance.recipientId,
+    };
+
+_$SendChatRequestImpl _$$SendChatRequestImplFromJson(
+        Map<String, dynamic> json) =>
+    _$SendChatRequestImpl(
+      chatroomId: json['chatroomId'] as String?,
+      recipientId: json['recipientId'] as String?,
+      message: json['message'] as String?,
+    );
+
+Map<String, dynamic> _$$SendChatRequestImplToJson(
+        _$SendChatRequestImpl instance) =>
+    <String, dynamic>{
+      'chatroomId': instance.chatroomId,
+      'recipientId': instance.recipientId,
+      'message': instance.message,
+    };
+
+_$OpenChatResponseImpl _$$OpenChatResponseImplFromJson(
+        Map<String, dynamic> json) =>
+    _$OpenChatResponseImpl(
       chatroomId: json['chatroomId'] as String?,
       senderId: json['senderId'] as String?,
       recipientId: json['recipientId'] as String?,
-      lastMessageTimestamp: json['lastMessageTimestamp'] as String?,
-      deletedAt: json['deletedAt'] as String?,
-      lastMessage: json['lastMessage'] as String?,
-      isRead: json['isRead'] as String?,
+      messages: (json['messages'] as List<dynamic>?)
+          ?.map((e) => SendChatResponse.fromJson(e as Map<String, dynamic>))
+          .toList(),
       errorCode: json['errorCode'] as String?,
       errorMessage: json['errorMessage'] as String?,
     );
 
-Map<String, dynamic> _$$RetrieveChatlistResponseImplToJson(
-        _$RetrieveChatlistResponseImpl instance) =>
+Map<String, dynamic> _$$OpenChatResponseImplToJson(
+        _$OpenChatResponseImpl instance) =>
     <String, dynamic>{
-      'rowId': instance.rowId,
       'chatroomId': instance.chatroomId,
       'senderId': instance.senderId,
       'recipientId': instance.recipientId,
-      'lastMessageTimestamp': instance.lastMessageTimestamp,
-      'deletedAt': instance.deletedAt,
-      'lastMessage': instance.lastMessage,
-      'isRead': instance.isRead,
+      'messages': instance.messages,
       'errorCode': instance.errorCode,
       'errorMessage': instance.errorMessage,
+    };
+
+_$SendChatResponseImpl _$$SendChatResponseImplFromJson(
+        Map<String, dynamic> json) =>
+    _$SendChatResponseImpl(
+      chatMessageId: json['chatMessageId'] as String?,
+      chatroomId: json['chatroomId'] as String?,
+      senderId: json['senderId'] as String?,
+      recipientId: json['recipientId'] as String?,
+      message: json['message'] as String?,
+      timestamp: json['timestamp'] as String?,
+    );
+
+Map<String, dynamic> _$$SendChatResponseImplToJson(
+        _$SendChatResponseImpl instance) =>
+    <String, dynamic>{
+      'chatMessageId': instance.chatMessageId,
+      'chatroomId': instance.chatroomId,
+      'senderId': instance.senderId,
+      'recipientId': instance.recipientId,
+      'message': instance.message,
+      'timestamp': instance.timestamp,
     };

@@ -4,7 +4,7 @@ import 'package:woofers/model/error_schema_model.dart';
 import 'package:woofers/model/notification_model.dart';
 
 class NotificationService{
-  Future<List<ViewNotificationResponse>?> retrieveUserData() async{
+  Future<List<ViewNotificationResponse>?> retrieveNotificationList() async{
     try {
       const api = '/notification/view';
       final dio = await DioInstance.getInstance();

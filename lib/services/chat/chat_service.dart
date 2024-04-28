@@ -1,9 +1,9 @@
 import 'dart:convert';
 
 import 'package:woofers/classes/dio_instance.dart';
-import 'package:woofers/model/chat_model.dart';
-import 'package:woofers/model/error_schema_model.dart';
 import 'package:woofers/model/chatroom_model.dart';
+import 'package:woofers/model/error_schema_model.dart';
+import 'package:woofers/model/chatlist_model.dart';
 
 class ChatroomService {
   Future<List<RetrieveChatlistResponse>?> retrieveChatroomList() async {

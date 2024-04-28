@@ -388,69 +388,76 @@ class _AddDogPageState extends State<AddDogPage> {
           const SizedBox(
             height: 15,
           ),
-          SizedBox(
-            width: MediaQuery.of(context).size.width / 1.1,
-            height: 45,
-            child: ElevatedButton(
-                style: ButtonStyle(
-                  backgroundColor: MaterialStateProperty.resolveWith(
-                    (Set<MaterialState> states) {
-                      if (states.contains(MaterialState.pressed)) {
-                        return Theme.of(context)
-                            .colorScheme
-                            .primary
-                            .withOpacity(0.5);
-                      }
-                      return null; // Use the component's default.
-                    },
-                  ),
-                ),
-                child: const Text('ADD'),
-                onPressed: () async {
-                  //belum solve
-                  //if (_formKey.currentState!.validate()) {
-                  String? selectedGender = _selectedGender;
-                  if (selectedGender == 'Male') {
-                    selectedGender = 'M';
-                  } else if (selectedGender == 'Female') {
-                    selectedGender = 'F';
-                  }
-                  String formattedDate = _selectedDate != null
-                      ? DateFormat('dd-MM-yyyy').format(_selectedDate!)
-                      : 'No date selected';
-                  final AddDogRequest add = AddDogRequest(
-                      dogName: _nameController.text,
-                      breedName: _selectedBreed,
-                      dateOfBirth: formattedDate,
-                      isOpenAdopt: _isSwitched.toString(),
-                      gender: selectedGender!,
-                      provinceName: _selectedProvince,
-                      vaccination: _vaccineController.text,
-                      description: _descriptionController.text);
-
-                  _dogService
-                      .addNewDog(add)
-                      .then((value) => Navigator.of(context).pushReplacement(
-                          MaterialPageRoute(
-                              builder: (_) => const BottomMenuBar())))
-                      .onError<Exception>((error, stackTrace) {
-                    showDialog(
-                      context: context,
-                      builder: (context) {
-                        //return Text(error.toString());
-                        return SimpleDialog(
-                          children: [Text(error.toString())],
-                        );
+          Padding(
+            padding: const EdgeInsets.only(bottom: 20.0),
+            child: SizedBox(
+              width: MediaQuery.of(context).size.width / 1.8,
+              height: 45,
+              child: ElevatedButton(
+                  style: ButtonStyle(
+                    backgroundColor: MaterialStateProperty.resolveWith(
+                      (Set<MaterialState> states) {
+                        if (states.contains(MaterialState.pressed)) {
+                          return Theme.of(context)
+                              .colorScheme
+                              .primary
+                              .withOpacity(0.5);
+                        }
+                        return null; // Use the component's default.
                       },
-                    );
-                  });
-                }
-                /*Navigator.push(
+                    ),
+                  ),
+                  child: Text('ADD',
+                      style: TextStyle(
+                          color: Colors.grey[600],
+                          fontWeight: FontWeight.bold,
+                          fontSize: 18)),
+                  onPressed: () async {
+                    //belum solve
+                    //if (_formKey.currentState!.validate()) {
+                    String? selectedGender = _selectedGender;
+                    if (selectedGender == 'Male') {
+                      selectedGender = 'M';
+                    } else if (selectedGender == 'Female') {
+                      selectedGender = 'F';
+                    }
+                    String formattedDate = _selectedDate != null
+                        ? DateFormat('dd-MM-yyyy').format(_selectedDate!)
+                        : 'No date selected';
+                    final AddDogRequest add = AddDogRequest(
+                        dogName: _nameController.text,
+                        breedName: _selectedBreed,
+                        dateOfBirth: formattedDate,
+                        isOpenAdopt: _isSwitched.toString(),
+                        gender: selectedGender!,
+                        provinceName: _selectedProvince,
+                        vaccination: _vaccineController.text,
+                        description: _descriptionController.text);
+
+                    _dogService
+                        .addNewDog(add)
+                        .then((value) => Navigator.of(context).pushReplacement(
+                            MaterialPageRoute(
+                                builder: (_) => const BottomMenuBar())))
+                        .onError<Exception>((error, stackTrace) {
+                      showDialog(
+                        context: context,
+                        builder: (context) {
+                          //return Text(error.toString());
+                          return SimpleDialog(
+                            children: [Text(error.toString())],
+                          );
+                        },
+                      );
+                    });
+                  }
+                  /*Navigator.push(
                   context,
                   MaterialPageRoute(builder: (context) => const FeedsPage()),
                 );*/
-                // },
-                ),
+                  // },
+                  ),
+            ),
           ),
         ],
       ),

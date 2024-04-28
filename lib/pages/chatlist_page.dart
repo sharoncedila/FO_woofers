@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:hexcolor/hexcolor.dart';
-import 'package:woofers/pages/chatroom_page.dart';
+import 'package:woofers/components/chat_card.dart';
 import 'package:woofers/pages/notification_page.dart';
+import 'package:woofers/services/chat/chat_service.dart';
 class ChatListPage extends StatefulWidget {
   const ChatListPage({super.key});
 
@@ -99,7 +100,38 @@ class _ChatListPageState extends State<ChatListPage> {
                 ],
               ),
             ),
-            const SizedBox(
+            Padding(
+          padding: const EdgeInsets.symmetric(horizontal: 5, vertical: 10),
+          child: FutureBuilder(
+            future: ChatroomService().retrieveChatroomList(),
+            builder: ((context, snapshot) {
+              if (snapshot.connectionState == ConnectionState.waiting) {
+                return const Center(child: Text("Retrieving your data..."));
+              }
+              if (snapshot.hasError) {
+                return const Center(child: Text("Error"));
+              }
+              if (!snapshot.hasData) {
+                return const Text("No data");
+              }
+              final chatroomList = snapshot.data!;
+              return Wrap(
+                children: chatroomList
+                    .map((e) => ChatCardDetail(chatlistDetail: e))
+                    .toList(),
+              );
+            }),
+          ),
+        ),
+          ]
+        ),
+      ),
+    );
+  }
+}
+
+
+           /*const SizedBox(
               height: 30,
             ),
             Column(
@@ -173,17 +205,11 @@ class _ChatListPageState extends State<ChatListPage> {
                                       color: Colors.black.withOpacity(0.5)))
                             ],
                           ),
-                        )
+                        ),
                       ],
                       ),
                     ),
                   ),
                 );
               }),
-            )
-          ],
-        ),
-      ),
-    );
-  }
-}
+            ),*/
