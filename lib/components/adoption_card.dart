@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:woofers/components/image_network.dart';
 import 'package:woofers/model/adoption_model.dart';
-import 'package:woofers/pages/user_profile_page.dart';
+import 'package:woofers/pages/request_adoption_page.dart';
 
 class DogCardDetail extends StatelessWidget {
   final AdoptionDetail adoptionDetail;
@@ -25,7 +25,7 @@ class DogCardDetail extends StatelessWidget {
                   Navigator.push(
                     context,
                     MaterialPageRoute(
-                        builder: (context) => const UserProfilePage()),
+                        builder: (context) => const RequestAdoptionPage()),
                   );
                 },
                 child: SizedBox(
