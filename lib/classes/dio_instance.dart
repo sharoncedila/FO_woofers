@@ -7,25 +7,11 @@ class DioInstance {
   static Future<Dio> getInstance() async {
     final prefs = await SharedPreferences.getInstance();
     final token = prefs.getString('accessToken');
-<<<<<<< HEAD
     instance ??= Dio(BaseOptions(
       baseUrl: 'http://192.168.100.8:8080/woofers',
       //192.168.249.53
       headers: Map.from({"Authorization": "Bearer $token"}),
     ));
-=======
-    if (instance == null) {
-      // get acess token dari shared pref
-      instance = Dio(BaseOptions(
-        //kos yoh niel
-        // baseUrl: 'http://192.168.68.169:8080/woofers',
-        // kos pribadi
-        baseUrl: 'http://192.168.123.12:8080/woofers',
-        //192.168.249.53
-        headers: Map.from({"Authorization": "Bearer $token"}),
-      ));
-    }
->>>>>>> SYE_20240425
 
     return instance!;
   }

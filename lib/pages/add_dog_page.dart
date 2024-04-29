@@ -428,7 +428,7 @@ class _AddDogPageState extends State<AddDogPage> {
                         dogName: _nameController.text,
                         breedName: _selectedBreed,
                         dateOfBirth: formattedDate,
-                        isOpenAdopt: _isSwitched.toString(),
+                        isOpenAdopt: _isSwitched,
                         gender: selectedGender!,
                         provinceName: _selectedProvince,
                         vaccination: _vaccineController.text,

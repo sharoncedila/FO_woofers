@@ -25,11 +25,8 @@ class DogService {
     return null;
   }
 
-<<<<<<< HEAD
-  Future<AddDogResponse?> addNewDog(AddDogRequest request) async {
-=======
 // di profile page dog detail
-  Future<RetrieveDogProfileDetail?> RetrieveDogProfileDetailPage (String dogId) async {
+  Future<ResponseDogProfileModel?> ResponseDogProfileModelPage (String dogId) async {
     try {
       String api = '/dogs/profile/dog-id/$dogId';
       final dio = await DioInstance.getInstance();
@@ -38,9 +35,9 @@ class DogService {
       final errorSchema = ErrorSchema.fromJson(response.data['errorSchema']);
 
       if (errorSchema.errorCode != 'WOF-000') {
-        return RetrieveDogProfileDetail.fromJson(response.data['errorSchema']);
+        return ResponseDogProfileModel.fromJson(response.data['errorSchema']);
       } else {
-        return RetrieveDogProfileDetail.fromJson(response.data['outputSchema']);
+        return ResponseDogProfileModel.fromJson(response.data['outputSchema']);
       }
     } catch (error) {
       print(error);
@@ -49,7 +46,6 @@ class DogService {
 
 
   Future<AddDogResponse?> addNewDog(AddDogRequest request) async{
->>>>>>> SYE_20240425
     try {
       String api = '/dogs/add';
       final dio = await DioInstance.getInstance();

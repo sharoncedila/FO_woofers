@@ -57,7 +57,6 @@ class AddDogResponse with _$AddDogResponse {
       _$AddDogResponseFromJson(json);
 }
 
-<<<<<<< HEAD
 @freezed
 class EditDogResponse with _$EditDogResponse{
   factory EditDogResponse({
@@ -96,27 +95,3 @@ class EditDogRequest with _$EditDogRequest{
   factory EditDogRequest.fromJson(Map<String, dynamic> json) =>
       _$EditDogRequestFromJson(json);
 }
-=======
-
-
-
-// di profile page detail
-@freezed
-class RetrieveDogProfileDetail with _$RetrieveDogProfileDetail {
-  factory RetrieveDogProfileDetail({
-    required String dogId,
-    required String dogName,
-    required String? breedName,
-    required String? dateOfBirth,
-    required String? gender,
-    required String? provinceName,
-    required String? vaccination,
-    required String? description,
-    required String? image,
-    required String? isOpenAdopt,
-  }) = _RetrieveDogProfileDetail;
-
-  factory RetrieveDogProfileDetail.fromJson(Map<String, dynamic> json) =>
-      _$RetrieveDogProfileDetailFromJson(json);
-}
->>>>>>> SYE_20240425

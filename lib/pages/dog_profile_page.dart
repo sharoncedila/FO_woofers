@@ -9,17 +9,12 @@ import 'package:woofers/pages/comment_page.dart';
 import 'package:woofers/pages/notification_page.dart';
 import 'package:woofers/services/dog/dog_services.dart';
 
-<<<<<<< HEAD
-class DogProfilePage extends StatefulWidget {
-  const DogProfilePage({super.key});
-=======
 class DogProfilePage extends StatelessWidget {
   final String dogId;
   const DogProfilePage({
     super.key,
     required this.dogId,
   });
->>>>>>> SYE_20240425
 
   @override
   Widget build(BuildContext context) {

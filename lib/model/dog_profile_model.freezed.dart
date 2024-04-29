@@ -982,7 +982,6 @@ abstract class _AddDogResponse implements AddDogResponse {
       throw _privateConstructorUsedError;
 }
 
-<<<<<<< HEAD
 EditDogResponse _$EditDogResponseFromJson(Map<String, dynamic> json) {
   return _EditDogResponse.fromJson(json);
 }
@@ -1005,34 +1004,10 @@ mixin _$EditDogResponse {
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
   $EditDogResponseCopyWith<EditDogResponse> get copyWith =>
-=======
-RetrieveDogProfileDetail _$RetrieveDogProfileDetailFromJson(
-    Map<String, dynamic> json) {
-  return _RetrieveDogProfileDetail.fromJson(json);
-}
-
-/// @nodoc
-mixin _$RetrieveDogProfileDetail {
-  String get dogId => throw _privateConstructorUsedError;
-  String get dogName => throw _privateConstructorUsedError;
-  String? get breedName => throw _privateConstructorUsedError;
-  String? get dateOfBirth => throw _privateConstructorUsedError;
-  String? get gender => throw _privateConstructorUsedError;
-  String? get provinceName => throw _privateConstructorUsedError;
-  String? get vaccination => throw _privateConstructorUsedError;
-  String? get description => throw _privateConstructorUsedError;
-  String? get image => throw _privateConstructorUsedError;
-  String? get isOpenAdopt => throw _privateConstructorUsedError;
-
-  Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
-  @JsonKey(ignore: true)
-  $RetrieveDogProfileDetailCopyWith<RetrieveDogProfileDetail> get copyWith =>
->>>>>>> SYE_20240425
       throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-<<<<<<< HEAD
 abstract class $EditDogResponseCopyWith<$Res> {
   factory $EditDogResponseCopyWith(
           EditDogResponse value, $Res Function(EditDogResponse) then) =
@@ -1057,31 +1032,6 @@ abstract class $EditDogResponseCopyWith<$Res> {
 class _$EditDogResponseCopyWithImpl<$Res, $Val extends EditDogResponse>
     implements $EditDogResponseCopyWith<$Res> {
   _$EditDogResponseCopyWithImpl(this._value, this._then);
-=======
-abstract class $RetrieveDogProfileDetailCopyWith<$Res> {
-  factory $RetrieveDogProfileDetailCopyWith(RetrieveDogProfileDetail value,
-          $Res Function(RetrieveDogProfileDetail) then) =
-      _$RetrieveDogProfileDetailCopyWithImpl<$Res, RetrieveDogProfileDetail>;
-  @useResult
-  $Res call(
-      {String dogId,
-      String dogName,
-      String? breedName,
-      String? dateOfBirth,
-      String? gender,
-      String? provinceName,
-      String? vaccination,
-      String? description,
-      String? image,
-      String? isOpenAdopt});
-}
-
-/// @nodoc
-class _$RetrieveDogProfileDetailCopyWithImpl<$Res,
-        $Val extends RetrieveDogProfileDetail>
-    implements $RetrieveDogProfileDetailCopyWith<$Res> {
-  _$RetrieveDogProfileDetailCopyWithImpl(this._value, this._then);
->>>>>>> SYE_20240425
 
   // ignore: unused_field
   final $Val _value;
@@ -1091,7 +1041,6 @@ class _$RetrieveDogProfileDetailCopyWithImpl<$Res,
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-<<<<<<< HEAD
     Object? dogId = freezed,
     Object? breedName = freezed,
     Object? dogName = freezed,
@@ -1110,33 +1059,10 @@ class _$RetrieveDogProfileDetailCopyWithImpl<$Res,
           ? _value.dogId
           : dogId // ignore: cast_nullable_to_non_nullable
               as String?,
-=======
-    Object? dogId = null,
-    Object? dogName = null,
-    Object? breedName = freezed,
-    Object? dateOfBirth = freezed,
-    Object? gender = freezed,
-    Object? provinceName = freezed,
-    Object? vaccination = freezed,
-    Object? description = freezed,
-    Object? image = freezed,
-    Object? isOpenAdopt = freezed,
-  }) {
-    return _then(_value.copyWith(
-      dogId: null == dogId
-          ? _value.dogId
-          : dogId // ignore: cast_nullable_to_non_nullable
-              as String,
-      dogName: null == dogName
-          ? _value.dogName
-          : dogName // ignore: cast_nullable_to_non_nullable
-              as String,
->>>>>>> SYE_20240425
       breedName: freezed == breedName
           ? _value.breedName
           : breedName // ignore: cast_nullable_to_non_nullable
               as String?,
-<<<<<<< HEAD
       dogName: freezed == dogName
           ? _value.dogName
           : dogName // ignore: cast_nullable_to_non_nullable
@@ -1145,37 +1071,18 @@ class _$RetrieveDogProfileDetailCopyWithImpl<$Res,
           ? _value.gender
           : gender // ignore: cast_nullable_to_non_nullable
               as String?,
-=======
->>>>>>> SYE_20240425
       dateOfBirth: freezed == dateOfBirth
           ? _value.dateOfBirth
           : dateOfBirth // ignore: cast_nullable_to_non_nullable
               as String?,
-<<<<<<< HEAD
       description: freezed == description
           ? _value.description
           : description // ignore: cast_nullable_to_non_nullable
-=======
-      gender: freezed == gender
-          ? _value.gender
-          : gender // ignore: cast_nullable_to_non_nullable
-              as String?,
-      provinceName: freezed == provinceName
-          ? _value.provinceName
-          : provinceName // ignore: cast_nullable_to_non_nullable
->>>>>>> SYE_20240425
               as String?,
       vaccination: freezed == vaccination
           ? _value.vaccination
           : vaccination // ignore: cast_nullable_to_non_nullable
               as String?,
-<<<<<<< HEAD
-=======
-      description: freezed == description
-          ? _value.description
-          : description // ignore: cast_nullable_to_non_nullable
-              as String?,
->>>>>>> SYE_20240425
       image: freezed == image
           ? _value.image
           : image // ignore: cast_nullable_to_non_nullable
@@ -1184,7 +1091,6 @@ class _$RetrieveDogProfileDetailCopyWithImpl<$Res,
           ? _value.isOpenAdopt
           : isOpenAdopt // ignore: cast_nullable_to_non_nullable
               as String?,
-<<<<<<< HEAD
       provinceName: freezed == provinceName
           ? _value.provinceName
           : provinceName // ignore: cast_nullable_to_non_nullable
@@ -1197,14 +1103,11 @@ class _$RetrieveDogProfileDetailCopyWithImpl<$Res,
           ? _value.errorMessage
           : errorMessage // ignore: cast_nullable_to_non_nullable
               as String?,
-=======
->>>>>>> SYE_20240425
     ) as $Val);
   }
 }
 
 /// @nodoc
-<<<<<<< HEAD
 abstract class _$$EditDogResponseImplCopyWith<$Res>
     implements $EditDogResponseCopyWith<$Res> {
   factory _$$EditDogResponseImplCopyWith(_$EditDogResponseImpl value,
@@ -1233,43 +1136,11 @@ class __$$EditDogResponseImplCopyWithImpl<$Res>
     implements _$$EditDogResponseImplCopyWith<$Res> {
   __$$EditDogResponseImplCopyWithImpl(
       _$EditDogResponseImpl _value, $Res Function(_$EditDogResponseImpl) _then)
-=======
-abstract class _$$RetrieveDogProfileDetailImplCopyWith<$Res>
-    implements $RetrieveDogProfileDetailCopyWith<$Res> {
-  factory _$$RetrieveDogProfileDetailImplCopyWith(
-          _$RetrieveDogProfileDetailImpl value,
-          $Res Function(_$RetrieveDogProfileDetailImpl) then) =
-      __$$RetrieveDogProfileDetailImplCopyWithImpl<$Res>;
-  @override
-  @useResult
-  $Res call(
-      {String dogId,
-      String dogName,
-      String? breedName,
-      String? dateOfBirth,
-      String? gender,
-      String? provinceName,
-      String? vaccination,
-      String? description,
-      String? image,
-      String? isOpenAdopt});
-}
-
-/// @nodoc
-class __$$RetrieveDogProfileDetailImplCopyWithImpl<$Res>
-    extends _$RetrieveDogProfileDetailCopyWithImpl<$Res,
-        _$RetrieveDogProfileDetailImpl>
-    implements _$$RetrieveDogProfileDetailImplCopyWith<$Res> {
-  __$$RetrieveDogProfileDetailImplCopyWithImpl(
-      _$RetrieveDogProfileDetailImpl _value,
-      $Res Function(_$RetrieveDogProfileDetailImpl) _then)
->>>>>>> SYE_20240425
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-<<<<<<< HEAD
     Object? dogId = freezed,
     Object? breedName = freezed,
     Object? dogName = freezed,
@@ -1288,33 +1159,10 @@ class __$$RetrieveDogProfileDetailImplCopyWithImpl<$Res>
           ? _value.dogId
           : dogId // ignore: cast_nullable_to_non_nullable
               as String?,
-=======
-    Object? dogId = null,
-    Object? dogName = null,
-    Object? breedName = freezed,
-    Object? dateOfBirth = freezed,
-    Object? gender = freezed,
-    Object? provinceName = freezed,
-    Object? vaccination = freezed,
-    Object? description = freezed,
-    Object? image = freezed,
-    Object? isOpenAdopt = freezed,
-  }) {
-    return _then(_$RetrieveDogProfileDetailImpl(
-      dogId: null == dogId
-          ? _value.dogId
-          : dogId // ignore: cast_nullable_to_non_nullable
-              as String,
-      dogName: null == dogName
-          ? _value.dogName
-          : dogName // ignore: cast_nullable_to_non_nullable
-              as String,
->>>>>>> SYE_20240425
       breedName: freezed == breedName
           ? _value.breedName
           : breedName // ignore: cast_nullable_to_non_nullable
               as String?,
-<<<<<<< HEAD
       dogName: freezed == dogName
           ? _value.dogName
           : dogName // ignore: cast_nullable_to_non_nullable
@@ -1323,37 +1171,18 @@ class __$$RetrieveDogProfileDetailImplCopyWithImpl<$Res>
           ? _value.gender
           : gender // ignore: cast_nullable_to_non_nullable
               as String?,
-=======
->>>>>>> SYE_20240425
       dateOfBirth: freezed == dateOfBirth
           ? _value.dateOfBirth
           : dateOfBirth // ignore: cast_nullable_to_non_nullable
               as String?,
-<<<<<<< HEAD
       description: freezed == description
           ? _value.description
           : description // ignore: cast_nullable_to_non_nullable
-=======
-      gender: freezed == gender
-          ? _value.gender
-          : gender // ignore: cast_nullable_to_non_nullable
-              as String?,
-      provinceName: freezed == provinceName
-          ? _value.provinceName
-          : provinceName // ignore: cast_nullable_to_non_nullable
->>>>>>> SYE_20240425
               as String?,
       vaccination: freezed == vaccination
           ? _value.vaccination
           : vaccination // ignore: cast_nullable_to_non_nullable
               as String?,
-<<<<<<< HEAD
-=======
-      description: freezed == description
-          ? _value.description
-          : description // ignore: cast_nullable_to_non_nullable
-              as String?,
->>>>>>> SYE_20240425
       image: freezed == image
           ? _value.image
           : image // ignore: cast_nullable_to_non_nullable
@@ -1362,7 +1191,6 @@ class __$$RetrieveDogProfileDetailImplCopyWithImpl<$Res>
           ? _value.isOpenAdopt
           : isOpenAdopt // ignore: cast_nullable_to_non_nullable
               as String?,
-<<<<<<< HEAD
       provinceName: freezed == provinceName
           ? _value.provinceName
           : provinceName // ignore: cast_nullable_to_non_nullable
@@ -1375,15 +1203,12 @@ class __$$RetrieveDogProfileDetailImplCopyWithImpl<$Res>
           ? _value.errorMessage
           : errorMessage // ignore: cast_nullable_to_non_nullable
               as String?,
-=======
->>>>>>> SYE_20240425
     ));
   }
 }
 
 /// @nodoc
 @JsonSerializable()
-<<<<<<< HEAD
 class _$EditDogResponseImpl implements _EditDogResponse {
   _$EditDogResponseImpl(
       {required this.dogId,
@@ -1430,55 +1255,12 @@ class _$EditDogResponseImpl implements _EditDogResponse {
   @override
   String toString() {
     return 'EditDogResponse(dogId: $dogId, breedName: $breedName, dogName: $dogName, gender: $gender, dateOfBirth: $dateOfBirth, description: $description, vaccination: $vaccination, image: $image, isOpenAdopt: $isOpenAdopt, provinceName: $provinceName, errorCode: $errorCode, errorMessage: $errorMessage)';
-=======
-class _$RetrieveDogProfileDetailImpl implements _RetrieveDogProfileDetail {
-  _$RetrieveDogProfileDetailImpl(
-      {required this.dogId,
-      required this.dogName,
-      required this.breedName,
-      required this.dateOfBirth,
-      required this.gender,
-      required this.provinceName,
-      required this.vaccination,
-      required this.description,
-      required this.image,
-      required this.isOpenAdopt});
-
-  factory _$RetrieveDogProfileDetailImpl.fromJson(Map<String, dynamic> json) =>
-      _$$RetrieveDogProfileDetailImplFromJson(json);
-
-  @override
-  final String dogId;
-  @override
-  final String dogName;
-  @override
-  final String? breedName;
-  @override
-  final String? dateOfBirth;
-  @override
-  final String? gender;
-  @override
-  final String? provinceName;
-  @override
-  final String? vaccination;
-  @override
-  final String? description;
-  @override
-  final String? image;
-  @override
-  final String? isOpenAdopt;
-
-  @override
-  String toString() {
-    return 'RetrieveDogProfileDetail(dogId: $dogId, dogName: $dogName, breedName: $breedName, dateOfBirth: $dateOfBirth, gender: $gender, provinceName: $provinceName, vaccination: $vaccination, description: $description, image: $image, isOpenAdopt: $isOpenAdopt)';
->>>>>>> SYE_20240425
   }
 
   @override
   bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-<<<<<<< HEAD
             other is _$EditDogResponseImpl &&
             (identical(other.dogId, dogId) || other.dogId == dogId) &&
             (identical(other.breedName, breedName) ||
@@ -1500,25 +1282,6 @@ class _$RetrieveDogProfileDetailImpl implements _RetrieveDogProfileDetail {
                 other.errorCode == errorCode) &&
             (identical(other.errorMessage, errorMessage) ||
                 other.errorMessage == errorMessage));
-=======
-            other is _$RetrieveDogProfileDetailImpl &&
-            (identical(other.dogId, dogId) || other.dogId == dogId) &&
-            (identical(other.dogName, dogName) || other.dogName == dogName) &&
-            (identical(other.breedName, breedName) ||
-                other.breedName == breedName) &&
-            (identical(other.dateOfBirth, dateOfBirth) ||
-                other.dateOfBirth == dateOfBirth) &&
-            (identical(other.gender, gender) || other.gender == gender) &&
-            (identical(other.provinceName, provinceName) ||
-                other.provinceName == provinceName) &&
-            (identical(other.vaccination, vaccination) ||
-                other.vaccination == vaccination) &&
-            (identical(other.description, description) ||
-                other.description == description) &&
-            (identical(other.image, image) || other.image == image) &&
-            (identical(other.isOpenAdopt, isOpenAdopt) ||
-                other.isOpenAdopt == isOpenAdopt));
->>>>>>> SYE_20240425
   }
 
   @JsonKey(ignore: true)
@@ -1526,7 +1289,6 @@ class _$RetrieveDogProfileDetailImpl implements _RetrieveDogProfileDetail {
   int get hashCode => Object.hash(
       runtimeType,
       dogId,
-<<<<<<< HEAD
       breedName,
       dogName,
       gender,
@@ -1538,22 +1300,10 @@ class _$RetrieveDogProfileDetailImpl implements _RetrieveDogProfileDetail {
       provinceName,
       errorCode,
       errorMessage);
-=======
-      dogName,
-      breedName,
-      dateOfBirth,
-      gender,
-      provinceName,
-      vaccination,
-      description,
-      image,
-      isOpenAdopt);
->>>>>>> SYE_20240425
 
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-<<<<<<< HEAD
   _$$EditDogResponseImplCopyWith<_$EditDogResponseImpl> get copyWith =>
       __$$EditDogResponseImplCopyWithImpl<_$EditDogResponseImpl>(
           this, _$identity);
@@ -1561,21 +1311,11 @@ class _$RetrieveDogProfileDetailImpl implements _RetrieveDogProfileDetail {
   @override
   Map<String, dynamic> toJson() {
     return _$$EditDogResponseImplToJson(
-=======
-  _$$RetrieveDogProfileDetailImplCopyWith<_$RetrieveDogProfileDetailImpl>
-      get copyWith => __$$RetrieveDogProfileDetailImplCopyWithImpl<
-          _$RetrieveDogProfileDetailImpl>(this, _$identity);
-
-  @override
-  Map<String, dynamic> toJson() {
-    return _$$RetrieveDogProfileDetailImplToJson(
->>>>>>> SYE_20240425
       this,
     );
   }
 }
 
-<<<<<<< HEAD
 abstract class _EditDogResponse implements EditDogResponse {
   factory _EditDogResponse(
       {required final String? dogId,
@@ -1609,46 +1349,10 @@ abstract class _EditDogResponse implements EditDogResponse {
   @override
   String? get vaccination;
   @override
-=======
-abstract class _RetrieveDogProfileDetail implements RetrieveDogProfileDetail {
-  factory _RetrieveDogProfileDetail(
-      {required final String dogId,
-      required final String dogName,
-      required final String? breedName,
-      required final String? dateOfBirth,
-      required final String? gender,
-      required final String? provinceName,
-      required final String? vaccination,
-      required final String? description,
-      required final String? image,
-      required final String? isOpenAdopt}) = _$RetrieveDogProfileDetailImpl;
-
-  factory _RetrieveDogProfileDetail.fromJson(Map<String, dynamic> json) =
-      _$RetrieveDogProfileDetailImpl.fromJson;
-
-  @override
-  String get dogId;
-  @override
-  String get dogName;
-  @override
-  String? get breedName;
-  @override
-  String? get dateOfBirth;
-  @override
-  String? get gender;
-  @override
-  String? get provinceName;
-  @override
-  String? get vaccination;
-  @override
-  String? get description;
-  @override
->>>>>>> SYE_20240425
   String? get image;
   @override
   String? get isOpenAdopt;
   @override
-<<<<<<< HEAD
   String? get provinceName;
   @override
   String? get errorCode;
@@ -1966,9 +1670,4 @@ abstract class _EditDogRequest implements EditDogRequest {
   @JsonKey(ignore: true)
   _$$EditDogRequestImplCopyWith<_$EditDogRequestImpl> get copyWith =>
       throw _privateConstructorUsedError;
-=======
-  @JsonKey(ignore: true)
-  _$$RetrieveDogProfileDetailImplCopyWith<_$RetrieveDogProfileDetailImpl>
-      get copyWith => throw _privateConstructorUsedError;
->>>>>>> SYE_20240425
 }

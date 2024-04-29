@@ -4,13 +4,8 @@ import 'package:woofers/classes/dio_instance.dart';
 import 'package:woofers/model/error_schema_model.dart';
 import 'package:woofers/model/feeds_model.dart';
 
-<<<<<<< HEAD
-class FeedsService {
-  Future<List<ViewFeedsResponse>> viewFeeds() async {
-=======
 class FeedsService{
   Future<List<ViewFeedsResponse>> retrieveFeedsData() async {
->>>>>>> SYE_20240425
     try {
       const api = '/feeds/view';
       final dio = await DioInstance.getInstance();
