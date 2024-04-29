@@ -6,15 +6,17 @@ import 'package:hexcolor/hexcolor.dart';
 import 'package:woofers/services/adoption/adoption_service.dart';
 
 class RequestAdoptionPage extends StatefulWidget {
-  const RequestAdoptionPage({super.key});
+  //final String dogId;
+  const RequestAdoptionPage({Key? key}) // required this.dogId
+      : super(key: key); // Correct constructor definition
 
   @override
   _RequestAdoptionPageState createState() => _RequestAdoptionPageState();
 }
 
 class _RequestAdoptionPageState extends State<RequestAdoptionPage> {
-final Future<AdoptConfirmationRequest?> _dog =
-      AdoptionService().retrieveAdoptConfirmation(dog_id);
+/*final Future<AdoptConfirmationRequest?> _dog =
+      AdoptionService().retrieveAdoptConfirmation(dog_id);*/
 
 
   @override

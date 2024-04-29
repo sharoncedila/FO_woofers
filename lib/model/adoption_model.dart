@@ -5,7 +5,7 @@ part 'adoption_model.g.dart';
 @freezed
 class AdoptionDetail with _$AdoptionDetail {
   factory AdoptionDetail(
-      {required String? dogId,
+      {required String dogId,
       required String? breedName,
       required String? dogName,
       required String? gender,

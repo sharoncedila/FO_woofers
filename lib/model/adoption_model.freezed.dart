@@ -20,7 +20,7 @@ AdoptionDetail _$AdoptionDetailFromJson(Map<String, dynamic> json) {
 
 /// @nodoc
 mixin _$AdoptionDetail {
-  String? get dogId => throw _privateConstructorUsedError;
+  String get dogId => throw _privateConstructorUsedError;
   String? get breedName => throw _privateConstructorUsedError;
   String? get dogName => throw _privateConstructorUsedError;
   String? get gender => throw _privateConstructorUsedError;
@@ -43,7 +43,7 @@ abstract class $AdoptionDetailCopyWith<$Res> {
       _$AdoptionDetailCopyWithImpl<$Res, AdoptionDetail>;
   @useResult
   $Res call(
-      {String? dogId,
+      {String dogId,
       String? breedName,
       String? dogName,
       String? gender,
@@ -67,7 +67,7 @@ class _$AdoptionDetailCopyWithImpl<$Res, $Val extends AdoptionDetail>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? dogId = freezed,
+    Object? dogId = null,
     Object? breedName = freezed,
     Object? dogName = freezed,
     Object? gender = freezed,
@@ -78,10 +78,10 @@ class _$AdoptionDetailCopyWithImpl<$Res, $Val extends AdoptionDetail>
     Object? errorMessage = freezed,
   }) {
     return _then(_value.copyWith(
-      dogId: freezed == dogId
+      dogId: null == dogId
           ? _value.dogId
           : dogId // ignore: cast_nullable_to_non_nullable
-              as String?,
+              as String,
       breedName: freezed == breedName
           ? _value.breedName
           : breedName // ignore: cast_nullable_to_non_nullable
@@ -127,7 +127,7 @@ abstract class _$$AdoptionDetailImplCopyWith<$Res>
   @override
   @useResult
   $Res call(
-      {String? dogId,
+      {String dogId,
       String? breedName,
       String? dogName,
       String? gender,
@@ -149,7 +149,7 @@ class __$$AdoptionDetailImplCopyWithImpl<$Res>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? dogId = freezed,
+    Object? dogId = null,
     Object? breedName = freezed,
     Object? dogName = freezed,
     Object? gender = freezed,
@@ -160,10 +160,10 @@ class __$$AdoptionDetailImplCopyWithImpl<$Res>
     Object? errorMessage = freezed,
   }) {
     return _then(_$AdoptionDetailImpl(
-      dogId: freezed == dogId
+      dogId: null == dogId
           ? _value.dogId
           : dogId // ignore: cast_nullable_to_non_nullable
-              as String?,
+              as String,
       breedName: freezed == breedName
           ? _value.breedName
           : breedName // ignore: cast_nullable_to_non_nullable
@@ -218,7 +218,7 @@ class _$AdoptionDetailImpl implements _AdoptionDetail {
       _$$AdoptionDetailImplFromJson(json);
 
   @override
-  final String? dogId;
+  final String dogId;
   @override
   final String? breedName;
   @override
@@ -283,7 +283,7 @@ class _$AdoptionDetailImpl implements _AdoptionDetail {
 
 abstract class _AdoptionDetail implements AdoptionDetail {
   factory _AdoptionDetail(
-      {required final String? dogId,
+      {required final String dogId,
       required final String? breedName,
       required final String? dogName,
       required final String? gender,
@@ -297,7 +297,7 @@ abstract class _AdoptionDetail implements AdoptionDetail {
       _$AdoptionDetailImpl.fromJson;
 
   @override
-  String? get dogId;
+  String get dogId;
   @override
   String? get breedName;
   @override

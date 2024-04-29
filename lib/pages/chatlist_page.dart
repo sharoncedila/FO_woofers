@@ -109,14 +109,17 @@ class _ChatListPageState extends State<ChatListPage> {
                 return const Center(child: Text("Retrieving your data..."));
               }
               if (snapshot.hasError) {
-                return const Center(child: Text("Error"));
+                return const Center(child: Text("Error chatlist"));
               }
               if (!snapshot.hasData) {
                 return const Text("No data");
               }
-              final chatroomList = snapshot.data!;
+              final chatroomResponse = snapshot.data!;
+              final chatrooms;
+              
               return Wrap(
-                children: chatroomList
+                children: 
+                chatrooms = chatroomResponse.chatlistList
                     .map((e) => ChatCardDetail(chatlistDetail: e))
                     .toList(),
               );

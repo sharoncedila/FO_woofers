@@ -8,7 +8,7 @@ part of 'adoption_model.dart';
 
 _$AdoptionDetailImpl _$$AdoptionDetailImplFromJson(Map<String, dynamic> json) =>
     _$AdoptionDetailImpl(
-      dogId: json['dogId'] as String?,
+      dogId: json['dogId'] as String,
       breedName: json['breedName'] as String?,
       dogName: json['dogName'] as String?,
       gender: json['gender'] as String?,
