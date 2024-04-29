@@ -1,9 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:hexcolor/hexcolor.dart';
+import 'package:woofers/components/feeds_card.dart';
 import 'package:woofers/pages/add_feeds_page.dart';
 import 'package:woofers/pages/comment_page.dart';
 import 'package:woofers/pages/notification_page.dart';
+import 'package:woofers/services/feeds/feeds_service.dart';
 
 class FeedsPage extends StatefulWidget {
   const FeedsPage({Key? key}) : super(key: key);
@@ -58,139 +60,26 @@ class _FeedsPageState extends State<FeedsPage> {
 
   Widget feedsList() {
     return SingleChildScrollView(
-      child: Padding(
-        padding: const EdgeInsets.only(left: 25, right: 25),
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            const SizedBox(
-              height: 15,
-            ),
-            Column(
-              children: List.generate(5, (index) {
-                return Container(
-                  padding: const EdgeInsets.only(bottom: 25),
-                  child: Column(
-                    children: [
-                      Stack(
-                        children: [
-                          Container(
-                            width: double.infinity,
-                            height: 288,
-                            decoration: BoxDecoration(
-                              image: const DecorationImage(
-                                image: AssetImage('assets/dog_picture/dog1.jpg'),
-                                fit: BoxFit.cover
-                              ),
-                              borderRadius: BorderRadius.circular(20)
-                            ),
-                          ),
-                          Container(
-                            width: double.infinity,
-                            height: 288,
-                            decoration: BoxDecoration(
-                              borderRadius: BorderRadius.circular(20),
-                            ),
-                            child: Padding(
-                              padding: const EdgeInsets.all(15),
-                              child: Column(
-                                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                                children: [
-                                  // profile, nama orang, waktu
-                                  Row(
-                                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                                    children: [
-                                      Row(
-                                        children: [
-                                          const CircleAvatar(
-                                            backgroundImage: AssetImage('assets/profile_picture/person1.jpg'),
-                                          ),
-                                          const SizedBox(
-                                            width: 12,
-                                          ),
-                                          Column(
-                                            crossAxisAlignment: CrossAxisAlignment.start,
-                                            children: [
-                                              const Text(
-                                                'Sharon Cedila',
-                                                style: TextStyle(
-                                                    fontSize: 15, color: Colors.white),
-                                              ),
-                                              const SizedBox(
-                                                height: 3,
-                                              ),
-                                              Text(
-                                                '10.43',
-                                                style: TextStyle(
-                                                  fontSize: 13,
-                                                  color: Colors.white.withOpacity(0.8)
-                                                ),
-                                              ),
-                                            ],
-                                          )
-                                        ],
-                                      ),
-                                    ],
-                                  ),
-                                  // heart and comment
+      child: FutureBuilder(
+        future: FeedsService().retrieveFeedsData(),
+        builder: (context, snapshot) {
+          if (snapshot.connectionState == ConnectionState.waiting) {
+            return const Center(child: Text("Retrieving your data..."));
+          }
+          if (snapshot.hasError) {
+            return const Center(child: Text("Error"));
+          }
+          if (!snapshot.hasData) {
+            return const Text('no feeds');
+          }
 
-                                ],
-                              ),
-                            ),
-                          ),
-                        ],
-                      ),
-
-                      Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          Row(
-                            mainAxisAlignment: MainAxisAlignment.start,
-                            children: [
-                              IconButton(
-                                icon: const Icon(
-                                  Icons.favorite_border,
-                                  color: Colors.black,
-                                  size: 20,
-                                ),
-                                onPressed: () {
-                                  Navigator.push(
-                                    context,
-                                    MaterialPageRoute(builder: (context) => const CommentPage()),
-                                  );
-                                },
-                              ),
-                              IconButton(
-                                icon: const Icon(
-                                  Icons.comment_outlined,
-                                  color: Colors.black,
-                                  size: 20,
-                                ),
-                                onPressed: () {
-                                  Navigator.push(
-                                    context,
-                                    MaterialPageRoute(builder: (context) => const CommentPage()),
-                                  );
-                                },
-                              ),
-                            ],
-                          ),
-                          const Text(
-                            "     1 like",
-                            style: TextStyle(
-                              color: Colors.grey,
-                              fontSize: 12
-                            ),
-                          )
-                        ],
-                      )
-                    ],
-                  )
-                );
-              }),
-            )
-          ],
-        ),
+          final feedsList = snapshot.data!;
+              return Wrap(
+                children: feedsList
+                    .map((e) => FeedsCard(feedsDetail: e))
+                    .toList(),
+              );
+        }
       ),
     );
   }

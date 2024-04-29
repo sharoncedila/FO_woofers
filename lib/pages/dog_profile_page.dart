@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:hexcolor/hexcolor.dart';
+import 'package:woofers/components/image_network.dart';
 import 'package:woofers/pages/add_dog_page.dart';
 import 'package:woofers/pages/comment_page.dart';
 import 'package:woofers/pages/notification_page.dart';
@@ -70,133 +71,363 @@ class DogProfilePage extends StatelessWidget {
           if (!snapshot.hasData) {
             return const Center(child: Text("no data available for this dog"));
           }
+
+          // snapshot.data?.dogName==null?"gagalambildata":snapshot.data!.dogName,
+          final imageURL = snapshot.data?.image == null ? "" : snapshot.data!.image;
           return SingleChildScrollView(
-            padding: const EdgeInsets.only(left: 25, right: 25),
             child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                Container(
-                        padding: const EdgeInsets.only(bottom: 25),
-                        child: Column(
+                Expanded(
+                  child: ImageNetwork(urlImage: imageURL, width: 125, height: 125),
+                ),
+                // dog name
+                        const SizedBox(height: 20),
+                        Row(
                           children: [
-                            Stack(
-                              children: [
-                                Container(
-                                  width: double.infinity,
-                                  height: 288,
-                                  decoration: BoxDecoration(
-                                      image: const DecorationImage(
-                                          image: AssetImage(
-                                              'assets/dog_picture/dog1.jpg'),
-                                          fit: BoxFit.cover),
-                                      borderRadius: BorderRadius.circular(20)),
-                                ),
-                                Container(
-                                  width: double.infinity,
-                                  height: 288,
-                                  decoration: BoxDecoration(
-                                    borderRadius: BorderRadius.circular(20),
-                                  ),
-                                  child: Padding(
-                                    padding: const EdgeInsets.all(15),
-                                    child: Column(
-                                      mainAxisAlignment:
-                                          MainAxisAlignment.spaceBetween,
-                                      children: [
-                                        // profile, nama orang, waktu
-                                        Row(
-                                          mainAxisAlignment:
-                                              MainAxisAlignment.spaceBetween,
-                                          children: [
-                                            Row(
-                                              children: [
-                                                const CircleAvatar(
-                                                  backgroundImage: AssetImage(
-                                                      'assets/profile_picture/person1.jpg'),
-                                                ),
-                                                const SizedBox(
-                                                  width: 12,
-                                                ),
-                                                Column(
-                                                  crossAxisAlignment:
-                                                      CrossAxisAlignment.start,
-                                                  children: [
-                                                    Text(
-                                                      snapshot.data?.dogName==null?"gagalambildata":snapshot.data!.dogName,
-                                                      style: const TextStyle(
-                                                          fontSize: 15,
-                                                          color: Colors.black),
-                                                    ),
-                                                    const SizedBox(
-                                                      height: 3,
-                                                    ),
-                                                    Text(
-                                                      '10.43',
-                                                      style: TextStyle(
-                                                          fontSize: 13,
-                                                          color: Colors.white
-                                                              .withOpacity(0.8)),
-                                                    ),
-                                                  ],
-                                                )
-                                              ],
-                                            ),
-                                          ],
-                                        ),
-                                        // heart and comment
-                                      ],
-                                    ),
-                                  ),
-                                ),
-                              ],
+                            const SizedBox(
+                              width: 15,
                             ),
-                            Column(
-                              crossAxisAlignment: CrossAxisAlignment.start,
-                              children: [
-                                Row(
-                                  mainAxisAlignment: MainAxisAlignment.start,
-                                  children: [
-                                    IconButton(
-                                      icon: const Icon(
-                                        Icons.favorite_border,
-                                        color: Colors.black,
-                                        size: 20,
-                                      ),
-                                      onPressed: () {
-                                        Navigator.push(
-                                          context,
-                                          MaterialPageRoute(
-                                              builder: (context) =>
-                                                  const CommentPage()),
-                                        );
-                                      },
+                            const Image(
+                              image:
+                                  AssetImage('assets/woofers_icon/profile.jpg'),
+                              width: 35,
+                              height: 35,
+                            ),
+                            const SizedBox(
+                              width: 20,
+                            ),
+                            Expanded(
+                                child: Column(
+                                    mainAxisAlignment: MainAxisAlignment.start,
+                                    crossAxisAlignment:
+                                        CrossAxisAlignment.start,
+                                    children: [
+                                  Text(
+                                    "dog name",
+                                    style: TextStyle(
+                                      color: Colors.black.withOpacity(0.5),
                                     ),
-                                    IconButton(
-                                      icon: const Icon(
-                                        Icons.comment_outlined,
-                                        color: Colors.black,
-                                        size: 20,
+                                  ),
+                                  SizedBox(
+                                    height: 25,
+                                    child: TextFormField(
+                                      readOnly: true,
+                                      enabled: false,
+                                      decoration: InputDecoration(
+                                        border: const UnderlineInputBorder(),
+                                        // labelText: 'Username',
+                                        labelText:
+                                            snapshot.data?.dogName == null
+                                                ? ""
+                                                : snapshot.data!.dogName,
+                                        labelStyle: GoogleFonts.newsCycle(
+                                          color: Colors.black,
+                                        ),
                                       ),
-                                      onPressed: () {
-                                        Navigator.push(
-                                          context,
-                                          MaterialPageRoute(
-                                              builder: (context) =>
-                                                  const CommentPage()),
-                                        );
-                                      },
                                     ),
-                                  ],
-                                ),
-                                const Text(
-                                  "     1 like",
-                                  style:
-                                      TextStyle(color: Colors.grey, fontSize: 12),
-                                )
-                              ],
-                            )
+                                  ),
+                                ]))
                           ],
-                        )),
+                        ),
+
+                        // full name
+                        const SizedBox(height: 15),
+                        Row(
+                          children: [
+                            const SizedBox(
+                              width: 15,
+                            ),
+                            const Image(
+                              image:
+                                  AssetImage('assets/woofers_icon/profile.jpg'),
+                              width: 35,
+                              height: 35,
+                            ),
+                            const SizedBox(
+                              width: 20,
+                            ),
+                            Expanded(
+                                child: Column(
+                                    mainAxisAlignment: MainAxisAlignment.start,
+                                    crossAxisAlignment:
+                                        CrossAxisAlignment.start,
+                                    children: [
+                                  Text(
+                                    "breed",
+                                    style: TextStyle(
+                                      color: Colors.black.withOpacity(0.5),
+                                    ),
+                                  ),
+                                  SizedBox(
+                                    height: 25,
+                                    child: TextFormField(
+                                      readOnly: true,
+                                      enabled: false,
+                                      decoration: InputDecoration(
+                                        border: const UnderlineInputBorder(),
+                                        // labelText: 'Username',
+                                        labelText:
+                                            snapshot.data?.breedName == null
+                                                ? ""
+                                                : snapshot.data!.breedName,
+                                        labelStyle: GoogleFonts.newsCycle(
+                                          color: Colors.black,
+                                        ),
+                                      ),
+                                    ),
+                                  ),
+                                ]))
+                          ],
+                        ),
+
+                        // email
+                        const SizedBox(height: 15),
+                        Row(
+                          children: [
+                            const SizedBox(
+                              width: 15,
+                            ),
+                            const Image(
+                              image:
+                                  AssetImage('assets/woofers_icon/email.png'),
+                              width: 35,
+                              height: 35,
+                            ),
+                            const SizedBox(
+                              width: 20,
+                            ),
+                            Expanded(
+                                child: Column(
+                                    mainAxisAlignment: MainAxisAlignment.start,
+                                    crossAxisAlignment:
+                                        CrossAxisAlignment.start,
+                                    children: [
+                                  Text(
+                                    "date of birth",
+                                    style: TextStyle(
+                                      color: Colors.black.withOpacity(0.5),
+                                    ),
+                                  ),
+                                  SizedBox(
+                                    height: 25,
+                                    child: TextFormField(
+                                      readOnly: true,
+                                      enabled: false,
+                                      decoration: InputDecoration(
+                                        border: const UnderlineInputBorder(),
+                                        // labelText: 'Username',
+                                        labelText: snapshot.data?.dateOfBirth == null
+                                            ? ""
+                                            : snapshot.data!.dateOfBirth,
+                                        labelStyle: GoogleFonts.newsCycle(
+                                          color: Colors.black,
+                                        ),
+                                      ),
+                                    ),
+                                  ),
+                                ]))
+                          ],
+                        ),
+
+                        // province name
+                        const SizedBox(height: 15),
+                        Row(
+                          children: [
+                            const SizedBox(
+                              width: 15,
+                            ),
+                            const Image(
+                              image: AssetImage(
+                                  'assets/woofers_icon/province.png'),
+                              width: 35,
+                              height: 35,
+                            ),
+                            const SizedBox(
+                              width: 20,
+                            ),
+                            Expanded(
+                                child: Column(
+                                    mainAxisAlignment: MainAxisAlignment.start,
+                                    crossAxisAlignment:
+                                        CrossAxisAlignment.start,
+                                    children: [
+                                  Text(
+                                    "gender",
+                                    style: TextStyle(
+                                      color: Colors.black.withOpacity(0.5),
+                                    ),
+                                  ),
+                                  SizedBox(
+                                    height: 25,
+                                    child: TextFormField(
+                                      readOnly: true,
+                                      enabled: false,
+                                      decoration: InputDecoration(
+                                        border: const UnderlineInputBorder(),
+                                        // labelText: 'Username',
+                                        labelText:
+                                            snapshot.data?.gender == null
+                                                ? ""
+                                                : snapshot.data!.gender,
+                                        labelStyle: GoogleFonts.newsCycle(
+                                          color: Colors.black,
+                                        ),
+                                      ),
+                                    ),
+                                  ),
+                                ]))
+                          ],
+                        ),
+
+                        // phone number
+                        const SizedBox(height: 15),
+                        Row(
+                          children: [
+                            const SizedBox(
+                              width: 15,
+                            ),
+                            const Image(
+                              image:
+                                  AssetImage('assets/woofers_icon/phone.png'),
+                              width: 35,
+                              height: 35,
+                            ),
+                            const SizedBox(
+                              width: 20,
+                            ),
+                            Expanded(
+                                child: Column(
+                                    mainAxisAlignment: MainAxisAlignment.start,
+                                    crossAxisAlignment:
+                                        CrossAxisAlignment.start,
+                                    children: [
+                                  Text(
+                                    "province",
+                                    style: TextStyle(
+                                      color: Colors.black.withOpacity(0.5),
+                                    ),
+                                  ),
+                                  SizedBox(
+                                    height: 25,
+                                    child: TextFormField(
+                                      readOnly: true,
+                                      enabled: false,
+                                      decoration: InputDecoration(
+                                        border: const UnderlineInputBorder(),
+                                        // labelText: 'Username',
+                                        labelText:
+                                            snapshot.data?.provinceName == null
+                                                ? ""
+                                                : snapshot.data!.provinceName,
+                                        labelStyle: GoogleFonts.newsCycle(
+                                          color: Colors.black,
+                                        ),
+                                      ),
+                                    ),
+                                  ),
+                                ]))
+                          ],
+                        ),
+
+                        // vaccine
+                        const SizedBox(height: 15),
+                        Row(
+                          children: [
+                            const SizedBox(
+                              width: 15,
+                            ),
+                            const Image(
+                              image:
+                                  AssetImage('assets/woofers_icon/phone.png'),
+                              width: 35,
+                              height: 35,
+                            ),
+                            const SizedBox(
+                              width: 20,
+                            ),
+                            Expanded(
+                                child: Column(
+                                    mainAxisAlignment: MainAxisAlignment.start,
+                                    crossAxisAlignment:
+                                        CrossAxisAlignment.start,
+                                    children: [
+                                  Text(
+                                    "vaccine",
+                                    style: TextStyle(
+                                      color: Colors.black.withOpacity(0.5),
+                                    ),
+                                  ),
+                                  SizedBox(
+                                    height: 25,
+                                    child: TextFormField(
+                                      readOnly: true,
+                                      enabled: false,
+                                      decoration: InputDecoration(
+                                        border: const UnderlineInputBorder(),
+                                        // labelText: 'Username',
+                                        labelText:
+                                            snapshot.data?.vaccination == null
+                                                ? ""
+                                                : snapshot.data!.vaccination,
+                                        labelStyle: GoogleFonts.newsCycle(
+                                          color: Colors.black,
+                                        ),
+                                      ),
+                                    ),
+                                  ),
+                                ]))
+                          ],
+                        ),
+
+                        // description
+                        const SizedBox(height: 15),
+                        Row(
+                          children: [
+                            const SizedBox(
+                              width: 15,
+                            ),
+                            const Image(
+                              image: AssetImage(
+                                  'assets/woofers_icon/description.png'),
+                              width: 35,
+                              height: 35,
+                            ),
+                            const SizedBox(
+                              width: 20,
+                            ),
+                            Expanded(
+                                child: Column(
+                                    mainAxisAlignment: MainAxisAlignment.start,
+                                    crossAxisAlignment:
+                                        CrossAxisAlignment.start,
+                                    children: [
+                                  Text(
+                                    "description",
+                                    style: TextStyle(
+                                      color: Colors.black.withOpacity(0.5),
+                                    ),
+                                  ),
+                                  SizedBox(
+                                    height: 25,
+                                    child: TextFormField(
+                                      readOnly: true,
+                                      enabled: false,
+                                      decoration: InputDecoration(
+                                        border: const UnderlineInputBorder(),
+                                        // labelText: 'Username',
+                                        labelText:
+                                            snapshot.data?.description == null
+                                                ? ""
+                                                : snapshot.data!.description,
+                                        labelStyle: GoogleFonts.newsCycle(
+                                          color: Colors.black,
+                                        ),
+                                      ),
+                                    ),
+                                  ),
+                                ]))
+                          ],
+                        ),
               ],
             ),
           );

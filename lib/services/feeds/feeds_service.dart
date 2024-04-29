@@ -7,7 +7,7 @@ import 'package:woofers/model/error_schema_model.dart';
 import 'package:woofers/model/feeds_model.dart';
 
 class FeedsService{
-  Future<List<ViewFeedsResponse>> retrieveAdoptionList() async {
+  Future<List<ViewFeedsResponse>> retrieveFeedsData() async {
     try {
       const api = '/feeds/view';
       final dio = await DioInstance.getInstance();
