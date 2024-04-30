@@ -67,6 +67,7 @@ class _CommentPageState extends State<CommentPage> {
       
     );
   }
+
   Widget CommentList() {
     return SingleChildScrollView(
         child: Padding(

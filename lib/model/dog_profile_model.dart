@@ -14,7 +14,7 @@ class ResponseDogProfileModel with _$ResponseDogProfileModel {
     required String? vaccination,
     String? description,
     String? image,
-    required bool isOpenAdopt,
+    required String? isOpenAdopt,
   }) = _ResponseDogProfileModel;
 
   factory ResponseDogProfileModel.fromJson(Map<String, dynamic> json) =>
@@ -94,4 +94,20 @@ class EditDogRequest with _$EditDogRequest{
 
   factory EditDogRequest.fromJson(Map<String, dynamic> json) =>
       _$EditDogRequestFromJson(json);
+}
+
+
+@freezed
+class ResponseDogCard with _$ResponseDogCard {
+  factory ResponseDogCard({
+    required String dogId,
+    required String dogName,
+    required String? breedName,
+    required String? age,
+    String? image,
+    required String? isOpenAdopt,
+  }) = _ResponseDogCard;
+
+  factory ResponseDogCard.fromJson(Map<String, dynamic> json) =>
+      _$ResponseDogCardFromJson(json);
 }

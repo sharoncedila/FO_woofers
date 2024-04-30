@@ -3,8 +3,8 @@ import 'package:shared_preferences/shared_preferences.dart';
 
 class ImageNetwork extends StatelessWidget {
   final String? urlImage;
-  final double width;
-  final double height;
+  final double? width;
+  final double? height;
 
   const ImageNetwork({super.key, required this.urlImage, required this.width, required this.height});
 
@@ -27,7 +27,7 @@ class ImageNetwork extends StatelessWidget {
 
         return Image(
           // kos pribadi
-           image: NetworkImage("http://192.168.100.8:8080/woofers$urlImage",
+           image: NetworkImage("http://192.168.15.53:8080/woofers$urlImage",
 
           // kos yoh niel
           //image: NetworkImage("http://192.168.68.169:8080/woofers$urlImage",
