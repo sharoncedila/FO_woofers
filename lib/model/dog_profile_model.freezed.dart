@@ -30,7 +30,7 @@ mixin _$ResponseDogProfileModel {
   String? get vaccination => throw _privateConstructorUsedError;
   String? get description => throw _privateConstructorUsedError;
   String? get image => throw _privateConstructorUsedError;
-  bool get isOpenAdopt => throw _privateConstructorUsedError;
+  String? get isOpenAdopt => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -54,7 +54,7 @@ abstract class $ResponseDogProfileModelCopyWith<$Res> {
       String? vaccination,
       String? description,
       String? image,
-      bool isOpenAdopt});
+      String? isOpenAdopt});
 }
 
 /// @nodoc
@@ -80,7 +80,7 @@ class _$ResponseDogProfileModelCopyWithImpl<$Res,
     Object? vaccination = freezed,
     Object? description = freezed,
     Object? image = freezed,
-    Object? isOpenAdopt = null,
+    Object? isOpenAdopt = freezed,
   }) {
     return _then(_value.copyWith(
       dogId: null == dogId
@@ -119,10 +119,10 @@ class _$ResponseDogProfileModelCopyWithImpl<$Res,
           ? _value.image
           : image // ignore: cast_nullable_to_non_nullable
               as String?,
-      isOpenAdopt: null == isOpenAdopt
+      isOpenAdopt: freezed == isOpenAdopt
           ? _value.isOpenAdopt
           : isOpenAdopt // ignore: cast_nullable_to_non_nullable
-              as bool,
+              as String?,
     ) as $Val);
   }
 }
@@ -146,7 +146,7 @@ abstract class _$$ResponseDogProfileModelImplCopyWith<$Res>
       String? vaccination,
       String? description,
       String? image,
-      bool isOpenAdopt});
+      String? isOpenAdopt});
 }
 
 /// @nodoc
@@ -171,7 +171,7 @@ class __$$ResponseDogProfileModelImplCopyWithImpl<$Res>
     Object? vaccination = freezed,
     Object? description = freezed,
     Object? image = freezed,
-    Object? isOpenAdopt = null,
+    Object? isOpenAdopt = freezed,
   }) {
     return _then(_$ResponseDogProfileModelImpl(
       dogId: null == dogId
@@ -210,10 +210,10 @@ class __$$ResponseDogProfileModelImplCopyWithImpl<$Res>
           ? _value.image
           : image // ignore: cast_nullable_to_non_nullable
               as String?,
-      isOpenAdopt: null == isOpenAdopt
+      isOpenAdopt: freezed == isOpenAdopt
           ? _value.isOpenAdopt
           : isOpenAdopt // ignore: cast_nullable_to_non_nullable
-              as bool,
+              as String?,
     ));
   }
 }
@@ -255,7 +255,7 @@ class _$ResponseDogProfileModelImpl implements _ResponseDogProfileModel {
   @override
   final String? image;
   @override
-  final bool isOpenAdopt;
+  final String? isOpenAdopt;
 
   @override
   String toString() {
@@ -326,7 +326,7 @@ abstract class _ResponseDogProfileModel implements ResponseDogProfileModel {
       required final String? vaccination,
       final String? description,
       final String? image,
-      required final bool isOpenAdopt}) = _$ResponseDogProfileModelImpl;
+      required final String? isOpenAdopt}) = _$ResponseDogProfileModelImpl;
 
   factory _ResponseDogProfileModel.fromJson(Map<String, dynamic> json) =
       _$ResponseDogProfileModelImpl.fromJson;
@@ -350,7 +350,7 @@ abstract class _ResponseDogProfileModel implements ResponseDogProfileModel {
   @override
   String? get image;
   @override
-  bool get isOpenAdopt;
+  String? get isOpenAdopt;
   @override
   @JsonKey(ignore: true)
   _$$ResponseDogProfileModelImplCopyWith<_$ResponseDogProfileModelImpl>
@@ -370,7 +370,7 @@ mixin _$AddDogRequest {
   String? get provinceName => throw _privateConstructorUsedError;
   String? get vaccination => throw _privateConstructorUsedError;
   String? get description => throw _privateConstructorUsedError;
-  String? get isOpenAdopt => throw _privateConstructorUsedError;
+  bool? get isOpenAdopt => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -392,7 +392,7 @@ abstract class $AddDogRequestCopyWith<$Res> {
       String? provinceName,
       String? vaccination,
       String? description,
-      String? isOpenAdopt});
+      bool? isOpenAdopt});
 }
 
 /// @nodoc
@@ -449,7 +449,7 @@ class _$AddDogRequestCopyWithImpl<$Res, $Val extends AddDogRequest>
       isOpenAdopt: freezed == isOpenAdopt
           ? _value.isOpenAdopt
           : isOpenAdopt // ignore: cast_nullable_to_non_nullable
-              as String?,
+              as bool?,
     ) as $Val);
   }
 }
@@ -470,7 +470,7 @@ abstract class _$$AddDogRequestImplCopyWith<$Res>
       String? provinceName,
       String? vaccination,
       String? description,
-      String? isOpenAdopt});
+      bool? isOpenAdopt});
 }
 
 /// @nodoc
@@ -525,7 +525,7 @@ class __$$AddDogRequestImplCopyWithImpl<$Res>
       isOpenAdopt: freezed == isOpenAdopt
           ? _value.isOpenAdopt
           : isOpenAdopt // ignore: cast_nullable_to_non_nullable
-              as String?,
+              as bool?,
     ));
   }
 }
@@ -561,7 +561,7 @@ class _$AddDogRequestImpl implements _AddDogRequest {
   @override
   final String? description;
   @override
-  final String? isOpenAdopt;
+  final bool? isOpenAdopt;
 
   @override
   String toString() {
@@ -617,7 +617,7 @@ abstract class _AddDogRequest implements AddDogRequest {
       required final String? provinceName,
       required final String? vaccination,
       required final String? description,
-      required final String? isOpenAdopt}) = _$AddDogRequestImpl;
+      required final bool? isOpenAdopt}) = _$AddDogRequestImpl;
 
   factory _AddDogRequest.fromJson(Map<String, dynamic> json) =
       _$AddDogRequestImpl.fromJson;
@@ -637,7 +637,7 @@ abstract class _AddDogRequest implements AddDogRequest {
   @override
   String? get description;
   @override
-  String? get isOpenAdopt;
+  bool? get isOpenAdopt;
   @override
   @JsonKey(ignore: true)
   _$$AddDogRequestImplCopyWith<_$AddDogRequestImpl> get copyWith =>
@@ -1669,5 +1669,249 @@ abstract class _EditDogRequest implements EditDogRequest {
   @override
   @JsonKey(ignore: true)
   _$$EditDogRequestImplCopyWith<_$EditDogRequestImpl> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+ResponseDogCard _$ResponseDogCardFromJson(Map<String, dynamic> json) {
+  return _ResponseDogCard.fromJson(json);
+}
+
+/// @nodoc
+mixin _$ResponseDogCard {
+  String get dogId => throw _privateConstructorUsedError;
+  String get dogName => throw _privateConstructorUsedError;
+  String? get breedName => throw _privateConstructorUsedError;
+  String? get age => throw _privateConstructorUsedError;
+  String? get image => throw _privateConstructorUsedError;
+  String? get isOpenAdopt => throw _privateConstructorUsedError;
+
+  Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
+  @JsonKey(ignore: true)
+  $ResponseDogCardCopyWith<ResponseDogCard> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class $ResponseDogCardCopyWith<$Res> {
+  factory $ResponseDogCardCopyWith(
+          ResponseDogCard value, $Res Function(ResponseDogCard) then) =
+      _$ResponseDogCardCopyWithImpl<$Res, ResponseDogCard>;
+  @useResult
+  $Res call(
+      {String dogId,
+      String dogName,
+      String? breedName,
+      String? age,
+      String? image,
+      String? isOpenAdopt});
+}
+
+/// @nodoc
+class _$ResponseDogCardCopyWithImpl<$Res, $Val extends ResponseDogCard>
+    implements $ResponseDogCardCopyWith<$Res> {
+  _$ResponseDogCardCopyWithImpl(this._value, this._then);
+
+  // ignore: unused_field
+  final $Val _value;
+  // ignore: unused_field
+  final $Res Function($Val) _then;
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? dogId = null,
+    Object? dogName = null,
+    Object? breedName = freezed,
+    Object? age = freezed,
+    Object? image = freezed,
+    Object? isOpenAdopt = freezed,
+  }) {
+    return _then(_value.copyWith(
+      dogId: null == dogId
+          ? _value.dogId
+          : dogId // ignore: cast_nullable_to_non_nullable
+              as String,
+      dogName: null == dogName
+          ? _value.dogName
+          : dogName // ignore: cast_nullable_to_non_nullable
+              as String,
+      breedName: freezed == breedName
+          ? _value.breedName
+          : breedName // ignore: cast_nullable_to_non_nullable
+              as String?,
+      age: freezed == age
+          ? _value.age
+          : age // ignore: cast_nullable_to_non_nullable
+              as String?,
+      image: freezed == image
+          ? _value.image
+          : image // ignore: cast_nullable_to_non_nullable
+              as String?,
+      isOpenAdopt: freezed == isOpenAdopt
+          ? _value.isOpenAdopt
+          : isOpenAdopt // ignore: cast_nullable_to_non_nullable
+              as String?,
+    ) as $Val);
+  }
+}
+
+/// @nodoc
+abstract class _$$ResponseDogCardImplCopyWith<$Res>
+    implements $ResponseDogCardCopyWith<$Res> {
+  factory _$$ResponseDogCardImplCopyWith(_$ResponseDogCardImpl value,
+          $Res Function(_$ResponseDogCardImpl) then) =
+      __$$ResponseDogCardImplCopyWithImpl<$Res>;
+  @override
+  @useResult
+  $Res call(
+      {String dogId,
+      String dogName,
+      String? breedName,
+      String? age,
+      String? image,
+      String? isOpenAdopt});
+}
+
+/// @nodoc
+class __$$ResponseDogCardImplCopyWithImpl<$Res>
+    extends _$ResponseDogCardCopyWithImpl<$Res, _$ResponseDogCardImpl>
+    implements _$$ResponseDogCardImplCopyWith<$Res> {
+  __$$ResponseDogCardImplCopyWithImpl(
+      _$ResponseDogCardImpl _value, $Res Function(_$ResponseDogCardImpl) _then)
+      : super(_value, _then);
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? dogId = null,
+    Object? dogName = null,
+    Object? breedName = freezed,
+    Object? age = freezed,
+    Object? image = freezed,
+    Object? isOpenAdopt = freezed,
+  }) {
+    return _then(_$ResponseDogCardImpl(
+      dogId: null == dogId
+          ? _value.dogId
+          : dogId // ignore: cast_nullable_to_non_nullable
+              as String,
+      dogName: null == dogName
+          ? _value.dogName
+          : dogName // ignore: cast_nullable_to_non_nullable
+              as String,
+      breedName: freezed == breedName
+          ? _value.breedName
+          : breedName // ignore: cast_nullable_to_non_nullable
+              as String?,
+      age: freezed == age
+          ? _value.age
+          : age // ignore: cast_nullable_to_non_nullable
+              as String?,
+      image: freezed == image
+          ? _value.image
+          : image // ignore: cast_nullable_to_non_nullable
+              as String?,
+      isOpenAdopt: freezed == isOpenAdopt
+          ? _value.isOpenAdopt
+          : isOpenAdopt // ignore: cast_nullable_to_non_nullable
+              as String?,
+    ));
+  }
+}
+
+/// @nodoc
+@JsonSerializable()
+class _$ResponseDogCardImpl implements _ResponseDogCard {
+  _$ResponseDogCardImpl(
+      {required this.dogId,
+      required this.dogName,
+      required this.breedName,
+      required this.age,
+      this.image,
+      required this.isOpenAdopt});
+
+  factory _$ResponseDogCardImpl.fromJson(Map<String, dynamic> json) =>
+      _$$ResponseDogCardImplFromJson(json);
+
+  @override
+  final String dogId;
+  @override
+  final String dogName;
+  @override
+  final String? breedName;
+  @override
+  final String? age;
+  @override
+  final String? image;
+  @override
+  final String? isOpenAdopt;
+
+  @override
+  String toString() {
+    return 'ResponseDogCard(dogId: $dogId, dogName: $dogName, breedName: $breedName, age: $age, image: $image, isOpenAdopt: $isOpenAdopt)';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$ResponseDogCardImpl &&
+            (identical(other.dogId, dogId) || other.dogId == dogId) &&
+            (identical(other.dogName, dogName) || other.dogName == dogName) &&
+            (identical(other.breedName, breedName) ||
+                other.breedName == breedName) &&
+            (identical(other.age, age) || other.age == age) &&
+            (identical(other.image, image) || other.image == image) &&
+            (identical(other.isOpenAdopt, isOpenAdopt) ||
+                other.isOpenAdopt == isOpenAdopt));
+  }
+
+  @JsonKey(ignore: true)
+  @override
+  int get hashCode => Object.hash(
+      runtimeType, dogId, dogName, breedName, age, image, isOpenAdopt);
+
+  @JsonKey(ignore: true)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$ResponseDogCardImplCopyWith<_$ResponseDogCardImpl> get copyWith =>
+      __$$ResponseDogCardImplCopyWithImpl<_$ResponseDogCardImpl>(
+          this, _$identity);
+
+  @override
+  Map<String, dynamic> toJson() {
+    return _$$ResponseDogCardImplToJson(
+      this,
+    );
+  }
+}
+
+abstract class _ResponseDogCard implements ResponseDogCard {
+  factory _ResponseDogCard(
+      {required final String dogId,
+      required final String dogName,
+      required final String? breedName,
+      required final String? age,
+      final String? image,
+      required final String? isOpenAdopt}) = _$ResponseDogCardImpl;
+
+  factory _ResponseDogCard.fromJson(Map<String, dynamic> json) =
+      _$ResponseDogCardImpl.fromJson;
+
+  @override
+  String get dogId;
+  @override
+  String get dogName;
+  @override
+  String? get breedName;
+  @override
+  String? get age;
+  @override
+  String? get image;
+  @override
+  String? get isOpenAdopt;
+  @override
+  @JsonKey(ignore: true)
+  _$$ResponseDogCardImplCopyWith<_$ResponseDogCardImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

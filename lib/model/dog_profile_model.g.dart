@@ -18,7 +18,7 @@ _$ResponseDogProfileModelImpl _$$ResponseDogProfileModelImplFromJson(
       vaccination: json['vaccination'] as String?,
       description: json['description'] as String?,
       image: json['image'] as String?,
-      isOpenAdopt: json['isOpenAdopt'] as bool,
+      isOpenAdopt: json['isOpenAdopt'] as String?,
     );
 
 Map<String, dynamic> _$$ResponseDogProfileModelImplToJson(
@@ -45,7 +45,7 @@ _$AddDogRequestImpl _$$AddDogRequestImplFromJson(Map<String, dynamic> json) =>
       provinceName: json['provinceName'] as String?,
       vaccination: json['vaccination'] as String?,
       description: json['description'] as String?,
-      isOpenAdopt: json['isOpenAdopt'] as String?,
+      isOpenAdopt: json['isOpenAdopt'] as bool?,
     );
 
 Map<String, dynamic> _$$AddDogRequestImplToJson(_$AddDogRequestImpl instance) =>
@@ -147,5 +147,27 @@ Map<String, dynamic> _$$EditDogRequestImplToJson(
       'provinceName': instance.provinceName,
       'vaccination': instance.vaccination,
       'description': instance.description,
+      'isOpenAdopt': instance.isOpenAdopt,
+    };
+
+_$ResponseDogCardImpl _$$ResponseDogCardImplFromJson(
+        Map<String, dynamic> json) =>
+    _$ResponseDogCardImpl(
+      dogId: json['dogId'] as String,
+      dogName: json['dogName'] as String,
+      breedName: json['breedName'] as String?,
+      age: json['age'] as String?,
+      image: json['image'] as String?,
+      isOpenAdopt: json['isOpenAdopt'] as String?,
+    );
+
+Map<String, dynamic> _$$ResponseDogCardImplToJson(
+        _$ResponseDogCardImpl instance) =>
+    <String, dynamic>{
+      'dogId': instance.dogId,
+      'dogName': instance.dogName,
+      'breedName': instance.breedName,
+      'age': instance.age,
+      'image': instance.image,
       'isOpenAdopt': instance.isOpenAdopt,
     };

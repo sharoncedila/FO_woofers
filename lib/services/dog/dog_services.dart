@@ -1,6 +1,4 @@
 import 'dart:convert';
-
-import 'package:http/http.dart';
 import 'package:woofers/classes/dio_instance.dart';
 import 'package:woofers/model/dog_profile_model.dart';
 import 'package:woofers/model/error_schema_model.dart';
@@ -25,7 +23,27 @@ class DogService {
     return null;
   }
 
-  Future<AddDogResponse?> addNewDog(AddDogRequest request) async {
+// di profile page dog detail
+  Future<ResponseDogProfileModel?> ResponseDogProfileModelPage (String dogId) async {
+    try {
+      String api = '/dogs/profile/dog-id/$dogId';
+      final dio = await DioInstance.getInstance();
+
+      var response = await dio.get(api);
+      final errorSchema = ErrorSchema.fromJson(response.data['errorSchema']);
+
+      if (errorSchema.errorCode != 'WOF-000') {
+        return ResponseDogProfileModel.fromJson(response.data['errorSchema']);
+      } else {
+        return ResponseDogProfileModel.fromJson(response.data['outputSchema']);
+      }
+    } catch (error) {
+      print(error);
+    }
+  }
+
+
+  Future<AddDogResponse?> addNewDog(AddDogRequest request) async{
     try {
       String api = '/dogs/add';
       final dio = await DioInstance.getInstance();
@@ -43,7 +61,7 @@ class DogService {
     }
   }
 
-  Future<List<ResponseDogProfileModel>> retrieveDogList(
+  Future<List<ResponseDogCard>> retrieveDogList(
       String accountId) async {
     try {
       String api = '/account-dog/account-id/$accountId';
@@ -53,13 +71,14 @@ class DogService {
       final errorSchema = ErrorSchema.fromJson(response.data['errorSchema']);
 
       if (errorSchema.errorCode != 'WOF-000') {
-        return [ResponseDogProfileModel.fromJson(response.data['errorSchema'])];
+        return [ResponseDogCard.fromJson(response.data['errorSchema'])];
       } else {
         return (response.data['outputSchema']['dogList'] as List)
-            .map((e) => ResponseDogProfileModel.fromJson(e))
+            .map((e) => ResponseDogCard.fromJson(e))
             .toList();
       }
     } catch (error) {
+      print(error);
       throw Exception(error);
     }
   }

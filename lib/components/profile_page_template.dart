@@ -38,7 +38,11 @@ class ProfilePageTemplate extends StatelessWidget {
           children: [
             UserProfilePage(),
             DogListPage(),
+<<<<<<< HEAD
             //AddDogPage(),
+=======
+            // AddDogPage(),
+>>>>>>> SYE_20240425
           ],
         ),
       ),
