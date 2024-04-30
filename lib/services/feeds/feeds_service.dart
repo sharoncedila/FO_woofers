@@ -4,11 +4,7 @@ import 'package:woofers/classes/dio_instance.dart';
 import 'package:woofers/model/error_schema_model.dart';
 import 'package:woofers/model/feeds_model.dart';
 
-<<<<<<< HEAD
-class FeedsService {
-=======
 class FeedsService{
->>>>>>> SYE_20240425
   Future<List<ViewFeedsResponse>> retrieveFeedsData() async {
     try {
       const api = '/feeds/view';
