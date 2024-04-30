@@ -463,9 +463,9 @@ class DogProfilePage extends StatelessWidget {
                             (Set<MaterialState> states) {
                               if (states.contains(MaterialState.pressed)) {
                                 return Theme.of(context)
-                                    .colorScheme
-                                    .primary
-                                    .withOpacity(0.5);
+                                  .colorScheme
+                                  .primary
+                                  .withOpacity(0.5);
                               }
                               return null; // Use the component's default.
                             },

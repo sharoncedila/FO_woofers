@@ -15,34 +15,37 @@ class FeedsCard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Padding(
-        padding: const EdgeInsets.only(left: 25, right: 25),
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            const SizedBox(
-              height: 15,
-            ),
-            Column(
-              children: List.generate(5, (index) {
-                return Container(
+      padding: const EdgeInsets.only(left: 25, right: 25),
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          const SizedBox(
+            height: 15,
+          ),
+          Column(
+            children: List.generate(5, (index) {
+              return Container(
                   padding: const EdgeInsets.only(bottom: 25),
                   child: Column(
                     children: [
-                      Column (
+                      Column(
                         children: [
                           TextButton(
                             onPressed: () {
-                              Navigator.push(context,
-                              MaterialPageRoute(builder: (context) => const OtherProfilePage())
-                            );
-                          },
+                              Navigator.push(
+                                  context,
+                                  MaterialPageRoute(
+                                      builder: (context) => OtherProfilePage(
+                                          accountId:
+                                              feedsDetail.accountId ?? '')));
+                            },
                             child: Text(
                               feedsDetail.username ?? '',
                               style: const TextStyle(
-                              fontSize: 15,
-                              color: Color.fromRGBO(40,36,36,10000),
-                              fontWeight: FontWeight.bold,
-                            ),
+                                fontSize: 15,
+                                color: Color.fromRGBO(40, 36, 36, 10000),
+                                fontWeight: FontWeight.bold,
+                              ),
                             ),
                           ),
                           // Text(
@@ -61,10 +64,13 @@ class FeedsCard extends StatelessWidget {
                             feedsDetail.postDate ?? '',
                             style: const TextStyle(
                               fontSize: 13,
-                              color: Color.fromRGBO(40,36,36,10000),
+                              color: Color.fromRGBO(40, 36, 36, 10000),
                             ),
                           ),
-                          ImageNetwork(urlImage: feedsDetail.image, width: double.infinity, height: 288),
+                          ImageNetwork(
+                              urlImage: feedsDetail.image,
+                              width: double.infinity,
+                              height: 288),
                         ],
                       ),
                       // Stack(
@@ -156,7 +162,9 @@ class FeedsCard extends StatelessWidget {
                                 onPressed: () {
                                   Navigator.push(
                                     context,
-                                    MaterialPageRoute(builder: (context) => const CommentPage()),
+                                    MaterialPageRoute(
+                                        builder: (context) =>
+                                            const CommentPage()),
                                   );
                                 },
                               ),
@@ -169,7 +177,9 @@ class FeedsCard extends StatelessWidget {
                                 onPressed: () {
                                   Navigator.push(
                                     context,
-                                    MaterialPageRoute(builder: (context) => const CommentPage()),
+                                    MaterialPageRoute(
+                                        builder: (context) =>
+                                            const CommentPage()),
                                   );
                                 },
                               ),
@@ -179,37 +189,29 @@ class FeedsCard extends StatelessWidget {
                             children: [
                               const Text(
                                 '     ',
-                                style: TextStyle(
-                                  color: Colors.grey,
-                                  fontSize: 12
-                                ),
+                                style:
+                                    TextStyle(color: Colors.grey, fontSize: 12),
                               ),
                               Text(
                                 feedsDetail.likesCount ?? '',
                                 style: const TextStyle(
-                                  color: Colors.grey,
-                                  fontSize: 12
-                                ),
+                                    color: Colors.grey, fontSize: 12),
                               ),
                               const Text(
                                 ' likes',
-                                style: TextStyle(
-                                  color: Colors.grey,
-                                  fontSize: 12
-                                ),
+                                style:
+                                    TextStyle(color: Colors.grey, fontSize: 12),
                               )
                             ],
                           )
-                          
                         ],
                       )
                     ],
-                  )
-                );
-              }),
-            )
-          ],
-        ),
-      );
-      }
+                  ));
+            }),
+          )
+        ],
+      ),
+    );
+  }
 }

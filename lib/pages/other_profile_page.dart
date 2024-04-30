@@ -7,19 +7,24 @@ import 'package:woofers/pages/login_page.dart';
 import 'package:woofers/services/account/user_profile_services.dart';
 import 'package:google_fonts/google_fonts.dart';
 
-void main() => runApp(const OtherProfilePage());
+// class OtherProfilePage extends StatelessWidget {
+//   // const OtherProfilePage({super.key});
+//   final String dogId;
+//   const DogProfilePage({
+//     super.key,
+//     required this.dogId,
+//   });
 
-class OtherProfilePage extends StatefulWidget {
-  const OtherProfilePage({super.key});
+//   @override
+//   _OtherProfilePageState createState() => _OtherProfilePageState();
+// }
 
-  @override
-  _OtherProfilePageState createState() => _OtherProfilePageState();
-}
-
-class _OtherProfilePageState extends State<OtherProfilePage> { 
-  // const OtherProfilePagetate({Key key}) : super(key: key);
-  final Future<ResponseUserProfileModel?> _account =
-      RetrieveAccountService().retrieveUserData();
+class OtherProfilePage extends StatelessWidget {
+  final String accountId;
+  const OtherProfilePage({
+    super.key,
+    required this.accountId,
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -27,10 +32,10 @@ class _OtherProfilePageState extends State<OtherProfilePage> {
       body: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: <Widget>[
-          const SizedBox(height: 10), 
+          const SizedBox(height: 10),
           Expanded(
             child: FutureBuilder(
-                future: _account,
+                future: RetrieveAccountService().viewOtherUserProfile(accountId),
                 builder: (context, snapshot) {
                   if (snapshot.connectionState == ConnectionState.waiting) {
                     return const Center(child: Text("Retrieving your data..."));
@@ -111,9 +116,9 @@ class _OtherProfilePageState extends State<OtherProfilePage> {
                                         border: const UnderlineInputBorder(),
                                         // labelText: 'Username',
                                         labelText:
-                                            snapshot.data?.username == null
+                                            snapshot.data?.fullName == null
                                                 ? ""
-                                                : snapshot.data!.username,
+                                                : snapshot.data!.fullName,
                                         labelStyle: GoogleFonts.newsCycle(
                                           color: Colors.black,
                                         ),
@@ -164,59 +169,6 @@ class _OtherProfilePageState extends State<OtherProfilePage> {
                                             snapshot.data?.fullName == null
                                                 ? ""
                                                 : snapshot.data!.fullName,
-                                        labelStyle: GoogleFonts.newsCycle(
-                                          color: Colors.black,
-                                        ),
-                                      ),
-                                    ),
-                                  ),
-                                ]))
-                          ],
-                        ),
-
-                        // email
-                        const SizedBox(height: 15),
-                        Row(
-                          children: [
-                            const SizedBox(
-                              width: 15,
-                            ),
-                            // const Image(
-                            //   image:
-                            //       AssetImage('assets/woofers_icon/email.png'),
-                            //   width: 35,
-                            //   height: 35,
-                            // ),
-                            const Icon(
-                              Icons.email_sharp,
-                              size: 35,
-                            ),
-                            const SizedBox(
-                              width: 20,
-                            ),
-                            Expanded(
-                                child: Column(
-                                    mainAxisAlignment: MainAxisAlignment.start,
-                                    crossAxisAlignment:
-                                        CrossAxisAlignment.start,
-                                    children: [
-                                  Text(
-                                    "email",
-                                    style: TextStyle(
-                                      color: Colors.black.withOpacity(0.5),
-                                    ),
-                                  ),
-                                  SizedBox(
-                                    height: 25,
-                                    child: TextFormField(
-                                      readOnly: true,
-                                      enabled: false,
-                                      decoration: InputDecoration(
-                                        border: const UnderlineInputBorder(),
-                                        // labelText: 'Username',
-                                        labelText: snapshot.data?.email == null
-                                            ? ""
-                                            : snapshot.data!.email,
                                         labelStyle: GoogleFonts.newsCycle(
                                           color: Colors.black,
                                         ),
@@ -426,31 +378,6 @@ class _OtherProfilePageState extends State<OtherProfilePage> {
                         context,
                         MaterialPageRoute(
                             builder: (context) => const EditMyProfile()),
-                      );
-                    },
-                  ),
-                  const SizedBox(width: 25),
-                  ElevatedButton(
-                    style: ButtonStyle(
-                      backgroundColor:
-                          MaterialStateProperty.resolveWith<Color?>(
-                        (Set<MaterialState> states) {
-                          if (states.contains(MaterialState.pressed)) {
-                            return Theme.of(context)
-                                .colorScheme
-                                .primary
-                                .withOpacity(0.5);
-                          }
-                          return null; // Use the component's default.
-                        },
-                      ),
-                    ),
-                    child: const Text('Logout'),
-                    onPressed: () {
-                      Navigator.push(
-                        context,
-                        MaterialPageRoute(
-                            builder: (context) => const LoginPage()),
                       );
                     },
                   ),
