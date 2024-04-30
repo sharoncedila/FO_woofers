@@ -407,7 +407,7 @@ class _AddDogPageState extends State<AddDogPage> {
                       },
                     ),
                   ),
-                  child: Text('ADD',
+                  child: Text('Add',
                       style: TextStyle(
                           color: Colors.grey[600],
                           fontWeight: FontWeight.bold,
