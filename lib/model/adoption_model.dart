@@ -65,3 +65,28 @@ class OwnerData with _$OwnerData {
   factory OwnerData.fromJson(Map<String, dynamic> json) =>
       _$OwnerDataFromJson(json);
 }
+
+@freezed
+class SendAdoptNotifRequest with _$SendAdoptNotifRequest{
+  factory SendAdoptNotifRequest({
+    required String? dogId,
+    required String? dogName,
+    required String? breedName,
+    required String? ownerId,
+    required String? ownerUsername,
+  }) = _SendAdoptNotifRequest;
+
+  factory SendAdoptNotifRequest.fromJson(Map<String, dynamic> json) =>
+      _$SendAdoptNotifRequestFromJson(json);
+}
+
+@freezed
+class ApproveRejectAdoptionRequest with _$ApproveRejectAdoptionRequest{
+  factory ApproveRejectAdoptionRequest({
+    required String? notificationId,
+    required String? status
+  }) = _ApproveRejectAdoptionRequest;
+
+  factory ApproveRejectAdoptionRequest.fromJson(Map<String, dynamic> json) =>
+      _$ApproveRejectAdoptionRequestFromJson(json);
+}

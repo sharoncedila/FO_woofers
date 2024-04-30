@@ -40,19 +40,6 @@ class ViewFeedsResponse with _$ViewFeedsResponse{
 }
 
 @freezed
-class LeaveCommentResponse with _$LeaveCommentResponse {
-  factory LeaveCommentResponse({
-    required String commentId,
-    required String feedsId,
-    required String accountId,
-    required String content,
-    required String commentDate
-  }) = _LeaveCommentResponse;
-
-  factory LeaveCommentResponse.fromJson(Map<String, dynamic> json) => _$LeaveCommentResponseFromJson(json);
-}
-
-@freezed
 class PostFeedsResponse with _$PostFeedsResponse{
   factory PostFeedsResponse({
     required String? feedsId,
@@ -69,4 +56,30 @@ class PostFeedsResponse with _$PostFeedsResponse{
   }) = _PostFeedsResponse;
 
   factory PostFeedsResponse.fromJson(Map<String, dynamic> json) => _$PostFeedsResponseFromJson(json);
+}
+
+@freezed
+class OpenCommentsResponse with _$OpenCommentsResponse{
+  factory OpenCommentsResponse({
+    required String? commentId,
+    required String? feedsId,
+    required String? accountId,
+    required String? content,
+    required String? commentDate,
+    required String? errorCode,
+    required String? errorMessage,
+  }) = _OpenCommentsResponse;
+
+  factory OpenCommentsResponse.fromJson(Map<String, dynamic> json) => _$OpenCommentsResponseFromJson(json);
+}
+
+@freezed
+class LikeFeedsResponse with _$LikeFeedsResponse{
+  factory LikeFeedsResponse({
+    required String? status,
+    required String? errorCode,
+    required String? errorMessage,
+  }) = _LikeFeedsResponse;
+
+  factory LikeFeedsResponse.fromJson(Map<String, dynamic> json) => _$LikeFeedsResponseFromJson(json);
 }

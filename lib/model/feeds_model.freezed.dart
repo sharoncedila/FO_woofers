@@ -632,233 +632,6 @@ abstract class _ViewFeedsResponse implements ViewFeedsResponse {
       throw _privateConstructorUsedError;
 }
 
-LeaveCommentResponse _$LeaveCommentResponseFromJson(Map<String, dynamic> json) {
-  return _LeaveCommentResponse.fromJson(json);
-}
-
-/// @nodoc
-mixin _$LeaveCommentResponse {
-  String get commentId => throw _privateConstructorUsedError;
-  String get feedsId => throw _privateConstructorUsedError;
-  String get accountId => throw _privateConstructorUsedError;
-  String get content => throw _privateConstructorUsedError;
-  String get commentDate => throw _privateConstructorUsedError;
-
-  Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
-  @JsonKey(ignore: true)
-  $LeaveCommentResponseCopyWith<LeaveCommentResponse> get copyWith =>
-      throw _privateConstructorUsedError;
-}
-
-/// @nodoc
-abstract class $LeaveCommentResponseCopyWith<$Res> {
-  factory $LeaveCommentResponseCopyWith(LeaveCommentResponse value,
-          $Res Function(LeaveCommentResponse) then) =
-      _$LeaveCommentResponseCopyWithImpl<$Res, LeaveCommentResponse>;
-  @useResult
-  $Res call(
-      {String commentId,
-      String feedsId,
-      String accountId,
-      String content,
-      String commentDate});
-}
-
-/// @nodoc
-class _$LeaveCommentResponseCopyWithImpl<$Res,
-        $Val extends LeaveCommentResponse>
-    implements $LeaveCommentResponseCopyWith<$Res> {
-  _$LeaveCommentResponseCopyWithImpl(this._value, this._then);
-
-  // ignore: unused_field
-  final $Val _value;
-  // ignore: unused_field
-  final $Res Function($Val) _then;
-
-  @pragma('vm:prefer-inline')
-  @override
-  $Res call({
-    Object? commentId = null,
-    Object? feedsId = null,
-    Object? accountId = null,
-    Object? content = null,
-    Object? commentDate = null,
-  }) {
-    return _then(_value.copyWith(
-      commentId: null == commentId
-          ? _value.commentId
-          : commentId // ignore: cast_nullable_to_non_nullable
-              as String,
-      feedsId: null == feedsId
-          ? _value.feedsId
-          : feedsId // ignore: cast_nullable_to_non_nullable
-              as String,
-      accountId: null == accountId
-          ? _value.accountId
-          : accountId // ignore: cast_nullable_to_non_nullable
-              as String,
-      content: null == content
-          ? _value.content
-          : content // ignore: cast_nullable_to_non_nullable
-              as String,
-      commentDate: null == commentDate
-          ? _value.commentDate
-          : commentDate // ignore: cast_nullable_to_non_nullable
-              as String,
-    ) as $Val);
-  }
-}
-
-/// @nodoc
-abstract class _$$LeaveCommentResponseImplCopyWith<$Res>
-    implements $LeaveCommentResponseCopyWith<$Res> {
-  factory _$$LeaveCommentResponseImplCopyWith(_$LeaveCommentResponseImpl value,
-          $Res Function(_$LeaveCommentResponseImpl) then) =
-      __$$LeaveCommentResponseImplCopyWithImpl<$Res>;
-  @override
-  @useResult
-  $Res call(
-      {String commentId,
-      String feedsId,
-      String accountId,
-      String content,
-      String commentDate});
-}
-
-/// @nodoc
-class __$$LeaveCommentResponseImplCopyWithImpl<$Res>
-    extends _$LeaveCommentResponseCopyWithImpl<$Res, _$LeaveCommentResponseImpl>
-    implements _$$LeaveCommentResponseImplCopyWith<$Res> {
-  __$$LeaveCommentResponseImplCopyWithImpl(_$LeaveCommentResponseImpl _value,
-      $Res Function(_$LeaveCommentResponseImpl) _then)
-      : super(_value, _then);
-
-  @pragma('vm:prefer-inline')
-  @override
-  $Res call({
-    Object? commentId = null,
-    Object? feedsId = null,
-    Object? accountId = null,
-    Object? content = null,
-    Object? commentDate = null,
-  }) {
-    return _then(_$LeaveCommentResponseImpl(
-      commentId: null == commentId
-          ? _value.commentId
-          : commentId // ignore: cast_nullable_to_non_nullable
-              as String,
-      feedsId: null == feedsId
-          ? _value.feedsId
-          : feedsId // ignore: cast_nullable_to_non_nullable
-              as String,
-      accountId: null == accountId
-          ? _value.accountId
-          : accountId // ignore: cast_nullable_to_non_nullable
-              as String,
-      content: null == content
-          ? _value.content
-          : content // ignore: cast_nullable_to_non_nullable
-              as String,
-      commentDate: null == commentDate
-          ? _value.commentDate
-          : commentDate // ignore: cast_nullable_to_non_nullable
-              as String,
-    ));
-  }
-}
-
-/// @nodoc
-@JsonSerializable()
-class _$LeaveCommentResponseImpl implements _LeaveCommentResponse {
-  _$LeaveCommentResponseImpl(
-      {required this.commentId,
-      required this.feedsId,
-      required this.accountId,
-      required this.content,
-      required this.commentDate});
-
-  factory _$LeaveCommentResponseImpl.fromJson(Map<String, dynamic> json) =>
-      _$$LeaveCommentResponseImplFromJson(json);
-
-  @override
-  final String commentId;
-  @override
-  final String feedsId;
-  @override
-  final String accountId;
-  @override
-  final String content;
-  @override
-  final String commentDate;
-
-  @override
-  String toString() {
-    return 'LeaveCommentResponse(commentId: $commentId, feedsId: $feedsId, accountId: $accountId, content: $content, commentDate: $commentDate)';
-  }
-
-  @override
-  bool operator ==(Object other) {
-    return identical(this, other) ||
-        (other.runtimeType == runtimeType &&
-            other is _$LeaveCommentResponseImpl &&
-            (identical(other.commentId, commentId) ||
-                other.commentId == commentId) &&
-            (identical(other.feedsId, feedsId) || other.feedsId == feedsId) &&
-            (identical(other.accountId, accountId) ||
-                other.accountId == accountId) &&
-            (identical(other.content, content) || other.content == content) &&
-            (identical(other.commentDate, commentDate) ||
-                other.commentDate == commentDate));
-  }
-
-  @JsonKey(ignore: true)
-  @override
-  int get hashCode => Object.hash(
-      runtimeType, commentId, feedsId, accountId, content, commentDate);
-
-  @JsonKey(ignore: true)
-  @override
-  @pragma('vm:prefer-inline')
-  _$$LeaveCommentResponseImplCopyWith<_$LeaveCommentResponseImpl>
-      get copyWith =>
-          __$$LeaveCommentResponseImplCopyWithImpl<_$LeaveCommentResponseImpl>(
-              this, _$identity);
-
-  @override
-  Map<String, dynamic> toJson() {
-    return _$$LeaveCommentResponseImplToJson(
-      this,
-    );
-  }
-}
-
-abstract class _LeaveCommentResponse implements LeaveCommentResponse {
-  factory _LeaveCommentResponse(
-      {required final String commentId,
-      required final String feedsId,
-      required final String accountId,
-      required final String content,
-      required final String commentDate}) = _$LeaveCommentResponseImpl;
-
-  factory _LeaveCommentResponse.fromJson(Map<String, dynamic> json) =
-      _$LeaveCommentResponseImpl.fromJson;
-
-  @override
-  String get commentId;
-  @override
-  String get feedsId;
-  @override
-  String get accountId;
-  @override
-  String get content;
-  @override
-  String get commentDate;
-  @override
-  @JsonKey(ignore: true)
-  _$$LeaveCommentResponseImplCopyWith<_$LeaveCommentResponseImpl>
-      get copyWith => throw _privateConstructorUsedError;
-}
-
 PostFeedsResponse _$PostFeedsResponseFromJson(Map<String, dynamic> json) {
   return _PostFeedsResponse.fromJson(json);
 }
@@ -1217,5 +990,451 @@ abstract class _PostFeedsResponse implements PostFeedsResponse {
   @override
   @JsonKey(ignore: true)
   _$$PostFeedsResponseImplCopyWith<_$PostFeedsResponseImpl> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+OpenCommentsResponse _$OpenCommentsResponseFromJson(Map<String, dynamic> json) {
+  return _OpenCommentsResponse.fromJson(json);
+}
+
+/// @nodoc
+mixin _$OpenCommentsResponse {
+  String? get commentId => throw _privateConstructorUsedError;
+  String? get feedsId => throw _privateConstructorUsedError;
+  String? get accountId => throw _privateConstructorUsedError;
+  String? get content => throw _privateConstructorUsedError;
+  String? get commentDate => throw _privateConstructorUsedError;
+  String? get errorCode => throw _privateConstructorUsedError;
+  String? get errorMessage => throw _privateConstructorUsedError;
+
+  Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
+  @JsonKey(ignore: true)
+  $OpenCommentsResponseCopyWith<OpenCommentsResponse> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class $OpenCommentsResponseCopyWith<$Res> {
+  factory $OpenCommentsResponseCopyWith(OpenCommentsResponse value,
+          $Res Function(OpenCommentsResponse) then) =
+      _$OpenCommentsResponseCopyWithImpl<$Res, OpenCommentsResponse>;
+  @useResult
+  $Res call(
+      {String? commentId,
+      String? feedsId,
+      String? accountId,
+      String? content,
+      String? commentDate,
+      String? errorCode,
+      String? errorMessage});
+}
+
+/// @nodoc
+class _$OpenCommentsResponseCopyWithImpl<$Res,
+        $Val extends OpenCommentsResponse>
+    implements $OpenCommentsResponseCopyWith<$Res> {
+  _$OpenCommentsResponseCopyWithImpl(this._value, this._then);
+
+  // ignore: unused_field
+  final $Val _value;
+  // ignore: unused_field
+  final $Res Function($Val) _then;
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? commentId = freezed,
+    Object? feedsId = freezed,
+    Object? accountId = freezed,
+    Object? content = freezed,
+    Object? commentDate = freezed,
+    Object? errorCode = freezed,
+    Object? errorMessage = freezed,
+  }) {
+    return _then(_value.copyWith(
+      commentId: freezed == commentId
+          ? _value.commentId
+          : commentId // ignore: cast_nullable_to_non_nullable
+              as String?,
+      feedsId: freezed == feedsId
+          ? _value.feedsId
+          : feedsId // ignore: cast_nullable_to_non_nullable
+              as String?,
+      accountId: freezed == accountId
+          ? _value.accountId
+          : accountId // ignore: cast_nullable_to_non_nullable
+              as String?,
+      content: freezed == content
+          ? _value.content
+          : content // ignore: cast_nullable_to_non_nullable
+              as String?,
+      commentDate: freezed == commentDate
+          ? _value.commentDate
+          : commentDate // ignore: cast_nullable_to_non_nullable
+              as String?,
+      errorCode: freezed == errorCode
+          ? _value.errorCode
+          : errorCode // ignore: cast_nullable_to_non_nullable
+              as String?,
+      errorMessage: freezed == errorMessage
+          ? _value.errorMessage
+          : errorMessage // ignore: cast_nullable_to_non_nullable
+              as String?,
+    ) as $Val);
+  }
+}
+
+/// @nodoc
+abstract class _$$OpenCommentsResponseImplCopyWith<$Res>
+    implements $OpenCommentsResponseCopyWith<$Res> {
+  factory _$$OpenCommentsResponseImplCopyWith(_$OpenCommentsResponseImpl value,
+          $Res Function(_$OpenCommentsResponseImpl) then) =
+      __$$OpenCommentsResponseImplCopyWithImpl<$Res>;
+  @override
+  @useResult
+  $Res call(
+      {String? commentId,
+      String? feedsId,
+      String? accountId,
+      String? content,
+      String? commentDate,
+      String? errorCode,
+      String? errorMessage});
+}
+
+/// @nodoc
+class __$$OpenCommentsResponseImplCopyWithImpl<$Res>
+    extends _$OpenCommentsResponseCopyWithImpl<$Res, _$OpenCommentsResponseImpl>
+    implements _$$OpenCommentsResponseImplCopyWith<$Res> {
+  __$$OpenCommentsResponseImplCopyWithImpl(_$OpenCommentsResponseImpl _value,
+      $Res Function(_$OpenCommentsResponseImpl) _then)
+      : super(_value, _then);
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? commentId = freezed,
+    Object? feedsId = freezed,
+    Object? accountId = freezed,
+    Object? content = freezed,
+    Object? commentDate = freezed,
+    Object? errorCode = freezed,
+    Object? errorMessage = freezed,
+  }) {
+    return _then(_$OpenCommentsResponseImpl(
+      commentId: freezed == commentId
+          ? _value.commentId
+          : commentId // ignore: cast_nullable_to_non_nullable
+              as String?,
+      feedsId: freezed == feedsId
+          ? _value.feedsId
+          : feedsId // ignore: cast_nullable_to_non_nullable
+              as String?,
+      accountId: freezed == accountId
+          ? _value.accountId
+          : accountId // ignore: cast_nullable_to_non_nullable
+              as String?,
+      content: freezed == content
+          ? _value.content
+          : content // ignore: cast_nullable_to_non_nullable
+              as String?,
+      commentDate: freezed == commentDate
+          ? _value.commentDate
+          : commentDate // ignore: cast_nullable_to_non_nullable
+              as String?,
+      errorCode: freezed == errorCode
+          ? _value.errorCode
+          : errorCode // ignore: cast_nullable_to_non_nullable
+              as String?,
+      errorMessage: freezed == errorMessage
+          ? _value.errorMessage
+          : errorMessage // ignore: cast_nullable_to_non_nullable
+              as String?,
+    ));
+  }
+}
+
+/// @nodoc
+@JsonSerializable()
+class _$OpenCommentsResponseImpl implements _OpenCommentsResponse {
+  _$OpenCommentsResponseImpl(
+      {required this.commentId,
+      required this.feedsId,
+      required this.accountId,
+      required this.content,
+      required this.commentDate,
+      required this.errorCode,
+      required this.errorMessage});
+
+  factory _$OpenCommentsResponseImpl.fromJson(Map<String, dynamic> json) =>
+      _$$OpenCommentsResponseImplFromJson(json);
+
+  @override
+  final String? commentId;
+  @override
+  final String? feedsId;
+  @override
+  final String? accountId;
+  @override
+  final String? content;
+  @override
+  final String? commentDate;
+  @override
+  final String? errorCode;
+  @override
+  final String? errorMessage;
+
+  @override
+  String toString() {
+    return 'OpenCommentsResponse(commentId: $commentId, feedsId: $feedsId, accountId: $accountId, content: $content, commentDate: $commentDate, errorCode: $errorCode, errorMessage: $errorMessage)';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$OpenCommentsResponseImpl &&
+            (identical(other.commentId, commentId) ||
+                other.commentId == commentId) &&
+            (identical(other.feedsId, feedsId) || other.feedsId == feedsId) &&
+            (identical(other.accountId, accountId) ||
+                other.accountId == accountId) &&
+            (identical(other.content, content) || other.content == content) &&
+            (identical(other.commentDate, commentDate) ||
+                other.commentDate == commentDate) &&
+            (identical(other.errorCode, errorCode) ||
+                other.errorCode == errorCode) &&
+            (identical(other.errorMessage, errorMessage) ||
+                other.errorMessage == errorMessage));
+  }
+
+  @JsonKey(ignore: true)
+  @override
+  int get hashCode => Object.hash(runtimeType, commentId, feedsId, accountId,
+      content, commentDate, errorCode, errorMessage);
+
+  @JsonKey(ignore: true)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$OpenCommentsResponseImplCopyWith<_$OpenCommentsResponseImpl>
+      get copyWith =>
+          __$$OpenCommentsResponseImplCopyWithImpl<_$OpenCommentsResponseImpl>(
+              this, _$identity);
+
+  @override
+  Map<String, dynamic> toJson() {
+    return _$$OpenCommentsResponseImplToJson(
+      this,
+    );
+  }
+}
+
+abstract class _OpenCommentsResponse implements OpenCommentsResponse {
+  factory _OpenCommentsResponse(
+      {required final String? commentId,
+      required final String? feedsId,
+      required final String? accountId,
+      required final String? content,
+      required final String? commentDate,
+      required final String? errorCode,
+      required final String? errorMessage}) = _$OpenCommentsResponseImpl;
+
+  factory _OpenCommentsResponse.fromJson(Map<String, dynamic> json) =
+      _$OpenCommentsResponseImpl.fromJson;
+
+  @override
+  String? get commentId;
+  @override
+  String? get feedsId;
+  @override
+  String? get accountId;
+  @override
+  String? get content;
+  @override
+  String? get commentDate;
+  @override
+  String? get errorCode;
+  @override
+  String? get errorMessage;
+  @override
+  @JsonKey(ignore: true)
+  _$$OpenCommentsResponseImplCopyWith<_$OpenCommentsResponseImpl>
+      get copyWith => throw _privateConstructorUsedError;
+}
+
+LikeFeedsResponse _$LikeFeedsResponseFromJson(Map<String, dynamic> json) {
+  return _LikeFeedsResponse.fromJson(json);
+}
+
+/// @nodoc
+mixin _$LikeFeedsResponse {
+  String? get status => throw _privateConstructorUsedError;
+  String? get errorCode => throw _privateConstructorUsedError;
+  String? get errorMessage => throw _privateConstructorUsedError;
+
+  Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
+  @JsonKey(ignore: true)
+  $LikeFeedsResponseCopyWith<LikeFeedsResponse> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class $LikeFeedsResponseCopyWith<$Res> {
+  factory $LikeFeedsResponseCopyWith(
+          LikeFeedsResponse value, $Res Function(LikeFeedsResponse) then) =
+      _$LikeFeedsResponseCopyWithImpl<$Res, LikeFeedsResponse>;
+  @useResult
+  $Res call({String? status, String? errorCode, String? errorMessage});
+}
+
+/// @nodoc
+class _$LikeFeedsResponseCopyWithImpl<$Res, $Val extends LikeFeedsResponse>
+    implements $LikeFeedsResponseCopyWith<$Res> {
+  _$LikeFeedsResponseCopyWithImpl(this._value, this._then);
+
+  // ignore: unused_field
+  final $Val _value;
+  // ignore: unused_field
+  final $Res Function($Val) _then;
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? status = freezed,
+    Object? errorCode = freezed,
+    Object? errorMessage = freezed,
+  }) {
+    return _then(_value.copyWith(
+      status: freezed == status
+          ? _value.status
+          : status // ignore: cast_nullable_to_non_nullable
+              as String?,
+      errorCode: freezed == errorCode
+          ? _value.errorCode
+          : errorCode // ignore: cast_nullable_to_non_nullable
+              as String?,
+      errorMessage: freezed == errorMessage
+          ? _value.errorMessage
+          : errorMessage // ignore: cast_nullable_to_non_nullable
+              as String?,
+    ) as $Val);
+  }
+}
+
+/// @nodoc
+abstract class _$$LikeFeedsResponseImplCopyWith<$Res>
+    implements $LikeFeedsResponseCopyWith<$Res> {
+  factory _$$LikeFeedsResponseImplCopyWith(_$LikeFeedsResponseImpl value,
+          $Res Function(_$LikeFeedsResponseImpl) then) =
+      __$$LikeFeedsResponseImplCopyWithImpl<$Res>;
+  @override
+  @useResult
+  $Res call({String? status, String? errorCode, String? errorMessage});
+}
+
+/// @nodoc
+class __$$LikeFeedsResponseImplCopyWithImpl<$Res>
+    extends _$LikeFeedsResponseCopyWithImpl<$Res, _$LikeFeedsResponseImpl>
+    implements _$$LikeFeedsResponseImplCopyWith<$Res> {
+  __$$LikeFeedsResponseImplCopyWithImpl(_$LikeFeedsResponseImpl _value,
+      $Res Function(_$LikeFeedsResponseImpl) _then)
+      : super(_value, _then);
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? status = freezed,
+    Object? errorCode = freezed,
+    Object? errorMessage = freezed,
+  }) {
+    return _then(_$LikeFeedsResponseImpl(
+      status: freezed == status
+          ? _value.status
+          : status // ignore: cast_nullable_to_non_nullable
+              as String?,
+      errorCode: freezed == errorCode
+          ? _value.errorCode
+          : errorCode // ignore: cast_nullable_to_non_nullable
+              as String?,
+      errorMessage: freezed == errorMessage
+          ? _value.errorMessage
+          : errorMessage // ignore: cast_nullable_to_non_nullable
+              as String?,
+    ));
+  }
+}
+
+/// @nodoc
+@JsonSerializable()
+class _$LikeFeedsResponseImpl implements _LikeFeedsResponse {
+  _$LikeFeedsResponseImpl(
+      {required this.status,
+      required this.errorCode,
+      required this.errorMessage});
+
+  factory _$LikeFeedsResponseImpl.fromJson(Map<String, dynamic> json) =>
+      _$$LikeFeedsResponseImplFromJson(json);
+
+  @override
+  final String? status;
+  @override
+  final String? errorCode;
+  @override
+  final String? errorMessage;
+
+  @override
+  String toString() {
+    return 'LikeFeedsResponse(status: $status, errorCode: $errorCode, errorMessage: $errorMessage)';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$LikeFeedsResponseImpl &&
+            (identical(other.status, status) || other.status == status) &&
+            (identical(other.errorCode, errorCode) ||
+                other.errorCode == errorCode) &&
+            (identical(other.errorMessage, errorMessage) ||
+                other.errorMessage == errorMessage));
+  }
+
+  @JsonKey(ignore: true)
+  @override
+  int get hashCode => Object.hash(runtimeType, status, errorCode, errorMessage);
+
+  @JsonKey(ignore: true)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$LikeFeedsResponseImplCopyWith<_$LikeFeedsResponseImpl> get copyWith =>
+      __$$LikeFeedsResponseImplCopyWithImpl<_$LikeFeedsResponseImpl>(
+          this, _$identity);
+
+  @override
+  Map<String, dynamic> toJson() {
+    return _$$LikeFeedsResponseImplToJson(
+      this,
+    );
+  }
+}
+
+abstract class _LikeFeedsResponse implements LikeFeedsResponse {
+  factory _LikeFeedsResponse(
+      {required final String? status,
+      required final String? errorCode,
+      required final String? errorMessage}) = _$LikeFeedsResponseImpl;
+
+  factory _LikeFeedsResponse.fromJson(Map<String, dynamic> json) =
+      _$LikeFeedsResponseImpl.fromJson;
+
+  @override
+  String? get status;
+  @override
+  String? get errorCode;
+  @override
+  String? get errorMessage;
+  @override
+  @JsonKey(ignore: true)
+  _$$LikeFeedsResponseImplCopyWith<_$LikeFeedsResponseImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

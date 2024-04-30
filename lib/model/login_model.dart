@@ -23,3 +23,14 @@ class RequestLoginModel with _$RequestLoginModel {
 
   factory RequestLoginModel.fromJson(Map<String, dynamic> json) => _$RequestLoginModelFromJson(json);
 }
+
+@freezed
+class LogoutResponse with _$LogoutResponse{
+  factory LogoutResponse({
+    required String? status,
+    required String? errorCode,
+    required String? errorMessage
+  }) = _LogoutResponse;
+
+  factory LogoutResponse.fromJson(Map<String, dynamic> json) => _$LogoutResponseFromJson(json);
+}

@@ -62,26 +62,6 @@ Map<String, dynamic> _$$ViewFeedsResponseImplToJson(
       'errorMessage': instance.errorMessage,
     };
 
-_$LeaveCommentResponseImpl _$$LeaveCommentResponseImplFromJson(
-        Map<String, dynamic> json) =>
-    _$LeaveCommentResponseImpl(
-      commentId: json['commentId'] as String,
-      feedsId: json['feedsId'] as String,
-      accountId: json['accountId'] as String,
-      content: json['content'] as String,
-      commentDate: json['commentDate'] as String,
-    );
-
-Map<String, dynamic> _$$LeaveCommentResponseImplToJson(
-        _$LeaveCommentResponseImpl instance) =>
-    <String, dynamic>{
-      'commentId': instance.commentId,
-      'feedsId': instance.feedsId,
-      'accountId': instance.accountId,
-      'content': instance.content,
-      'commentDate': instance.commentDate,
-    };
-
 _$PostFeedsResponseImpl _$$PostFeedsResponseImplFromJson(
         Map<String, dynamic> json) =>
     _$PostFeedsResponseImpl(
@@ -110,6 +90,46 @@ Map<String, dynamic> _$$PostFeedsResponseImplToJson(
       'reportCount': instance.reportCount,
       'postDate': instance.postDate,
       'deletedAt': instance.deletedAt,
+      'errorCode': instance.errorCode,
+      'errorMessage': instance.errorMessage,
+    };
+
+_$OpenCommentsResponseImpl _$$OpenCommentsResponseImplFromJson(
+        Map<String, dynamic> json) =>
+    _$OpenCommentsResponseImpl(
+      commentId: json['commentId'] as String?,
+      feedsId: json['feedsId'] as String?,
+      accountId: json['accountId'] as String?,
+      content: json['content'] as String?,
+      commentDate: json['commentDate'] as String?,
+      errorCode: json['errorCode'] as String?,
+      errorMessage: json['errorMessage'] as String?,
+    );
+
+Map<String, dynamic> _$$OpenCommentsResponseImplToJson(
+        _$OpenCommentsResponseImpl instance) =>
+    <String, dynamic>{
+      'commentId': instance.commentId,
+      'feedsId': instance.feedsId,
+      'accountId': instance.accountId,
+      'content': instance.content,
+      'commentDate': instance.commentDate,
+      'errorCode': instance.errorCode,
+      'errorMessage': instance.errorMessage,
+    };
+
+_$LikeFeedsResponseImpl _$$LikeFeedsResponseImplFromJson(
+        Map<String, dynamic> json) =>
+    _$LikeFeedsResponseImpl(
+      status: json['status'] as String?,
+      errorCode: json['errorCode'] as String?,
+      errorMessage: json['errorMessage'] as String?,
+    );
+
+Map<String, dynamic> _$$LikeFeedsResponseImplToJson(
+        _$LikeFeedsResponseImpl instance) =>
+    <String, dynamic>{
+      'status': instance.status,
       'errorCode': instance.errorCode,
       'errorMessage': instance.errorMessage,
     };

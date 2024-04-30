@@ -42,7 +42,7 @@ class FeedsService{
     }
   }
 
-  Future<List<LeaveCommentResponse>?> openCommentSection(String feedsId) async {
+  Future<List<OpenCommentsResponse>?> openCommentSection(String feedsId) async {
     try {
       String api = '/feeds/open-comments/feeds-id/$feedsId';
       final dio = await DioInstance.getInstance();
@@ -50,11 +50,45 @@ class FeedsService{
       var response = await dio.get(api);
       final errorSchema = ErrorSchema.fromJson(response.data['errorSchema']);
       if (errorSchema.errorCode != 'WOF-000') {
-        return [LeaveCommentResponse.fromJson(response.data['errorSchema'])];
+        return [OpenCommentsResponse.fromJson(response.data['errorSchema'])];
       } else {
         return (response.data['outputSchema']['commentsList'] as List)
-            .map((e) => LeaveCommentResponse.fromJson(e))
+            .map((e) => OpenCommentsResponse.fromJson(e))
             .toList();
+      }
+    } catch (error) {
+      throw Exception(error);
+    }
+  }
+
+  Future<OpenCommentsResponse> leaveComment(LeaveCommentRequest request) async{
+    try {
+      String api = '/feeds/comment';
+      final dio = await DioInstance.getInstance();
+
+      var response = await dio.post(api, data: jsonEncode(request.toJson()));
+      final errorSchema = ErrorSchema.fromJson(response.data['errorSchema']);
+      if (errorSchema.errorCode != 'WOF-000') {
+        return OpenCommentsResponse.fromJson(response.data['errorSchema']);
+      } else {
+        return OpenCommentsResponse.fromJson(response.data['outputSchema']);
+      }
+    } catch (error) {
+      throw Exception(error);
+    }
+  }
+
+  Future<LikeFeedsResponse> likeFeeds(String feedsId) async{
+    try {
+      String api = '/feeds/like/feeds-id/$feedsId';
+      final dio = await DioInstance.getInstance();
+
+      var response = await dio.get(api);
+      final errorSchema = ErrorSchema.fromJson(response.data['errorSchema']);
+      if (errorSchema.errorCode != 'WOF-000') {
+        return LikeFeedsResponse.fromJson(response.data['errorSchema']);
+      } else {
+        return LikeFeedsResponse.fromJson(response.data['outputSchema']);
       }
     } catch (error) {
       throw Exception(error);
