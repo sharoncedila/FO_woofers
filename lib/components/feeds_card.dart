@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:woofers/components/image_network.dart';
+import 'package:woofers/components/other_profile_page_template.dart';
 import 'package:woofers/model/adoption_model.dart';
 import 'package:woofers/model/feeds_model.dart';
 import 'package:woofers/pages/comment_page.dart';
@@ -35,7 +36,7 @@ class FeedsCard extends StatelessWidget {
                               Navigator.push(
                                   context,
                                   MaterialPageRoute(
-                                      builder: (context) => OtherProfilePage(
+                                      builder: (context) => OtherProfilePageTemplate(
                                           accountId:
                                               feedsDetail.accountId ?? '')));
                             },

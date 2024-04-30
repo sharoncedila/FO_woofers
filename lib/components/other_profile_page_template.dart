@@ -1,9 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:woofers/pages/dog_list_page.dart';
-import 'package:woofers/pages/user_profile_page.dart';
+import 'package:woofers/pages/other_profile_page.dart';
 
-class ProfilePageTemplate extends StatelessWidget {
-  const ProfilePageTemplate({super.key});
+class OtherProfilePageTemplate extends StatelessWidget {
+  final String accountId;
+  const OtherProfilePageTemplate({
+    super.key,
+    required this.accountId,
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -33,10 +37,10 @@ class ProfilePageTemplate extends StatelessWidget {
             ],
           ),
         ),
-        body: const TabBarView(
+        body: TabBarView(
           children: [
-            UserProfilePage(),
-            DogListPage(),
+            OtherProfilePage(accountId: accountId),
+            const DogListPage(),
           ],
         ),
       ),
