@@ -3,6 +3,7 @@ import 'package:woofers/model/adoption_model.dart';
 import 'package:woofers/model/error_schema_model.dart';
 
 class AdoptionService {
+  // Adoption page
   Future<List<AdoptionDetail>> retrieveAdoptionList() async {
     try {
       const api = '/adoption/view';

@@ -37,8 +37,8 @@ class ProfilePageTemplate extends StatelessWidget {
         body: const TabBarView(
           children: [
             UserProfilePage(),
-            //DogListPage(),
-            AddDogPage(),
+            DogListPage(),
+            //AddDogPage(),
           ],
         ),
       ),

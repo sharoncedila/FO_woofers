@@ -3,7 +3,7 @@ part 'user_profile_model.freezed.dart';
 part 'user_profile_model.g.dart';
 
 @freezed
-class ResponseUserProfileModel with _$ResponseUserProfileModel {
+class  ResponseUserProfileModel with _$ResponseUserProfileModel {
   factory ResponseUserProfileModel({
     required String? username,
     required String? fullName,
