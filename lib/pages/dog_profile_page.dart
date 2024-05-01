@@ -483,7 +483,7 @@ class DogProfilePage extends StatelessWidget {
                               context,
                               MaterialPageRoute(
                                   builder: (context) =>
-                                      EditDogPage(dogId : dogId)),
+                                      EditDogPage(dogId: dogId)),
                               //dogId: dogId)),
                             );
                           },

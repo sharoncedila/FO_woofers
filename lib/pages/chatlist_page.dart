@@ -4,6 +4,7 @@ import 'package:hexcolor/hexcolor.dart';
 import 'package:woofers/components/chat_card.dart';
 import 'package:woofers/model/chatlist_model.dart';
 import 'package:woofers/pages/notification_page.dart';
+import 'package:woofers/pages/search_user_list_page.dart';
 import 'package:woofers/services/chat/chat_service.dart';
 
 class ChatListPage extends StatefulWidget {
@@ -88,6 +89,22 @@ class _ChatListPageState extends State<ChatListPage> {
                       Icons.search,
                       color: Colors.black,
                     )),*/
+                const SizedBox(
+                  width: 15,
+                ),
+                Flexible(
+                  child: TextFormField(
+                    controller: _searchController,
+                    cursorColor: Colors.black,
+                    decoration: const InputDecoration(
+                        border: InputBorder.none,
+                        hintText: "Search for others"),
+                    // onChanged: (value) {
+                    //   _searchChat(
+                    //       value); // Call searchChat function on text change
+                    // },
+                  ),
+                ),
                 ElevatedButton(
                     style: ButtonStyle(
                       backgroundColor: MaterialStateProperty.resolveWith(
@@ -103,23 +120,15 @@ class _ChatListPageState extends State<ChatListPage> {
                       ),
                     ),
                     child: const Icon(Icons.search, color: Colors.black),
-                    onPressed: () async {}),
-                const SizedBox(
-                  width: 15,
-                ),
-                Flexible(
-                  child: TextField(
-                    controller: _searchController,
-                    cursorColor: Colors.black,
-                    decoration: const InputDecoration(
-                        border: InputBorder.none,
-                        hintText: "Search for others"),
-                    onChanged: (value) {
-                     // _searchChat(
-                       //   value); // Call searchChat function on text change
-                    },
-                  ),
-                ),
+                    onPressed: () async {
+                      String wordSearch = _searchController.text;
+                      print("word search list page: ${wordSearch}");
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                            builder: (context) => SearchUserListPage(userName: wordSearch)),
+                      );
+                    }),
                 //futur builder here
               ],
             ),

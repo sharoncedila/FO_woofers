@@ -65,6 +65,7 @@ class _AdoptionPageState extends State<AdoptionPage> {
                 return const Text("No data");
               }
               final adoptionList = snapshot.data!;
+              print("Data adoption: ${snapshot.data}");
               return Wrap(
                 children: adoptionList
                     .map((e) => DogCardDetail(adoptionDetail: e))

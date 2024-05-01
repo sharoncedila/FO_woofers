@@ -35,7 +35,9 @@ class RetrieveAllChatlistResponse with _$RetrieveAllChatlistResponse {
 @freezed
 class SearchChatResponse with _$SearchChatResponse {
   factory SearchChatResponse(
-      {required AccountList? accountList,
+      {required String? accountId,
+      required String? username,
+      required String? fullName,
       required String? errorCode,
       required String? errorMessage}) = _SearchChatResponse;
 
@@ -43,14 +45,14 @@ class SearchChatResponse with _$SearchChatResponse {
       _$SearchChatResponseFromJson(json);
 }
 
-@freezed
-class AccountList with _$AccountList {
-  factory AccountList({
-    required String? accountId,
-    required String? username,
-    required String? fullName,
-  }) = _AccountList;
+// @freezed
+// class AccountList with _$AccountList {
+//   factory AccountList({
+//     required String? accountId,
+//     required String? username,
+//     required String? fullName,
+//   }) = _AccountList;
 
-  factory AccountList.fromJson(Map<String, dynamic> json) =>
-      _$AccountListFromJson(json);
-}
+//   factory AccountList.fromJson(Map<String, dynamic> json) =>
+//       _$AccountListFromJson(json);
+// }

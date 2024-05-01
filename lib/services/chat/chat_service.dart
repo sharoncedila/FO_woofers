@@ -67,7 +67,7 @@ class ChatroomService {
     return null;
   }
 
-  Future<SearchChatResponse?> searchChat(String username) async{
+  Future<List<SearchChatResponse>> searchChat(String username) async{
     try {
       String api = '/chats/search/keyword/$username';
       final dio = await DioInstance.getInstance();
@@ -75,12 +75,15 @@ class ChatroomService {
       var response = await dio.get(api);
       final errorSchema = ErrorSchema.fromJson(response.data!['errorSchema']);
       if (errorSchema.errorCode != 'WOF-000') {
-        return SearchChatResponse.fromJson(response.data['errorSchema']);
+        return [SearchChatResponse.fromJson(response.data['errorSchema'])];
       } else {
-        return SearchChatResponse.fromJson(response.data['outputSchema']);
+        return (response.data['outputSchema']['accountList'] as List)
+            .map((e) => SearchChatResponse.fromJson(e))
+            .toList();
       }
     } catch (error) {
       print(error);
+      throw Exception(error);
     }
   }
 }
