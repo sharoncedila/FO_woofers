@@ -24,23 +24,23 @@ class DogService {
   }
 
 // di profile page dog detail
-  Future<ResponseDogProfileModel?> ResponseDogProfileModelPage (String dogId) async {
-    try {
-      String api = '/dogs/profile/dog-id/$dogId';
-      final dio = await DioInstance.getInstance();
+  // Future<ResponseDogProfileModel?> ResponseDogProfileModelPage (String dogId) async {
+  //   try {
+  //     String api = '/dogs/profile/dog-id/$dogId';
+  //     final dio = await DioInstance.getInstance();
 
-      var response = await dio.get(api);
-      final errorSchema = ErrorSchema.fromJson(response.data['errorSchema']);
+  //     var response = await dio.get(api);
+  //     final errorSchema = ErrorSchema.fromJson(response.data['errorSchema']);
 
-      if (errorSchema.errorCode != 'WOF-000') {
-        return ResponseDogProfileModel.fromJson(response.data['errorSchema']);
-      } else {
-        return ResponseDogProfileModel.fromJson(response.data['outputSchema']);
-      }
-    } catch (error) {
-      print(error);
-    }
-  }
+  //     if (errorSchema.errorCode != 'WOF-000') {
+  //       return ResponseDogProfileModel.fromJson(response.data['errorSchema']);
+  //     } else {
+  //       return ResponseDogProfileModel.fromJson(response.data['outputSchema']);
+  //     }
+  //   } catch (error) {
+  //     print(error);
+  //   }
+  // }
 
 
   Future<AddDogResponse?> addNewDog(AddDogRequest request) async{
