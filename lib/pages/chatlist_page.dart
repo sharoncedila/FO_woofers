@@ -122,7 +122,7 @@ class _ChatListPageState extends State<ChatListPage> {
                     child: const Icon(Icons.search, color: Colors.black),
                     onPressed: () async {
                       String wordSearch = _searchController.text;
-                      print("word search list page: ${wordSearch}");
+                      //print("word search list page: ${wordSearch}");
                       Navigator.push(
                         context,
                         MaterialPageRoute(
@@ -148,10 +148,9 @@ class _ChatListPageState extends State<ChatListPage> {
                   return const Text("No data");
                 }
                 final chatroomResponse = snapshot.data!;
-                final List<ChatCardDetail> chatrooms;
 
                 return Wrap(
-                  children: chatrooms = chatroomResponse.chatlistList
+                  children: chatroomResponse
                       .map((e) => ChatCardDetail(chatlistDetail: e))
                       .toList(),
                 );

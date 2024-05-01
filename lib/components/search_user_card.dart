@@ -32,17 +32,34 @@ class SearchUserCardDetail extends StatelessWidget {
               children: [
                 const SizedBox(width: 20),
                 Flexible(
-                  child: Column(
+                  child: Row(
                     crossAxisAlignment: CrossAxisAlignment.start,
-                    mainAxisAlignment: MainAxisAlignment.center,
+
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
-                      Text(
-                        searchUserDetail.username ?? "",
-                        style:
-                            const TextStyle(fontSize: 15, color: Colors.black),
+                      Padding(
+                        padding: const EdgeInsets.only(left: 10.0, top: 12),
+                        child: Text(
+                          searchUserDetail.username ?? "",
+                          style:
+                              const TextStyle(fontSize: 15, color: Colors.black),
+                        ),
                       ),
-                      const SizedBox(
-                        height: 3,
+                      // const SizedBox(
+                      //   height: 3,
+                      // ),
+                      Padding(
+                        padding: const EdgeInsets.only(right:10),
+                        child: IconButton(
+                          icon: const Icon(Icons.chat),
+                          onPressed: () {
+                            Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                  builder: (context) => const ChatroomPage()),
+                            );
+                          },
+                        ),
                       ),
                     ],
                   ),

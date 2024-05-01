@@ -2,8 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:hexcolor/hexcolor.dart';
 import 'package:woofers/components/image_network.dart';
+import 'package:woofers/model/adoption_model.dart';
 import 'package:woofers/pages/chatroom_page.dart';
-import 'package:woofers/pages/notification_page.dart';
 import 'package:woofers/services/adoption/adoption_service.dart';
 
 class RequestAdoptionPage extends StatefulWidget {
@@ -18,6 +18,8 @@ class RequestAdoptionPage extends StatefulWidget {
 }
 
 class _RequestAdoptionPageState extends State<RequestAdoptionPage> {
+  final _adoptionService = AdoptionService();
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -460,7 +462,8 @@ class _RequestAdoptionPageState extends State<RequestAdoptionPage> {
                   Divider(
                     color: Colors.grey.shade800, //HexColor("#a0dcdc"),
                     thickness: 1.5,
-                    height: 100.0, // Optional, specify the height of the divider
+                    height:
+                        100.0, // Optional, specify the height of the divider
                   ),
 
                   const SizedBox(
@@ -604,7 +607,8 @@ class _RequestAdoptionPageState extends State<RequestAdoptionPage> {
                                 border: const UnderlineInputBorder(),
                                 // labelText: 'Username',
                                 labelText:
-                                    snapshot.data?.ownerData!.phoneNumber == null
+                                    snapshot.data?.ownerData!.phoneNumber ==
+                                            null
                                         ? ""
                                         : snapshot.data!.ownerData!.phoneNumber,
                                 labelStyle: GoogleFonts.newsCycle(
@@ -617,7 +621,6 @@ class _RequestAdoptionPageState extends State<RequestAdoptionPage> {
                       ))
                     ],
                   ),
-
 
                   const SizedBox(
                     height: 20,
@@ -649,13 +652,44 @@ class _RequestAdoptionPageState extends State<RequestAdoptionPage> {
                                     fontWeight: FontWeight.bold,
                                     fontSize: 18)),
                             onPressed: () async {
-                              Navigator.push(
-                                context,
-                                MaterialPageRoute(
-                                    builder: (context) =>
-                                        const NotificationPage()),
-                                //dogId: dogId)),
-                              );
+                              final SendAdoptionNotification send =
+                                  SendAdoptionNotification(
+                                      dogId:
+                                          snapshot.data?.dogData!.dogId == null
+                                              ? ""
+                                              : snapshot.data!.dogData!.dogId,
+                                      dogName:
+                                          snapshot.data?.dogData!.dogName ==
+                                                  null
+                                              ? ""
+                                              : snapshot.data!.dogData!.dogName,
+                                      breedName: snapshot
+                                                  .data?.dogData!.breedName ==
+                                              null
+                                          ? ""
+                                          : snapshot.data!.dogData!.breedName,
+                                      ownerId: snapshot
+                                                  .data?.ownerData!.accountId ==
+                                              null
+                                          ? ""
+                                          : snapshot.data!.ownerData!.accountId,
+                                      ownerUsername: snapshot
+                                                  .data?.ownerData!.username ==
+                                              null
+                                          ? ""
+                                          : snapshot.data!.ownerData!.username);
+
+                              _adoptionService.sendAdoptNotif(send).then(
+                                  (value) => Navigator.of(context)
+                                      .pushReplacement(MaterialPageRoute(
+                                          builder: (_) =>
+                                              const ChatroomPage())));
+                              // Navigator.push(
+                              //   context,
+                              //   MaterialPageRoute(
+                              //       builder: (context) => const ChatroomPage()),
+                              //   //dogId: dogId)),
+                              // );
                             },
                           ),
                         )),
