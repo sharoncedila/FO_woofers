@@ -62,19 +62,34 @@ class FeedsService{
     }
   }
 
-  Future<List<LeaveCommentResponse>?> leaveCommentSection(String feedsId) async {
+  Future<OpenCommentsResponse> leaveComment(LeaveCommentRequest request) async{
     try {
-      String api = '/feeds/open-comments/feeds-id/$feedsId';
+      String api = '/feeds/comment';
+      final dio = await DioInstance.getInstance();
+
+      var response = await dio.post(api, data: jsonEncode(request.toJson()));
+      final errorSchema = ErrorSchema.fromJson(response.data['errorSchema']);
+      if (errorSchema.errorCode != 'WOF-000') {
+        return OpenCommentsResponse.fromJson(response.data['errorSchema']);
+      } else {
+        return OpenCommentsResponse.fromJson(response.data['outputSchema']);
+      }
+    } catch (error) {
+      throw Exception(error);
+    }
+  }
+
+  Future<LikeFeedsResponse> likeFeeds(String feedsId) async{
+    try {
+      String api = '/feeds/like/feeds-id/$feedsId';
       final dio = await DioInstance.getInstance();
 
       var response = await dio.get(api);
       final errorSchema = ErrorSchema.fromJson(response.data['errorSchema']);
       if (errorSchema.errorCode != 'WOF-000') {
-        return [LeaveCommentResponse.fromJson(response.data['errorSchema'])];
+        return LikeFeedsResponse.fromJson(response.data['errorSchema']);
       } else {
-        return (response.data['outputSchema']['commentsList'] as List)
-            .map((e) => LeaveCommentResponse.fromJson(e))
-            .toList();
+        return LikeFeedsResponse.fromJson(response.data['outputSchema']);
       }
     } catch (error) {
       throw Exception(error);

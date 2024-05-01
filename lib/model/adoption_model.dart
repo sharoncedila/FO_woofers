@@ -79,3 +79,14 @@ class SendAdoptionNotification with _$SendAdoptionNotification {
   factory SendAdoptionNotification.fromJson(Map<String, dynamic> json) =>
       _$SendAdoptionNotificationFromJson(json);
 }
+
+@freezed
+class ApproveRejectAdoptionRequest with _$ApproveRejectAdoptionRequest{
+  factory ApproveRejectAdoptionRequest({
+    required String? notificationId,
+    required String? status
+  }) = _ApproveRejectAdoptionRequest;
+
+  factory ApproveRejectAdoptionRequest.fromJson(Map<String, dynamic> json) =>
+      _$ApproveRejectAdoptionRequestFromJson(json);
+}

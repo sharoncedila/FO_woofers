@@ -87,3 +87,15 @@ class PostFeedsResponse with _$PostFeedsResponse{
 
   factory PostFeedsResponse.fromJson(Map<String, dynamic> json) => _$PostFeedsResponseFromJson(json);
 }
+
+@freezed
+class LikeFeedsResponse with _$LikeFeedsResponse {
+  factory LikeFeedsResponse({
+    required String? status,
+    required String? errorCode,
+    required String? errorMessage,
+  }) = _LikeFeedsResponse;
+
+  factory LikeFeedsResponse.fromJson(Map<String, dynamic> json) =>
+      _$LikeFeedsResponseFromJson(json);
+}

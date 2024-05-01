@@ -100,4 +100,22 @@ class DogService {
       throw Exception(error);
     }
   }
+
+  Future<DeleteDogResponse> deleteDog(String dogId) async{
+    try {
+      String api = '/dogs/delete/dog-id/$dogId';
+      final dio = await DioInstance.getInstance();
+
+      var response = await dio.delete(api);
+      final errorSchema = ErrorSchema.fromJson(response.data['errorSchema']);
+
+      if (errorSchema.errorCode != 'WOF-000') {
+        return DeleteDogResponse.fromJson(response.data['errorSchema']);
+      } else {
+        return DeleteDogResponse.fromJson(response.data['outputSchema']);
+      }
+    } catch (error) {
+      throw Exception(error);
+    }
+  }
 }

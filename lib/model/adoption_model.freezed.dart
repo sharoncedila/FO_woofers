@@ -1357,3 +1357,172 @@ abstract class _SendAdoptionNotification implements SendAdoptionNotification {
   _$$SendAdoptionNotificationImplCopyWith<_$SendAdoptionNotificationImpl>
       get copyWith => throw _privateConstructorUsedError;
 }
+
+ApproveRejectAdoptionRequest _$ApproveRejectAdoptionRequestFromJson(
+    Map<String, dynamic> json) {
+  return _ApproveRejectAdoptionRequest.fromJson(json);
+}
+
+/// @nodoc
+mixin _$ApproveRejectAdoptionRequest {
+  String? get notificationId => throw _privateConstructorUsedError;
+  String? get status => throw _privateConstructorUsedError;
+
+  Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
+  @JsonKey(ignore: true)
+  $ApproveRejectAdoptionRequestCopyWith<ApproveRejectAdoptionRequest>
+      get copyWith => throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class $ApproveRejectAdoptionRequestCopyWith<$Res> {
+  factory $ApproveRejectAdoptionRequestCopyWith(
+          ApproveRejectAdoptionRequest value,
+          $Res Function(ApproveRejectAdoptionRequest) then) =
+      _$ApproveRejectAdoptionRequestCopyWithImpl<$Res,
+          ApproveRejectAdoptionRequest>;
+  @useResult
+  $Res call({String? notificationId, String? status});
+}
+
+/// @nodoc
+class _$ApproveRejectAdoptionRequestCopyWithImpl<$Res,
+        $Val extends ApproveRejectAdoptionRequest>
+    implements $ApproveRejectAdoptionRequestCopyWith<$Res> {
+  _$ApproveRejectAdoptionRequestCopyWithImpl(this._value, this._then);
+
+  // ignore: unused_field
+  final $Val _value;
+  // ignore: unused_field
+  final $Res Function($Val) _then;
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? notificationId = freezed,
+    Object? status = freezed,
+  }) {
+    return _then(_value.copyWith(
+      notificationId: freezed == notificationId
+          ? _value.notificationId
+          : notificationId // ignore: cast_nullable_to_non_nullable
+              as String?,
+      status: freezed == status
+          ? _value.status
+          : status // ignore: cast_nullable_to_non_nullable
+              as String?,
+    ) as $Val);
+  }
+}
+
+/// @nodoc
+abstract class _$$ApproveRejectAdoptionRequestImplCopyWith<$Res>
+    implements $ApproveRejectAdoptionRequestCopyWith<$Res> {
+  factory _$$ApproveRejectAdoptionRequestImplCopyWith(
+          _$ApproveRejectAdoptionRequestImpl value,
+          $Res Function(_$ApproveRejectAdoptionRequestImpl) then) =
+      __$$ApproveRejectAdoptionRequestImplCopyWithImpl<$Res>;
+  @override
+  @useResult
+  $Res call({String? notificationId, String? status});
+}
+
+/// @nodoc
+class __$$ApproveRejectAdoptionRequestImplCopyWithImpl<$Res>
+    extends _$ApproveRejectAdoptionRequestCopyWithImpl<$Res,
+        _$ApproveRejectAdoptionRequestImpl>
+    implements _$$ApproveRejectAdoptionRequestImplCopyWith<$Res> {
+  __$$ApproveRejectAdoptionRequestImplCopyWithImpl(
+      _$ApproveRejectAdoptionRequestImpl _value,
+      $Res Function(_$ApproveRejectAdoptionRequestImpl) _then)
+      : super(_value, _then);
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? notificationId = freezed,
+    Object? status = freezed,
+  }) {
+    return _then(_$ApproveRejectAdoptionRequestImpl(
+      notificationId: freezed == notificationId
+          ? _value.notificationId
+          : notificationId // ignore: cast_nullable_to_non_nullable
+              as String?,
+      status: freezed == status
+          ? _value.status
+          : status // ignore: cast_nullable_to_non_nullable
+              as String?,
+    ));
+  }
+}
+
+/// @nodoc
+@JsonSerializable()
+class _$ApproveRejectAdoptionRequestImpl
+    implements _ApproveRejectAdoptionRequest {
+  _$ApproveRejectAdoptionRequestImpl(
+      {required this.notificationId, required this.status});
+
+  factory _$ApproveRejectAdoptionRequestImpl.fromJson(
+          Map<String, dynamic> json) =>
+      _$$ApproveRejectAdoptionRequestImplFromJson(json);
+
+  @override
+  final String? notificationId;
+  @override
+  final String? status;
+
+  @override
+  String toString() {
+    return 'ApproveRejectAdoptionRequest(notificationId: $notificationId, status: $status)';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$ApproveRejectAdoptionRequestImpl &&
+            (identical(other.notificationId, notificationId) ||
+                other.notificationId == notificationId) &&
+            (identical(other.status, status) || other.status == status));
+  }
+
+  @JsonKey(ignore: true)
+  @override
+  int get hashCode => Object.hash(runtimeType, notificationId, status);
+
+  @JsonKey(ignore: true)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$ApproveRejectAdoptionRequestImplCopyWith<
+          _$ApproveRejectAdoptionRequestImpl>
+      get copyWith => __$$ApproveRejectAdoptionRequestImplCopyWithImpl<
+          _$ApproveRejectAdoptionRequestImpl>(this, _$identity);
+
+  @override
+  Map<String, dynamic> toJson() {
+    return _$$ApproveRejectAdoptionRequestImplToJson(
+      this,
+    );
+  }
+}
+
+abstract class _ApproveRejectAdoptionRequest
+    implements ApproveRejectAdoptionRequest {
+  factory _ApproveRejectAdoptionRequest(
+      {required final String? notificationId,
+      required final String? status}) = _$ApproveRejectAdoptionRequestImpl;
+
+  factory _ApproveRejectAdoptionRequest.fromJson(Map<String, dynamic> json) =
+      _$ApproveRejectAdoptionRequestImpl.fromJson;
+
+  @override
+  String? get notificationId;
+  @override
+  String? get status;
+  @override
+  @JsonKey(ignore: true)
+  _$$ApproveRejectAdoptionRequestImplCopyWith<
+          _$ApproveRejectAdoptionRequestImpl>
+      get copyWith => throw _privateConstructorUsedError;
+}

@@ -141,3 +141,19 @@ Map<String, dynamic> _$$PostFeedsResponseImplToJson(
       'errorCode': instance.errorCode,
       'errorMessage': instance.errorMessage,
     };
+
+_$LikeFeedsResponseImpl _$$LikeFeedsResponseImplFromJson(
+        Map<String, dynamic> json) =>
+    _$LikeFeedsResponseImpl(
+      status: json['status'] as String?,
+      errorCode: json['errorCode'] as String?,
+      errorMessage: json['errorMessage'] as String?,
+    );
+
+Map<String, dynamic> _$$LikeFeedsResponseImplToJson(
+        _$LikeFeedsResponseImpl instance) =>
+    <String, dynamic>{
+      'status': instance.status,
+      'errorCode': instance.errorCode,
+      'errorMessage': instance.errorMessage,
+    };
