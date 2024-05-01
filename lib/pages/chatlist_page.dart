@@ -21,34 +21,6 @@ class _ChatListPageState extends State<ChatListPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Colors.white,
-<<<<<<< HEAD
-      appBar:
-        AppBar(
-          toolbarHeight: 75,
-          elevation: 0,
-          backgroundColor: HexColor("#a0dcdc"),
-          title:
-            Text(
-              "CHATS",
-              style: GoogleFonts.lora(
-                fontSize: 25,
-                fontWeight: FontWeight.bold,
-                color: const Color.fromRGBO(40,36,36,10000),
-              ),
-            ),
-            actions: <Widget>[
-              IconButton(
-                icon: const Icon(Icons.notification_add_rounded),
-                onPressed: () {
-                  Navigator.push(
-                    context,
-                    MaterialPageRoute(builder: (context) => const NotificationPage()),
-                  );
-                },
-              ),
-              const SizedBox(width: 5,)
-            ],
-=======
       appBar: AppBar(
         toolbarHeight: 75,
         elevation: 0,
@@ -59,7 +31,6 @@ class _ChatListPageState extends State<ChatListPage> {
             fontSize: 25,
             fontWeight: FontWeight.bold,
             color: const Color.fromRGBO(40, 36, 36, 10000),
->>>>>>> c5137c9ffdb1a2951751bdbdf4e18ae16a8ca968
           ),
         ),
         actions: <Widget>[
