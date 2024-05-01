@@ -30,3 +30,29 @@ class RetrieveAllChatlistResponse with _$RetrieveAllChatlistResponse {
   factory RetrieveAllChatlistResponse.fromJson(Map<String, dynamic> json) =>
       _$RetrieveAllChatlistResponseFromJson(json);
 }
+
+
+@freezed
+class SearchChatResponse with _$SearchChatResponse {
+  factory SearchChatResponse(
+      {required String? accountId,
+      required String? username,
+      required String? fullName,
+      required String? errorCode,
+      required String? errorMessage}) = _SearchChatResponse;
+
+  factory SearchChatResponse.fromJson(Map<String, dynamic> json) =>
+      _$SearchChatResponseFromJson(json);
+}
+
+// @freezed
+// class AccountList with _$AccountList {
+//   factory AccountList({
+//     required String? accountId,
+//     required String? username,
+//     required String? fullName,
+//   }) = _AccountList;
+
+//   factory AccountList.fromJson(Map<String, dynamic> json) =>
+//       _$AccountListFromJson(json);
+// }

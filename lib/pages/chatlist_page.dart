@@ -2,8 +2,11 @@ import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:hexcolor/hexcolor.dart';
 import 'package:woofers/components/chat_card.dart';
+import 'package:woofers/model/chatlist_model.dart';
 import 'package:woofers/pages/notification_page.dart';
+import 'package:woofers/pages/search_user_list_page.dart';
 import 'package:woofers/services/chat/chat_service.dart';
+
 class ChatListPage extends StatefulWidget {
   const ChatListPage({super.key});
 
@@ -12,10 +15,13 @@ class ChatListPage extends StatefulWidget {
 }
 
 class _ChatListPageState extends State<ChatListPage> {
+  final TextEditingController _searchController = TextEditingController();
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Colors.white,
+<<<<<<< HEAD
       appBar:
         AppBar(
           toolbarHeight: 75,
@@ -42,177 +48,147 @@ class _ChatListPageState extends State<ChatListPage> {
               ),
               const SizedBox(width: 5,)
             ],
+=======
+      appBar: AppBar(
+        toolbarHeight: 75,
+        elevation: 0,
+        backgroundColor: HexColor("#a0dcdc"),
+        title: Text(
+          "CHATS",
+          style: GoogleFonts.lora(
+            fontSize: 25,
+            fontWeight: FontWeight.bold,
+            color: const Color.fromRGBO(40, 36, 36, 10000),
+>>>>>>> c5137c9ffdb1a2951751bdbdf4e18ae16a8ca968
           ),
+        ),
+        actions: <Widget>[
+          IconButton(
+            icon: const Icon(Icons.notification_add_rounded),
+            onPressed: () {
+              Navigator.push(
+                context,
+                MaterialPageRoute(
+                    builder: (context) => const NotificationPage()),
+              );
+            },
+          ),
+          const SizedBox(
+            width: 5,
+          )
+        ],
+      ),
       body: ChatList(),
     );
   }
+
   Widget ChatList() {
     return SingleChildScrollView(
       child: Padding(
         padding: const EdgeInsets.only(left: 25, right: 25),
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            const SizedBox(
-              height: 15,
-            ),
-            const SizedBox(
-              height: 15,
-            ),
-            // search box
-            Container(
-              width: double.infinity, 
-              height: 48,
-              decoration: BoxDecoration(
+        child: Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
+          const SizedBox(
+            height: 15,
+          ),
+          const SizedBox(
+            height: 15,
+          ),
+          // search box
+          Container(
+            width: double.infinity,
+            height: 48,
+            decoration: BoxDecoration(
                 color: Colors.white,
                 borderRadius: BorderRadius.circular(15),
                 boxShadow: [
                   BoxShadow(
-                    color: Colors.grey.withOpacity(0.2),
-                    spreadRadius: 2,
-                    blurRadius: 15,
-                    offset: const Offset(0, 1)
-                  )
-                ]
-              ),
-              child: Row(
-                children: [
-                  const SizedBox(
-                    width: 5,
+                      color: Colors.grey.withOpacity(0.2),
+                      spreadRadius: 2,
+                      blurRadius: 15,
+                      offset: const Offset(0, 1))
+                ]),
+            child: Row(
+              children: [
+                const SizedBox(
+                  width: 5,
+                ),
+                /*IconButton(
+                    onPressed: () {},
+                    icon: const Icon(
+                      Icons.search,
+                      color: Colors.black,
+                    )),*/
+                const SizedBox(
+                  width: 15,
+                ),
+                Flexible(
+                  child: TextFormField(
+                    controller: _searchController,
+                    cursorColor: Colors.black,
+                    decoration: const InputDecoration(
+                        border: InputBorder.none,
+                        hintText: "Search for others"),
+                    // onChanged: (value) {
+                    //   _searchChat(
+                    //       value); // Call searchChat function on text change
+                    // },
                   ),
-                  IconButton( 
-                      onPressed: () {},
-                      icon: const Icon(
-                        Icons.search,
-                        color: Colors.black,
-                      )),
-                  const SizedBox(
-                    width: 5,
-                  ),
-                  const Flexible(
-                    child: TextField(
-                      cursorColor: Colors.black,
-                      decoration: InputDecoration(
-                          border: InputBorder.none,
-                          hintText: "Search for others"),
+                ),
+                ElevatedButton(
+                    style: ButtonStyle(
+                      backgroundColor: MaterialStateProperty.resolveWith(
+                        (Set<MaterialState> states) {
+                          if (states.contains(MaterialState.pressed)) {
+                            return Theme.of(context)
+                                .colorScheme
+                                .primary
+                                .withOpacity(0.5);
+                          }
+                          return null; // Use the component's default.
+                        },
+                      ),
                     ),
-                  )
-                ],
-              ),
+                    child: const Icon(Icons.search, color: Colors.black),
+                    onPressed: () async {
+                      String wordSearch = _searchController.text;
+                      print("word search list page: ${wordSearch}");
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                            builder: (context) => SearchUserListPage(userName: wordSearch)),
+                      );
+                    }),
+                //futur builder here
+              ],
             ),
-            Padding(
-          padding: const EdgeInsets.symmetric(horizontal: 5, vertical: 10),
-          child: FutureBuilder(
-            future: ChatroomService().retrieveChatroomList(),
-            builder: ((context, snapshot) {
-              if (snapshot.connectionState == ConnectionState.waiting) {
-                return const Center(child: Text("Retrieving your data..."));
-              }
-              if (snapshot.hasError) {
-                return const Center(child: Text("Error chatlist"));
-              }
-              if (!snapshot.hasData) {
-                return const Text("No data");
-              }
-              final chatroomResponse = snapshot.data!;
-              final chatrooms;
-              
-              return Wrap(
-                children: 
-                chatrooms = chatroomResponse.chatlistList
-                    .map((e) => ChatCardDetail(chatlistDetail: e))
-                    .toList(),
-              );
-            }),
           ),
-        ),
-          ]
-        ),
+          Padding(
+            padding: const EdgeInsets.symmetric(horizontal: 5, vertical: 10),
+            child: FutureBuilder(
+              future: ChatroomService().retrieveChatroomList(),
+              builder: ((context, snapshot) {
+                if (snapshot.connectionState == ConnectionState.waiting) {
+                  return const Center(child: Text("Retrieving your data..."));
+                }
+                if (snapshot.hasError) {
+                  return const Center(child: Text("Error chatlist"));
+                }
+                if (!snapshot.hasData) {
+                  return const Text("No data");
+                }
+                final chatroomResponse = snapshot.data!;
+                final List<ChatCardDetail> chatrooms;
+
+                return Wrap(
+                  children: chatrooms = chatroomResponse.chatlistList
+                      .map((e) => ChatCardDetail(chatlistDetail: e))
+                      .toList(),
+                );
+              }),
+            ),
+          ),
+        ]),
       ),
     );
   }
 }
-
-
-           /*const SizedBox(
-              height: 30,
-            ),
-            Column(
-              children: List.generate(2, (index) {
-                return Padding(
-                  padding: const EdgeInsets.only(bottom: 1),
-                  child: Container(
-                    height: 100,
-                    width: double.infinity,
-                    decoration: BoxDecoration(
-                      boxShadow: [
-                        BoxShadow(
-                          color: Colors.grey.withOpacity(0.15),
-                          spreadRadius: 2,
-                          blurRadius: 15,
-                          offset: const Offset(0, 1))
-                      ],
-                      color: Colors.white.withOpacity(0.6),
-                      borderRadius: BorderRadius.circular(33),
-                    ),
-                    child: InkWell(
-                      onTap: () {
-                        Navigator.push(
-                          context,
-                          MaterialPageRoute(builder: (context) => const ChatroomPage()),
-                        );
-                      },
-                      child: Row(
-                      children: [
-                        const SizedBox(
-                          width: 20,
-                        ),
-                        Container(
-                          width: 65,
-                          height: 65,
-                          decoration: BoxDecoration(
-                              borderRadius: BorderRadius.circular(28),
-                              border: Border.all(color: Colors.black)),
-                          child: Center(
-                            child: Container(
-                              width: 60,
-                              height: 60,
-                              decoration: BoxDecoration(
-                                  borderRadius: BorderRadius.circular(30),
-                                  image: const DecorationImage(
-                                      image:
-                                          AssetImage('assets/profile_picture/person1.jpg'),
-                                      fit: BoxFit.cover)),
-                            ),
-                          ),
-                        ),
-                        const SizedBox(
-                          width: 20,
-                        ),
-                        Flexible(
-                          child: Column(
-                            crossAxisAlignment: CrossAxisAlignment.start,
-                            mainAxisAlignment: MainAxisAlignment.center,
-                            children: [
-                              const Text(
-                                'Sharon Cedila',
-                                style: TextStyle(fontSize: 15, color: Colors.black),
-                              ),
-                              const SizedBox(
-                                height: 5,
-                              ),
-                              Text(
-                                "mau ngomong apa ya??",
-                                  style: TextStyle(
-                                      fontSize: 14,
-                                      color: Colors.black.withOpacity(0.5)))
-                            ],
-                          ),
-                        ),
-                      ],
-                      ),
-                    ),
-                  ),
-                );
-              }),
-            ),*/
