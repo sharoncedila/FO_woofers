@@ -18,7 +18,7 @@ class _ChatListPageState extends State<ChatListPage> {
       backgroundColor: Colors.white,
       appBar:
         AppBar(
-          toolbarHeight: 75,
+          toolbarHeight: 75, 
           elevation: 0,
           backgroundColor: HexColor("#a0dcdc"),
           title:
@@ -61,7 +61,7 @@ class _ChatListPageState extends State<ChatListPage> {
             ),
             // search box
             Container(
-              width: double.infinity,
+              width: double.infinity, 
               height: 48,
               decoration: BoxDecoration(
                 color: Colors.white,
@@ -109,14 +109,17 @@ class _ChatListPageState extends State<ChatListPage> {
                 return const Center(child: Text("Retrieving your data..."));
               }
               if (snapshot.hasError) {
-                return const Center(child: Text("Error"));
+                return const Center(child: Text("Error chatlist"));
               }
               if (!snapshot.hasData) {
                 return const Text("No data");
               }
-              final chatroomList = snapshot.data!;
+              final chatroomResponse = snapshot.data!;
+              final chatrooms;
+              
               return Wrap(
-                children: chatroomList
+                children: 
+                chatrooms = chatroomResponse.chatlistList
                     .map((e) => ChatCardDetail(chatlistDetail: e))
                     .toList(),
               );

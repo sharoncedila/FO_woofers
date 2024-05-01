@@ -19,41 +19,40 @@ class _FeedsPageState extends State<FeedsPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Colors.white,
-      appBar:
-        AppBar(
-          toolbarHeight: 75,
-          elevation: 0,
-          backgroundColor: HexColor("#a0dcdc"),
-          title:
-            Text(
-              "WOOFERS",
-              style: GoogleFonts.lora(
-                fontSize: 25,
-                fontWeight: FontWeight.bold,
-                color: const Color.fromRGBO(40,36,36,10000),
-              ),
-            ),
-            actions: <Widget>[
-              IconButton(
-                icon: const Icon(Icons.notification_add_rounded),
-                onPressed: () {
-                  Navigator.push(
-                    context,
-                    MaterialPageRoute(builder: (context) => const NotificationPage()),
-                  );
-                },
-              ),
-              IconButton(
-                icon: const Icon(Icons.add_to_photos),
-                onPressed: () {
-                  Navigator.push(
-                    context,
-                    MaterialPageRoute(builder: (context) => const AddFeedsPage()),
-                  );
-                },
-              ),
-            ],
+      appBar: AppBar(
+        toolbarHeight: 75,
+        elevation: 0,
+        backgroundColor: HexColor("#a0dcdc"),
+        title: Text(
+          "WOOFERS",
+          style: GoogleFonts.lora(
+            fontSize: 25,
+            fontWeight: FontWeight.bold,
+            color: const Color.fromRGBO(40, 36, 36, 10000),
           ),
+        ),
+        actions: <Widget>[
+          IconButton(
+            icon: const Icon(Icons.notification_add_rounded),
+            onPressed: () {
+              Navigator.push(
+                context,
+                MaterialPageRoute(
+                    builder: (context) => const NotificationPage()),
+              );
+            },
+          ),
+          IconButton(
+            icon: const Icon(Icons.add_to_photos),
+            onPressed: () {
+              Navigator.push(
+                context,
+                MaterialPageRoute(builder: (context) => const AddFeedsPage()),
+              );
+            },
+          ),
+        ],
+      ),
       body: feedsList(),
     );
   }

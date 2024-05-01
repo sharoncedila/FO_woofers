@@ -1,32 +1,48 @@
 import 'dart:convert';
 
 import 'package:woofers/classes/dio_instance.dart';
+import 'package:woofers/model/chatlist_model.dart';
 import 'package:woofers/model/chatroom_model.dart';
 import 'package:woofers/model/error_schema_model.dart';
-import 'package:woofers/model/chatlist_model.dart';
 
 class ChatroomService {
-  Future<List<RetrieveChatlistResponse>?> retrieveChatroomList() async {
+  Future<RetrieveAllChatlistResponse> retrieveChatroomList() async {
     try {
       const api = '/chats/chatroom-list';
       final dio = await DioInstance.getInstance();
 
       var response = await dio.get(api);
-      final errorSchema = ErrorSchema.fromJson(response.data!['errorSchema']);
-      if (errorSchema.errorCode != 'WOF-000') {
-        return [
-          RetrieveChatlistResponse.fromJson(response.data['errorSchema'])
-        ];
-      } else {
-        return (response.data['outputSchema']['chatroomList'] as List)
-            .map((e) => RetrieveChatlistResponse.fromJson(e))
-            .toList();
+      if (response.data == null) {
+        throw Exception("Response data is null");
       }
+      final errorSchema = ErrorSchema.fromJson(response.data!['errorSchema']);
+      return RetrieveAllChatlistResponse.fromJson(
+          response.data['outputSchema']);
     } catch (error) {
-      print(error);
+      throw Exception(error);
     }
-    return null;
   }
+
+  // Future<List<RetrieveChatlistResponse>?> retrieveChatroomList() async {
+  //   try {
+  //     const api = '/chats/chatroom-list';
+  //     final dio = await DioInstance.getInstance();
+
+  //     var response = await dio.get(api);
+  //     final errorSchema = ErrorSchema.fromJson(response.data!['errorSchema']);
+  //     if (errorSchema.errorCode != 'WOF-000') {
+  //       return [
+  //         RetrieveChatlistResponse.fromJson(response.data['errorSchema'])
+  //       ];
+  //     } else {
+  //       return (response.data['outputSchema']['chatroomList'] as List)
+  //           .map((e) => RetrieveChatlistResponse.fromJson(e))
+  //           .toList();
+  //     }
+  //   } catch (error) {
+  //     print(error);
+  //   }
+  //   return null;
 
   Future<OpenChatResponse?> openChatroom(OpenChatRequest request) async {
     try {
@@ -46,8 +62,9 @@ class ChatroomService {
     return null;
   }
 
-  Future<OpenChatResponse?> sendMessage (SendChatRequest request) async{
+  Future<OpenChatResponse?> sendMessage(SendChatRequest request) async {
     return null;
+<<<<<<< HEAD
   }
 
   Future<SearchChatResponse?> searchChat(String username) async{
@@ -65,5 +82,7 @@ class ChatroomService {
     } catch (error) {
       print(error);
     }
+=======
+>>>>>>> UAT
   }
 }

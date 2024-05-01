@@ -7,6 +7,7 @@ import 'package:woofers/model/error_schema_model.dart';
 import 'package:woofers/model/notification_model.dart';
 
 class AdoptionService {
+  // Adoption page
   Future<List<AdoptionDetail>> retrieveAdoptionList() async {
     try {
       const api = '/adoption/view';
@@ -45,6 +46,7 @@ class AdoptionService {
     return null;
   }
 
+<<<<<<< HEAD
   Future<OpenChatResponse?> sendNotification(SendAdoptNotifRequest request) async{
     try {
       String api = '/adoption/send-notification';
@@ -56,10 +58,26 @@ class AdoptionService {
         return OpenChatResponse.fromJson(response.data['errorSchema']);
       } else {
         return OpenChatResponse.fromJson(response.data['outputSchema']);
+=======
+  Future<SendAdoptionNotification?> sendAdoptNotif(
+      SendAdoptionNotification adopt) async{
+    try {
+      const api = '/adoption/send-notification';
+      final dio = await DioInstance.getInstance();
+
+      var response = await dio.post(api, data: jsonEncode(adopt.toJson()));
+      final errorSchema = ErrorSchema.fromJson(response.data['errorSchema']);
+  
+      if (errorSchema.errorCode != 'WOF-000') {
+        return SendAdoptionNotification.fromJson(response.data['errorSchema']);
+      } else {
+        return SendAdoptionNotification.fromJson(response.data['outputSchema']);
+>>>>>>> UAT
       }
     } catch (error) {
       print(error);
     }
+<<<<<<< HEAD
   }
 
   Future<List<ViewNotificationResponse>?> approveRejectAdoption(ApproveRejectAdoptionRequest request) async{
@@ -79,5 +97,9 @@ class AdoptionService {
     } catch (error) {
       print(error);
     }
+=======
+    return null;
+
+>>>>>>> UAT
   }
 }

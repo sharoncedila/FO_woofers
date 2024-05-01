@@ -8,7 +8,7 @@ part of 'adoption_model.dart';
 
 _$AdoptionDetailImpl _$$AdoptionDetailImplFromJson(Map<String, dynamic> json) =>
     _$AdoptionDetailImpl(
-      dogId: json['dogId'] as String?,
+      dogId: json['dogId'] as String,
       breedName: json['breedName'] as String?,
       dogName: json['dogName'] as String?,
       gender: json['gender'] as String?,
@@ -103,9 +103,15 @@ Map<String, dynamic> _$$OwnerDataImplToJson(_$OwnerDataImpl instance) =>
       'image': instance.image,
     };
 
+<<<<<<< HEAD
 _$SendAdoptNotifRequestImpl _$$SendAdoptNotifRequestImplFromJson(
         Map<String, dynamic> json) =>
     _$SendAdoptNotifRequestImpl(
+=======
+_$SendAdoptionNotificationImpl _$$SendAdoptionNotificationImplFromJson(
+        Map<String, dynamic> json) =>
+    _$SendAdoptionNotificationImpl(
+>>>>>>> UAT
       dogId: json['dogId'] as String?,
       dogName: json['dogName'] as String?,
       breedName: json['breedName'] as String?,
@@ -113,8 +119,13 @@ _$SendAdoptNotifRequestImpl _$$SendAdoptNotifRequestImplFromJson(
       ownerUsername: json['ownerUsername'] as String?,
     );
 
+<<<<<<< HEAD
 Map<String, dynamic> _$$SendAdoptNotifRequestImplToJson(
         _$SendAdoptNotifRequestImpl instance) =>
+=======
+Map<String, dynamic> _$$SendAdoptionNotificationImplToJson(
+        _$SendAdoptionNotificationImpl instance) =>
+>>>>>>> UAT
     <String, dynamic>{
       'dogId': instance.dogId,
       'dogName': instance.dogName,
@@ -122,6 +133,7 @@ Map<String, dynamic> _$$SendAdoptNotifRequestImplToJson(
       'ownerId': instance.ownerId,
       'ownerUsername': instance.ownerUsername,
     };
+<<<<<<< HEAD
 
 _$ApproveRejectAdoptionRequestImpl _$$ApproveRejectAdoptionRequestImplFromJson(
         Map<String, dynamic> json) =>
@@ -136,3 +148,5 @@ Map<String, dynamic> _$$ApproveRejectAdoptionRequestImplToJson(
       'notificationId': instance.notificationId,
       'status': instance.status,
     };
+=======
+>>>>>>> UAT

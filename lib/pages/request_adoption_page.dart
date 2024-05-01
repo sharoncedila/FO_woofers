@@ -2,20 +2,22 @@ import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:hexcolor/hexcolor.dart';
 import 'package:woofers/components/image_network.dart';
-import 'package:woofers/model/dog_profile_model.dart';
-import 'package:woofers/pages/add_dog_page.dart';
-import 'package:woofers/pages/edit_dog_page.dart';
+import 'package:woofers/pages/chatroom_page.dart';
 import 'package:woofers/pages/notification_page.dart';
-import 'package:woofers/services/dog/dog_services.dart';
+import 'package:woofers/services/adoption/adoption_service.dart';
 
-class DogProfilePage extends StatelessWidget {
+class RequestAdoptionPage extends StatefulWidget {
   final String dogId;
-  const DogProfilePage({
-    //super.key, --FSO
-    Key? key,
+  const RequestAdoptionPage({
+    super.key,
     required this.dogId,
-  }) : super(key: key);
+  });
 
+  @override
+  _RequestAdoptionPageState createState() => _RequestAdoptionPageState();
+}
+
+class _RequestAdoptionPageState extends State<RequestAdoptionPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -25,7 +27,7 @@ class DogProfilePage extends StatelessWidget {
         elevation: 0,
         backgroundColor: HexColor("#a0dcdc"),
         title: Text(
-          "WOOFERS",
+          "REQUEST ADOPT",
           style: GoogleFonts.lora(
             fontSize: 25,
             fontWeight: FontWeight.bold,
@@ -33,37 +35,36 @@ class DogProfilePage extends StatelessWidget {
           ),
         ),
         actions: <Widget>[
+          // IconButton(
+          //   icon: const Icon(Icons.notification_add_rounded),
+          //   onPressed: () {
+          //     Navigator.push(
+          //       context,
+          //       MaterialPageRoute(
+          //           builder: (context) => const NotificationPage()),
+          //     );
+          //   },
+          // ),
           IconButton(
-            icon: const Icon(Icons.notification_add_rounded),
+            icon: const Icon(Icons.chat),
             onPressed: () {
               Navigator.push(
                 context,
-                MaterialPageRoute(
-                    builder: (context) => const NotificationPage()),
-              );
-            },
-          ),
-          IconButton(
-            icon: const Icon(Icons.add_to_photos),
-            onPressed: () {
-              Navigator.push(
-                context,
-                MaterialPageRoute(builder: (context) => const AddDogPage()),
+                MaterialPageRoute(builder: (context) => const ChatroomPage()),
               );
             },
           ),
         ],
       ),
-      body: dogProfileDetail(),
+      body: reqAdoptDetail(),
     );
   }
 
-  Widget dogProfileDetail() {
+  Widget reqAdoptDetail() {
     return SingleChildScrollView(
       child: Container(
-        // SingleChildScrollView(
         child: FutureBuilder(
-            future: DogService().retrieveDogProfile(dogId),
+            future: AdoptionService().retrieveAdoptConfirmation(widget.dogId),
             builder: (context, snapshot) {
               if (snapshot.connectionState == ConnectionState.waiting) {
                 return const Center(child: Text("Retrieving your data..."));
@@ -76,10 +77,20 @@ class DogProfilePage extends StatelessWidget {
                     child: Text("no data available for this dog"));
               }
 
-              // snapshot.data?.dogName==null?"gagalambildata":snapshot.data!.dogName,
-              final dogId = snapshot.data?.dogId ?? "";
-              final imageURL =
-                  snapshot.data?.image == null ? "" : snapshot.data!.image;
+              // AdoptConfirmationRequest adoptConfirmData =
+              //     snapshot.data as AdoptConfirmationRequest;
+
+              // AdoptConfirmationRequest adoptData =
+              // adoptConfirmData.dogData! as AdoptConfirmationRequest;
+
+              final imageURL = snapshot.data?.dogData!.image == null
+                  ? ""
+                  : snapshot.data!.dogData!.image;
+
+              final imageURL2 = snapshot.data?.ownerData!.image == null
+                  ? ""
+                  : snapshot.data!.ownerData!.image;
+
               return Column(
                 children: [
                   const SizedBox(
@@ -95,12 +106,6 @@ class DogProfilePage extends StatelessWidget {
                       const SizedBox(
                         width: 20,
                       ),
-                      // const Image(
-                      //   image:
-                      //       AssetImage('assets/woofers_icon/profile.jpg'),
-                      //   width: 35,
-                      //   height: 35,
-                      // ),
                       const Icon(
                         Icons.pets_sharp,
                         size: 35,
@@ -120,27 +125,25 @@ class DogProfilePage extends StatelessWidget {
                               ),
                             ),
                             SizedBox(
-                              height: 25,
-                              child: TextFormField(
-                                readOnly: true,
-                                enabled: false,
-                                decoration: InputDecoration(
-                                  border: const UnderlineInputBorder(),
-                                  // labelText: 'Username',
-                                  labelText: snapshot.data?.dogName == null
-                                      ? ""
-                                      : snapshot.data!.dogName,
-                                  labelStyle: GoogleFonts.newsCycle(
-                                    color: Colors.black,
-                                  ),
-                                ),
-                              ),
-                            ),
+                                height: 25,
+                                child: TextFormField(
+                                    readOnly: true,
+                                    enabled: false,
+                                    decoration: InputDecoration(
+                                        border: const UnderlineInputBorder(),
+                                        labelText: snapshot
+                                                    .data?.dogData!.dogName ==
+                                                null
+                                            ? ""
+                                            : snapshot.data!.dogData!.dogName,
+                                        labelStyle: GoogleFonts.newsCycle(
+                                          color: Colors.black,
+                                        )))),
                           ]))
                     ],
                   ),
 
-                  // doog breed
+                  // dog breed
                   const SizedBox(height: 15),
                   Row(
                     children: [
@@ -151,12 +154,6 @@ class DogProfilePage extends StatelessWidget {
                         Icons.pets_outlined,
                         size: 35,
                       ),
-                      // const Image(
-                      //   image:
-                      //       AssetImage('assets/woofers_icon/profile.jpg'),
-                      //   width: 35,
-                      //   height: 35,
-                      // ),
                       const SizedBox(
                         width: 20,
                       ),
@@ -179,15 +176,17 @@ class DogProfilePage extends StatelessWidget {
                                 decoration: InputDecoration(
                                   border: const UnderlineInputBorder(),
                                   // labelText: 'Username',
-                                  labelText: snapshot.data?.breedName == null
-                                      ? ""
-                                      : snapshot.data!.breedName,
+                                  labelText:
+                                      snapshot.data?.dogData!.breedName == null
+                                          ? ""
+                                          : snapshot.data!.dogData!.breedName,
                                   labelStyle: GoogleFonts.newsCycle(
                                     color: Colors.black,
                                   ),
                                 ),
                               ),
                             ),
+                            // ),
                           ]))
                     ],
                   ),
@@ -199,12 +198,6 @@ class DogProfilePage extends StatelessWidget {
                       const SizedBox(
                         width: 20,
                       ),
-                      // const Image(
-                      //   image:
-                      //       AssetImage('assets/woofers_icon/email.png'),
-                      //   width: 35,
-                      //   height: 35,
-                      // ),
                       const Icon(
                         Icons.calendar_month_outlined,
                         size: 35,
@@ -231,9 +224,11 @@ class DogProfilePage extends StatelessWidget {
                                 decoration: InputDecoration(
                                   border: const UnderlineInputBorder(),
                                   // labelText: 'Username',
-                                  labelText: snapshot.data?.dateOfBirth == null
-                                      ? ""
-                                      : snapshot.data!.dateOfBirth,
+                                  labelText:
+                                      snapshot.data?.dogData!.dateOfBirth ==
+                                              null
+                                          ? ""
+                                          : snapshot.data!.dogData!.dateOfBirth,
                                   labelStyle: GoogleFonts.newsCycle(
                                     color: Colors.black,
                                   ),
@@ -283,9 +278,10 @@ class DogProfilePage extends StatelessWidget {
                                 decoration: InputDecoration(
                                   border: const UnderlineInputBorder(),
                                   // labelText: 'Username',
-                                  labelText: snapshot.data?.gender == null
+                                  labelText: snapshot.data?.dogData!.gender ==
+                                          null
                                       ? ""
-                                      : snapshot.data!.gender == 'M'
+                                      : snapshot.data!.dogData!.gender == 'M'
                                           ? 'Male'
                                           : 'Female',
                                   labelStyle: GoogleFonts.newsCycle(
@@ -337,9 +333,11 @@ class DogProfilePage extends StatelessWidget {
                                 decoration: InputDecoration(
                                   border: const UnderlineInputBorder(),
                                   // labelText: 'Username',
-                                  labelText: snapshot.data?.provinceName == null
+                                  labelText: snapshot
+                                              .data?.dogData!.provinceName ==
+                                          null
                                       ? ""
-                                      : snapshot.data!.provinceName,
+                                      : snapshot.data!.dogData!.provinceName,
                                   labelStyle: GoogleFonts.newsCycle(
                                     color: Colors.black,
                                   ),
@@ -389,9 +387,11 @@ class DogProfilePage extends StatelessWidget {
                                 decoration: InputDecoration(
                                   border: const UnderlineInputBorder(),
                                   // labelText: 'Username',
-                                  labelText: snapshot.data?.vaccination == null
-                                      ? ""
-                                      : snapshot.data!.vaccination,
+                                  labelText:
+                                      snapshot.data?.dogData!.vaccination ==
+                                              null
+                                          ? ""
+                                          : snapshot.data!.dogData!.vaccination,
                                   labelStyle: GoogleFonts.newsCycle(
                                     color: Colors.black,
                                   ),
@@ -441,54 +441,225 @@ class DogProfilePage extends StatelessWidget {
                                 decoration: InputDecoration(
                                   border: const UnderlineInputBorder(),
                                   // labelText: 'Username',
-                                  labelText: snapshot.data?.description == null
-                                      ? ""
-                                      : snapshot.data!.description,
+                                  labelText:
+                                      snapshot.data?.dogData!.description ==
+                                              null
+                                          ? ""
+                                          : snapshot.data!.dogData!.description,
                                   labelStyle: GoogleFonts.newsCycle(
                                     color: Colors.black,
                                   ),
                                 ),
+                                //maxLines: null,
                               ),
                             ),
                           ])),
                     ],
                   ),
+
+                  Divider(
+                    color: Colors.grey.shade800, //HexColor("#a0dcdc"),
+                    thickness: 1.5,
+                    height: 100.0, // Optional, specify the height of the divider
+                  ),
+
+                  const SizedBox(
+                    height: 15,
+                  ),
+                  ImageNetwork(urlImage: imageURL2, width: 150, height: 150),
+                  const SizedBox(
+                    height: 15,
+                  ),
+
                   const SizedBox(
                     height: 20,
                   ),
-                  SizedBox(
-                      width: 125,
-                      height: 35,
-                      child: Expanded(
-                        child: ElevatedButton(
-                          style: ButtonStyle(
-                            backgroundColor:
-                                MaterialStateProperty.resolveWith<Color?>(
-                              (Set<MaterialState> states) {
-                                if (states.contains(MaterialState.pressed)) {
-                                  return Theme.of(context)
-                                      .colorScheme
-                                      .primary
-                                      .withOpacity(0.5);
-                                }
-                                return null; // Use the component's default.
-                              },
-                              
+                  Row(
+                    children: [
+                      const SizedBox(
+                        width: 20,
+                      ),
+                      const Icon(
+                        Icons.person_2_outlined,
+                        size: 35,
+                      ),
+                      const SizedBox(
+                        width: 20,
+                      ),
+                      Expanded(
+                          child: Column(
+                        mainAxisAlignment: MainAxisAlignment.start,
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          Text(
+                            "username",
+                            style: TextStyle(
+                              color: Colors.black.withOpacity(0.5),
                             ),
                           ),
-                          child: const Text('Edit'),
-                          
-                          onPressed: () {
-                            Navigator.push(
-                              context,
-                              MaterialPageRoute(
-                                  builder: (context) =>
-                                      EditDogPage(dogId: dogId)),
-                              //dogId: dogId)),
-                            );
-                          },
-                        ),
+                          SizedBox(
+                            height: 25,
+                            child: TextFormField(
+                              readOnly: true,
+                              enabled: false,
+                              decoration: InputDecoration(
+                                border: const UnderlineInputBorder(),
+                                // labelText: 'Username',
+                                labelText:
+                                    snapshot.data?.ownerData!.username == null
+                                        ? ""
+                                        : snapshot.data!.ownerData!.username,
+                                labelStyle: GoogleFonts.newsCycle(
+                                  color: Colors.black,
+                                ),
+                              ),
+                            ),
+                          ),
+                        ],
                       ))
+                    ],
+                  ),
+
+                  const SizedBox(
+                    height: 20,
+                  ),
+                  Row(
+                    children: [
+                      const SizedBox(
+                        width: 20,
+                      ),
+                      const Icon(
+                        Icons.location_city_outlined,
+                        size: 35,
+                      ),
+                      const SizedBox(
+                        width: 20,
+                      ),
+                      Expanded(
+                          child: Column(
+                        mainAxisAlignment: MainAxisAlignment.start,
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          Text(
+                            "Province",
+                            style: TextStyle(
+                              color: Colors.black.withOpacity(0.5),
+                            ),
+                          ),
+                          SizedBox(
+                            height: 25,
+                            child: TextFormField(
+                              readOnly: true,
+                              enabled: false,
+                              decoration: InputDecoration(
+                                border: const UnderlineInputBorder(),
+                                // labelText: 'Username',
+                                labelText:
+                                    snapshot.data?.ownerData!.fullName == null
+                                        ? ""
+                                        : snapshot.data!.ownerData!.fullName,
+                                labelStyle: GoogleFonts.newsCycle(
+                                  color: Colors.black,
+                                ),
+                              ),
+                            ),
+                          ),
+                        ],
+                      ))
+                    ],
+                  ),
+
+                  const SizedBox(
+                    height: 20,
+                  ),
+                  Row(
+                    children: [
+                      const SizedBox(
+                        width: 20,
+                      ),
+                      const Icon(
+                        Icons.phone_android_sharp,
+                        size: 35,
+                      ),
+                      const SizedBox(
+                        width: 20,
+                      ),
+                      Expanded(
+                          child: Column(
+                        mainAxisAlignment: MainAxisAlignment.start,
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          Text(
+                            "Phone Number",
+                            style: TextStyle(
+                              color: Colors.black.withOpacity(0.5),
+                            ),
+                          ),
+                          SizedBox(
+                            height: 25,
+                            child: TextFormField(
+                              readOnly: true,
+                              enabled: false,
+                              decoration: InputDecoration(
+                                border: const UnderlineInputBorder(),
+                                // labelText: 'Username',
+                                labelText:
+                                    snapshot.data?.ownerData!.phoneNumber == null
+                                        ? ""
+                                        : snapshot.data!.ownerData!.phoneNumber,
+                                labelStyle: GoogleFonts.newsCycle(
+                                  color: Colors.black,
+                                ),
+                              ),
+                            ),
+                          ),
+                        ],
+                      ))
+                    ],
+                  ),
+
+
+                  const SizedBox(
+                    height: 20,
+                  ),
+                  Padding(
+                    padding: const EdgeInsets.only(bottom: 50.0, top: 30),
+                    child: SizedBox(
+                        width: 210,
+                        height: 40,
+                        child: Expanded(
+                          child: ElevatedButton(
+                            style: ButtonStyle(
+                              backgroundColor:
+                                  MaterialStateProperty.resolveWith<Color?>(
+                                (Set<MaterialState> states) {
+                                  if (states.contains(MaterialState.pressed)) {
+                                    return Theme.of(context)
+                                        .colorScheme
+                                        .primary
+                                        .withOpacity(0.5);
+                                  }
+                                  return null; // Use the component's default.
+                                },
+                              ),
+                            ),
+                            child: const Text('Request To Adopt',
+                                style: TextStyle(
+                                    //color: Colors.grey[600],
+                                    fontWeight: FontWeight.bold,
+                                    fontSize: 18)),
+                            onPressed: () async {
+                              Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                    builder: (context) =>
+                                        const NotificationPage()),
+                                //dogId: dogId)),
+                              );
+                            },
+                          ),
+                        )),
+                  )
                 ],
               );
               // );

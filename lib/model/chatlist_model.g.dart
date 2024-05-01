@@ -9,16 +9,16 @@ part of 'chatlist_model.dart';
 _$RetrieveChatlistResponseImpl _$$RetrieveChatlistResponseImplFromJson(
         Map<String, dynamic> json) =>
     _$RetrieveChatlistResponseImpl(
-      rowId: json['rowId'] as String?,
-      chatroomId: json['chatroomId'] as String?,
-      senderId: json['senderId'] as String?,
-      recipientId: json['recipientId'] as String?,
-      lastMessageTimestamp: json['lastMessageTimestamp'] as String?,
-      deletedAt: json['deletedAt'] as String?,
-      lastMessage: json['lastMessage'] as String?,
-      isRead: json['isRead'] as String?,
-      errorCode: json['errorCode'] as String?,
-      errorMessage: json['errorMessage'] as String?,
+      rowId: json['rowId'] as String,
+      chatroomId: json['chatroomId'] as String,
+      senderId: json['senderId'] as String,
+      recipientId: json['recipientId'] as String,
+      lastMessageTimestamp: json['lastMessageTimestamp'] as String,
+      deletedAt: json['deletedAt'] as String,
+      lastMessage: json['lastMessage'] as String,
+      isRead: json['isRead'] as bool,
+      errorCode: json['errorCode'] as String,
+      errorMessage: json['errorMessage'] as String,
     );
 
 Map<String, dynamic> _$$RetrieveChatlistResponseImplToJson(
@@ -36,6 +36,7 @@ Map<String, dynamic> _$$RetrieveChatlistResponseImplToJson(
       'errorMessage': instance.errorMessage,
     };
 
+<<<<<<< HEAD
 _$SearchChatResponseImpl _$$SearchChatResponseImplFromJson(
         Map<String, dynamic> json) =>
     _$SearchChatResponseImpl(
@@ -66,4 +67,19 @@ Map<String, dynamic> _$$AccountListImplToJson(_$AccountListImpl instance) =>
       'accountId': instance.accountId,
       'username': instance.username,
       'fullName': instance.fullName,
+=======
+_$RetrieveAllChatlistResponseImpl _$$RetrieveAllChatlistResponseImplFromJson(
+        Map<String, dynamic> json) =>
+    _$RetrieveAllChatlistResponseImpl(
+      chatlistList: (json['chatlistList'] as List<dynamic>)
+          .map((e) =>
+              RetrieveChatlistResponse.fromJson(e as Map<String, dynamic>))
+          .toList(),
+    );
+
+Map<String, dynamic> _$$RetrieveAllChatlistResponseImplToJson(
+        _$RetrieveAllChatlistResponseImpl instance) =>
+    <String, dynamic>{
+      'chatlistList': instance.chatlistList,
+>>>>>>> UAT
     };

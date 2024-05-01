@@ -21,16 +21,16 @@ RetrieveChatlistResponse _$RetrieveChatlistResponseFromJson(
 
 /// @nodoc
 mixin _$RetrieveChatlistResponse {
-  String? get rowId => throw _privateConstructorUsedError;
-  String? get chatroomId => throw _privateConstructorUsedError;
-  String? get senderId => throw _privateConstructorUsedError;
-  String? get recipientId => throw _privateConstructorUsedError;
-  String? get lastMessageTimestamp => throw _privateConstructorUsedError;
-  String? get deletedAt => throw _privateConstructorUsedError;
-  String? get lastMessage => throw _privateConstructorUsedError;
-  String? get isRead => throw _privateConstructorUsedError;
-  String? get errorCode => throw _privateConstructorUsedError;
-  String? get errorMessage => throw _privateConstructorUsedError;
+  String get rowId => throw _privateConstructorUsedError;
+  String get chatroomId => throw _privateConstructorUsedError;
+  String get senderId => throw _privateConstructorUsedError;
+  String get recipientId => throw _privateConstructorUsedError;
+  String get lastMessageTimestamp => throw _privateConstructorUsedError;
+  String get deletedAt => throw _privateConstructorUsedError;
+  String get lastMessage => throw _privateConstructorUsedError;
+  bool get isRead => throw _privateConstructorUsedError;
+  String get errorCode => throw _privateConstructorUsedError;
+  String get errorMessage => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -45,16 +45,16 @@ abstract class $RetrieveChatlistResponseCopyWith<$Res> {
       _$RetrieveChatlistResponseCopyWithImpl<$Res, RetrieveChatlistResponse>;
   @useResult
   $Res call(
-      {String? rowId,
-      String? chatroomId,
-      String? senderId,
-      String? recipientId,
-      String? lastMessageTimestamp,
-      String? deletedAt,
-      String? lastMessage,
-      String? isRead,
-      String? errorCode,
-      String? errorMessage});
+      {String rowId,
+      String chatroomId,
+      String senderId,
+      String recipientId,
+      String lastMessageTimestamp,
+      String deletedAt,
+      String lastMessage,
+      bool isRead,
+      String errorCode,
+      String errorMessage});
 }
 
 /// @nodoc
@@ -71,58 +71,58 @@ class _$RetrieveChatlistResponseCopyWithImpl<$Res,
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? rowId = freezed,
-    Object? chatroomId = freezed,
-    Object? senderId = freezed,
-    Object? recipientId = freezed,
-    Object? lastMessageTimestamp = freezed,
-    Object? deletedAt = freezed,
-    Object? lastMessage = freezed,
-    Object? isRead = freezed,
-    Object? errorCode = freezed,
-    Object? errorMessage = freezed,
+    Object? rowId = null,
+    Object? chatroomId = null,
+    Object? senderId = null,
+    Object? recipientId = null,
+    Object? lastMessageTimestamp = null,
+    Object? deletedAt = null,
+    Object? lastMessage = null,
+    Object? isRead = null,
+    Object? errorCode = null,
+    Object? errorMessage = null,
   }) {
     return _then(_value.copyWith(
-      rowId: freezed == rowId
+      rowId: null == rowId
           ? _value.rowId
           : rowId // ignore: cast_nullable_to_non_nullable
-              as String?,
-      chatroomId: freezed == chatroomId
+              as String,
+      chatroomId: null == chatroomId
           ? _value.chatroomId
           : chatroomId // ignore: cast_nullable_to_non_nullable
-              as String?,
-      senderId: freezed == senderId
+              as String,
+      senderId: null == senderId
           ? _value.senderId
           : senderId // ignore: cast_nullable_to_non_nullable
-              as String?,
-      recipientId: freezed == recipientId
+              as String,
+      recipientId: null == recipientId
           ? _value.recipientId
           : recipientId // ignore: cast_nullable_to_non_nullable
-              as String?,
-      lastMessageTimestamp: freezed == lastMessageTimestamp
+              as String,
+      lastMessageTimestamp: null == lastMessageTimestamp
           ? _value.lastMessageTimestamp
           : lastMessageTimestamp // ignore: cast_nullable_to_non_nullable
-              as String?,
-      deletedAt: freezed == deletedAt
+              as String,
+      deletedAt: null == deletedAt
           ? _value.deletedAt
           : deletedAt // ignore: cast_nullable_to_non_nullable
-              as String?,
-      lastMessage: freezed == lastMessage
+              as String,
+      lastMessage: null == lastMessage
           ? _value.lastMessage
           : lastMessage // ignore: cast_nullable_to_non_nullable
-              as String?,
-      isRead: freezed == isRead
+              as String,
+      isRead: null == isRead
           ? _value.isRead
           : isRead // ignore: cast_nullable_to_non_nullable
-              as String?,
-      errorCode: freezed == errorCode
+              as bool,
+      errorCode: null == errorCode
           ? _value.errorCode
           : errorCode // ignore: cast_nullable_to_non_nullable
-              as String?,
-      errorMessage: freezed == errorMessage
+              as String,
+      errorMessage: null == errorMessage
           ? _value.errorMessage
           : errorMessage // ignore: cast_nullable_to_non_nullable
-              as String?,
+              as String,
     ) as $Val);
   }
 }
@@ -137,16 +137,16 @@ abstract class _$$RetrieveChatlistResponseImplCopyWith<$Res>
   @override
   @useResult
   $Res call(
-      {String? rowId,
-      String? chatroomId,
-      String? senderId,
-      String? recipientId,
-      String? lastMessageTimestamp,
-      String? deletedAt,
-      String? lastMessage,
-      String? isRead,
-      String? errorCode,
-      String? errorMessage});
+      {String rowId,
+      String chatroomId,
+      String senderId,
+      String recipientId,
+      String lastMessageTimestamp,
+      String deletedAt,
+      String lastMessage,
+      bool isRead,
+      String errorCode,
+      String errorMessage});
 }
 
 /// @nodoc
@@ -162,58 +162,58 @@ class __$$RetrieveChatlistResponseImplCopyWithImpl<$Res>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? rowId = freezed,
-    Object? chatroomId = freezed,
-    Object? senderId = freezed,
-    Object? recipientId = freezed,
-    Object? lastMessageTimestamp = freezed,
-    Object? deletedAt = freezed,
-    Object? lastMessage = freezed,
-    Object? isRead = freezed,
-    Object? errorCode = freezed,
-    Object? errorMessage = freezed,
+    Object? rowId = null,
+    Object? chatroomId = null,
+    Object? senderId = null,
+    Object? recipientId = null,
+    Object? lastMessageTimestamp = null,
+    Object? deletedAt = null,
+    Object? lastMessage = null,
+    Object? isRead = null,
+    Object? errorCode = null,
+    Object? errorMessage = null,
   }) {
     return _then(_$RetrieveChatlistResponseImpl(
-      rowId: freezed == rowId
+      rowId: null == rowId
           ? _value.rowId
           : rowId // ignore: cast_nullable_to_non_nullable
-              as String?,
-      chatroomId: freezed == chatroomId
+              as String,
+      chatroomId: null == chatroomId
           ? _value.chatroomId
           : chatroomId // ignore: cast_nullable_to_non_nullable
-              as String?,
-      senderId: freezed == senderId
+              as String,
+      senderId: null == senderId
           ? _value.senderId
           : senderId // ignore: cast_nullable_to_non_nullable
-              as String?,
-      recipientId: freezed == recipientId
+              as String,
+      recipientId: null == recipientId
           ? _value.recipientId
           : recipientId // ignore: cast_nullable_to_non_nullable
-              as String?,
-      lastMessageTimestamp: freezed == lastMessageTimestamp
+              as String,
+      lastMessageTimestamp: null == lastMessageTimestamp
           ? _value.lastMessageTimestamp
           : lastMessageTimestamp // ignore: cast_nullable_to_non_nullable
-              as String?,
-      deletedAt: freezed == deletedAt
+              as String,
+      deletedAt: null == deletedAt
           ? _value.deletedAt
           : deletedAt // ignore: cast_nullable_to_non_nullable
-              as String?,
-      lastMessage: freezed == lastMessage
+              as String,
+      lastMessage: null == lastMessage
           ? _value.lastMessage
           : lastMessage // ignore: cast_nullable_to_non_nullable
-              as String?,
-      isRead: freezed == isRead
+              as String,
+      isRead: null == isRead
           ? _value.isRead
           : isRead // ignore: cast_nullable_to_non_nullable
-              as String?,
-      errorCode: freezed == errorCode
+              as bool,
+      errorCode: null == errorCode
           ? _value.errorCode
           : errorCode // ignore: cast_nullable_to_non_nullable
-              as String?,
-      errorMessage: freezed == errorMessage
+              as String,
+      errorMessage: null == errorMessage
           ? _value.errorMessage
           : errorMessage // ignore: cast_nullable_to_non_nullable
-              as String?,
+              as String,
     ));
   }
 }
@@ -237,25 +237,25 @@ class _$RetrieveChatlistResponseImpl implements _RetrieveChatlistResponse {
       _$$RetrieveChatlistResponseImplFromJson(json);
 
   @override
-  final String? rowId;
+  final String rowId;
   @override
-  final String? chatroomId;
+  final String chatroomId;
   @override
-  final String? senderId;
+  final String senderId;
   @override
-  final String? recipientId;
+  final String recipientId;
   @override
-  final String? lastMessageTimestamp;
+  final String lastMessageTimestamp;
   @override
-  final String? deletedAt;
+  final String deletedAt;
   @override
-  final String? lastMessage;
+  final String lastMessage;
   @override
-  final String? isRead;
+  final bool isRead;
   @override
-  final String? errorCode;
+  final String errorCode;
   @override
-  final String? errorMessage;
+  final String errorMessage;
 
   @override
   String toString() {
@@ -319,46 +319,47 @@ class _$RetrieveChatlistResponseImpl implements _RetrieveChatlistResponse {
 
 abstract class _RetrieveChatlistResponse implements RetrieveChatlistResponse {
   factory _RetrieveChatlistResponse(
-      {required final String? rowId,
-      required final String? chatroomId,
-      required final String? senderId,
-      required final String? recipientId,
-      required final String? lastMessageTimestamp,
-      required final String? deletedAt,
-      required final String? lastMessage,
-      required final String? isRead,
-      required final String? errorCode,
-      required final String? errorMessage}) = _$RetrieveChatlistResponseImpl;
+      {required final String rowId,
+      required final String chatroomId,
+      required final String senderId,
+      required final String recipientId,
+      required final String lastMessageTimestamp,
+      required final String deletedAt,
+      required final String lastMessage,
+      required final bool isRead,
+      required final String errorCode,
+      required final String errorMessage}) = _$RetrieveChatlistResponseImpl;
 
   factory _RetrieveChatlistResponse.fromJson(Map<String, dynamic> json) =
       _$RetrieveChatlistResponseImpl.fromJson;
 
   @override
-  String? get rowId;
+  String get rowId;
   @override
-  String? get chatroomId;
+  String get chatroomId;
   @override
-  String? get senderId;
+  String get senderId;
   @override
-  String? get recipientId;
+  String get recipientId;
   @override
-  String? get lastMessageTimestamp;
+  String get lastMessageTimestamp;
   @override
-  String? get deletedAt;
+  String get deletedAt;
   @override
-  String? get lastMessage;
+  String get lastMessage;
   @override
-  String? get isRead;
+  bool get isRead;
   @override
-  String? get errorCode;
+  String get errorCode;
   @override
-  String? get errorMessage;
+  String get errorMessage;
   @override
   @JsonKey(ignore: true)
   _$$RetrieveChatlistResponseImplCopyWith<_$RetrieveChatlistResponseImpl>
       get copyWith => throw _privateConstructorUsedError;
 }
 
+<<<<<<< HEAD
 SearchChatResponse _$SearchChatResponseFromJson(Map<String, dynamic> json) {
   return _SearchChatResponse.fromJson(json);
 }
@@ -391,6 +392,40 @@ abstract class $SearchChatResponseCopyWith<$Res> {
 class _$SearchChatResponseCopyWithImpl<$Res, $Val extends SearchChatResponse>
     implements $SearchChatResponseCopyWith<$Res> {
   _$SearchChatResponseCopyWithImpl(this._value, this._then);
+=======
+RetrieveAllChatlistResponse _$RetrieveAllChatlistResponseFromJson(
+    Map<String, dynamic> json) {
+  return _RetrieveAllChatlistResponse.fromJson(json);
+}
+
+/// @nodoc
+mixin _$RetrieveAllChatlistResponse {
+  List<RetrieveChatlistResponse> get chatlistList =>
+      throw _privateConstructorUsedError;
+
+  Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
+  @JsonKey(ignore: true)
+  $RetrieveAllChatlistResponseCopyWith<RetrieveAllChatlistResponse>
+      get copyWith => throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class $RetrieveAllChatlistResponseCopyWith<$Res> {
+  factory $RetrieveAllChatlistResponseCopyWith(
+          RetrieveAllChatlistResponse value,
+          $Res Function(RetrieveAllChatlistResponse) then) =
+      _$RetrieveAllChatlistResponseCopyWithImpl<$Res,
+          RetrieveAllChatlistResponse>;
+  @useResult
+  $Res call({List<RetrieveChatlistResponse> chatlistList});
+}
+
+/// @nodoc
+class _$RetrieveAllChatlistResponseCopyWithImpl<$Res,
+        $Val extends RetrieveAllChatlistResponse>
+    implements $RetrieveAllChatlistResponseCopyWith<$Res> {
+  _$RetrieveAllChatlistResponseCopyWithImpl(this._value, this._then);
+>>>>>>> UAT
 
   // ignore: unused_field
   final $Val _value;
@@ -400,6 +435,7 @@ class _$SearchChatResponseCopyWithImpl<$Res, $Val extends SearchChatResponse>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
+<<<<<<< HEAD
     Object? accountList = freezed,
     Object? errorCode = freezed,
     Object? errorMessage = freezed,
@@ -454,11 +490,45 @@ class __$$SearchChatResponseImplCopyWithImpl<$Res>
     implements _$$SearchChatResponseImplCopyWith<$Res> {
   __$$SearchChatResponseImplCopyWithImpl(_$SearchChatResponseImpl _value,
       $Res Function(_$SearchChatResponseImpl) _then)
+=======
+    Object? chatlistList = null,
+  }) {
+    return _then(_value.copyWith(
+      chatlistList: null == chatlistList
+          ? _value.chatlistList
+          : chatlistList // ignore: cast_nullable_to_non_nullable
+              as List<RetrieveChatlistResponse>,
+    ) as $Val);
+  }
+}
+
+/// @nodoc
+abstract class _$$RetrieveAllChatlistResponseImplCopyWith<$Res>
+    implements $RetrieveAllChatlistResponseCopyWith<$Res> {
+  factory _$$RetrieveAllChatlistResponseImplCopyWith(
+          _$RetrieveAllChatlistResponseImpl value,
+          $Res Function(_$RetrieveAllChatlistResponseImpl) then) =
+      __$$RetrieveAllChatlistResponseImplCopyWithImpl<$Res>;
+  @override
+  @useResult
+  $Res call({List<RetrieveChatlistResponse> chatlistList});
+}
+
+/// @nodoc
+class __$$RetrieveAllChatlistResponseImplCopyWithImpl<$Res>
+    extends _$RetrieveAllChatlistResponseCopyWithImpl<$Res,
+        _$RetrieveAllChatlistResponseImpl>
+    implements _$$RetrieveAllChatlistResponseImplCopyWith<$Res> {
+  __$$RetrieveAllChatlistResponseImplCopyWithImpl(
+      _$RetrieveAllChatlistResponseImpl _value,
+      $Res Function(_$RetrieveAllChatlistResponseImpl) _then)
+>>>>>>> UAT
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
   @override
   $Res call({
+<<<<<<< HEAD
     Object? accountList = freezed,
     Object? errorCode = freezed,
     Object? errorMessage = freezed,
@@ -476,12 +546,22 @@ class __$$SearchChatResponseImplCopyWithImpl<$Res>
           ? _value.errorMessage
           : errorMessage // ignore: cast_nullable_to_non_nullable
               as String?,
+=======
+    Object? chatlistList = null,
+  }) {
+    return _then(_$RetrieveAllChatlistResponseImpl(
+      chatlistList: null == chatlistList
+          ? _value._chatlistList
+          : chatlistList // ignore: cast_nullable_to_non_nullable
+              as List<RetrieveChatlistResponse>,
+>>>>>>> UAT
     ));
   }
 }
 
 /// @nodoc
 @JsonSerializable()
+<<<<<<< HEAD
 class _$SearchChatResponseImpl implements _SearchChatResponse {
   _$SearchChatResponseImpl(
       {required this.accountList,
@@ -501,12 +581,36 @@ class _$SearchChatResponseImpl implements _SearchChatResponse {
   @override
   String toString() {
     return 'SearchChatResponse(accountList: $accountList, errorCode: $errorCode, errorMessage: $errorMessage)';
+=======
+class _$RetrieveAllChatlistResponseImpl
+    implements _RetrieveAllChatlistResponse {
+  _$RetrieveAllChatlistResponseImpl(
+      {required final List<RetrieveChatlistResponse> chatlistList})
+      : _chatlistList = chatlistList;
+
+  factory _$RetrieveAllChatlistResponseImpl.fromJson(
+          Map<String, dynamic> json) =>
+      _$$RetrieveAllChatlistResponseImplFromJson(json);
+
+  final List<RetrieveChatlistResponse> _chatlistList;
+  @override
+  List<RetrieveChatlistResponse> get chatlistList {
+    if (_chatlistList is EqualUnmodifiableListView) return _chatlistList;
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableListView(_chatlistList);
+  }
+
+  @override
+  String toString() {
+    return 'RetrieveAllChatlistResponse(chatlistList: $chatlistList)';
+>>>>>>> UAT
   }
 
   @override
   bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
+<<<<<<< HEAD
             other is _$SearchChatResponseImpl &&
             (identical(other.accountList, accountList) ||
                 other.accountList == accountList) &&
@@ -514,16 +618,27 @@ class _$SearchChatResponseImpl implements _SearchChatResponse {
                 other.errorCode == errorCode) &&
             (identical(other.errorMessage, errorMessage) ||
                 other.errorMessage == errorMessage));
+=======
+            other is _$RetrieveAllChatlistResponseImpl &&
+            const DeepCollectionEquality()
+                .equals(other._chatlistList, _chatlistList));
+>>>>>>> UAT
   }
 
   @JsonKey(ignore: true)
   @override
+<<<<<<< HEAD
   int get hashCode =>
       Object.hash(runtimeType, accountList, errorCode, errorMessage);
+=======
+  int get hashCode => Object.hash(
+      runtimeType, const DeepCollectionEquality().hash(_chatlistList));
+>>>>>>> UAT
 
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
+<<<<<<< HEAD
   _$$SearchChatResponseImplCopyWith<_$SearchChatResponseImpl> get copyWith =>
       __$$SearchChatResponseImplCopyWithImpl<_$SearchChatResponseImpl>(
           this, _$identity);
@@ -531,11 +646,21 @@ class _$SearchChatResponseImpl implements _SearchChatResponse {
   @override
   Map<String, dynamic> toJson() {
     return _$$SearchChatResponseImplToJson(
+=======
+  _$$RetrieveAllChatlistResponseImplCopyWith<_$RetrieveAllChatlistResponseImpl>
+      get copyWith => __$$RetrieveAllChatlistResponseImplCopyWithImpl<
+          _$RetrieveAllChatlistResponseImpl>(this, _$identity);
+
+  @override
+  Map<String, dynamic> toJson() {
+    return _$$RetrieveAllChatlistResponseImplToJson(
+>>>>>>> UAT
       this,
     );
   }
 }
 
+<<<<<<< HEAD
 abstract class _SearchChatResponse implements SearchChatResponse {
   factory _SearchChatResponse(
       {required final AccountList? accountList,
@@ -732,4 +857,21 @@ abstract class _AccountList implements AccountList {
   @JsonKey(ignore: true)
   _$$AccountListImplCopyWith<_$AccountListImpl> get copyWith =>
       throw _privateConstructorUsedError;
+=======
+abstract class _RetrieveAllChatlistResponse
+    implements RetrieveAllChatlistResponse {
+  factory _RetrieveAllChatlistResponse(
+          {required final List<RetrieveChatlistResponse> chatlistList}) =
+      _$RetrieveAllChatlistResponseImpl;
+
+  factory _RetrieveAllChatlistResponse.fromJson(Map<String, dynamic> json) =
+      _$RetrieveAllChatlistResponseImpl.fromJson;
+
+  @override
+  List<RetrieveChatlistResponse> get chatlistList;
+  @override
+  @JsonKey(ignore: true)
+  _$$RetrieveAllChatlistResponseImplCopyWith<_$RetrieveAllChatlistResponseImpl>
+      get copyWith => throw _privateConstructorUsedError;
+>>>>>>> UAT
 }

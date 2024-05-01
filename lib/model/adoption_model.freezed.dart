@@ -20,7 +20,7 @@ AdoptionDetail _$AdoptionDetailFromJson(Map<String, dynamic> json) {
 
 /// @nodoc
 mixin _$AdoptionDetail {
-  String? get dogId => throw _privateConstructorUsedError;
+  String get dogId => throw _privateConstructorUsedError;
   String? get breedName => throw _privateConstructorUsedError;
   String? get dogName => throw _privateConstructorUsedError;
   String? get gender => throw _privateConstructorUsedError;
@@ -43,7 +43,7 @@ abstract class $AdoptionDetailCopyWith<$Res> {
       _$AdoptionDetailCopyWithImpl<$Res, AdoptionDetail>;
   @useResult
   $Res call(
-      {String? dogId,
+      {String dogId,
       String? breedName,
       String? dogName,
       String? gender,
@@ -67,7 +67,7 @@ class _$AdoptionDetailCopyWithImpl<$Res, $Val extends AdoptionDetail>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? dogId = freezed,
+    Object? dogId = null,
     Object? breedName = freezed,
     Object? dogName = freezed,
     Object? gender = freezed,
@@ -78,10 +78,10 @@ class _$AdoptionDetailCopyWithImpl<$Res, $Val extends AdoptionDetail>
     Object? errorMessage = freezed,
   }) {
     return _then(_value.copyWith(
-      dogId: freezed == dogId
+      dogId: null == dogId
           ? _value.dogId
           : dogId // ignore: cast_nullable_to_non_nullable
-              as String?,
+              as String,
       breedName: freezed == breedName
           ? _value.breedName
           : breedName // ignore: cast_nullable_to_non_nullable
@@ -127,7 +127,7 @@ abstract class _$$AdoptionDetailImplCopyWith<$Res>
   @override
   @useResult
   $Res call(
-      {String? dogId,
+      {String dogId,
       String? breedName,
       String? dogName,
       String? gender,
@@ -149,7 +149,7 @@ class __$$AdoptionDetailImplCopyWithImpl<$Res>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? dogId = freezed,
+    Object? dogId = null,
     Object? breedName = freezed,
     Object? dogName = freezed,
     Object? gender = freezed,
@@ -160,10 +160,10 @@ class __$$AdoptionDetailImplCopyWithImpl<$Res>
     Object? errorMessage = freezed,
   }) {
     return _then(_$AdoptionDetailImpl(
-      dogId: freezed == dogId
+      dogId: null == dogId
           ? _value.dogId
           : dogId // ignore: cast_nullable_to_non_nullable
-              as String?,
+              as String,
       breedName: freezed == breedName
           ? _value.breedName
           : breedName // ignore: cast_nullable_to_non_nullable
@@ -218,7 +218,7 @@ class _$AdoptionDetailImpl implements _AdoptionDetail {
       _$$AdoptionDetailImplFromJson(json);
 
   @override
-  final String? dogId;
+  final String dogId;
   @override
   final String? breedName;
   @override
@@ -283,7 +283,7 @@ class _$AdoptionDetailImpl implements _AdoptionDetail {
 
 abstract class _AdoptionDetail implements AdoptionDetail {
   factory _AdoptionDetail(
-      {required final String? dogId,
+      {required final String dogId,
       required final String? breedName,
       required final String? dogName,
       required final String? gender,
@@ -297,7 +297,7 @@ abstract class _AdoptionDetail implements AdoptionDetail {
       _$AdoptionDetailImpl.fromJson;
 
   @override
-  String? get dogId;
+  String get dogId;
   @override
   String? get breedName;
   @override
@@ -1129,6 +1129,7 @@ abstract class _OwnerData implements OwnerData {
       throw _privateConstructorUsedError;
 }
 
+<<<<<<< HEAD
 SendAdoptNotifRequest _$SendAdoptNotifRequestFromJson(
     Map<String, dynamic> json) {
   return _SendAdoptNotifRequest.fromJson(json);
@@ -1136,6 +1137,15 @@ SendAdoptNotifRequest _$SendAdoptNotifRequestFromJson(
 
 /// @nodoc
 mixin _$SendAdoptNotifRequest {
+=======
+SendAdoptionNotification _$SendAdoptionNotificationFromJson(
+    Map<String, dynamic> json) {
+  return _SendAdoptionNotification.fromJson(json);
+}
+
+/// @nodoc
+mixin _$SendAdoptionNotification {
+>>>>>>> UAT
   String? get dogId => throw _privateConstructorUsedError;
   String? get dogName => throw _privateConstructorUsedError;
   String? get breedName => throw _privateConstructorUsedError;
@@ -1144,15 +1154,26 @@ mixin _$SendAdoptNotifRequest {
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
+<<<<<<< HEAD
   $SendAdoptNotifRequestCopyWith<SendAdoptNotifRequest> get copyWith =>
+=======
+  $SendAdoptionNotificationCopyWith<SendAdoptionNotification> get copyWith =>
+>>>>>>> UAT
       throw _privateConstructorUsedError;
 }
 
 /// @nodoc
+<<<<<<< HEAD
 abstract class $SendAdoptNotifRequestCopyWith<$Res> {
   factory $SendAdoptNotifRequestCopyWith(SendAdoptNotifRequest value,
           $Res Function(SendAdoptNotifRequest) then) =
       _$SendAdoptNotifRequestCopyWithImpl<$Res, SendAdoptNotifRequest>;
+=======
+abstract class $SendAdoptionNotificationCopyWith<$Res> {
+  factory $SendAdoptionNotificationCopyWith(SendAdoptionNotification value,
+          $Res Function(SendAdoptionNotification) then) =
+      _$SendAdoptionNotificationCopyWithImpl<$Res, SendAdoptionNotification>;
+>>>>>>> UAT
   @useResult
   $Res call(
       {String? dogId,
@@ -1163,10 +1184,17 @@ abstract class $SendAdoptNotifRequestCopyWith<$Res> {
 }
 
 /// @nodoc
+<<<<<<< HEAD
 class _$SendAdoptNotifRequestCopyWithImpl<$Res,
         $Val extends SendAdoptNotifRequest>
     implements $SendAdoptNotifRequestCopyWith<$Res> {
   _$SendAdoptNotifRequestCopyWithImpl(this._value, this._then);
+=======
+class _$SendAdoptionNotificationCopyWithImpl<$Res,
+        $Val extends SendAdoptionNotification>
+    implements $SendAdoptionNotificationCopyWith<$Res> {
+  _$SendAdoptionNotificationCopyWithImpl(this._value, this._then);
+>>>>>>> UAT
 
   // ignore: unused_field
   final $Val _value;
@@ -1208,12 +1236,21 @@ class _$SendAdoptNotifRequestCopyWithImpl<$Res,
 }
 
 /// @nodoc
+<<<<<<< HEAD
 abstract class _$$SendAdoptNotifRequestImplCopyWith<$Res>
     implements $SendAdoptNotifRequestCopyWith<$Res> {
   factory _$$SendAdoptNotifRequestImplCopyWith(
           _$SendAdoptNotifRequestImpl value,
           $Res Function(_$SendAdoptNotifRequestImpl) then) =
       __$$SendAdoptNotifRequestImplCopyWithImpl<$Res>;
+=======
+abstract class _$$SendAdoptionNotificationImplCopyWith<$Res>
+    implements $SendAdoptionNotificationCopyWith<$Res> {
+  factory _$$SendAdoptionNotificationImplCopyWith(
+          _$SendAdoptionNotificationImpl value,
+          $Res Function(_$SendAdoptionNotificationImpl) then) =
+      __$$SendAdoptionNotificationImplCopyWithImpl<$Res>;
+>>>>>>> UAT
   @override
   @useResult
   $Res call(
@@ -1225,12 +1262,22 @@ abstract class _$$SendAdoptNotifRequestImplCopyWith<$Res>
 }
 
 /// @nodoc
+<<<<<<< HEAD
 class __$$SendAdoptNotifRequestImplCopyWithImpl<$Res>
     extends _$SendAdoptNotifRequestCopyWithImpl<$Res,
         _$SendAdoptNotifRequestImpl>
     implements _$$SendAdoptNotifRequestImplCopyWith<$Res> {
   __$$SendAdoptNotifRequestImplCopyWithImpl(_$SendAdoptNotifRequestImpl _value,
       $Res Function(_$SendAdoptNotifRequestImpl) _then)
+=======
+class __$$SendAdoptionNotificationImplCopyWithImpl<$Res>
+    extends _$SendAdoptionNotificationCopyWithImpl<$Res,
+        _$SendAdoptionNotificationImpl>
+    implements _$$SendAdoptionNotificationImplCopyWith<$Res> {
+  __$$SendAdoptionNotificationImplCopyWithImpl(
+      _$SendAdoptionNotificationImpl _value,
+      $Res Function(_$SendAdoptionNotificationImpl) _then)
+>>>>>>> UAT
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -1242,7 +1289,11 @@ class __$$SendAdoptNotifRequestImplCopyWithImpl<$Res>
     Object? ownerId = freezed,
     Object? ownerUsername = freezed,
   }) {
+<<<<<<< HEAD
     return _then(_$SendAdoptNotifRequestImpl(
+=======
+    return _then(_$SendAdoptionNotificationImpl(
+>>>>>>> UAT
       dogId: freezed == dogId
           ? _value.dogId
           : dogId // ignore: cast_nullable_to_non_nullable
@@ -1269,16 +1320,26 @@ class __$$SendAdoptNotifRequestImplCopyWithImpl<$Res>
 
 /// @nodoc
 @JsonSerializable()
+<<<<<<< HEAD
 class _$SendAdoptNotifRequestImpl implements _SendAdoptNotifRequest {
   _$SendAdoptNotifRequestImpl(
+=======
+class _$SendAdoptionNotificationImpl implements _SendAdoptionNotification {
+  _$SendAdoptionNotificationImpl(
+>>>>>>> UAT
       {required this.dogId,
       required this.dogName,
       required this.breedName,
       required this.ownerId,
       required this.ownerUsername});
 
+<<<<<<< HEAD
   factory _$SendAdoptNotifRequestImpl.fromJson(Map<String, dynamic> json) =>
       _$$SendAdoptNotifRequestImplFromJson(json);
+=======
+  factory _$SendAdoptionNotificationImpl.fromJson(Map<String, dynamic> json) =>
+      _$$SendAdoptionNotificationImplFromJson(json);
+>>>>>>> UAT
 
   @override
   final String? dogId;
@@ -1293,14 +1354,22 @@ class _$SendAdoptNotifRequestImpl implements _SendAdoptNotifRequest {
 
   @override
   String toString() {
+<<<<<<< HEAD
     return 'SendAdoptNotifRequest(dogId: $dogId, dogName: $dogName, breedName: $breedName, ownerId: $ownerId, ownerUsername: $ownerUsername)';
+=======
+    return 'SendAdoptionNotification(dogId: $dogId, dogName: $dogName, breedName: $breedName, ownerId: $ownerId, ownerUsername: $ownerUsername)';
+>>>>>>> UAT
   }
 
   @override
   bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
+<<<<<<< HEAD
             other is _$SendAdoptNotifRequestImpl &&
+=======
+            other is _$SendAdoptionNotificationImpl &&
+>>>>>>> UAT
             (identical(other.dogId, dogId) || other.dogId == dogId) &&
             (identical(other.dogName, dogName) || other.dogName == dogName) &&
             (identical(other.breedName, breedName) ||
@@ -1318,6 +1387,7 @@ class _$SendAdoptNotifRequestImpl implements _SendAdoptNotifRequest {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
+<<<<<<< HEAD
   _$$SendAdoptNotifRequestImplCopyWith<_$SendAdoptNotifRequestImpl>
       get copyWith => __$$SendAdoptNotifRequestImplCopyWithImpl<
           _$SendAdoptNotifRequestImpl>(this, _$identity);
@@ -1325,21 +1395,42 @@ class _$SendAdoptNotifRequestImpl implements _SendAdoptNotifRequest {
   @override
   Map<String, dynamic> toJson() {
     return _$$SendAdoptNotifRequestImplToJson(
+=======
+  _$$SendAdoptionNotificationImplCopyWith<_$SendAdoptionNotificationImpl>
+      get copyWith => __$$SendAdoptionNotificationImplCopyWithImpl<
+          _$SendAdoptionNotificationImpl>(this, _$identity);
+
+  @override
+  Map<String, dynamic> toJson() {
+    return _$$SendAdoptionNotificationImplToJson(
+>>>>>>> UAT
       this,
     );
   }
 }
 
+<<<<<<< HEAD
 abstract class _SendAdoptNotifRequest implements SendAdoptNotifRequest {
   factory _SendAdoptNotifRequest(
+=======
+abstract class _SendAdoptionNotification implements SendAdoptionNotification {
+  factory _SendAdoptionNotification(
+>>>>>>> UAT
       {required final String? dogId,
       required final String? dogName,
       required final String? breedName,
       required final String? ownerId,
+<<<<<<< HEAD
       required final String? ownerUsername}) = _$SendAdoptNotifRequestImpl;
 
   factory _SendAdoptNotifRequest.fromJson(Map<String, dynamic> json) =
       _$SendAdoptNotifRequestImpl.fromJson;
+=======
+      required final String? ownerUsername}) = _$SendAdoptionNotificationImpl;
+
+  factory _SendAdoptionNotification.fromJson(Map<String, dynamic> json) =
+      _$SendAdoptionNotificationImpl.fromJson;
+>>>>>>> UAT
 
   @override
   String? get dogId;
@@ -1353,6 +1444,7 @@ abstract class _SendAdoptNotifRequest implements SendAdoptNotifRequest {
   String? get ownerUsername;
   @override
   @JsonKey(ignore: true)
+<<<<<<< HEAD
   _$$SendAdoptNotifRequestImplCopyWith<_$SendAdoptNotifRequestImpl>
       get copyWith => throw _privateConstructorUsedError;
 }
@@ -1523,5 +1615,8 @@ abstract class _ApproveRejectAdoptionRequest
   @JsonKey(ignore: true)
   _$$ApproveRejectAdoptionRequestImplCopyWith<
           _$ApproveRejectAdoptionRequestImpl>
+=======
+  _$$SendAdoptionNotificationImplCopyWith<_$SendAdoptionNotificationImpl>
+>>>>>>> UAT
       get copyWith => throw _privateConstructorUsedError;
 }

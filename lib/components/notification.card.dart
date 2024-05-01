@@ -75,12 +75,12 @@ class NotificationCardDetail extends StatelessWidget {
                         children: [
                           Expanded(
                             child: Padding(
-                              padding: const EdgeInsets.only(left: 30),
+                              padding: const EdgeInsets.only(left: 15),
                               child: Text(
                                 notificationDetail.notifMessage ?? "",
                                 style: const TextStyle(
                                   color: Color.fromRGBO(40, 36, 36, 1),
-                                  fontSize: 14,
+                                  fontSize: 11,
                                 ),
                               ),
                             ),

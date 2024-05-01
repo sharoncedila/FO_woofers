@@ -1,9 +1,15 @@
 import 'package:flutter/material.dart';
 import 'package:woofers/pages/dog_list_page.dart';
-import 'package:woofers/pages/user_profile_page.dart';
+import 'package:woofers/pages/other_profile_page.dart';
+import 'package:woofers/services/account/user_profile_services.dart';
+import 'package:woofers/services/dog/dog_services.dart';
 
-class ProfilePageTemplate extends StatelessWidget {
-  const ProfilePageTemplate({super.key});
+class OtherProfilePageTemplate extends StatelessWidget {
+  final String accountId;
+  const OtherProfilePageTemplate({
+    super.key,
+    required this.accountId,
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -20,7 +26,7 @@ class ProfilePageTemplate extends StatelessWidget {
                   width: 40,
                   height: 40,
                 ),
-                text: "Me",
+                text: 'User'
               ),
               Tab(
                 icon: Image(
@@ -33,10 +39,10 @@ class ProfilePageTemplate extends StatelessWidget {
             ],
           ),
         ),
-        body: const TabBarView(
+        body: TabBarView(
           children: [
-            UserProfilePage(),
-            DogListPage(),
+            OtherProfilePage(accountId: accountId),
+            const DogListPage(),
           ],
         ),
       ),

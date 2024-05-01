@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:woofers/model/adoption_model.dart';
+import 'package:woofers/components/image_network.dart';
+import 'package:woofers/components/other_profile_page_template.dart';
 import 'package:woofers/model/feeds_model.dart';
 import 'package:woofers/pages/comment_page.dart';
 
@@ -13,138 +14,111 @@ class FeedsCard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Padding(
-        padding: const EdgeInsets.only(left: 25, right: 25),
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            const SizedBox(
-              height: 15,
-            ),
-            Column(
-              children: List.generate(5, (index) {
-                return Container(
-                  padding: const EdgeInsets.only(bottom: 25),
-                  child: Column(
+      padding: const EdgeInsets.only(left: 5, right: 5),
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          // const SizedBox(
+          //   height: 15,
+          // ),
+          Column(
+                children: [
+                  Column(
                     children: [
-                      Stack(
-                        children: [
-                          Container(
-                            width: double.infinity,
-                            height: 288,
-                            decoration: BoxDecoration(
-                              image: const DecorationImage(
-                                image: AssetImage('assets/dog_picture/dog1.jpg'),
-                                fit: BoxFit.cover
-                              ),
-                              borderRadius: BorderRadius.circular(20)
-                            ),
+                      TextButton(
+                        onPressed: () {
+                          Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                  builder: (context) =>
+                                      OtherProfilePageTemplate(
+                                          accountId:
+                                              feedsDetail.accountId ?? '')));
+                        },
+                        child: Text(
+                          feedsDetail.username ?? '',
+                          style: const TextStyle(
+                            fontSize: 15,
+                            color: Color.fromRGBO(40, 36, 36, 10000),
+                            fontWeight: FontWeight.bold,
                           ),
-                          Container(
-                            width: double.infinity,
-                            height: 288,
-                            decoration: BoxDecoration(
-                              borderRadius: BorderRadius.circular(20),
+                        ),
+                      ),
+                      Text(
+                        // '10.43',
+                        feedsDetail.postDate ?? '',
+                        style: const TextStyle(
+                          fontSize: 13,
+                          color: Color.fromRGBO(40, 36, 36, 10000),
+                        ),
+                      ),
+                      ImageNetwork(
+                          urlImage: feedsDetail.image,
+                          width: double.infinity,
+                          height: 375),
+                    ],
+                  ),
+                  Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.start,
+                        children: [
+                          IconButton(
+                            icon: const Icon(
+                              Icons.favorite_border,
+                              color: Colors.black,
+                              size: 23,
                             ),
-                            child: Padding(
-                              padding: const EdgeInsets.all(15),
-                              child: Column(
-                                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                                children: [
-                                  // profile, nama orang, waktu
-                                  Row(
-                                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                                    children: [
-                                      Row(
-                                        children: [
-                                          const CircleAvatar(
-                                            backgroundImage: AssetImage('assets/profile_picture/person1.jpg'),
-                                          ),
-                                          const SizedBox(
-                                            width: 12,
-                                          ),
-                                          Column(
-                                            crossAxisAlignment: CrossAxisAlignment.start,
-                                            children: [
-                                              Text(
-                                                feedsDetail.username ?? '',
-                                                style: const TextStyle(
-                                                    fontSize: 15, color: Colors.white),
-                                              ),
-                                              const SizedBox(
-                                                height: 3,
-                                              ),
-                                              Text(
-                                                '10.43',
-                                                style: TextStyle(
-                                                  fontSize: 13,
-                                                  color: Colors.white.withOpacity(0.8)
-                                                ),
-                                              ),
-                                            ],
-                                          )
-                                        ],
-                                      ),
-                                    ],
-                                  ),
-                                  // heart and comment
-
-                                ],
-                              ),
+                            onPressed: () {
+                              Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                    builder: (context) => CommentPage(
+                                        feedsId: feedsDetail.feedsId ?? '')),
+                              );
+                            },
+                          ),
+                          IconButton(
+                            icon: const Icon(
+                              Icons.comment_outlined,
+                              color: Colors.black,
+                              size: 23,
                             ),
+                            onPressed: () {
+                              Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                    builder: (context) => CommentPage(
+                                        feedsId: feedsDetail.feedsId ?? '')),
+                              );
+                            },
                           ),
                         ],
                       ),
-
-                      Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
+                      Row(
                         children: [
-                          Row(
-                            mainAxisAlignment: MainAxisAlignment.start,
-                            children: [
-                              IconButton(
-                                icon: const Icon(
-                                  Icons.favorite_border,
-                                  color: Colors.black,
-                                  size: 20,
-                                ),
-                                onPressed: () {
-                                  Navigator.push(
-                                    context,
-                                    MaterialPageRoute(builder: (context) => const CommentPage()),
-                                  );
-                                },
-                              ),
-                              IconButton(
-                                icon: const Icon(
-                                  Icons.comment_outlined,
-                                  color: Colors.black,
-                                  size: 20,
-                                ),
-                                onPressed: () {
-                                  Navigator.push(
-                                    context,
-                                    MaterialPageRoute(builder: (context) => const CommentPage()),
-                                  );
-                                },
-                              ),
-                            ],
+                          const Text(
+                            '     ',
+                            style: TextStyle(color: Colors.grey, fontSize: 12),
+                          ),
+                          Text(
+                            feedsDetail.likesCount ?? '',
+                            style: const TextStyle(
+                                color: Colors.grey, fontSize: 12),
                           ),
                           const Text(
-                            "     1 like",
-                            style: TextStyle(
-                              color: Colors.grey,
-                              fontSize: 12
-                            ),
+                            ' likes',
+                            style: TextStyle(color: Colors.grey, fontSize: 12),
                           )
                         ],
                       )
                     ],
                   )
-                );
-              }),
-            )
-          ],
-        ),
-      );
-      }
+                ],
+              )
+        ],
+      ),
+    );
+  }
 }
