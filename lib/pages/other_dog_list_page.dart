@@ -1,57 +1,31 @@
 import 'package:flutter/material.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:woofers/components/my_dog_card.dart';
+import 'package:woofers/components/other_dog_card.dart';
 import 'package:woofers/pages/add_dog_page.dart';
 import 'package:woofers/services/dog/dog_services.dart';
 
-void main() => runApp(const DogListPage());
+// void main() => runApp(const OtherDogListPage());
 
-class DogListPage extends StatefulWidget {
-  const DogListPage({super.key});
+// class OtherDogListPage extends StatefulWidget {
+//   const OtherDogListPage({super.key});
 
-  //belum bisa muncul
-  Widget build(BuildContext context){
-    return IconButton(
-          icon: Icon(Icons.add),
-          onPressed: () {
-            Navigator.push(
-              context,
-              MaterialPageRoute(builder: (context) => const AddDogPage()),
-            );
-          },
-        );
-  }
+//   @override
+//   _OtherDogListPageState createState() => _OtherDogListPageState();
 
-  @override
-  _DogListPageState createState() => _DogListPageState();
+// }
 
-}
-
-class _DogListPageState extends State<DogListPage> {
-  Future<String> geToken() async {
-    final prefs = await SharedPreferences.getInstance();
-    return Future.value(prefs.getString('accountId'));
-  }
+class OtherDogListPage extends StatelessWidget {
+  final String accountId;
+  const OtherDogListPage({
+    super.key,
+    required this.accountId,
+  });
 
   @override
   Widget build(BuildContext context) {
     return SingleChildScrollView(
-      child: FutureBuilder(
-          future: geToken(),
-          builder: (context, snapshot) {
-            if (snapshot.connectionState == ConnectionState.waiting) {
-              return const Center(child: Text("Retrieving your dog list data 1"));
-            }
-            if (snapshot.hasError) {
-              return const Center(child: Text("Error accountID"));
-            }
-            if (!snapshot.hasData) {
-              return const Text("No data");
-            }
-
-            String accountId =
-                snapshot.data == null ? "" : snapshot.requireData;
-            return Expanded(
+      child : Expanded(
                 child: FutureBuilder(
                     future: DogService().retrieveDogList(accountId),
                     builder: (context, snapshot) {
@@ -69,11 +43,10 @@ class _DogListPageState extends State<DogListPage> {
                       final dogList = snapshot.data!;
                       return Wrap(
                         children: dogList
-                            .map((e) => MyDogCard(dogProfile: e))
+                            .map((e) => OtherDogCard(dogProfile: e))
                             .toList(),
                       );
-                    }));
-          }),
-    );
+                    })
+                    ));
   }
 }

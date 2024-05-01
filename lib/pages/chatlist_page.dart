@@ -18,7 +18,7 @@ class _ChatListPageState extends State<ChatListPage> {
       backgroundColor: Colors.white,
       appBar:
         AppBar(
-          toolbarHeight: 75, 
+          toolbarHeight: 75,
           elevation: 0,
           backgroundColor: HexColor("#a0dcdc"),
           title:

@@ -193,19 +193,6 @@ class _LoginFormState extends State<LoginForm> {
                     },
                   ),
                 ),
-
-                /*const SizedBox(
-              height: 50,
-            ),
-            SizedBox(
-              width: 200,
-              height: 45,
-              child: ElevatedButton(
-                style: ButtonStyle(
-                  backgroundColor: MaterialStateProperty.all<Color>(
-                   Colors.blue,
-                  ),
-                ),*/
                 child: Text(
                   'LOGIN',
                   style: TextStyle(

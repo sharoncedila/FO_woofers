@@ -335,6 +335,7 @@ OtherUserProfileResponse _$OtherUserProfileResponseFromJson(
 
 /// @nodoc
 mixin _$OtherUserProfileResponse {
+  String? get username => throw _privateConstructorUsedError;
   String? get fullName => throw _privateConstructorUsedError;
   String? get provinceName => throw _privateConstructorUsedError;
   String? get phoneNumber => throw _privateConstructorUsedError;
@@ -356,7 +357,8 @@ abstract class $OtherUserProfileResponseCopyWith<$Res> {
       _$OtherUserProfileResponseCopyWithImpl<$Res, OtherUserProfileResponse>;
   @useResult
   $Res call(
-      {String? fullName,
+      {String? username,
+      String? fullName,
       String? provinceName,
       String? phoneNumber,
       String? description,
@@ -379,6 +381,7 @@ class _$OtherUserProfileResponseCopyWithImpl<$Res,
   @pragma('vm:prefer-inline')
   @override
   $Res call({
+    Object? username = freezed,
     Object? fullName = freezed,
     Object? provinceName = freezed,
     Object? phoneNumber = freezed,
@@ -388,6 +391,10 @@ class _$OtherUserProfileResponseCopyWithImpl<$Res,
     Object? errorMessage = freezed,
   }) {
     return _then(_value.copyWith(
+      username: freezed == username
+          ? _value.username
+          : username // ignore: cast_nullable_to_non_nullable
+              as String?,
       fullName: freezed == fullName
           ? _value.fullName
           : fullName // ignore: cast_nullable_to_non_nullable
@@ -430,7 +437,8 @@ abstract class _$$OtherUserProfileResponseImplCopyWith<$Res>
   @override
   @useResult
   $Res call(
-      {String? fullName,
+      {String? username,
+      String? fullName,
       String? provinceName,
       String? phoneNumber,
       String? description,
@@ -452,6 +460,7 @@ class __$$OtherUserProfileResponseImplCopyWithImpl<$Res>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
+    Object? username = freezed,
     Object? fullName = freezed,
     Object? provinceName = freezed,
     Object? phoneNumber = freezed,
@@ -461,6 +470,10 @@ class __$$OtherUserProfileResponseImplCopyWithImpl<$Res>
     Object? errorMessage = freezed,
   }) {
     return _then(_$OtherUserProfileResponseImpl(
+      username: freezed == username
+          ? _value.username
+          : username // ignore: cast_nullable_to_non_nullable
+              as String?,
       fullName: freezed == fullName
           ? _value.fullName
           : fullName // ignore: cast_nullable_to_non_nullable
@@ -497,7 +510,8 @@ class __$$OtherUserProfileResponseImplCopyWithImpl<$Res>
 @JsonSerializable()
 class _$OtherUserProfileResponseImpl implements _OtherUserProfileResponse {
   _$OtherUserProfileResponseImpl(
-      {required this.fullName,
+      {required this.username,
+      required this.fullName,
       required this.provinceName,
       required this.phoneNumber,
       required this.description,
@@ -508,6 +522,8 @@ class _$OtherUserProfileResponseImpl implements _OtherUserProfileResponse {
   factory _$OtherUserProfileResponseImpl.fromJson(Map<String, dynamic> json) =>
       _$$OtherUserProfileResponseImplFromJson(json);
 
+  @override
+  final String? username;
   @override
   final String? fullName;
   @override
@@ -525,7 +541,7 @@ class _$OtherUserProfileResponseImpl implements _OtherUserProfileResponse {
 
   @override
   String toString() {
-    return 'OtherUserProfileResponse(fullName: $fullName, provinceName: $provinceName, phoneNumber: $phoneNumber, description: $description, image: $image, errorCode: $errorCode, errorMessage: $errorMessage)';
+    return 'OtherUserProfileResponse(username: $username, fullName: $fullName, provinceName: $provinceName, phoneNumber: $phoneNumber, description: $description, image: $image, errorCode: $errorCode, errorMessage: $errorMessage)';
   }
 
   @override
@@ -533,6 +549,8 @@ class _$OtherUserProfileResponseImpl implements _OtherUserProfileResponse {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$OtherUserProfileResponseImpl &&
+            (identical(other.username, username) ||
+                other.username == username) &&
             (identical(other.fullName, fullName) ||
                 other.fullName == fullName) &&
             (identical(other.provinceName, provinceName) ||
@@ -550,7 +568,7 @@ class _$OtherUserProfileResponseImpl implements _OtherUserProfileResponse {
 
   @JsonKey(ignore: true)
   @override
-  int get hashCode => Object.hash(runtimeType, fullName, provinceName,
+  int get hashCode => Object.hash(runtimeType, username, fullName, provinceName,
       phoneNumber, description, image, errorCode, errorMessage);
 
   @JsonKey(ignore: true)
@@ -570,7 +588,8 @@ class _$OtherUserProfileResponseImpl implements _OtherUserProfileResponse {
 
 abstract class _OtherUserProfileResponse implements OtherUserProfileResponse {
   factory _OtherUserProfileResponse(
-      {required final String? fullName,
+      {required final String? username,
+      required final String? fullName,
       required final String? provinceName,
       required final String? phoneNumber,
       required final String? description,
@@ -581,6 +600,8 @@ abstract class _OtherUserProfileResponse implements OtherUserProfileResponse {
   factory _OtherUserProfileResponse.fromJson(Map<String, dynamic> json) =
       _$OtherUserProfileResponseImpl.fromJson;
 
+  @override
+  String? get username;
   @override
   String? get fullName;
   @override

@@ -37,6 +37,7 @@ Map<String, dynamic> _$$ResponseUserProfileModelImplToJson(
 _$OtherUserProfileResponseImpl _$$OtherUserProfileResponseImplFromJson(
         Map<String, dynamic> json) =>
     _$OtherUserProfileResponseImpl(
+      username: json['username'] as String?,
       fullName: json['fullName'] as String?,
       provinceName: json['provinceName'] as String?,
       phoneNumber: json['phoneNumber'] as String?,
@@ -49,6 +50,7 @@ _$OtherUserProfileResponseImpl _$$OtherUserProfileResponseImplFromJson(
 Map<String, dynamic> _$$OtherUserProfileResponseImplToJson(
         _$OtherUserProfileResponseImpl instance) =>
     <String, dynamic>{
+      'username': instance.username,
       'fullName': instance.fullName,
       'provinceName': instance.provinceName,
       'phoneNumber': instance.phoneNumber,

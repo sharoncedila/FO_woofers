@@ -22,8 +22,10 @@ class FeedsCard extends StatelessWidget {
           //   height: 15,
           // ),
           Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       TextButton(
                         onPressed: () {
@@ -33,7 +35,7 @@ class FeedsCard extends StatelessWidget {
                                   builder: (context) =>
                                       OtherProfilePageTemplate(
                                           accountId:
-                                              feedsDetail.accountId ?? '')));
+                                              feedsDetail.accountId ?? '')),);
                         },
                         child: Text(
                           feedsDetail.username ?? '',
@@ -44,6 +46,7 @@ class FeedsCard extends StatelessWidget {
                           ),
                         ),
                       ),
+                      // posting date
                       Text(
                         // '10.43',
                         feedsDetail.postDate ?? '',

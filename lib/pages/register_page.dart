@@ -239,7 +239,7 @@ class _RegisterFormState extends State<RegisterForm> {
             // password form field
             const SizedBox(height: 15),
             Padding(
-                padding: const EdgeInsets.symmetric(horizontal: 25),
+              padding: const EdgeInsets.symmetric(horizontal: 25),
                 child: TextFormField(
                   controller: _passwordController,
                   obscureText: passwordVisible,
@@ -404,7 +404,8 @@ class _RegisterFormState extends State<RegisterForm> {
                           );
                         },
                       );
-                    });
+                    }
+                    );
                   }
                 },
               ),
