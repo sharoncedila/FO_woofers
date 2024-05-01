@@ -13,6 +13,21 @@ class LeaveCommentRequest with _$LeaveCommentRequest {
 }
 
 @freezed
+class OpenCommentsResponse with _$OpenCommentsResponse{
+  factory OpenCommentsResponse({
+    required String? commentId,
+    required String? feedsId,
+    required String? accountId,
+    required String? content,
+    required String? commentDate,
+    required String? errorCode,
+    required String? errorMessage,
+  }) = _OpenCommentsResponse;
+
+  factory OpenCommentsResponse.fromJson(Map<String, dynamic> json) => _$OpenCommentsResponseFromJson(json);
+}
+
+@freezed
 class PostFeedsRequest with _$PostFeedsRequest {
   factory PostFeedsRequest({
     required String caption,

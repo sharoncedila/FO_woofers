@@ -53,7 +53,7 @@ class _AddDogPageState extends State<AddDogPage> {
       backgroundColor: Colors.white,
       appBar: AppBar(
         toolbarHeight: 75,
-        backgroundColor: Colors.white,
+        backgroundColor: HexColor("#a0dcdc"),
         elevation: 0,
         leading: Padding(
             padding:

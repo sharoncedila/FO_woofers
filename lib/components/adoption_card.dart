@@ -1,8 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:woofers/components/image_network.dart';
+import 'package:woofers/components/other_profile_page_template.dart';
 import 'package:woofers/model/adoption_model.dart';
+<<<<<<< HEAD
 import 'package:woofers/pages/feeds_page.dart';
 import 'package:woofers/pages/request_adoption_page.dart';
+=======
+import 'package:woofers/pages/other_profile_page.dart';
+import 'package:woofers/pages/user_profile_page.dart';
+>>>>>>> SYE_20240425
 
 class DogCardDetail extends StatelessWidget {
   final AdoptionDetail adoptionDetail;
@@ -24,11 +30,19 @@ class DogCardDetail extends StatelessWidget {
           child: InkWell(
               onTap: () {
                 Navigator.push(
+<<<<<<< HEAD
                     context,
                     MaterialPageRoute(
                       builder: (context) => RequestAdoptionPage(dogId: adoptionDetail.dogId)),
                       //builder: (context) => const FeedsPage(),
                     );
+=======
+                  context,
+                  MaterialPageRoute(
+                      builder: (context) => const OtherProfilePageTemplate(
+                          accountId: '9c4c20fbc29140d5')),
+                );
+>>>>>>> SYE_20240425
               },
               child: SizedBox(
                 width: MediaQuery.of(context).size.width / 2.3,

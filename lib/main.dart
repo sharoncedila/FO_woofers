@@ -1,4 +1,10 @@
 import 'package:flutter/material.dart';
+<<<<<<< HEAD
+=======
+import 'package:woofers/components/bottom_menu.dart';
+import 'package:woofers/components/comment_card.dart';
+import 'package:woofers/pages/add_dog_page.dart';
+>>>>>>> SYE_20240425
 import 'package:woofers/pages/login_page.dart';
 
 void main() {
