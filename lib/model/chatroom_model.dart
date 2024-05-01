@@ -28,9 +28,12 @@ class OpenChatResponse with _$OpenChatResponse {
     required String? chatroomId,
     required String? senderId,
     required String? recipientId,
-    required List<SendChatResponse>? messages,
     required String? errorCode,
-    required String? errorMessage
+    required String? errorMessage,
+    required String? chatMessageId,
+    required String? message,
+    required String? timestamp,
+    
   }) = _OpenChatResponse;
 
   factory OpenChatResponse.fromJson(Map<String, dynamic> json) => _$OpenChatResponseFromJson(json);

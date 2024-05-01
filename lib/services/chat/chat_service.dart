@@ -46,7 +46,7 @@ class ChatroomService {
   }
 
 
-  Future<OpenChatResponse> openChatroom(OpenChatRequest request) async {
+  Future<List<OpenChatResponse>?> openChatroom(OpenChatRequest request) async {
     try {
       const api = '/chats/open-chat';
       final dio = await DioInstance.getInstance();
@@ -54,9 +54,11 @@ class ChatroomService {
       var response = await dio.post(api, data: jsonEncode(request.toJson()));
       final errorSchema = ErrorSchema.fromJson(response.data!['errorSchema']);
       if (errorSchema.errorCode != 'WOF-000') {
-        return OpenChatResponse.fromJson(response.data['errorSchema']);
+        return [OpenChatResponse.fromJson(response.data['errorSchema'])];
       } else {
-        return OpenChatResponse.fromJson(response.data['outputSchema']);
+        return (response.data['outputSchema']['messages'] as List)
+            .map((e) => OpenChatResponse.fromJson(e))
+            .toList();
       }
     } catch (error) {
       print(error);

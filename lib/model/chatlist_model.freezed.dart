@@ -29,7 +29,7 @@ mixin _$RetrieveChatlistResponse {
   String? get lastMessageTimestamp => throw _privateConstructorUsedError;
   String? get deletedAt => throw _privateConstructorUsedError;
   String? get lastMessage => throw _privateConstructorUsedError;
-  bool? get isRead => throw _privateConstructorUsedError;
+  String? get isRead => throw _privateConstructorUsedError;
   String? get errorCode => throw _privateConstructorUsedError;
   String? get errorMessage => throw _privateConstructorUsedError;
 
@@ -54,7 +54,7 @@ abstract class $RetrieveChatlistResponseCopyWith<$Res> {
       String? lastMessageTimestamp,
       String? deletedAt,
       String? lastMessage,
-      bool? isRead,
+      String? isRead,
       String? errorCode,
       String? errorMessage});
 }
@@ -121,7 +121,7 @@ class _$RetrieveChatlistResponseCopyWithImpl<$Res,
       isRead: freezed == isRead
           ? _value.isRead
           : isRead // ignore: cast_nullable_to_non_nullable
-              as bool?,
+              as String?,
       errorCode: freezed == errorCode
           ? _value.errorCode
           : errorCode // ignore: cast_nullable_to_non_nullable
@@ -152,7 +152,7 @@ abstract class _$$RetrieveChatlistResponseImplCopyWith<$Res>
       String? lastMessageTimestamp,
       String? deletedAt,
       String? lastMessage,
-      bool? isRead,
+      String? isRead,
       String? errorCode,
       String? errorMessage});
 }
@@ -218,7 +218,7 @@ class __$$RetrieveChatlistResponseImplCopyWithImpl<$Res>
       isRead: freezed == isRead
           ? _value.isRead
           : isRead // ignore: cast_nullable_to_non_nullable
-              as bool?,
+              as String?,
       errorCode: freezed == errorCode
           ? _value.errorCode
           : errorCode // ignore: cast_nullable_to_non_nullable
@@ -267,7 +267,7 @@ class _$RetrieveChatlistResponseImpl implements _RetrieveChatlistResponse {
   @override
   final String? lastMessage;
   @override
-  final bool? isRead;
+  final String? isRead;
   @override
   final String? errorCode;
   @override
@@ -346,7 +346,7 @@ abstract class _RetrieveChatlistResponse implements RetrieveChatlistResponse {
       required final String? lastMessageTimestamp,
       required final String? deletedAt,
       required final String? lastMessage,
-      required final bool? isRead,
+      required final String? isRead,
       required final String? errorCode,
       required final String? errorMessage}) = _$RetrieveChatlistResponseImpl;
 
@@ -370,7 +370,7 @@ abstract class _RetrieveChatlistResponse implements RetrieveChatlistResponse {
   @override
   String? get lastMessage;
   @override
-  bool? get isRead;
+  String? get isRead;
   @override
   String? get errorCode;
   @override

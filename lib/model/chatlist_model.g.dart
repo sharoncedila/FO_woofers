@@ -17,7 +17,7 @@ _$RetrieveChatlistResponseImpl _$$RetrieveChatlistResponseImplFromJson(
       lastMessageTimestamp: json['lastMessageTimestamp'] as String?,
       deletedAt: json['deletedAt'] as String?,
       lastMessage: json['lastMessage'] as String?,
-      isRead: json['isRead'] as bool?,
+      isRead: json['isRead'] as String?,
       errorCode: json['errorCode'] as String?,
       errorMessage: json['errorMessage'] as String?,
     );

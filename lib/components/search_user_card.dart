@@ -26,7 +26,7 @@ class SearchUserCardDetail extends StatelessWidget {
                 MaterialPageRoute(
                     //Other User Profile
                     builder: (context) =>
-                        ChatroomPage(accountId: searchUserDetail.accountId!)),
+                        ChatroomPageDetail(accountId: searchUserDetail.accountId!)),
               );
             },
             child: Row(
@@ -56,7 +56,7 @@ class SearchUserCardDetail extends StatelessWidget {
                             Navigator.push(
                               context,
                               MaterialPageRoute(
-                                  builder: (context) => ChatroomPage(
+                                  builder: (context) => ChatroomPageDetail(
                                       accountId: searchUserDetail.accountId!)),
                             );
                           },

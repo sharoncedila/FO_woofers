@@ -1,14 +1,17 @@
 import 'package:flutter/material.dart';
 import 'package:woofers/model/chatlist_model.dart';
+import 'package:woofers/model/chatroom_model.dart';
 import 'package:woofers/pages/chatroom_page.dart';
 import 'package:woofers/pages/user_profile_page.dart';
+import 'package:woofers/services/chat/chat_service.dart';
 
 class ChatCardDetail extends StatelessWidget {
   final RetrieveChatlistResponse chatlistDetail;
-  const ChatCardDetail({
+  ChatCardDetail({
     super.key,
     required this.chatlistDetail,
   });
+  final _openChatService = ChatroomService();
 
   @override
   Widget build(BuildContext context) {
@@ -21,11 +24,16 @@ class ChatCardDetail extends StatelessWidget {
         ),
         color: const Color.fromRGBO(160, 220, 220, 10),
         child: InkWell(
-          onTap: () {
-            Navigator.push(
+          onTap: () async {
+            /*Navigator.push(
               context,
-              MaterialPageRoute(builder: (context) => ChatroomPage(accountId: chatlistDetail.recipientId!)),
-            );
+              MaterialPageRoute(builder: (context) => ChatroomPageDetail(accountId: chatlistDetail.recipientId!)),
+            );*/
+            String accountId = chatlistDetail.recipientId!;
+            final OpenChatRequest req = OpenChatRequest(recipientId: accountId);
+            _openChatService.openChatroom(req).then((value) =>
+                Navigator.of(context).pushReplacement(MaterialPageRoute(
+                    builder: (_) => ChatroomPageDetail(accountId: accountId))));
           },
           child: SizedBox(
             height: 80,
@@ -77,7 +85,8 @@ class ChatCardDetail extends StatelessWidget {
                             Navigator.push(
                               context,
                               MaterialPageRoute(
-                                  builder: (context) => ChatroomPage(accountId : chatlistDetail.recipientId!)),
+                                  builder: (context) => ChatroomPageDetail(
+                                      accountId: chatlistDetail.recipientId!)),
                             );
                           },
                         ),

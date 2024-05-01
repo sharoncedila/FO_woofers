@@ -14,7 +14,7 @@ class RetrieveChatlistResponse with _$RetrieveChatlistResponse{
     required String? lastMessageTimestamp,
     required String? deletedAt,
     required String? lastMessage,
-    required bool? isRead,
+    required String? isRead,
     required String? errorCode,
     required String? errorMessage,
   }) = _RetrieveChatlistResponse;
