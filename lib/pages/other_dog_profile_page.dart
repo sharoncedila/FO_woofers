@@ -3,7 +3,6 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:hexcolor/hexcolor.dart';
 import 'package:woofers/components/image_network.dart';
 import 'package:woofers/pages/add_dog_page.dart';
-import 'package:woofers/pages/edit_my_dog.dart';
 import 'package:woofers/pages/notification_page.dart';
 import 'package:woofers/services/dog/dog_services.dart';
 
