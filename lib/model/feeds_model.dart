@@ -74,21 +74,6 @@ class PostFeedsResponse with _$PostFeedsResponse{
 }
 
 @freezed
-class OpenCommentsResponse with _$OpenCommentsResponse{
-  factory OpenCommentsResponse({
-    required String? commentId,
-    required String? feedsId,
-    required String? accountId,
-    required String? content,
-    required String? commentDate,
-    required String? errorCode,
-    required String? errorMessage,
-  }) = _OpenCommentsResponse;
-
-  factory OpenCommentsResponse.fromJson(Map<String, dynamic> json) => _$OpenCommentsResponseFromJson(json);
-}
-
-@freezed
 class LikeFeedsResponse with _$LikeFeedsResponse{
   factory LikeFeedsResponse({
     required String? status,
