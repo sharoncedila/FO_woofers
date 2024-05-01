@@ -24,7 +24,7 @@ class ChatCardDetail extends StatelessWidget {
           onTap: () {
             Navigator.push(
               context,
-              MaterialPageRoute(builder: (context) => const UserProfilePage()),
+              MaterialPageRoute(builder: (context) => ChatroomPage(accountId: chatlistDetail.recipientId!)),
             );
           },
           child: SizedBox(
@@ -77,7 +77,7 @@ class ChatCardDetail extends StatelessWidget {
                             Navigator.push(
                               context,
                               MaterialPageRoute(
-                                  builder: (context) => const ChatroomPage()),
+                                  builder: (context) => ChatroomPage(accountId : chatlistDetail.recipientId!)),
                             );
                           },
                         ),

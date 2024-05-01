@@ -122,10 +122,10 @@ class _AdoptionPageState extends State<AdoptionPage> {
                   ),
                 // ),
 
-              IconButton(
+              /*IconButton(
                 onPressed: onPressed, 
                 icon: Icons.search_outlined,
-              )
+              )*/
 
               ],
             ),

@@ -25,6 +25,7 @@ mixin _$RetrieveChatlistResponse {
   String? get chatroomId => throw _privateConstructorUsedError;
   String? get senderId => throw _privateConstructorUsedError;
   String? get recipientId => throw _privateConstructorUsedError;
+  String? get recipientUsername => throw _privateConstructorUsedError;
   String? get lastMessageTimestamp => throw _privateConstructorUsedError;
   String? get deletedAt => throw _privateConstructorUsedError;
   String? get lastMessage => throw _privateConstructorUsedError;
@@ -49,6 +50,7 @@ abstract class $RetrieveChatlistResponseCopyWith<$Res> {
       String? chatroomId,
       String? senderId,
       String? recipientId,
+      String? recipientUsername,
       String? lastMessageTimestamp,
       String? deletedAt,
       String? lastMessage,
@@ -75,6 +77,7 @@ class _$RetrieveChatlistResponseCopyWithImpl<$Res,
     Object? chatroomId = freezed,
     Object? senderId = freezed,
     Object? recipientId = freezed,
+    Object? recipientUsername = freezed,
     Object? lastMessageTimestamp = freezed,
     Object? deletedAt = freezed,
     Object? lastMessage = freezed,
@@ -98,6 +101,10 @@ class _$RetrieveChatlistResponseCopyWithImpl<$Res,
       recipientId: freezed == recipientId
           ? _value.recipientId
           : recipientId // ignore: cast_nullable_to_non_nullable
+              as String?,
+      recipientUsername: freezed == recipientUsername
+          ? _value.recipientUsername
+          : recipientUsername // ignore: cast_nullable_to_non_nullable
               as String?,
       lastMessageTimestamp: freezed == lastMessageTimestamp
           ? _value.lastMessageTimestamp
@@ -141,6 +148,7 @@ abstract class _$$RetrieveChatlistResponseImplCopyWith<$Res>
       String? chatroomId,
       String? senderId,
       String? recipientId,
+      String? recipientUsername,
       String? lastMessageTimestamp,
       String? deletedAt,
       String? lastMessage,
@@ -166,6 +174,7 @@ class __$$RetrieveChatlistResponseImplCopyWithImpl<$Res>
     Object? chatroomId = freezed,
     Object? senderId = freezed,
     Object? recipientId = freezed,
+    Object? recipientUsername = freezed,
     Object? lastMessageTimestamp = freezed,
     Object? deletedAt = freezed,
     Object? lastMessage = freezed,
@@ -189,6 +198,10 @@ class __$$RetrieveChatlistResponseImplCopyWithImpl<$Res>
       recipientId: freezed == recipientId
           ? _value.recipientId
           : recipientId // ignore: cast_nullable_to_non_nullable
+              as String?,
+      recipientUsername: freezed == recipientUsername
+          ? _value.recipientUsername
+          : recipientUsername // ignore: cast_nullable_to_non_nullable
               as String?,
       lastMessageTimestamp: freezed == lastMessageTimestamp
           ? _value.lastMessageTimestamp
@@ -226,6 +239,7 @@ class _$RetrieveChatlistResponseImpl implements _RetrieveChatlistResponse {
       required this.chatroomId,
       required this.senderId,
       required this.recipientId,
+      required this.recipientUsername,
       required this.lastMessageTimestamp,
       required this.deletedAt,
       required this.lastMessage,
@@ -245,6 +259,8 @@ class _$RetrieveChatlistResponseImpl implements _RetrieveChatlistResponse {
   @override
   final String? recipientId;
   @override
+  final String? recipientUsername;
+  @override
   final String? lastMessageTimestamp;
   @override
   final String? deletedAt;
@@ -259,7 +275,7 @@ class _$RetrieveChatlistResponseImpl implements _RetrieveChatlistResponse {
 
   @override
   String toString() {
-    return 'RetrieveChatlistResponse(rowId: $rowId, chatroomId: $chatroomId, senderId: $senderId, recipientId: $recipientId, lastMessageTimestamp: $lastMessageTimestamp, deletedAt: $deletedAt, lastMessage: $lastMessage, isRead: $isRead, errorCode: $errorCode, errorMessage: $errorMessage)';
+    return 'RetrieveChatlistResponse(rowId: $rowId, chatroomId: $chatroomId, senderId: $senderId, recipientId: $recipientId, recipientUsername: $recipientUsername, lastMessageTimestamp: $lastMessageTimestamp, deletedAt: $deletedAt, lastMessage: $lastMessage, isRead: $isRead, errorCode: $errorCode, errorMessage: $errorMessage)';
   }
 
   @override
@@ -274,6 +290,8 @@ class _$RetrieveChatlistResponseImpl implements _RetrieveChatlistResponse {
                 other.senderId == senderId) &&
             (identical(other.recipientId, recipientId) ||
                 other.recipientId == recipientId) &&
+            (identical(other.recipientUsername, recipientUsername) ||
+                other.recipientUsername == recipientUsername) &&
             (identical(other.lastMessageTimestamp, lastMessageTimestamp) ||
                 other.lastMessageTimestamp == lastMessageTimestamp) &&
             (identical(other.deletedAt, deletedAt) ||
@@ -295,6 +313,7 @@ class _$RetrieveChatlistResponseImpl implements _RetrieveChatlistResponse {
       chatroomId,
       senderId,
       recipientId,
+      recipientUsername,
       lastMessageTimestamp,
       deletedAt,
       lastMessage,
@@ -323,6 +342,7 @@ abstract class _RetrieveChatlistResponse implements RetrieveChatlistResponse {
       required final String? chatroomId,
       required final String? senderId,
       required final String? recipientId,
+      required final String? recipientUsername,
       required final String? lastMessageTimestamp,
       required final String? deletedAt,
       required final String? lastMessage,
@@ -341,6 +361,8 @@ abstract class _RetrieveChatlistResponse implements RetrieveChatlistResponse {
   String? get senderId;
   @override
   String? get recipientId;
+  @override
+  String? get recipientUsername;
   @override
   String? get lastMessageTimestamp;
   @override

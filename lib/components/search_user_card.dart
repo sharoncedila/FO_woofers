@@ -25,7 +25,8 @@ class SearchUserCardDetail extends StatelessWidget {
                 context,
                 MaterialPageRoute(
                     //Other User Profile
-                    builder: (context) => const ChatroomPage()),
+                    builder: (context) =>
+                        ChatroomPage(accountId: searchUserDetail.accountId!)),
               );
             },
             child: Row(
@@ -34,29 +35,29 @@ class SearchUserCardDetail extends StatelessWidget {
                 Flexible(
                   child: Row(
                     crossAxisAlignment: CrossAxisAlignment.start,
-
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
                       Padding(
                         padding: const EdgeInsets.only(left: 10.0, top: 12),
                         child: Text(
                           searchUserDetail.username ?? "",
-                          style:
-                              const TextStyle(fontSize: 15, color: Colors.black),
+                          style: const TextStyle(
+                              fontSize: 15, color: Colors.black),
                         ),
                       ),
                       // const SizedBox(
                       //   height: 3,
                       // ),
                       Padding(
-                        padding: const EdgeInsets.only(right:10),
+                        padding: const EdgeInsets.only(right: 10),
                         child: IconButton(
                           icon: const Icon(Icons.chat),
                           onPressed: () {
                             Navigator.push(
                               context,
                               MaterialPageRoute(
-                                  builder: (context) => const ChatroomPage()),
+                                  builder: (context) => ChatroomPage(
+                                      accountId: searchUserDetail.accountId!)),
                             );
                           },
                         ),

@@ -60,6 +60,7 @@ class OwnerData with _$OwnerData {
     required String? phoneNumber,
     required String? description,
     required String? image,
+    required String? provinceName,
   }) = _OwnerData;
 
   factory OwnerData.fromJson(Map<String, dynamic> json) =>

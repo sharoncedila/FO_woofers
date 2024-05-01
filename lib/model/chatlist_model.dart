@@ -10,6 +10,7 @@ class RetrieveChatlistResponse with _$RetrieveChatlistResponse{
     required String? chatroomId,
     required String? senderId,
     required String? recipientId,
+    required String? recipientUsername,
     required String? lastMessageTimestamp,
     required String? deletedAt,
     required String? lastMessage,

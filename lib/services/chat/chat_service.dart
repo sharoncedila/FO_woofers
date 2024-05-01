@@ -46,7 +46,7 @@ class ChatroomService {
   }
 
 
-  Future<OpenChatResponse?> openChatroom(OpenChatRequest request) async {
+  Future<OpenChatResponse> openChatroom(OpenChatRequest request) async {
     try {
       const api = '/chats/open-chat';
       final dio = await DioInstance.getInstance();
@@ -60,8 +60,8 @@ class ChatroomService {
       }
     } catch (error) {
       print(error);
+      throw Exception(error);
     }
-    return null;
   }
 
   Future<OpenChatResponse?> sendMessage(SendChatRequest request) async {

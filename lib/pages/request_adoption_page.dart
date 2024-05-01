@@ -47,15 +47,34 @@ class _RequestAdoptionPageState extends State<RequestAdoptionPage> {
           //     );
           //   },
           // ),
-          IconButton(
-            icon: const Icon(Icons.chat),
-            onPressed: () {
-              Navigator.push(
-                context,
-                MaterialPageRoute(builder: (context) => const ChatroomPage()),
-              );
-            },
-          ),
+          FutureBuilder(
+              future: AdoptionService().retrieveAdoptConfirmation(widget.dogId),
+              builder: (context, snapshot) {
+                if (snapshot.connectionState == ConnectionState.waiting) {
+                  return const Center(child: Text("Retrieving your data..."));
+                }
+                if (snapshot.hasError) {
+                  return const Center(child: Text("Error"));
+                }
+                if (!snapshot.hasData) {
+                  return const Center(
+                      child: Text("no data available for this dog"));
+                }
+                String? ownerAccountId = snapshot.data?.dogData!.image == null
+                    ? ""
+                    : snapshot.data!.dogData!.image;
+                return IconButton(
+                  icon: const Icon(Icons.chat),
+                  onPressed: () {
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                          builder: (context) =>
+                              ChatroomPage(accountId: ownerAccountId!)),
+                    );
+                  },
+                );
+              }),
         ],
       ),
       body: reqAdoptDetail(),
@@ -556,11 +575,10 @@ class _RequestAdoptionPageState extends State<RequestAdoptionPage> {
                               enabled: false,
                               decoration: InputDecoration(
                                 border: const UnderlineInputBorder(),
-                                // labelText: 'Username',
                                 labelText:
-                                    snapshot.data?.ownerData!.fullName == null
+                                    snapshot.data?.ownerData!.provinceName == null
                                         ? ""
-                                        : snapshot.data!.ownerData!.fullName,
+                                        : snapshot.data!.ownerData!.provinceName,
                                 labelStyle: GoogleFonts.newsCycle(
                                   color: Colors.black,
                                 ),
@@ -652,6 +670,10 @@ class _RequestAdoptionPageState extends State<RequestAdoptionPage> {
                                     fontWeight: FontWeight.bold,
                                     fontSize: 18)),
                             onPressed: () async {
+                              String? ownerAccountId =
+                                  snapshot.data?.ownerData!.accountId == null
+                                      ? ""
+                                      : snapshot.data!.ownerData!.accountId;
                               final SendAdoptionNotification send =
                                   SendAdoptionNotification(
                                       dogId:
@@ -682,8 +704,8 @@ class _RequestAdoptionPageState extends State<RequestAdoptionPage> {
                               _adoptionService.sendAdoptNotif(send).then(
                                   (value) => Navigator.of(context)
                                       .pushReplacement(MaterialPageRoute(
-                                          builder: (_) =>
-                                              const ChatroomPage())));
+                                          builder: (_) => ChatroomPage(
+                                              accountId: ownerAccountId!))));
                               // Navigator.push(
                               //   context,
                               //   MaterialPageRoute(
