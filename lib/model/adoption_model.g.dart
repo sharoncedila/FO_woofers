@@ -102,3 +102,23 @@ Map<String, dynamic> _$$OwnerDataImplToJson(_$OwnerDataImpl instance) =>
       'description': instance.description,
       'image': instance.image,
     };
+
+_$SendAdoptionNotificationImpl _$$SendAdoptionNotificationImplFromJson(
+        Map<String, dynamic> json) =>
+    _$SendAdoptionNotificationImpl(
+      dogId: json['dogId'] as String?,
+      dogName: json['dogName'] as String?,
+      breedName: json['breedName'] as String?,
+      ownerId: json['ownerId'] as String?,
+      ownerUsername: json['ownerUsername'] as String?,
+    );
+
+Map<String, dynamic> _$$SendAdoptionNotificationImplToJson(
+        _$SendAdoptionNotificationImpl instance) =>
+    <String, dynamic>{
+      'dogId': instance.dogId,
+      'dogName': instance.dogName,
+      'breedName': instance.breedName,
+      'ownerId': instance.ownerId,
+      'ownerUsername': instance.ownerUsername,
+    };

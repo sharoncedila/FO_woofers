@@ -1,3 +1,5 @@
+import 'dart:convert';
+
 import 'package:woofers/classes/dio_instance.dart';
 import 'package:woofers/model/adoption_model.dart';
 import 'package:woofers/model/error_schema_model.dart';
@@ -40,5 +42,26 @@ class AdoptionService {
       print(error);
     }
     return null;
+  }
+
+  Future<SendAdoptionNotification?> sendAdoptNotif(
+      SendAdoptionNotification adopt) async{
+    try {
+      const api = '/adoption/send-notification';
+      final dio = await DioInstance.getInstance();
+
+      var response = await dio.post(api, data: jsonEncode(adopt.toJson()));
+      final errorSchema = ErrorSchema.fromJson(response.data['errorSchema']);
+  
+      if (errorSchema.errorCode != 'WOF-000') {
+        return SendAdoptionNotification.fromJson(response.data['errorSchema']);
+      } else {
+        return SendAdoptionNotification.fromJson(response.data['outputSchema']);
+      }
+    } catch (error) {
+      print(error);
+    }
+    return null;
+
   }
 }

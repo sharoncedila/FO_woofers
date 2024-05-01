@@ -182,12 +182,16 @@ class _EditDogPageState extends State<EditDogPage> {
                             SizedBox(
                                 height: 25,
                                 child: TextFormField(
-                                    controller: nameController,
-                                    decoration: InputDecoration(
-                                        border: const UnderlineInputBorder(),
-                                        labelStyle: GoogleFonts.newsCycle(
-                                          color: Colors.black,
-                                        )))),
+                                  controller: nameController,
+                                  decoration: InputDecoration(
+                                      border: const UnderlineInputBorder(),
+                                      labelStyle: GoogleFonts.newsCycle(
+                                        color: Colors.black,
+                                      )),
+                                  onFieldSubmitted: (String? newValue) {
+                                    nameController.text = newValue!;
+                                  },
+                                )),
                           ]))
                     ],
                   ),
@@ -562,15 +566,17 @@ class _EditDogPageState extends State<EditDogPage> {
                             SizedBox(
                               height: 25,
                               child: TextFormField(
-                                controller: vaccineController,
-                                decoration: InputDecoration(
-                                  border: const UnderlineInputBorder(),
-                                  // labelText: 'Username',
-                                  labelStyle: GoogleFonts.newsCycle(
-                                    color: Colors.black,
+                                  controller: vaccineController,
+                                  decoration: InputDecoration(
+                                    border: const UnderlineInputBorder(),
+                                    // labelText: 'Username',
+                                    labelStyle: GoogleFonts.newsCycle(
+                                      color: Colors.black,
+                                    ),
                                   ),
-                                ),
-                              ),
+                                  onFieldSubmitted: (String? newValue) {
+                                    vaccineController.text = newValue!;
+                                  }),
                             ),
                           ]))
                     ],
@@ -619,7 +625,9 @@ class _EditDogPageState extends State<EditDogPage> {
                                     color: Colors.black,
                                   ),
                                 ),
-                                //maxLines: null,
+                                onFieldSubmitted: (String? newValue) {
+                                    descriptionController.text = newValue!;
+                                  }
                               ),
                             ),
                           ])),

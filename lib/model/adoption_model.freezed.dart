@@ -1128,3 +1128,232 @@ abstract class _OwnerData implements OwnerData {
   _$$OwnerDataImplCopyWith<_$OwnerDataImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
+
+SendAdoptionNotification _$SendAdoptionNotificationFromJson(
+    Map<String, dynamic> json) {
+  return _SendAdoptionNotification.fromJson(json);
+}
+
+/// @nodoc
+mixin _$SendAdoptionNotification {
+  String? get dogId => throw _privateConstructorUsedError;
+  String? get dogName => throw _privateConstructorUsedError;
+  String? get breedName => throw _privateConstructorUsedError;
+  String? get ownerId => throw _privateConstructorUsedError;
+  String? get ownerUsername => throw _privateConstructorUsedError;
+
+  Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
+  @JsonKey(ignore: true)
+  $SendAdoptionNotificationCopyWith<SendAdoptionNotification> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class $SendAdoptionNotificationCopyWith<$Res> {
+  factory $SendAdoptionNotificationCopyWith(SendAdoptionNotification value,
+          $Res Function(SendAdoptionNotification) then) =
+      _$SendAdoptionNotificationCopyWithImpl<$Res, SendAdoptionNotification>;
+  @useResult
+  $Res call(
+      {String? dogId,
+      String? dogName,
+      String? breedName,
+      String? ownerId,
+      String? ownerUsername});
+}
+
+/// @nodoc
+class _$SendAdoptionNotificationCopyWithImpl<$Res,
+        $Val extends SendAdoptionNotification>
+    implements $SendAdoptionNotificationCopyWith<$Res> {
+  _$SendAdoptionNotificationCopyWithImpl(this._value, this._then);
+
+  // ignore: unused_field
+  final $Val _value;
+  // ignore: unused_field
+  final $Res Function($Val) _then;
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? dogId = freezed,
+    Object? dogName = freezed,
+    Object? breedName = freezed,
+    Object? ownerId = freezed,
+    Object? ownerUsername = freezed,
+  }) {
+    return _then(_value.copyWith(
+      dogId: freezed == dogId
+          ? _value.dogId
+          : dogId // ignore: cast_nullable_to_non_nullable
+              as String?,
+      dogName: freezed == dogName
+          ? _value.dogName
+          : dogName // ignore: cast_nullable_to_non_nullable
+              as String?,
+      breedName: freezed == breedName
+          ? _value.breedName
+          : breedName // ignore: cast_nullable_to_non_nullable
+              as String?,
+      ownerId: freezed == ownerId
+          ? _value.ownerId
+          : ownerId // ignore: cast_nullable_to_non_nullable
+              as String?,
+      ownerUsername: freezed == ownerUsername
+          ? _value.ownerUsername
+          : ownerUsername // ignore: cast_nullable_to_non_nullable
+              as String?,
+    ) as $Val);
+  }
+}
+
+/// @nodoc
+abstract class _$$SendAdoptionNotificationImplCopyWith<$Res>
+    implements $SendAdoptionNotificationCopyWith<$Res> {
+  factory _$$SendAdoptionNotificationImplCopyWith(
+          _$SendAdoptionNotificationImpl value,
+          $Res Function(_$SendAdoptionNotificationImpl) then) =
+      __$$SendAdoptionNotificationImplCopyWithImpl<$Res>;
+  @override
+  @useResult
+  $Res call(
+      {String? dogId,
+      String? dogName,
+      String? breedName,
+      String? ownerId,
+      String? ownerUsername});
+}
+
+/// @nodoc
+class __$$SendAdoptionNotificationImplCopyWithImpl<$Res>
+    extends _$SendAdoptionNotificationCopyWithImpl<$Res,
+        _$SendAdoptionNotificationImpl>
+    implements _$$SendAdoptionNotificationImplCopyWith<$Res> {
+  __$$SendAdoptionNotificationImplCopyWithImpl(
+      _$SendAdoptionNotificationImpl _value,
+      $Res Function(_$SendAdoptionNotificationImpl) _then)
+      : super(_value, _then);
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? dogId = freezed,
+    Object? dogName = freezed,
+    Object? breedName = freezed,
+    Object? ownerId = freezed,
+    Object? ownerUsername = freezed,
+  }) {
+    return _then(_$SendAdoptionNotificationImpl(
+      dogId: freezed == dogId
+          ? _value.dogId
+          : dogId // ignore: cast_nullable_to_non_nullable
+              as String?,
+      dogName: freezed == dogName
+          ? _value.dogName
+          : dogName // ignore: cast_nullable_to_non_nullable
+              as String?,
+      breedName: freezed == breedName
+          ? _value.breedName
+          : breedName // ignore: cast_nullable_to_non_nullable
+              as String?,
+      ownerId: freezed == ownerId
+          ? _value.ownerId
+          : ownerId // ignore: cast_nullable_to_non_nullable
+              as String?,
+      ownerUsername: freezed == ownerUsername
+          ? _value.ownerUsername
+          : ownerUsername // ignore: cast_nullable_to_non_nullable
+              as String?,
+    ));
+  }
+}
+
+/// @nodoc
+@JsonSerializable()
+class _$SendAdoptionNotificationImpl implements _SendAdoptionNotification {
+  _$SendAdoptionNotificationImpl(
+      {required this.dogId,
+      required this.dogName,
+      required this.breedName,
+      required this.ownerId,
+      required this.ownerUsername});
+
+  factory _$SendAdoptionNotificationImpl.fromJson(Map<String, dynamic> json) =>
+      _$$SendAdoptionNotificationImplFromJson(json);
+
+  @override
+  final String? dogId;
+  @override
+  final String? dogName;
+  @override
+  final String? breedName;
+  @override
+  final String? ownerId;
+  @override
+  final String? ownerUsername;
+
+  @override
+  String toString() {
+    return 'SendAdoptionNotification(dogId: $dogId, dogName: $dogName, breedName: $breedName, ownerId: $ownerId, ownerUsername: $ownerUsername)';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$SendAdoptionNotificationImpl &&
+            (identical(other.dogId, dogId) || other.dogId == dogId) &&
+            (identical(other.dogName, dogName) || other.dogName == dogName) &&
+            (identical(other.breedName, breedName) ||
+                other.breedName == breedName) &&
+            (identical(other.ownerId, ownerId) || other.ownerId == ownerId) &&
+            (identical(other.ownerUsername, ownerUsername) ||
+                other.ownerUsername == ownerUsername));
+  }
+
+  @JsonKey(ignore: true)
+  @override
+  int get hashCode => Object.hash(
+      runtimeType, dogId, dogName, breedName, ownerId, ownerUsername);
+
+  @JsonKey(ignore: true)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$SendAdoptionNotificationImplCopyWith<_$SendAdoptionNotificationImpl>
+      get copyWith => __$$SendAdoptionNotificationImplCopyWithImpl<
+          _$SendAdoptionNotificationImpl>(this, _$identity);
+
+  @override
+  Map<String, dynamic> toJson() {
+    return _$$SendAdoptionNotificationImplToJson(
+      this,
+    );
+  }
+}
+
+abstract class _SendAdoptionNotification implements SendAdoptionNotification {
+  factory _SendAdoptionNotification(
+      {required final String? dogId,
+      required final String? dogName,
+      required final String? breedName,
+      required final String? ownerId,
+      required final String? ownerUsername}) = _$SendAdoptionNotificationImpl;
+
+  factory _SendAdoptionNotification.fromJson(Map<String, dynamic> json) =
+      _$SendAdoptionNotificationImpl.fromJson;
+
+  @override
+  String? get dogId;
+  @override
+  String? get dogName;
+  @override
+  String? get breedName;
+  @override
+  String? get ownerId;
+  @override
+  String? get ownerUsername;
+  @override
+  @JsonKey(ignore: true)
+  _$$SendAdoptionNotificationImplCopyWith<_$SendAdoptionNotificationImpl>
+      get copyWith => throw _privateConstructorUsedError;
+}

@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:woofers/components/image_network.dart';
 import 'package:woofers/model/adoption_model.dart';
 import 'package:woofers/pages/feeds_page.dart';
+import 'package:woofers/pages/request_adoption_page.dart';
 
 class DogCardDetail extends StatelessWidget {
   final AdoptionDetail adoptionDetail;
@@ -25,9 +26,9 @@ class DogCardDetail extends StatelessWidget {
                 Navigator.push(
                     context,
                     MaterialPageRoute(
-                      //builder: (context) => RequestAdoptionPage(dogId: adoptionDetail.dogId)),
-                      builder: (context) => const FeedsPage(),
-                    ));
+                      builder: (context) => RequestAdoptionPage(dogId: adoptionDetail.dogId)),
+                      //builder: (context) => const FeedsPage(),
+                    );
               },
               child: SizedBox(
                 width: MediaQuery.of(context).size.width / 2.3,
