@@ -119,7 +119,7 @@ class _ChatListPageState extends State<ChatListPage> {
               
               return Wrap(
                 children: 
-                chatrooms = chatroomResponse.chatlistList
+                chatrooms = chatroomResponse
                     .map((e) => ChatCardDetail(chatlistDetail: e))
                     .toList(),
               );

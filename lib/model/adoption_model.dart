@@ -67,23 +67,17 @@ class OwnerData with _$OwnerData {
 }
 
 @freezed
-<<<<<<< HEAD
-class SendAdoptNotifRequest with _$SendAdoptNotifRequest{
-  factory SendAdoptNotifRequest({
-=======
 class SendAdoptionNotification with _$SendAdoptionNotification {
   factory SendAdoptionNotification({
->>>>>>> UAT
     required String? dogId,
     required String? dogName,
     required String? breedName,
     required String? ownerId,
     required String? ownerUsername,
-<<<<<<< HEAD
-  }) = _SendAdoptNotifRequest;
+    }) = _SendAdoptionNotification;
 
-  factory SendAdoptNotifRequest.fromJson(Map<String, dynamic> json) =>
-      _$SendAdoptNotifRequestFromJson(json);
+  factory SendAdoptionNotification.fromJson(Map<String, dynamic> json) =>
+      _$SendAdoptionNotificationFromJson(json);
 }
 
 @freezed
@@ -95,10 +89,4 @@ class ApproveRejectAdoptionRequest with _$ApproveRejectAdoptionRequest{
 
   factory ApproveRejectAdoptionRequest.fromJson(Map<String, dynamic> json) =>
       _$ApproveRejectAdoptionRequestFromJson(json);
-=======
-  }) = _SendAdoptionNotification;
-
-  factory SendAdoptionNotification.fromJson(Map<String, dynamic> json) =>
-      _$SendAdoptionNotificationFromJson(json);
->>>>>>> UAT
 }

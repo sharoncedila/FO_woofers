@@ -171,3 +171,19 @@ Map<String, dynamic> _$$ResponseDogCardImplToJson(
       'image': instance.image,
       'isOpenAdopt': instance.isOpenAdopt,
     };
+
+_$DeleteDogResponseImpl _$$DeleteDogResponseImplFromJson(
+        Map<String, dynamic> json) =>
+    _$DeleteDogResponseImpl(
+      status: json['status'] as String?,
+      errorCode: json['errorCode'] as String?,
+      errorMessage: json['errorMessage'] as String?,
+    );
+
+Map<String, dynamic> _$$DeleteDogResponseImplToJson(
+        _$DeleteDogResponseImpl instance) =>
+    <String, dynamic>{
+      'status': instance.status,
+      'errorCode': instance.errorCode,
+      'errorMessage': instance.errorMessage,
+    };

@@ -133,3 +133,29 @@ Map<String, dynamic> _$$LikeFeedsResponseImplToJson(
       'errorCode': instance.errorCode,
       'errorMessage': instance.errorMessage,
     };
+
+_$LeaveCommentResponseImpl _$$LeaveCommentResponseImplFromJson(
+        Map<String, dynamic> json) =>
+    _$LeaveCommentResponseImpl(
+      commentId: json['commentId'] as String?,
+      feedsId: json['feedsId'] as String?,
+      accountId: json['accountId'] as String?,
+      username: json['username'] as String?,
+      content: json['content'] as String?,
+      commentDate: json['commentDate'] as String?,
+      errorCode: json['errorCode'] as String?,
+      errorMessage: json['errorMessage'] as String?,
+    );
+
+Map<String, dynamic> _$$LeaveCommentResponseImplToJson(
+        _$LeaveCommentResponseImpl instance) =>
+    <String, dynamic>{
+      'commentId': instance.commentId,
+      'feedsId': instance.feedsId,
+      'accountId': instance.accountId,
+      'username': instance.username,
+      'content': instance.content,
+      'commentDate': instance.commentDate,
+      'errorCode': instance.errorCode,
+      'errorMessage': instance.errorMessage,
+    };

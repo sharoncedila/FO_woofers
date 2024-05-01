@@ -62,29 +62,6 @@ class FeedsService{
     }
   }
 
-<<<<<<< HEAD
-  Future<List<OpenCommentsResponse>?> openCommentSection(String feedsId) async {
-=======
-  Future<List<LeaveCommentResponse>?> leaveCommentSection(String feedsId) async {
->>>>>>> UAT
-    try {
-      String api = '/feeds/open-comments/feeds-id/$feedsId';
-      final dio = await DioInstance.getInstance();
-
-      var response = await dio.get(api);
-      final errorSchema = ErrorSchema.fromJson(response.data['errorSchema']);
-      if (errorSchema.errorCode != 'WOF-000') {
-        return [OpenCommentsResponse.fromJson(response.data['errorSchema'])];
-      } else {
-        return (response.data['outputSchema']['commentsList'] as List)
-            .map((e) => OpenCommentsResponse.fromJson(e))
-            .toList();
-      }
-    } catch (error) {
-      throw Exception(error);
-    }
-  }
-
   Future<OpenCommentsResponse> leaveComment(LeaveCommentRequest request) async{
     try {
       String api = '/feeds/comment';
