@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:woofers/components/bottom_menu.dart';
+import 'package:woofers/components/comment_card.dart';
 import 'package:woofers/pages/add_dog_page.dart';
 import 'package:woofers/pages/login_page.dart';
 

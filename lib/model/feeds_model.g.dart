@@ -20,6 +20,30 @@ Map<String, dynamic> _$$LeaveCommentRequestImplToJson(
       'content': instance.content,
     };
 
+_$OpenCommentsResponseImpl _$$OpenCommentsResponseImplFromJson(
+        Map<String, dynamic> json) =>
+    _$OpenCommentsResponseImpl(
+      commentId: json['commentId'] as String?,
+      feedsId: json['feedsId'] as String?,
+      accountId: json['accountId'] as String?,
+      content: json['content'] as String?,
+      commentDate: json['commentDate'] as String?,
+      errorCode: json['errorCode'] as String?,
+      errorMessage: json['errorMessage'] as String?,
+    );
+
+Map<String, dynamic> _$$OpenCommentsResponseImplToJson(
+        _$OpenCommentsResponseImpl instance) =>
+    <String, dynamic>{
+      'commentId': instance.commentId,
+      'feedsId': instance.feedsId,
+      'accountId': instance.accountId,
+      'content': instance.content,
+      'commentDate': instance.commentDate,
+      'errorCode': instance.errorCode,
+      'errorMessage': instance.errorMessage,
+    };
+
 _$PostFeedsRequestImpl _$$PostFeedsRequestImplFromJson(
         Map<String, dynamic> json) =>
     _$PostFeedsRequestImpl(

@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:woofers/pages/dog_list_page.dart';
 import 'package:woofers/pages/other_profile_page.dart';
+import 'package:woofers/services/account/user_profile_services.dart';
+import 'package:woofers/services/dog/dog_services.dart';
 
 class OtherProfilePageTemplate extends StatelessWidget {
   final String accountId;
@@ -24,7 +26,7 @@ class OtherProfilePageTemplate extends StatelessWidget {
                   width: 40,
                   height: 40,
                 ),
-                text: "Me",
+                text: 'User'
               ),
               Tab(
                 icon: Image(

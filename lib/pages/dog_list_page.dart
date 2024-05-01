@@ -67,11 +67,29 @@ class _DogListPageState extends State<DogListPage> {
                       }
 
                       final dogList = snapshot.data!;
-                      return Wrap(
-                        children: dogList
-                            .map((e) => MyDogCard(dogProfile: e))
-                            .toList(),
+                      return SingleChildScrollView(
+                        
+                        child: Column(
+                          // padding: const EdgeInsets.symmetric(horizontal: 5, vertical: 5),
+                          children: [
+                            IconButton(
+                              icon: Icon(Icons.add),
+                              onPressed: () {
+                                Navigator.push(
+                                  context,
+                                  MaterialPageRoute(builder: (context) => const AddDogPage()),
+                                );
+                              },
+                            ),
+                            Wrap(
+                              children: dogList
+                                  .map((e) => MyDogCard(dogProfile: e))
+                                  .toList(),
+                            ),
+                          ] 
+                        ),
                       );
+                      
                     }));
           }),
     );

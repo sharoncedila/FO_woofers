@@ -49,7 +49,7 @@ class OtherProfilePage extends StatelessWidget {
                         // user profile picture
                         const SizedBox(height: 15),
                         FutureBuilder(
-                            future: RetrieveAccountService().retrieveUserData(),
+                            future: RetrieveAccountService().viewOtherUserProfile(accountId),
                             builder: (context, snapshot) {
                               if (snapshot.connectionState ==
                                   ConnectionState.waiting) {
@@ -351,38 +351,6 @@ class OtherProfilePage extends StatelessWidget {
                   );
                 }),
           ),
-          const SizedBox(height: 25),
-          Padding(
-              padding: const EdgeInsets.symmetric(vertical: 15),
-              child: Center(
-                child:
-                    Row(mainAxisAlignment: MainAxisAlignment.center, children: [
-                  ElevatedButton(
-                    style: ButtonStyle(
-                      backgroundColor:
-                          MaterialStateProperty.resolveWith<Color?>(
-                        (Set<MaterialState> states) {
-                          if (states.contains(MaterialState.pressed)) {
-                            return Theme.of(context)
-                                .colorScheme
-                                .primary
-                                .withOpacity(0.5);
-                          }
-                          return null; // Use the component's default.
-                        },
-                      ),
-                    ),
-                    child: const Text('Edit'),
-                    onPressed: () {
-                      Navigator.push(
-                        context,
-                        MaterialPageRoute(
-                            builder: (context) => const EditMyProfile()),
-                      );
-                    },
-                  ),
-                ]),
-              )),
         ],
       ),
     );
