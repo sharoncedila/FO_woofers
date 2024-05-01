@@ -62,7 +62,25 @@ class ChatroomService {
     return null;
   }
 
-  Future<OpenChatResponse?> sendMessage(SendChatRequest request) async {
+
+  Future<OpenChatResponse?> sendMessage (SendChatRequest request) async{
     return null;
+  }
+
+  Future<SearchChatResponse?> searchChat(String username) async{
+    try {
+      String api = '/chats/search/keyword/$username';
+      final dio = await DioInstance.getInstance();
+
+      var response = await dio.get(api);
+      final errorSchema = ErrorSchema.fromJson(response.data!['errorSchema']);
+      if (errorSchema.errorCode != 'WOF-000') {
+        return SearchChatResponse.fromJson(response.data['errorSchema']);
+      } else {
+        return SearchChatResponse.fromJson(response.data['outputSchema']);
+      }
+    } catch (error) {
+      print(error);
+    }
   }
 }

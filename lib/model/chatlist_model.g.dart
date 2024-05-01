@@ -50,3 +50,35 @@ Map<String, dynamic> _$$RetrieveAllChatlistResponseImplToJson(
     <String, dynamic>{
       'chatlistList': instance.chatlistList,
     };
+
+_$SearchChatResponseImpl _$$SearchChatResponseImplFromJson(
+        Map<String, dynamic> json) =>
+    _$SearchChatResponseImpl(
+      accountList: json['accountList'] == null
+          ? null
+          : AccountList.fromJson(json['accountList'] as Map<String, dynamic>),
+      errorCode: json['errorCode'] as String?,
+      errorMessage: json['errorMessage'] as String?,
+    );
+
+Map<String, dynamic> _$$SearchChatResponseImplToJson(
+        _$SearchChatResponseImpl instance) =>
+    <String, dynamic>{
+      'accountList': instance.accountList,
+      'errorCode': instance.errorCode,
+      'errorMessage': instance.errorMessage,
+    };
+
+_$AccountListImpl _$$AccountListImplFromJson(Map<String, dynamic> json) =>
+    _$AccountListImpl(
+      accountId: json['accountId'] as String?,
+      username: json['username'] as String?,
+      fullName: json['fullName'] as String?,
+    );
+
+Map<String, dynamic> _$$AccountListImplToJson(_$AccountListImpl instance) =>
+    <String, dynamic>{
+      'accountId': instance.accountId,
+      'username': instance.username,
+      'fullName': instance.fullName,
+    };
