@@ -37,3 +37,18 @@ Map<String, dynamic> _$$RequestLoginModelImplToJson(
       'email': instance.email,
       'password': instance.password,
     };
+
+_$LogoutResponseImpl _$$LogoutResponseImplFromJson(Map<String, dynamic> json) =>
+    _$LogoutResponseImpl(
+      status: json['status'] as String?,
+      errorCode: json['errorCode'] as String?,
+      errorMessage: json['errorMessage'] as String?,
+    );
+
+Map<String, dynamic> _$$LogoutResponseImplToJson(
+        _$LogoutResponseImpl instance) =>
+    <String, dynamic>{
+      'status': instance.status,
+      'errorCode': instance.errorCode,
+      'errorMessage': instance.errorMessage,
+    };

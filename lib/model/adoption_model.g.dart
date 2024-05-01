@@ -122,3 +122,17 @@ Map<String, dynamic> _$$SendAdoptionNotificationImplToJson(
       'ownerId': instance.ownerId,
       'ownerUsername': instance.ownerUsername,
     };
+
+_$ApproveRejectAdoptionRequestImpl _$$ApproveRejectAdoptionRequestImplFromJson(
+        Map<String, dynamic> json) =>
+    _$ApproveRejectAdoptionRequestImpl(
+      notificationId: json['notificationId'] as String?,
+      status: json['status'] as String?,
+    );
+
+Map<String, dynamic> _$$ApproveRejectAdoptionRequestImplToJson(
+        _$ApproveRejectAdoptionRequestImpl instance) =>
+    <String, dynamic>{
+      'notificationId': instance.notificationId,
+      'status': instance.status,
+    };

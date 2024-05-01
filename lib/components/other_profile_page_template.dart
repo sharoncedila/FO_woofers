@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:woofers/pages/dog_list_page.dart';
+import 'package:woofers/pages/other_dog_list_page.dart';
 import 'package:woofers/pages/other_profile_page.dart';
 import 'package:woofers/services/account/user_profile_services.dart';
 import 'package:woofers/services/dog/dog_services.dart';
@@ -42,7 +43,7 @@ class OtherProfilePageTemplate extends StatelessWidget {
         body: TabBarView(
           children: [
             OtherProfilePage(accountId: accountId),
-            const DogListPage(),
+            OtherDogListPage(accountId: accountId),
           ],
         ),
       ),

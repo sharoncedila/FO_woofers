@@ -175,6 +175,7 @@ OpenCommentsResponse _$OpenCommentsResponseFromJson(Map<String, dynamic> json) {
 
 /// @nodoc
 mixin _$OpenCommentsResponse {
+  String? get username => throw _privateConstructorUsedError;
   String? get commentId => throw _privateConstructorUsedError;
   String? get feedsId => throw _privateConstructorUsedError;
   String? get accountId => throw _privateConstructorUsedError;
@@ -182,6 +183,7 @@ mixin _$OpenCommentsResponse {
   String? get commentDate => throw _privateConstructorUsedError;
   String? get errorCode => throw _privateConstructorUsedError;
   String? get errorMessage => throw _privateConstructorUsedError;
+  String? get profilePicture => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -196,13 +198,15 @@ abstract class $OpenCommentsResponseCopyWith<$Res> {
       _$OpenCommentsResponseCopyWithImpl<$Res, OpenCommentsResponse>;
   @useResult
   $Res call(
-      {String? commentId,
+      {String? username,
+      String? commentId,
       String? feedsId,
       String? accountId,
       String? content,
       String? commentDate,
       String? errorCode,
-      String? errorMessage});
+      String? errorMessage,
+      String? profilePicture});
 }
 
 /// @nodoc
@@ -219,6 +223,7 @@ class _$OpenCommentsResponseCopyWithImpl<$Res,
   @pragma('vm:prefer-inline')
   @override
   $Res call({
+    Object? username = freezed,
     Object? commentId = freezed,
     Object? feedsId = freezed,
     Object? accountId = freezed,
@@ -226,8 +231,13 @@ class _$OpenCommentsResponseCopyWithImpl<$Res,
     Object? commentDate = freezed,
     Object? errorCode = freezed,
     Object? errorMessage = freezed,
+    Object? profilePicture = freezed,
   }) {
     return _then(_value.copyWith(
+      username: freezed == username
+          ? _value.username
+          : username // ignore: cast_nullable_to_non_nullable
+              as String?,
       commentId: freezed == commentId
           ? _value.commentId
           : commentId // ignore: cast_nullable_to_non_nullable
@@ -255,6 +265,10 @@ class _$OpenCommentsResponseCopyWithImpl<$Res,
       errorMessage: freezed == errorMessage
           ? _value.errorMessage
           : errorMessage // ignore: cast_nullable_to_non_nullable
+              as String?,
+      profilePicture: freezed == profilePicture
+          ? _value.profilePicture
+          : profilePicture // ignore: cast_nullable_to_non_nullable
               as String?,
     ) as $Val);
   }
@@ -269,13 +283,15 @@ abstract class _$$OpenCommentsResponseImplCopyWith<$Res>
   @override
   @useResult
   $Res call(
-      {String? commentId,
+      {String? username,
+      String? commentId,
       String? feedsId,
       String? accountId,
       String? content,
       String? commentDate,
       String? errorCode,
-      String? errorMessage});
+      String? errorMessage,
+      String? profilePicture});
 }
 
 /// @nodoc
@@ -289,6 +305,7 @@ class __$$OpenCommentsResponseImplCopyWithImpl<$Res>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
+    Object? username = freezed,
     Object? commentId = freezed,
     Object? feedsId = freezed,
     Object? accountId = freezed,
@@ -296,8 +313,13 @@ class __$$OpenCommentsResponseImplCopyWithImpl<$Res>
     Object? commentDate = freezed,
     Object? errorCode = freezed,
     Object? errorMessage = freezed,
+    Object? profilePicture = freezed,
   }) {
     return _then(_$OpenCommentsResponseImpl(
+      username: freezed == username
+          ? _value.username
+          : username // ignore: cast_nullable_to_non_nullable
+              as String?,
       commentId: freezed == commentId
           ? _value.commentId
           : commentId // ignore: cast_nullable_to_non_nullable
@@ -326,6 +348,10 @@ class __$$OpenCommentsResponseImplCopyWithImpl<$Res>
           ? _value.errorMessage
           : errorMessage // ignore: cast_nullable_to_non_nullable
               as String?,
+      profilePicture: freezed == profilePicture
+          ? _value.profilePicture
+          : profilePicture // ignore: cast_nullable_to_non_nullable
+              as String?,
     ));
   }
 }
@@ -334,17 +360,21 @@ class __$$OpenCommentsResponseImplCopyWithImpl<$Res>
 @JsonSerializable()
 class _$OpenCommentsResponseImpl implements _OpenCommentsResponse {
   _$OpenCommentsResponseImpl(
-      {required this.commentId,
+      {required this.username,
+      required this.commentId,
       required this.feedsId,
       required this.accountId,
       required this.content,
       required this.commentDate,
       required this.errorCode,
-      required this.errorMessage});
+      required this.errorMessage,
+      required this.profilePicture});
 
   factory _$OpenCommentsResponseImpl.fromJson(Map<String, dynamic> json) =>
       _$$OpenCommentsResponseImplFromJson(json);
 
+  @override
+  final String? username;
   @override
   final String? commentId;
   @override
@@ -359,10 +389,12 @@ class _$OpenCommentsResponseImpl implements _OpenCommentsResponse {
   final String? errorCode;
   @override
   final String? errorMessage;
+  @override
+  final String? profilePicture;
 
   @override
   String toString() {
-    return 'OpenCommentsResponse(commentId: $commentId, feedsId: $feedsId, accountId: $accountId, content: $content, commentDate: $commentDate, errorCode: $errorCode, errorMessage: $errorMessage)';
+    return 'OpenCommentsResponse(username: $username, commentId: $commentId, feedsId: $feedsId, accountId: $accountId, content: $content, commentDate: $commentDate, errorCode: $errorCode, errorMessage: $errorMessage, profilePicture: $profilePicture)';
   }
 
   @override
@@ -370,6 +402,8 @@ class _$OpenCommentsResponseImpl implements _OpenCommentsResponse {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$OpenCommentsResponseImpl &&
+            (identical(other.username, username) ||
+                other.username == username) &&
             (identical(other.commentId, commentId) ||
                 other.commentId == commentId) &&
             (identical(other.feedsId, feedsId) || other.feedsId == feedsId) &&
@@ -381,13 +415,15 @@ class _$OpenCommentsResponseImpl implements _OpenCommentsResponse {
             (identical(other.errorCode, errorCode) ||
                 other.errorCode == errorCode) &&
             (identical(other.errorMessage, errorMessage) ||
-                other.errorMessage == errorMessage));
+                other.errorMessage == errorMessage) &&
+            (identical(other.profilePicture, profilePicture) ||
+                other.profilePicture == profilePicture));
   }
 
   @JsonKey(ignore: true)
   @override
-  int get hashCode => Object.hash(runtimeType, commentId, feedsId, accountId,
-      content, commentDate, errorCode, errorMessage);
+  int get hashCode => Object.hash(runtimeType, username, commentId, feedsId,
+      accountId, content, commentDate, errorCode, errorMessage, profilePicture);
 
   @JsonKey(ignore: true)
   @override
@@ -407,17 +443,21 @@ class _$OpenCommentsResponseImpl implements _OpenCommentsResponse {
 
 abstract class _OpenCommentsResponse implements OpenCommentsResponse {
   factory _OpenCommentsResponse(
-      {required final String? commentId,
+      {required final String? username,
+      required final String? commentId,
       required final String? feedsId,
       required final String? accountId,
       required final String? content,
       required final String? commentDate,
       required final String? errorCode,
-      required final String? errorMessage}) = _$OpenCommentsResponseImpl;
+      required final String? errorMessage,
+      required final String? profilePicture}) = _$OpenCommentsResponseImpl;
 
   factory _OpenCommentsResponse.fromJson(Map<String, dynamic> json) =
       _$OpenCommentsResponseImpl.fromJson;
 
+  @override
+  String? get username;
   @override
   String? get commentId;
   @override
@@ -432,6 +472,8 @@ abstract class _OpenCommentsResponse implements OpenCommentsResponse {
   String? get errorCode;
   @override
   String? get errorMessage;
+  @override
+  String? get profilePicture;
   @override
   @JsonKey(ignore: true)
   _$$OpenCommentsResponseImplCopyWith<_$OpenCommentsResponseImpl>
@@ -1486,5 +1528,182 @@ abstract class _PostFeedsResponse implements PostFeedsResponse {
   @override
   @JsonKey(ignore: true)
   _$$PostFeedsResponseImplCopyWith<_$PostFeedsResponseImpl> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+LikeFeedsResponse _$LikeFeedsResponseFromJson(Map<String, dynamic> json) {
+  return _LikeFeedsResponse.fromJson(json);
+}
+
+/// @nodoc
+mixin _$LikeFeedsResponse {
+  String? get status => throw _privateConstructorUsedError;
+  String? get errorCode => throw _privateConstructorUsedError;
+  String? get errorMessage => throw _privateConstructorUsedError;
+
+  Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
+  @JsonKey(ignore: true)
+  $LikeFeedsResponseCopyWith<LikeFeedsResponse> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class $LikeFeedsResponseCopyWith<$Res> {
+  factory $LikeFeedsResponseCopyWith(
+          LikeFeedsResponse value, $Res Function(LikeFeedsResponse) then) =
+      _$LikeFeedsResponseCopyWithImpl<$Res, LikeFeedsResponse>;
+  @useResult
+  $Res call({String? status, String? errorCode, String? errorMessage});
+}
+
+/// @nodoc
+class _$LikeFeedsResponseCopyWithImpl<$Res, $Val extends LikeFeedsResponse>
+    implements $LikeFeedsResponseCopyWith<$Res> {
+  _$LikeFeedsResponseCopyWithImpl(this._value, this._then);
+
+  // ignore: unused_field
+  final $Val _value;
+  // ignore: unused_field
+  final $Res Function($Val) _then;
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? status = freezed,
+    Object? errorCode = freezed,
+    Object? errorMessage = freezed,
+  }) {
+    return _then(_value.copyWith(
+      status: freezed == status
+          ? _value.status
+          : status // ignore: cast_nullable_to_non_nullable
+              as String?,
+      errorCode: freezed == errorCode
+          ? _value.errorCode
+          : errorCode // ignore: cast_nullable_to_non_nullable
+              as String?,
+      errorMessage: freezed == errorMessage
+          ? _value.errorMessage
+          : errorMessage // ignore: cast_nullable_to_non_nullable
+              as String?,
+    ) as $Val);
+  }
+}
+
+/// @nodoc
+abstract class _$$LikeFeedsResponseImplCopyWith<$Res>
+    implements $LikeFeedsResponseCopyWith<$Res> {
+  factory _$$LikeFeedsResponseImplCopyWith(_$LikeFeedsResponseImpl value,
+          $Res Function(_$LikeFeedsResponseImpl) then) =
+      __$$LikeFeedsResponseImplCopyWithImpl<$Res>;
+  @override
+  @useResult
+  $Res call({String? status, String? errorCode, String? errorMessage});
+}
+
+/// @nodoc
+class __$$LikeFeedsResponseImplCopyWithImpl<$Res>
+    extends _$LikeFeedsResponseCopyWithImpl<$Res, _$LikeFeedsResponseImpl>
+    implements _$$LikeFeedsResponseImplCopyWith<$Res> {
+  __$$LikeFeedsResponseImplCopyWithImpl(_$LikeFeedsResponseImpl _value,
+      $Res Function(_$LikeFeedsResponseImpl) _then)
+      : super(_value, _then);
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? status = freezed,
+    Object? errorCode = freezed,
+    Object? errorMessage = freezed,
+  }) {
+    return _then(_$LikeFeedsResponseImpl(
+      status: freezed == status
+          ? _value.status
+          : status // ignore: cast_nullable_to_non_nullable
+              as String?,
+      errorCode: freezed == errorCode
+          ? _value.errorCode
+          : errorCode // ignore: cast_nullable_to_non_nullable
+              as String?,
+      errorMessage: freezed == errorMessage
+          ? _value.errorMessage
+          : errorMessage // ignore: cast_nullable_to_non_nullable
+              as String?,
+    ));
+  }
+}
+
+/// @nodoc
+@JsonSerializable()
+class _$LikeFeedsResponseImpl implements _LikeFeedsResponse {
+  _$LikeFeedsResponseImpl(
+      {required this.status,
+      required this.errorCode,
+      required this.errorMessage});
+
+  factory _$LikeFeedsResponseImpl.fromJson(Map<String, dynamic> json) =>
+      _$$LikeFeedsResponseImplFromJson(json);
+
+  @override
+  final String? status;
+  @override
+  final String? errorCode;
+  @override
+  final String? errorMessage;
+
+  @override
+  String toString() {
+    return 'LikeFeedsResponse(status: $status, errorCode: $errorCode, errorMessage: $errorMessage)';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$LikeFeedsResponseImpl &&
+            (identical(other.status, status) || other.status == status) &&
+            (identical(other.errorCode, errorCode) ||
+                other.errorCode == errorCode) &&
+            (identical(other.errorMessage, errorMessage) ||
+                other.errorMessage == errorMessage));
+  }
+
+  @JsonKey(ignore: true)
+  @override
+  int get hashCode => Object.hash(runtimeType, status, errorCode, errorMessage);
+
+  @JsonKey(ignore: true)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$LikeFeedsResponseImplCopyWith<_$LikeFeedsResponseImpl> get copyWith =>
+      __$$LikeFeedsResponseImplCopyWithImpl<_$LikeFeedsResponseImpl>(
+          this, _$identity);
+
+  @override
+  Map<String, dynamic> toJson() {
+    return _$$LikeFeedsResponseImplToJson(
+      this,
+    );
+  }
+}
+
+abstract class _LikeFeedsResponse implements LikeFeedsResponse {
+  factory _LikeFeedsResponse(
+      {required final String? status,
+      required final String? errorCode,
+      required final String? errorMessage}) = _$LikeFeedsResponseImpl;
+
+  factory _LikeFeedsResponse.fromJson(Map<String, dynamic> json) =
+      _$LikeFeedsResponseImpl.fromJson;
+
+  @override
+  String? get status;
+  @override
+  String? get errorCode;
+  @override
+  String? get errorMessage;
+  @override
+  @JsonKey(ignore: true)
+  _$$LikeFeedsResponseImplCopyWith<_$LikeFeedsResponseImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

@@ -1,9 +1,12 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/widgets.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:hexcolor/hexcolor.dart';
 import 'package:woofers/components/adoption_card.dart';
 import 'package:woofers/pages/notification_page.dart';
 import 'package:woofers/services/adoption/adoption_service.dart';
+import 'package:woofers/services/dog/breed_services.dart';
+import 'package:woofers/services/province/province_service.dart';
 
 class AdoptionPage extends StatefulWidget {
   const AdoptionPage({super.key});
@@ -13,6 +16,13 @@ class AdoptionPage extends StatefulWidget {
 }
 
 class _AdoptionPageState extends State<AdoptionPage> {
+  late List<String?> provinceNames;
+  String? _selectedProvince;
+  late List<String?> breedNames;
+  String? _selectedBreed;
+  late List<String?> genderName = ['Female', 'Male'];
+  String? _selectedGender;
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -43,7 +53,89 @@ class _AdoptionPageState extends State<AdoptionPage> {
               ),
             ],
           ),
-      body: adoptionList(),
+      body: SingleChildScrollView(
+        child: Column(
+          children: [
+            Column(
+              children: [
+
+                // province here
+                const SizedBox(height: 15),
+                // SingleChildScrollView(
+                  // child: 
+                  Form(
+                    // padding: const EdgeInsets.symmetric(horizontal: 25),
+                    child: FutureBuilder(
+                      future: RetrieveProvinceService().retrieveAllProvince(),
+                      //initialData: initialProvinceNames,
+                      builder: (context, snapshot) {
+                        if (snapshot.connectionState == ConnectionState.waiting) {
+                          return const Text("Province");
+                        }
+                        if (snapshot.hasError) {
+                          return Text("Error: ${snapshot.error}");
+                        }
+                        if (!snapshot.hasData) {
+                          return const Text("No data");
+                        }
+
+                        // return Container(color: Colors.blue, height: 100, width: 100,);
+                        
+                        final provinceResponse = snapshot.data!;
+                        final provinceNames = provinceResponse.provinceList
+                            .map((e) => e.provinceName)
+                            .toList();
+                        return Container(
+                          height: 50, width: MediaQuery.of(context).size.width,
+                          color: Colors.blue,
+                          child: DropdownButtonFormField<String>(
+                            value: _selectedProvince,
+                            decoration: InputDecoration(
+                              enabledBorder: const OutlineInputBorder(
+                                borderSide: BorderSide(color: Colors.white),
+                              ),
+                              focusedBorder: OutlineInputBorder(
+                                borderSide: BorderSide(color: Colors.grey.shade400),
+                              ),
+                              fillColor: Colors.grey.shade200,
+                              filled: true,
+                              hintText: 'Province',
+                              hintStyle: TextStyle(color: Colors.grey[500]),
+                            ),
+                            onChanged: (String? newValue) {
+                              if (newValue != null) {
+                                setState(() {
+                                  _selectedProvince = newValue;
+                                });
+                              }
+                            },
+                            items: provinceNames.map((province) {
+                              return DropdownMenuItem<String>(
+                                value: province,
+                                child: Text(province),
+                              );
+                            }).toList(),
+                          ),
+                        );
+                      },
+                    ),
+                  ),
+                // ),
+
+              IconButton(
+                onPressed: onPressed, 
+                icon: Icons.search_outlined,
+              )
+
+              ],
+            ),
+
+
+            // adoptionList(),
+          ],
+        )
+      )
+      //adoptionList(),
     );
   }
 

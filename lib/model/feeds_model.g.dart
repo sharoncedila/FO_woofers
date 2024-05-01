@@ -23,6 +23,7 @@ Map<String, dynamic> _$$LeaveCommentRequestImplToJson(
 _$OpenCommentsResponseImpl _$$OpenCommentsResponseImplFromJson(
         Map<String, dynamic> json) =>
     _$OpenCommentsResponseImpl(
+      username: json['username'] as String?,
       commentId: json['commentId'] as String?,
       feedsId: json['feedsId'] as String?,
       accountId: json['accountId'] as String?,
@@ -30,11 +31,13 @@ _$OpenCommentsResponseImpl _$$OpenCommentsResponseImplFromJson(
       commentDate: json['commentDate'] as String?,
       errorCode: json['errorCode'] as String?,
       errorMessage: json['errorMessage'] as String?,
+      profilePicture: json['profilePicture'] as String?,
     );
 
 Map<String, dynamic> _$$OpenCommentsResponseImplToJson(
         _$OpenCommentsResponseImpl instance) =>
     <String, dynamic>{
+      'username': instance.username,
       'commentId': instance.commentId,
       'feedsId': instance.feedsId,
       'accountId': instance.accountId,
@@ -42,6 +45,7 @@ Map<String, dynamic> _$$OpenCommentsResponseImplToJson(
       'commentDate': instance.commentDate,
       'errorCode': instance.errorCode,
       'errorMessage': instance.errorMessage,
+      'profilePicture': instance.profilePicture,
     };
 
 _$PostFeedsRequestImpl _$$PostFeedsRequestImplFromJson(
@@ -134,6 +138,22 @@ Map<String, dynamic> _$$PostFeedsResponseImplToJson(
       'reportCount': instance.reportCount,
       'postDate': instance.postDate,
       'deletedAt': instance.deletedAt,
+      'errorCode': instance.errorCode,
+      'errorMessage': instance.errorMessage,
+    };
+
+_$LikeFeedsResponseImpl _$$LikeFeedsResponseImplFromJson(
+        Map<String, dynamic> json) =>
+    _$LikeFeedsResponseImpl(
+      status: json['status'] as String?,
+      errorCode: json['errorCode'] as String?,
+      errorMessage: json['errorMessage'] as String?,
+    );
+
+Map<String, dynamic> _$$LikeFeedsResponseImplToJson(
+        _$LikeFeedsResponseImpl instance) =>
+    <String, dynamic>{
+      'status': instance.status,
       'errorCode': instance.errorCode,
       'errorMessage': instance.errorMessage,
     };

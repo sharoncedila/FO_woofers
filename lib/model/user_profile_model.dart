@@ -22,6 +22,7 @@ class  ResponseUserProfileModel with _$ResponseUserProfileModel {
 @freezed
 class OtherUserProfileResponse with _$OtherUserProfileResponse{
   factory OtherUserProfileResponse({
+    required String? username,
     required String? fullName,
     required String? provinceName,
     required String? phoneNumber,
