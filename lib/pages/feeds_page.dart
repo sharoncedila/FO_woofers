@@ -60,26 +60,23 @@ class _FeedsPageState extends State<FeedsPage> {
   Widget feedsList() {
     return SingleChildScrollView(
       child: FutureBuilder(
-        future: FeedsService().retrieveFeedsData(),
-        builder: (context, snapshot) {
-          if (snapshot.connectionState == ConnectionState.waiting) {
-            return const Center(child: Text("Retrieving your data..."));
-          }
-          if (snapshot.hasError) {
-            return const Center(child: Text("Error"));
-          }
-          if (!snapshot.hasData) {
-            return const Text('no feeds');
-          }
-
-          final feedsList = snapshot.data!;
-              return Wrap(
-                children: feedsList
-                    .map((e) => FeedsCard(feedsDetail: e))
-                    .toList(),
-              );
-        }
-      ),
+          future: FeedsService().retrieveFeedsData(),
+          builder: (context, snapshot) {
+            if (snapshot.connectionState == ConnectionState.waiting) {
+              return const Center(child: Text("Retrieving your data..."));
+            }
+            if (snapshot.hasError) {
+              return const Center(child: Text("Error"));
+            }
+            if (!snapshot.hasData) {
+              return const Text('no feeds');
+            }
+            final feedsList = snapshot.data!;
+            return Wrap(
+              children:
+                  feedsList.map((e) => FeedsCard(feedsDetail: e)).toList(),
+            );
+          }),
     );
   }
 }
