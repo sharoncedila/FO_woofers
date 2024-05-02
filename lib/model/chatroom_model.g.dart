@@ -40,11 +40,11 @@ _$OpenChatResponseImpl _$$OpenChatResponseImplFromJson(
       chatroomId: json['chatroomId'] as String?,
       senderId: json['senderId'] as String?,
       recipientId: json['recipientId'] as String?,
-      messages: (json['messages'] as List<dynamic>?)
-          ?.map((e) => SendChatResponse.fromJson(e as Map<String, dynamic>))
-          .toList(),
       errorCode: json['errorCode'] as String?,
       errorMessage: json['errorMessage'] as String?,
+      chatMessageId: json['chatMessageId'] as String?,
+      message: json['message'] as String?,
+      timestamp: json['timestamp'] as String?,
     );
 
 Map<String, dynamic> _$$OpenChatResponseImplToJson(
@@ -53,9 +53,11 @@ Map<String, dynamic> _$$OpenChatResponseImplToJson(
       'chatroomId': instance.chatroomId,
       'senderId': instance.senderId,
       'recipientId': instance.recipientId,
-      'messages': instance.messages,
       'errorCode': instance.errorCode,
       'errorMessage': instance.errorMessage,
+      'chatMessageId': instance.chatMessageId,
+      'message': instance.message,
+      'timestamp': instance.timestamp,
     };
 
 _$SendChatResponseImpl _$$SendChatResponseImplFromJson(

@@ -877,6 +877,7 @@ mixin _$OwnerData {
   String? get phoneNumber => throw _privateConstructorUsedError;
   String? get description => throw _privateConstructorUsedError;
   String? get image => throw _privateConstructorUsedError;
+  String? get provinceName => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -896,7 +897,8 @@ abstract class $OwnerDataCopyWith<$Res> {
       String? email,
       String? phoneNumber,
       String? description,
-      String? image});
+      String? image,
+      String? provinceName});
 }
 
 /// @nodoc
@@ -919,6 +921,7 @@ class _$OwnerDataCopyWithImpl<$Res, $Val extends OwnerData>
     Object? phoneNumber = freezed,
     Object? description = freezed,
     Object? image = freezed,
+    Object? provinceName = freezed,
   }) {
     return _then(_value.copyWith(
       accountId: freezed == accountId
@@ -949,6 +952,10 @@ class _$OwnerDataCopyWithImpl<$Res, $Val extends OwnerData>
           ? _value.image
           : image // ignore: cast_nullable_to_non_nullable
               as String?,
+      provinceName: freezed == provinceName
+          ? _value.provinceName
+          : provinceName // ignore: cast_nullable_to_non_nullable
+              as String?,
     ) as $Val);
   }
 }
@@ -968,7 +975,8 @@ abstract class _$$OwnerDataImplCopyWith<$Res>
       String? email,
       String? phoneNumber,
       String? description,
-      String? image});
+      String? image,
+      String? provinceName});
 }
 
 /// @nodoc
@@ -989,6 +997,7 @@ class __$$OwnerDataImplCopyWithImpl<$Res>
     Object? phoneNumber = freezed,
     Object? description = freezed,
     Object? image = freezed,
+    Object? provinceName = freezed,
   }) {
     return _then(_$OwnerDataImpl(
       accountId: freezed == accountId
@@ -1019,6 +1028,10 @@ class __$$OwnerDataImplCopyWithImpl<$Res>
           ? _value.image
           : image // ignore: cast_nullable_to_non_nullable
               as String?,
+      provinceName: freezed == provinceName
+          ? _value.provinceName
+          : provinceName // ignore: cast_nullable_to_non_nullable
+              as String?,
     ));
   }
 }
@@ -1033,7 +1046,8 @@ class _$OwnerDataImpl implements _OwnerData {
       required this.email,
       required this.phoneNumber,
       required this.description,
-      required this.image});
+      required this.image,
+      required this.provinceName});
 
   factory _$OwnerDataImpl.fromJson(Map<String, dynamic> json) =>
       _$$OwnerDataImplFromJson(json);
@@ -1052,10 +1066,12 @@ class _$OwnerDataImpl implements _OwnerData {
   final String? description;
   @override
   final String? image;
+  @override
+  final String? provinceName;
 
   @override
   String toString() {
-    return 'OwnerData(accountId: $accountId, username: $username, fullName: $fullName, email: $email, phoneNumber: $phoneNumber, description: $description, image: $image)';
+    return 'OwnerData(accountId: $accountId, username: $username, fullName: $fullName, email: $email, phoneNumber: $phoneNumber, description: $description, image: $image, provinceName: $provinceName)';
   }
 
   @override
@@ -1074,13 +1090,15 @@ class _$OwnerDataImpl implements _OwnerData {
                 other.phoneNumber == phoneNumber) &&
             (identical(other.description, description) ||
                 other.description == description) &&
-            (identical(other.image, image) || other.image == image));
+            (identical(other.image, image) || other.image == image) &&
+            (identical(other.provinceName, provinceName) ||
+                other.provinceName == provinceName));
   }
 
   @JsonKey(ignore: true)
   @override
   int get hashCode => Object.hash(runtimeType, accountId, username, fullName,
-      email, phoneNumber, description, image);
+      email, phoneNumber, description, image, provinceName);
 
   @JsonKey(ignore: true)
   @override
@@ -1104,7 +1122,8 @@ abstract class _OwnerData implements OwnerData {
       required final String? email,
       required final String? phoneNumber,
       required final String? description,
-      required final String? image}) = _$OwnerDataImpl;
+      required final String? image,
+      required final String? provinceName}) = _$OwnerDataImpl;
 
   factory _OwnerData.fromJson(Map<String, dynamic> json) =
       _$OwnerDataImpl.fromJson;
@@ -1123,6 +1142,8 @@ abstract class _OwnerData implements OwnerData {
   String? get description;
   @override
   String? get image;
+  @override
+  String? get provinceName;
   @override
   @JsonKey(ignore: true)
   _$$OwnerDataImplCopyWith<_$OwnerDataImpl> get copyWith =>

@@ -340,9 +340,11 @@ mixin _$OpenChatResponse {
   String? get chatroomId => throw _privateConstructorUsedError;
   String? get senderId => throw _privateConstructorUsedError;
   String? get recipientId => throw _privateConstructorUsedError;
-  List<SendChatResponse>? get messages => throw _privateConstructorUsedError;
   String? get errorCode => throw _privateConstructorUsedError;
   String? get errorMessage => throw _privateConstructorUsedError;
+  String? get chatMessageId => throw _privateConstructorUsedError;
+  String? get message => throw _privateConstructorUsedError;
+  String? get timestamp => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -360,9 +362,11 @@ abstract class $OpenChatResponseCopyWith<$Res> {
       {String? chatroomId,
       String? senderId,
       String? recipientId,
-      List<SendChatResponse>? messages,
       String? errorCode,
-      String? errorMessage});
+      String? errorMessage,
+      String? chatMessageId,
+      String? message,
+      String? timestamp});
 }
 
 /// @nodoc
@@ -381,9 +385,11 @@ class _$OpenChatResponseCopyWithImpl<$Res, $Val extends OpenChatResponse>
     Object? chatroomId = freezed,
     Object? senderId = freezed,
     Object? recipientId = freezed,
-    Object? messages = freezed,
     Object? errorCode = freezed,
     Object? errorMessage = freezed,
+    Object? chatMessageId = freezed,
+    Object? message = freezed,
+    Object? timestamp = freezed,
   }) {
     return _then(_value.copyWith(
       chatroomId: freezed == chatroomId
@@ -398,10 +404,6 @@ class _$OpenChatResponseCopyWithImpl<$Res, $Val extends OpenChatResponse>
           ? _value.recipientId
           : recipientId // ignore: cast_nullable_to_non_nullable
               as String?,
-      messages: freezed == messages
-          ? _value.messages
-          : messages // ignore: cast_nullable_to_non_nullable
-              as List<SendChatResponse>?,
       errorCode: freezed == errorCode
           ? _value.errorCode
           : errorCode // ignore: cast_nullable_to_non_nullable
@@ -409,6 +411,18 @@ class _$OpenChatResponseCopyWithImpl<$Res, $Val extends OpenChatResponse>
       errorMessage: freezed == errorMessage
           ? _value.errorMessage
           : errorMessage // ignore: cast_nullable_to_non_nullable
+              as String?,
+      chatMessageId: freezed == chatMessageId
+          ? _value.chatMessageId
+          : chatMessageId // ignore: cast_nullable_to_non_nullable
+              as String?,
+      message: freezed == message
+          ? _value.message
+          : message // ignore: cast_nullable_to_non_nullable
+              as String?,
+      timestamp: freezed == timestamp
+          ? _value.timestamp
+          : timestamp // ignore: cast_nullable_to_non_nullable
               as String?,
     ) as $Val);
   }
@@ -426,9 +440,11 @@ abstract class _$$OpenChatResponseImplCopyWith<$Res>
       {String? chatroomId,
       String? senderId,
       String? recipientId,
-      List<SendChatResponse>? messages,
       String? errorCode,
-      String? errorMessage});
+      String? errorMessage,
+      String? chatMessageId,
+      String? message,
+      String? timestamp});
 }
 
 /// @nodoc
@@ -445,9 +461,11 @@ class __$$OpenChatResponseImplCopyWithImpl<$Res>
     Object? chatroomId = freezed,
     Object? senderId = freezed,
     Object? recipientId = freezed,
-    Object? messages = freezed,
     Object? errorCode = freezed,
     Object? errorMessage = freezed,
+    Object? chatMessageId = freezed,
+    Object? message = freezed,
+    Object? timestamp = freezed,
   }) {
     return _then(_$OpenChatResponseImpl(
       chatroomId: freezed == chatroomId
@@ -462,10 +480,6 @@ class __$$OpenChatResponseImplCopyWithImpl<$Res>
           ? _value.recipientId
           : recipientId // ignore: cast_nullable_to_non_nullable
               as String?,
-      messages: freezed == messages
-          ? _value._messages
-          : messages // ignore: cast_nullable_to_non_nullable
-              as List<SendChatResponse>?,
       errorCode: freezed == errorCode
           ? _value.errorCode
           : errorCode // ignore: cast_nullable_to_non_nullable
@@ -473,6 +487,18 @@ class __$$OpenChatResponseImplCopyWithImpl<$Res>
       errorMessage: freezed == errorMessage
           ? _value.errorMessage
           : errorMessage // ignore: cast_nullable_to_non_nullable
+              as String?,
+      chatMessageId: freezed == chatMessageId
+          ? _value.chatMessageId
+          : chatMessageId // ignore: cast_nullable_to_non_nullable
+              as String?,
+      message: freezed == message
+          ? _value.message
+          : message // ignore: cast_nullable_to_non_nullable
+              as String?,
+      timestamp: freezed == timestamp
+          ? _value.timestamp
+          : timestamp // ignore: cast_nullable_to_non_nullable
               as String?,
     ));
   }
@@ -485,10 +511,11 @@ class _$OpenChatResponseImpl implements _OpenChatResponse {
       {required this.chatroomId,
       required this.senderId,
       required this.recipientId,
-      required final List<SendChatResponse>? messages,
       required this.errorCode,
-      required this.errorMessage})
-      : _messages = messages;
+      required this.errorMessage,
+      required this.chatMessageId,
+      required this.message,
+      required this.timestamp});
 
   factory _$OpenChatResponseImpl.fromJson(Map<String, dynamic> json) =>
       _$$OpenChatResponseImplFromJson(json);
@@ -499,24 +526,20 @@ class _$OpenChatResponseImpl implements _OpenChatResponse {
   final String? senderId;
   @override
   final String? recipientId;
-  final List<SendChatResponse>? _messages;
-  @override
-  List<SendChatResponse>? get messages {
-    final value = _messages;
-    if (value == null) return null;
-    if (_messages is EqualUnmodifiableListView) return _messages;
-    // ignore: implicit_dynamic_type
-    return EqualUnmodifiableListView(value);
-  }
-
   @override
   final String? errorCode;
   @override
   final String? errorMessage;
+  @override
+  final String? chatMessageId;
+  @override
+  final String? message;
+  @override
+  final String? timestamp;
 
   @override
   String toString() {
-    return 'OpenChatResponse(chatroomId: $chatroomId, senderId: $senderId, recipientId: $recipientId, messages: $messages, errorCode: $errorCode, errorMessage: $errorMessage)';
+    return 'OpenChatResponse(chatroomId: $chatroomId, senderId: $senderId, recipientId: $recipientId, errorCode: $errorCode, errorMessage: $errorMessage, chatMessageId: $chatMessageId, message: $message, timestamp: $timestamp)';
   }
 
   @override
@@ -530,23 +553,21 @@ class _$OpenChatResponseImpl implements _OpenChatResponse {
                 other.senderId == senderId) &&
             (identical(other.recipientId, recipientId) ||
                 other.recipientId == recipientId) &&
-            const DeepCollectionEquality().equals(other._messages, _messages) &&
             (identical(other.errorCode, errorCode) ||
                 other.errorCode == errorCode) &&
             (identical(other.errorMessage, errorMessage) ||
-                other.errorMessage == errorMessage));
+                other.errorMessage == errorMessage) &&
+            (identical(other.chatMessageId, chatMessageId) ||
+                other.chatMessageId == chatMessageId) &&
+            (identical(other.message, message) || other.message == message) &&
+            (identical(other.timestamp, timestamp) ||
+                other.timestamp == timestamp));
   }
 
   @JsonKey(ignore: true)
   @override
-  int get hashCode => Object.hash(
-      runtimeType,
-      chatroomId,
-      senderId,
-      recipientId,
-      const DeepCollectionEquality().hash(_messages),
-      errorCode,
-      errorMessage);
+  int get hashCode => Object.hash(runtimeType, chatroomId, senderId,
+      recipientId, errorCode, errorMessage, chatMessageId, message, timestamp);
 
   @JsonKey(ignore: true)
   @override
@@ -568,9 +589,11 @@ abstract class _OpenChatResponse implements OpenChatResponse {
       {required final String? chatroomId,
       required final String? senderId,
       required final String? recipientId,
-      required final List<SendChatResponse>? messages,
       required final String? errorCode,
-      required final String? errorMessage}) = _$OpenChatResponseImpl;
+      required final String? errorMessage,
+      required final String? chatMessageId,
+      required final String? message,
+      required final String? timestamp}) = _$OpenChatResponseImpl;
 
   factory _OpenChatResponse.fromJson(Map<String, dynamic> json) =
       _$OpenChatResponseImpl.fromJson;
@@ -582,11 +605,15 @@ abstract class _OpenChatResponse implements OpenChatResponse {
   @override
   String? get recipientId;
   @override
-  List<SendChatResponse>? get messages;
-  @override
   String? get errorCode;
   @override
   String? get errorMessage;
+  @override
+  String? get chatMessageId;
+  @override
+  String? get message;
+  @override
+  String? get timestamp;
   @override
   @JsonKey(ignore: true)
   _$$OpenChatResponseImplCopyWith<_$OpenChatResponseImpl> get copyWith =>

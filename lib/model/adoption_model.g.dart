@@ -90,6 +90,7 @@ _$OwnerDataImpl _$$OwnerDataImplFromJson(Map<String, dynamic> json) =>
       phoneNumber: json['phoneNumber'] as String?,
       description: json['description'] as String?,
       image: json['image'] as String?,
+      provinceName: json['provinceName'] as String?,
     );
 
 Map<String, dynamic> _$$OwnerDataImplToJson(_$OwnerDataImpl instance) =>
@@ -101,6 +102,7 @@ Map<String, dynamic> _$$OwnerDataImplToJson(_$OwnerDataImpl instance) =>
       'phoneNumber': instance.phoneNumber,
       'description': instance.description,
       'image': instance.image,
+      'provinceName': instance.provinceName,
     };
 
 _$SendAdoptionNotificationImpl _$$SendAdoptionNotificationImplFromJson(
