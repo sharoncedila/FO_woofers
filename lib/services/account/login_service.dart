@@ -1,6 +1,8 @@
 import 'dart:convert';
+import 'dart:io';
 import 'package:woofers/classes/dio_instance.dart';
 import 'package:shared_preferences/shared_preferences.dart';
+import 'package:woofers/classes/websocket_instance.dart';
 import 'package:woofers/model/error_schema_model.dart';
 import 'package:woofers/model/login_model.dart';
 
@@ -15,12 +17,13 @@ class LoginService {
 
       if (errorSchema.errorCode != 'WOF-000') {
         return ResponseLoginModel.fromJson(response.data['errorSchema']);
-      }else{
+      } else {
         final accessToken = response.data['outputSchema']['accessToken'];
         final accountId = response.data['outputSchema']['accountId'];
         final SharedPreferences prefs = await SharedPreferences.getInstance();
         await prefs.setString('accessToken', accessToken);
         await prefs.setString('accountId', accountId);
+        await WebsocketInstance.connect();
         DioInstance.setNull();
         return ResponseLoginModel.fromJson(response.data['outputSchema']);
       }
@@ -30,7 +33,7 @@ class LoginService {
     return null;
   }
 
-  Future<LogoutResponse?> logout() async{
+  Future<LogoutResponse?> logout() async {
     try {
       const api = '/accounts/logout';
       final dio = await DioInstance.getInstance();
@@ -40,7 +43,8 @@ class LoginService {
 
       if (errorSchema.errorCode != 'WOF-000') {
         return LogoutResponse.fromJson(response.data['errorSchema']);
-      }else{
+      } else {
+        WebsocketInstance.disconnect();
         return LogoutResponse.fromJson(response.data['outputSchema']);
       }
     } catch (error) {

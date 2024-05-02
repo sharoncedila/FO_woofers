@@ -3,9 +3,11 @@ import 'package:woofers/components/image_network.dart';
 import 'package:woofers/model/user_profile_model.dart';
 import 'package:woofers/pages/edit_my_profile_page.dart';
 import 'package:woofers/pages/login_page.dart';
+import 'package:woofers/services/account/account_service.dart';
 // import 'package:woofers/interfaces/profile/user_profile_interface.dart';
 import 'package:woofers/services/account/user_profile_services.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:woofers/services/account/login_service.dart';
 
 void main() => runApp(const UserProfilePage());
 
@@ -16,10 +18,11 @@ class UserProfilePage extends StatefulWidget {
   _UserProfilePageState createState() => _UserProfilePageState();
 }
 
-class _UserProfilePageState extends State<UserProfilePage> { 
+class _UserProfilePageState extends State<UserProfilePage> {
   // const UserProfilePagetate({Key key}) : super(key: key);
   final Future<ResponseUserProfileModel?> _account =
       RetrieveAccountService().retrieveUserData();
+  final _loginService = LoginService();
 
   @override
   Widget build(BuildContext context) {
@@ -27,7 +30,7 @@ class _UserProfilePageState extends State<UserProfilePage> {
       body: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: <Widget>[
-          const SizedBox(height: 10), 
+          const SizedBox(height: 10),
           Expanded(
             child: FutureBuilder(
                 future: _account,
@@ -446,7 +449,8 @@ class _UserProfilePageState extends State<UserProfilePage> {
                       ),
                     ),
                     child: const Text('Logout'),
-                    onPressed: () {
+                    onPressed: () async {
+                      _loginService.logout();
                       Navigator.push(
                         context,
                         MaterialPageRoute(
