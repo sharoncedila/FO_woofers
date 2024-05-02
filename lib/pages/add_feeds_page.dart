@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:hexcolor/hexcolor.dart';
+import 'package:woofers/model/feeds_model.dart';
 import 'package:woofers/pages/feeds_page.dart';
+import 'package:woofers/services/feeds/feeds_service.dart';
 
 class AddFeedsPage extends StatefulWidget {
   const AddFeedsPage({super.key});
@@ -10,7 +12,8 @@ class AddFeedsPage extends StatefulWidget {
   _AddFeedsPageState createState() => _AddFeedsPageState();
 }
 
-class _AddFeedsPageState extends State<AddFeedsPage> { 
+class _AddFeedsPageState extends State<AddFeedsPage> {
+  final _captionController = TextEditingController();
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -42,10 +45,11 @@ class _AddFeedsPageState extends State<AddFeedsPage> {
         const SizedBox(height: 15,),
         const Image(image: AssetImage('assets/dog_picture/dog1.jpg')),
         const SizedBox(height: 15,),
-        const Padding(
-          padding: EdgeInsets.only(left: 25, right: 25),
+        Padding(
+          padding: const EdgeInsets.only(left: 25, right: 25),
           child:  TextField(
-            decoration: InputDecoration(
+            controller: _captionController,
+            decoration: const InputDecoration(
               labelText: 'Enter your captions..',
               hintText: 'Type here...',
               border: OutlineInputBorder(
@@ -70,13 +74,27 @@ class _AddFeedsPageState extends State<AddFeedsPage> {
                 },
               ),
             ),
-          child: const Text('Post'),
-          onPressed: () async {
-            Navigator.push(
-              context,
-              MaterialPageRoute(builder: (context) => const FeedsPage()),
+          child: const Text('POST'),
+          onPressed: () {
+            final PostFeedsRequest request = PostFeedsRequest(
+              caption: _captionController.text,
+              image: null,
             );
+
+            FeedsService().postFeeds(request).then((value) => Navigator.of(context).pushReplacement(MaterialPageRoute(builder: (_) => const FeedsPage())));
           },
+
+          /*
+          oonPressed: () {
+            print(_isLike);
+            setState(() {
+              _isLike = null;
+              print(_isLike);
+              FeedsService()
+                  .likeFeeds(feedsDetail.feedsId ?? '');
+            });
+          },
+          */
         ),
       ),
       ],
