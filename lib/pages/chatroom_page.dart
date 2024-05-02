@@ -59,49 +59,9 @@ class ChatroomPageDetail extends StatelessWidget {
               final SendChatRequest request = SendChatRequest(
                   recipientId: accountId, message: messageController.text);
 
-<<<<<<< HEAD
-                        //       sendChatService.sendMessage(request);
-                        //     },
-                        //   );
-                        // }
-                        if (snapshot.connectionState ==
-                            ConnectionState.waiting) {
-                          return const Center(
-                              child: CircularProgressIndicator());
-                        }
-                        if (snapshot.hasError) {
-                          return const Center(child: Text("Error"));
-                        }
-                        // Assuming your SendChatRequest logic is dependent on user data retrieval
-                        return IconButton(
-                          icon: const Icon(Icons.send),
-                          onPressed: () async {
-                            final SendChatRequest request = SendChatRequest(
-                              recipientId: accountId,
-                              message: messageController.text,
-                            );
-                            WSChatInstance.sendMessage(request);
-                          },
-                        );
-                      });
-                }
-                return const SizedBox();
-              }
-              // child: IconButton(
-              //   icon: Icon(Icons.send),
-              //   onPressed: () async {
-              //     final SendChatRequest request = SendChatRequest(
-              //         recipientId: accountId, message: messageController.text);
-
-              //     _sendChatService.sendMessage(request);
-              //   },
-              // ),
-              ),
-=======
-              sendChatService.sendMessage(request);
+              WSChatInstance.sendMessage(request);
             },
           ),
->>>>>>> UAT
         ),
         Align(
           alignment: FractionalOffset.bottomCenter,
