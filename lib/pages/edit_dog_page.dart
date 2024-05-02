@@ -616,19 +616,18 @@ class _EditDogPageState extends State<EditDogPage> {
                             SizedBox(
                               height: 70,
                               child: TextFormField(
-                                maxLines: null,
-                                controller: descriptionController,
-                                decoration: InputDecoration(
-                                  border: const UnderlineInputBorder(),
-                                  // labelText: 'Username',
-                                  labelStyle: GoogleFonts.newsCycle(
-                                    color: Colors.black,
+                                  maxLines: null,
+                                  controller: descriptionController,
+                                  decoration: InputDecoration(
+                                    border: const UnderlineInputBorder(),
+                                    // labelText: 'Username',
+                                    labelStyle: GoogleFonts.newsCycle(
+                                      color: Colors.black,
+                                    ),
                                   ),
-                                ),
-                                onFieldSubmitted: (String? newValue) {
+                                  onFieldSubmitted: (String? newValue) {
                                     descriptionController.text = newValue!;
-                                  }
-                              ),
+                                  }),
                             ),
                           ])),
                     ],
@@ -663,7 +662,13 @@ class _EditDogPageState extends State<EditDogPage> {
                                     fontWeight: FontWeight.bold,
                                     fontSize: 18)),
                             onPressed: () async {
+                              if (_selectedProvince == '') {
+                                _selectedProvince = snapshot.data!.provinceName;
+                              }
                               String? selectedGender = _selectedGender;
+                              if (_selectedGender == '') {
+                                _selectedGender = snapshot.data!.gender;
+                              }
                               if (selectedGender == 'Male') {
                                 selectedGender = 'M';
                               } else if (selectedGender == 'Female') {

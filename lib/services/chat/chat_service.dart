@@ -6,45 +6,47 @@ import 'package:woofers/model/chatroom_model.dart';
 import 'package:woofers/model/error_schema_model.dart';
 
 class ChatroomService {
-  Future<RetrieveAllChatlistResponse> retrieveChatroomList() async {
-    try {
-      const api = '/chats/chatroom-list';
-      final dio = await DioInstance.getInstance();
-
-      var response = await dio.get(api);
-      if (response.data == null) {
-        throw Exception("Response data is null");
-      }
-      final errorSchema = ErrorSchema.fromJson(response.data!['errorSchema']);
-      return RetrieveAllChatlistResponse.fromJson(
-          response.data['outputSchema']);
-    } catch (error) {
-      throw Exception(error);
-    }
-  }
-
-  // Future<List<RetrieveChatlistResponse>?> retrieveChatroomList() async {
+  // Future<RetrieveAllChatlistResponse> retrieveChatroomList() async {
   //   try {
   //     const api = '/chats/chatroom-list';
   //     final dio = await DioInstance.getInstance();
 
   //     var response = await dio.get(api);
-  //     final errorSchema = ErrorSchema.fromJson(response.data!['errorSchema']);
-  //     if (errorSchema.errorCode != 'WOF-000') {
-  //       return [
-  //         RetrieveChatlistResponse.fromJson(response.data['errorSchema'])
-  //       ];
-  //     } else {
-  //       return (response.data['outputSchema']['chatroomList'] as List)
-  //           .map((e) => RetrieveChatlistResponse.fromJson(e))
-  //           .toList();
+  //     if (response.data == null) {
+  //       throw Exception("Response data is null");
   //     }
+  //     final errorSchema = ErrorSchema.fromJson(response.data!['errorSchema']);
+  //     return RetrieveAllChatlistResponse.fromJson(
+  //         response.data['outputSchema']);
   //   } catch (error) {
-  //     print(error);
+  //     throw Exception(error);
   //   }
-  //   return null;
+  // }
 
-  Future<OpenChatResponse?> openChatroom(OpenChatRequest request) async {
+  Future<List<RetrieveChatlistResponse>> retrieveChatroomList() async {
+    try {
+      const api = '/chats/chatroom-list';
+      final dio = await DioInstance.getInstance();
+
+      var response = await dio.get(api);
+      final errorSchema = ErrorSchema.fromJson(response.data!['errorSchema']);
+      if (errorSchema.errorCode != 'WOF-000') {
+        return [
+          RetrieveChatlistResponse.fromJson(response.data['errorSchema'])
+        ];
+      } else {
+        return (response.data['outputSchema']['chatroomList'] as List)
+            .map((e) => RetrieveChatlistResponse.fromJson(e))
+            .toList();
+      }
+    } catch (error) {
+      print(error);
+      throw Exception(error);
+    }
+  }
+
+
+  Future<List<OpenChatResponse>?> openChatroom(OpenChatRequest request) async {
     try {
       const api = '/chats/open-chat';
       final dio = await DioInstance.getInstance();
@@ -52,22 +54,23 @@ class ChatroomService {
       var response = await dio.post(api, data: jsonEncode(request.toJson()));
       final errorSchema = ErrorSchema.fromJson(response.data!['errorSchema']);
       if (errorSchema.errorCode != 'WOF-000') {
-        return OpenChatResponse.fromJson(response.data['errorSchema']);
+        return [OpenChatResponse.fromJson(response.data['errorSchema'])];
       } else {
-        return OpenChatResponse.fromJson(response.data['outputSchema']);
+        return (response.data['outputSchema']['messages'] as List)
+            .map((e) => OpenChatResponse.fromJson(e))
+            .toList();
       }
     } catch (error) {
       print(error);
+      throw Exception(error);
     }
+  }
+
+  Future<OpenChatResponse?> sendMessage(SendChatRequest request) async {
     return null;
   }
 
-
-  Future<OpenChatResponse?> sendMessage (SendChatRequest request) async{
-    return null;
-  }
-
-  Future<List<SearchChatResponse>> searchChat(String username) async{
+  Future<List<SearchChatResponse>> searchChat(String username) async {
     try {
       String api = '/chats/search/keyword/$username';
       final dio = await DioInstance.getInstance();

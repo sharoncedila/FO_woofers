@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:hexcolor/hexcolor.dart';
 import 'package:woofers/components/adoption_card.dart';
@@ -57,7 +56,9 @@ class _AdoptionPageState extends State<AdoptionPage> {
         ),
         body: Column(
           children: [
-            const SizedBox(height: 5,),
+            const SizedBox(
+              height: 5,
+            ),
             Row(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
@@ -83,7 +84,7 @@ class _AdoptionPageState extends State<AdoptionPage> {
                       final provinceNames = provinceResponse.provinceList
                           .map((e) => e.provinceName)
                           .toList();
-                      return Container(
+                      return SizedBox(
                         height: 50,
                         width: MediaQuery.of(context).size.width / 2.55,
                         child: DropdownButtonFormField<String>(
@@ -94,7 +95,9 @@ class _AdoptionPageState extends State<AdoptionPage> {
                           ),
                           decoration: InputDecoration(
                             enabledBorder: const OutlineInputBorder(
-                              borderSide: BorderSide(color: Color.fromRGBO(160, 220, 220, 10),),
+                              borderSide: BorderSide(
+                                color: Color.fromRGBO(160, 220, 220, 10),
+                              ),
                             ),
                             focusedBorder: OutlineInputBorder(
                               borderSide:
@@ -146,7 +149,7 @@ class _AdoptionPageState extends State<AdoptionPage> {
                       final breedNames = breedResponses.breedList
                           .map((e) => e.breedName)
                           .toList();
-                      return Container(
+                      return SizedBox(
                         height: 50,
                         width: MediaQuery.of(context).size.width / 2.3,
                         child: DropdownButtonFormField<String>(
@@ -157,7 +160,9 @@ class _AdoptionPageState extends State<AdoptionPage> {
                           ),
                           decoration: InputDecoration(
                             enabledBorder: const OutlineInputBorder(
-                              borderSide: BorderSide(color: Color.fromRGBO(160, 220, 220, 10),),
+                              borderSide: BorderSide(
+                                color: Color.fromRGBO(160, 220, 220, 10),
+                              ),
                             ),
                             focusedBorder: OutlineInputBorder(
                               borderSide:
@@ -198,7 +203,7 @@ class _AdoptionPageState extends State<AdoptionPage> {
                       );
                     });
                   },
-                  icon: Icon(Icons.search_outlined),
+                  icon: const Icon(Icons.search_outlined),
                 )
               ],
             ),

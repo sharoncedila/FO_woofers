@@ -381,8 +381,8 @@ class OtherProfilePage extends StatelessWidget {
                 onPressed: () {
                   Navigator.push(
                     context,
-                    MaterialPageRoute(builder: (context) => const ChatroomPage()),
-                  );
+                    MaterialPageRoute(builder: (context) => ChatroomPageDetail(accountId: accountId),
+                  ));
                 },
               ),
             ),

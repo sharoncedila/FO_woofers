@@ -1915,3 +1915,180 @@ abstract class _ResponseDogCard implements ResponseDogCard {
   _$$ResponseDogCardImplCopyWith<_$ResponseDogCardImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
+
+DeleteDogResponse _$DeleteDogResponseFromJson(Map<String, dynamic> json) {
+  return _DeleteDogResponse.fromJson(json);
+}
+
+/// @nodoc
+mixin _$DeleteDogResponse {
+  String? get status => throw _privateConstructorUsedError;
+  String? get errorCode => throw _privateConstructorUsedError;
+  String? get errorMessage => throw _privateConstructorUsedError;
+
+  Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
+  @JsonKey(ignore: true)
+  $DeleteDogResponseCopyWith<DeleteDogResponse> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class $DeleteDogResponseCopyWith<$Res> {
+  factory $DeleteDogResponseCopyWith(
+          DeleteDogResponse value, $Res Function(DeleteDogResponse) then) =
+      _$DeleteDogResponseCopyWithImpl<$Res, DeleteDogResponse>;
+  @useResult
+  $Res call({String? status, String? errorCode, String? errorMessage});
+}
+
+/// @nodoc
+class _$DeleteDogResponseCopyWithImpl<$Res, $Val extends DeleteDogResponse>
+    implements $DeleteDogResponseCopyWith<$Res> {
+  _$DeleteDogResponseCopyWithImpl(this._value, this._then);
+
+  // ignore: unused_field
+  final $Val _value;
+  // ignore: unused_field
+  final $Res Function($Val) _then;
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? status = freezed,
+    Object? errorCode = freezed,
+    Object? errorMessage = freezed,
+  }) {
+    return _then(_value.copyWith(
+      status: freezed == status
+          ? _value.status
+          : status // ignore: cast_nullable_to_non_nullable
+              as String?,
+      errorCode: freezed == errorCode
+          ? _value.errorCode
+          : errorCode // ignore: cast_nullable_to_non_nullable
+              as String?,
+      errorMessage: freezed == errorMessage
+          ? _value.errorMessage
+          : errorMessage // ignore: cast_nullable_to_non_nullable
+              as String?,
+    ) as $Val);
+  }
+}
+
+/// @nodoc
+abstract class _$$DeleteDogResponseImplCopyWith<$Res>
+    implements $DeleteDogResponseCopyWith<$Res> {
+  factory _$$DeleteDogResponseImplCopyWith(_$DeleteDogResponseImpl value,
+          $Res Function(_$DeleteDogResponseImpl) then) =
+      __$$DeleteDogResponseImplCopyWithImpl<$Res>;
+  @override
+  @useResult
+  $Res call({String? status, String? errorCode, String? errorMessage});
+}
+
+/// @nodoc
+class __$$DeleteDogResponseImplCopyWithImpl<$Res>
+    extends _$DeleteDogResponseCopyWithImpl<$Res, _$DeleteDogResponseImpl>
+    implements _$$DeleteDogResponseImplCopyWith<$Res> {
+  __$$DeleteDogResponseImplCopyWithImpl(_$DeleteDogResponseImpl _value,
+      $Res Function(_$DeleteDogResponseImpl) _then)
+      : super(_value, _then);
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? status = freezed,
+    Object? errorCode = freezed,
+    Object? errorMessage = freezed,
+  }) {
+    return _then(_$DeleteDogResponseImpl(
+      status: freezed == status
+          ? _value.status
+          : status // ignore: cast_nullable_to_non_nullable
+              as String?,
+      errorCode: freezed == errorCode
+          ? _value.errorCode
+          : errorCode // ignore: cast_nullable_to_non_nullable
+              as String?,
+      errorMessage: freezed == errorMessage
+          ? _value.errorMessage
+          : errorMessage // ignore: cast_nullable_to_non_nullable
+              as String?,
+    ));
+  }
+}
+
+/// @nodoc
+@JsonSerializable()
+class _$DeleteDogResponseImpl implements _DeleteDogResponse {
+  _$DeleteDogResponseImpl(
+      {required this.status,
+      required this.errorCode,
+      required this.errorMessage});
+
+  factory _$DeleteDogResponseImpl.fromJson(Map<String, dynamic> json) =>
+      _$$DeleteDogResponseImplFromJson(json);
+
+  @override
+  final String? status;
+  @override
+  final String? errorCode;
+  @override
+  final String? errorMessage;
+
+  @override
+  String toString() {
+    return 'DeleteDogResponse(status: $status, errorCode: $errorCode, errorMessage: $errorMessage)';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$DeleteDogResponseImpl &&
+            (identical(other.status, status) || other.status == status) &&
+            (identical(other.errorCode, errorCode) ||
+                other.errorCode == errorCode) &&
+            (identical(other.errorMessage, errorMessage) ||
+                other.errorMessage == errorMessage));
+  }
+
+  @JsonKey(ignore: true)
+  @override
+  int get hashCode => Object.hash(runtimeType, status, errorCode, errorMessage);
+
+  @JsonKey(ignore: true)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$DeleteDogResponseImplCopyWith<_$DeleteDogResponseImpl> get copyWith =>
+      __$$DeleteDogResponseImplCopyWithImpl<_$DeleteDogResponseImpl>(
+          this, _$identity);
+
+  @override
+  Map<String, dynamic> toJson() {
+    return _$$DeleteDogResponseImplToJson(
+      this,
+    );
+  }
+}
+
+abstract class _DeleteDogResponse implements DeleteDogResponse {
+  factory _DeleteDogResponse(
+      {required final String? status,
+      required final String? errorCode,
+      required final String? errorMessage}) = _$DeleteDogResponseImpl;
+
+  factory _DeleteDogResponse.fromJson(Map<String, dynamic> json) =
+      _$DeleteDogResponseImpl.fromJson;
+
+  @override
+  String? get status;
+  @override
+  String? get errorCode;
+  @override
+  String? get errorMessage;
+  @override
+  @JsonKey(ignore: true)
+  _$$DeleteDogResponseImplCopyWith<_$DeleteDogResponseImpl> get copyWith =>
+      throw _privateConstructorUsedError;
+}

@@ -29,4 +29,22 @@ class LoginService {
     }
     return null;
   }
+
+  Future<LogoutResponse?> logout() async{
+    try {
+      const api = '/accounts/logout';
+      final dio = await DioInstance.getInstance();
+
+      var response = await dio.get(api);
+      final errorSchema = ErrorSchema.fromJson(response.data['errorSchema']);
+
+      if (errorSchema.errorCode != 'WOF-000') {
+        return LogoutResponse.fromJson(response.data['errorSchema']);
+      }else{
+        return LogoutResponse.fromJson(response.data['outputSchema']);
+      }
+    } catch (error) {
+      print(error);
+    }
+  }
 }

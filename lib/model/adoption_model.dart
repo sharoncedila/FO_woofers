@@ -60,6 +60,7 @@ class OwnerData with _$OwnerData {
     required String? phoneNumber,
     required String? description,
     required String? image,
+    required String? provinceName,
   }) = _OwnerData;
 
   factory OwnerData.fromJson(Map<String, dynamic> json) =>
@@ -78,4 +79,15 @@ class SendAdoptionNotification with _$SendAdoptionNotification {
 
   factory SendAdoptionNotification.fromJson(Map<String, dynamic> json) =>
       _$SendAdoptionNotificationFromJson(json);
+}
+
+@freezed
+class ApproveRejectAdoptionRequest with _$ApproveRejectAdoptionRequest{
+  factory ApproveRejectAdoptionRequest({
+    required String? notificationId,
+    required String? status
+  }) = _ApproveRejectAdoptionRequest;
+
+  factory ApproveRejectAdoptionRequest.fromJson(Map<String, dynamic> json) =>
+      _$ApproveRejectAdoptionRequestFromJson(json);
 }

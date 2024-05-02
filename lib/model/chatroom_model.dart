@@ -1,4 +1,5 @@
 import 'package:freezed_annotation/freezed_annotation.dart';
+
 part 'chatroom_model.freezed.dart';
 part 'chatroom_model.g.dart';
 
@@ -28,9 +29,14 @@ class OpenChatResponse with _$OpenChatResponse {
     required String? chatroomId,
     required String? senderId,
     required String? recipientId,
-    required List<SendChatResponse>? messages,
+    required String? senderChatId,
+    required String? recipientChatId,
     required String? errorCode,
-    required String? errorMessage
+    required String? errorMessage,
+    required String? chatMessageId,
+    required String? message,
+    required String? timestamp,
+    
   }) = _OpenChatResponse;
 
   factory OpenChatResponse.fromJson(Map<String, dynamic> json) => _$OpenChatResponseFromJson(json);

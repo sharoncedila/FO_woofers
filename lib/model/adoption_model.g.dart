@@ -90,6 +90,7 @@ _$OwnerDataImpl _$$OwnerDataImplFromJson(Map<String, dynamic> json) =>
       phoneNumber: json['phoneNumber'] as String?,
       description: json['description'] as String?,
       image: json['image'] as String?,
+      provinceName: json['provinceName'] as String?,
     );
 
 Map<String, dynamic> _$$OwnerDataImplToJson(_$OwnerDataImpl instance) =>
@@ -101,6 +102,7 @@ Map<String, dynamic> _$$OwnerDataImplToJson(_$OwnerDataImpl instance) =>
       'phoneNumber': instance.phoneNumber,
       'description': instance.description,
       'image': instance.image,
+      'provinceName': instance.provinceName,
     };
 
 _$SendAdoptionNotificationImpl _$$SendAdoptionNotificationImplFromJson(
@@ -121,4 +123,18 @@ Map<String, dynamic> _$$SendAdoptionNotificationImplToJson(
       'breedName': instance.breedName,
       'ownerId': instance.ownerId,
       'ownerUsername': instance.ownerUsername,
+    };
+
+_$ApproveRejectAdoptionRequestImpl _$$ApproveRejectAdoptionRequestImplFromJson(
+        Map<String, dynamic> json) =>
+    _$ApproveRejectAdoptionRequestImpl(
+      notificationId: json['notificationId'] as String?,
+      status: json['status'] as String?,
+    );
+
+Map<String, dynamic> _$$ApproveRejectAdoptionRequestImplToJson(
+        _$ApproveRejectAdoptionRequestImpl instance) =>
+    <String, dynamic>{
+      'notificationId': instance.notificationId,
+      'status': instance.status,
     };

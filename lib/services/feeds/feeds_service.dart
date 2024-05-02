@@ -4,7 +4,7 @@ import 'package:woofers/classes/dio_instance.dart';
 import 'package:woofers/model/error_schema_model.dart';
 import 'package:woofers/model/feeds_model.dart';
 
-class FeedsService{
+class FeedsService {
   Future<List<ViewFeedsResponse>> retrieveFeedsData() async {
     try {
       const api = '/feeds/view';
@@ -43,7 +43,6 @@ class FeedsService{
     }
   }
 
-
   Future<PostFeedsResponse?> postFeeds(PostFeedsRequest request) async {
     try {
       const api = '/feeds/post';
@@ -62,7 +61,8 @@ class FeedsService{
     }
   }
 
-  Future<LeaveCommentResponse?> leaveCommentSection(LeaveCommentRequest request) async {
+  Future<LeaveCommentResponse?> leaveCommentSection(
+      LeaveCommentRequest request) async {
     try {
       String api = '/feeds/comment';
       final dio = await DioInstance.getInstance();
@@ -72,7 +72,7 @@ class FeedsService{
       if (errorSchema.errorCode != 'WOF-000') {
         return LeaveCommentResponse.fromJson(response.data['errorSchema']);
       } else {
-          return LeaveCommentResponse.fromJson(
+        return LeaveCommentResponse.fromJson(
             response.data['outputSchema']['feedsData']);
       }
     } catch (error) {
@@ -80,7 +80,7 @@ class FeedsService{
     }
   }
 
-    Future<ViewFeedsResponse> likeFeeds(String feedsId) async {
+  Future<ViewFeedsResponse> likeFeeds(String feedsId) async {
     try {
       String api = '/feeds/like/feeds-id/$feedsId';
       final dio = await DioInstance.getInstance();

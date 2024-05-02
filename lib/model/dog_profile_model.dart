@@ -111,3 +111,15 @@ class ResponseDogCard with _$ResponseDogCard {
   factory ResponseDogCard.fromJson(Map<String, dynamic> json) =>
       _$ResponseDogCardFromJson(json);
 }
+
+@freezed
+class DeleteDogResponse with _$DeleteDogResponse{
+  factory DeleteDogResponse({
+    required String? status,
+    required String? errorCode,
+    required String? errorMessage,
+  }) = _DeleteDogResponse;
+
+  factory DeleteDogResponse.fromJson(Map<String, dynamic> json) =>
+      _$DeleteDogResponseFromJson(json);
+}
