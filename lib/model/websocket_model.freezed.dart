@@ -352,3 +352,249 @@ abstract class _WebSocketNotif implements WebSocketNotif {
   _$$WebSocketNotifImplCopyWith<_$WebSocketNotifImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
+
+WebSocketChat _$WebSocketChatFromJson(Map<String, dynamic> json) {
+  return _WebSocketChat.fromJson(json);
+}
+
+/// @nodoc
+mixin _$WebSocketChat {
+  String? get chatMessageId => throw _privateConstructorUsedError;
+  String? get chatroomId => throw _privateConstructorUsedError;
+  String? get senderId => throw _privateConstructorUsedError;
+  String? get recipientId => throw _privateConstructorUsedError;
+  String get message => throw _privateConstructorUsedError;
+  String? get timestamp => throw _privateConstructorUsedError;
+
+  Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
+  @JsonKey(ignore: true)
+  $WebSocketChatCopyWith<WebSocketChat> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class $WebSocketChatCopyWith<$Res> {
+  factory $WebSocketChatCopyWith(
+          WebSocketChat value, $Res Function(WebSocketChat) then) =
+      _$WebSocketChatCopyWithImpl<$Res, WebSocketChat>;
+  @useResult
+  $Res call(
+      {String? chatMessageId,
+      String? chatroomId,
+      String? senderId,
+      String? recipientId,
+      String message,
+      String? timestamp});
+}
+
+/// @nodoc
+class _$WebSocketChatCopyWithImpl<$Res, $Val extends WebSocketChat>
+    implements $WebSocketChatCopyWith<$Res> {
+  _$WebSocketChatCopyWithImpl(this._value, this._then);
+
+  // ignore: unused_field
+  final $Val _value;
+  // ignore: unused_field
+  final $Res Function($Val) _then;
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? chatMessageId = freezed,
+    Object? chatroomId = freezed,
+    Object? senderId = freezed,
+    Object? recipientId = freezed,
+    Object? message = null,
+    Object? timestamp = freezed,
+  }) {
+    return _then(_value.copyWith(
+      chatMessageId: freezed == chatMessageId
+          ? _value.chatMessageId
+          : chatMessageId // ignore: cast_nullable_to_non_nullable
+              as String?,
+      chatroomId: freezed == chatroomId
+          ? _value.chatroomId
+          : chatroomId // ignore: cast_nullable_to_non_nullable
+              as String?,
+      senderId: freezed == senderId
+          ? _value.senderId
+          : senderId // ignore: cast_nullable_to_non_nullable
+              as String?,
+      recipientId: freezed == recipientId
+          ? _value.recipientId
+          : recipientId // ignore: cast_nullable_to_non_nullable
+              as String?,
+      message: null == message
+          ? _value.message
+          : message // ignore: cast_nullable_to_non_nullable
+              as String,
+      timestamp: freezed == timestamp
+          ? _value.timestamp
+          : timestamp // ignore: cast_nullable_to_non_nullable
+              as String?,
+    ) as $Val);
+  }
+}
+
+/// @nodoc
+abstract class _$$WebSocketChatImplCopyWith<$Res>
+    implements $WebSocketChatCopyWith<$Res> {
+  factory _$$WebSocketChatImplCopyWith(
+          _$WebSocketChatImpl value, $Res Function(_$WebSocketChatImpl) then) =
+      __$$WebSocketChatImplCopyWithImpl<$Res>;
+  @override
+  @useResult
+  $Res call(
+      {String? chatMessageId,
+      String? chatroomId,
+      String? senderId,
+      String? recipientId,
+      String message,
+      String? timestamp});
+}
+
+/// @nodoc
+class __$$WebSocketChatImplCopyWithImpl<$Res>
+    extends _$WebSocketChatCopyWithImpl<$Res, _$WebSocketChatImpl>
+    implements _$$WebSocketChatImplCopyWith<$Res> {
+  __$$WebSocketChatImplCopyWithImpl(
+      _$WebSocketChatImpl _value, $Res Function(_$WebSocketChatImpl) _then)
+      : super(_value, _then);
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? chatMessageId = freezed,
+    Object? chatroomId = freezed,
+    Object? senderId = freezed,
+    Object? recipientId = freezed,
+    Object? message = null,
+    Object? timestamp = freezed,
+  }) {
+    return _then(_$WebSocketChatImpl(
+      chatMessageId: freezed == chatMessageId
+          ? _value.chatMessageId
+          : chatMessageId // ignore: cast_nullable_to_non_nullable
+              as String?,
+      chatroomId: freezed == chatroomId
+          ? _value.chatroomId
+          : chatroomId // ignore: cast_nullable_to_non_nullable
+              as String?,
+      senderId: freezed == senderId
+          ? _value.senderId
+          : senderId // ignore: cast_nullable_to_non_nullable
+              as String?,
+      recipientId: freezed == recipientId
+          ? _value.recipientId
+          : recipientId // ignore: cast_nullable_to_non_nullable
+              as String?,
+      message: null == message
+          ? _value.message
+          : message // ignore: cast_nullable_to_non_nullable
+              as String,
+      timestamp: freezed == timestamp
+          ? _value.timestamp
+          : timestamp // ignore: cast_nullable_to_non_nullable
+              as String?,
+    ));
+  }
+}
+
+/// @nodoc
+@JsonSerializable()
+class _$WebSocketChatImpl implements _WebSocketChat {
+  _$WebSocketChatImpl(
+      {required this.chatMessageId,
+      required this.chatroomId,
+      required this.senderId,
+      required this.recipientId,
+      required this.message,
+      required this.timestamp});
+
+  factory _$WebSocketChatImpl.fromJson(Map<String, dynamic> json) =>
+      _$$WebSocketChatImplFromJson(json);
+
+  @override
+  final String? chatMessageId;
+  @override
+  final String? chatroomId;
+  @override
+  final String? senderId;
+  @override
+  final String? recipientId;
+  @override
+  final String message;
+  @override
+  final String? timestamp;
+
+  @override
+  String toString() {
+    return 'WebSocketChat(chatMessageId: $chatMessageId, chatroomId: $chatroomId, senderId: $senderId, recipientId: $recipientId, message: $message, timestamp: $timestamp)';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$WebSocketChatImpl &&
+            (identical(other.chatMessageId, chatMessageId) ||
+                other.chatMessageId == chatMessageId) &&
+            (identical(other.chatroomId, chatroomId) ||
+                other.chatroomId == chatroomId) &&
+            (identical(other.senderId, senderId) ||
+                other.senderId == senderId) &&
+            (identical(other.recipientId, recipientId) ||
+                other.recipientId == recipientId) &&
+            (identical(other.message, message) || other.message == message) &&
+            (identical(other.timestamp, timestamp) ||
+                other.timestamp == timestamp));
+  }
+
+  @JsonKey(ignore: true)
+  @override
+  int get hashCode => Object.hash(runtimeType, chatMessageId, chatroomId,
+      senderId, recipientId, message, timestamp);
+
+  @JsonKey(ignore: true)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$WebSocketChatImplCopyWith<_$WebSocketChatImpl> get copyWith =>
+      __$$WebSocketChatImplCopyWithImpl<_$WebSocketChatImpl>(this, _$identity);
+
+  @override
+  Map<String, dynamic> toJson() {
+    return _$$WebSocketChatImplToJson(
+      this,
+    );
+  }
+}
+
+abstract class _WebSocketChat implements WebSocketChat {
+  factory _WebSocketChat(
+      {required final String? chatMessageId,
+      required final String? chatroomId,
+      required final String? senderId,
+      required final String? recipientId,
+      required final String message,
+      required final String? timestamp}) = _$WebSocketChatImpl;
+
+  factory _WebSocketChat.fromJson(Map<String, dynamic> json) =
+      _$WebSocketChatImpl.fromJson;
+
+  @override
+  String? get chatMessageId;
+  @override
+  String? get chatroomId;
+  @override
+  String? get senderId;
+  @override
+  String? get recipientId;
+  @override
+  String get message;
+  @override
+  String? get timestamp;
+  @override
+  @JsonKey(ignore: true)
+  _$$WebSocketChatImplCopyWith<_$WebSocketChatImpl> get copyWith =>
+      throw _privateConstructorUsedError;
+}

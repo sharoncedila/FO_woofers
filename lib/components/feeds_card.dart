@@ -121,30 +121,13 @@ class _FeedsCardState extends State<FeedsCard> {
                                     size: 23,
                                   ),
                                   onPressed: () {
-                                    print(isLike);
                                     setState(() {
-                                      isLike = 'true';
-                                      print(isLike);
+                                      isLike = "true";
                                       FeedsService()
                                           .likeFeeds(feedsDetail.feedsId ?? '');
                                     });
                                   },
                                 )
-
-                              /*
-                                IconButton(
-                  onPressed: () {
-                    setState(() {
-                      filterAdoption = filterAdoption.copyWith(
-                        breed: _selectedBreed,
-                        province: _selectedProvince,
-                        gender: _selectedGender,
-                      );
-                    });
-                  },
-                  icon: Icon(Icons.search_outlined),
-                )
-                                */
                               : IconButton(
                                   icon: const Icon(
                                     Icons.favorite,
@@ -152,10 +135,8 @@ class _FeedsCardState extends State<FeedsCard> {
                                     size: 23,
                                   ),
                                   onPressed: () {
-                                    print(isLike);
                                     setState(() {
                                       isLike = null;
-                                      print(isLike);
                                       FeedsService()
                                           .likeFeeds(feedsDetail.feedsId ?? '');
                                     });

@@ -2,7 +2,7 @@ import 'dart:io';
 
 import 'package:flutter/material.dart';
 import 'package:shared_preferences/shared_preferences.dart';
-import 'package:woofers/classes/websocket_instance.dart';
+import 'package:woofers/classes/ws_notif_instance.dart';
 import 'package:woofers/components/bottom_menu.dart';
 import 'package:woofers/pages/adoption_page.dart';
 import 'package:woofers/pages/chatlist_page.dart';
@@ -23,7 +23,7 @@ class MyApp extends StatefulWidget {
 class _MyAppState extends State<MyApp> {
   @override
   void initState() {
-    WebsocketInstance.connect();
+    WSNotifInstance.connect();
     super.initState();
   }
 

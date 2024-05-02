@@ -5,7 +5,7 @@ import 'package:shared_preferences/shared_preferences.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 import 'package:woofers/model/websocket_model.dart';
 
-class WebsocketInstance {
+class WSNotifInstance {
   static WebSocket? session;
 
   static Future<void> connect() async {
@@ -16,9 +16,9 @@ class WebsocketInstance {
         HttpHeaders.authorizationHeader: 'Bearer $token',
       };
       session = await WebSocket.connect(
-          'ws://192.168.98.53:8080/woofers/app-notif',
+          'ws://192.168.6.253:8080/woofers/app-notif',
           headers: headers);
-      print("Successfully Connect to WebSocket Server");
+      print("Successfully Connect to WebSocket Notif Server");
 
       session!.listen(
         (data) {
@@ -42,7 +42,7 @@ class WebsocketInstance {
     if (session != null) {
       session!.close();
       session = null;
-      print("Disconnected from WebSocket Server");
+      print("Disconnected from WebSocket Notif Server");
     } else {
       print("No WebSocket session to disconnect");
     }
@@ -59,5 +59,4 @@ class WebsocketInstance {
       timeInSecForIosWeb: 1,
     );
   }
-
 }
