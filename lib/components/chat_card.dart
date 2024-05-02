@@ -39,12 +39,13 @@ class ChatCardDetail extends StatelessWidget {
             height: 80,
             child: Column(
               children: [
-                const SizedBox(height: 5),
+                const SizedBox(height: 10, width: 20),
                 Text(
-                  chatlistDetail.recipientId ?? "",
+                  chatlistDetail.recipientUsername!,
                   style: const TextStyle(
                     color: Color.fromRGBO(40, 36, 36, 10000),
                     fontSize: 14,
+                    fontWeight: FontWeight.bold,
                   ),
                   textAlign: TextAlign.left,
                 ),

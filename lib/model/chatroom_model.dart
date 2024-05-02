@@ -1,4 +1,5 @@
 import 'package:freezed_annotation/freezed_annotation.dart';
+
 part 'chatroom_model.freezed.dart';
 part 'chatroom_model.g.dart';
 
@@ -28,6 +29,8 @@ class OpenChatResponse with _$OpenChatResponse {
     required String? chatroomId,
     required String? senderId,
     required String? recipientId,
+    required String? senderChatId,
+    required String? recipientChatId,
     required String? errorCode,
     required String? errorMessage,
     required String? chatMessageId,

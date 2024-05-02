@@ -9,38 +9,49 @@ class BubbleChatCardDetail extends StatelessWidget {
   const BubbleChatCardDetail(
       {super.key, required this.bubbleChatlistDetail, required this.accountId});
 
+
   @override
   Widget build(BuildContext context) {
+    //other
     String currentId = accountId;
+print("Data adoption: ${bubbleChatlistDetail}");
+print("Data adoption: ${currentId}");
+
     return SingleChildScrollView(
-      child: Column(
-        children: [
-          const SizedBox(height: 20),
-          if (currentId == bubbleChatlistDetail.senderId || currentId == bubbleChatlistDetail.recipientId)
-            BubbleSpecialThree(
-              text: bubbleChatlistDetail.senderId!,
-              color: const Color(0xFFE8E8EE),
-              tail: false,
-              isSender: false,
-            )
-            
-          else
-            BubbleSpecialThree(
-              text: bubbleChatlistDetail.recipientId!,
-              color: const Color(0xFFE8E8EE),
-              tail: false,
-              isSender: false,
-            ),
-          Expanded(
-            child: Align(
-              alignment: FractionalOffset.bottomCenter,
-              child: MessageBar(
-                onSend: (_) => print(_),
-                actions: const [],
-              ),
-            ),
+      child: Padding(
+        padding: const EdgeInsets.symmetric(horizontal: 5, vertical: 5),
+        child: Card(
+          child: Column(
+            children: [
+              const SizedBox(height: 20),
+              
+              if (currentId == bubbleChatlistDetail.senderChatId || currentId == bubbleChatlistDetail.recipientChatId)
+                BubbleSpecialThree(
+                  text: bubbleChatlistDetail.message!,
+                  color: const Color(0xFF1B97F3),
+                  tail: false,
+                  isSender: true,
+                )
+                
+              else
+                BubbleSpecialThree(
+                  text: bubbleChatlistDetail.message!,
+                  color: const Color(0xFFE8E8EE),
+                  tail: false,
+                  isSender: false,
+                ),
+              // Expanded(
+              //   child: Align(
+              //     alignment: FractionalOffset.bottomCenter,
+              //     child: MessageBar(
+              //       onSend: (_) => print(_),
+              //       actions: const [],
+              //     ),
+              //   ),
+              // ),
+            ],
           ),
-        ],
+        ),
       ),
     );
   }
