@@ -3,6 +3,7 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:hexcolor/hexcolor.dart';
 import 'package:woofers/components/bubble_chat.dart';
 import 'package:woofers/model/chatroom_model.dart';
+import 'package:woofers/pages/chatlist_page.dart';
 import 'package:woofers/services/chat/chat_service.dart';
 
 class ChatroomPageDetail extends StatelessWidget {
@@ -30,6 +31,13 @@ class ChatroomPageDetail extends StatelessWidget {
             fontWeight: FontWeight.bold,
             color: const Color.fromRGBO(40, 36, 36, 10000),
           ),
+        ),
+        leading: IconButton(
+          icon: Icon(Icons.arrow_back),
+          onPressed: () {
+            // Navigate back when the back button is pressed
+            Navigator.push(context, MaterialPageRoute(builder: (_) => const ChatListPage()));
+          },
         ),
       ),
       body: Stack(children: [

@@ -5,7 +5,7 @@ import 'package:shared_preferences/shared_preferences.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 import 'package:woofers/model/websocket_model.dart';
 
-class WebsocketInstance {
+class WSChatInstance {
   static WebSocket? session;
 
   static Future<void> connect() async {
@@ -16,15 +16,14 @@ class WebsocketInstance {
         HttpHeaders.authorizationHeader: 'Bearer $token',
       };
       session = await WebSocket.connect(
-          'ws://172.20.10.2:8080/woofers/app-notif',
+          'ws://192.168.6.253:8080/woofers/send-chat',
           headers: headers);
-      print("Successfully Connect to WebSocket Server");
+      print("Successfully Connect to WebSocket Chat Server");
 
       session!.listen(
         (data) {
-          final notif = WebSocketNotif.fromJson(jsonDecode(data));
-          print(notif.notificationMessage);
-          _showNotification(notif.notificationMessage);
+          final notif = WebSocketChat.fromJson(jsonDecode(data));
+          print(notif.message);
         },
         onError: (error) {
           print("Error receiving message: $error");
@@ -42,22 +41,9 @@ class WebsocketInstance {
     if (session != null) {
       session!.close();
       session = null;
-      print("Disconnected from WebSocket Server");
+      print("Disconnected from WebSocket Chat Server");
     } else {
       print("No WebSocket session to disconnect");
     }
   }
-
-  static void _showNotification(String message) {
-    Fluttertoast.showToast(
-      msg: message,
-      toastLength: Toast.LENGTH_LONG,
-      gravity: ToastGravity.TOP,
-      backgroundColor: Colors.white,
-      textColor: Colors.black,
-      fontSize: 16.0,
-      timeInSecForIosWeb: 1,
-    );
-  }
-
 }
