@@ -5,12 +5,8 @@ import 'package:woofers/classes/ws_chat_instance.dart';
 import 'package:woofers/components/bottom_menu.dart';
 import 'package:woofers/components/bubble_chat.dart';
 import 'package:woofers/model/chatroom_model.dart';
-<<<<<<< HEAD
-import 'package:woofers/pages/chatlist_page.dart';
-=======
 import 'package:woofers/model/user_profile_model.dart';
 import 'package:woofers/services/account/user_profile_services.dart';
->>>>>>> UAT
 import 'package:woofers/services/chat/chat_service.dart';
 
 class ChatroomPageDetail extends StatelessWidget {
@@ -80,9 +76,6 @@ class ChatroomPageDetail extends StatelessWidget {
                         //           recipientId: accountId,
                         //           message: messageController.text);
 
-<<<<<<< HEAD
-              WSChatInstance.sendMessage(request);
-=======
                         //       sendChatService.sendMessage(request);
                         //     },
                         //   );
@@ -103,7 +96,7 @@ class ChatroomPageDetail extends StatelessWidget {
                               recipientId: accountId,
                               message: messageController.text,
                             );
-                            sendChatService.sendMessage(request);
+                            WSChatInstance.sendMessage(request);
                           },
                         );
                       });
@@ -115,7 +108,6 @@ class ChatroomPageDetail extends StatelessWidget {
               //   onPressed: () async {
               //     final SendChatRequest request = SendChatRequest(
               //         recipientId: accountId, message: messageController.text);
->>>>>>> UAT
 
               //     _sendChatService.sendMessage(request);
               //   },
