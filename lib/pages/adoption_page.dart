@@ -54,12 +54,7 @@ class _AdoptionPageState extends State<AdoptionPage> {
             ),
           ],
         ),
-<<<<<<< HEAD
-        body: SingleChildScrollView(
-            child: Column(
-=======
         body: Column(
->>>>>>> UAT
           children: [
             const SizedBox(
               height: 5,
@@ -67,15 +62,8 @@ class _AdoptionPageState extends State<AdoptionPage> {
             Row(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
-<<<<<<< HEAD
-                // province here
-                const SizedBox(height: 15),
-                // SingleChildScrollView(
-                // child:
-=======
                 const SizedBox(width: 5),
                 // dropdown province
->>>>>>> UAT
                 Form(
                   // padding: const EdgeInsets.symmetric(horizontal: 25),
                   child: FutureBuilder(
@@ -92,36 +80,10 @@ class _AdoptionPageState extends State<AdoptionPage> {
                         return const Text("No data");
                       }
 
-<<<<<<< HEAD
-                      // return Container(color: Colors.blue, height: 100, width: 100,);
-
-=======
->>>>>>> UAT
                       final provinceResponse = snapshot.data!;
                       final provinceNames = provinceResponse.provinceList
                           .map((e) => e.provinceName)
                           .toList();
-<<<<<<< HEAD
-                      return Container(
-                        height: 50,
-                        width: MediaQuery.of(context).size.width,
-                        color: Colors.blue,
-                        child: DropdownButtonFormField<String>(
-                          value: _selectedProvince,
-                          decoration: InputDecoration(
-                            enabledBorder: const OutlineInputBorder(
-                              borderSide: BorderSide(color: Colors.white),
-                            ),
-                            focusedBorder: OutlineInputBorder(
-                              borderSide:
-                                  BorderSide(color: Colors.grey.shade400),
-                            ),
-                            fillColor: Colors.grey.shade200,
-                            filled: true,
-                            hintText: 'Province',
-                            hintStyle: TextStyle(color: Colors.grey[500]),
-                          ),
-=======
                       return SizedBox(
                         height: 50,
                         width: MediaQuery.of(context).size.width / 2.55,
@@ -147,7 +109,6 @@ class _AdoptionPageState extends State<AdoptionPage> {
                             hintStyle: TextStyle(color: Colors.grey[500]),
                             // isDense: true
                           ),
->>>>>>> UAT
                           onChanged: (String? newValue) {
                             if (newValue != null) {
                               setState(() {
@@ -166,20 +127,6 @@ class _AdoptionPageState extends State<AdoptionPage> {
                     },
                   ),
                 ),
-<<<<<<< HEAD
-                // ),
-
-                /*IconButton(
-                onPressed: onPressed, 
-                icon: Icons.search_outlined,
-              )*/
-              ],
-            ),
-
-            // adoptionList(),
-          ],
-        ))
-=======
 
                 const SizedBox(width: 5),
                 // dropdown breed
@@ -263,7 +210,6 @@ class _AdoptionPageState extends State<AdoptionPage> {
             adoptionList(),
           ],
         )
->>>>>>> UAT
         //adoptionList(),
         );
   }
