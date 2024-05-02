@@ -3,6 +3,8 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:hexcolor/hexcolor.dart';
 import 'package:woofers/components/bubble_chat.dart';
 import 'package:woofers/model/chatroom_model.dart';
+import 'package:woofers/model/user_profile_model.dart';
+import 'package:woofers/services/account/user_profile_services.dart';
 import 'package:woofers/services/chat/chat_service.dart';
 
 class ChatroomPageDetail extends StatelessWidget {
@@ -15,8 +17,10 @@ class ChatroomPageDetail extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     TextEditingController messageController = TextEditingController();
-    final _sendChatService = ChatroomService();
+    final sendChatService = ChatroomService();
     String recipientId;
+    final Future<ResponseUserProfileModel?> account =
+        RetrieveAccountService().retrieveUserData();
 
     return Scaffold(
       backgroundColor: Colors.white,
@@ -40,17 +44,66 @@ class ChatroomPageDetail extends StatelessWidget {
               70, // Adjust this value to position the button at the desired height
           left: 0, // Align to the left side
           right: 0, // Align to the right side
-          child: IconButton(
-            icon: Icon(Icons.send),
-            onPressed: () async {
-              final SendChatRequest request = SendChatRequest(
-                  recipientId: accountId, message: messageController.text);
+          child: FutureBuilder(
+              future: account,
+              builder:
+                  (context, AsyncSnapshot<ResponseUserProfileModel?> snapshot) {
+                if (snapshot.connectionState == ConnectionState.waiting) {
+                  return const Center(child: Text("Retrieving your data..."));
+                }
+                if (snapshot.hasError) {
+                  return const Center(child: Text("Error"));
+                }
+                if (snapshot.hasData) {
+                  return FutureBuilder(
+                      future: RetrieveAccountService().retrieveUserData(),
+                      builder: (context, snapshot) {
+                        // if (snapshot.connectionState ==
+                        //     ConnectionState.waiting) {
+                        //   return IconButton(
+                        //     icon: const Icon(Icons.send),
+                        //     onPressed: () async {
+                        //       final SendChatRequest request = SendChatRequest(
+                        //           recipientId: accountId,
+                        //           message: messageController.text);
 
-              _sendChatService.sendMessage(request);
+                        //       sendChatService.sendMessage(request);
+                        //     },
+                        //   );
+                        // }
+                        if (snapshot.connectionState ==
+                            ConnectionState.waiting) {
+                          return const Center(
+                              child: CircularProgressIndicator());
+                        }
+                        if (snapshot.hasError) {
+                          return const Center(child: Text("Error"));
+                        }
+                        // Assuming your SendChatRequest logic is dependent on user data retrieval
+                        return IconButton(
+                          icon: const Icon(Icons.send),
+                          onPressed: () async {
+                            final SendChatRequest request = SendChatRequest(
+                              recipientId: accountId,
+                              message: messageController.text,
+                            );
+                            sendChatService.sendMessage(request);
+                          },
+                        );
+                      });
+                }
+                return const SizedBox();
+              }
+              // child: IconButton(
+              //   icon: Icon(Icons.send),
+              //   onPressed: () async {
+              //     final SendChatRequest request = SendChatRequest(
+              //         recipientId: accountId, message: messageController.text);
 
-
-            },
-          ),
+              //     _sendChatService.sendMessage(request);
+              //   },
+              // ),
+              ),
         ),
         Align(
           alignment: FractionalOffset.bottomCenter,
