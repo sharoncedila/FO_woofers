@@ -3,6 +3,7 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:hexcolor/hexcolor.dart';
 import 'package:woofers/components/bottom_menu.dart';
 import 'package:woofers/components/image_network.dart';
+import 'package:woofers/components/profile_page_template.dart';
 import 'package:woofers/model/account_model.dart';
 import 'package:woofers/model/user_profile_model.dart';
 import 'package:woofers/services/account/account_service.dart';
@@ -457,7 +458,7 @@ class _EditMyProfilePageState extends State<EditMyProfile> {
                                   .then((value) => Navigator.of(context)
                                       .pushReplacement(MaterialPageRoute(
                                           builder: (_) =>
-                                              const BottomMenuBar())))
+                                              const ProfilePageTemplate())))
                                   .onError<Exception>((error, stackTrace) {
                                 showDialog(
                                   context: context,

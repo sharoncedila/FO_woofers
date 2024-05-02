@@ -357,3 +357,165 @@ abstract class _ViewNotificationResponse implements ViewNotificationResponse {
   _$$ViewNotificationResponseImplCopyWith<_$ViewNotificationResponseImpl>
       get copyWith => throw _privateConstructorUsedError;
 }
+
+AcceptRejectNotification _$AcceptRejectNotificationFromJson(
+    Map<String, dynamic> json) {
+  return _AcceptRejectNotification.fromJson(json);
+}
+
+/// @nodoc
+mixin _$AcceptRejectNotification {
+  String? get notificationId => throw _privateConstructorUsedError;
+  String? get status => throw _privateConstructorUsedError;
+
+  Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
+  @JsonKey(ignore: true)
+  $AcceptRejectNotificationCopyWith<AcceptRejectNotification> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class $AcceptRejectNotificationCopyWith<$Res> {
+  factory $AcceptRejectNotificationCopyWith(AcceptRejectNotification value,
+          $Res Function(AcceptRejectNotification) then) =
+      _$AcceptRejectNotificationCopyWithImpl<$Res, AcceptRejectNotification>;
+  @useResult
+  $Res call({String? notificationId, String? status});
+}
+
+/// @nodoc
+class _$AcceptRejectNotificationCopyWithImpl<$Res,
+        $Val extends AcceptRejectNotification>
+    implements $AcceptRejectNotificationCopyWith<$Res> {
+  _$AcceptRejectNotificationCopyWithImpl(this._value, this._then);
+
+  // ignore: unused_field
+  final $Val _value;
+  // ignore: unused_field
+  final $Res Function($Val) _then;
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? notificationId = freezed,
+    Object? status = freezed,
+  }) {
+    return _then(_value.copyWith(
+      notificationId: freezed == notificationId
+          ? _value.notificationId
+          : notificationId // ignore: cast_nullable_to_non_nullable
+              as String?,
+      status: freezed == status
+          ? _value.status
+          : status // ignore: cast_nullable_to_non_nullable
+              as String?,
+    ) as $Val);
+  }
+}
+
+/// @nodoc
+abstract class _$$AcceptRejectNotificationImplCopyWith<$Res>
+    implements $AcceptRejectNotificationCopyWith<$Res> {
+  factory _$$AcceptRejectNotificationImplCopyWith(
+          _$AcceptRejectNotificationImpl value,
+          $Res Function(_$AcceptRejectNotificationImpl) then) =
+      __$$AcceptRejectNotificationImplCopyWithImpl<$Res>;
+  @override
+  @useResult
+  $Res call({String? notificationId, String? status});
+}
+
+/// @nodoc
+class __$$AcceptRejectNotificationImplCopyWithImpl<$Res>
+    extends _$AcceptRejectNotificationCopyWithImpl<$Res,
+        _$AcceptRejectNotificationImpl>
+    implements _$$AcceptRejectNotificationImplCopyWith<$Res> {
+  __$$AcceptRejectNotificationImplCopyWithImpl(
+      _$AcceptRejectNotificationImpl _value,
+      $Res Function(_$AcceptRejectNotificationImpl) _then)
+      : super(_value, _then);
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? notificationId = freezed,
+    Object? status = freezed,
+  }) {
+    return _then(_$AcceptRejectNotificationImpl(
+      notificationId: freezed == notificationId
+          ? _value.notificationId
+          : notificationId // ignore: cast_nullable_to_non_nullable
+              as String?,
+      status: freezed == status
+          ? _value.status
+          : status // ignore: cast_nullable_to_non_nullable
+              as String?,
+    ));
+  }
+}
+
+/// @nodoc
+@JsonSerializable()
+class _$AcceptRejectNotificationImpl implements _AcceptRejectNotification {
+  _$AcceptRejectNotificationImpl(
+      {required this.notificationId, required this.status});
+
+  factory _$AcceptRejectNotificationImpl.fromJson(Map<String, dynamic> json) =>
+      _$$AcceptRejectNotificationImplFromJson(json);
+
+  @override
+  final String? notificationId;
+  @override
+  final String? status;
+
+  @override
+  String toString() {
+    return 'AcceptRejectNotification(notificationId: $notificationId, status: $status)';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$AcceptRejectNotificationImpl &&
+            (identical(other.notificationId, notificationId) ||
+                other.notificationId == notificationId) &&
+            (identical(other.status, status) || other.status == status));
+  }
+
+  @JsonKey(ignore: true)
+  @override
+  int get hashCode => Object.hash(runtimeType, notificationId, status);
+
+  @JsonKey(ignore: true)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$AcceptRejectNotificationImplCopyWith<_$AcceptRejectNotificationImpl>
+      get copyWith => __$$AcceptRejectNotificationImplCopyWithImpl<
+          _$AcceptRejectNotificationImpl>(this, _$identity);
+
+  @override
+  Map<String, dynamic> toJson() {
+    return _$$AcceptRejectNotificationImplToJson(
+      this,
+    );
+  }
+}
+
+abstract class _AcceptRejectNotification implements AcceptRejectNotification {
+  factory _AcceptRejectNotification(
+      {required final String? notificationId,
+      required final String? status}) = _$AcceptRejectNotificationImpl;
+
+  factory _AcceptRejectNotification.fromJson(Map<String, dynamic> json) =
+      _$AcceptRejectNotificationImpl.fromJson;
+
+  @override
+  String? get notificationId;
+  @override
+  String? get status;
+  @override
+  @JsonKey(ignore: true)
+  _$$AcceptRejectNotificationImplCopyWith<_$AcceptRejectNotificationImpl>
+      get copyWith => throw _privateConstructorUsedError;
+}
