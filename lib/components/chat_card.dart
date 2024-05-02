@@ -32,7 +32,7 @@ class ChatCardDetail extends StatelessWidget {
             String accountId = chatlistDetail.recipientId!;
             final OpenChatRequest req = OpenChatRequest(recipientId: accountId);
             _openChatService.openChatroom(req).then((value) =>
-                Navigator.of(context).pushReplacement(MaterialPageRoute(
+                Navigator.of(context).push(MaterialPageRoute(
                     builder: (_) => ChatroomPageDetail(accountId: accountId))));
           },
           child: SizedBox(
