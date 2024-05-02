@@ -46,36 +46,20 @@ class ChatroomPageDetail extends StatelessWidget {
         //   },
         // ),
       ),
-      body: Stack(children: [
+            body: Stack(children: [
         Chatroom(),
         Positioned(
           bottom:
               70, // Adjust this value to position the button at the desired height
           left: 0, // Align to the left side
           right: 0, // Align to the right side
-          child: FutureBuilder(
-              future: account,
-              builder:
-                  (context, AsyncSnapshot<ResponseUserProfileModel?> snapshot) {
-                if (snapshot.connectionState == ConnectionState.waiting) {
-                  return const Center(child: Text("Retrieving your data..."));
-                }
-                if (snapshot.hasError) {
-                  return const Center(child: Text("Error"));
-                }
-                if (snapshot.hasData) {
-                  return FutureBuilder(
-                      future: RetrieveAccountService().retrieveUserData(),
-                      builder: (context, snapshot) {
-                        // if (snapshot.connectionState ==
-                        //     ConnectionState.waiting) {
-                        //   return IconButton(
-                        //     icon: const Icon(Icons.send),
-                        //     onPressed: () async {
-                        //       final SendChatRequest request = SendChatRequest(
-                        //           recipientId: accountId,
-                        //           message: messageController.text);
+          child: IconButton(
+            icon: Icon(Icons.send),
+            onPressed: () async {
+              final SendChatRequest request = SendChatRequest(
+                  recipientId: accountId, message: messageController.text);
 
+<<<<<<< HEAD
                         //       sendChatService.sendMessage(request);
                         //     },
                         //   );
@@ -113,6 +97,11 @@ class ChatroomPageDetail extends StatelessWidget {
               //   },
               // ),
               ),
+=======
+              sendChatService.sendMessage(request);
+            },
+          ),
+>>>>>>> UAT
         ),
         Align(
           alignment: FractionalOffset.bottomCenter,
