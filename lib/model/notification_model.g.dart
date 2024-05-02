@@ -35,3 +35,17 @@ Map<String, dynamic> _$$ViewNotificationResponseImplToJson(
       'errorCode': instance.errorCode,
       'errorMessage': instance.errorMessage,
     };
+
+_$AcceptRejectNotificationImpl _$$AcceptRejectNotificationImplFromJson(
+        Map<String, dynamic> json) =>
+    _$AcceptRejectNotificationImpl(
+      notificationId: json['notificationId'] as String?,
+      status: json['status'] as String?,
+    );
+
+Map<String, dynamic> _$$AcceptRejectNotificationImplToJson(
+        _$AcceptRejectNotificationImpl instance) =>
+    <String, dynamic>{
+      'notificationId': instance.notificationId,
+      'status': instance.status,
+    };

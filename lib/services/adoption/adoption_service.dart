@@ -71,7 +71,7 @@ class AdoptionService {
     return null;
   }
 
-  Future<List<ViewNotificationResponse>?> approveRejectAdoption(
+  Future<ApproveRejectAdoptionRequest?> approveRejectAdoption(
       ApproveRejectAdoptionRequest request) async {
     try {
       String api = '/adoption/approve-reject-adoption';
@@ -80,13 +80,9 @@ class AdoptionService {
       var response = await dio.post(api, data: jsonEncode(request.toJson()));
       final errorSchema = ErrorSchema.fromJson(response.data!['errorSchema']);
       if (errorSchema.errorCode != 'WOF-000') {
-        return [
-          ViewNotificationResponse.fromJson(response.data['errorSchema'])
-        ];
+        return ApproveRejectAdoptionRequest.fromJson(response.data['errorSchema']);
       } else {
-        return (response.data['outputSchema']['notificationList'] as List)
-            .map((e) => ViewNotificationResponse.fromJson(e))
-            .toList();
+        return ApproveRejectAdoptionRequest.fromJson(response.data['outputSchema']);
       }
     } catch (error) {
       print(error);
