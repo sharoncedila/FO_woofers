@@ -75,23 +75,23 @@ class ChatCardDetail extends StatelessWidget {
                           ),
                         ),*/
                       ),
-                      // const SizedBox(
-                      //   height: 3,
-                      // ),
-                      // Padding(
-                      //   padding: const EdgeInsets.only(right: 10),
-                      //   child: IconButton(
-                      //     icon: const Icon(Icons.chat),
-                      //     onPressed: () {
-                      //       Navigator.push(
-                      //         context,
-                      //         MaterialPageRoute(
-                      //             builder: (context) => ChatroomPageDetail(
-                      //                 accountId: chatlistDetail.recipientId!)),
-                      //       );
-                      //     },
-                      //   ),
-                      // ),
+                      const SizedBox(
+                        height: 3,
+                      ),
+                      const Padding(
+                        padding: EdgeInsets.only(right: 10),
+                        child: /*IconButton(
+                          icon: const */Icon(Icons.chat),
+                          /*onPressed: () {
+                            Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                  builder: (context) => ChatroomPageDetail(
+                                      accountId: chatlistDetail.recipientId!)),
+                            );
+                          },
+                        ),*/
+                      ),
                     ],
                   ),
                 ),

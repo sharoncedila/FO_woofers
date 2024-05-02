@@ -3,7 +3,6 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:hexcolor/hexcolor.dart';
 import 'package:woofers/components/bubble_chat.dart';
 import 'package:woofers/model/chatroom_model.dart';
-import 'package:woofers/pages/chatlist_page.dart';
 import 'package:woofers/services/chat/chat_service.dart';
 
 class ChatroomPageDetail extends StatelessWidget {
@@ -16,7 +15,8 @@ class ChatroomPageDetail extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     TextEditingController messageController = TextEditingController();
-    
+    final _sendChatService = ChatroomService();
+
     return Scaffold(
       backgroundColor: Colors.white,
       appBar: AppBar(
@@ -34,6 +34,18 @@ class ChatroomPageDetail extends StatelessWidget {
       ),
       body: Stack(children: [
         Chatroom(),
+        Positioned(
+          bottom:
+              70, // Adjust this value to position the button at the desired height
+          left: 0, // Align to the left side
+          right: 0, // Align to the right side
+          child: IconButton(
+            icon: Icon(Icons.send),
+            onPressed: () {
+            
+            },
+          ),
+        ),
         Align(
           alignment: FractionalOffset.bottomCenter,
           child: Container(
@@ -45,6 +57,7 @@ class ChatroomPageDetail extends StatelessWidget {
                 border: OutlineInputBorder(),
               ),
             ),
+            //button send
           ),
         ),
       ]),
