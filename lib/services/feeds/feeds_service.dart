@@ -62,22 +62,58 @@ class FeedsService{
     }
   }
 
-  Future<List<LeaveCommentResponse>?> leaveCommentSection(String feedsId) async {
+  Future<LeaveCommentResponse?> leaveCommentSection(LeaveCommentRequest request) async {
     try {
-      String api = '/feeds/open-comments/feeds-id/$feedsId';
+      String api = '/feeds/comment';
       final dio = await DioInstance.getInstance();
 
-      var response = await dio.get(api);
+      var response = await dio.post(api, data: jsonEncode(request.toJson()));
       final errorSchema = ErrorSchema.fromJson(response.data['errorSchema']);
       if (errorSchema.errorCode != 'WOF-000') {
-        return [LeaveCommentResponse.fromJson(response.data['errorSchema'])];
+        return LeaveCommentResponse.fromJson(response.data['errorSchema']);
       } else {
-        return (response.data['outputSchema']['commentsList'] as List)
-            .map((e) => LeaveCommentResponse.fromJson(e))
-            .toList();
+          return LeaveCommentResponse.fromJson(
+            response.data['outputSchema']['feedsData']);
       }
     } catch (error) {
       throw Exception(error);
     }
   }
+
+    Future<ViewFeedsResponse> likeFeeds(String feedsId) async {
+    try {
+      String api = '/feeds/like/feeds-id/$feedsId';
+      final dio = await DioInstance.getInstance();
+
+      var response = await dio.get(api);
+      final errorSchema = ErrorSchema.fromJson(response.data['errorSchema']);
+      if (errorSchema.errorCode != 'WOF-000') {
+        return ViewFeedsResponse.fromJson(response.data['errorSchema']);
+      } else {
+        return ViewFeedsResponse.fromJson(response.data['outputSchema']);
+      }
+    } catch (error) {
+      throw Exception(error);
+    }
+  }
+
+  /*
+    Future<AddDogResponse?> addNewDog(AddDogRequest request) async{
+    try {
+      String api = '/dogs/add';
+      final dio = await DioInstance.getInstance();
+
+      var response = await dio.post(api, data: jsonEncode(request.toJson()));
+      final errorSchema = ErrorSchema.fromJson(response.data['errorSchema']);
+
+      if (errorSchema.errorCode != 'WOF-000') {
+        return AddDogResponse.fromJson(response.data['errorSchema']);
+      } else {
+        return AddDogResponse.fromJson(response.data['outputSchema']);
+      }
+    } catch (error) {
+      print(error);
+    }
+  }
+  */
 }

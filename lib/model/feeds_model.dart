@@ -50,7 +50,9 @@ class ViewFeedsResponse with _$ViewFeedsResponse{
     required String? likesCount,
     required String? postDate,
     required String? errorCode,
-    required String? errorMessage
+    required String? errorMessage,
+    required String? isLike,
+    required String? profilePicture,
   }) = _ViewFeedsResponse;
 
   factory ViewFeedsResponse.fromJson(Map<String, dynamic> json) => _$ViewFeedsResponseFromJson(json);

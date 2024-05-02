@@ -74,6 +74,8 @@ _$ViewFeedsResponseImpl _$$ViewFeedsResponseImplFromJson(
       postDate: json['postDate'] as String?,
       errorCode: json['errorCode'] as String?,
       errorMessage: json['errorMessage'] as String?,
+      isLike: json['isLike'] as String?,
+      profilePicture: json['profilePicture'] as String?,
     );
 
 Map<String, dynamic> _$$ViewFeedsResponseImplToJson(
@@ -88,6 +90,8 @@ Map<String, dynamic> _$$ViewFeedsResponseImplToJson(
       'postDate': instance.postDate,
       'errorCode': instance.errorCode,
       'errorMessage': instance.errorMessage,
+      'isLike': instance.isLike,
+      'profilePicture': instance.profilePicture,
     };
 
 _$LeaveCommentResponseImpl _$$LeaveCommentResponseImplFromJson(

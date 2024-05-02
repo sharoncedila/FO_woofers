@@ -650,6 +650,8 @@ mixin _$ViewFeedsResponse {
   String? get postDate => throw _privateConstructorUsedError;
   String? get errorCode => throw _privateConstructorUsedError;
   String? get errorMessage => throw _privateConstructorUsedError;
+  String? get isLike => throw _privateConstructorUsedError;
+  String? get profilePicture => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -672,7 +674,9 @@ abstract class $ViewFeedsResponseCopyWith<$Res> {
       String? likesCount,
       String? postDate,
       String? errorCode,
-      String? errorMessage});
+      String? errorMessage,
+      String? isLike,
+      String? profilePicture});
 }
 
 /// @nodoc
@@ -697,6 +701,8 @@ class _$ViewFeedsResponseCopyWithImpl<$Res, $Val extends ViewFeedsResponse>
     Object? postDate = freezed,
     Object? errorCode = freezed,
     Object? errorMessage = freezed,
+    Object? isLike = freezed,
+    Object? profilePicture = freezed,
   }) {
     return _then(_value.copyWith(
       feedsId: freezed == feedsId
@@ -735,6 +741,14 @@ class _$ViewFeedsResponseCopyWithImpl<$Res, $Val extends ViewFeedsResponse>
           ? _value.errorMessage
           : errorMessage // ignore: cast_nullable_to_non_nullable
               as String?,
+      isLike: freezed == isLike
+          ? _value.isLike
+          : isLike // ignore: cast_nullable_to_non_nullable
+              as String?,
+      profilePicture: freezed == profilePicture
+          ? _value.profilePicture
+          : profilePicture // ignore: cast_nullable_to_non_nullable
+              as String?,
     ) as $Val);
   }
 }
@@ -756,7 +770,9 @@ abstract class _$$ViewFeedsResponseImplCopyWith<$Res>
       String? likesCount,
       String? postDate,
       String? errorCode,
-      String? errorMessage});
+      String? errorMessage,
+      String? isLike,
+      String? profilePicture});
 }
 
 /// @nodoc
@@ -779,6 +795,8 @@ class __$$ViewFeedsResponseImplCopyWithImpl<$Res>
     Object? postDate = freezed,
     Object? errorCode = freezed,
     Object? errorMessage = freezed,
+    Object? isLike = freezed,
+    Object? profilePicture = freezed,
   }) {
     return _then(_$ViewFeedsResponseImpl(
       feedsId: freezed == feedsId
@@ -817,6 +835,14 @@ class __$$ViewFeedsResponseImplCopyWithImpl<$Res>
           ? _value.errorMessage
           : errorMessage // ignore: cast_nullable_to_non_nullable
               as String?,
+      isLike: freezed == isLike
+          ? _value.isLike
+          : isLike // ignore: cast_nullable_to_non_nullable
+              as String?,
+      profilePicture: freezed == profilePicture
+          ? _value.profilePicture
+          : profilePicture // ignore: cast_nullable_to_non_nullable
+              as String?,
     ));
   }
 }
@@ -833,7 +859,9 @@ class _$ViewFeedsResponseImpl implements _ViewFeedsResponse {
       required this.likesCount,
       required this.postDate,
       required this.errorCode,
-      required this.errorMessage});
+      required this.errorMessage,
+      required this.isLike,
+      required this.profilePicture});
 
   factory _$ViewFeedsResponseImpl.fromJson(Map<String, dynamic> json) =>
       _$$ViewFeedsResponseImplFromJson(json);
@@ -856,10 +884,14 @@ class _$ViewFeedsResponseImpl implements _ViewFeedsResponse {
   final String? errorCode;
   @override
   final String? errorMessage;
+  @override
+  final String? isLike;
+  @override
+  final String? profilePicture;
 
   @override
   String toString() {
-    return 'ViewFeedsResponse(feedsId: $feedsId, accountId: $accountId, username: $username, caption: $caption, image: $image, likesCount: $likesCount, postDate: $postDate, errorCode: $errorCode, errorMessage: $errorMessage)';
+    return 'ViewFeedsResponse(feedsId: $feedsId, accountId: $accountId, username: $username, caption: $caption, image: $image, likesCount: $likesCount, postDate: $postDate, errorCode: $errorCode, errorMessage: $errorMessage, isLike: $isLike, profilePicture: $profilePicture)';
   }
 
   @override
@@ -881,13 +913,27 @@ class _$ViewFeedsResponseImpl implements _ViewFeedsResponse {
             (identical(other.errorCode, errorCode) ||
                 other.errorCode == errorCode) &&
             (identical(other.errorMessage, errorMessage) ||
-                other.errorMessage == errorMessage));
+                other.errorMessage == errorMessage) &&
+            (identical(other.isLike, isLike) || other.isLike == isLike) &&
+            (identical(other.profilePicture, profilePicture) ||
+                other.profilePicture == profilePicture));
   }
 
   @JsonKey(ignore: true)
   @override
-  int get hashCode => Object.hash(runtimeType, feedsId, accountId, username,
-      caption, image, likesCount, postDate, errorCode, errorMessage);
+  int get hashCode => Object.hash(
+      runtimeType,
+      feedsId,
+      accountId,
+      username,
+      caption,
+      image,
+      likesCount,
+      postDate,
+      errorCode,
+      errorMessage,
+      isLike,
+      profilePicture);
 
   @JsonKey(ignore: true)
   @override
@@ -914,7 +960,9 @@ abstract class _ViewFeedsResponse implements ViewFeedsResponse {
       required final String? likesCount,
       required final String? postDate,
       required final String? errorCode,
-      required final String? errorMessage}) = _$ViewFeedsResponseImpl;
+      required final String? errorMessage,
+      required final String? isLike,
+      required final String? profilePicture}) = _$ViewFeedsResponseImpl;
 
   factory _ViewFeedsResponse.fromJson(Map<String, dynamic> json) =
       _$ViewFeedsResponseImpl.fromJson;
@@ -937,6 +985,10 @@ abstract class _ViewFeedsResponse implements ViewFeedsResponse {
   String? get errorCode;
   @override
   String? get errorMessage;
+  @override
+  String? get isLike;
+  @override
+  String? get profilePicture;
   @override
   @JsonKey(ignore: true)
   _$$ViewFeedsResponseImplCopyWith<_$ViewFeedsResponseImpl> get copyWith =>

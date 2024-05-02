@@ -377,6 +377,7 @@ class DogProfilePage extends StatelessWidget {
                               children: [
                             Text(
                               "vaccine",
+                              maxLines: null,
                               style: TextStyle(
                                 color: Colors.black.withOpacity(0.5),
                               ),

@@ -3,6 +3,7 @@ import 'package:flutter/widgets.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:hexcolor/hexcolor.dart';
 import 'package:woofers/components/adoption_card.dart';
+import 'package:woofers/model/filter_adoption.dart';
 import 'package:woofers/pages/notification_page.dart';
 import 'package:woofers/services/adoption/adoption_service.dart';
 import 'package:woofers/services/dog/breed_services.dart';
@@ -23,129 +24,199 @@ class _AdoptionPageState extends State<AdoptionPage> {
   late List<String?> genderName = ['Female', 'Male'];
   String? _selectedGender;
 
+  FilterAdoption filterAdoption = FilterAdoption();
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.white,
-      appBar:
-        AppBar(
+        backgroundColor: Colors.white,
+        appBar: AppBar(
           toolbarHeight: 75,
           elevation: 0,
           backgroundColor: HexColor("#a0dcdc"),
-          title:
-            Text(
-              "WOOFERS",
-              style: GoogleFonts.lora(
-                fontSize: 25,
-                fontWeight: FontWeight.bold,
-                color: const Color.fromRGBO(40,36,36,10000),
-              ),
+          title: Text(
+            "WOOFERS",
+            style: GoogleFonts.lora(
+              fontSize: 25,
+              fontWeight: FontWeight.bold,
+              color: const Color.fromRGBO(40, 36, 36, 10000),
             ),
-            actions: <Widget>[
-              IconButton(
-                icon: const Icon(Icons.notification_add_rounded),
-                onPressed: () {
-                  Navigator.push(
-                    context,
-                    MaterialPageRoute(builder: (context) => const NotificationPage()),
-                  );
-                },
-              ),
-            ],
           ),
-      body: SingleChildScrollView(
-        child: Column(
+          actions: <Widget>[
+            IconButton(
+              icon: const Icon(Icons.notification_add_rounded),
+              onPressed: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                      builder: (context) => const NotificationPage()),
+                );
+              },
+            ),
+          ],
+        ),
+        body: Column(
           children: [
-            Column(
+            const SizedBox(height: 5,),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.center,
               children: [
+                const SizedBox(width: 5),
+                // dropdown province
+                Form(
+                  // padding: const EdgeInsets.symmetric(horizontal: 25),
+                  child: FutureBuilder(
+                    future: RetrieveProvinceService().retrieveAllProvince(),
+                    //initialData: initialProvinceNames,
+                    builder: (context, snapshot) {
+                      if (snapshot.connectionState == ConnectionState.waiting) {
+                        return const Text("Province");
+                      }
+                      if (snapshot.hasError) {
+                        return Text("Error: ${snapshot.error}");
+                      }
+                      if (!snapshot.hasData) {
+                        return const Text("No data");
+                      }
 
-                // province here
-                const SizedBox(height: 15),
-                // SingleChildScrollView(
-                  // child: 
-                  Form(
-                    // padding: const EdgeInsets.symmetric(horizontal: 25),
-                    child: FutureBuilder(
-                      future: RetrieveProvinceService().retrieveAllProvince(),
-                      //initialData: initialProvinceNames,
-                      builder: (context, snapshot) {
-                        if (snapshot.connectionState == ConnectionState.waiting) {
-                          return const Text("Province");
-                        }
-                        if (snapshot.hasError) {
-                          return Text("Error: ${snapshot.error}");
-                        }
-                        if (!snapshot.hasData) {
-                          return const Text("No data");
-                        }
-
-                        // return Container(color: Colors.blue, height: 100, width: 100,);
-                        
-                        final provinceResponse = snapshot.data!;
-                        final provinceNames = provinceResponse.provinceList
-                            .map((e) => e.provinceName)
-                            .toList();
-                        return Container(
-                          height: 50, width: MediaQuery.of(context).size.width,
-                          color: Colors.blue,
-                          child: DropdownButtonFormField<String>(
-                            value: _selectedProvince,
-                            decoration: InputDecoration(
-                              enabledBorder: const OutlineInputBorder(
-                                borderSide: BorderSide(color: Colors.white),
-                              ),
-                              focusedBorder: OutlineInputBorder(
-                                borderSide: BorderSide(color: Colors.grey.shade400),
-                              ),
-                              fillColor: Colors.grey.shade200,
-                              filled: true,
-                              hintText: 'Province',
-                              hintStyle: TextStyle(color: Colors.grey[500]),
-                            ),
-                            onChanged: (String? newValue) {
-                              if (newValue != null) {
-                                setState(() {
-                                  _selectedProvince = newValue;
-                                });
-                              }
-                            },
-                            items: provinceNames.map((province) {
-                              return DropdownMenuItem<String>(
-                                value: province,
-                                child: Text(province),
-                              );
-                            }).toList(),
+                      final provinceResponse = snapshot.data!;
+                      final provinceNames = provinceResponse.provinceList
+                          .map((e) => e.provinceName)
+                          .toList();
+                      return Container(
+                        height: 50,
+                        width: MediaQuery.of(context).size.width / 2.55,
+                        child: DropdownButtonFormField<String>(
+                          value: _selectedProvince,
+                          style: const TextStyle(
+                            fontSize: 11,
+                            color: Colors.black,
                           ),
-                        );
-                      },
-                    ),
+                          decoration: InputDecoration(
+                            enabledBorder: const OutlineInputBorder(
+                              borderSide: BorderSide(color: Color.fromRGBO(160, 220, 220, 10),),
+                            ),
+                            focusedBorder: OutlineInputBorder(
+                              borderSide:
+                                  BorderSide(color: Colors.grey.shade400),
+                            ),
+                            fillColor: Colors.grey.shade200,
+                            filled: true,
+                            hintText: 'Province',
+                            hintStyle: TextStyle(color: Colors.grey[500]),
+                            // isDense: true
+                          ),
+                          onChanged: (String? newValue) {
+                            if (newValue != null) {
+                              setState(() {
+                                _selectedProvince = newValue;
+                              });
+                            }
+                          },
+                          items: provinceNames.map((province) {
+                            return DropdownMenuItem<String>(
+                              value: province,
+                              child: Text(province),
+                            );
+                          }).toList(),
+                        ),
+                      );
+                    },
                   ),
-                // ),
+                ),
 
-              IconButton(
-                onPressed: onPressed, 
-                icon: Icons.search_outlined,
-              )
+                const SizedBox(width: 5),
+                // dropdown breed
+                Form(
+                  child: FutureBuilder(
+                    future: RetrieveBreedService().retrieveAllBreed(),
+                    //initialData: initialBreedNames,
+                    builder: (context, snapshot) {
+                      if (snapshot.connectionState == ConnectionState.waiting) {
+                        return const Text("Breed");
+                      }
+                      if (snapshot.hasError) {
+                        return Text("Error: ${snapshot.error}");
+                      }
+                      if (!snapshot.hasData) {
+                        return const Text("No data");
+                      }
 
+                      final breedResponses = snapshot.data!;
+                      final breedNames = breedResponses.breedList
+                          .map((e) => e.breedName)
+                          .toList();
+                      return Container(
+                        height: 50,
+                        width: MediaQuery.of(context).size.width / 2.3,
+                        child: DropdownButtonFormField<String>(
+                          value: _selectedBreed,
+                          style: const TextStyle(
+                            fontSize: 11,
+                            color: Colors.black,
+                          ),
+                          decoration: InputDecoration(
+                            enabledBorder: const OutlineInputBorder(
+                              borderSide: BorderSide(color: Color.fromRGBO(160, 220, 220, 10),),
+                            ),
+                            focusedBorder: OutlineInputBorder(
+                              borderSide:
+                                  BorderSide(color: Colors.grey.shade400),
+                            ),
+                            fillColor: Colors.grey.shade200,
+                            filled: true,
+                            hintText: 'Breed',
+                            hintStyle: TextStyle(color: Colors.grey[500]),
+                          ),
+                          onChanged: (String? newValue) {
+                            if (newValue != null) {
+                              setState(() {
+                                _selectedBreed = newValue;
+                              });
+                            }
+                          },
+                          items: breedNames.map((breed) {
+                            return DropdownMenuItem<String>(
+                              value: breed,
+                              child: Text(breed),
+                            );
+                          }).toList(),
+                        ),
+                      );
+                    },
+                  ),
+                ),
+
+                // const SizedBox(width: 5),
+                IconButton(
+                  onPressed: () {
+                    setState(() {
+                      filterAdoption = filterAdoption.copyWith(
+                        breed: _selectedBreed,
+                        province: _selectedProvince,
+                        gender: _selectedGender,
+                      );
+                    });
+                  },
+                  icon: Icon(Icons.search_outlined),
+                )
               ],
             ),
-
-
-            // adoptionList(),
+            adoptionList(),
           ],
         )
-      )
-      //adoptionList(),
-    );
+        //adoptionList(),
+        );
   }
 
   Widget adoptionList() {
+    print(filterAdoption);
     return SingleChildScrollView(
       child: Center(
         child: Padding(
           padding: const EdgeInsets.symmetric(horizontal: 5, vertical: 10),
           child: FutureBuilder(
-            future: AdoptionService().retrieveAdoptionList(),
+            future: AdoptionService().retrieveAdoptionList(filterAdoption),
             builder: ((context, snapshot) {
               if (snapshot.connectionState == ConnectionState.waiting) {
                 return const Center(child: Text("Retrieving your data..."));
@@ -157,7 +228,6 @@ class _AdoptionPageState extends State<AdoptionPage> {
                 return const Text("No data");
               }
               final adoptionList = snapshot.data!;
-              print("Data adoption: ${snapshot.data}");
               return Wrap(
                 children: adoptionList
                     .map((e) => DogCardDetail(adoptionDetail: e))
