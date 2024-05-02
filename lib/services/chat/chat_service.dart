@@ -45,7 +45,6 @@ class ChatroomService {
     }
   }
 
-
   Future<List<OpenChatResponse>?> openChatroom(OpenChatRequest request) async {
     try {
       const api = '/chats/open-chat';

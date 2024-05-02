@@ -18,7 +18,7 @@ class WebsocketInstance {
         HttpHeaders.authorizationHeader: 'Bearer $token',
       };
       session = await WebSocket.connect(
-          'ws://192.168.6.253:8080/woofers/app-notif',
+          'ws://172.20.10.2:8080/woofers/app-notif',
           headers: headers);
       print("Successfully Connect to WebSocket Server");
 

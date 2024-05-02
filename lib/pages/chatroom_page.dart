@@ -15,6 +15,8 @@ class ChatroomPageDetail extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    TextEditingController messageController = TextEditingController();
+    
     return Scaffold(
       backgroundColor: Colors.white,
       appBar: AppBar(
@@ -29,20 +31,23 @@ class ChatroomPageDetail extends StatelessWidget {
             color: const Color.fromRGBO(40, 36, 36, 10000),
           ),
         ),
-        actions: <Widget>[
-          IconButton(
-            icon: const Icon(Icons.notification_add_rounded),
-            onPressed: () {
-              Navigator.push(
-                context,
-                MaterialPageRoute(
-                    builder: (context) => const ChatListPage()),
-              );
-            },
-          ),
-        ],
       ),
-      body: Chatroom(),
+      body: Stack(children: [
+        Chatroom(),
+        Align(
+          alignment: FractionalOffset.bottomCenter,
+          child: Container(
+            color: Colors.white,
+            child: TextFormField(
+              controller: messageController,
+              decoration: const InputDecoration(
+                labelText: 'Type Here',
+                border: OutlineInputBorder(),
+              ),
+            ),
+          ),
+        ),
+      ]),
     );
   }
 
