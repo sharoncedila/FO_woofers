@@ -45,7 +45,6 @@ class ChatroomService {
     }
   }
 
-
   Future<List<OpenChatResponse>?> openChatroom(OpenChatRequest request) async {
     try {
       const api = '/chats/open-chat';
@@ -56,7 +55,7 @@ class ChatroomService {
       if (errorSchema.errorCode != 'WOF-000') {
         return [OpenChatResponse.fromJson(response.data['errorSchema'])];
       } else {
-        return (response.data['outputSchema']['messages'] as List)
+        return (response.data['outputSchema']['chatMessageList'] as List)
             .map((e) => OpenChatResponse.fromJson(e))
             .toList();
       }

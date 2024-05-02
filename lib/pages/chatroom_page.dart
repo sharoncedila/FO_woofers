@@ -3,6 +3,7 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:hexcolor/hexcolor.dart';
 import 'package:woofers/components/bubble_chat.dart';
 import 'package:woofers/model/chatroom_model.dart';
+import 'package:woofers/pages/chatlist_page.dart';
 import 'package:woofers/services/chat/chat_service.dart';
 
 class ChatroomPageDetail extends StatelessWidget {
@@ -14,6 +15,8 @@ class ChatroomPageDetail extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    TextEditingController messageController = TextEditingController();
+    
     return Scaffold(
       backgroundColor: Colors.white,
       appBar: AppBar(
@@ -28,20 +31,23 @@ class ChatroomPageDetail extends StatelessWidget {
             color: const Color.fromRGBO(40, 36, 36, 10000),
           ),
         ),
-        // actions: <Widget>[
-        //   IconButton(
-        //     icon: const Icon(Icons.notification_add_rounded),
-        //     onPressed: () {
-        //       Navigator.push(
-        //         context,
-        //         MaterialPageRoute(
-        //             builder: (context) => const ChatListPage()),
-        //       );
-        //     },
-        //   ),
-        // ],
       ),
-      body: Chatroom(),
+      body: Stack(children: [
+        Chatroom(),
+        Align(
+          alignment: FractionalOffset.bottomCenter,
+          child: Container(
+            color: Colors.white,
+            child: TextFormField(
+              controller: messageController,
+              decoration: const InputDecoration(
+                labelText: 'Type Here',
+                border: OutlineInputBorder(),
+              ),
+            ),
+          ),
+        ),
+      ]),
     );
   }
 

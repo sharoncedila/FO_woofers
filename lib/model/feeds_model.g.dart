@@ -52,7 +52,7 @@ _$PostFeedsRequestImpl _$$PostFeedsRequestImplFromJson(
         Map<String, dynamic> json) =>
     _$PostFeedsRequestImpl(
       caption: json['caption'] as String,
-      image: json['image'] as String,
+      image: json['image'] as String?,
     );
 
 Map<String, dynamic> _$$PostFeedsRequestImplToJson(
