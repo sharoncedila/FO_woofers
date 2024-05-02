@@ -69,23 +69,23 @@ class ChatroomService {
     }
   }
 
-  Future<SendChatRequest> sendMessage(SendChatRequest request) async {
-    try {
-      const api = '/chats/send-chat';
-      final dio = await DioInstance.getInstance();
+  // Future<SendChatRequest> sendMessage(SendChatRequest request) async {
+  //   try {
+  //     const api = '/chats/send-chat';
+  //     final dio = await DioInstance.getInstance();
 
-      var response = await dio.post(api, data: jsonEncode(request.toJson()));
-      final errorSchema = ErrorSchema.fromJson(response.data!['errorSchema']);
-      if (errorSchema.errorCode != 'WOF-000') {
-        return SendChatRequest.fromJson(response.data['errorSchema']);
-      } else {
-        return SendChatRequest.fromJson(response.data['outputSchema']);
-      }
-    } catch (error) {
-      print(error);
-      throw Exception(error);
-    }
-  }
+  //     var response = await dio.post(api, data: jsonEncode(request.toJson()));
+  //     final errorSchema = ErrorSchema.fromJson(response.data!['errorSchema']);
+  //     if (errorSchema.errorCode != 'WOF-000') {
+  //       return SendChatRequest.fromJson(response.data['errorSchema']);
+  //     } else {
+  //       return SendChatRequest.fromJson(response.data['outputSchema']);
+  //     }
+  //   } catch (error) {
+  //     print(error);
+  //     throw Exception(error);
+  //   }
+  // }
 
   Future<List<SearchChatResponse>> searchChat(String username) async {
     try {

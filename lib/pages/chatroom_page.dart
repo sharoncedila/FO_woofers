@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:hexcolor/hexcolor.dart';
+import 'package:woofers/classes/ws_chat_instance.dart';
+import 'package:woofers/components/bottom_menu.dart';
 import 'package:woofers/components/bubble_chat.dart';
 import 'package:woofers/model/chatroom_model.dart';
 import 'package:woofers/pages/chatlist_page.dart';
@@ -33,13 +35,13 @@ class ChatroomPageDetail extends StatelessWidget {
             color: const Color.fromRGBO(40, 36, 36, 10000),
           ),
         ),
-        leading: IconButton(
-          icon: Icon(Icons.arrow_back),
-          onPressed: () {
-            // Navigate back when the back button is pressed
-            Navigator.push(context, MaterialPageRoute(builder: (_) => const ChatListPage()));
-          },
-        ),
+        // leading: IconButton(
+        //   icon: Icon(Icons.arrow_back),
+        //   onPressed: () {
+        //     // Navigate back when the back button is pressed
+        //     Navigator.push(context, MaterialPageRoute(builder: (_) => const BottomMenuBar()));
+        //   },
+        // ),
       ),
       body: Stack(children: [
         Chatroom(),
@@ -54,7 +56,7 @@ class ChatroomPageDetail extends StatelessWidget {
               final SendChatRequest request = SendChatRequest(
                   recipientId: accountId, message: messageController.text);
 
-              _sendChatService.sendMessage(request);
+              WSChatInstance.sendMessage(request);
 
 
             },
