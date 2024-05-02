@@ -16,7 +16,7 @@ class FeedsCard extends StatefulWidget {
 class _FeedsCardState extends State<FeedsCard> {
   String? feedsId;
   String? imageURL;
-  String? _isLike;
+  String? isLike;
 
   @override
   void initState(){
@@ -28,10 +28,7 @@ class _FeedsCardState extends State<FeedsCard> {
   Widget build(BuildContext context) {
     // final imageURL = feedsDetail?.profilePicture;
     ViewFeedsResponse feedsDetail = widget.feedsDetail;
-<<<<<<< HEAD
-    _isLike = feedsDetail.isLike;
-=======
->>>>>>> UAT
+    isLike = feedsDetail.isLike;
     return Padding(
       padding: const EdgeInsets.only(left: 5, right: 5),
       child: Column(
@@ -114,7 +111,7 @@ class _FeedsCardState extends State<FeedsCard> {
                     children: [
                       Row(
                         children: <Widget>[
-                          (_isLike == null)
+                          (isLike == null)
                               ? IconButton(
                                   icon: const Icon(
                                     Icons.favorite_border,
@@ -122,10 +119,10 @@ class _FeedsCardState extends State<FeedsCard> {
                                     size: 23,
                                   ),
                                   onPressed: () {
-                                    print(_isLike);
+                                    print(isLike);
                                     setState(() {
-                                      _isLike = 'true';
-                                      print(_isLike);
+                                      isLike = 'true';
+                                      print(isLike);
                                       FeedsService()
                                           .likeFeeds(feedsDetail.feedsId ?? '');
                                     });
@@ -153,10 +150,10 @@ class _FeedsCardState extends State<FeedsCard> {
                                     size: 23,
                                   ),
                                   onPressed: () {
-                                    print(_isLike);
+                                    print(isLike);
                                     setState(() {
-                                      _isLike = null;
-                                      print(_isLike);
+                                      isLike = null;
+                                      print(isLike);
                                       FeedsService()
                                           .likeFeeds(feedsDetail.feedsId ?? '');
                                     });
