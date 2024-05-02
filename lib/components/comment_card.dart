@@ -49,26 +49,6 @@ class CommentCard extends StatelessWidget {
                   ImageNetwork(
                     urlImage: imageURL, width: 20, height: 20),
 
-                // ImageNetwork(urlImage: commentDetail.profilePicture, width: 20, height: 20),
-                // Container(
-                //   width: 50,
-                //   height: 50,
-                //   decoration: BoxDecoration(
-                //       borderRadius: BorderRadius.circular(28),
-                //       border: Border.all(color: Colors.black)
-                //       ),
-                //   child: Center(
-                //     child: Container(
-                //       width: 40,
-                //       height: 40,
-                //       decoration: BoxDecoration(
-                //           borderRadius: BorderRadius.circular(30),
-                //           image: const DecorationImage(
-                //               image: ImageNetwork(urlImage: commentDetail.profilePicture, width: 10, height: 10),
-                //               fit: BoxFit.cover)),
-                //     ),
-                //   ),
-                // ),
                 const SizedBox(
                   width: 20,
                 ),

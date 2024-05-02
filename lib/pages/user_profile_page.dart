@@ -16,7 +16,7 @@ class UserProfilePage extends StatefulWidget {
   _UserProfilePageState createState() => _UserProfilePageState();
 }
 
-class _UserProfilePageState extends State<UserProfilePage> { 
+class _UserProfilePageState extends State<UserProfilePage> {
   // const UserProfilePagetate({Key key}) : super(key: key);
   final Future<ResponseUserProfileModel?> _account =
       RetrieveAccountService().retrieveUserData();
@@ -27,7 +27,7 @@ class _UserProfilePageState extends State<UserProfilePage> {
       body: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: <Widget>[
-          const SizedBox(height: 10), 
+          const SizedBox(height: 10),
           Expanded(
             child: FutureBuilder(
                 future: _account,

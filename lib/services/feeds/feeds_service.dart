@@ -4,7 +4,7 @@ import 'package:woofers/classes/dio_instance.dart';
 import 'package:woofers/model/error_schema_model.dart';
 import 'package:woofers/model/feeds_model.dart';
 
-class FeedsService{
+class FeedsService {
   Future<List<ViewFeedsResponse>> retrieveFeedsData() async {
     try {
       const api = '/feeds/view';
@@ -43,7 +43,6 @@ class FeedsService{
     }
   }
 
-
   Future<PostFeedsResponse?> postFeeds(PostFeedsRequest request) async {
     try {
       const api = '/feeds/post';
@@ -62,7 +61,8 @@ class FeedsService{
     }
   }
 
-  Future<OpenCommentsResponse> leaveComment(LeaveCommentRequest request) async{
+  Future<LeaveCommentResponse?> leaveCommentSection(
+      LeaveCommentRequest request) async {
     try {
       String api = '/feeds/comment';
       final dio = await DioInstance.getInstance();
@@ -70,16 +70,17 @@ class FeedsService{
       var response = await dio.post(api, data: jsonEncode(request.toJson()));
       final errorSchema = ErrorSchema.fromJson(response.data['errorSchema']);
       if (errorSchema.errorCode != 'WOF-000') {
-        return OpenCommentsResponse.fromJson(response.data['errorSchema']);
+        return LeaveCommentResponse.fromJson(response.data['errorSchema']);
       } else {
-        return OpenCommentsResponse.fromJson(response.data['outputSchema']);
+        return LeaveCommentResponse.fromJson(
+            response.data['outputSchema']['feedsData']);
       }
     } catch (error) {
       throw Exception(error);
     }
   }
 
-  Future<LikeFeedsResponse> likeFeeds(String feedsId) async{
+  Future<ViewFeedsResponse> likeFeeds(String feedsId) async {
     try {
       String api = '/feeds/like/feeds-id/$feedsId';
       final dio = await DioInstance.getInstance();
@@ -87,12 +88,32 @@ class FeedsService{
       var response = await dio.get(api);
       final errorSchema = ErrorSchema.fromJson(response.data['errorSchema']);
       if (errorSchema.errorCode != 'WOF-000') {
-        return LikeFeedsResponse.fromJson(response.data['errorSchema']);
+        return ViewFeedsResponse.fromJson(response.data['errorSchema']);
       } else {
-        return LikeFeedsResponse.fromJson(response.data['outputSchema']);
+        return ViewFeedsResponse.fromJson(response.data['outputSchema']);
       }
     } catch (error) {
       throw Exception(error);
     }
   }
+
+  /*
+    Future<AddDogResponse?> addNewDog(AddDogRequest request) async{
+    try {
+      String api = '/dogs/add';
+      final dio = await DioInstance.getInstance();
+
+      var response = await dio.post(api, data: jsonEncode(request.toJson()));
+      final errorSchema = ErrorSchema.fromJson(response.data['errorSchema']);
+
+      if (errorSchema.errorCode != 'WOF-000') {
+        return AddDogResponse.fromJson(response.data['errorSchema']);
+      } else {
+        return AddDogResponse.fromJson(response.data['outputSchema']);
+      }
+    } catch (error) {
+      print(error);
+    }
+  }
+  */
 }
