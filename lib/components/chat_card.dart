@@ -32,7 +32,7 @@ class ChatCardDetail extends StatelessWidget {
             String accountId = chatlistDetail.recipientId!;
             final OpenChatRequest req = OpenChatRequest(recipientId: accountId);
             _openChatService.openChatroom(req).then((value) =>
-                Navigator.of(context).pushReplacement(MaterialPageRoute(
+                Navigator.of(context).push(MaterialPageRoute(
                     builder: (_) => ChatroomPageDetail(accountId: accountId))));
           },
           child: SizedBox(
@@ -78,20 +78,20 @@ class ChatCardDetail extends StatelessWidget {
                       // const SizedBox(
                       //   height: 3,
                       // ),
-                      Padding(
-                        padding: const EdgeInsets.only(right: 10),
-                        child: IconButton(
-                          icon: const Icon(Icons.chat),
-                          onPressed: () {
-                            Navigator.push(
-                              context,
-                              MaterialPageRoute(
-                                  builder: (context) => ChatroomPageDetail(
-                                      accountId: chatlistDetail.recipientId!)),
-                            );
-                          },
-                        ),
-                      ),
+                      // Padding(
+                      //   padding: const EdgeInsets.only(right: 10),
+                      //   child: IconButton(
+                      //     icon: const Icon(Icons.chat),
+                      //     onPressed: () {
+                      //       Navigator.push(
+                      //         context,
+                      //         MaterialPageRoute(
+                      //             builder: (context) => ChatroomPageDetail(
+                      //                 accountId: chatlistDetail.recipientId!)),
+                      //       );
+                      //     },
+                      //   ),
+                      // ),
                     ],
                   ),
                 ),

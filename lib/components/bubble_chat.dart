@@ -23,9 +23,9 @@ print("Data adoption: ${currentId}");
         child: Card(
           child: Column(
             children: [
-              const SizedBox(height: 20),
+              // const SizedBox(height: 20),
               
-              if (currentId == bubbleChatlistDetail.senderChatId || currentId == bubbleChatlistDetail.recipientChatId)
+              if (currentId == bubbleChatlistDetail.senderId)
                 BubbleSpecialThree(
                   text: bubbleChatlistDetail.message!,
                   color: const Color(0xFF1B97F3),

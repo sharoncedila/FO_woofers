@@ -19,10 +19,19 @@ class _FeedsCardState extends State<FeedsCard> {
   String? _isLike;
 
   @override
+  void initState(){
+    super.initState();
+    isLike = widget.feedsDetail.isLike;
+  }
+
+  @override
   Widget build(BuildContext context) {
     // final imageURL = feedsDetail?.profilePicture;
     ViewFeedsResponse feedsDetail = widget.feedsDetail;
+<<<<<<< HEAD
     _isLike = feedsDetail.isLike;
+=======
+>>>>>>> UAT
     return Padding(
       padding: const EdgeInsets.only(left: 5, right: 5),
       child: Column(
