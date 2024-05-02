@@ -487,7 +487,7 @@ PostFeedsRequest _$PostFeedsRequestFromJson(Map<String, dynamic> json) {
 /// @nodoc
 mixin _$PostFeedsRequest {
   String get caption => throw _privateConstructorUsedError;
-  String get image => throw _privateConstructorUsedError;
+  String? get image => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -501,7 +501,7 @@ abstract class $PostFeedsRequestCopyWith<$Res> {
           PostFeedsRequest value, $Res Function(PostFeedsRequest) then) =
       _$PostFeedsRequestCopyWithImpl<$Res, PostFeedsRequest>;
   @useResult
-  $Res call({String caption, String image});
+  $Res call({String caption, String? image});
 }
 
 /// @nodoc
@@ -518,17 +518,17 @@ class _$PostFeedsRequestCopyWithImpl<$Res, $Val extends PostFeedsRequest>
   @override
   $Res call({
     Object? caption = null,
-    Object? image = null,
+    Object? image = freezed,
   }) {
     return _then(_value.copyWith(
       caption: null == caption
           ? _value.caption
           : caption // ignore: cast_nullable_to_non_nullable
               as String,
-      image: null == image
+      image: freezed == image
           ? _value.image
           : image // ignore: cast_nullable_to_non_nullable
-              as String,
+              as String?,
     ) as $Val);
   }
 }
@@ -541,7 +541,7 @@ abstract class _$$PostFeedsRequestImplCopyWith<$Res>
       __$$PostFeedsRequestImplCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({String caption, String image});
+  $Res call({String caption, String? image});
 }
 
 /// @nodoc
@@ -556,17 +556,17 @@ class __$$PostFeedsRequestImplCopyWithImpl<$Res>
   @override
   $Res call({
     Object? caption = null,
-    Object? image = null,
+    Object? image = freezed,
   }) {
     return _then(_$PostFeedsRequestImpl(
       caption: null == caption
           ? _value.caption
           : caption // ignore: cast_nullable_to_non_nullable
               as String,
-      image: null == image
+      image: freezed == image
           ? _value.image
           : image // ignore: cast_nullable_to_non_nullable
-              as String,
+              as String?,
     ));
   }
 }
@@ -582,7 +582,7 @@ class _$PostFeedsRequestImpl implements _PostFeedsRequest {
   @override
   final String caption;
   @override
-  final String image;
+  final String? image;
 
   @override
   String toString() {
@@ -620,7 +620,7 @@ class _$PostFeedsRequestImpl implements _PostFeedsRequest {
 abstract class _PostFeedsRequest implements PostFeedsRequest {
   factory _PostFeedsRequest(
       {required final String caption,
-      required final String image}) = _$PostFeedsRequestImpl;
+      required final String? image}) = _$PostFeedsRequestImpl;
 
   factory _PostFeedsRequest.fromJson(Map<String, dynamic> json) =
       _$PostFeedsRequestImpl.fromJson;
@@ -628,7 +628,7 @@ abstract class _PostFeedsRequest implements PostFeedsRequest {
   @override
   String get caption;
   @override
-  String get image;
+  String? get image;
   @override
   @JsonKey(ignore: true)
   _$$PostFeedsRequestImplCopyWith<_$PostFeedsRequestImpl> get copyWith =>

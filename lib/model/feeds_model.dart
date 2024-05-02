@@ -33,7 +33,7 @@ class OpenCommentsResponse with _$OpenCommentsResponse{
 class PostFeedsRequest with _$PostFeedsRequest {
   factory PostFeedsRequest({
     required String caption,
-    required String image
+    required String? image
   }) = _PostFeedsRequest;
 
   factory PostFeedsRequest.fromJson(Map<String, dynamic> json) => _$PostFeedsRequestFromJson(json);

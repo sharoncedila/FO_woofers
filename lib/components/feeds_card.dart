@@ -16,13 +16,13 @@ class FeedsCard extends StatefulWidget {
 class _FeedsCardState extends State<FeedsCard> {
   String? feedsId;
   String? imageURL;
-  String? isLike;
+  String? _isLike;
 
   @override
   Widget build(BuildContext context) {
     // final imageURL = feedsDetail?.profilePicture;
     ViewFeedsResponse feedsDetail = widget.feedsDetail;
-    isLike = feedsDetail.isLike;
+    _isLike = feedsDetail.isLike;
     return Padding(
       padding: const EdgeInsets.only(left: 5, right: 5),
       child: Column(
@@ -105,7 +105,7 @@ class _FeedsCardState extends State<FeedsCard> {
                     children: [
                       Row(
                         children: <Widget>[
-                          (isLike == null)
+                          (_isLike == null)
                               ? IconButton(
                                   icon: const Icon(
                                     Icons.favorite_border,
@@ -113,13 +113,30 @@ class _FeedsCardState extends State<FeedsCard> {
                                     size: 23,
                                   ),
                                   onPressed: () {
+                                    print(_isLike);
                                     setState(() {
-                                      isLike = "true";
+                                      _isLike = 'true';
+                                      print(_isLike);
                                       FeedsService()
                                           .likeFeeds(feedsDetail.feedsId ?? '');
                                     });
                                   },
                                 )
+
+                              /*
+                                IconButton(
+                  onPressed: () {
+                    setState(() {
+                      filterAdoption = filterAdoption.copyWith(
+                        breed: _selectedBreed,
+                        province: _selectedProvince,
+                        gender: _selectedGender,
+                      );
+                    });
+                  },
+                  icon: Icon(Icons.search_outlined),
+                )
+                                */
                               : IconButton(
                                   icon: const Icon(
                                     Icons.favorite,
@@ -127,8 +144,10 @@ class _FeedsCardState extends State<FeedsCard> {
                                     size: 23,
                                   ),
                                   onPressed: () {
+                                    print(_isLike);
                                     setState(() {
-                                      isLike = null;
+                                      _isLike = null;
+                                      print(_isLike);
                                       FeedsService()
                                           .likeFeeds(feedsDetail.feedsId ?? '');
                                     });
