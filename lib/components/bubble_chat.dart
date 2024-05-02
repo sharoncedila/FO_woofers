@@ -16,7 +16,7 @@ class BubbleChatCardDetail extends StatelessWidget {
       child: Column(
         children: [
           const SizedBox(height: 20),
-          if (currentId == bubbleChatlistDetail.senderId)
+          if (currentId == bubbleChatlistDetail.senderId || currentId == bubbleChatlistDetail.recipientId)
             BubbleSpecialThree(
               text: bubbleChatlistDetail.senderId!,
               color: const Color(0xFFE8E8EE),

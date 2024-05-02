@@ -68,7 +68,7 @@ class _EditMyProfilePageState extends State<EditMyProfile> {
               }
               if (!snapshot.hasData) {
                 return const Center(
-                    child: Text("no data available for this dog"));
+                    child: Text("no data available for this user"));
               }
 
               ResponseUserProfileModel myProfile =
@@ -100,7 +100,7 @@ class _EditMyProfilePageState extends State<EditMyProfile> {
                         width: 20,
                       ),
                       const Icon(
-                        Icons.pets_sharp,
+                        Icons.person_2_outlined,
                         size: 35,
                       ),
                       const SizedBox(
@@ -138,9 +138,10 @@ class _EditMyProfilePageState extends State<EditMyProfile> {
                       const SizedBox(
                         width: 20,
                       ),
-                      const Icon(
-                        Icons.pets_sharp,
-                        size: 35,
+                      const Image(
+                        image: AssetImage('assets/woofers_icon/profile.jpg'),
+                        width: 35,
+                        height: 35,
                       ),
                       const SizedBox(
                         width: 20,
@@ -180,7 +181,7 @@ class _EditMyProfilePageState extends State<EditMyProfile> {
                         width: 20,
                       ),
                       const Icon(
-                        Icons.pets_sharp,
+                        Icons.email_sharp,
                         size: 35,
                       ),
                       const SizedBox(
@@ -325,7 +326,7 @@ class _EditMyProfilePageState extends State<EditMyProfile> {
                       //   height: 35,
                       // ),
                       const Icon(
-                        Icons.medical_services_outlined,
+                        Icons.phone_android_sharp,
                         size: 35,
                       ),
                       const SizedBox(
