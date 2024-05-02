@@ -21,7 +21,6 @@ Map<String, dynamic> _$$OpenChatRequestImplToJson(
 _$SendChatRequestImpl _$$SendChatRequestImplFromJson(
         Map<String, dynamic> json) =>
     _$SendChatRequestImpl(
-      chatroomId: json['chatroomId'] as String?,
       recipientId: json['recipientId'] as String?,
       message: json['message'] as String?,
     );
@@ -29,7 +28,6 @@ _$SendChatRequestImpl _$$SendChatRequestImplFromJson(
 Map<String, dynamic> _$$SendChatRequestImplToJson(
         _$SendChatRequestImpl instance) =>
     <String, dynamic>{
-      'chatroomId': instance.chatroomId,
       'recipientId': instance.recipientId,
       'message': instance.message,
     };

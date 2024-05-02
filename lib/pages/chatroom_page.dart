@@ -16,6 +16,7 @@ class ChatroomPageDetail extends StatelessWidget {
   Widget build(BuildContext context) {
     TextEditingController messageController = TextEditingController();
     final _sendChatService = ChatroomService();
+    String recipientId;
 
     return Scaffold(
       backgroundColor: Colors.white,
@@ -41,8 +42,13 @@ class ChatroomPageDetail extends StatelessWidget {
           right: 0, // Align to the right side
           child: IconButton(
             icon: Icon(Icons.send),
-            onPressed: () {
-            
+            onPressed: () async {
+              final SendChatRequest request = SendChatRequest(
+                  recipientId: accountId, message: messageController.text);
+
+              _sendChatService.sendMessage(request);
+
+
             },
           ),
         ),

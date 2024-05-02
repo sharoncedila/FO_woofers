@@ -159,7 +159,7 @@ SendChatRequest _$SendChatRequestFromJson(Map<String, dynamic> json) {
 
 /// @nodoc
 mixin _$SendChatRequest {
-  String? get chatroomId => throw _privateConstructorUsedError;
+//required String? chatroomId,
   String? get recipientId => throw _privateConstructorUsedError;
   String? get message => throw _privateConstructorUsedError;
 
@@ -175,7 +175,7 @@ abstract class $SendChatRequestCopyWith<$Res> {
           SendChatRequest value, $Res Function(SendChatRequest) then) =
       _$SendChatRequestCopyWithImpl<$Res, SendChatRequest>;
   @useResult
-  $Res call({String? chatroomId, String? recipientId, String? message});
+  $Res call({String? recipientId, String? message});
 }
 
 /// @nodoc
@@ -191,15 +191,10 @@ class _$SendChatRequestCopyWithImpl<$Res, $Val extends SendChatRequest>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? chatroomId = freezed,
     Object? recipientId = freezed,
     Object? message = freezed,
   }) {
     return _then(_value.copyWith(
-      chatroomId: freezed == chatroomId
-          ? _value.chatroomId
-          : chatroomId // ignore: cast_nullable_to_non_nullable
-              as String?,
       recipientId: freezed == recipientId
           ? _value.recipientId
           : recipientId // ignore: cast_nullable_to_non_nullable
@@ -220,7 +215,7 @@ abstract class _$$SendChatRequestImplCopyWith<$Res>
       __$$SendChatRequestImplCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({String? chatroomId, String? recipientId, String? message});
+  $Res call({String? recipientId, String? message});
 }
 
 /// @nodoc
@@ -234,15 +229,10 @@ class __$$SendChatRequestImplCopyWithImpl<$Res>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? chatroomId = freezed,
     Object? recipientId = freezed,
     Object? message = freezed,
   }) {
     return _then(_$SendChatRequestImpl(
-      chatroomId: freezed == chatroomId
-          ? _value.chatroomId
-          : chatroomId // ignore: cast_nullable_to_non_nullable
-              as String?,
       recipientId: freezed == recipientId
           ? _value.recipientId
           : recipientId // ignore: cast_nullable_to_non_nullable
@@ -258,16 +248,12 @@ class __$$SendChatRequestImplCopyWithImpl<$Res>
 /// @nodoc
 @JsonSerializable()
 class _$SendChatRequestImpl implements _SendChatRequest {
-  _$SendChatRequestImpl(
-      {required this.chatroomId,
-      required this.recipientId,
-      required this.message});
+  _$SendChatRequestImpl({required this.recipientId, required this.message});
 
   factory _$SendChatRequestImpl.fromJson(Map<String, dynamic> json) =>
       _$$SendChatRequestImplFromJson(json);
 
-  @override
-  final String? chatroomId;
+//required String? chatroomId,
   @override
   final String? recipientId;
   @override
@@ -275,7 +261,7 @@ class _$SendChatRequestImpl implements _SendChatRequest {
 
   @override
   String toString() {
-    return 'SendChatRequest(chatroomId: $chatroomId, recipientId: $recipientId, message: $message)';
+    return 'SendChatRequest(recipientId: $recipientId, message: $message)';
   }
 
   @override
@@ -283,8 +269,6 @@ class _$SendChatRequestImpl implements _SendChatRequest {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$SendChatRequestImpl &&
-            (identical(other.chatroomId, chatroomId) ||
-                other.chatroomId == chatroomId) &&
             (identical(other.recipientId, recipientId) ||
                 other.recipientId == recipientId) &&
             (identical(other.message, message) || other.message == message));
@@ -292,8 +276,7 @@ class _$SendChatRequestImpl implements _SendChatRequest {
 
   @JsonKey(ignore: true)
   @override
-  int get hashCode =>
-      Object.hash(runtimeType, chatroomId, recipientId, message);
+  int get hashCode => Object.hash(runtimeType, recipientId, message);
 
   @JsonKey(ignore: true)
   @override
@@ -312,16 +295,13 @@ class _$SendChatRequestImpl implements _SendChatRequest {
 
 abstract class _SendChatRequest implements SendChatRequest {
   factory _SendChatRequest(
-      {required final String? chatroomId,
-      required final String? recipientId,
+      {required final String? recipientId,
       required final String? message}) = _$SendChatRequestImpl;
 
   factory _SendChatRequest.fromJson(Map<String, dynamic> json) =
       _$SendChatRequestImpl.fromJson;
 
-  @override
-  String? get chatroomId;
-  @override
+  @override //required String? chatroomId,
   String? get recipientId;
   @override
   String? get message;
