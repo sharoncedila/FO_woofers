@@ -1582,3 +1582,180 @@ abstract class _PostFeedsResponse implements PostFeedsResponse {
   _$$PostFeedsResponseImplCopyWith<_$PostFeedsResponseImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
+
+LikeFeedsResponse _$LikeFeedsResponseFromJson(Map<String, dynamic> json) {
+  return _LikeFeedsResponse.fromJson(json);
+}
+
+/// @nodoc
+mixin _$LikeFeedsResponse {
+  String? get status => throw _privateConstructorUsedError;
+  String? get errorCode => throw _privateConstructorUsedError;
+  String? get errorMessage => throw _privateConstructorUsedError;
+
+  Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
+  @JsonKey(ignore: true)
+  $LikeFeedsResponseCopyWith<LikeFeedsResponse> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class $LikeFeedsResponseCopyWith<$Res> {
+  factory $LikeFeedsResponseCopyWith(
+          LikeFeedsResponse value, $Res Function(LikeFeedsResponse) then) =
+      _$LikeFeedsResponseCopyWithImpl<$Res, LikeFeedsResponse>;
+  @useResult
+  $Res call({String? status, String? errorCode, String? errorMessage});
+}
+
+/// @nodoc
+class _$LikeFeedsResponseCopyWithImpl<$Res, $Val extends LikeFeedsResponse>
+    implements $LikeFeedsResponseCopyWith<$Res> {
+  _$LikeFeedsResponseCopyWithImpl(this._value, this._then);
+
+  // ignore: unused_field
+  final $Val _value;
+  // ignore: unused_field
+  final $Res Function($Val) _then;
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? status = freezed,
+    Object? errorCode = freezed,
+    Object? errorMessage = freezed,
+  }) {
+    return _then(_value.copyWith(
+      status: freezed == status
+          ? _value.status
+          : status // ignore: cast_nullable_to_non_nullable
+              as String?,
+      errorCode: freezed == errorCode
+          ? _value.errorCode
+          : errorCode // ignore: cast_nullable_to_non_nullable
+              as String?,
+      errorMessage: freezed == errorMessage
+          ? _value.errorMessage
+          : errorMessage // ignore: cast_nullable_to_non_nullable
+              as String?,
+    ) as $Val);
+  }
+}
+
+/// @nodoc
+abstract class _$$LikeFeedsResponseImplCopyWith<$Res>
+    implements $LikeFeedsResponseCopyWith<$Res> {
+  factory _$$LikeFeedsResponseImplCopyWith(_$LikeFeedsResponseImpl value,
+          $Res Function(_$LikeFeedsResponseImpl) then) =
+      __$$LikeFeedsResponseImplCopyWithImpl<$Res>;
+  @override
+  @useResult
+  $Res call({String? status, String? errorCode, String? errorMessage});
+}
+
+/// @nodoc
+class __$$LikeFeedsResponseImplCopyWithImpl<$Res>
+    extends _$LikeFeedsResponseCopyWithImpl<$Res, _$LikeFeedsResponseImpl>
+    implements _$$LikeFeedsResponseImplCopyWith<$Res> {
+  __$$LikeFeedsResponseImplCopyWithImpl(_$LikeFeedsResponseImpl _value,
+      $Res Function(_$LikeFeedsResponseImpl) _then)
+      : super(_value, _then);
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? status = freezed,
+    Object? errorCode = freezed,
+    Object? errorMessage = freezed,
+  }) {
+    return _then(_$LikeFeedsResponseImpl(
+      status: freezed == status
+          ? _value.status
+          : status // ignore: cast_nullable_to_non_nullable
+              as String?,
+      errorCode: freezed == errorCode
+          ? _value.errorCode
+          : errorCode // ignore: cast_nullable_to_non_nullable
+              as String?,
+      errorMessage: freezed == errorMessage
+          ? _value.errorMessage
+          : errorMessage // ignore: cast_nullable_to_non_nullable
+              as String?,
+    ));
+  }
+}
+
+/// @nodoc
+@JsonSerializable()
+class _$LikeFeedsResponseImpl implements _LikeFeedsResponse {
+  _$LikeFeedsResponseImpl(
+      {required this.status,
+      required this.errorCode,
+      required this.errorMessage});
+
+  factory _$LikeFeedsResponseImpl.fromJson(Map<String, dynamic> json) =>
+      _$$LikeFeedsResponseImplFromJson(json);
+
+  @override
+  final String? status;
+  @override
+  final String? errorCode;
+  @override
+  final String? errorMessage;
+
+  @override
+  String toString() {
+    return 'LikeFeedsResponse(status: $status, errorCode: $errorCode, errorMessage: $errorMessage)';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$LikeFeedsResponseImpl &&
+            (identical(other.status, status) || other.status == status) &&
+            (identical(other.errorCode, errorCode) ||
+                other.errorCode == errorCode) &&
+            (identical(other.errorMessage, errorMessage) ||
+                other.errorMessage == errorMessage));
+  }
+
+  @JsonKey(ignore: true)
+  @override
+  int get hashCode => Object.hash(runtimeType, status, errorCode, errorMessage);
+
+  @JsonKey(ignore: true)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$LikeFeedsResponseImplCopyWith<_$LikeFeedsResponseImpl> get copyWith =>
+      __$$LikeFeedsResponseImplCopyWithImpl<_$LikeFeedsResponseImpl>(
+          this, _$identity);
+
+  @override
+  Map<String, dynamic> toJson() {
+    return _$$LikeFeedsResponseImplToJson(
+      this,
+    );
+  }
+}
+
+abstract class _LikeFeedsResponse implements LikeFeedsResponse {
+  factory _LikeFeedsResponse(
+      {required final String? status,
+      required final String? errorCode,
+      required final String? errorMessage}) = _$LikeFeedsResponseImpl;
+
+  factory _LikeFeedsResponse.fromJson(Map<String, dynamic> json) =
+      _$LikeFeedsResponseImpl.fromJson;
+
+  @override
+  String? get status;
+  @override
+  String? get errorCode;
+  @override
+  String? get errorMessage;
+  @override
+  @JsonKey(ignore: true)
+  _$$LikeFeedsResponseImplCopyWith<_$LikeFeedsResponseImpl> get copyWith =>
+      throw _privateConstructorUsedError;
+}

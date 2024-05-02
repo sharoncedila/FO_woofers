@@ -877,6 +877,7 @@ mixin _$OwnerData {
   String? get phoneNumber => throw _privateConstructorUsedError;
   String? get description => throw _privateConstructorUsedError;
   String? get image => throw _privateConstructorUsedError;
+  String? get provinceName => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -896,7 +897,8 @@ abstract class $OwnerDataCopyWith<$Res> {
       String? email,
       String? phoneNumber,
       String? description,
-      String? image});
+      String? image,
+      String? provinceName});
 }
 
 /// @nodoc
@@ -919,6 +921,7 @@ class _$OwnerDataCopyWithImpl<$Res, $Val extends OwnerData>
     Object? phoneNumber = freezed,
     Object? description = freezed,
     Object? image = freezed,
+    Object? provinceName = freezed,
   }) {
     return _then(_value.copyWith(
       accountId: freezed == accountId
@@ -949,6 +952,10 @@ class _$OwnerDataCopyWithImpl<$Res, $Val extends OwnerData>
           ? _value.image
           : image // ignore: cast_nullable_to_non_nullable
               as String?,
+      provinceName: freezed == provinceName
+          ? _value.provinceName
+          : provinceName // ignore: cast_nullable_to_non_nullable
+              as String?,
     ) as $Val);
   }
 }
@@ -968,7 +975,8 @@ abstract class _$$OwnerDataImplCopyWith<$Res>
       String? email,
       String? phoneNumber,
       String? description,
-      String? image});
+      String? image,
+      String? provinceName});
 }
 
 /// @nodoc
@@ -989,6 +997,7 @@ class __$$OwnerDataImplCopyWithImpl<$Res>
     Object? phoneNumber = freezed,
     Object? description = freezed,
     Object? image = freezed,
+    Object? provinceName = freezed,
   }) {
     return _then(_$OwnerDataImpl(
       accountId: freezed == accountId
@@ -1019,6 +1028,10 @@ class __$$OwnerDataImplCopyWithImpl<$Res>
           ? _value.image
           : image // ignore: cast_nullable_to_non_nullable
               as String?,
+      provinceName: freezed == provinceName
+          ? _value.provinceName
+          : provinceName // ignore: cast_nullable_to_non_nullable
+              as String?,
     ));
   }
 }
@@ -1033,7 +1046,8 @@ class _$OwnerDataImpl implements _OwnerData {
       required this.email,
       required this.phoneNumber,
       required this.description,
-      required this.image});
+      required this.image,
+      required this.provinceName});
 
   factory _$OwnerDataImpl.fromJson(Map<String, dynamic> json) =>
       _$$OwnerDataImplFromJson(json);
@@ -1052,10 +1066,12 @@ class _$OwnerDataImpl implements _OwnerData {
   final String? description;
   @override
   final String? image;
+  @override
+  final String? provinceName;
 
   @override
   String toString() {
-    return 'OwnerData(accountId: $accountId, username: $username, fullName: $fullName, email: $email, phoneNumber: $phoneNumber, description: $description, image: $image)';
+    return 'OwnerData(accountId: $accountId, username: $username, fullName: $fullName, email: $email, phoneNumber: $phoneNumber, description: $description, image: $image, provinceName: $provinceName)';
   }
 
   @override
@@ -1074,13 +1090,15 @@ class _$OwnerDataImpl implements _OwnerData {
                 other.phoneNumber == phoneNumber) &&
             (identical(other.description, description) ||
                 other.description == description) &&
-            (identical(other.image, image) || other.image == image));
+            (identical(other.image, image) || other.image == image) &&
+            (identical(other.provinceName, provinceName) ||
+                other.provinceName == provinceName));
   }
 
   @JsonKey(ignore: true)
   @override
   int get hashCode => Object.hash(runtimeType, accountId, username, fullName,
-      email, phoneNumber, description, image);
+      email, phoneNumber, description, image, provinceName);
 
   @JsonKey(ignore: true)
   @override
@@ -1104,7 +1122,8 @@ abstract class _OwnerData implements OwnerData {
       required final String? email,
       required final String? phoneNumber,
       required final String? description,
-      required final String? image}) = _$OwnerDataImpl;
+      required final String? image,
+      required final String? provinceName}) = _$OwnerDataImpl;
 
   factory _OwnerData.fromJson(Map<String, dynamic> json) =
       _$OwnerDataImpl.fromJson;
@@ -1123,6 +1142,8 @@ abstract class _OwnerData implements OwnerData {
   String? get description;
   @override
   String? get image;
+  @override
+  String? get provinceName;
   @override
   @JsonKey(ignore: true)
   _$$OwnerDataImplCopyWith<_$OwnerDataImpl> get copyWith =>
@@ -1355,5 +1376,174 @@ abstract class _SendAdoptionNotification implements SendAdoptionNotification {
   @override
   @JsonKey(ignore: true)
   _$$SendAdoptionNotificationImplCopyWith<_$SendAdoptionNotificationImpl>
+      get copyWith => throw _privateConstructorUsedError;
+}
+
+ApproveRejectAdoptionRequest _$ApproveRejectAdoptionRequestFromJson(
+    Map<String, dynamic> json) {
+  return _ApproveRejectAdoptionRequest.fromJson(json);
+}
+
+/// @nodoc
+mixin _$ApproveRejectAdoptionRequest {
+  String? get notificationId => throw _privateConstructorUsedError;
+  String? get status => throw _privateConstructorUsedError;
+
+  Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
+  @JsonKey(ignore: true)
+  $ApproveRejectAdoptionRequestCopyWith<ApproveRejectAdoptionRequest>
+      get copyWith => throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class $ApproveRejectAdoptionRequestCopyWith<$Res> {
+  factory $ApproveRejectAdoptionRequestCopyWith(
+          ApproveRejectAdoptionRequest value,
+          $Res Function(ApproveRejectAdoptionRequest) then) =
+      _$ApproveRejectAdoptionRequestCopyWithImpl<$Res,
+          ApproveRejectAdoptionRequest>;
+  @useResult
+  $Res call({String? notificationId, String? status});
+}
+
+/// @nodoc
+class _$ApproveRejectAdoptionRequestCopyWithImpl<$Res,
+        $Val extends ApproveRejectAdoptionRequest>
+    implements $ApproveRejectAdoptionRequestCopyWith<$Res> {
+  _$ApproveRejectAdoptionRequestCopyWithImpl(this._value, this._then);
+
+  // ignore: unused_field
+  final $Val _value;
+  // ignore: unused_field
+  final $Res Function($Val) _then;
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? notificationId = freezed,
+    Object? status = freezed,
+  }) {
+    return _then(_value.copyWith(
+      notificationId: freezed == notificationId
+          ? _value.notificationId
+          : notificationId // ignore: cast_nullable_to_non_nullable
+              as String?,
+      status: freezed == status
+          ? _value.status
+          : status // ignore: cast_nullable_to_non_nullable
+              as String?,
+    ) as $Val);
+  }
+}
+
+/// @nodoc
+abstract class _$$ApproveRejectAdoptionRequestImplCopyWith<$Res>
+    implements $ApproveRejectAdoptionRequestCopyWith<$Res> {
+  factory _$$ApproveRejectAdoptionRequestImplCopyWith(
+          _$ApproveRejectAdoptionRequestImpl value,
+          $Res Function(_$ApproveRejectAdoptionRequestImpl) then) =
+      __$$ApproveRejectAdoptionRequestImplCopyWithImpl<$Res>;
+  @override
+  @useResult
+  $Res call({String? notificationId, String? status});
+}
+
+/// @nodoc
+class __$$ApproveRejectAdoptionRequestImplCopyWithImpl<$Res>
+    extends _$ApproveRejectAdoptionRequestCopyWithImpl<$Res,
+        _$ApproveRejectAdoptionRequestImpl>
+    implements _$$ApproveRejectAdoptionRequestImplCopyWith<$Res> {
+  __$$ApproveRejectAdoptionRequestImplCopyWithImpl(
+      _$ApproveRejectAdoptionRequestImpl _value,
+      $Res Function(_$ApproveRejectAdoptionRequestImpl) _then)
+      : super(_value, _then);
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? notificationId = freezed,
+    Object? status = freezed,
+  }) {
+    return _then(_$ApproveRejectAdoptionRequestImpl(
+      notificationId: freezed == notificationId
+          ? _value.notificationId
+          : notificationId // ignore: cast_nullable_to_non_nullable
+              as String?,
+      status: freezed == status
+          ? _value.status
+          : status // ignore: cast_nullable_to_non_nullable
+              as String?,
+    ));
+  }
+}
+
+/// @nodoc
+@JsonSerializable()
+class _$ApproveRejectAdoptionRequestImpl
+    implements _ApproveRejectAdoptionRequest {
+  _$ApproveRejectAdoptionRequestImpl(
+      {required this.notificationId, required this.status});
+
+  factory _$ApproveRejectAdoptionRequestImpl.fromJson(
+          Map<String, dynamic> json) =>
+      _$$ApproveRejectAdoptionRequestImplFromJson(json);
+
+  @override
+  final String? notificationId;
+  @override
+  final String? status;
+
+  @override
+  String toString() {
+    return 'ApproveRejectAdoptionRequest(notificationId: $notificationId, status: $status)';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$ApproveRejectAdoptionRequestImpl &&
+            (identical(other.notificationId, notificationId) ||
+                other.notificationId == notificationId) &&
+            (identical(other.status, status) || other.status == status));
+  }
+
+  @JsonKey(ignore: true)
+  @override
+  int get hashCode => Object.hash(runtimeType, notificationId, status);
+
+  @JsonKey(ignore: true)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$ApproveRejectAdoptionRequestImplCopyWith<
+          _$ApproveRejectAdoptionRequestImpl>
+      get copyWith => __$$ApproveRejectAdoptionRequestImplCopyWithImpl<
+          _$ApproveRejectAdoptionRequestImpl>(this, _$identity);
+
+  @override
+  Map<String, dynamic> toJson() {
+    return _$$ApproveRejectAdoptionRequestImplToJson(
+      this,
+    );
+  }
+}
+
+abstract class _ApproveRejectAdoptionRequest
+    implements ApproveRejectAdoptionRequest {
+  factory _ApproveRejectAdoptionRequest(
+      {required final String? notificationId,
+      required final String? status}) = _$ApproveRejectAdoptionRequestImpl;
+
+  factory _ApproveRejectAdoptionRequest.fromJson(Map<String, dynamic> json) =
+      _$ApproveRejectAdoptionRequestImpl.fromJson;
+
+  @override
+  String? get notificationId;
+  @override
+  String? get status;
+  @override
+  @JsonKey(ignore: true)
+  _$$ApproveRejectAdoptionRequestImplCopyWith<
+          _$ApproveRejectAdoptionRequestImpl>
       get copyWith => throw _privateConstructorUsedError;
 }

@@ -375,3 +375,180 @@ abstract class _RequestLoginModel implements RequestLoginModel {
   _$$RequestLoginModelImplCopyWith<_$RequestLoginModelImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
+
+LogoutResponse _$LogoutResponseFromJson(Map<String, dynamic> json) {
+  return _LogoutResponse.fromJson(json);
+}
+
+/// @nodoc
+mixin _$LogoutResponse {
+  String? get status => throw _privateConstructorUsedError;
+  String? get errorCode => throw _privateConstructorUsedError;
+  String? get errorMessage => throw _privateConstructorUsedError;
+
+  Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
+  @JsonKey(ignore: true)
+  $LogoutResponseCopyWith<LogoutResponse> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class $LogoutResponseCopyWith<$Res> {
+  factory $LogoutResponseCopyWith(
+          LogoutResponse value, $Res Function(LogoutResponse) then) =
+      _$LogoutResponseCopyWithImpl<$Res, LogoutResponse>;
+  @useResult
+  $Res call({String? status, String? errorCode, String? errorMessage});
+}
+
+/// @nodoc
+class _$LogoutResponseCopyWithImpl<$Res, $Val extends LogoutResponse>
+    implements $LogoutResponseCopyWith<$Res> {
+  _$LogoutResponseCopyWithImpl(this._value, this._then);
+
+  // ignore: unused_field
+  final $Val _value;
+  // ignore: unused_field
+  final $Res Function($Val) _then;
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? status = freezed,
+    Object? errorCode = freezed,
+    Object? errorMessage = freezed,
+  }) {
+    return _then(_value.copyWith(
+      status: freezed == status
+          ? _value.status
+          : status // ignore: cast_nullable_to_non_nullable
+              as String?,
+      errorCode: freezed == errorCode
+          ? _value.errorCode
+          : errorCode // ignore: cast_nullable_to_non_nullable
+              as String?,
+      errorMessage: freezed == errorMessage
+          ? _value.errorMessage
+          : errorMessage // ignore: cast_nullable_to_non_nullable
+              as String?,
+    ) as $Val);
+  }
+}
+
+/// @nodoc
+abstract class _$$LogoutResponseImplCopyWith<$Res>
+    implements $LogoutResponseCopyWith<$Res> {
+  factory _$$LogoutResponseImplCopyWith(_$LogoutResponseImpl value,
+          $Res Function(_$LogoutResponseImpl) then) =
+      __$$LogoutResponseImplCopyWithImpl<$Res>;
+  @override
+  @useResult
+  $Res call({String? status, String? errorCode, String? errorMessage});
+}
+
+/// @nodoc
+class __$$LogoutResponseImplCopyWithImpl<$Res>
+    extends _$LogoutResponseCopyWithImpl<$Res, _$LogoutResponseImpl>
+    implements _$$LogoutResponseImplCopyWith<$Res> {
+  __$$LogoutResponseImplCopyWithImpl(
+      _$LogoutResponseImpl _value, $Res Function(_$LogoutResponseImpl) _then)
+      : super(_value, _then);
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? status = freezed,
+    Object? errorCode = freezed,
+    Object? errorMessage = freezed,
+  }) {
+    return _then(_$LogoutResponseImpl(
+      status: freezed == status
+          ? _value.status
+          : status // ignore: cast_nullable_to_non_nullable
+              as String?,
+      errorCode: freezed == errorCode
+          ? _value.errorCode
+          : errorCode // ignore: cast_nullable_to_non_nullable
+              as String?,
+      errorMessage: freezed == errorMessage
+          ? _value.errorMessage
+          : errorMessage // ignore: cast_nullable_to_non_nullable
+              as String?,
+    ));
+  }
+}
+
+/// @nodoc
+@JsonSerializable()
+class _$LogoutResponseImpl implements _LogoutResponse {
+  _$LogoutResponseImpl(
+      {required this.status,
+      required this.errorCode,
+      required this.errorMessage});
+
+  factory _$LogoutResponseImpl.fromJson(Map<String, dynamic> json) =>
+      _$$LogoutResponseImplFromJson(json);
+
+  @override
+  final String? status;
+  @override
+  final String? errorCode;
+  @override
+  final String? errorMessage;
+
+  @override
+  String toString() {
+    return 'LogoutResponse(status: $status, errorCode: $errorCode, errorMessage: $errorMessage)';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$LogoutResponseImpl &&
+            (identical(other.status, status) || other.status == status) &&
+            (identical(other.errorCode, errorCode) ||
+                other.errorCode == errorCode) &&
+            (identical(other.errorMessage, errorMessage) ||
+                other.errorMessage == errorMessage));
+  }
+
+  @JsonKey(ignore: true)
+  @override
+  int get hashCode => Object.hash(runtimeType, status, errorCode, errorMessage);
+
+  @JsonKey(ignore: true)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$LogoutResponseImplCopyWith<_$LogoutResponseImpl> get copyWith =>
+      __$$LogoutResponseImplCopyWithImpl<_$LogoutResponseImpl>(
+          this, _$identity);
+
+  @override
+  Map<String, dynamic> toJson() {
+    return _$$LogoutResponseImplToJson(
+      this,
+    );
+  }
+}
+
+abstract class _LogoutResponse implements LogoutResponse {
+  factory _LogoutResponse(
+      {required final String? status,
+      required final String? errorCode,
+      required final String? errorMessage}) = _$LogoutResponseImpl;
+
+  factory _LogoutResponse.fromJson(Map<String, dynamic> json) =
+      _$LogoutResponseImpl.fromJson;
+
+  @override
+  String? get status;
+  @override
+  String? get errorCode;
+  @override
+  String? get errorMessage;
+  @override
+  @JsonKey(ignore: true)
+  _$$LogoutResponseImplCopyWith<_$LogoutResponseImpl> get copyWith =>
+      throw _privateConstructorUsedError;
+}
