@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:hexcolor/hexcolor.dart';
 import 'package:woofers/components/adoption_card.dart';
+import 'package:woofers/model/filter_adoption.dart';
 import 'package:woofers/pages/notification_page.dart';
 import 'package:woofers/services/adoption/adoption_service.dart';
 import 'package:woofers/services/dog/breed_services.dart';
@@ -22,6 +22,8 @@ class _AdoptionPageState extends State<AdoptionPage> {
   String? _selectedBreed;
   late List<String?> genderName = ['Female', 'Male'];
   String? _selectedGender;
+
+  FilterAdoption filterAdoption = FilterAdoption();
 
   @override
   Widget build(BuildContext context) {
@@ -52,15 +54,28 @@ class _AdoptionPageState extends State<AdoptionPage> {
             ),
           ],
         ),
+<<<<<<< HEAD
         body: SingleChildScrollView(
             child: Column(
+=======
+        body: Column(
+>>>>>>> UAT
           children: [
-            Column(
+            const SizedBox(
+              height: 5,
+            ),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.center,
               children: [
+<<<<<<< HEAD
                 // province here
                 const SizedBox(height: 15),
                 // SingleChildScrollView(
                 // child:
+=======
+                const SizedBox(width: 5),
+                // dropdown province
+>>>>>>> UAT
                 Form(
                   // padding: const EdgeInsets.symmetric(horizontal: 25),
                   child: FutureBuilder(
@@ -77,12 +92,16 @@ class _AdoptionPageState extends State<AdoptionPage> {
                         return const Text("No data");
                       }
 
+<<<<<<< HEAD
                       // return Container(color: Colors.blue, height: 100, width: 100,);
 
+=======
+>>>>>>> UAT
                       final provinceResponse = snapshot.data!;
                       final provinceNames = provinceResponse.provinceList
                           .map((e) => e.provinceName)
                           .toList();
+<<<<<<< HEAD
                       return Container(
                         height: 50,
                         width: MediaQuery.of(context).size.width,
@@ -102,6 +121,33 @@ class _AdoptionPageState extends State<AdoptionPage> {
                             hintText: 'Province',
                             hintStyle: TextStyle(color: Colors.grey[500]),
                           ),
+=======
+                      return SizedBox(
+                        height: 50,
+                        width: MediaQuery.of(context).size.width / 2.55,
+                        child: DropdownButtonFormField<String>(
+                          value: _selectedProvince,
+                          style: const TextStyle(
+                            fontSize: 11,
+                            color: Colors.black,
+                          ),
+                          decoration: InputDecoration(
+                            enabledBorder: const OutlineInputBorder(
+                              borderSide: BorderSide(
+                                color: Color.fromRGBO(160, 220, 220, 10),
+                              ),
+                            ),
+                            focusedBorder: OutlineInputBorder(
+                              borderSide:
+                                  BorderSide(color: Colors.grey.shade400),
+                            ),
+                            fillColor: Colors.grey.shade200,
+                            filled: true,
+                            hintText: 'Province',
+                            hintStyle: TextStyle(color: Colors.grey[500]),
+                            // isDense: true
+                          ),
+>>>>>>> UAT
                           onChanged: (String? newValue) {
                             if (newValue != null) {
                               setState(() {
@@ -120,6 +166,7 @@ class _AdoptionPageState extends State<AdoptionPage> {
                     },
                   ),
                 ),
+<<<<<<< HEAD
                 // ),
 
                 /*IconButton(
@@ -132,17 +179,103 @@ class _AdoptionPageState extends State<AdoptionPage> {
             // adoptionList(),
           ],
         ))
+=======
+
+                const SizedBox(width: 5),
+                // dropdown breed
+                Form(
+                  child: FutureBuilder(
+                    future: RetrieveBreedService().retrieveAllBreed(),
+                    //initialData: initialBreedNames,
+                    builder: (context, snapshot) {
+                      if (snapshot.connectionState == ConnectionState.waiting) {
+                        return const Text("Breed");
+                      }
+                      if (snapshot.hasError) {
+                        return Text("Error: ${snapshot.error}");
+                      }
+                      if (!snapshot.hasData) {
+                        return const Text("No data");
+                      }
+
+                      final breedResponses = snapshot.data!;
+                      final breedNames = breedResponses.breedList
+                          .map((e) => e.breedName)
+                          .toList();
+                      return SizedBox(
+                        height: 50,
+                        width: MediaQuery.of(context).size.width / 2.3,
+                        child: DropdownButtonFormField<String>(
+                          value: _selectedBreed,
+                          style: const TextStyle(
+                            fontSize: 11,
+                            color: Colors.black,
+                          ),
+                          decoration: InputDecoration(
+                            enabledBorder: const OutlineInputBorder(
+                              borderSide: BorderSide(
+                                color: Color.fromRGBO(160, 220, 220, 10),
+                              ),
+                            ),
+                            focusedBorder: OutlineInputBorder(
+                              borderSide:
+                                  BorderSide(color: Colors.grey.shade400),
+                            ),
+                            fillColor: Colors.grey.shade200,
+                            filled: true,
+                            hintText: 'Breed',
+                            hintStyle: TextStyle(color: Colors.grey[500]),
+                          ),
+                          onChanged: (String? newValue) {
+                            if (newValue != null) {
+                              setState(() {
+                                _selectedBreed = newValue;
+                              });
+                            }
+                          },
+                          items: breedNames.map((breed) {
+                            return DropdownMenuItem<String>(
+                              value: breed,
+                              child: Text(breed),
+                            );
+                          }).toList(),
+                        ),
+                      );
+                    },
+                  ),
+                ),
+
+                // const SizedBox(width: 5),
+                IconButton(
+                  onPressed: () {
+                    setState(() {
+                      filterAdoption = filterAdoption.copyWith(
+                        breed: _selectedBreed,
+                        province: _selectedProvince,
+                        gender: _selectedGender,
+                      );
+                    });
+                  },
+                  icon: const Icon(Icons.search_outlined),
+                )
+              ],
+            ),
+            adoptionList(),
+          ],
+        )
+>>>>>>> UAT
         //adoptionList(),
         );
   }
 
   Widget adoptionList() {
+    print(filterAdoption);
     return SingleChildScrollView(
       child: Center(
         child: Padding(
           padding: const EdgeInsets.symmetric(horizontal: 5, vertical: 10),
           child: FutureBuilder(
-            future: AdoptionService().retrieveAdoptionList(),
+            future: AdoptionService().retrieveAdoptionList(filterAdoption),
             builder: ((context, snapshot) {
               if (snapshot.connectionState == ConnectionState.waiting) {
                 return const Center(child: Text("Retrieving your data..."));
@@ -154,7 +287,6 @@ class _AdoptionPageState extends State<AdoptionPage> {
                 return const Text("No data");
               }
               final adoptionList = snapshot.data!;
-              print("Data adoption: ${snapshot.data}");
               return Wrap(
                 children: adoptionList
                     .map((e) => DogCardDetail(adoptionDetail: e))

@@ -340,6 +340,8 @@ mixin _$OpenChatResponse {
   String? get chatroomId => throw _privateConstructorUsedError;
   String? get senderId => throw _privateConstructorUsedError;
   String? get recipientId => throw _privateConstructorUsedError;
+  String? get senderChatId => throw _privateConstructorUsedError;
+  String? get recipientChatId => throw _privateConstructorUsedError;
   String? get errorCode => throw _privateConstructorUsedError;
   String? get errorMessage => throw _privateConstructorUsedError;
   String? get chatMessageId => throw _privateConstructorUsedError;
@@ -362,6 +364,8 @@ abstract class $OpenChatResponseCopyWith<$Res> {
       {String? chatroomId,
       String? senderId,
       String? recipientId,
+      String? senderChatId,
+      String? recipientChatId,
       String? errorCode,
       String? errorMessage,
       String? chatMessageId,
@@ -385,6 +389,8 @@ class _$OpenChatResponseCopyWithImpl<$Res, $Val extends OpenChatResponse>
     Object? chatroomId = freezed,
     Object? senderId = freezed,
     Object? recipientId = freezed,
+    Object? senderChatId = freezed,
+    Object? recipientChatId = freezed,
     Object? errorCode = freezed,
     Object? errorMessage = freezed,
     Object? chatMessageId = freezed,
@@ -403,6 +409,14 @@ class _$OpenChatResponseCopyWithImpl<$Res, $Val extends OpenChatResponse>
       recipientId: freezed == recipientId
           ? _value.recipientId
           : recipientId // ignore: cast_nullable_to_non_nullable
+              as String?,
+      senderChatId: freezed == senderChatId
+          ? _value.senderChatId
+          : senderChatId // ignore: cast_nullable_to_non_nullable
+              as String?,
+      recipientChatId: freezed == recipientChatId
+          ? _value.recipientChatId
+          : recipientChatId // ignore: cast_nullable_to_non_nullable
               as String?,
       errorCode: freezed == errorCode
           ? _value.errorCode
@@ -440,6 +454,8 @@ abstract class _$$OpenChatResponseImplCopyWith<$Res>
       {String? chatroomId,
       String? senderId,
       String? recipientId,
+      String? senderChatId,
+      String? recipientChatId,
       String? errorCode,
       String? errorMessage,
       String? chatMessageId,
@@ -461,6 +477,8 @@ class __$$OpenChatResponseImplCopyWithImpl<$Res>
     Object? chatroomId = freezed,
     Object? senderId = freezed,
     Object? recipientId = freezed,
+    Object? senderChatId = freezed,
+    Object? recipientChatId = freezed,
     Object? errorCode = freezed,
     Object? errorMessage = freezed,
     Object? chatMessageId = freezed,
@@ -479,6 +497,14 @@ class __$$OpenChatResponseImplCopyWithImpl<$Res>
       recipientId: freezed == recipientId
           ? _value.recipientId
           : recipientId // ignore: cast_nullable_to_non_nullable
+              as String?,
+      senderChatId: freezed == senderChatId
+          ? _value.senderChatId
+          : senderChatId // ignore: cast_nullable_to_non_nullable
+              as String?,
+      recipientChatId: freezed == recipientChatId
+          ? _value.recipientChatId
+          : recipientChatId // ignore: cast_nullable_to_non_nullable
               as String?,
       errorCode: freezed == errorCode
           ? _value.errorCode
@@ -511,6 +537,8 @@ class _$OpenChatResponseImpl implements _OpenChatResponse {
       {required this.chatroomId,
       required this.senderId,
       required this.recipientId,
+      required this.senderChatId,
+      required this.recipientChatId,
       required this.errorCode,
       required this.errorMessage,
       required this.chatMessageId,
@@ -527,6 +555,10 @@ class _$OpenChatResponseImpl implements _OpenChatResponse {
   @override
   final String? recipientId;
   @override
+  final String? senderChatId;
+  @override
+  final String? recipientChatId;
+  @override
   final String? errorCode;
   @override
   final String? errorMessage;
@@ -539,7 +571,7 @@ class _$OpenChatResponseImpl implements _OpenChatResponse {
 
   @override
   String toString() {
-    return 'OpenChatResponse(chatroomId: $chatroomId, senderId: $senderId, recipientId: $recipientId, errorCode: $errorCode, errorMessage: $errorMessage, chatMessageId: $chatMessageId, message: $message, timestamp: $timestamp)';
+    return 'OpenChatResponse(chatroomId: $chatroomId, senderId: $senderId, recipientId: $recipientId, senderChatId: $senderChatId, recipientChatId: $recipientChatId, errorCode: $errorCode, errorMessage: $errorMessage, chatMessageId: $chatMessageId, message: $message, timestamp: $timestamp)';
   }
 
   @override
@@ -553,6 +585,10 @@ class _$OpenChatResponseImpl implements _OpenChatResponse {
                 other.senderId == senderId) &&
             (identical(other.recipientId, recipientId) ||
                 other.recipientId == recipientId) &&
+            (identical(other.senderChatId, senderChatId) ||
+                other.senderChatId == senderChatId) &&
+            (identical(other.recipientChatId, recipientChatId) ||
+                other.recipientChatId == recipientChatId) &&
             (identical(other.errorCode, errorCode) ||
                 other.errorCode == errorCode) &&
             (identical(other.errorMessage, errorMessage) ||
@@ -566,8 +602,18 @@ class _$OpenChatResponseImpl implements _OpenChatResponse {
 
   @JsonKey(ignore: true)
   @override
-  int get hashCode => Object.hash(runtimeType, chatroomId, senderId,
-      recipientId, errorCode, errorMessage, chatMessageId, message, timestamp);
+  int get hashCode => Object.hash(
+      runtimeType,
+      chatroomId,
+      senderId,
+      recipientId,
+      senderChatId,
+      recipientChatId,
+      errorCode,
+      errorMessage,
+      chatMessageId,
+      message,
+      timestamp);
 
   @JsonKey(ignore: true)
   @override
@@ -589,6 +635,8 @@ abstract class _OpenChatResponse implements OpenChatResponse {
       {required final String? chatroomId,
       required final String? senderId,
       required final String? recipientId,
+      required final String? senderChatId,
+      required final String? recipientChatId,
       required final String? errorCode,
       required final String? errorMessage,
       required final String? chatMessageId,
@@ -604,6 +652,10 @@ abstract class _OpenChatResponse implements OpenChatResponse {
   String? get senderId;
   @override
   String? get recipientId;
+  @override
+  String? get senderChatId;
+  @override
+  String? get recipientChatId;
   @override
   String? get errorCode;
   @override

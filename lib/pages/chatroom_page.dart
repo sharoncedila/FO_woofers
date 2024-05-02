@@ -1,24 +1,59 @@
 import 'package:flutter/material.dart';
-import 'package:chat_bubbles/chat_bubbles.dart';
+import 'package:google_fonts/google_fonts.dart';
+import 'package:hexcolor/hexcolor.dart';
 import 'package:woofers/components/bubble_chat.dart';
 import 'package:woofers/model/chatroom_model.dart';
 import 'package:woofers/services/chat/chat_service.dart';
 
 class ChatroomPageDetail extends StatelessWidget {
   final String accountId;
-  ChatroomPageDetail({
+  const ChatroomPageDetail({
     super.key,
     required this.accountId,
   });
 
   @override
   Widget build(BuildContext context) {
+    return Scaffold(
+      backgroundColor: Colors.white,
+      appBar: AppBar(
+        toolbarHeight: 75,
+        elevation: 0,
+        backgroundColor: HexColor("#a0dcdc"),
+        title: Text(
+          "CHATS",
+          style: GoogleFonts.lora(
+            fontSize: 25,
+            fontWeight: FontWeight.bold,
+            color: const Color.fromRGBO(40, 36, 36, 10000),
+          ),
+        ),
+        // actions: <Widget>[
+        //   IconButton(
+        //     icon: const Icon(Icons.notification_add_rounded),
+        //     onPressed: () {
+        //       Navigator.push(
+        //         context,
+        //         MaterialPageRoute(
+        //             builder: (context) => const ChatListPage()),
+        //       );
+        //     },
+        //   ),
+        // ],
+      ),
+      body: Chatroom(),
+    );
+  }
+
+  @override
+  Widget Chatroom() {
     return SingleChildScrollView(
       child: Center(
         child: Padding(
           padding: const EdgeInsets.symmetric(horizontal: 5, vertical: 10),
           child: FutureBuilder(
-            future: ChatroomService().openChatroom(OpenChatRequest(recipientId: accountId)),
+            future: ChatroomService()
+                .openChatroom(OpenChatRequest(recipientId: accountId)),
             builder: ((context, snapshot) {
               if (snapshot.connectionState == ConnectionState.waiting) {
                 return const Center(child: Text("Retrieving your data..."));
@@ -30,20 +65,22 @@ class ChatroomPageDetail extends StatelessWidget {
                 return const Text("No data");
               }
               final chatList = snapshot.data!;
-              print("Data adoption: ${chatList}");
-              return MaterialApp(
-                home: Scaffold(
-                  appBar: AppBar(
-                    title: const Text('Username'), //snapshot.data?.message.username,
-                    centerTitle: true,
-                  ),
-                  backgroundColor: Colors.grey[300],
-                  body: Wrap(
-                  children: chatList
-                    .map((e) => BubbleChatCardDetail(accountId: accountId, bubbleChatlistDetail: e))
+              print("Chatroom data: $chatList");
+              // return MaterialApp(
+              //   home: Scaffold(
+              //     appBar: AppBar(
+              //       title: const Text('Username'), //snapshot.data?.message.username,
+              //       centerTitle: true,
+              //     ),
+              //     backgroundColor: Colors.grey[300],
+              //     body: Wrap(
+              return Wrap(
+                children: chatList
+                    .map((e) => BubbleChatCardDetail(
+                        accountId: accountId, bubbleChatlistDetail: e))
                     .toList(),
-                  ),
-                ),
+                //    ),
+                //  ),
               );
             }),
           ),
