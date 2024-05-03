@@ -3,12 +3,12 @@ part 'image_model.freezed.dart';
 part 'image_model.g.dart';
 
 @freezed
-class UploadProfilePicResponse with _$UploadProfilePicResponse{
-  factory UploadProfilePicResponse({
+class UploadImageResponse with _$UploadImageResponse{
+  factory UploadImageResponse({
     required String? fileName,
     required String? errorCode,
     required String? errorMessage
-  }) = _UploadProfilePicResponse;
+  }) = _UploadImageResponse;
 
-  factory UploadProfilePicResponse.fromJson(Map<String, dynamic> json) => _$UploadProfilePicResponseFromJson(json);
+  factory UploadImageResponse.fromJson(Map<String, dynamic> json) => _$UploadImageResponseFromJson(json);
 }
