@@ -17,7 +17,7 @@ class WSChatInstance {
         HttpHeaders.authorizationHeader: 'Bearer $token',
       };
       session = await WebSocket.connect(
-          'ws://192.168.6.253:8080/woofers/send-chat',
+          'ws://192.168.98.53:8080/woofers/send-chat',
           headers: headers);
       print("Successfully Connect to WebSocket Chat Server");
 

@@ -17,10 +17,9 @@ class _FeedsCardState extends State<FeedsCard> {
   String? feedsId;
   String? imageURL;
   String? isLike;
-  String? postImage;
 
   @override
-  void initState(){
+  void initState() {
     super.initState();
     isLike = widget.feedsDetail.isLike;
   }
@@ -29,8 +28,6 @@ class _FeedsCardState extends State<FeedsCard> {
   Widget build(BuildContext context) {
     // final imageURL = feedsDetail?.profilePicture;
     ViewFeedsResponse feedsDetail = widget.feedsDetail;
-    isLike = feedsDetail.isLike;
-    postImage = feedsDetail.image;
     return Padding(
       padding: const EdgeInsets.only(left: 5, right: 5),
       child: Column(
@@ -56,6 +53,7 @@ class _FeedsCardState extends State<FeedsCard> {
                     decoration: BoxDecoration(
                       color: Colors.black.withOpacity(0.6),
                       borderRadius: BorderRadius.circular(50),
+                      // border: Border.all(color: Colors.black.withOpacity(10))
                     ),
                     child: ImageNetwork(
                         urlImage: feedsDetail.profilePicture,
@@ -101,10 +99,9 @@ class _FeedsCardState extends State<FeedsCard> {
                   urlImage: feedsDetail.image,
                   width: double.infinity,
                   height: 375),
-              const SizedBox(
-                height: 15,
-              ),
-              // (postImage == null) ? '' : ImageNetwork(urlImage: postImage, width: double.infinity, height: 375),
+              // const SizedBox(
+              //   height: 15,
+              // ),
               Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
