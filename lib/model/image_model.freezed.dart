@@ -14,37 +14,35 @@ T _$identity<T>(T value) => value;
 final _privateConstructorUsedError = UnsupportedError(
     'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models');
 
-UploadProfilePicResponse _$UploadProfilePicResponseFromJson(
-    Map<String, dynamic> json) {
-  return _UploadProfilePicResponse.fromJson(json);
+UploadImageResponse _$UploadImageResponseFromJson(Map<String, dynamic> json) {
+  return _UploadImageResponse.fromJson(json);
 }
 
 /// @nodoc
-mixin _$UploadProfilePicResponse {
+mixin _$UploadImageResponse {
   String? get fileName => throw _privateConstructorUsedError;
   String? get errorCode => throw _privateConstructorUsedError;
   String? get errorMessage => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
-  $UploadProfilePicResponseCopyWith<UploadProfilePicResponse> get copyWith =>
+  $UploadImageResponseCopyWith<UploadImageResponse> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class $UploadProfilePicResponseCopyWith<$Res> {
-  factory $UploadProfilePicResponseCopyWith(UploadProfilePicResponse value,
-          $Res Function(UploadProfilePicResponse) then) =
-      _$UploadProfilePicResponseCopyWithImpl<$Res, UploadProfilePicResponse>;
+abstract class $UploadImageResponseCopyWith<$Res> {
+  factory $UploadImageResponseCopyWith(
+          UploadImageResponse value, $Res Function(UploadImageResponse) then) =
+      _$UploadImageResponseCopyWithImpl<$Res, UploadImageResponse>;
   @useResult
   $Res call({String? fileName, String? errorCode, String? errorMessage});
 }
 
 /// @nodoc
-class _$UploadProfilePicResponseCopyWithImpl<$Res,
-        $Val extends UploadProfilePicResponse>
-    implements $UploadProfilePicResponseCopyWith<$Res> {
-  _$UploadProfilePicResponseCopyWithImpl(this._value, this._then);
+class _$UploadImageResponseCopyWithImpl<$Res, $Val extends UploadImageResponse>
+    implements $UploadImageResponseCopyWith<$Res> {
+  _$UploadImageResponseCopyWithImpl(this._value, this._then);
 
   // ignore: unused_field
   final $Val _value;
@@ -76,25 +74,22 @@ class _$UploadProfilePicResponseCopyWithImpl<$Res,
 }
 
 /// @nodoc
-abstract class _$$UploadProfilePicResponseImplCopyWith<$Res>
-    implements $UploadProfilePicResponseCopyWith<$Res> {
-  factory _$$UploadProfilePicResponseImplCopyWith(
-          _$UploadProfilePicResponseImpl value,
-          $Res Function(_$UploadProfilePicResponseImpl) then) =
-      __$$UploadProfilePicResponseImplCopyWithImpl<$Res>;
+abstract class _$$UploadImageResponseImplCopyWith<$Res>
+    implements $UploadImageResponseCopyWith<$Res> {
+  factory _$$UploadImageResponseImplCopyWith(_$UploadImageResponseImpl value,
+          $Res Function(_$UploadImageResponseImpl) then) =
+      __$$UploadImageResponseImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call({String? fileName, String? errorCode, String? errorMessage});
 }
 
 /// @nodoc
-class __$$UploadProfilePicResponseImplCopyWithImpl<$Res>
-    extends _$UploadProfilePicResponseCopyWithImpl<$Res,
-        _$UploadProfilePicResponseImpl>
-    implements _$$UploadProfilePicResponseImplCopyWith<$Res> {
-  __$$UploadProfilePicResponseImplCopyWithImpl(
-      _$UploadProfilePicResponseImpl _value,
-      $Res Function(_$UploadProfilePicResponseImpl) _then)
+class __$$UploadImageResponseImplCopyWithImpl<$Res>
+    extends _$UploadImageResponseCopyWithImpl<$Res, _$UploadImageResponseImpl>
+    implements _$$UploadImageResponseImplCopyWith<$Res> {
+  __$$UploadImageResponseImplCopyWithImpl(_$UploadImageResponseImpl _value,
+      $Res Function(_$UploadImageResponseImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -104,7 +99,7 @@ class __$$UploadProfilePicResponseImplCopyWithImpl<$Res>
     Object? errorCode = freezed,
     Object? errorMessage = freezed,
   }) {
-    return _then(_$UploadProfilePicResponseImpl(
+    return _then(_$UploadImageResponseImpl(
       fileName: freezed == fileName
           ? _value.fileName
           : fileName // ignore: cast_nullable_to_non_nullable
@@ -123,14 +118,14 @@ class __$$UploadProfilePicResponseImplCopyWithImpl<$Res>
 
 /// @nodoc
 @JsonSerializable()
-class _$UploadProfilePicResponseImpl implements _UploadProfilePicResponse {
-  _$UploadProfilePicResponseImpl(
+class _$UploadImageResponseImpl implements _UploadImageResponse {
+  _$UploadImageResponseImpl(
       {required this.fileName,
       required this.errorCode,
       required this.errorMessage});
 
-  factory _$UploadProfilePicResponseImpl.fromJson(Map<String, dynamic> json) =>
-      _$$UploadProfilePicResponseImplFromJson(json);
+  factory _$UploadImageResponseImpl.fromJson(Map<String, dynamic> json) =>
+      _$$UploadImageResponseImplFromJson(json);
 
   @override
   final String? fileName;
@@ -141,14 +136,14 @@ class _$UploadProfilePicResponseImpl implements _UploadProfilePicResponse {
 
   @override
   String toString() {
-    return 'UploadProfilePicResponse(fileName: $fileName, errorCode: $errorCode, errorMessage: $errorMessage)';
+    return 'UploadImageResponse(fileName: $fileName, errorCode: $errorCode, errorMessage: $errorMessage)';
   }
 
   @override
   bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$UploadProfilePicResponseImpl &&
+            other is _$UploadImageResponseImpl &&
             (identical(other.fileName, fileName) ||
                 other.fileName == fileName) &&
             (identical(other.errorCode, errorCode) ||
@@ -165,26 +160,26 @@ class _$UploadProfilePicResponseImpl implements _UploadProfilePicResponse {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$UploadProfilePicResponseImplCopyWith<_$UploadProfilePicResponseImpl>
-      get copyWith => __$$UploadProfilePicResponseImplCopyWithImpl<
-          _$UploadProfilePicResponseImpl>(this, _$identity);
+  _$$UploadImageResponseImplCopyWith<_$UploadImageResponseImpl> get copyWith =>
+      __$$UploadImageResponseImplCopyWithImpl<_$UploadImageResponseImpl>(
+          this, _$identity);
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$UploadProfilePicResponseImplToJson(
+    return _$$UploadImageResponseImplToJson(
       this,
     );
   }
 }
 
-abstract class _UploadProfilePicResponse implements UploadProfilePicResponse {
-  factory _UploadProfilePicResponse(
+abstract class _UploadImageResponse implements UploadImageResponse {
+  factory _UploadImageResponse(
       {required final String? fileName,
       required final String? errorCode,
-      required final String? errorMessage}) = _$UploadProfilePicResponseImpl;
+      required final String? errorMessage}) = _$UploadImageResponseImpl;
 
-  factory _UploadProfilePicResponse.fromJson(Map<String, dynamic> json) =
-      _$UploadProfilePicResponseImpl.fromJson;
+  factory _UploadImageResponse.fromJson(Map<String, dynamic> json) =
+      _$UploadImageResponseImpl.fromJson;
 
   @override
   String? get fileName;
@@ -194,6 +189,6 @@ abstract class _UploadProfilePicResponse implements UploadProfilePicResponse {
   String? get errorMessage;
   @override
   @JsonKey(ignore: true)
-  _$$UploadProfilePicResponseImplCopyWith<_$UploadProfilePicResponseImpl>
-      get copyWith => throw _privateConstructorUsedError;
+  _$$UploadImageResponseImplCopyWith<_$UploadImageResponseImpl> get copyWith =>
+      throw _privateConstructorUsedError;
 }

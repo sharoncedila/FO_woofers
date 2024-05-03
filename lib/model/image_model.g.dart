@@ -6,16 +6,16 @@ part of 'image_model.dart';
 // JsonSerializableGenerator
 // **************************************************************************
 
-_$UploadProfilePicResponseImpl _$$UploadProfilePicResponseImplFromJson(
+_$UploadImageResponseImpl _$$UploadImageResponseImplFromJson(
         Map<String, dynamic> json) =>
-    _$UploadProfilePicResponseImpl(
+    _$UploadImageResponseImpl(
       fileName: json['fileName'] as String?,
       errorCode: json['errorCode'] as String?,
       errorMessage: json['errorMessage'] as String?,
     );
 
-Map<String, dynamic> _$$UploadProfilePicResponseImplToJson(
-        _$UploadProfilePicResponseImpl instance) =>
+Map<String, dynamic> _$$UploadImageResponseImplToJson(
+        _$UploadImageResponseImpl instance) =>
     <String, dynamic>{
       'fileName': instance.fileName,
       'errorCode': instance.errorCode,
