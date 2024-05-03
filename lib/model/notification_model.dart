@@ -19,3 +19,13 @@ class ViewNotificationResponse with _$ViewNotificationResponse{
 
   factory ViewNotificationResponse.fromJson(Map<String, dynamic> json) => _$ViewNotificationResponseFromJson(json);
 }
+
+@freezed
+class AcceptRejectNotification with _$AcceptRejectNotification{
+  factory AcceptRejectNotification({
+    required String? notificationId,
+    required String? status,
+  }) = _AcceptRejectNotification;
+
+  factory AcceptRejectNotification.fromJson(Map<String, dynamic> json) => _$AcceptRejectNotificationFromJson(json);
+}

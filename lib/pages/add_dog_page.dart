@@ -3,6 +3,7 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:hexcolor/hexcolor.dart';
 import 'package:intl/intl.dart';
 import 'package:woofers/components/bottom_menu.dart';
+import 'package:woofers/components/profile_page_template.dart';
 import 'package:woofers/model/dog_profile_model.dart';
 import 'package:woofers/pages/dog_list_page.dart';
 import 'package:woofers/services/dog/breed_services.dart';
@@ -66,7 +67,7 @@ class _AddDogPageState extends State<AddDogPage> {
                   Navigator.push(
                       context,
                       MaterialPageRoute(
-                          builder: (context) => const DogListPage()));
+                          builder: (context) => const ProfilePageTemplate()));
                 })),
         actions: [
           Padding(

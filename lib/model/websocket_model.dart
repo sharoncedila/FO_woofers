@@ -19,3 +19,17 @@ class WebSocketNotif with _$WebSocketNotif{
 
   factory WebSocketNotif.fromJson(Map<String, dynamic> json) => _$WebSocketNotifFromJson(json);
 }
+
+@freezed
+class WebSocketChat with _$WebSocketChat{
+  factory WebSocketChat({
+    required String? chatMessageId,
+    required String? chatroomId,
+    required String? senderId,
+    required String? recipientId,
+    required String message,
+    required String? timestamp,
+  }) = _WebSocketChat;
+
+  factory WebSocketChat.fromJson(Map<String, dynamic> json) => _$WebSocketChatFromJson(json);
+}

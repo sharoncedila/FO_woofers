@@ -2,7 +2,7 @@ import 'dart:convert';
 import 'dart:io';
 import 'package:woofers/classes/dio_instance.dart';
 import 'package:shared_preferences/shared_preferences.dart';
-import 'package:woofers/classes/websocket_instance.dart';
+import 'package:woofers/classes/ws_notif_instance.dart';
 import 'package:woofers/model/error_schema_model.dart';
 import 'package:woofers/model/login_model.dart';
 
@@ -23,7 +23,7 @@ class LoginService {
         final SharedPreferences prefs = await SharedPreferences.getInstance();
         await prefs.setString('accessToken', accessToken);
         await prefs.setString('accountId', accountId);
-        await WebsocketInstance.connect();
+        await WSNotifInstance.connect();
         DioInstance.setNull();
         return ResponseLoginModel.fromJson(response.data['outputSchema']);
       }
@@ -44,7 +44,7 @@ class LoginService {
       if (errorSchema.errorCode != 'WOF-000') {
         return LogoutResponse.fromJson(response.data['errorSchema']);
       } else {
-        WebsocketInstance.disconnect();
+        WSNotifInstance.disconnect();
         return LogoutResponse.fromJson(response.data['outputSchema']);
       }
     } catch (error) {
