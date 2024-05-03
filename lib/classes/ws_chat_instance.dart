@@ -1,8 +1,7 @@
 import 'dart:convert';
 import 'dart:io';
-import 'package:flutter/material.dart';
+
 import 'package:shared_preferences/shared_preferences.dart';
-import 'package:fluttertoast/fluttertoast.dart';
 import 'package:woofers/model/chatroom_model.dart';
 import 'package:woofers/model/websocket_model.dart';
 
@@ -17,7 +16,7 @@ class WSChatInstance {
         HttpHeaders.authorizationHeader: 'Bearer $token',
       };
       session = await WebSocket.connect(
-          'ws://192.168.100.249:8080/woofers/send-chat',
+          'ws://192.168.68.172:8080/woofers/send-chat',
           headers: headers);
       print("Successfully Connect to WebSocket Chat Server");
 
@@ -48,7 +47,7 @@ class WSChatInstance {
     }
   }
 
-   static void sendMessage(SendChatRequest request) {
+  static void sendMessage(SendChatRequest request) {
     if (session != null && session!.readyState == WebSocket.open) {
       session!.add(jsonEncode(request.toJson()));
     } else {

@@ -50,10 +50,7 @@ class _AddFeedsPageState extends State<AddFeedsPage> {
         Padding(
           padding: const EdgeInsets.only(left: 25, right: 25),
           child: TextField(
-<<<<<<< HEAD
             maxLength: 500,
-=======
->>>>>>> UAT
             controller: _captionController,
             decoration: const InputDecoration(
               labelText: 'Enter your captions..',

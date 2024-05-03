@@ -1,8 +1,9 @@
 import 'dart:convert';
 import 'dart:io';
+
 import 'package:flutter/material.dart';
-import 'package:shared_preferences/shared_preferences.dart';
 import 'package:fluttertoast/fluttertoast.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 import 'package:woofers/model/websocket_model.dart';
 
 class WSNotifInstance {
@@ -16,7 +17,7 @@ class WSNotifInstance {
         HttpHeaders.authorizationHeader: 'Bearer $token',
       };
       session = await WebSocket.connect(
-          'ws://192.168.100.249:8080/woofers/app-notif',
+          'ws://192.168.68.172:8080/woofers/app-notif',
           headers: headers);
       print("Successfully Connect to WebSocket Notif Server");
 
