@@ -2,11 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:hexcolor/hexcolor.dart';
 import 'package:woofers/classes/ws_chat_instance.dart';
-import 'package:woofers/components/bottom_menu.dart';
 import 'package:woofers/components/bubble_chat.dart';
 import 'package:woofers/model/chatroom_model.dart';
-import 'package:woofers/model/user_profile_model.dart';
-import 'package:woofers/services/account/user_profile_services.dart';
 import 'package:woofers/services/chat/chat_service.dart';
 
 class ChatroomPageDetail extends StatelessWidget {
@@ -18,11 +15,9 @@ class ChatroomPageDetail extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    print("Data adoption: $accountId");
     TextEditingController messageController = TextEditingController();
     final sendChatService = ChatroomService();
-    String recipientId;
-    final Future<ResponseUserProfileModel?> account =
-        RetrieveAccountService().retrieveUserData();
 
     return Scaffold(
       backgroundColor: Colors.white,
@@ -38,15 +33,8 @@ class ChatroomPageDetail extends StatelessWidget {
             color: const Color.fromRGBO(40, 36, 36, 10000),
           ),
         ),
-        // leading: IconButton(
-        //   icon: Icon(Icons.arrow_back),
-        //   onPressed: () {
-        //     // Navigate back when the back button is pressed
-        //     Navigator.push(context, MaterialPageRoute(builder: (_) => const BottomMenuBar()));
-        //   },
-        // ),
       ),
-            body: Stack(children: [
+      body: Stack(children: [
         Chatroom(),
         Positioned(
           bottom:
@@ -54,7 +42,7 @@ class ChatroomPageDetail extends StatelessWidget {
           left: 0, // Align to the left side
           right: 0, // Align to the right side
           child: IconButton(
-            icon: Icon(Icons.send),
+            icon: const Icon(Icons.send),
             onPressed: () async {
               final SendChatRequest request = SendChatRequest(
                   recipientId: accountId, message: messageController.text);

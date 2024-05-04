@@ -14,8 +14,8 @@ class BubbleChatCardDetail extends StatelessWidget {
   Widget build(BuildContext context) {
     //other
     String currentId = accountId;
-print("Data adoption: ${bubbleChatlistDetail}");
-print("Data adoption: ${currentId}");
+    print("Data adoption: ${bubbleChatlistDetail}");
+    print("Data adoption: ${currentId}");
 
     return SingleChildScrollView(
       child: Padding(
@@ -56,31 +56,3 @@ print("Data adoption: ${currentId}");
     );
   }
 }
-
-// return const Column(
-//   children: [
-//     SizedBox(height: 20),
-//     BubbleSpecialThree(
-//       text: 'Added iMessage shape bubbles',
-//       color: Color(0xFF1B97F3),
-//       tail: false,
-//       textStyle: TextStyle(color: Colors.white, fontSize: 16),
-//     ),
-//     BubbleSpecialThree(
-//       text: 'Sure',
-//       color: Color(0xFFE8E8EE),
-//       tail: false,
-//       isSender: false,
-//     ),
-//     Expanded(
-//         child: Align(
-//       alignment: FractionalOffset.bottomCenter,
-//       // child: MessageBar(
-//       //   onSend: (_) => print(_),
-//       //   actions: const [
-
-//       //   ],
-//       // ),
-//     ))
-//   ],
-// );

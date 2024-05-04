@@ -62,6 +62,7 @@ class _RegisterFormState extends State<RegisterForm> {
   // not a GlobalKey<RegisterFormState>.
   final _formKey = GlobalKey<FormState>();
   final _usernameController = TextEditingController();
+    final _fullnameController = TextEditingController();
   final _emailController = TextEditingController();
   final _passwordController = TextEditingController();
   final _confirmPasswordController = TextEditingController();
@@ -101,6 +102,32 @@ class _RegisterFormState extends State<RegisterForm> {
                 validator: (value) {
                   if (value == null || value.isEmpty) {
                     return 'Please fill username field';
+                  }
+                  return null;
+                },
+              ),
+            ),
+
+            // fullname form field
+            const SizedBox(height: 50),
+            Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 25),
+              child: TextFormField(
+                controller: _fullnameController,
+                decoration: InputDecoration(
+                    enabledBorder: const OutlineInputBorder(
+                      borderSide: BorderSide(color: Colors.white),
+                    ),
+                    focusedBorder: OutlineInputBorder(
+                      borderSide: BorderSide(color: Colors.grey.shade400),
+                    ),
+                    fillColor: Colors.grey.shade200,
+                    filled: true,
+                    hintText: 'Fullname',
+                    hintStyle: TextStyle(color: Colors.grey[500])),
+                validator: (value) {
+                  if (value == null || value.isEmpty) {
+                    return 'Please fill fullname field';
                   }
                   return null;
                 },
@@ -384,6 +411,7 @@ class _RegisterFormState extends State<RegisterForm> {
                   if (_formKey.currentState!.validate()) {
                     final RequestRegisterModel req = RequestRegisterModel(
                         email: _emailController.text,
+                        fullname : _fullnameController.text,
                         password: _passwordController.text,
                         username: _usernameController.text,
                         provinceName: _selectedProvince!,

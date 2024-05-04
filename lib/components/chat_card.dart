@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:woofers/model/chatlist_model.dart';
 import 'package:woofers/model/chatroom_model.dart';
 import 'package:woofers/pages/chatroom_page.dart';
-import 'package:woofers/pages/user_profile_page.dart';
 import 'package:woofers/services/chat/chat_service.dart';
 
 class ChatCardDetail extends StatelessWidget {
@@ -40,58 +39,50 @@ class ChatCardDetail extends StatelessWidget {
             child: Column(
               children: [
                 const SizedBox(height: 10, width: 20),
-                Text(
-                  chatlistDetail.recipientUsername!,
-                  style: const TextStyle(
-                    color: Color.fromRGBO(40, 36, 36, 10000),
-                    fontSize: 14,
-                    fontWeight: FontWeight.bold,
-                  ),
-                  textAlign: TextAlign.left,
+                Row(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    Padding(
+                      padding: const EdgeInsets.only(left: 20.0, top: 3, bottom: 2),
+                      child: Text(
+                      chatlistDetail.recipientUsername!,
+                      style: const TextStyle(
+                        color: Color.fromRGBO(40, 36, 36, 10000),
+                        fontSize: 16,
+                        fontWeight: FontWeight.bold,
+                      ),
+                      textAlign: TextAlign.left,
+                                        ),
+                    ),]
                 ),
-
                 // last message
                 Padding(
                   padding:
-                      const EdgeInsets.symmetric(horizontal: 1, vertical: 1),
+                      const EdgeInsets.only(left: 20.0, top: 3, bottom: 2),
                   child: Row(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
-                      Padding(
-                        padding: const EdgeInsets.only(left: 10.0, top: 12),
-                        child: Text(
+                      const SizedBox(width: 10),
+                      Expanded(
+                        child: 
+                        (chatlistDetail.recipientUsername! == "false")
+                        ? Text(
                           chatlistDetail.lastMessage ?? "",
                           style: const TextStyle(
-                              fontSize: 12, color: Colors.black),
-                        ),
-                        /*child: TextFormField(
-                          readOnly: true,
-                          maxLines: null,
-                          decoration: InputDecoration(
-                            labelText: chatlistDetail.lastMessage ?? "",
-                            labelStyle: const TextStyle(
-                                fontSize: 12, color: Colors.black),
-                          ),
-                        ),*/
+                              fontSize: 12, color: Colors.black, fontWeight: FontWeight.bold),
+                          overflow: TextOverflow.ellipsis,
+                          //maxLines: 2,
+                        )
+                        : Text(
+                          chatlistDetail.lastMessage ?? "",
+                          style: const TextStyle(
+                              fontSize: 12, color: Colors.black,),
+                          overflow: TextOverflow.ellipsis,
                       ),
-                      const SizedBox(
-                        height: 3,
                       ),
-                      const Padding(
-                        padding: EdgeInsets.only(right: 10),
-                        child: /*IconButton(
-                          icon: const */Icon(Icons.chat),
-                          /*onPressed: () {
-                            Navigator.push(
-                              context,
-                              MaterialPageRoute(
-                                  builder: (context) => ChatroomPageDetail(
-                                      accountId: chatlistDetail.recipientId!)),
-                            );
-                          },
-                        ),*/
-                      ),
+                      const SizedBox(width: 10),
                     ],
                   ),
                 ),
