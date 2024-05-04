@@ -59,7 +59,7 @@ class _SearchUserListPageState extends State<SearchUserListPage> {
   Widget SearchUserList() {
     return SingleChildScrollView(
       child: Padding(
-          padding: const EdgeInsets.only(left: 25, right: 25),
+          padding: const EdgeInsets.only(left: 30, right: 30),
           child:
               Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
             const SizedBox(
@@ -147,7 +147,7 @@ class _SearchUserListPageState extends State<SearchUserListPage> {
                 builder: (context, snapshot) {
                   if (snapshot.connectionState == ConnectionState.waiting) {
                     return const Center(
-                        child: Text("Retrieving your dog list data 1"));
+                        child: Text("Retrieving users data"));
                   }
                   if (snapshot.hasError) {
                     return const Center(child: Text("Error accountID"));
