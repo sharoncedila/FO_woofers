@@ -23,9 +23,7 @@ Map<String, dynamic> _$$WebSocketNotifImplToJson(
 
 _$WebSocketChatImpl _$$WebSocketChatImplFromJson(Map<String, dynamic> json) =>
     _$WebSocketChatImpl(
-      chatMessageId: json['chatMessageId'] as String?,
       chatroomId: json['chatroomId'] as String?,
-      senderId: json['senderId'] as String?,
       recipientId: json['recipientId'] as String?,
       message: json['message'] as String,
       timestamp: json['timestamp'] as String?,
@@ -33,9 +31,7 @@ _$WebSocketChatImpl _$$WebSocketChatImplFromJson(Map<String, dynamic> json) =>
 
 Map<String, dynamic> _$$WebSocketChatImplToJson(_$WebSocketChatImpl instance) =>
     <String, dynamic>{
-      'chatMessageId': instance.chatMessageId,
       'chatroomId': instance.chatroomId,
-      'senderId': instance.senderId,
       'recipientId': instance.recipientId,
       'message': instance.message,
       'timestamp': instance.timestamp,

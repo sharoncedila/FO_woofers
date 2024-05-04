@@ -220,9 +220,9 @@ WebSocketChat _$WebSocketChatFromJson(Map<String, dynamic> json) {
 
 /// @nodoc
 mixin _$WebSocketChat {
-  String? get chatMessageId => throw _privateConstructorUsedError;
-  String? get chatroomId => throw _privateConstructorUsedError;
-  String? get senderId => throw _privateConstructorUsedError;
+// required String? chatMessageId,
+  String? get chatroomId =>
+      throw _privateConstructorUsedError; // required String? senderId,
   String? get recipientId => throw _privateConstructorUsedError;
   String get message => throw _privateConstructorUsedError;
   String? get timestamp => throw _privateConstructorUsedError;
@@ -240,9 +240,7 @@ abstract class $WebSocketChatCopyWith<$Res> {
       _$WebSocketChatCopyWithImpl<$Res, WebSocketChat>;
   @useResult
   $Res call(
-      {String? chatMessageId,
-      String? chatroomId,
-      String? senderId,
+      {String? chatroomId,
       String? recipientId,
       String message,
       String? timestamp});
@@ -261,25 +259,15 @@ class _$WebSocketChatCopyWithImpl<$Res, $Val extends WebSocketChat>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? chatMessageId = freezed,
     Object? chatroomId = freezed,
-    Object? senderId = freezed,
     Object? recipientId = freezed,
     Object? message = null,
     Object? timestamp = freezed,
   }) {
     return _then(_value.copyWith(
-      chatMessageId: freezed == chatMessageId
-          ? _value.chatMessageId
-          : chatMessageId // ignore: cast_nullable_to_non_nullable
-              as String?,
       chatroomId: freezed == chatroomId
           ? _value.chatroomId
           : chatroomId // ignore: cast_nullable_to_non_nullable
-              as String?,
-      senderId: freezed == senderId
-          ? _value.senderId
-          : senderId // ignore: cast_nullable_to_non_nullable
               as String?,
       recipientId: freezed == recipientId
           ? _value.recipientId
@@ -306,9 +294,7 @@ abstract class _$$WebSocketChatImplCopyWith<$Res>
   @override
   @useResult
   $Res call(
-      {String? chatMessageId,
-      String? chatroomId,
-      String? senderId,
+      {String? chatroomId,
       String? recipientId,
       String message,
       String? timestamp});
@@ -325,25 +311,15 @@ class __$$WebSocketChatImplCopyWithImpl<$Res>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? chatMessageId = freezed,
     Object? chatroomId = freezed,
-    Object? senderId = freezed,
     Object? recipientId = freezed,
     Object? message = null,
     Object? timestamp = freezed,
   }) {
     return _then(_$WebSocketChatImpl(
-      chatMessageId: freezed == chatMessageId
-          ? _value.chatMessageId
-          : chatMessageId // ignore: cast_nullable_to_non_nullable
-              as String?,
       chatroomId: freezed == chatroomId
           ? _value.chatroomId
           : chatroomId // ignore: cast_nullable_to_non_nullable
-              as String?,
-      senderId: freezed == senderId
-          ? _value.senderId
-          : senderId // ignore: cast_nullable_to_non_nullable
               as String?,
       recipientId: freezed == recipientId
           ? _value.recipientId
@@ -365,9 +341,7 @@ class __$$WebSocketChatImplCopyWithImpl<$Res>
 @JsonSerializable()
 class _$WebSocketChatImpl implements _WebSocketChat {
   _$WebSocketChatImpl(
-      {required this.chatMessageId,
-      required this.chatroomId,
-      required this.senderId,
+      {required this.chatroomId,
       required this.recipientId,
       required this.message,
       required this.timestamp});
@@ -375,12 +349,10 @@ class _$WebSocketChatImpl implements _WebSocketChat {
   factory _$WebSocketChatImpl.fromJson(Map<String, dynamic> json) =>
       _$$WebSocketChatImplFromJson(json);
 
-  @override
-  final String? chatMessageId;
+// required String? chatMessageId,
   @override
   final String? chatroomId;
-  @override
-  final String? senderId;
+// required String? senderId,
   @override
   final String? recipientId;
   @override
@@ -390,7 +362,7 @@ class _$WebSocketChatImpl implements _WebSocketChat {
 
   @override
   String toString() {
-    return 'WebSocketChat(chatMessageId: $chatMessageId, chatroomId: $chatroomId, senderId: $senderId, recipientId: $recipientId, message: $message, timestamp: $timestamp)';
+    return 'WebSocketChat(chatroomId: $chatroomId, recipientId: $recipientId, message: $message, timestamp: $timestamp)';
   }
 
   @override
@@ -398,12 +370,8 @@ class _$WebSocketChatImpl implements _WebSocketChat {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$WebSocketChatImpl &&
-            (identical(other.chatMessageId, chatMessageId) ||
-                other.chatMessageId == chatMessageId) &&
             (identical(other.chatroomId, chatroomId) ||
                 other.chatroomId == chatroomId) &&
-            (identical(other.senderId, senderId) ||
-                other.senderId == senderId) &&
             (identical(other.recipientId, recipientId) ||
                 other.recipientId == recipientId) &&
             (identical(other.message, message) || other.message == message) &&
@@ -413,8 +381,8 @@ class _$WebSocketChatImpl implements _WebSocketChat {
 
   @JsonKey(ignore: true)
   @override
-  int get hashCode => Object.hash(runtimeType, chatMessageId, chatroomId,
-      senderId, recipientId, message, timestamp);
+  int get hashCode =>
+      Object.hash(runtimeType, chatroomId, recipientId, message, timestamp);
 
   @JsonKey(ignore: true)
   @override
@@ -432,9 +400,7 @@ class _$WebSocketChatImpl implements _WebSocketChat {
 
 abstract class _WebSocketChat implements WebSocketChat {
   factory _WebSocketChat(
-      {required final String? chatMessageId,
-      required final String? chatroomId,
-      required final String? senderId,
+      {required final String? chatroomId,
       required final String? recipientId,
       required final String message,
       required final String? timestamp}) = _$WebSocketChatImpl;
@@ -442,13 +408,9 @@ abstract class _WebSocketChat implements WebSocketChat {
   factory _WebSocketChat.fromJson(Map<String, dynamic> json) =
       _$WebSocketChatImpl.fromJson;
 
-  @override
-  String? get chatMessageId;
-  @override
+  @override // required String? chatMessageId,
   String? get chatroomId;
-  @override
-  String? get senderId;
-  @override
+  @override // required String? senderId,
   String? get recipientId;
   @override
   String get message;

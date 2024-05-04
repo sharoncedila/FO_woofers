@@ -23,9 +23,9 @@ class WebSocketNotif with _$WebSocketNotif{
 @freezed
 class WebSocketChat with _$WebSocketChat{
   factory WebSocketChat({
-    required String? chatMessageId,
+    // required String? chatMessageId,
     required String? chatroomId,
-    required String? senderId,
+    // required String? senderId,
     required String? recipientId,
     required String message,
     required String? timestamp,
