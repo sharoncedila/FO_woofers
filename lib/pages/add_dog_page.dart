@@ -3,32 +3,31 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:hexcolor/hexcolor.dart';
 import 'package:intl/intl.dart';
 import 'package:woofers/components/bottom_menu.dart';
-import 'package:woofers/components/profile_page_template.dart';
 import 'package:woofers/model/dog_profile_model.dart';
-import 'package:woofers/pages/dog_list_page.dart';
 import 'package:woofers/services/dog/breed_services.dart';
 import 'package:woofers/services/dog/dog_services.dart';
 import 'package:woofers/services/province/province_service.dart';
 
 class AddDogPage extends StatefulWidget {
-  const AddDogPage({super.key});
+  const AddDogPage({
+    super.key,
+  });
 
   @override
   _AddDogPageState createState() => _AddDogPageState();
 }
 
 class _AddDogPageState extends State<AddDogPage> {
-  final _formKey = GlobalKey<FormState>();
-  final _nameController = TextEditingController();
-  final _vaccineController = TextEditingController();
-  final _descriptionController = TextEditingController();
+  final nameController = TextEditingController();
+  final vaccineController = TextEditingController();
+  final descriptionController = TextEditingController();
   bool passwordVisible = true;
   final _dogService = DogService();
-  String? _selectedProvince;
-  String? _selectedBreed;
-  DateTime? _selectedDate;
-  String? _selectedGender;
-  bool _isSwitched = false;
+  String? selectedProvince;
+  String? selectedBreed;
+  DateTime? selectedDate;
+  String? selectedGender;
+  bool isSwitched = false;
 
   late List<String?> provinceNames;
   late List<String?> breedNames;
@@ -36,14 +35,14 @@ class _AddDogPageState extends State<AddDogPage> {
   Future<void> _selectDate(BuildContext context) async {
     final DateTime? pickedDate = await showDatePicker(
       context: context,
-      initialDate: _selectedDate ?? DateTime.now(),
+      initialDate: selectedDate ?? DateTime.now(),
       firstDate: DateTime(2000),
       lastDate: DateTime(2101),
     );
 
-    if (pickedDate != null && pickedDate != _selectedDate) {
+    if (pickedDate != null && pickedDate != selectedDate) {
       setState(() {
-        _selectedDate = pickedDate;
+        selectedDate = pickedDate;
       });
     }
   }
@@ -54,414 +53,600 @@ class _AddDogPageState extends State<AddDogPage> {
       backgroundColor: Colors.white,
       appBar: AppBar(
         toolbarHeight: 75,
-        backgroundColor: HexColor("#a0dcdc"),
+        centerTitle: true,
         elevation: 0,
-        leading: Padding(
-            padding:
-                const EdgeInsets.only(left: 30), // Adjust the value as needed
-            child: IconButton(
-                icon:
-                    //cupertino
-                    const Icon(Icons.arrow_back), // Set your desired icon here
-                onPressed: () async {
-                  Navigator.push(
-                      context,
-                      MaterialPageRoute(
-                          builder: (context) => const ProfilePageTemplate()));
-                })),
-        actions: [
-          Padding(
-            padding:
-                const EdgeInsets.only(right: 30), // Adjust the value as needed
-            child: Row(
-              children: [
-                Text(
-                  'Open for adoption',
-                  style: GoogleFonts.lora(
-                    fontSize: 14,
-                    fontWeight: FontWeight.bold,
-                    color: const Color.fromRGBO(40, 36, 36, 10000),
-                  ),
-                ),
-                const SizedBox(width: 10), // Add space between text and switch
-                Switch(
-                  value: _isSwitched,
-                  onChanged: (value) {
-                    setState(() {
-                      _isSwitched = value;
-                    });
-                  },
-                  activeTrackColor: HexColor("#a0dcdc"),
-                  activeColor: Colors.white,
-                ),
-              ],
-            ),
+        backgroundColor: HexColor("#a0dcdc"),
+        title: Text(
+          "ADD DOG",
+          style: GoogleFonts.lora(
+            fontSize: 25,
+            fontWeight: FontWeight.bold,
+            color: const Color.fromRGBO(40, 36, 36, 10000),
           ),
-        ],
+        ),
       ),
-      body: addDog(),
+      body: addDogProfile(),
     );
   }
 
-  Widget addDog() {
+  Widget addDogProfile() {
     return SingleChildScrollView(
-      child: Column(
-        children: [
-          //image
-          const SizedBox(
-            height: 15,
-          ),
-          const Image(image: AssetImage('assets/dog_picture/dog1.jpg')),
-          const SizedBox(
-            height: 15,
-          ),
-
-          //name
-          const SizedBox(height: 50),
-          Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 25),
-            child: TextFormField(
-              controller: _nameController,
-              decoration: InputDecoration(
-                  enabledBorder: const OutlineInputBorder(
-                    borderSide: BorderSide(color: Colors.white),
-                  ),
-                  focusedBorder: OutlineInputBorder(
-                    borderSide: BorderSide(color: Colors.grey.shade400),
-                  ),
-                  fillColor: Colors.grey.shade200,
-                  filled: true,
-                  hintText: 'Name',
-                  hintStyle: TextStyle(color: Colors.grey[500])),
-              validator: (value) {
-                if (value == null || value.isEmpty) {
-                  return 'Please fill name field';
-                }
-                return null;
-              },
+      child: Column(children: [
+        Padding(
+            padding:
+                const EdgeInsets.only(right: 30), 
+                // Adjust the value as needed
+            child: Column(
+              children: [
+                const SizedBox(
+              height: 15,
             ),
-          ),
-
-          // breed
-          const SizedBox(height: 15),
-          SingleChildScrollView(
-            child: Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 25),
-              child: FutureBuilder(
-                future: RetrieveBreedService().retrieveAllBreed(),
-                //initialData: initialBreedNames,
-                builder: (context, snapshot) {
-                  if (snapshot.connectionState == ConnectionState.waiting) {
-                    return const Text("Breed");
-                  }
-                  if (snapshot.hasError) {
-                    return Text("Error: ${snapshot.error}");
-                  }
-                  if (!snapshot.hasData) {
-                    return const Text("No data");
-                  }
-                  final breedResponse = snapshot.data!;
-                  final breedNames =
-                      breedResponse.breedList.map((e) => e.breedName).toList();
-                  return DropdownButtonFormField<String>(
-                    value: _selectedBreed,
-                    decoration: InputDecoration(
-                      enabledBorder: const OutlineInputBorder(
-                        borderSide: BorderSide(color: Colors.white),
-                      ),
-                      focusedBorder: OutlineInputBorder(
-                        borderSide: BorderSide(color: Colors.grey.shade400),
-                      ),
-                      fillColor: Colors.grey.shade200,
-                      filled: true,
-                      hintText: 'Breed',
-                      hintStyle: TextStyle(color: Colors.grey[500]),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.end,
+                children: [
+                  Text(
+                    'Open for adoption',
+                    style: GoogleFonts.lora(
+                      fontSize: 14,
+                      fontWeight: FontWeight.bold,
+                      color: const Color.fromRGBO(40, 36, 36, 10000),
                     ),
-                    onChanged: (String? newValue) {
-                      if (newValue != null) {
-                        setState(() {
-                          _selectedBreed = newValue;
-                        });
-                      }
+                  ),
+                  const SizedBox(width: 10), // Add space between text and switch
+                  Switch(
+                    value: isSwitched,
+                    onChanged: (value) {
+                      setState(() {
+                        isSwitched = value;
+                      });
                     },
-                    items: breedNames.map((breed) {
-                      return DropdownMenuItem<String>(
-                        value: breed,
-                        child: Text(breed),
-                      );
-                    }).toList(),
-                    validator: (value) {
-                      if (value == null || value.isEmpty) {
-                        return 'Please choose your dog breed';
-                      }
-                      return null;
-                    },
-                  );
-                },
-              ),
-            ),
-          ),
-
-          //Date of Birth
-          const SizedBox(height: 15),
-          Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 25),
-            child: Container(
-              padding: const EdgeInsets.all(10.0),
-              decoration: BoxDecoration(
-                color: Colors.grey.shade200,
-              ),
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: <Widget>[
-                  _selectedDate != null
-                      ? Text(
-                          '${_selectedDate!.day}/${_selectedDate!.month}/${_selectedDate!.year}',
-                          style: const TextStyle(
-                              fontSize: 16, fontWeight: FontWeight.bold),
-                        )
-                      : const Text(
-                          'Date of Birth',
-                          style: TextStyle(fontSize: 16, color: Colors.grey),
-                        ),
-                  ElevatedButton(
-                    onPressed: () => _selectDate(context),
-                    child: const Text('Select Date'),
+                    activeTrackColor: HexColor("#a0dcdc"),
+                    activeColor: Colors.white,
                   ),
                 ],
               ),
+      ]
             ),
           ),
+        
+        Column(
+          children: [
+            const SizedBox(
+              height: 15,
+            ),
+            const Image(image: AssetImage('assets/dog_picture/dog1.jpg')),
+            const SizedBox(
+              height: 15,
+            ),
+            const SizedBox(
+              height: 15,
+            ),
 
-          //Gender
-          const SizedBox(height: 15),
-          Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 25),
-            child: DropdownButtonFormField<String>(
-              value: _selectedGender,
-              decoration: InputDecoration(
-                enabledBorder: const OutlineInputBorder(
-                  borderSide: BorderSide(color: Colors.white),
+            Row(
+              children: [
+                const SizedBox(
+                  width: 20,
                 ),
-                focusedBorder: OutlineInputBorder(
-                  borderSide: BorderSide(color: Colors.grey.shade400),
+                const Icon(
+                  Icons.pets_sharp,
+                  size: 35,
                 ),
-                fillColor: Colors.grey.shade200,
-                filled: true,
-                hintText: 'Gender',
-                hintStyle: TextStyle(color: Colors.grey[500]),
-              ),
-              onChanged: (String? newValue) {
-                setState(() {
-                  _selectedGender = newValue;
-                });
-              },
-              items: <String>['Male', 'Female'].map((String value) {
-                return DropdownMenuItem<String>(
-                  value: value,
-                  child: Text(value),
-                );
-              }).toList(),
-              validator: (value) {
-                if (value == null || value.isEmpty) {
-                  return 'Please choose your dog gender';
-                }
-                return null;
-              },
-            ),
-          ),
-
-          //province here
-          const SizedBox(height: 15),
-          SingleChildScrollView(
-            child: Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 25),
-              child: FutureBuilder(
-                future: RetrieveProvinceService().retrieveAllProvince(),
-                //initialData: initialProvinceNames,
-                builder: (context, snapshot) {
-                  if (snapshot.connectionState == ConnectionState.waiting) {
-                    return const Text("Province");
-                  }
-                  if (snapshot.hasError) {
-                    return Text("Error: ${snapshot.error}");
-                  }
-                  if (!snapshot.hasData) {
-                    return const Text("No data");
-                  }
-                  final provinceResponse = snapshot.data!;
-                  final provinceNames = provinceResponse.provinceList
-                      .map((e) => e.provinceName)
-                      .toList();
-                  return DropdownButtonFormField<String>(
-                    value: _selectedProvince,
-                    decoration: InputDecoration(
-                      enabledBorder: const OutlineInputBorder(
-                        borderSide: BorderSide(color: Colors.white),
+                const SizedBox(
+                  width: 20,
+                ),
+                Expanded(
+                    child: Column(
+                        mainAxisAlignment: MainAxisAlignment.start,
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                      Text(
+                        "dog name",
+                        style: TextStyle(
+                          color: Colors.black.withOpacity(0.5),
+                        ),
                       ),
-                      focusedBorder: OutlineInputBorder(
-                        borderSide: BorderSide(color: Colors.grey.shade400),
+                      SizedBox(
+                          height: 40,
+                          child: TextFormField(
+                            controller: nameController,
+                            decoration: InputDecoration(
+                                border: const UnderlineInputBorder(),
+                                labelStyle: GoogleFonts.newsCycle(
+                                  color: Colors.black,
+                                )),
+                            onFieldSubmitted: (String? newValue) {
+                              nameController.text = newValue!;
+                            },
+                          )),
+                    ]))
+              ],
+            ),
+
+            // dog breed
+            const SizedBox(height: 25),
+            Row(
+              children: [
+                const SizedBox(
+                  width: 20,
+                ),
+                const Icon(
+                  Icons.pets_outlined,
+                  size: 35,
+                ),
+                const SizedBox(
+                  width: 20,
+                ),
+                Expanded(
+                    child: Column(
+                        mainAxisAlignment: MainAxisAlignment.start,
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                      Text(
+                        "breed",
+                        style: TextStyle(
+                          color: Colors.black.withOpacity(0.5),
+                        ),
                       ),
-                      fillColor: Colors.grey.shade200,
-                      filled: true,
-                      hintText: 'Province',
-                      hintStyle: TextStyle(color: Colors.grey[500]),
-                    ),
-                    onChanged: (String? newValue) {
-                      if (newValue != null) {
-                        setState(() {
-                          _selectedProvince = newValue;
-                        });
-                      }
-                    },
-                    items: provinceNames.map((province) {
-                      return DropdownMenuItem<String>(
-                        value: province,
-                        child: Text(province),
-                      );
-                    }).toList(),
-                    validator: (value) {
-                      if (value == null || value.isEmpty) {
-                        return 'Please choose your dog province';
-                      }
-                      return null;
-                    },
-                  );
-                },
-              ),
+                      SizedBox(
+                        height: 50,
+                        child: SingleChildScrollView(
+                          //child: Padding(
+                          //padding: const EdgeInsets.symmetric(),
+                          child: FutureBuilder(
+                            future: RetrieveBreedService().retrieveAllBreed(),
+                            //initialData: breedController.text,
+                            builder: (context, snapshot) {
+                              if (snapshot.connectionState ==
+                                  ConnectionState.waiting) {
+                                return const Text("Breed");
+                              }
+                              if (snapshot.hasError) {
+                                return Text("Error: ${snapshot.error}");
+                              }
+                              if (!snapshot.hasData) {
+                                return const Text("No data");
+                              }
+                              final breedResponse = snapshot.data!;
+                              final breedNames = breedResponse.breedList
+                                  .map((e) => e.breedName)
+                                  .toList();
+                              return DropdownButtonFormField<String>(
+                                value: selectedBreed,
+                                onChanged: (String? newValue) {
+                                  if (newValue != null) {
+                                    setState(() {
+                                      selectedBreed = newValue;
+                                    });
+                                  }
+                                },
+                                items: breedNames.map((breed) {
+                                  return DropdownMenuItem<String>(
+                                      value: breed,
+                                      child: Text(
+                                        breed,
+                                        style: TextStyle(
+                                          fontSize: 18,
+                                          color: Colors.black,
+                                          fontFamily: GoogleFonts.newsCycle()
+                                              .fontFamily,
+                                        ),
+                                      ));
+                                }).toList(),
+                                validator: (value) {
+                                  if (value == null || value.isEmpty) {
+                                    return 'Please choose your dog breed';
+                                  }
+                                  return null;
+                                },
+                              );
+                            },
+                          ),
+                        ),
+                      ),
+                      // ),
+                    ]))
+              ],
             ),
-          ),
 
-          //vaccine
-          const SizedBox(height: 15),
-          Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 25),
-            child: TextFormField(
-              controller: _vaccineController,
-              maxLines: null,
-              decoration: InputDecoration(
-                  enabledBorder: const OutlineInputBorder(
-                    borderSide: BorderSide(color: Colors.white),
-                  ),
-                  focusedBorder: OutlineInputBorder(
-                    borderSide: BorderSide(color: Colors.grey.shade400),
-                  ),
-                  fillColor: Colors.grey.shade200,
-                  filled: true,
-                  hintText: 'Vaccination',
-                  hintStyle: TextStyle(color: Colors.grey[500])),
-              validator: (value) {
-                if (value == null || value.isEmpty) {
-                  return 'Please fill vaccine field';
-                }
-                return null;
-              },
+            // date of birth
+            const SizedBox(height: 25),
+            Row(
+              children: [
+                const SizedBox(
+                  width: 20,
+                ),
+                const Icon(
+                  Icons.calendar_month_outlined,
+                  size: 35,
+                ),
+                const SizedBox(
+                  width: 20,
+                ),
+                Expanded(
+                    child: Column(
+                        mainAxisAlignment: MainAxisAlignment.start,
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                      Text(
+                        "date of birth",
+                        style: TextStyle(
+                          color: Colors.black.withOpacity(0.5),
+                        ),
+                      ),
+                      SizedBox(
+                        height: 50,
+                        child: Container(
+                          child: Row(
+                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                            children: <Widget>[
+                              selectedDate != null
+                                  ? Text(
+                                      '${selectedDate!.day}/${selectedDate!.month}/${selectedDate!.year}',
+                                      style: TextStyle(
+                                        fontSize: 16,
+                                        color: Colors.black,
+                                        fontFamily:
+                                            GoogleFonts.newsCycle().fontFamily,
+                                      ),
+                                    )
+                                  : const Text(
+                                      'Date of Birth',
+                                      style: TextStyle(
+                                          fontSize: 16, color: Colors.grey),
+                                    ),
+                              ElevatedButton(
+                                style: ElevatedButton.styleFrom(
+                                  backgroundColor: HexColor(
+                                      "#a0dcdc"), // Background color of the button
+                                ),
+                                onPressed: () => _selectDate(context),
+                                child: Text(
+                                  'Select Date',
+                                  style: TextStyle(
+                                    fontSize: 16,
+                                    color: Colors.black,
+                                    fontFamily:
+                                        GoogleFonts.newsCycle().fontFamily,
+                                  ),
+                                ),
+                              ),
+                            ],
+                          ),
+                        ),
+                      ),
+                    ]))
+              ],
             ),
-          ),
 
-          //description
-          const SizedBox(height: 15),
-          Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 25),
-            child: TextFormField(
-              controller: _descriptionController,
-              maxLines: null,
-              decoration: InputDecoration(
-                  enabledBorder: const OutlineInputBorder(
-                    borderSide: BorderSide(color: Colors.white),
-                  ),
-                  focusedBorder: OutlineInputBorder(
-                    borderSide: BorderSide(color: Colors.grey.shade400),
-                  ),
-                  fillColor: Colors.grey.shade200,
-                  filled: true,
-                  hintText: 'Description',
-                  hintStyle: TextStyle(color: Colors.grey[500])),
-              validator: (value) {
-                if (value == null || value.isEmpty) {
-                  return 'Please fill vaccine field';
-                }
-                return null;
-              },
+            // gender
+            const SizedBox(height: 25),
+            Row(
+              children: [
+                const SizedBox(
+                  width: 20,
+                ),
+                const Icon(
+                  Icons.transgender_outlined,
+                  size: 35,
+                ),
+                const SizedBox(
+                  width: 20,
+                ),
+                Expanded(
+                    child: Column(
+                        mainAxisAlignment: MainAxisAlignment.start,
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                      Text(
+                        "gender",
+                        style: TextStyle(
+                          color: Colors.black.withOpacity(0.5),
+                        ),
+                      ),
+                      SizedBox(
+                          height: 50,
+                          child: DropdownButtonFormField<String>(
+                            value: selectedGender,
+                            onChanged: (String? newValue) {
+                              setState(() {
+                                selectedGender = newValue;
+                              });
+                            },
+                            items:
+                                <String>['Male', 'Female'].map((String value) {
+                              return DropdownMenuItem<String>(
+                                value: value,
+                                child: Text(
+                                  value,
+                                  style: TextStyle(
+                                    fontSize: 18,
+                                    color: Colors.black,
+                                    fontFamily:
+                                        GoogleFonts.newsCycle().fontFamily,
+                                  ),
+                                ),
+                              );
+                            }).toList(),
+                            validator: (value) {
+                              if (value == null || value.isEmpty) {
+                                value = 'Please choose your dog gender';
+                              }
+                              return null;
+                            },
+                          )),
+                    ]))
+              ],
             ),
-          ),
 
-          const SizedBox(
-            height: 15,
-          ),
-          Padding(
-            padding: const EdgeInsets.only(bottom: 20.0),
-            child: SizedBox(
-              width: MediaQuery.of(context).size.width / 1.8,
-              height: 45,
-              child: ElevatedButton(
-                  style: ButtonStyle(
-                    backgroundColor: MaterialStateProperty.resolveWith(
-                      (Set<MaterialState> states) {
-                        if (states.contains(MaterialState.pressed)) {
-                          return Theme.of(context)
-                              .colorScheme
-                              .primary
-                              .withOpacity(0.5);
+            // province
+            const SizedBox(height: 25),
+            Row(
+              children: [
+                const SizedBox(
+                  width: 20,
+                ),
+                // const Image(
+                //   image:
+                //       AssetImage('assets/woofers_icon/province.png'),
+                //   width: 35,
+                //   height: 35,
+                // ),
+                const Icon(
+                  Icons.location_city_outlined,
+                  size: 35,
+                ),
+                const SizedBox(
+                  width: 20,
+                ),
+                Expanded(
+                    child: Column(
+                        mainAxisAlignment: MainAxisAlignment.start,
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                      Text(
+                        "province",
+                        style: TextStyle(
+                          color: Colors.black.withOpacity(0.5),
+                        ),
+                      ),
+                      SizedBox(
+                        height: 50,
+                        child: SingleChildScrollView(
+                          child: FutureBuilder(
+                            future:
+                                RetrieveProvinceService().retrieveAllProvince(),
+                            builder: (context, snapshot) {
+                              if (snapshot.connectionState ==
+                                  ConnectionState.waiting) {
+                                return const Text("");
+                              }
+                              if (snapshot.hasError) {
+                                return Text("Error: ${snapshot.error}");
+                              }
+                              if (!snapshot.hasData) {
+                                return const Text("No data");
+                              }
+                              final provinceResponse = snapshot.data!;
+                              final provinceNames = provinceResponse
+                                  .provinceList
+                                  .map((e) => e.provinceName)
+                                  .toList();
+                              return DropdownButtonFormField<String>(
+                                value: selectedProvince,
+                                onChanged: (String? newValue) {
+                                  if (newValue != null) {
+                                    setState(() {
+                                      selectedProvince = newValue;
+                                    });
+                                  }
+                                },
+                                items: provinceNames.map((province) {
+                                  return DropdownMenuItem<String>(
+                                      value: province,
+                                      child: Text(
+                                        province,
+                                        style: TextStyle(
+                                          fontSize: 18,
+                                          color: Colors.black,
+                                          fontFamily: GoogleFonts.newsCycle()
+                                              .fontFamily,
+                                        ),
+                                      ));
+                                }).toList(),
+                                validator: (value) {
+                                  if (value == null || value.isEmpty) {
+                                    return 'Please choose your dog province';
+                                  }
+                                  return null;
+                                },
+                              );
+                            },
+                          ),
+                        ),
+                      ),
+                    ]))
+              ],
+            ),
+
+            // vaccine
+            const SizedBox(height: 25),
+            Row(
+              children: [
+                const SizedBox(
+                  width: 20,
+                ),
+                // const Image(
+                //   image:
+                //       AssetImage('assets/woofers_icon/phone.png'),
+                //   width: 35,
+                //   height: 35,
+                // ),
+                const Icon(
+                  Icons.medical_services_outlined,
+                  size: 35,
+                ),
+                const SizedBox(
+                  width: 20,
+                ),
+                Expanded(
+                    child: Column(
+                        mainAxisAlignment: MainAxisAlignment.start,
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                      Text(
+                        "vaccine",
+                        style: TextStyle(
+                          color: Colors.black.withOpacity(0.5),
+                        ),
+                      ),
+                      SizedBox(
+                        height: 50,
+                        child: TextFormField(
+                          controller: vaccineController,
+                          decoration: InputDecoration(
+                            border: const UnderlineInputBorder(),
+                            // labelText: 'Username',
+                            labelStyle: GoogleFonts.newsCycle(
+                              color: Colors.black,
+                            ),
+                          ),
+                          validator: (value) {
+                            if (value == null || value.isEmpty) {
+                              return 'Please fill vaccine field';
+                            }
+                            return null;
+                          },
+                        ),
+                      ),
+                    ]))
+              ],
+            ),
+
+            // description
+            const SizedBox(height: 25),
+            Row(
+              children: [
+                const SizedBox(
+                  width: 20,
+                ),
+                // const Image(
+                //   image: AssetImage(
+                //       'assets/woofers_icon/description.png'),
+                //   width: 35,
+                //   height: 35,
+                // ),
+                const Icon(
+                  Icons.abc_outlined,
+                  size: 35,
+                ),
+                const SizedBox(
+                  width: 20,
+                ),
+                Expanded(
+                    child: Column(
+                        mainAxisAlignment: MainAxisAlignment.start,
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                      Text(
+                        "description",
+                        style: TextStyle(
+                          color: Colors.black.withOpacity(0.5),
+                        ),
+                      ),
+                      SizedBox(
+                        height: 70,
+                        child: TextFormField(
+                            maxLines: null,
+                            controller: descriptionController,
+                            decoration: InputDecoration(
+                              border: const UnderlineInputBorder(),
+                              // labelText: 'Username',
+                              labelStyle: GoogleFonts.newsCycle(
+                                color: Colors.black,
+                              ),
+                            ),
+                            onFieldSubmitted: (String? newValue) {
+                              descriptionController.text = newValue!;
+                            }),
+                      ),
+                    ])),
+              ],
+            ),
+            const SizedBox(
+              height: 20,
+            ),
+            Padding(
+              padding: const EdgeInsets.only(bottom: 20.0),
+              child: SizedBox(
+                  width: 125,
+                  height: 35,
+                  child: Expanded(
+                    child: ElevatedButton(
+                      style: ButtonStyle(
+                        backgroundColor:
+                            MaterialStateProperty.resolveWith<Color?>(
+                          (Set<MaterialState> states) {
+                            if (states.contains(MaterialState.pressed)) {
+                              return Theme.of(context)
+                                  .colorScheme
+                                  .primary
+                                  .withOpacity(0.5);
+                            }
+                            return null; // Use the component's default.
+                          },
+                        ),
+                      ),
+                      child: const Text('Add',
+                          style: TextStyle(
+                              //color: Colors.grey[600],
+                              fontWeight: FontWeight.bold,
+                              fontSize: 18)),
+                      onPressed: () async {
+                        if (selectedGender == 'Male') {
+                          selectedGender = 'M';
+                        } else if (selectedGender == 'Female') {
+                          selectedGender = 'F';
                         }
-                        return null; // Use the component's default.
+                        String formattedDate = selectedDate != null
+                            ? DateFormat('dd-MM-yyyy').format(selectedDate!)
+                            : 'No date selected';
+
+                        final AddDogRequest add = AddDogRequest(
+                            dogName: nameController.text,
+                            breedName: selectedBreed,
+                            dateOfBirth: formattedDate,
+                            isOpenAdopt: isSwitched,
+                            gender: selectedGender!,
+                            provinceName: selectedProvince,
+                            vaccination: vaccineController.text,
+                            description: descriptionController.text);
+
+                        _dogService
+                            .addNewDog(add)
+                            .then((value) => Navigator.of(context)
+                                .pushReplacement(MaterialPageRoute(
+                                    builder: (_) => const BottomMenuBar())))
+                            .onError<Exception>((error, stackTrace) {
+                          showDialog(
+                            context: context,
+                            builder: (context) {
+                              //return Text(error.toString());
+                              return SimpleDialog(
+                                children: [Text(error.toString())],
+                              );
+                            },
+                          );
+                        });
                       },
                     ),
-                  ),
-                  child: Text('Add',
-                      style: TextStyle(
-                          color: Colors.grey[600],
-                          fontWeight: FontWeight.bold,
-                          fontSize: 18)),
-                  onPressed: () async {
-                    //belum solve
-                    //if (_formKey.currentState!.validate()) {
-                    String? selectedGender = _selectedGender;
-                    if (selectedGender == 'Male') {
-                      selectedGender = 'M';
-                    } else if (selectedGender == 'Female') {
-                      selectedGender = 'F';
-                    }
-                    String formattedDate = _selectedDate != null
-                        ? DateFormat('dd-MM-yyyy').format(_selectedDate!)
-                        : 'No date selected';
-                    final AddDogRequest add = AddDogRequest(
-                        dogName: _nameController.text,
-                        breedName: _selectedBreed,
-                        dateOfBirth: formattedDate,
-                        isOpenAdopt: _isSwitched,
-                        gender: selectedGender!,
-                        provinceName: _selectedProvince,
-                        vaccination: _vaccineController.text,
-                        description: _descriptionController.text);
-
-                    _dogService
-                        .addNewDog(add)
-                        .then((value) => Navigator.of(context).pushReplacement(
-                            MaterialPageRoute(
-                                builder: (_) => const BottomMenuBar())))
-                        .onError<Exception>((error, stackTrace) {
-                      showDialog(
-                        context: context,
-                        builder: (context) {
-                          //return Text(error.toString());
-                          return SimpleDialog(
-                            children: [Text(error.toString())],
-                          );
-                        },
-                      );
-                    });
-                  }
-                  /*Navigator.push(
-                  context,
-                  MaterialPageRoute(builder: (context) => const FeedsPage()),
-                );*/
-                  // },
-                  ),
-            ),
-          ),
-        ],
-      ),
+                  )),
+            )
+          ],
+        ),
+      ]),
     );
+    // );
+    //       }),
+    // ),
   }
 }

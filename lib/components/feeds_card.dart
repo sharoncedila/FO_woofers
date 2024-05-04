@@ -107,7 +107,6 @@ class _FeedsCardState extends State<FeedsCard> {
                       ),
                       // posting date
                       Text(
-                        // '10.43',
                         feedsDetail.postDate ?? '',
                         style: const TextStyle(
                           fontSize: 13,
@@ -119,7 +118,7 @@ class _FeedsCardState extends State<FeedsCard> {
                 ],
               ),
               const SizedBox(
-                height: 10,
+                height: 5,
               ),
               Container(
                   child: (feedsDetail.image != null)
@@ -127,32 +126,26 @@ class _FeedsCardState extends State<FeedsCard> {
                           urlImage: feedsDetail.image,
                           width: double.infinity,
                           height: 375)
-                      : const Text("")),
-              // ImageNetwork(
-              //     urlImage: feedsDetail.image,
-              //     width: double.infinity,
-              //     height: 375),
-              // const SizedBox(
-              //   height: 15,
-              // ),
+                      : Container()),
               Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  // Text(
-                  //   "     ${feedsDetail.likesCount ?? ''} likes",
-                  //   style: const TextStyle(color: Colors.grey, fontSize: 12),
-                  //   // "Dog Name: ${notificationDetail.dogName}",
-                  // ),
                   Row(
                     children: [
                       const SizedBox(
                         width: 13,
                       ),
-                      Text(
-                        feedsDetail.caption ?? '',
-                        style:
-                            const TextStyle(color: Colors.black, fontSize: 15),
-                      ),
+                      SizedBox(
+                        width: 375,
+                        child: Text(
+                          feedsDetail.caption ?? '',
+                          softWrap: true,
+                          maxLines: 5,
+                          overflow: TextOverflow.ellipsis,
+                          style: const TextStyle(
+                              color: Colors.black, fontSize: 17),
+                        ),
+                      )
                     ],
                   ),
                   Row(
@@ -208,8 +201,12 @@ class _FeedsCardState extends State<FeedsCard> {
                       ),
                     ],
                   ),
+                  Text(
+                    "     ${feedsDetail.likesCount ?? ''} likes",
+                    style: const TextStyle(color: Colors.grey, fontSize: 12),
+                  ),
                   const SizedBox(
-                    height: 15,
+                    height: 10,
                   ),
                   // )
                 ],

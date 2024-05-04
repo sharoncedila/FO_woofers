@@ -123,6 +123,7 @@ class OtherProfilePage extends StatelessWidget {
                                   ),
                                   SizedBox(
                                     height: 25,
+                                    width: 325,
                                     child: TextFormField(
                                       readOnly: true,
                                       enabled: false,
@@ -173,6 +174,7 @@ class OtherProfilePage extends StatelessWidget {
                                   ),
                                   SizedBox(
                                     height: 25,
+                                    width: 325,
                                     child: TextFormField(
                                       readOnly: true,
                                       enabled: false,
@@ -226,6 +228,7 @@ class OtherProfilePage extends StatelessWidget {
                                   ),
                                   SizedBox(
                                     height: 25,
+                                    width: 325,
                                     child: TextFormField(
                                       readOnly: true,
                                       enabled: false,
@@ -280,6 +283,7 @@ class OtherProfilePage extends StatelessWidget {
                                   ),
                                   SizedBox(
                                     height: 25,
+                                    width: 325,
                                     child: TextFormField(
                                       readOnly: true,
                                       enabled: false,
@@ -333,8 +337,10 @@ class OtherProfilePage extends StatelessWidget {
                                     ),
                                   ),
                                   SizedBox(
-                                    height: 25,
+                                    height: 50,
+                                    width: 325,
                                     child: TextFormField(
+                                      maxLines: 2,
                                       readOnly: true,
                                       enabled: false,
                                       decoration: InputDecoration(
