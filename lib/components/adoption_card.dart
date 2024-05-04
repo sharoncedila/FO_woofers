@@ -34,7 +34,7 @@ class DogCardDetail extends StatelessWidget {
               },
               child: SizedBox(
                 width: MediaQuery.of(context).size.width / 2.3,
-                height: 220,
+                height: 215,
                 child: Column(
                   children: [
                     ClipRRect(
@@ -42,17 +42,22 @@ class DogCardDetail extends StatelessWidget {
                         topRight: Radius.circular(20),
                         topLeft: Radius.circular(20),
                       ),
-                      child: ImageNetwork(
-                          urlImage: adoptionDetail.image,
-                          width: double.infinity,
-                          height: 150),
+                      child: (adoptionDetail.image != null)
+                          ? ImageNetwork(
+                              urlImage: adoptionDetail.image,
+                              width: double.infinity,
+                              height: 150,
+                            )
+                          : const Image(
+                              image: AssetImage(
+                                  'assets/woofers_icon/profile.jpg')),
                     ),
                     const SizedBox(height: 5),
                     Text(
                       adoptionDetail.dogName ?? "",
                       style: const TextStyle(
                           color: Color.fromRGBO(40, 36, 36, 10000),
-                          fontSize: 17,
+                          fontSize: 15,
                           fontWeight: FontWeight.bold),
                       textAlign: TextAlign.center,
                     ),
@@ -62,9 +67,8 @@ class DogCardDetail extends StatelessWidget {
                     Text(
                       adoptionDetail.breedName ?? "",
                       style: const TextStyle(
-                        color: Color.fromRGBO(40, 36, 36, 10000),
-                        fontSize: 14,
-                      ),
+                          color: Color.fromRGBO(40, 36, 36, 10000),
+                          fontSize: 12),
                       textAlign: TextAlign.center,
                     ),
                     const SizedBox(
@@ -74,38 +78,13 @@ class DogCardDetail extends StatelessWidget {
                       "${adoptionDetail.age} years old",
                       style: const TextStyle(
                         color: Color.fromRGBO(40, 36, 36, 10000),
-                        fontSize: 14,
+                        fontSize: 12,
                       ),
                       textAlign: TextAlign.center,
                     ),
-                    // Padding(
-                    //   padding: const EdgeInsets.symmetric(
-                    //       horizontal: 1, vertical: 1),
-                    // child: Row(
-                    //   mainAxisAlignment: MainAxisAlignment.center,
-                    //   children: [
-                    //     Text(
-                    //       adoptionDetail.breedName ?? "",
-                    //       style: const TextStyle(
-                    //         color: Color.fromRGBO(40, 36, 36, 10000),
-                    //         fontSize: 14,
-                    //       ),
-                    //       textAlign: TextAlign.center,
-                    //     ),
-                    //     const SizedBox(
-                    //       width: 15,
-                    //     ),
-                    //     Text(
-                    //       "${adoptionDetail.age} y.o",
-                    //       style: const TextStyle(
-                    //         color: Color.fromRGBO(40, 36, 36, 10000),
-                    //         fontSize: 14,
-                    //       ),
-                    //       textAlign: TextAlign.center,
-                    //     ),
-                    //   ],
-                    // ),
-                    // ),
+                    const SizedBox(
+                      height: 10,
+                    ),
                   ],
                 ),
               ))),

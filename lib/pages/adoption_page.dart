@@ -232,42 +232,34 @@ class _AdoptionPageState extends State<AdoptionPage> {
   }
 
   Widget adoptionList() {
-    print(filterAdoption);
-    return SingleChildScrollView(
-      child: Center(
-        child: Padding(
-          padding: const EdgeInsets.symmetric(horizontal: 5, vertical: 10),
-          child: FutureBuilder(
-            future: AdoptionService().retrieveAdoptionList(filterAdoption),
-            builder: ((context, snapshot) {
-              if (snapshot.connectionState == ConnectionState.waiting) {
-                return const Center(child: Text("Retrieving your data..."));
-              }
-              if (snapshot.hasError) {
-                return const Center(child: Text("Error"));
-              }
-              if (!snapshot.hasData) {
-                return const Text("No data");
-              }
-              final adoptionList = snapshot.data!;
-              return Wrap(
-                children: adoptionList
-                    .map((e) => DogCardDetail(adoptionDetail: e))
-                    .toList(),
-              );
-            }),
+    return Expanded(
+      child: SingleChildScrollView(
+        child: Center(
+          child: Padding(
+            padding: const EdgeInsets.symmetric(horizontal: 5, vertical: 10),
+            child: FutureBuilder(
+              future: AdoptionService().retrieveAdoptionList(filterAdoption),
+              builder: ((context, snapshot) {
+                if (snapshot.connectionState == ConnectionState.waiting) {
+                  return const Center(child: Text("Retrieving your data..."));
+                }
+                if (snapshot.hasError) {
+                  return const Center(child: Text("Error"));
+                }
+                if (!snapshot.hasData) {
+                  return const Text("No data");
+                }
+                final adoptionList = snapshot.data!;
+                return Wrap(
+                  children: adoptionList
+                      .map((e) => DogCardDetail(adoptionDetail: e))
+                      .toList(),
+                );
+              }),
+            ),
           ),
         ),
       ),
     );
-  }
-}
-
-class MyWidget extends StatelessWidget {
-  const MyWidget({super.key});
-
-  @override
-  Widget build(BuildContext context) {
-    return const Placeholder();
   }
 }

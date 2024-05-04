@@ -17,7 +17,6 @@ class AddFeedsPage extends StatefulWidget {
   _AddFeedsPageState createState() => _AddFeedsPageState();
 }
 
-
 class _AddFeedsPageState extends State<AddFeedsPage> {
   String? uploadedImage;
   final _captionController = TextEditingController();
@@ -25,34 +24,13 @@ class _AddFeedsPageState extends State<AddFeedsPage> {
 
   Future<void> uploadFeeds(File image) async {
     try {
-      // const api = '/upload/feeds';
-      // final dio = await DioInstance.getInstance();
       UploadImageResponse? pickedFile = await ImageService().uploadFeeds(image);
-          // await ImagePicker().pickImage(source: ImageSource.gallery);
-
-      // if (pickedFile != null) {
-      //   UploadImageResponse image = UploadImageResponse(pickedFile);
-      //   String fileName = image.path.split('/').last;
-      //   FormData formData = FormData.fromMap({
-      //     'file': await MultipartFile.fromFile(image.path, filename: fileName),
-      //   });
-      //   var response = await dio.post(api, data: formData);
-      //   final errorSchema = ErrorSchema.fromJson(response.data['errorSchema']);
-      //   if (errorSchema.errorCode != 'WOF-000') {
-      //     return UploadImageResponse.fromJson(
-      //         response.data['errorSchema']);
-      //   } else {
-      //     // String filename = response.data['outputSchema']['fileName'];
-      //     // print (filename);
-      //     return UploadImageResponse.fromJson(
-      //         response.data['outputSchema']);
-      //   }
-        if (pickedFile != null) {
-          setState(() {
+      if (pickedFile != null) {
+        setState(() {
           uploadedImage = pickedFile.fileName;
           print(uploadedImage);
         });
-        }
+      }
     } catch (error) {
       print(error);
     }
@@ -89,16 +67,16 @@ class _AddFeedsPageState extends State<AddFeedsPage> {
         ),
         const Image(image: AssetImage('assets/dog_picture/dog1.jpg')),
         IconButton(
-          onPressed: () async {
-            final pickedFile = await ImagePicker().pickImage(source: ImageSource.gallery);
-            if (pickedFile != null) {
-              File image = File(pickedFile.path);
-              uploadFeeds(image);
-            }
-            // ImageService().uploadFeeds();
-          },
-          icon: const Icon(Icons.camera)
-        ),
+            onPressed: () async {
+              final pickedFile =
+                  await ImagePicker().pickImage(source: ImageSource.gallery);
+              if (pickedFile != null) {
+                File image = File(pickedFile.path);
+                uploadFeeds(image);
+              }
+              // ImageService().uploadFeeds();
+            },
+            icon: const Icon(Icons.camera)),
         const SizedBox(
           height: 15,
         ),

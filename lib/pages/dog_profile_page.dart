@@ -1,12 +1,16 @@
+import 'dart:io';
+
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:hexcolor/hexcolor.dart';
+import 'package:image_picker/image_picker.dart';
 import 'package:woofers/components/image_network.dart';
 import 'package:woofers/model/dog_profile_model.dart';
 import 'package:woofers/pages/add_dog_page.dart';
 import 'package:woofers/pages/edit_dog_page.dart';
 import 'package:woofers/pages/notification_page.dart';
 import 'package:woofers/services/dog/dog_services.dart';
+import 'package:woofers/services/image_service.dart';
 
 class DogProfilePage extends StatelessWidget {
   final String dogId;
@@ -85,10 +89,31 @@ class DogProfilePage extends StatelessWidget {
                   const SizedBox(
                     height: 15,
                   ),
-                  ImageNetwork(urlImage: imageURL, width: 150, height: 150),
+                  // ImageNetwork(urlImage: imageURL, width: 150, height: 150),
+                  (imageURL != null)
+                      ? ImageNetwork(
+                          urlImage: imageURL,
+                          width: 135,
+                          height: 135,
+                        )
+                      : const Image(
+                          image: AssetImage('assets/woofers_icon/profile.jpg')),
                   const SizedBox(
                     height: 15,
                   ),
+
+                  IconButton(
+                      onPressed: () async {
+                        final pickedFile = await ImagePicker()
+                            .pickImage(source: ImageSource.gallery);
+                        if (pickedFile != null) {
+                          File image = File(pickedFile.path);
+                          ImageService().uploadDogImage(dogId, image);
+                        }
+                        // ImageService().uploadFeeds();
+                      },
+                      icon: const Icon(Icons.camera)),
+
                   // dog name
                   Row(
                     children: [
@@ -474,11 +499,9 @@ class DogProfilePage extends StatelessWidget {
                                 }
                                 return null; // Use the component's default.
                               },
-                              
                             ),
                           ),
                           child: const Text('Edit'),
-                          
                           onPressed: () {
                             Navigator.push(
                               context,

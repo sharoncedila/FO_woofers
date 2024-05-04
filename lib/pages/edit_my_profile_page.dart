@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:hexcolor/hexcolor.dart';
-import 'package:woofers/components/bottom_menu.dart';
 import 'package:woofers/components/image_network.dart';
 import 'package:woofers/components/profile_page_template.dart';
 import 'package:woofers/model/account_model.dart';
@@ -18,7 +17,7 @@ class EditMyProfile extends StatefulWidget {
 }
 
 class _EditMyProfilePageState extends State<EditMyProfile> {
-  final _formKey = GlobalKey<FormState>();
+  late Future<List<String?>> _provinceFuture;
   String? username;
   String? email;
   final _fullnameController = TextEditingController();
@@ -34,6 +33,24 @@ class _EditMyProfilePageState extends State<EditMyProfile> {
       RetrieveAccountService().retrieveUserData();
 
   @override
+  void initState() {
+    super.initState();
+    _provinceFuture = _fetchProvinceData();
+  }
+
+  Future<List<String?>> _fetchProvinceData() async {
+    try {
+      final provinceResponse =
+          await RetrieveProvinceService().retrieveAllProvince();
+      return provinceResponse.provinceList
+          .map((province) => province.provinceName)
+          .toList();
+    } catch (error) {
+      throw Exception('Failed to retrieve province data: $error');
+    }
+  }
+
+@override
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Colors.white,
@@ -69,11 +86,11 @@ class _EditMyProfilePageState extends State<EditMyProfile> {
               }
               if (!snapshot.hasData) {
                 return const Center(
-                    child: Text("no data available for this user"));
+                  child: Text("No data available for this user"),
+                );
               }
 
-              ResponseUserProfileModel myProfile =
-                  snapshot.data as ResponseUserProfileModel;
+              final myProfile = snapshot.data as ResponseUserProfileModel;
 
               // Assigning values to the text controllers
               username = myProfile.username ?? '';
@@ -83,17 +100,12 @@ class _EditMyProfilePageState extends State<EditMyProfile> {
               _phoneNumberController.text = myProfile.phoneNumber ?? '';
               _descriptionController.text = myProfile.description ?? '';
 
-              final imageURL =
-                  snapshot.data?.image == null ? "" : snapshot.data!.image;
+              final imageURL = myProfile.image ?? '';
               return Column(
                 children: [
-                  const SizedBox(
-                    height: 15,
-                  ),
+                  const SizedBox(height: 15),
                   ImageNetwork(urlImage: imageURL, width: 150, height: 150),
-                  const SizedBox(
-                    height: 15,
-                  ),
+                  const SizedBox(height: 15),
                   // username
                   Row(
                     children: [
@@ -119,20 +131,19 @@ class _EditMyProfilePageState extends State<EditMyProfile> {
                               ),
                             ),
                             SizedBox(
-                                height: 25,
-                                child: TextFormField(
-                                  readOnly: true,
-                                  decoration: InputDecoration(
-                                      border: const UnderlineInputBorder(),
-                                      labelText: username,
-                                      labelStyle: GoogleFonts.newsCycle(
-                                        color: Colors.black,
-                                      )),
-                                )),
+                              height: 25,
+                              child: Text(username!,
+                                  style: GoogleFonts.newsCycle(
+                                    color: Colors.black,
+                                    fontSize: 16,
+                                  )),
+                            ),
                           ]))
                     ],
                   ),
-
+                  const SizedBox(
+                    height: 20,
+                  ),
                   // full name
                   Row(
                     children: [
@@ -162,11 +173,9 @@ class _EditMyProfilePageState extends State<EditMyProfile> {
                                 height: 25,
                                 child: TextFormField(
                                   controller: _fullnameController,
-                                  decoration: InputDecoration(
-                                      border: const UnderlineInputBorder(),
-                                      labelStyle: GoogleFonts.newsCycle(
-                                        color: Colors.black,
-                                      )),
+                                  style: GoogleFonts.newsCycle(
+                                    color: Colors.black,
+                                  ),
                                   onFieldSubmitted: (String? newValue) {
                                     _fullnameController.text = newValue!;
                                   },
@@ -174,7 +183,9 @@ class _EditMyProfilePageState extends State<EditMyProfile> {
                           ]))
                     ],
                   ),
-
+                  const SizedBox(
+                    height: 20,
+                  ),
                   //email
                   Row(
                     children: [
@@ -215,18 +226,12 @@ class _EditMyProfilePageState extends State<EditMyProfile> {
                   ),
 
                   // province
-                  const SizedBox(height: 15),
+                  const SizedBox(height: 20),
                   Row(
                     children: [
                       const SizedBox(
                         width: 20,
                       ),
-                      // const Image(
-                      //   image:
-                      //       AssetImage('assets/woofers_icon/province.png'),
-                      //   width: 35,
-                      //   height: 35,
-                      // ),
                       const Icon(
                         Icons.location_city_outlined,
                         size: 35,
@@ -235,10 +240,10 @@ class _EditMyProfilePageState extends State<EditMyProfile> {
                         width: 20,
                       ),
                       Expanded(
-                          child: Column(
-                              mainAxisAlignment: MainAxisAlignment.start,
-                              crossAxisAlignment: CrossAxisAlignment.start,
-                              children: [
+                        child: Column(
+                          mainAxisAlignment: MainAxisAlignment.start,
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
                             Text(
                               "province name",
                               style: TextStyle(
@@ -246,18 +251,14 @@ class _EditMyProfilePageState extends State<EditMyProfile> {
                               ),
                             ),
                             SizedBox(
-                              height: 50,
+                              height: 30,
                               child: SingleChildScrollView(
-                                //child: Padding(
-                                //padding: const EdgeInsets.symmetric(),
                                 child: FutureBuilder(
-                                  future: RetrieveProvinceService()
-                                      .retrieveAllProvince(),
-                                  //initialData: breedController.text,
+                                  future: _provinceFuture,
                                   builder: (context, snapshot) {
                                     if (snapshot.connectionState ==
                                         ConnectionState.waiting) {
-                                      return const Text("Breed");
+                                      return const Text("");
                                     }
                                     if (snapshot.hasError) {
                                       return Text("Error: ${snapshot.error}");
@@ -265,11 +266,8 @@ class _EditMyProfilePageState extends State<EditMyProfile> {
                                     if (!snapshot.hasData) {
                                       return const Text("No data");
                                     }
-                                    final provinceResponse = snapshot.data!;
-                                    final provinceNames = provinceResponse
-                                        .provinceList
-                                        .map((e) => e.provinceName)
-                                        .toList();
+                                    final provinceNames =
+                                        snapshot.data as List<String?>;
                                     return DropdownButtonFormField<String>(
                                       value: _selectedProvince,
                                       decoration: InputDecoration(
@@ -278,25 +276,25 @@ class _EditMyProfilePageState extends State<EditMyProfile> {
                                         hintText: _provinceController.text,
                                       ),
                                       onChanged: (String? newValue) {
-                                        if (newValue != null) {
-                                          setState(() {
-                                            _selectedProvince = newValue;
-                                          });
-                                        }
+                                        setState(() {
+                                          _selectedProvince =
+                                              newValue; // Update selected province directly
+                                        });
                                       },
                                       items: provinceNames.map((province) {
                                         return DropdownMenuItem<String>(
-                                            value: province,
-                                            child: Text(
-                                              province,
-                                              style: TextStyle(
-                                                fontSize: 18,
-                                                color: Colors.black,
-                                                fontFamily:
-                                                    GoogleFonts.newsCycle()
-                                                        .fontFamily,
-                                              ),
-                                            ));
+                                          value: province,
+                                          child: Text(
+                                            province!,
+                                            style: TextStyle(
+                                              fontSize: 16,
+                                              color: Colors.black,
+                                              fontFamily:
+                                                  GoogleFonts.newsCycle()
+                                                      .fontFamily,
+                                            ),
+                                          ),
+                                        );
                                       }).toList(),
                                       validator: (value) {
                                         if (value == null || value.isEmpty) {
@@ -309,7 +307,9 @@ class _EditMyProfilePageState extends State<EditMyProfile> {
                                 ),
                               ),
                             ),
-                          ]))
+                          ],
+                        ),
+                      ),
                     ],
                   ),
 
@@ -320,12 +320,6 @@ class _EditMyProfilePageState extends State<EditMyProfile> {
                       const SizedBox(
                         width: 20,
                       ),
-                      // const Image(
-                      //   image:
-                      //       AssetImage('assets/woofers_icon/phone.png'),
-                      //   width: 35,
-                      //   height: 35,
-                      // ),
                       const Icon(
                         Icons.phone_android_sharp,
                         size: 35,
@@ -344,21 +338,36 @@ class _EditMyProfilePageState extends State<EditMyProfile> {
                                 color: Colors.black.withOpacity(0.5),
                               ),
                             ),
+                            const SizedBox(height: 5),
                             SizedBox(
                               height: 25,
                               child: TextFormField(
-                                  controller: _phoneNumberController,
-                                  keyboardType: TextInputType.number,
-                                  decoration: InputDecoration(
-                                    border: const UnderlineInputBorder(),
-                                    // labelText: 'Username',
-                                    labelStyle: GoogleFonts.newsCycle(
-                                      color: Colors.black,
-                                    ),
-                                  ),
-                                  onFieldSubmitted: (String? newValue) {
-                                    _phoneNumberController.text = newValue!;
-                                  }),
+                                controller: _phoneNumberController,
+                                keyboardType: TextInputType.number,
+                                style: GoogleFonts.newsCycle(
+                                  color: Colors.black,
+                                ),
+                                onFieldSubmitted: (String? newValue) {
+                                  _phoneNumberController.text = newValue!;
+                                },
+                                validator: (value) {
+                                  if (value == null || value.isEmpty) {
+                                    return 'Please fill phone number field';
+                                  }
+                                  const pattern =
+                                      r'^[+]*[(]{0,1}[0-9]{1,4}[)]{0,1}[-\s\./0-9]*$';
+                                  final regExp = RegExp(pattern);
+                                  if (!regExp.hasMatch(value)) {
+                                    return 'Please enter number only in this field';
+                                  }
+                                  if (value.length < 8) {
+                                    return 'Phone number should have at least 8 digits';
+                                  } else if (value.length > 13) {
+                                    return 'Phone number has maximum of 13 digits';
+                                  }
+                                  return null;
+                                },
+                              ),
                             ),
                           ]))
                     ],
@@ -371,12 +380,6 @@ class _EditMyProfilePageState extends State<EditMyProfile> {
                       const SizedBox(
                         width: 20,
                       ),
-                      // const Image(
-                      //   image: AssetImage(
-                      //       'assets/woofers_icon/description.png'),
-                      //   width: 35,
-                      //   height: 35,
-                      // ),
                       const Icon(
                         Icons.abc_outlined,
                         size: 35,
@@ -396,16 +399,12 @@ class _EditMyProfilePageState extends State<EditMyProfile> {
                               ),
                             ),
                             SizedBox(
-                              height: 70,
+                              height: 50,
                               child: TextFormField(
                                   maxLines: null,
                                   controller: _descriptionController,
-                                  decoration: InputDecoration(
-                                    border: const UnderlineInputBorder(),
-                                    // labelText: 'Username',
-                                    labelStyle: GoogleFonts.newsCycle(
-                                      color: Colors.black,
-                                    ),
+                                  style: GoogleFonts.newsCycle(
+                                    color: Colors.black,
                                   ),
                                   onFieldSubmitted: (String? newValue) {
                                     _descriptionController.text = newValue!;
@@ -476,7 +475,6 @@ class _EditMyProfilePageState extends State<EditMyProfile> {
                   )
                 ],
               );
-              // );
             }),
       ),
     );

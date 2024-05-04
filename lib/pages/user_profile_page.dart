@@ -1,4 +1,7 @@
+import 'dart:io';
+
 import 'package:flutter/material.dart';
+import 'package:image_picker/image_picker.dart';
 import 'package:woofers/components/image_network.dart';
 import 'package:woofers/model/user_profile_model.dart';
 import 'package:woofers/pages/edit_my_profile_page.dart';
@@ -8,6 +11,7 @@ import 'package:woofers/services/account/account_service.dart';
 import 'package:woofers/services/account/user_profile_services.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:woofers/services/account/login_service.dart';
+import 'package:woofers/services/image_service.dart';
 
 void main() => runApp(const UserProfilePage());
 
@@ -63,7 +67,7 @@ class _UserProfilePageState extends State<UserProfilePage> {
                               if (imageURL == null) {
                                 return const Image(
                                   image: AssetImage(
-                                      'assets/woofers_icon/profileImageTemplate.png'),
+                                      'assets/woofers_icon/profile.jpg'),
                                   width: 150,
                                   height: 150,
                                 );
@@ -73,6 +77,18 @@ class _UserProfilePageState extends State<UserProfilePage> {
                                   urlImage: imageURL, width: 150, height: 150);
                             }),
 
+                        IconButton(
+                            onPressed: () async {
+                              final pickedFile = await ImagePicker()
+                                  .pickImage(source: ImageSource.gallery);
+                              if (pickedFile != null) {
+                                File image = File(pickedFile.path);
+                                ImageService().uploadProfilePicture(image);
+                              }
+                              // ImageService().uploadFeeds();
+                            },
+                            icon: const Icon(Icons.camera)),
+
                         // username
                         const SizedBox(height: 20),
                         Row(
@@ -80,12 +96,6 @@ class _UserProfilePageState extends State<UserProfilePage> {
                             const SizedBox(
                               width: 15,
                             ),
-                            // const Image(
-                            //   image:
-                            //       AssetImage('assets/woofers_icon/profile.jpg'),
-                            //   width: 35,
-                            //   height: 35,
-                            // ),
                             const Icon(
                               Icons.person_2_outlined,
                               size: 35,
@@ -444,7 +454,7 @@ class _UserProfilePageState extends State<UserProfilePage> {
                                 .primary
                                 .withOpacity(0.5);
                           }
-                          return null; // Use the component's default.
+                          return null;
                         },
                       ),
                     ),

@@ -6,15 +6,28 @@ import 'package:woofers/components/bubble_chat.dart';
 import 'package:woofers/model/chatroom_model.dart';
 import 'package:woofers/services/chat/chat_service.dart';
 
-class ChatroomPageDetail extends StatelessWidget {
+class ChatroomPageDetail extends StatefulWidget {
   final String recipientId;
   String? chatroomId;
-  final ScrollController _scrollController = ScrollController();
+
   ChatroomPageDetail({super.key, required this.recipientId, this.chatroomId});
 
   @override
+  _ChatroomPageState createState() => _ChatroomPageState();
+}
+
+class _ChatroomPageState extends State<ChatroomPageDetail> {
+  final ScrollController _scrollController = ScrollController();
+  String? recipientId;
+
+  @override
+  void initState() {
+    super.initState();
+    recipientId = widget.recipientId;
+  }
+
+  @override
   Widget build(BuildContext context) {
-    print("Data adoption: $recipientId");
     TextEditingController messageController = TextEditingController();
 
     return Scaffold(
@@ -99,7 +112,6 @@ class ChatroomPageDetail extends StatelessWidget {
                       return const Text("No data");
                     }
                     WidgetsBinding.instance.addPostFrameCallback((_) {
-                      // Scroll to bottom after the frame is rendered
                       controller.animateTo(
                         controller.position.maxScrollExtent,
                         duration: const Duration(milliseconds: 300),
@@ -108,14 +120,6 @@ class ChatroomPageDetail extends StatelessWidget {
                     });
                     final chatList = snapshot.data!;
                     print("Chatroom data: $chatList");
-                    // return MaterialApp(
-                    //   home: Scaffold(
-                    //     appBar: AppBar(
-                    //       title: const Text('Username'), //snapshot.data?.message.username,
-                    //       centerTitle: true,
-                    //     ),
-                    //     backgroundColor: Colors.grey[300],
-                    //     body: Wrap(
                     return Wrap(
                       children: chatList
                           .map((e) => BubbleChatCardDetail(
