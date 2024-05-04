@@ -36,79 +36,67 @@ class ChatCardDetail extends StatelessWidget {
               print('chatroom Id : $chatroomChatId');
               print('recipient id : $recipientId');
               //String read = chatlistDetail.isRead!;
-              final OpenChatRequest req =
-                  OpenChatRequest(chatroomId : chatroomChatId, recipientId: recipientId);
+              final OpenChatRequest req = OpenChatRequest(
+                  chatroomId: chatroomChatId, recipientId: recipientId);
               _openChatService.openChatroom(req).then((value) =>
                   Navigator.of(context).push(MaterialPageRoute(
                       builder: (_) => ChatroomPageDetail(
-                          recipientId: recipientId, chatroomId: chatroomChatId))));
+                          recipientId: recipientId,
+                          chatroomId: chatroomChatId))));
             },
             child: SizedBox(
               height: 80,
-              child: Column(
-                children: [
-                  const SizedBox(height: 10, width: 20),
-                  Row(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                      children: [
-                        Padding(
-                          padding: const EdgeInsets.only(
-                              left: 25.0, top: 3, bottom: 3),
-                          child: Text(
+              child: Padding(
+                padding:
+                    const EdgeInsets.symmetric(vertical: 10, horizontal: 20),
+                child: Row(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    Expanded(
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          Text(
                             chatlistDetail.recipientUsername!,
                             style: GoogleFonts.lora(
                               color: const Color.fromRGBO(40, 36, 36, 10000),
                               fontSize: 17,
-                              fontWeight: FontWeight.bold,
+                              fontStyle: FontStyle.italic,
+                              //fontWeight: FontWeight.bold,
                             ),
-                            textAlign: TextAlign.left,
                           ),
-                        ),
-                      ]),
-                  // last message
-                  Padding(
-                    padding:
-                        const EdgeInsets.only(left: 20.0, top: 2, bottom: 2),
-                    child: Row(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                          SizedBox(height: 5),
+                          Text(
+                            chatlistDetail.lastMessage ?? "",
+                            style: GoogleFonts.lora(
+                              fontSize: 13,
+                              color: chatlistDetail.isRead! == "false"
+                                  ? Colors.black
+                                  : const Color.fromRGBO(40, 36, 36, 10000),
+                              fontWeight: chatlistDetail.isRead! == "false"
+                                  ? FontWeight.bold
+                                  : FontWeight.normal,
+                            ),
+                            overflow: TextOverflow.ellipsis,
+                          ),
+                        ],
+                      ),
+                    ),
+                    Column(
+                      crossAxisAlignment: CrossAxisAlignment.end,
                       children: [
-                        const SizedBox(width: 30),
-                        Expanded(
-                          child: (chatlistDetail.isRead! == "false")
-                              ? Text(
-                                  chatlistDetail.lastMessage ?? "",
-                                  style: GoogleFonts.lora(
-                                      fontSize: 13,
-                                      color: Colors.black,
-                                      fontWeight: FontWeight.bold),
-                                  overflow: TextOverflow.ellipsis,
-                                  //maxLines: 2,
-                                )
-                              : Text(
-                                  chatlistDetail.lastMessage ?? "",
-                                  style: GoogleFonts.lora(
-                                    fontSize: 13,
-                                    color: Colors.black,
-                                  ),
-                                  overflow: TextOverflow.ellipsis,
-                                ),
-                        ),
-                        const SizedBox(width: 10),
                         Text(
-                          //timestamp masih aneh datanya
                           chatlistDetail.lastMessageTimestamp!,
                           style: GoogleFonts.lora(
                             fontSize: 12,
                             color: const Color.fromRGBO(40, 36, 36, 10000),
                           ),
                         ),
-                        const SizedBox(width: 20),
                       ],
                     ),
-                  ),
-                ],
+                  ],
+                ),
               ),
             ),
           ),

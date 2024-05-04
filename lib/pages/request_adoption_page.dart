@@ -115,23 +115,25 @@ class _RequestAdoptionPageState extends State<RequestAdoptionPage> {
 
               return Column(
                 children: [
-                  TextFormField(
-                      readOnly: true,
-                      enabled: false,
-                      decoration: InputDecoration(
-                          // border: const UnderlineInputBorder(),
-                          labelText: 'Dog Information',
-                          labelStyle: GoogleFonts.newsCycle(
-                              color: Colors.black,
-                              fontSize: 20,
-                              fontWeight: FontWeight.bold))),
+                  const SizedBox(
+                    height: 30,
+                  ),
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.start,
+                    children: [
+                      const SizedBox(
+                      width: 30,
+                    ),
+                      Text('Dog Information',
+                        style: GoogleFonts.lora(fontSize: 20)),]
+                  ),
 
                   const SizedBox(
-                    height: 15,
+                    height: 30,
                   ),
                   ImageNetwork(urlImage: imageURL, width: 150, height: 150),
                   const SizedBox(
-                    height: 15,
+                    height: 30,
                   ),
                   // dog name
                   Row(
@@ -496,26 +498,20 @@ class _RequestAdoptionPageState extends State<RequestAdoptionPage> {
                     height:
                         100.0, // Optional, specify the height of the divider
                   ),
-                  TextFormField(
-                      readOnly: true,
-                      enabled: false,
-                      decoration: InputDecoration(
-                          // border: const UnderlineInputBorder(),
-                          labelText: 'Owner Information',
-                          labelStyle: GoogleFonts.newsCycle(
-                              color: Colors.black,
-                              fontSize: 20,
-                              fontWeight: FontWeight.bold))),
+                  Row(mainAxisAlignment: MainAxisAlignment.start, children: [
+                    const SizedBox(
+                      width: 30,
+                    ),
+                    Text('Owner Information',
+                        style: GoogleFonts.lora(fontSize: 20)),
+                  ]),
                   const SizedBox(
-                    height: 15,
+                    height: 30,
                   ),
                   ImageNetwork(urlImage: imageURL2, width: 150, height: 150),
-                  const SizedBox(
-                    height: 15,
-                  ),
 
                   const SizedBox(
-                    height: 20,
+                    height: 30,
                   ),
                   Row(
                     children: [

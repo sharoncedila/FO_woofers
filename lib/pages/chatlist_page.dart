@@ -56,112 +56,113 @@ class _ChatListPageState extends State<ChatListPage> {
   Widget ChatList() {
     return SingleChildScrollView(
       //child: Padding(
-       // padding: const EdgeInsets.only(left: 25, right: 25),
-        child: Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
-          const SizedBox(
-            height: 15,
-          ),
-          const SizedBox(
-            height: 15,
-          ),
-          // search box
-          Padding(
-            padding: const EdgeInsets.only(left: 30, right: 30),
-            child: Container(
-              width: double.infinity,
-              height: 48,
-              decoration: BoxDecoration(
-                  color: Colors.white,
-                  borderRadius: BorderRadius.circular(15),
-                  boxShadow: [
-                    BoxShadow(
-                        color: Colors.grey.withOpacity(0.2),
-                        spreadRadius: 2,
-                        blurRadius: 15,
-                        offset: const Offset(0, 1))
-                  ]),
-              child: Row(
-                children: [
-                  const SizedBox(
-                    width: 5,
-                  ),
-                  /*IconButton(
+      // padding: const EdgeInsets.only(left: 25, right: 25),
+      child: Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
+        const SizedBox(
+          height: 15,
+        ),
+        const SizedBox(
+          height: 15,
+        ),
+        // search box
+        Padding(
+          padding: const EdgeInsets.only(left: 30, right: 30),
+          child: Container(
+            width: double.infinity,
+            height: 48,
+            decoration: BoxDecoration(
+                color: Colors.white,
+                borderRadius: BorderRadius.circular(15),
+                boxShadow: [
+                  BoxShadow(
+                      color: Colors.grey.withOpacity(0.2),
+                      spreadRadius: 2,
+                      blurRadius: 15,
+                      offset: const Offset(0, 1))
+                ]),
+            child: Row(
+              children: [
+                const SizedBox(
+                  width: 5,
+                ),
+                /*IconButton(
                       onPressed: () {},
                       icon: const Icon(
                         Icons.search,
                         color: Colors.black,
                       )),*/
-                  const SizedBox(
-                    width: 15,
-                  ),
-                  Flexible(
-                    child: TextFormField(
-                      controller: _searchController,
-                      cursorColor: Colors.black,
-                      decoration: const InputDecoration(
-                          border: InputBorder.none,
-                          hintText: "Search for others"),
-                          
-                      // onChanged: (value) {
-                      //   _searchChat(
-                      //       value); // Call searchChat function on text change
-                      // },
-                    ),
-                  ),
-                  ElevatedButton(
-                      style: ButtonStyle(
-                        backgroundColor: MaterialStateProperty.resolveWith(
-                          (Set<MaterialState> states) {
-                            if (states.contains(MaterialState.pressed)) {
-                              return Theme.of(context)
-                                  .colorScheme
-                                  .primary
-                                  .withOpacity(0.5);
-                            }
-                            return null; // Use the component's default.
-                          },
-                        ),
-                      ),
-                      child: const Icon(Icons.search, color: Colors.black),
-                      onPressed: () async {
-                        String wordSearch = _searchController.text;
-                        //print("word search list page: ${wordSearch}");
-                        Navigator.push(
-                          context,
-                          MaterialPageRoute(
-                              builder: (context) => SearchUserListPage(userName: wordSearch)),
-                        );
-                      }),
-                  //futur builder here
-                ],
-              ),
-            ),
-          ),
-          Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 5, vertical: 10),
-            child: FutureBuilder(
-              future: ChatroomService().retrieveChatroomList(),
-              builder: ((context, snapshot) {
-                if (snapshot.connectionState == ConnectionState.waiting) {
-                  return const Center(child: Text("Retrieving your data..."));
-                }
-                if (snapshot.hasError) {
-                  return const Center(child: Text("Error chatlist"));
-                }
-                if (!snapshot.hasData) {
-                  return const Text("No data");
-                }
-                final chatroomResponse = snapshot.data!;
+                const SizedBox(
+                  width: 15,
+                ),
+                Flexible(
+                  child: TextFormField(
+                    controller: _searchController,
+                    cursorColor: Colors.black,
+                    decoration: const InputDecoration(
+                        border: InputBorder.none,
+                        hintText: "Search for others"),
 
-                return Wrap(
-                  children: chatroomResponse
-                      .map((e) => ChatCardDetail(chatlistDetail: e))
-                      .toList(),
-                );
-              }),
+                    // onChanged: (value) {
+                    //   _searchChat(
+                    //       value); // Call searchChat function on text change
+                    // },
+                  ),
+                ),
+                ElevatedButton(
+                    style: ButtonStyle(
+                      backgroundColor: MaterialStateProperty.resolveWith(
+                        (Set<MaterialState> states) {
+                          if (states.contains(MaterialState.pressed)) {
+                            return Theme.of(context)
+                                .colorScheme
+                                .primary
+                                .withOpacity(0.5);
+                          }
+                          return null; // Use the component's default.
+                        },
+                      ),
+                    ),
+                    child: const Icon(Icons.search, color: Colors.black),
+                    onPressed: () async {
+                      String wordSearch = _searchController.text;
+                      //print("word search list page: ${wordSearch}");
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                            builder: (context) =>
+                                SearchUserListPage(userName: wordSearch)),
+                      );
+                    }),
+                //futur builder here
+              ],
             ),
           ),
-        ]),
+        ),
+        Padding(
+          padding: const EdgeInsets.symmetric(horizontal: 5, vertical: 10),
+          child: FutureBuilder(
+            future: ChatroomService().retrieveChatroomList(),
+            builder: ((context, snapshot) {
+              if (snapshot.connectionState == ConnectionState.waiting) {
+                return const Center(child: Text("Retrieving your data..."));
+              }
+              if (snapshot.hasError) {
+                return const Center(child: Text("Error chatlist"));
+              }
+              if (!snapshot.hasData) {
+                return const Text("No data");
+              }
+              final chatroomResponse = snapshot.data!;
+
+              return Wrap(
+                children: chatroomResponse
+                    .map((e) => ChatCardDetail(chatlistDetail: e))
+                    .toList(),
+              );
+            }),
+          ),
+        ),
+      ]),
       //),
     );
   }
