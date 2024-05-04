@@ -210,7 +210,6 @@ class _RequestAdoptionPageState extends State<RequestAdoptionPage> {
                                 enabled: false,
                                 decoration: InputDecoration(
                                   border: const UnderlineInputBorder(),
-                                  // labelText: 'Username',
                                   labelText:
                                       snapshot.data?.dogData!.breedName == null
                                           ? ""
@@ -258,7 +257,6 @@ class _RequestAdoptionPageState extends State<RequestAdoptionPage> {
                                 enabled: false,
                                 decoration: InputDecoration(
                                   border: const UnderlineInputBorder(),
-                                  // labelText: 'Username',
                                   labelText:
                                       snapshot.data?.dogData!.dateOfBirth ==
                                               null
@@ -281,12 +279,6 @@ class _RequestAdoptionPageState extends State<RequestAdoptionPage> {
                       const SizedBox(
                         width: 20,
                       ),
-                      // const Image(
-                      //   image: AssetImage(
-                      //       'assets/woofers_icon/province.png'),
-                      //   width: 35,
-                      //   height: 35,
-                      // ),
                       const Icon(
                         Icons.transgender_outlined,
                         size: 35,
