@@ -7,22 +7,10 @@ import 'package:woofers/model/chatroom_model.dart';
 import 'package:woofers/services/chat/chat_service.dart';
 
 class ChatroomPageDetail extends StatelessWidget {
-<<<<<<< HEAD
   final String recipientId;
-  final ScrollController _scrollController = ScrollController();
-  ChatroomPageDetail({
-    super.key,
-    required this.recipientId,
-=======
-  final String accountId;
   String? chatroomId;
   final ScrollController _scrollController = ScrollController();
-  ChatroomPageDetail({
-    super.key,
-    required this.accountId,
-    this.chatroomId,
->>>>>>> UAT
-  });
+  ChatroomPageDetail({super.key, required this.recipientId, this.chatroomId});
 
   @override
   Widget build(BuildContext context) {
@@ -140,32 +128,13 @@ class ChatroomPageDetail extends StatelessWidget {
         Expanded(
           child: SingleChildScrollView(
             controller: controller,
-<<<<<<< HEAD
-          child: Center(
-            child: Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 5, vertical: 10),
-              child: FutureBuilder(
-                future: ChatroomService()
-                    .openChatroom(OpenChatRequest(recipientId: recipientId)),
-                builder: ((context, snapshot) {
-                  if (snapshot.connectionState == ConnectionState.waiting) {
-                    return const Center(child: Text("Retrieving your data..."));
-                  }
-                  if (snapshot.hasError) {
-                    return const Center(child: Text("Error"));
-                  }
-                  if (!snapshot.hasData) {
-                    return const Text("No data");
-                  }
-                  WidgetsBinding.instance.addPostFrameCallback((_) {
-=======
             child: Center(
               child: Padding(
                 padding:
                     const EdgeInsets.symmetric(horizontal: 5, vertical: 10),
                 child: FutureBuilder(
                   future: ChatroomService()
-                      .openChatroom(OpenChatRequest(recipientId: accountId)),
+                      .openChatroom(OpenChatRequest(recipientId: recipientId)),
                   builder: ((context, snapshot) {
                     if (snapshot.connectionState == ConnectionState.waiting) {
                       return const Center(
@@ -178,7 +147,6 @@ class ChatroomPageDetail extends StatelessWidget {
                       return const Text("No data");
                     }
                     WidgetsBinding.instance.addPostFrameCallback((_) {
->>>>>>> UAT
                       // Scroll to bottom after the frame is rendered
                       controller.animateTo(
                         controller.position.maxScrollExtent,
@@ -186,27 +154,6 @@ class ChatroomPageDetail extends StatelessWidget {
                         curve: Curves.easeOut,
                       );
                     });
-<<<<<<< HEAD
-                  final chatList = snapshot.data!;
-                  print("Chatroom data: $chatList");
-                  // return MaterialApp(
-                  //   home: Scaffold(
-                  //     appBar: AppBar(
-                  //       title: const Text('Username'), //snapshot.data?.message.username,
-                  //       centerTitle: true,
-                  //     ),
-                  //     backgroundColor: Colors.grey[300],
-                  //     body: Wrap(
-                  return Wrap(
-                    children: chatList
-                        .map((e) => BubbleChatCardDetail(
-                            recipientId: recipientId, bubbleChatlistDetail: e))
-                        .toList(),
-                    //    ),
-                    //  ),
-                  );
-                }),
-=======
                     final chatList = snapshot.data!;
                     print("Chatroom data: $chatList");
                     // return MaterialApp(
@@ -220,14 +167,14 @@ class ChatroomPageDetail extends StatelessWidget {
                     return Wrap(
                       children: chatList
                           .map((e) => BubbleChatCardDetail(
-                              accountId: accountId, bubbleChatlistDetail: e))
+                              recipientId: recipientId,
+                              bubbleChatlistDetail: e))
                           .toList(),
                       //    ),
                       //  ),
                     );
                   }),
                 ),
->>>>>>> UAT
               ),
             ),
           ),

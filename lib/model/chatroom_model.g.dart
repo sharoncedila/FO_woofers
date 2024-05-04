@@ -9,12 +9,14 @@ part of 'chatroom_model.dart';
 _$OpenChatRequestImpl _$$OpenChatRequestImplFromJson(
         Map<String, dynamic> json) =>
     _$OpenChatRequestImpl(
+      chatroomId: json['chatroomId'] as String?,
       recipientId: json['recipientId'] as String?,
     );
 
 Map<String, dynamic> _$$OpenChatRequestImplToJson(
         _$OpenChatRequestImpl instance) =>
     <String, dynamic>{
+      'chatroomId': instance.chatroomId,
       'recipientId': instance.recipientId,
     };
 

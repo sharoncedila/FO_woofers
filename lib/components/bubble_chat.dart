@@ -13,15 +13,9 @@ class BubbleChatCardDetail extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     //other
-<<<<<<< HEAD
     // String currentId = recipientId;
     print("Data adoption: ${bubbleChatlistDetail}");
     print("Data adoption: ${recipientId}");
-=======
-    String currentId = accountId;
-    //print("Data adoption: ${bubbleChatlistDetail}");
-    //print("Data adoption: ${currentId}");
->>>>>>> UAT
 
     return SingleChildScrollView(
       child: Padding(

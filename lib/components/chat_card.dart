@@ -31,27 +31,17 @@ class ChatCardDetail extends StatelessWidget {
                 context,
                 MaterialPageRoute(builder: (context) => ChatroomPageDetail(accountId: chatlistDetail.recipientId!)),
               );*/
-<<<<<<< HEAD
               String recipientId = chatlistDetail.recipientId!;
+              String chatroomChatId = chatlistDetail.chatroomId!;
+              print('chatroom Id : $chatroomChatId');
               print('recipient id : $recipientId');
               //String read = chatlistDetail.isRead!;
               final OpenChatRequest req =
-                  OpenChatRequest(recipientId: recipientId);
-              _openChatService.openChatroom(req).then((value) =>
-                  Navigator.of(context).push(MaterialPageRoute(
-                      builder: (_) =>
-                          ChatroomPageDetail(recipientId: recipientId))));
-=======
-              String accountId = chatlistDetail.recipientId!;
-              String chatroomId = chatlistDetail.chatroomId!;
-              //String read = chatlistDetail.isRead!;
-              final OpenChatRequest req =
-                  OpenChatRequest(recipientId: accountId);
+                  OpenChatRequest(chatroomId : chatroomChatId, recipientId: recipientId);
               _openChatService.openChatroom(req).then((value) =>
                   Navigator.of(context).push(MaterialPageRoute(
                       builder: (_) => ChatroomPageDetail(
-                          accountId: accountId, chatroomId: chatroomId))));
->>>>>>> UAT
+                          recipientId: recipientId, chatroomId: chatroomChatId))));
             },
             child: SizedBox(
               height: 80,
