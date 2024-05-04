@@ -5,14 +5,14 @@ part 'websocket_model.g.dart';
 @freezed
 class WebSocketNotif with _$WebSocketNotif{
   factory WebSocketNotif({
-    required String? notificationId,
-    required String? accountId,
+    // required String? notificationId,
+    // required String? accountId,
     required String notificationMessage,
-    required String? sendDate,
-    required String? status,
-    required String? dogId,
-    required String? dogName,
-    required String? requesterId,
+    // required String? sendDate,
+    // required String? status,
+    // required String? dogId,
+    // required String? dogName,
+    // required String? requesterId,
     required String? errorCode,
     required String? errorMessage,
   }) = _WebSocketNotif;
@@ -23,9 +23,9 @@ class WebSocketNotif with _$WebSocketNotif{
 @freezed
 class WebSocketChat with _$WebSocketChat{
   factory WebSocketChat({
-    required String? chatMessageId,
+    // required String? chatMessageId,
     required String? chatroomId,
-    required String? senderId,
+    // required String? senderId,
     required String? recipientId,
     required String message,
     required String? timestamp,

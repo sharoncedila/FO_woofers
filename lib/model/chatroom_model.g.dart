@@ -23,6 +23,7 @@ Map<String, dynamic> _$$OpenChatRequestImplToJson(
 _$SendChatRequestImpl _$$SendChatRequestImplFromJson(
         Map<String, dynamic> json) =>
     _$SendChatRequestImpl(
+      chatroomId: json['chatroomId'] as String?,
       recipientId: json['recipientId'] as String?,
       message: json['message'] as String?,
     );
@@ -30,6 +31,7 @@ _$SendChatRequestImpl _$$SendChatRequestImplFromJson(
 Map<String, dynamic> _$$SendChatRequestImplToJson(
         _$SendChatRequestImpl instance) =>
     <String, dynamic>{
+      'chatroomId': instance.chatroomId,
       'recipientId': instance.recipientId,
       'message': instance.message,
     };
@@ -37,14 +39,9 @@ Map<String, dynamic> _$$SendChatRequestImplToJson(
 _$OpenChatResponseImpl _$$OpenChatResponseImplFromJson(
         Map<String, dynamic> json) =>
     _$OpenChatResponseImpl(
-      chatroomId: json['chatroomId'] as String?,
       senderId: json['senderId'] as String?,
-      recipientId: json['recipientId'] as String?,
-      senderChatId: json['senderChatId'] as String?,
-      recipientChatId: json['recipientChatId'] as String?,
       errorCode: json['errorCode'] as String?,
       errorMessage: json['errorMessage'] as String?,
-      chatMessageId: json['chatMessageId'] as String?,
       message: json['message'] as String?,
       timestamp: json['timestamp'] as String?,
     );
@@ -52,14 +49,9 @@ _$OpenChatResponseImpl _$$OpenChatResponseImplFromJson(
 Map<String, dynamic> _$$OpenChatResponseImplToJson(
         _$OpenChatResponseImpl instance) =>
     <String, dynamic>{
-      'chatroomId': instance.chatroomId,
       'senderId': instance.senderId,
-      'recipientId': instance.recipientId,
-      'senderChatId': instance.senderChatId,
-      'recipientChatId': instance.recipientChatId,
       'errorCode': instance.errorCode,
       'errorMessage': instance.errorMessage,
-      'chatMessageId': instance.chatMessageId,
       'message': instance.message,
       'timestamp': instance.timestamp,
     };
