@@ -31,6 +31,7 @@ class ChatCardDetail extends StatelessWidget {
                 context,
                 MaterialPageRoute(builder: (context) => ChatroomPageDetail(accountId: chatlistDetail.recipientId!)),
               );*/
+<<<<<<< HEAD
               String recipientId = chatlistDetail.recipientId!;
               print('recipient id : $recipientId');
               //String read = chatlistDetail.isRead!;
@@ -40,6 +41,17 @@ class ChatCardDetail extends StatelessWidget {
                   Navigator.of(context).push(MaterialPageRoute(
                       builder: (_) =>
                           ChatroomPageDetail(recipientId: recipientId))));
+=======
+              String accountId = chatlistDetail.recipientId!;
+              String chatroomId = chatlistDetail.chatroomId!;
+              //String read = chatlistDetail.isRead!;
+              final OpenChatRequest req =
+                  OpenChatRequest(recipientId: accountId);
+              _openChatService.openChatroom(req).then((value) =>
+                  Navigator.of(context).push(MaterialPageRoute(
+                      builder: (_) => ChatroomPageDetail(
+                          accountId: accountId, chatroomId: chatroomId))));
+>>>>>>> UAT
             },
             child: SizedBox(
               height: 80,
