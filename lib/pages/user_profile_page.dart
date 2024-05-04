@@ -63,7 +63,7 @@ class _UserProfilePageState extends State<UserProfilePage> {
                               if (imageURL == null) {
                                 return const Image(
                                   image: AssetImage(
-                                      'assets/woofers_icon/profileImageTemplate.png'),
+                                      'assets/woofers_icon/profile.jpg'),
                                   width: 150,
                                   height: 150,
                                 );
@@ -444,7 +444,7 @@ class _UserProfilePageState extends State<UserProfilePage> {
                                 .primary
                                 .withOpacity(0.5);
                           }
-                          return null; // Use the component's default.
+                          return null;
                         },
                       ),
                     ),

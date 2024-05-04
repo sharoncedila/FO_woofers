@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:woofers/components/image_network.dart';
 import 'package:woofers/components/other_profile_page_template.dart';
+import 'package:woofers/components/profile_page_template.dart';
 import 'package:woofers/model/feeds_model.dart';
+import 'package:woofers/pages/adoption_page.dart';
 import 'package:woofers/pages/comment_page.dart';
 import 'package:woofers/services/feeds/feeds_service.dart';
 
@@ -26,16 +28,12 @@ class _FeedsCardState extends State<FeedsCard> {
 
   @override
   Widget build(BuildContext context) {
-    // final imageURL = feedsDetail?.profilePicture;
     ViewFeedsResponse feedsDetail = widget.feedsDetail;
     return Padding(
       padding: const EdgeInsets.only(left: 5, right: 5),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          // const SizedBox(
-          //   height: 15,
-          // ),
           Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
@@ -48,18 +46,46 @@ class _FeedsCardState extends State<FeedsCard> {
                     width: 15,
                   ),
                   Container(
-                    width: 45,
-                    height: 45,
-                    decoration: BoxDecoration(
-                      color: Colors.black.withOpacity(0.6),
-                      borderRadius: BorderRadius.circular(50),
-                      // border: Border.all(color: Colors.black.withOpacity(10))
-                    ),
-                    child: ImageNetwork(
-                        urlImage: feedsDetail.profilePicture,
-                        width: 45,
-                        height: 45),
-                  ),
+                      width: 45,
+                      height: 45,
+                      decoration: BoxDecoration(
+                        color: Colors.black.withOpacity(0.6),
+                        borderRadius: BorderRadius.circular(50),
+                        // border: Border.all(color: Colors.black.withOpacity(10))
+                      ),
+                      child: (feedsDetail.profilePicture != null)
+                          ? InkWell(
+                              onTap: () {
+                                Navigator.push(
+                                  context,
+                                  MaterialPageRoute(
+                                      builder: (context) =>
+                                          OtherProfilePageTemplate(
+                                              accountId:
+                                                  feedsDetail.accountId ?? '')),
+                                );
+                              },
+                              child: ImageNetwork(
+                                urlImage: feedsDetail.profilePicture,
+                                width: 45,
+                                height: 45,
+                              ),
+                            )
+                          : InkWell(
+                              onTap: () {
+                                Navigator.push(
+                                  context,
+                                  MaterialPageRoute(
+                                    builder: (context) =>
+                                        OtherProfilePageTemplate(
+                                            accountId:
+                                                feedsDetail.accountId ?? ''),
+                                  ),
+                                );
+                              },
+                              child: const Image(
+                                  image: AssetImage(
+                                      'assets/woofers_icon/profile.jpg')))),
                   const SizedBox(
                     width: 15,
                   ),
@@ -112,6 +138,23 @@ class _FeedsCardState extends State<FeedsCard> {
               Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
+                  // Text(
+                  //   "     ${feedsDetail.likesCount ?? ''} likes",
+                  //   style: const TextStyle(color: Colors.grey, fontSize: 12),
+                  //   // "Dog Name: ${notificationDetail.dogName}",
+                  // ),
+                  Row(
+                    children: [
+                      const SizedBox(
+                        width: 13,
+                      ),
+                      Text(
+                        feedsDetail.caption ?? '',
+                        style:
+                            const TextStyle(color: Colors.black, fontSize: 15),
+                      ),
+                    ],
+                  ),
                   Row(
                     mainAxisAlignment: MainAxisAlignment.start,
                     children: [
@@ -162,23 +205,6 @@ class _FeedsCardState extends State<FeedsCard> {
                                     feedsId: feedsDetail.feedsId ?? '')),
                           );
                         },
-                      ),
-                    ],
-                  ),
-                  // Text(
-                  //   "     ${feedsDetail.likesCount ?? ''} likes",
-                  //   style: const TextStyle(color: Colors.grey, fontSize: 12),
-                  //   // "Dog Name: ${notificationDetail.dogName}",
-                  // ),
-                  Row(
-                    children: [
-                      const SizedBox(
-                        width: 13,
-                      ),
-                      Text(
-                        feedsDetail.caption ?? '',
-                        style:
-                            const TextStyle(color: Colors.black, fontSize: 15),
                       ),
                     ],
                   ),

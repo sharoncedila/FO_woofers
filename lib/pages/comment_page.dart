@@ -70,6 +70,7 @@ class CommentPage extends StatelessWidget {
                           feedsId: feedsId, content: commentController.text);
                       FeedsService().leaveCommentSection(request);
                       FocusScope.of(context).unfocus();
+                      commentController.clear();
                     },
                   ),
                 ],
