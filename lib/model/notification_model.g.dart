@@ -10,11 +10,9 @@ _$ViewNotificationResponseImpl _$$ViewNotificationResponseImplFromJson(
         Map<String, dynamic> json) =>
     _$ViewNotificationResponseImpl(
       notificationId: json['notificationId'] as String?,
-      accountId: json['accountId'] as String?,
       notifMessage: json['notifMessage'] as String?,
       sendDate: json['sendDate'] as String?,
       status: json['status'] as String?,
-      dogId: json['dogId'] as String?,
       dogName: json['dogName'] as String?,
       requesterId: json['requesterId'] as String?,
       errorCode: json['errorCode'] as String?,
@@ -25,11 +23,9 @@ Map<String, dynamic> _$$ViewNotificationResponseImplToJson(
         _$ViewNotificationResponseImpl instance) =>
     <String, dynamic>{
       'notificationId': instance.notificationId,
-      'accountId': instance.accountId,
       'notifMessage': instance.notifMessage,
       'sendDate': instance.sendDate,
       'status': instance.status,
-      'dogId': instance.dogId,
       'dogName': instance.dogName,
       'requesterId': instance.requesterId,
       'errorCode': instance.errorCode,

@@ -16,7 +16,7 @@ class OpenChatRequest with _$OpenChatRequest {
 @freezed
 class SendChatRequest with _$SendChatRequest {
   factory SendChatRequest({
-    //required String? chatroomId,
+    String? chatroomId,
     required String? recipientId,
     required String? message
   }) = _SendChatRequest;
@@ -27,14 +27,14 @@ class SendChatRequest with _$SendChatRequest {
 @freezed
 class OpenChatResponse with _$OpenChatResponse {
   factory OpenChatResponse({
-    required String? chatroomId,
+    // required String? chatroomId,
     required String? senderId,
-    required String? recipientId,
-    required String? senderChatId,
-    required String? recipientChatId,
+    // required String? recipientId,
+    // required String? senderChatId,
+    // required String? recipientChatId,
     required String? errorCode,
     required String? errorMessage,
-    required String? chatMessageId,
+    // required String? chatMessageId,
     required String? message,
     required String? timestamp,
     

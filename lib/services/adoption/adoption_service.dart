@@ -4,7 +4,6 @@ import 'package:woofers/classes/dio_instance.dart';
 import 'package:woofers/model/adoption_model.dart';
 import 'package:woofers/model/error_schema_model.dart';
 import 'package:woofers/model/filter_adoption.dart';
-import 'package:woofers/model/notification_model.dart';
 
 class AdoptionService {
   // Adoption page

@@ -6,13 +6,13 @@ part 'chatlist_model.g.dart';
 @freezed
 class RetrieveChatlistResponse with _$RetrieveChatlistResponse{
   factory RetrieveChatlistResponse({
-    required String? rowId,
+    // required String? rowId,
     required String? chatroomId,
-    required String? senderId,
+    // required String? senderId,
     required String? recipientId,
     required String? recipientUsername,
     required String? lastMessageTimestamp,
-    required String? deletedAt,
+    // required String? deletedAt,
     required String? lastMessage,
     required String? isRead,
     required String? errorCode,
@@ -28,7 +28,7 @@ class SearchChatResponse with _$SearchChatResponse {
   factory SearchChatResponse(
       {required String? accountId,
       required String? username,
-      required String? fullName,
+      // required String? fullName,
       required String? errorCode,
       required String? errorMessage}) = _SearchChatResponse;
 

@@ -41,16 +41,18 @@ class AddDogRequest with _$AddDogRequest {
 @freezed
 class AddDogResponse with _$AddDogResponse {
   factory AddDogResponse({
-    required String? dogId,
-    required String? breedName,
-    required String? dogName,
-    required String? gender,
-    required String? dateOfBirth,
-    required String? description,
-    required String? vaccination,
-    required String? image,
-    required String? isOpenAdopt,
-    required String? provinceName,
+    // required String? dogId,
+    // required String? breedName,
+    // required String? dogName,
+    // required String? gender,
+    // required String? dateOfBirth,
+    // required String? description,
+    // required String? vaccination,
+    // required String? image,
+    // required String? isOpenAdopt,
+    // required String? provinceName,
+    required String? errorCode,
+    required String? errorMessage,
   }) = _AddDogResponse;
 
   factory AddDogResponse.fromJson(Map<String, dynamic> json) =>
@@ -60,16 +62,16 @@ class AddDogResponse with _$AddDogResponse {
 @freezed
 class EditDogResponse with _$EditDogResponse{
   factory EditDogResponse({
-    required String? dogId,
-    required String? breedName,
-    required String? dogName,
-    required String? gender,
-    required String? dateOfBirth,
-    required String? description,
-    required String? vaccination,
-    required String? image,
-    required String? isOpenAdopt,
-    required String? provinceName,
+    // required String? dogId,
+    // required String? breedName,
+    // required String? dogName,
+    // required String? gender,
+    // required String? dateOfBirth,
+    // required String? description,
+    // required String? vaccination,
+    // required String? image,
+    // required String? isOpenAdopt,
+    // required String? provinceName,
     required String? errorCode,
     required String? errorMessage,
   }) = _EditDogResponse;
@@ -90,6 +92,7 @@ class EditDogRequest with _$EditDogRequest{
     required String? vaccination,
     required String? description,
     required String? isOpenAdopt
+    // required String? image,
   }) = _EditDogRequest;
 
   factory EditDogRequest.fromJson(Map<String, dynamic> json) =>
