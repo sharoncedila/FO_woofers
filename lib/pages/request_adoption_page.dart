@@ -60,9 +60,10 @@ class _RequestAdoptionPageState extends State<RequestAdoptionPage> {
                   return const Center(
                       child: Text("no data available for this dog"));
                 }
-                String? ownerAccountId = snapshot.data?.dogData!.image == null
-                    ? ""
-                    : snapshot.data!.dogData!.image;
+                String? ownerAccountId =
+                    snapshot.data?.ownerData!.accountId == null
+                        ? ""
+                        : snapshot.data!.ownerData!.accountId;
                 return IconButton(
                   icon: const Icon(Icons.chat),
                   onPressed: () {
@@ -114,6 +115,17 @@ class _RequestAdoptionPageState extends State<RequestAdoptionPage> {
 
               return Column(
                 children: [
+                  TextFormField(
+                      readOnly: true,
+                      enabled: false,
+                      decoration: InputDecoration(
+                          // border: const UnderlineInputBorder(),
+                          labelText: 'Dog Information',
+                          labelStyle: GoogleFonts.newsCycle(
+                              color: Colors.black,
+                              fontSize: 20,
+                              fontWeight: FontWeight.bold))),
+
                   const SizedBox(
                     height: 15,
                   ),
@@ -484,7 +496,16 @@ class _RequestAdoptionPageState extends State<RequestAdoptionPage> {
                     height:
                         100.0, // Optional, specify the height of the divider
                   ),
-
+                  TextFormField(
+                      readOnly: true,
+                      enabled: false,
+                      decoration: InputDecoration(
+                          // border: const UnderlineInputBorder(),
+                          labelText: 'Owner Information',
+                          labelStyle: GoogleFonts.newsCycle(
+                              color: Colors.black,
+                              fontSize: 20,
+                              fontWeight: FontWeight.bold))),
                   const SizedBox(
                     height: 15,
                   ),
@@ -575,10 +596,11 @@ class _RequestAdoptionPageState extends State<RequestAdoptionPage> {
                               enabled: false,
                               decoration: InputDecoration(
                                 border: const UnderlineInputBorder(),
-                                labelText:
-                                    snapshot.data?.ownerData!.provinceName == null
-                                        ? ""
-                                        : snapshot.data!.ownerData!.provinceName,
+                                labelText: snapshot
+                                            .data?.ownerData!.provinceName ==
+                                        null
+                                    ? ""
+                                    : snapshot.data!.ownerData!.provinceName,
                                 labelStyle: GoogleFonts.newsCycle(
                                   color: Colors.black,
                                 ),
