@@ -62,7 +62,7 @@ class _RegisterFormState extends State<RegisterForm> {
   // not a GlobalKey<RegisterFormState>.
   final _formKey = GlobalKey<FormState>();
   final _usernameController = TextEditingController();
-    final _fullnameController = TextEditingController();
+  final _fullnameController = TextEditingController();
   final _emailController = TextEditingController();
   final _passwordController = TextEditingController();
   final _confirmPasswordController = TextEditingController();
@@ -411,7 +411,7 @@ class _RegisterFormState extends State<RegisterForm> {
                   if (_formKey.currentState!.validate()) {
                     final RequestRegisterModel req = RequestRegisterModel(
                         email: _emailController.text,
-                        fullname : _fullnameController.text,
+                        fullName : _fullnameController.text,
                         password: _passwordController.text,
                         username: _usernameController.text,
                         provinceName: _selectedProvince!,
