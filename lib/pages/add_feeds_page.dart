@@ -60,93 +60,95 @@ class _AddFeedsPageState extends State<AddFeedsPage> {
   }
 
   Widget addFeeds() {
-    return Column(
-      children: [
-        const SizedBox(
-          height: 15,
-        ),
-        const Image(image: AssetImage('assets/dog_picture/dog1.jpg')),
-        IconButton(
-            onPressed: () async {
-              final pickedFile =
-                  await ImagePicker().pickImage(source: ImageSource.gallery);
-              if (pickedFile != null) {
-                File image = File(pickedFile.path);
-                uploadFeeds(image);
-              }
-              // ImageService().uploadFeeds();
-            },
-            icon: const Icon(Icons.camera)),
-        const SizedBox(
-          height: 15,
-        ),
-        Padding(
-          padding: const EdgeInsets.only(left: 25, right: 25),
-          child: TextField(
-            maxLength: 500,
-            controller: _captionController,
-            decoration: const InputDecoration(
-              labelText: 'Enter your captions..',
-              hintText: 'Type here...',
-              border: OutlineInputBorder(
-                borderSide: BorderSide(color: Colors.transparent),
-              ),
-            ),
-            maxLines: null,
+    return SingleChildScrollView(
+      child: Column(
+        children: [
+          const SizedBox(
+            height: 15,
           ),
-        ),
-        const SizedBox(
-          height: 15,
-        ),
-        SizedBox(
-          width: MediaQuery.of(context).size.width / 1.1,
-          height: 45,
-          child: ElevatedButton(
-            style: ButtonStyle(
-              backgroundColor: MaterialStateProperty.resolveWith(
-                (Set<MaterialState> states) {
-                  if (states.contains(MaterialState.pressed)) {
-                    return Theme.of(context)
-                        .colorScheme
-                        .primary
-                        .withOpacity(0.5);
-                  }
-                  return null; // Use the component's default.
-                },
+          const Image(image: AssetImage('assets/dog_picture/dog1.jpg')),
+          IconButton(
+              onPressed: () async {
+                final pickedFile =
+                    await ImagePicker().pickImage(source: ImageSource.gallery);
+                if (pickedFile != null) {
+                  File image = File(pickedFile.path);
+                  uploadFeeds(image);
+                }
+                // ImageService().uploadFeeds();
+              },
+              icon: const Icon(Icons.camera)),
+          const SizedBox(
+            height: 15,
+          ),
+          Padding(
+            padding: const EdgeInsets.only(left: 25, right: 25),
+            child: TextField(
+              maxLength: 500,
+              controller: _captionController,
+              decoration: const InputDecoration(
+                labelText: 'Enter your captions..',
+                hintText: 'Type here...',
+                border: OutlineInputBorder(
+                  borderSide: BorderSide(color: Colors.transparent),
+                ),
               ),
+              maxLines: null,
             ),
-            child: const Text('POST'),
-            onPressed: () {
-              // ImageService().uploadFeeds();
-              // FutureBuilder(future: ImageService().uploadFeeds(), builder: ((context, snapshot) {
-              //   uploadedImage = snapshot.data;
-              //   return uploadedImage;
-              // }));
-              final PostFeedsRequest request = PostFeedsRequest(
-                caption: _captionController.text,
-                image: uploadedImage,
-              );
+          ),
+          const SizedBox(
+            height: 15,
+          ),
+          SizedBox(
+            width: MediaQuery.of(context).size.width / 1.1,
+            height: 45,
+            child: ElevatedButton(
+              style: ButtonStyle(
+                backgroundColor: MaterialStateProperty.resolveWith(
+                  (Set<MaterialState> states) {
+                    if (states.contains(MaterialState.pressed)) {
+                      return Theme.of(context)
+                          .colorScheme
+                          .primary
+                          .withOpacity(0.5);
+                    }
+                    return null; // Use the component's default.
+                  },
+                ),
+              ),
+              child: const Text('POST'),
+              onPressed: () {
+                // ImageService().uploadFeeds();
+                // FutureBuilder(future: ImageService().uploadFeeds(), builder: ((context, snapshot) {
+                //   uploadedImage = snapshot.data;
+                //   return uploadedImage;
+                // }));
+                final PostFeedsRequest request = PostFeedsRequest(
+                  caption: _captionController.text,
+                  image: uploadedImage,
+                );
 
-              FeedsService().postFeeds(request).then((value) =>
-                  Navigator.of(context).pushReplacement(
-                      MaterialPageRoute(builder: (_) => const FeedsPage())));
-              // FeedsService().postFeeds();
-            },
+                FeedsService().postFeeds(request).then((value) =>
+                    Navigator.of(context).pushReplacement(
+                        MaterialPageRoute(builder: (_) => const FeedsPage())));
+                // FeedsService().postFeeds();
+              },
 
-            /*
-          oonPressed: () {
-            print(_isLike);
-            setState(() {
-              _isLike = null;
+              /*
+            oonPressed: () {
               print(_isLike);
-              FeedsService()
-                  .likeFeeds(feedsDetail.feedsId ?? '');
-            });
-          },
-          */
+              setState(() {
+                _isLike = null;
+                print(_isLike);
+                FeedsService()
+                    .likeFeeds(feedsDetail.feedsId ?? '');
+              });
+            },
+            */
+            ),
           ),
-        ),
-      ],
+        ],
+      ),
     );
   }
 }
