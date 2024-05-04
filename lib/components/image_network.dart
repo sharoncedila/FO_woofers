@@ -32,7 +32,11 @@ class ImageNetwork extends StatelessWidget {
 
           return Image(
             // kos pribadi
+<<<<<<< HEAD
             image: NetworkImage("http://10.88.20.63:8080/woofers$urlImage",
+=======
+            image: NetworkImage("http://10.88.20.142:8080/woofers$urlImage",
+>>>>>>> 5da068f9316080f80e9d7cc596e25bc1ee3e3e8a
 
                 // kos yoh niel
                 //image: NetworkImage("http://192.168.68.169:8080/woofers$urlImage",

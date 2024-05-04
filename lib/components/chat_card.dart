@@ -31,12 +31,17 @@ class ChatCardDetail extends StatelessWidget {
                 context,
                 MaterialPageRoute(builder: (context) => ChatroomPageDetail(accountId: chatlistDetail.recipientId!)),
               );*/
-              String accountId = chatlistDetail.recipientId!;
+              String recipientId = chatlistDetail.recipientId!;
+              String chatroomChatId = chatlistDetail.chatroomId!;
+              print('chatroom Id : $chatroomChatId');
+              print('recipient id : $recipientId');
               //String read = chatlistDetail.isRead!;
-              final OpenChatRequest req = OpenChatRequest(recipientId: accountId);
+              final OpenChatRequest req =
+                  OpenChatRequest(chatroomId : chatroomChatId, recipientId: recipientId);
               _openChatService.openChatroom(req).then((value) =>
                   Navigator.of(context).push(MaterialPageRoute(
-                      builder: (_) => ChatroomPageDetail(accountId: accountId))));
+                      builder: (_) => ChatroomPageDetail(
+                          recipientId: recipientId, chatroomId: chatroomChatId))));
             },
             child: SizedBox(
               height: 80,
@@ -63,7 +68,8 @@ class ChatCardDetail extends StatelessWidget {
                       ]),
                   // last message
                   Padding(
-                    padding: const EdgeInsets.only(left: 20.0, top: 2, bottom: 2),
+                    padding:
+                        const EdgeInsets.only(left: 20.0, top: 2, bottom: 2),
                     child: Row(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,

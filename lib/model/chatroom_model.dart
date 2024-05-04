@@ -6,6 +6,7 @@ part 'chatroom_model.g.dart';
 @freezed
 class OpenChatRequest with _$OpenChatRequest {
   factory OpenChatRequest({
+    String? chatroomId,
     required String? recipientId,
   }) = _OpenChatRequest;
 
