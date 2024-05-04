@@ -43,10 +43,19 @@ class MyDogCard extends StatelessWidget {
                           width: 20,
                         ),
                         // image
-                        ImageNetwork(
-                            urlImage: dogProfile.image,
-                            width: 135,
-                            height: 135),
+                        (dogProfile.image != null)
+                            ? ImageNetwork(
+                                urlImage: dogProfile.image,
+                                width: 135,
+                                height: 135,
+                              )
+                            : const Image(
+                                image: AssetImage(
+                                    'assets/woofers_icon/profile.jpg')),
+                        // ImageNetwork(
+                        //     urlImage: dogProfile.image,
+                        //     width: 135,
+                        //     height: 135),
                         const SizedBox(
                           width: 15,
                         ),

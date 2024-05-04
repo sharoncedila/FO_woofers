@@ -28,8 +28,8 @@ class OtherDogCard extends StatelessWidget {
                 Navigator.push(
                   context,
                   MaterialPageRoute(
-                    builder: (context) =>
-                      OtherDogProfilePage(dogId: dogProfile.dogId)),
+                      builder: (context) =>
+                          OtherDogProfilePage(dogId: dogProfile.dogId)),
                 );
               },
               child: SizedBox(
@@ -42,8 +42,17 @@ class OtherDogCard extends StatelessWidget {
                           width: 20,
                         ),
                         // image
-                        ImageNetwork(
-                          urlImage: dogProfile.image, width: 135, height: 135),
+                        // ImageNetwork(
+                        //   urlImage: dogProfile.image, width: 135, height: 135),
+                        (dogProfile.image != null)
+                            ? ImageNetwork(
+                                urlImage: dogProfile.image,
+                                width: 135,
+                                height: 135,
+                              )
+                            : const Image(
+                                image: AssetImage(
+                                    'assets/woofers_icon/profile.jpg')),
                         const SizedBox(
                           width: 15,
                         ),
@@ -52,51 +61,53 @@ class OtherDogCard extends StatelessWidget {
                           mainAxisAlignment: MainAxisAlignment.center,
                           children: [
                             // Column(
-                              // children: [
-                                // name
+                            // children: [
+                            // name
+                            Text(
+                              dogProfile.dogName,
+                              textAlign: TextAlign.left,
+                              style: GoogleFonts.lora(
+                                fontSize: 17,
+                                fontWeight: FontWeight.bold,
+                                color: const Color.fromRGBO(40, 36, 36, 10000),
+                              ),
+                            ),
+                            // breed
+                            Text(
+                              dogProfile.breedName ?? '',
+                              textAlign: TextAlign.left,
+                              style: GoogleFonts.lora(
+                                fontSize: 15,
+                                // fontWeight: FontWeight.bold,
+                                color: const Color.fromRGBO(40, 36, 36, 10000),
+                              ),
+                            ),
+                            // age
+                            Row(
+                              children: [
                                 Text(
-                                  dogProfile.dogName,
-                                  textAlign: TextAlign.left,
-                                  style: GoogleFonts.lora(
-                                    fontSize: 17,
-                                    fontWeight: FontWeight.bold,
-                                    color: const Color.fromRGBO(40,36,36,10000),
-                                  ),
-                                ),
-                                // breed
-                                Text(
-                                  dogProfile.breedName ?? '',
+                                  dogProfile.age ?? '',
                                   textAlign: TextAlign.left,
                                   style: GoogleFonts.lora(
                                     fontSize: 15,
                                     // fontWeight: FontWeight.bold,
-                                    color: const Color.fromRGBO(40,36,36,10000),
+                                    color:
+                                        const Color.fromRGBO(40, 36, 36, 10000),
                                   ),
                                 ),
-                                // age
-                                Row(
-                                  children: [
-                                    Text(
-                                      dogProfile.age ?? '',
-                                      textAlign: TextAlign.left,
-                                      style: GoogleFonts.lora(
-                                        fontSize: 15,
-                                        // fontWeight: FontWeight.bold,
-                                        color: const Color.fromRGBO(40,36,36,10000),
-                                      ),
-                                    ),
-                                    Text(
-                                      ' years old',
-                                      textAlign: TextAlign.left,
-                                      style: GoogleFonts.lora(
-                                        fontSize: 15,
-                                        // fontWeight: FontWeight.bold,
-                                        color: const Color.fromRGBO(40,36,36,10000),
-                                      ),
-                                    ),
-                                  ],
+                                Text(
+                                  ' years old',
+                                  textAlign: TextAlign.left,
+                                  style: GoogleFonts.lora(
+                                    fontSize: 15,
+                                    // fontWeight: FontWeight.bold,
+                                    color:
+                                        const Color.fromRGBO(40, 36, 36, 10000),
+                                  ),
                                 ),
-                              // ],
+                              ],
+                            ),
+                            // ],
                             // ),
                             const SizedBox(
                               height: 10,

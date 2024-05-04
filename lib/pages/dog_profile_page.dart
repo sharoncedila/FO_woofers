@@ -85,7 +85,15 @@ class DogProfilePage extends StatelessWidget {
                   const SizedBox(
                     height: 15,
                   ),
-                  ImageNetwork(urlImage: imageURL, width: 150, height: 150),
+                  // ImageNetwork(urlImage: imageURL, width: 150, height: 150),
+                  (imageURL != null)
+                      ? ImageNetwork(
+                          urlImage: imageURL,
+                          width: 135,
+                          height: 135,
+                        )
+                      : const Image(
+                          image: AssetImage('assets/woofers_icon/profile.jpg')),
                   const SizedBox(
                     height: 15,
                   ),
@@ -474,11 +482,9 @@ class DogProfilePage extends StatelessWidget {
                                 }
                                 return null; // Use the component's default.
                               },
-                              
                             ),
                           ),
                           child: const Text('Edit'),
-                          
                           onPressed: () {
                             Navigator.push(
                               context,

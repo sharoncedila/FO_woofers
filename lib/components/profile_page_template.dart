@@ -14,20 +14,11 @@ class ProfilePageTemplate extends StatelessWidget {
           bottom: const TabBar(
             tabs: [
               Tab(
-                icon: Image(
-                  image: AssetImage(
-                      'assets/woofers_icon/profileImageTemplate.png'),
-                  width: 40,
-                  height: 40,
-                ),
+                icon: Icon(Icons.person),
                 text: "Me",
               ),
               Tab(
-                icon: Image(
-                  image: AssetImage('assets/dog_picture/dog1.jpg'),
-                  width: 40,
-                  height: 40,
-                ),
+                icon: Icon(Icons.pets),
                 text: "Doggo",
               ),
             ],

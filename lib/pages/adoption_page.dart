@@ -232,9 +232,8 @@ class _AdoptionPageState extends State<AdoptionPage> {
   }
 
   Widget adoptionList() {
-    print(filterAdoption);
-    return SingleChildScrollView(
-      child: Center(
+    return Center(
+      child: SingleChildScrollView(
         child: Padding(
           padding: const EdgeInsets.symmetric(horizontal: 5, vertical: 10),
           child: FutureBuilder(

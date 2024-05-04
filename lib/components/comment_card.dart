@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:woofers/components/image_network.dart';
+import 'package:woofers/components/other_profile_page_template.dart';
 import 'package:woofers/model/feeds_model.dart';
 
 class CommentCard extends StatelessWidget {
@@ -38,14 +39,45 @@ class CommentCard extends StatelessWidget {
                   const SizedBox(
                     width: 20,
                   ),
-                  (imageURL == null)
-                      ? const Image(
-                          image: AssetImage(
-                              'assets/woofers_icon/profileImageTemplate.png'),
-                          width: 20,
-                          height: 20,
+                  // (imageURL == null)
+                  //     ? const Image(
+                  //         image: AssetImage(
+                  //             'assets/woofers_icon/profileImageTemplate.png'),
+                  //         width: 20,
+                  //         height: 20,
+                  //       )
+                  //     : ImageNetwork(urlImage: imageURL, width: 20, height: 20),
+                  (commentDetail.profilePicture != null)
+                      ? InkWell(
+                          onTap: () {
+                            Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                  builder: (context) =>
+                                      OtherProfilePageTemplate(
+                                          accountId:
+                                              commentDetail.accountId ?? '')),
+                            );
+                          },
+                          child: ImageNetwork(
+                            urlImage: commentDetail.profilePicture,
+                            width: 45,
+                            height: 45,
+                          ),
                         )
-                      : ImageNetwork(urlImage: imageURL, width: 20, height: 20),
+                      : InkWell(
+                          onTap: () {
+                            Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                builder: (context) => OtherProfilePageTemplate(
+                                    accountId: commentDetail.accountId ?? ''),
+                              ),
+                            );
+                          },
+                          child: const Image(
+                              image: AssetImage(
+                                  'assets/woofers_icon/profile.jpg'))),
                   const SizedBox(
                     width: 20,
                   ),
