@@ -20,8 +20,8 @@ class _AdoptionPageState extends State<AdoptionPage> {
   String? _selectedProvince;
   late List<String?> breedNames;
   String? _selectedBreed;
-  late List<String?> genderName = ['Female', 'Male'];
-  String? _selectedGender;
+  // late List<String?> genderName = ['Female', 'Male'];
+  // String? _selectedGender;
 
   FilterAdoption filterAdoption = FilterAdoption();
 
@@ -86,11 +86,11 @@ class _AdoptionPageState extends State<AdoptionPage> {
                           .toList();
                       return SizedBox(
                         height: 50,
-                        width: MediaQuery.of(context).size.width / 2.55,
+                        width: MediaQuery.of(context).size.width / 2.9,
                         child: DropdownButtonFormField<String>(
                           value: _selectedProvince,
                           style: const TextStyle(
-                            fontSize: 11,
+                            fontSize: 9,
                             color: Colors.black,
                           ),
                           decoration: InputDecoration(
@@ -151,11 +151,11 @@ class _AdoptionPageState extends State<AdoptionPage> {
                           .toList();
                       return SizedBox(
                         height: 50,
-                        width: MediaQuery.of(context).size.width / 2.3,
+                        width: MediaQuery.of(context).size.width / 2.6,
                         child: DropdownButtonFormField<String>(
                           value: _selectedBreed,
                           style: const TextStyle(
-                            fontSize: 11,
+                            fontSize: 9,
                             color: Colors.black,
                           ),
                           decoration: InputDecoration(
@@ -192,6 +192,7 @@ class _AdoptionPageState extends State<AdoptionPage> {
                   ),
                 ),
 
+                // search icon
                 // const SizedBox(width: 5),
                 IconButton(
                   onPressed: () {
@@ -199,11 +200,27 @@ class _AdoptionPageState extends State<AdoptionPage> {
                       filterAdoption = filterAdoption.copyWith(
                         breed: _selectedBreed,
                         province: _selectedProvince,
-                        gender: _selectedGender,
+                        // gender: _selectedGender,
                       );
                     });
                   },
                   icon: const Icon(Icons.search_outlined),
+                  // iconSize: 5,
+                ),
+
+                // cancel filter
+                IconButton(
+                  onPressed: () {
+                    setState(() {
+                      filterAdoption = filterAdoption.copyWith(
+                        breed: null,
+                        province: null,
+                        // gender: _selectedGender,
+                      );
+                    });
+                  },
+                  icon: const Icon(Icons.cancel),
+                  // iconSize: 5,
                 )
               ],
             ),

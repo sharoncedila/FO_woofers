@@ -10,7 +10,6 @@ _$FilterAdoptionImpl _$$FilterAdoptionImplFromJson(Map<String, dynamic> json) =>
     _$FilterAdoptionImpl(
       breed: json['breed'] as String?,
       province: json['province'] as String?,
-      gender: json['gender'] as String?,
     );
 
 Map<String, dynamic> _$$FilterAdoptionImplToJson(
@@ -18,5 +17,4 @@ Map<String, dynamic> _$$FilterAdoptionImplToJson(
     <String, dynamic>{
       'breed': instance.breed,
       'province': instance.province,
-      'gender': instance.gender,
     };

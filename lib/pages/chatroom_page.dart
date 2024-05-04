@@ -74,60 +74,12 @@ class ChatroomPageDetail extends StatelessWidget {
           ),
         ],
       ),
-      // body: Column(
-      //   children: [
-      //   Expanded(child: Chatroom(controller: _scrollController)),
-      //   Row(
-      //     children:[ 
-      //       Positioned(
-      //       bottom:
-      //           70, // Adjust this value to position the button at the desired height
-      //       left: 0, // Align to the left side
-      //       right: 0, // Align to the right side
-      //       child: Container(
-      //         color: Colors.white,
-      //         child: TextFormField(
-      //           controller: messageController,
-      //           decoration: const InputDecoration(
-      //             labelText: 'Type Here',
-      //             border: OutlineInputBorder(),
-      //           ),
-      //         ),
-      //         //button send
-      //       ),
-      //       child: IconButton(
-      //         icon: const Icon(Icons.send),
-      //         onPressed: () async {
-      //           final SendChatRequest request = SendChatRequest(
-      //               recipientId: accountId, message: messageController.text);
-          
-      //           WSChatInstance.sendMessage(request);
-      //         },
-      //       ),
-      //     ),
-      //     ]
-      //   ),
-      //   // Align(
-      //   //   alignment: FractionalOffset.bottomCenter,
-      //   //   child: Container(
-      //   //     color: Colors.white,
-      //   //     child: TextFormField(
-      //   //       controller: messageController,
-      //   //       decoration: const InputDecoration(
-      //   //         labelText: 'Type Here',
-      //   //         border: OutlineInputBorder(),
-      //   //       ),
-      //   //     ),
-      //   //     //button send
-      //   //   ),
-      //   // ),
-      // ]),
     );
   }
 
   Widget Chatroom({required ScrollController controller}) {
     return Column(
-      children:[ 
+      children:[
         Expanded(
           child: SingleChildScrollView(
             controller: controller,

@@ -37,7 +37,7 @@ class _MyAppState extends State<MyApp> {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       // home: token == '' ? LoginPage() : UserProfilePage(),
-      home: LoginPage(),
+      home: BottomMenuBar(),
     );
   }
 }
