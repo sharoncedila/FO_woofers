@@ -9,7 +9,7 @@ import 'package:woofers/model/error_schema_model.dart';
 import 'package:woofers/model/image_model.dart';
 
 class ImageService {
-  Future<UploadImageResponse?> uploadProfilePicture() async {
+  Future<UploadImageResponse?> uploadProfilePicture(File image) async {
     try {
       const api = '/upload/account';
       final dio = await DioInstance.getInstance();
@@ -95,7 +95,7 @@ class ImageService {
   //   }
   // }
 
-  Future<UploadImageResponse?> uploadDogImage(String dogId) async {
+  Future<UploadImageResponse?> uploadDogImage(String dogId, File image) async {
     try {
       String api = '/upload/dog/$dogId';
       final dio = await DioInstance.getInstance();
