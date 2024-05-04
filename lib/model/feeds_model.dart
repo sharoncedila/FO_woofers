@@ -16,7 +16,7 @@ class LeaveCommentRequest with _$LeaveCommentRequest {
 class OpenCommentsResponse with _$OpenCommentsResponse{
   factory OpenCommentsResponse({
     required String? username,
-    required String? commentId,
+    // required String? commentId,
     required String? feedsId,
     required String? accountId,
     required String? content,
@@ -61,11 +61,13 @@ class ViewFeedsResponse with _$ViewFeedsResponse{
 @freezed
 class LeaveCommentResponse with _$LeaveCommentResponse {
   factory LeaveCommentResponse({
-    required String commentId,
-    required String feedsId,
-    required String accountId,
-    required String content,
-    required String commentDate
+    // required String commentId,
+    // required String feedsId,
+    // required String accountId,
+    // required String content,
+    // required String commentDate
+    required String? errorCode,
+    required String? errorMessage
   }) = _LeaveCommentResponse;
 
   factory LeaveCommentResponse.fromJson(Map<String, dynamic> json) => _$LeaveCommentResponseFromJson(json);
@@ -74,15 +76,15 @@ class LeaveCommentResponse with _$LeaveCommentResponse {
 @freezed
 class PostFeedsResponse with _$PostFeedsResponse{
   factory PostFeedsResponse({
-    required String? feedsId,
-    required String? accountId,
-    required String? username,
-    required String? likesCount,
-    required String? caption,
-    required String? image,
-    required String? reportCount,
-    required String? postDate,
-    required String? deletedAt,
+    // required String? feedsId,
+    // required String? accountId,
+    // required String? username,
+    // required String? likesCount,
+    // required String? caption,
+    // required String? image,
+    // required String? reportCount,
+    // required String? postDate,
+    // required String? deletedAt,
     required String? errorCode,
     required String? errorMessage
   }) = _PostFeedsResponse;

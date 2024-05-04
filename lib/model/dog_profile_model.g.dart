@@ -62,46 +62,20 @@ Map<String, dynamic> _$$AddDogRequestImplToJson(_$AddDogRequestImpl instance) =>
 
 _$AddDogResponseImpl _$$AddDogResponseImplFromJson(Map<String, dynamic> json) =>
     _$AddDogResponseImpl(
-      dogId: json['dogId'] as String?,
-      breedName: json['breedName'] as String?,
-      dogName: json['dogName'] as String?,
-      gender: json['gender'] as String?,
-      dateOfBirth: json['dateOfBirth'] as String?,
-      description: json['description'] as String?,
-      vaccination: json['vaccination'] as String?,
-      image: json['image'] as String?,
-      isOpenAdopt: json['isOpenAdopt'] as String?,
-      provinceName: json['provinceName'] as String?,
+      errorCode: json['errorCode'] as String?,
+      errorMessage: json['errorMessage'] as String?,
     );
 
 Map<String, dynamic> _$$AddDogResponseImplToJson(
         _$AddDogResponseImpl instance) =>
     <String, dynamic>{
-      'dogId': instance.dogId,
-      'breedName': instance.breedName,
-      'dogName': instance.dogName,
-      'gender': instance.gender,
-      'dateOfBirth': instance.dateOfBirth,
-      'description': instance.description,
-      'vaccination': instance.vaccination,
-      'image': instance.image,
-      'isOpenAdopt': instance.isOpenAdopt,
-      'provinceName': instance.provinceName,
+      'errorCode': instance.errorCode,
+      'errorMessage': instance.errorMessage,
     };
 
 _$EditDogResponseImpl _$$EditDogResponseImplFromJson(
         Map<String, dynamic> json) =>
     _$EditDogResponseImpl(
-      dogId: json['dogId'] as String?,
-      breedName: json['breedName'] as String?,
-      dogName: json['dogName'] as String?,
-      gender: json['gender'] as String?,
-      dateOfBirth: json['dateOfBirth'] as String?,
-      description: json['description'] as String?,
-      vaccination: json['vaccination'] as String?,
-      image: json['image'] as String?,
-      isOpenAdopt: json['isOpenAdopt'] as String?,
-      provinceName: json['provinceName'] as String?,
       errorCode: json['errorCode'] as String?,
       errorMessage: json['errorMessage'] as String?,
     );
@@ -109,16 +83,6 @@ _$EditDogResponseImpl _$$EditDogResponseImplFromJson(
 Map<String, dynamic> _$$EditDogResponseImplToJson(
         _$EditDogResponseImpl instance) =>
     <String, dynamic>{
-      'dogId': instance.dogId,
-      'breedName': instance.breedName,
-      'dogName': instance.dogName,
-      'gender': instance.gender,
-      'dateOfBirth': instance.dateOfBirth,
-      'description': instance.description,
-      'vaccination': instance.vaccination,
-      'image': instance.image,
-      'isOpenAdopt': instance.isOpenAdopt,
-      'provinceName': instance.provinceName,
       'errorCode': instance.errorCode,
       'errorMessage': instance.errorMessage,
     };

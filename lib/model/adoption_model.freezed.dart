@@ -25,8 +25,8 @@ mixin _$AdoptionDetail {
   String? get dogName => throw _privateConstructorUsedError;
   String? get gender => throw _privateConstructorUsedError;
   String? get age => throw _privateConstructorUsedError;
-  String? get image => throw _privateConstructorUsedError;
-  String? get provinceName => throw _privateConstructorUsedError;
+  String? get image =>
+      throw _privateConstructorUsedError; // required String? provinceName,
   String? get errorCode => throw _privateConstructorUsedError;
   String? get errorMessage => throw _privateConstructorUsedError;
 
@@ -49,7 +49,6 @@ abstract class $AdoptionDetailCopyWith<$Res> {
       String? gender,
       String? age,
       String? image,
-      String? provinceName,
       String? errorCode,
       String? errorMessage});
 }
@@ -73,7 +72,6 @@ class _$AdoptionDetailCopyWithImpl<$Res, $Val extends AdoptionDetail>
     Object? gender = freezed,
     Object? age = freezed,
     Object? image = freezed,
-    Object? provinceName = freezed,
     Object? errorCode = freezed,
     Object? errorMessage = freezed,
   }) {
@@ -102,10 +100,6 @@ class _$AdoptionDetailCopyWithImpl<$Res, $Val extends AdoptionDetail>
           ? _value.image
           : image // ignore: cast_nullable_to_non_nullable
               as String?,
-      provinceName: freezed == provinceName
-          ? _value.provinceName
-          : provinceName // ignore: cast_nullable_to_non_nullable
-              as String?,
       errorCode: freezed == errorCode
           ? _value.errorCode
           : errorCode // ignore: cast_nullable_to_non_nullable
@@ -133,7 +127,6 @@ abstract class _$$AdoptionDetailImplCopyWith<$Res>
       String? gender,
       String? age,
       String? image,
-      String? provinceName,
       String? errorCode,
       String? errorMessage});
 }
@@ -155,7 +148,6 @@ class __$$AdoptionDetailImplCopyWithImpl<$Res>
     Object? gender = freezed,
     Object? age = freezed,
     Object? image = freezed,
-    Object? provinceName = freezed,
     Object? errorCode = freezed,
     Object? errorMessage = freezed,
   }) {
@@ -184,10 +176,6 @@ class __$$AdoptionDetailImplCopyWithImpl<$Res>
           ? _value.image
           : image // ignore: cast_nullable_to_non_nullable
               as String?,
-      provinceName: freezed == provinceName
-          ? _value.provinceName
-          : provinceName // ignore: cast_nullable_to_non_nullable
-              as String?,
       errorCode: freezed == errorCode
           ? _value.errorCode
           : errorCode // ignore: cast_nullable_to_non_nullable
@@ -210,7 +198,6 @@ class _$AdoptionDetailImpl implements _AdoptionDetail {
       required this.gender,
       required this.age,
       required this.image,
-      required this.provinceName,
       required this.errorCode,
       required this.errorMessage});
 
@@ -229,8 +216,7 @@ class _$AdoptionDetailImpl implements _AdoptionDetail {
   final String? age;
   @override
   final String? image;
-  @override
-  final String? provinceName;
+// required String? provinceName,
   @override
   final String? errorCode;
   @override
@@ -238,7 +224,7 @@ class _$AdoptionDetailImpl implements _AdoptionDetail {
 
   @override
   String toString() {
-    return 'AdoptionDetail(dogId: $dogId, breedName: $breedName, dogName: $dogName, gender: $gender, age: $age, image: $image, provinceName: $provinceName, errorCode: $errorCode, errorMessage: $errorMessage)';
+    return 'AdoptionDetail(dogId: $dogId, breedName: $breedName, dogName: $dogName, gender: $gender, age: $age, image: $image, errorCode: $errorCode, errorMessage: $errorMessage)';
   }
 
   @override
@@ -253,8 +239,6 @@ class _$AdoptionDetailImpl implements _AdoptionDetail {
             (identical(other.gender, gender) || other.gender == gender) &&
             (identical(other.age, age) || other.age == age) &&
             (identical(other.image, image) || other.image == image) &&
-            (identical(other.provinceName, provinceName) ||
-                other.provinceName == provinceName) &&
             (identical(other.errorCode, errorCode) ||
                 other.errorCode == errorCode) &&
             (identical(other.errorMessage, errorMessage) ||
@@ -264,7 +248,7 @@ class _$AdoptionDetailImpl implements _AdoptionDetail {
   @JsonKey(ignore: true)
   @override
   int get hashCode => Object.hash(runtimeType, dogId, breedName, dogName,
-      gender, age, image, provinceName, errorCode, errorMessage);
+      gender, age, image, errorCode, errorMessage);
 
   @JsonKey(ignore: true)
   @override
@@ -289,7 +273,6 @@ abstract class _AdoptionDetail implements AdoptionDetail {
       required final String? gender,
       required final String? age,
       required final String? image,
-      required final String? provinceName,
       required final String? errorCode,
       required final String? errorMessage}) = _$AdoptionDetailImpl;
 
@@ -308,9 +291,7 @@ abstract class _AdoptionDetail implements AdoptionDetail {
   String? get age;
   @override
   String? get image;
-  @override
-  String? get provinceName;
-  @override
+  @override // required String? provinceName,
   String? get errorCode;
   @override
   String? get errorMessage;
@@ -872,10 +853,10 @@ OwnerData _$OwnerDataFromJson(Map<String, dynamic> json) {
 mixin _$OwnerData {
   String? get accountId => throw _privateConstructorUsedError;
   String? get username => throw _privateConstructorUsedError;
-  String? get fullName => throw _privateConstructorUsedError;
-  String? get email => throw _privateConstructorUsedError;
-  String? get phoneNumber => throw _privateConstructorUsedError;
-  String? get description => throw _privateConstructorUsedError;
+  String? get fullName =>
+      throw _privateConstructorUsedError; // required String? email,
+  String? get phoneNumber =>
+      throw _privateConstructorUsedError; // required String? description,
   String? get image => throw _privateConstructorUsedError;
   String? get provinceName => throw _privateConstructorUsedError;
 
@@ -894,9 +875,7 @@ abstract class $OwnerDataCopyWith<$Res> {
       {String? accountId,
       String? username,
       String? fullName,
-      String? email,
       String? phoneNumber,
-      String? description,
       String? image,
       String? provinceName});
 }
@@ -917,9 +896,7 @@ class _$OwnerDataCopyWithImpl<$Res, $Val extends OwnerData>
     Object? accountId = freezed,
     Object? username = freezed,
     Object? fullName = freezed,
-    Object? email = freezed,
     Object? phoneNumber = freezed,
-    Object? description = freezed,
     Object? image = freezed,
     Object? provinceName = freezed,
   }) {
@@ -936,17 +913,9 @@ class _$OwnerDataCopyWithImpl<$Res, $Val extends OwnerData>
           ? _value.fullName
           : fullName // ignore: cast_nullable_to_non_nullable
               as String?,
-      email: freezed == email
-          ? _value.email
-          : email // ignore: cast_nullable_to_non_nullable
-              as String?,
       phoneNumber: freezed == phoneNumber
           ? _value.phoneNumber
           : phoneNumber // ignore: cast_nullable_to_non_nullable
-              as String?,
-      description: freezed == description
-          ? _value.description
-          : description // ignore: cast_nullable_to_non_nullable
               as String?,
       image: freezed == image
           ? _value.image
@@ -972,9 +941,7 @@ abstract class _$$OwnerDataImplCopyWith<$Res>
       {String? accountId,
       String? username,
       String? fullName,
-      String? email,
       String? phoneNumber,
-      String? description,
       String? image,
       String? provinceName});
 }
@@ -993,9 +960,7 @@ class __$$OwnerDataImplCopyWithImpl<$Res>
     Object? accountId = freezed,
     Object? username = freezed,
     Object? fullName = freezed,
-    Object? email = freezed,
     Object? phoneNumber = freezed,
-    Object? description = freezed,
     Object? image = freezed,
     Object? provinceName = freezed,
   }) {
@@ -1012,17 +977,9 @@ class __$$OwnerDataImplCopyWithImpl<$Res>
           ? _value.fullName
           : fullName // ignore: cast_nullable_to_non_nullable
               as String?,
-      email: freezed == email
-          ? _value.email
-          : email // ignore: cast_nullable_to_non_nullable
-              as String?,
       phoneNumber: freezed == phoneNumber
           ? _value.phoneNumber
           : phoneNumber // ignore: cast_nullable_to_non_nullable
-              as String?,
-      description: freezed == description
-          ? _value.description
-          : description // ignore: cast_nullable_to_non_nullable
               as String?,
       image: freezed == image
           ? _value.image
@@ -1043,9 +1000,7 @@ class _$OwnerDataImpl implements _OwnerData {
       {required this.accountId,
       required this.username,
       required this.fullName,
-      required this.email,
       required this.phoneNumber,
-      required this.description,
       required this.image,
       required this.provinceName});
 
@@ -1058,12 +1013,10 @@ class _$OwnerDataImpl implements _OwnerData {
   final String? username;
   @override
   final String? fullName;
-  @override
-  final String? email;
+// required String? email,
   @override
   final String? phoneNumber;
-  @override
-  final String? description;
+// required String? description,
   @override
   final String? image;
   @override
@@ -1071,7 +1024,7 @@ class _$OwnerDataImpl implements _OwnerData {
 
   @override
   String toString() {
-    return 'OwnerData(accountId: $accountId, username: $username, fullName: $fullName, email: $email, phoneNumber: $phoneNumber, description: $description, image: $image, provinceName: $provinceName)';
+    return 'OwnerData(accountId: $accountId, username: $username, fullName: $fullName, phoneNumber: $phoneNumber, image: $image, provinceName: $provinceName)';
   }
 
   @override
@@ -1085,11 +1038,8 @@ class _$OwnerDataImpl implements _OwnerData {
                 other.username == username) &&
             (identical(other.fullName, fullName) ||
                 other.fullName == fullName) &&
-            (identical(other.email, email) || other.email == email) &&
             (identical(other.phoneNumber, phoneNumber) ||
                 other.phoneNumber == phoneNumber) &&
-            (identical(other.description, description) ||
-                other.description == description) &&
             (identical(other.image, image) || other.image == image) &&
             (identical(other.provinceName, provinceName) ||
                 other.provinceName == provinceName));
@@ -1098,7 +1048,7 @@ class _$OwnerDataImpl implements _OwnerData {
   @JsonKey(ignore: true)
   @override
   int get hashCode => Object.hash(runtimeType, accountId, username, fullName,
-      email, phoneNumber, description, image, provinceName);
+      phoneNumber, image, provinceName);
 
   @JsonKey(ignore: true)
   @override
@@ -1119,9 +1069,7 @@ abstract class _OwnerData implements OwnerData {
       {required final String? accountId,
       required final String? username,
       required final String? fullName,
-      required final String? email,
       required final String? phoneNumber,
-      required final String? description,
       required final String? image,
       required final String? provinceName}) = _$OwnerDataImpl;
 
@@ -1134,13 +1082,9 @@ abstract class _OwnerData implements OwnerData {
   String? get username;
   @override
   String? get fullName;
-  @override
-  String? get email;
-  @override
+  @override // required String? email,
   String? get phoneNumber;
-  @override
-  String? get description;
-  @override
+  @override // required String? description,
   String? get image;
   @override
   String? get provinceName;
