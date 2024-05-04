@@ -21,13 +21,13 @@ RetrieveChatlistResponse _$RetrieveChatlistResponseFromJson(
 
 /// @nodoc
 mixin _$RetrieveChatlistResponse {
-  String? get rowId => throw _privateConstructorUsedError;
-  String? get chatroomId => throw _privateConstructorUsedError;
-  String? get senderId => throw _privateConstructorUsedError;
+// required String? rowId,
+  String? get chatroomId =>
+      throw _privateConstructorUsedError; // required String? senderId,
   String? get recipientId => throw _privateConstructorUsedError;
   String? get recipientUsername => throw _privateConstructorUsedError;
-  String? get lastMessageTimestamp => throw _privateConstructorUsedError;
-  String? get deletedAt => throw _privateConstructorUsedError;
+  String? get lastMessageTimestamp =>
+      throw _privateConstructorUsedError; // required String? deletedAt,
   String? get lastMessage => throw _privateConstructorUsedError;
   String? get isRead => throw _privateConstructorUsedError;
   String? get errorCode => throw _privateConstructorUsedError;
@@ -46,13 +46,10 @@ abstract class $RetrieveChatlistResponseCopyWith<$Res> {
       _$RetrieveChatlistResponseCopyWithImpl<$Res, RetrieveChatlistResponse>;
   @useResult
   $Res call(
-      {String? rowId,
-      String? chatroomId,
-      String? senderId,
+      {String? chatroomId,
       String? recipientId,
       String? recipientUsername,
       String? lastMessageTimestamp,
-      String? deletedAt,
       String? lastMessage,
       String? isRead,
       String? errorCode,
@@ -73,30 +70,19 @@ class _$RetrieveChatlistResponseCopyWithImpl<$Res,
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? rowId = freezed,
     Object? chatroomId = freezed,
-    Object? senderId = freezed,
     Object? recipientId = freezed,
     Object? recipientUsername = freezed,
     Object? lastMessageTimestamp = freezed,
-    Object? deletedAt = freezed,
     Object? lastMessage = freezed,
     Object? isRead = freezed,
     Object? errorCode = freezed,
     Object? errorMessage = freezed,
   }) {
     return _then(_value.copyWith(
-      rowId: freezed == rowId
-          ? _value.rowId
-          : rowId // ignore: cast_nullable_to_non_nullable
-              as String?,
       chatroomId: freezed == chatroomId
           ? _value.chatroomId
           : chatroomId // ignore: cast_nullable_to_non_nullable
-              as String?,
-      senderId: freezed == senderId
-          ? _value.senderId
-          : senderId // ignore: cast_nullable_to_non_nullable
               as String?,
       recipientId: freezed == recipientId
           ? _value.recipientId
@@ -109,10 +95,6 @@ class _$RetrieveChatlistResponseCopyWithImpl<$Res,
       lastMessageTimestamp: freezed == lastMessageTimestamp
           ? _value.lastMessageTimestamp
           : lastMessageTimestamp // ignore: cast_nullable_to_non_nullable
-              as String?,
-      deletedAt: freezed == deletedAt
-          ? _value.deletedAt
-          : deletedAt // ignore: cast_nullable_to_non_nullable
               as String?,
       lastMessage: freezed == lastMessage
           ? _value.lastMessage
@@ -144,13 +126,10 @@ abstract class _$$RetrieveChatlistResponseImplCopyWith<$Res>
   @override
   @useResult
   $Res call(
-      {String? rowId,
-      String? chatroomId,
-      String? senderId,
+      {String? chatroomId,
       String? recipientId,
       String? recipientUsername,
       String? lastMessageTimestamp,
-      String? deletedAt,
       String? lastMessage,
       String? isRead,
       String? errorCode,
@@ -170,30 +149,19 @@ class __$$RetrieveChatlistResponseImplCopyWithImpl<$Res>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? rowId = freezed,
     Object? chatroomId = freezed,
-    Object? senderId = freezed,
     Object? recipientId = freezed,
     Object? recipientUsername = freezed,
     Object? lastMessageTimestamp = freezed,
-    Object? deletedAt = freezed,
     Object? lastMessage = freezed,
     Object? isRead = freezed,
     Object? errorCode = freezed,
     Object? errorMessage = freezed,
   }) {
     return _then(_$RetrieveChatlistResponseImpl(
-      rowId: freezed == rowId
-          ? _value.rowId
-          : rowId // ignore: cast_nullable_to_non_nullable
-              as String?,
       chatroomId: freezed == chatroomId
           ? _value.chatroomId
           : chatroomId // ignore: cast_nullable_to_non_nullable
-              as String?,
-      senderId: freezed == senderId
-          ? _value.senderId
-          : senderId // ignore: cast_nullable_to_non_nullable
               as String?,
       recipientId: freezed == recipientId
           ? _value.recipientId
@@ -206,10 +174,6 @@ class __$$RetrieveChatlistResponseImplCopyWithImpl<$Res>
       lastMessageTimestamp: freezed == lastMessageTimestamp
           ? _value.lastMessageTimestamp
           : lastMessageTimestamp // ignore: cast_nullable_to_non_nullable
-              as String?,
-      deletedAt: freezed == deletedAt
-          ? _value.deletedAt
-          : deletedAt // ignore: cast_nullable_to_non_nullable
               as String?,
       lastMessage: freezed == lastMessage
           ? _value.lastMessage
@@ -235,13 +199,10 @@ class __$$RetrieveChatlistResponseImplCopyWithImpl<$Res>
 @JsonSerializable()
 class _$RetrieveChatlistResponseImpl implements _RetrieveChatlistResponse {
   _$RetrieveChatlistResponseImpl(
-      {required this.rowId,
-      required this.chatroomId,
-      required this.senderId,
+      {required this.chatroomId,
       required this.recipientId,
       required this.recipientUsername,
       required this.lastMessageTimestamp,
-      required this.deletedAt,
       required this.lastMessage,
       required this.isRead,
       required this.errorCode,
@@ -250,20 +211,17 @@ class _$RetrieveChatlistResponseImpl implements _RetrieveChatlistResponse {
   factory _$RetrieveChatlistResponseImpl.fromJson(Map<String, dynamic> json) =>
       _$$RetrieveChatlistResponseImplFromJson(json);
 
-  @override
-  final String? rowId;
+// required String? rowId,
   @override
   final String? chatroomId;
-  @override
-  final String? senderId;
+// required String? senderId,
   @override
   final String? recipientId;
   @override
   final String? recipientUsername;
   @override
   final String? lastMessageTimestamp;
-  @override
-  final String? deletedAt;
+// required String? deletedAt,
   @override
   final String? lastMessage;
   @override
@@ -275,7 +233,7 @@ class _$RetrieveChatlistResponseImpl implements _RetrieveChatlistResponse {
 
   @override
   String toString() {
-    return 'RetrieveChatlistResponse(rowId: $rowId, chatroomId: $chatroomId, senderId: $senderId, recipientId: $recipientId, recipientUsername: $recipientUsername, lastMessageTimestamp: $lastMessageTimestamp, deletedAt: $deletedAt, lastMessage: $lastMessage, isRead: $isRead, errorCode: $errorCode, errorMessage: $errorMessage)';
+    return 'RetrieveChatlistResponse(chatroomId: $chatroomId, recipientId: $recipientId, recipientUsername: $recipientUsername, lastMessageTimestamp: $lastMessageTimestamp, lastMessage: $lastMessage, isRead: $isRead, errorCode: $errorCode, errorMessage: $errorMessage)';
   }
 
   @override
@@ -283,19 +241,14 @@ class _$RetrieveChatlistResponseImpl implements _RetrieveChatlistResponse {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$RetrieveChatlistResponseImpl &&
-            (identical(other.rowId, rowId) || other.rowId == rowId) &&
             (identical(other.chatroomId, chatroomId) ||
                 other.chatroomId == chatroomId) &&
-            (identical(other.senderId, senderId) ||
-                other.senderId == senderId) &&
             (identical(other.recipientId, recipientId) ||
                 other.recipientId == recipientId) &&
             (identical(other.recipientUsername, recipientUsername) ||
                 other.recipientUsername == recipientUsername) &&
             (identical(other.lastMessageTimestamp, lastMessageTimestamp) ||
                 other.lastMessageTimestamp == lastMessageTimestamp) &&
-            (identical(other.deletedAt, deletedAt) ||
-                other.deletedAt == deletedAt) &&
             (identical(other.lastMessage, lastMessage) ||
                 other.lastMessage == lastMessage) &&
             (identical(other.isRead, isRead) || other.isRead == isRead) &&
@@ -309,13 +262,10 @@ class _$RetrieveChatlistResponseImpl implements _RetrieveChatlistResponse {
   @override
   int get hashCode => Object.hash(
       runtimeType,
-      rowId,
       chatroomId,
-      senderId,
       recipientId,
       recipientUsername,
       lastMessageTimestamp,
-      deletedAt,
       lastMessage,
       isRead,
       errorCode,
@@ -338,13 +288,10 @@ class _$RetrieveChatlistResponseImpl implements _RetrieveChatlistResponse {
 
 abstract class _RetrieveChatlistResponse implements RetrieveChatlistResponse {
   factory _RetrieveChatlistResponse(
-      {required final String? rowId,
-      required final String? chatroomId,
-      required final String? senderId,
+      {required final String? chatroomId,
       required final String? recipientId,
       required final String? recipientUsername,
       required final String? lastMessageTimestamp,
-      required final String? deletedAt,
       required final String? lastMessage,
       required final String? isRead,
       required final String? errorCode,
@@ -353,21 +300,15 @@ abstract class _RetrieveChatlistResponse implements RetrieveChatlistResponse {
   factory _RetrieveChatlistResponse.fromJson(Map<String, dynamic> json) =
       _$RetrieveChatlistResponseImpl.fromJson;
 
-  @override
-  String? get rowId;
-  @override
+  @override // required String? rowId,
   String? get chatroomId;
-  @override
-  String? get senderId;
-  @override
+  @override // required String? senderId,
   String? get recipientId;
   @override
   String? get recipientUsername;
   @override
   String? get lastMessageTimestamp;
-  @override
-  String? get deletedAt;
-  @override
+  @override // required String? deletedAt,
   String? get lastMessage;
   @override
   String? get isRead;
@@ -388,8 +329,8 @@ SearchChatResponse _$SearchChatResponseFromJson(Map<String, dynamic> json) {
 /// @nodoc
 mixin _$SearchChatResponse {
   String? get accountId => throw _privateConstructorUsedError;
-  String? get username => throw _privateConstructorUsedError;
-  String? get fullName => throw _privateConstructorUsedError;
+  String? get username =>
+      throw _privateConstructorUsedError; // required String? fullName,
   String? get errorCode => throw _privateConstructorUsedError;
   String? get errorMessage => throw _privateConstructorUsedError;
 
@@ -408,7 +349,6 @@ abstract class $SearchChatResponseCopyWith<$Res> {
   $Res call(
       {String? accountId,
       String? username,
-      String? fullName,
       String? errorCode,
       String? errorMessage});
 }
@@ -428,7 +368,6 @@ class _$SearchChatResponseCopyWithImpl<$Res, $Val extends SearchChatResponse>
   $Res call({
     Object? accountId = freezed,
     Object? username = freezed,
-    Object? fullName = freezed,
     Object? errorCode = freezed,
     Object? errorMessage = freezed,
   }) {
@@ -440,10 +379,6 @@ class _$SearchChatResponseCopyWithImpl<$Res, $Val extends SearchChatResponse>
       username: freezed == username
           ? _value.username
           : username // ignore: cast_nullable_to_non_nullable
-              as String?,
-      fullName: freezed == fullName
-          ? _value.fullName
-          : fullName // ignore: cast_nullable_to_non_nullable
               as String?,
       errorCode: freezed == errorCode
           ? _value.errorCode
@@ -468,7 +403,6 @@ abstract class _$$SearchChatResponseImplCopyWith<$Res>
   $Res call(
       {String? accountId,
       String? username,
-      String? fullName,
       String? errorCode,
       String? errorMessage});
 }
@@ -486,7 +420,6 @@ class __$$SearchChatResponseImplCopyWithImpl<$Res>
   $Res call({
     Object? accountId = freezed,
     Object? username = freezed,
-    Object? fullName = freezed,
     Object? errorCode = freezed,
     Object? errorMessage = freezed,
   }) {
@@ -498,10 +431,6 @@ class __$$SearchChatResponseImplCopyWithImpl<$Res>
       username: freezed == username
           ? _value.username
           : username // ignore: cast_nullable_to_non_nullable
-              as String?,
-      fullName: freezed == fullName
-          ? _value.fullName
-          : fullName // ignore: cast_nullable_to_non_nullable
               as String?,
       errorCode: freezed == errorCode
           ? _value.errorCode
@@ -521,7 +450,6 @@ class _$SearchChatResponseImpl implements _SearchChatResponse {
   _$SearchChatResponseImpl(
       {required this.accountId,
       required this.username,
-      required this.fullName,
       required this.errorCode,
       required this.errorMessage});
 
@@ -532,8 +460,7 @@ class _$SearchChatResponseImpl implements _SearchChatResponse {
   final String? accountId;
   @override
   final String? username;
-  @override
-  final String? fullName;
+// required String? fullName,
   @override
   final String? errorCode;
   @override
@@ -541,7 +468,7 @@ class _$SearchChatResponseImpl implements _SearchChatResponse {
 
   @override
   String toString() {
-    return 'SearchChatResponse(accountId: $accountId, username: $username, fullName: $fullName, errorCode: $errorCode, errorMessage: $errorMessage)';
+    return 'SearchChatResponse(accountId: $accountId, username: $username, errorCode: $errorCode, errorMessage: $errorMessage)';
   }
 
   @override
@@ -553,8 +480,6 @@ class _$SearchChatResponseImpl implements _SearchChatResponse {
                 other.accountId == accountId) &&
             (identical(other.username, username) ||
                 other.username == username) &&
-            (identical(other.fullName, fullName) ||
-                other.fullName == fullName) &&
             (identical(other.errorCode, errorCode) ||
                 other.errorCode == errorCode) &&
             (identical(other.errorMessage, errorMessage) ||
@@ -563,8 +488,8 @@ class _$SearchChatResponseImpl implements _SearchChatResponse {
 
   @JsonKey(ignore: true)
   @override
-  int get hashCode => Object.hash(
-      runtimeType, accountId, username, fullName, errorCode, errorMessage);
+  int get hashCode =>
+      Object.hash(runtimeType, accountId, username, errorCode, errorMessage);
 
   @JsonKey(ignore: true)
   @override
@@ -585,7 +510,6 @@ abstract class _SearchChatResponse implements SearchChatResponse {
   factory _SearchChatResponse(
       {required final String? accountId,
       required final String? username,
-      required final String? fullName,
       required final String? errorCode,
       required final String? errorMessage}) = _$SearchChatResponseImpl;
 
@@ -596,9 +520,7 @@ abstract class _SearchChatResponse implements SearchChatResponse {
   String? get accountId;
   @override
   String? get username;
-  @override
-  String? get fullName;
-  @override
+  @override // required String? fullName,
   String? get errorCode;
   @override
   String? get errorMessage;

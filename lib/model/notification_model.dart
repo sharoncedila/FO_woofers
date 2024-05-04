@@ -6,11 +6,11 @@ part 'notification_model.g.dart';
 class ViewNotificationResponse with _$ViewNotificationResponse{
   factory ViewNotificationResponse({
     required String? notificationId,
-    required String? accountId,
+    // required String? accountId,
     required String? notifMessage,
     required String? sendDate,
     required String? status,
-    required String? dogId,
+    // required String? dogId,
     required String? dogName,
     required String? requesterId,
     required String? errorCode,

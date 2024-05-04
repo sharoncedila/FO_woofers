@@ -14,7 +14,6 @@ _$AdoptionDetailImpl _$$AdoptionDetailImplFromJson(Map<String, dynamic> json) =>
       gender: json['gender'] as String?,
       age: json['age'] as String?,
       image: json['image'] as String?,
-      provinceName: json['provinceName'] as String?,
       errorCode: json['errorCode'] as String?,
       errorMessage: json['errorMessage'] as String?,
     );
@@ -28,7 +27,6 @@ Map<String, dynamic> _$$AdoptionDetailImplToJson(
       'gender': instance.gender,
       'age': instance.age,
       'image': instance.image,
-      'provinceName': instance.provinceName,
       'errorCode': instance.errorCode,
       'errorMessage': instance.errorMessage,
     };
@@ -86,9 +84,7 @@ _$OwnerDataImpl _$$OwnerDataImplFromJson(Map<String, dynamic> json) =>
       accountId: json['accountId'] as String?,
       username: json['username'] as String?,
       fullName: json['fullName'] as String?,
-      email: json['email'] as String?,
       phoneNumber: json['phoneNumber'] as String?,
-      description: json['description'] as String?,
       image: json['image'] as String?,
       provinceName: json['provinceName'] as String?,
     );
@@ -98,9 +94,7 @@ Map<String, dynamic> _$$OwnerDataImplToJson(_$OwnerDataImpl instance) =>
       'accountId': instance.accountId,
       'username': instance.username,
       'fullName': instance.fullName,
-      'email': instance.email,
       'phoneNumber': instance.phoneNumber,
-      'description': instance.description,
       'image': instance.image,
       'provinceName': instance.provinceName,
     };
