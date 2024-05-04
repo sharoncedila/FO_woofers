@@ -20,7 +20,8 @@ class BubbleChatCardDetail extends StatelessWidget {
     return SingleChildScrollView(
       child: Padding(
         padding: const EdgeInsets.symmetric(horizontal: 5, vertical: 5),
-        child: Card(
+        // child: Card(
+        //   color: Colors.white,
           child: Column(
             children: [
               // const SizedBox(height: 20),
@@ -51,7 +52,7 @@ class BubbleChatCardDetail extends StatelessWidget {
               // ),
             ],
           ),
-        ),
+        //),
       ),
     );
   }

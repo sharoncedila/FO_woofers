@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:woofers/model/chatlist_model.dart';
 import 'package:woofers/model/chatroom_model.dart';
 import 'package:woofers/pages/chatroom_page.dart';
@@ -29,6 +30,7 @@ class ChatCardDetail extends StatelessWidget {
               MaterialPageRoute(builder: (context) => ChatroomPageDetail(accountId: chatlistDetail.recipientId!)),
             );*/
             String accountId = chatlistDetail.recipientId!;
+            //String read = chatlistDetail.isRead!;
             final OpenChatRequest req = OpenChatRequest(recipientId: accountId);
             _openChatService.openChatroom(req).then((value) =>
                 Navigator.of(context).push(MaterialPageRoute(
@@ -40,49 +42,61 @@ class ChatCardDetail extends StatelessWidget {
               children: [
                 const SizedBox(height: 10, width: 20),
                 Row(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: [
-                    Padding(
-                      padding: const EdgeInsets.only(left: 20.0, top: 3, bottom: 2),
-                      child: Text(
-                      chatlistDetail.recipientUsername!,
-                      style: const TextStyle(
-                        color: Color.fromRGBO(40, 36, 36, 10000),
-                        fontSize: 16,
-                        fontWeight: FontWeight.bold,
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      Padding(
+                        padding: const EdgeInsets.only(
+                            left: 20.0, top: 3, bottom: 2),
+                        child: Text(
+                          chatlistDetail.recipientUsername!,
+                          style: GoogleFonts.lora(
+                            color: const Color.fromRGBO(40, 36, 36, 10000),
+                            fontSize: 17,
+                            fontWeight: FontWeight.bold,
+                          ),
+                          textAlign: TextAlign.left,
+                        ),
                       ),
-                      textAlign: TextAlign.left,
-                                        ),
-                    ),]
-                ),
+                    ]),
                 // last message
                 Padding(
-                  padding:
-                      const EdgeInsets.only(left: 20.0, top: 3, bottom: 2),
+                  padding: const EdgeInsets.only(left: 20.0, top: 2, bottom: 2),
                   child: Row(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
-                      const SizedBox(width: 10),
+                      const SizedBox(width: 15),
                       Expanded(
-                        child: 
-                        (chatlistDetail.recipientUsername! == "false")
-                        ? Text(
-                          chatlistDetail.lastMessage ?? "",
-                          style: const TextStyle(
-                              fontSize: 12, color: Colors.black, fontWeight: FontWeight.bold),
-                          overflow: TextOverflow.ellipsis,
-                          //maxLines: 2,
-                        )
-                        : Text(
-                          chatlistDetail.lastMessage ?? "",
-                          style: const TextStyle(
-                              fontSize: 12, color: Colors.black,),
-                          overflow: TextOverflow.ellipsis,
-                      ),
+                        child: (chatlistDetail.isRead! == "false")
+                            ? Text(
+                                chatlistDetail.lastMessage ?? "",
+                                style: GoogleFonts.lora(
+                                    fontSize: 13,
+                                    color: Colors.black,
+                                    fontWeight: FontWeight.bold),
+                                overflow: TextOverflow.ellipsis,
+                                //maxLines: 2,
+                              )
+                            : Text(
+                                chatlistDetail.lastMessage ?? "",
+                                style: GoogleFonts.lora(
+                                  fontSize: 13,
+                                  color: Colors.black,
+                                ),
+                                overflow: TextOverflow.ellipsis,
+                              ),
                       ),
                       const SizedBox(width: 10),
+                      Text(
+                        //timestamp masih aneh datanya
+                        chatlistDetail.lastMessageTimestamp!,
+                        style: GoogleFonts.lora(
+                          fontSize: 12,
+                          color: const Color.fromRGBO(40, 36, 36, 10000),
+                        ),
+                      ),
+                      const SizedBox(width: 15),
                     ],
                   ),
                 ),
