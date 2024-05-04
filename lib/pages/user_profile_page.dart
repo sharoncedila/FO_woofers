@@ -1,6 +1,8 @@
 import 'dart:io';
 
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/widgets.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:woofers/components/image_network.dart';
 import 'package:woofers/model/user_profile_model.dart';
@@ -117,6 +119,7 @@ class _UserProfilePageState extends State<UserProfilePage> {
                                   ),
                                   SizedBox(
                                     height: 25,
+                                    width: 325,
                                     child: TextFormField(
                                       readOnly: true,
                                       enabled: false,
@@ -167,6 +170,7 @@ class _UserProfilePageState extends State<UserProfilePage> {
                                   ),
                                   SizedBox(
                                     height: 25,
+                                    width: 325,
                                     child: TextFormField(
                                       readOnly: true,
                                       enabled: false,
@@ -221,6 +225,7 @@ class _UserProfilePageState extends State<UserProfilePage> {
                                   ),
                                   SizedBox(
                                     height: 25,
+                                    width: 325,
                                     child: TextFormField(
                                       readOnly: true,
                                       enabled: false,
@@ -272,7 +277,8 @@ class _UserProfilePageState extends State<UserProfilePage> {
                                     ),
                                   ),
                                   SizedBox(
-                                    height: 25,
+                                    // height: 25,
+                                    width: 325,
                                     child: TextFormField(
                                       readOnly: true,
                                       enabled: false,
@@ -327,6 +333,7 @@ class _UserProfilePageState extends State<UserProfilePage> {
                                   ),
                                   SizedBox(
                                     height: 25,
+                                    width: 325,
                                     child: TextFormField(
                                       readOnly: true,
                                       enabled: false,
@@ -379,21 +386,25 @@ class _UserProfilePageState extends State<UserProfilePage> {
                                       color: Colors.black.withOpacity(0.5),
                                     ),
                                   ),
-                                  SizedBox(
-                                    height: 25,
+                                  Container(
+                                    height: 50,
+                                    width: 325,
                                     child: TextFormField(
+                                      maxLines: 2,
+                                      minLines: null,
                                       readOnly: true,
                                       enabled: false,
                                       decoration: InputDecoration(
                                         border: const UnderlineInputBorder(),
                                         // labelText: 'Username',
-                                        labelText:
+                                        hintText:
                                             snapshot.data?.description == null
                                                 ? ""
                                                 : snapshot.data!.description,
-                                        labelStyle: GoogleFonts.newsCycle(
+                                        hintStyle: GoogleFonts.newsCycle(
                                           color: Colors.black,
                                         ),
+                                        // hintMaxLines: 10,
                                       ),
                                     ),
                                   ),

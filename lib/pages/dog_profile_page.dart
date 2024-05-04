@@ -146,6 +146,7 @@ class DogProfilePage extends StatelessWidget {
                             ),
                             SizedBox(
                               height: 25,
+                              width: 325,
                               child: TextFormField(
                                 readOnly: true,
                                 enabled: false,
@@ -198,6 +199,7 @@ class DogProfilePage extends StatelessWidget {
                             ),
                             SizedBox(
                               height: 25,
+                              width: 325,
                               child: TextFormField(
                                 readOnly: true,
                                 enabled: false,
@@ -250,6 +252,7 @@ class DogProfilePage extends StatelessWidget {
                             ),
                             SizedBox(
                               height: 25,
+                              width: 325,
                               child: TextFormField(
                                 readOnly: true,
                                 enabled: false,
@@ -302,6 +305,7 @@ class DogProfilePage extends StatelessWidget {
                             ),
                             SizedBox(
                               height: 25,
+                              width: 325,
                               child: TextFormField(
                                 readOnly: true,
                                 enabled: false,
@@ -356,6 +360,7 @@ class DogProfilePage extends StatelessWidget {
                             ),
                             SizedBox(
                               height: 25,
+                              width: 325,
                               child: TextFormField(
                                 readOnly: true,
                                 enabled: false,
@@ -408,8 +413,10 @@ class DogProfilePage extends StatelessWidget {
                               ),
                             ),
                             SizedBox(
-                              height: 25,
+                              height: 50,
+                              width: 325,
                               child: TextFormField(
+                                maxLines: 2,
                                 readOnly: true,
                                 enabled: false,
                                 decoration: InputDecoration(
@@ -460,8 +467,10 @@ class DogProfilePage extends StatelessWidget {
                               ),
                             ),
                             SizedBox(
-                              height: 25,
+                              height: 50,
+                              width: 325,
                               child: TextFormField(
+                                maxLines: 2,
                                 readOnly: true,
                                 enabled: false,
                                 decoration: InputDecoration(
