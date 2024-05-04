@@ -101,11 +101,6 @@ class _ChatListPageState extends State<ChatListPage> {
                       decoration: const InputDecoration(
                           border: InputBorder.none,
                           hintText: "Search for others"),
-                          
-                      // onChanged: (value) {
-                      //   _searchChat(
-                      //       value); // Call searchChat function on text change
-                      // },
                     ),
                   ),
                   ElevatedButton(
@@ -125,7 +120,6 @@ class _ChatListPageState extends State<ChatListPage> {
                       child: const Icon(Icons.search, color: Colors.black),
                       onPressed: () async {
                         String wordSearch = _searchController.text;
-                        //print("word search list page: ${wordSearch}");
                         Navigator.push(
                           context,
                           MaterialPageRoute(

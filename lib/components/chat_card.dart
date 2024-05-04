@@ -33,8 +33,6 @@ class ChatCardDetail extends StatelessWidget {
               );*/
               String recipientId = chatlistDetail.recipientId!;
               String chatroomChatId = chatlistDetail.chatroomId!;
-              print('chatroom Id : $chatroomChatId');
-              print('recipient id : $recipientId');
               //String read = chatlistDetail.isRead!;
               final OpenChatRequest req =
                   OpenChatRequest(chatroomId : chatroomChatId, recipientId: recipientId);
@@ -55,14 +53,29 @@ class ChatCardDetail extends StatelessWidget {
                         Padding(
                           padding: const EdgeInsets.only(
                               left: 25.0, top: 3, bottom: 3),
-                          child: Text(
-                            chatlistDetail.recipientUsername!,
-                            style: GoogleFonts.lora(
-                              color: const Color.fromRGBO(40, 36, 36, 10000),
-                              fontSize: 17,
-                              fontWeight: FontWeight.bold,
+                          child: Row(
+                            children:[ Expanded(
+                              child: Text(
+                                chatlistDetail.recipientUsername!,
+                                style: GoogleFonts.lora(
+                                  color: const Color.fromRGBO(40, 36, 36, 10000),
+                                  fontSize: 17,
+                                  fontWeight: FontWeight.bold,
+                                ),
+                                textAlign: TextAlign.left,
+                              ),
                             ),
-                            textAlign: TextAlign.left,
+                            const SizedBox(width: 10),
+                            Text(
+                              //timestamp masih aneh datanya
+                              chatlistDetail.lastMessageTimestamp!,
+                              style: GoogleFonts.lora(
+                                fontSize: 12,
+                                color: const Color.fromRGBO(40, 36, 36, 10000),
+                              ),
+                            ),
+                            const SizedBox(width: 20),
+                          ]
                           ),
                         ),
                       ]),
@@ -74,7 +87,7 @@ class ChatCardDetail extends StatelessWidget {
                       crossAxisAlignment: CrossAxisAlignment.start,
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
-                        const SizedBox(width: 30),
+                        const SizedBox(width: 5),
                         Expanded(
                           child: (chatlistDetail.isRead! == "false")
                               ? Text(
@@ -95,16 +108,7 @@ class ChatCardDetail extends StatelessWidget {
                                   overflow: TextOverflow.ellipsis,
                                 ),
                         ),
-                        const SizedBox(width: 10),
-                        Text(
-                          //timestamp masih aneh datanya
-                          chatlistDetail.lastMessageTimestamp!,
-                          style: GoogleFonts.lora(
-                            fontSize: 12,
-                            color: const Color.fromRGBO(40, 36, 36, 10000),
-                          ),
-                        ),
-                        const SizedBox(width: 20),
+                        
                       ],
                     ),
                   ),
