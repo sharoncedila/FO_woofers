@@ -7,17 +7,17 @@ import 'package:woofers/model/chatroom_model.dart';
 import 'package:woofers/services/chat/chat_service.dart';
 
 class ChatroomPageDetail extends StatelessWidget {
-  final String accountId;
+  final String recipientId;
   final ScrollController _scrollController = ScrollController();
   ChatroomPageDetail({
     super.key,
-    required this.accountId,
+    required this.recipientId,
   });
    
 
   @override
   Widget build(BuildContext context) {
-    print("Data adoption: $accountId");
+    print("Data adoption: $recipientId");
     TextEditingController messageController = TextEditingController();
 
     return Scaffold(
@@ -63,7 +63,7 @@ class ChatroomPageDetail extends StatelessWidget {
                   icon: const Icon(Icons.send),
                   onPressed: () async {
                     final SendChatRequest request = SendChatRequest(
-                        recipientId: accountId,
+                        recipientId: recipientId,
                         message: messageController.text);
                     WSChatInstance.sendMessage(request);
                     FocusScope.of(context).unfocus();
@@ -136,7 +136,7 @@ class ChatroomPageDetail extends StatelessWidget {
               padding: const EdgeInsets.symmetric(horizontal: 5, vertical: 10),
               child: FutureBuilder(
                 future: ChatroomService()
-                    .openChatroom(OpenChatRequest(recipientId: accountId)),
+                    .openChatroom(OpenChatRequest(recipientId: recipientId)),
                 builder: ((context, snapshot) {
                   if (snapshot.connectionState == ConnectionState.waiting) {
                     return const Center(child: Text("Retrieving your data..."));
@@ -168,7 +168,7 @@ class ChatroomPageDetail extends StatelessWidget {
                   return Wrap(
                     children: chatList
                         .map((e) => BubbleChatCardDetail(
-                            accountId: accountId, bubbleChatlistDetail: e))
+                            recipientId: recipientId, bubbleChatlistDetail: e))
                         .toList(),
                     //    ),
                     //  ),

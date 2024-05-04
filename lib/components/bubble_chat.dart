@@ -4,18 +4,18 @@ import 'package:flutter/material.dart';
 import 'package:woofers/model/chatroom_model.dart';
 
 class BubbleChatCardDetail extends StatelessWidget {
-  final accountId;
+  final recipientId;
   final OpenChatResponse bubbleChatlistDetail;
   const BubbleChatCardDetail(
-      {super.key, required this.bubbleChatlistDetail, required this.accountId});
+      {super.key, required this.bubbleChatlistDetail, required this.recipientId});
 
 
   @override
   Widget build(BuildContext context) {
     //other
-    String currentId = accountId;
+    // String currentId = recipientId;
     print("Data adoption: ${bubbleChatlistDetail}");
-    print("Data adoption: ${currentId}");
+    print("Data adoption: ${recipientId}");
 
     return SingleChildScrollView(
       child: Padding(
@@ -26,7 +26,7 @@ class BubbleChatCardDetail extends StatelessWidget {
             children: [
               // const SizedBox(height: 20),
               
-              if (currentId == bubbleChatlistDetail.senderId)
+              if (recipientId != bubbleChatlistDetail.senderId)
                 BubbleSpecialThree(
                   text: bubbleChatlistDetail.message!,
                   color: const Color(0xFF1B97F3),

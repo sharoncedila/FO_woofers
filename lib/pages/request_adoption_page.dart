@@ -70,7 +70,7 @@ class _RequestAdoptionPageState extends State<RequestAdoptionPage> {
                       context,
                       MaterialPageRoute(
                           builder: (context) =>
-                              ChatroomPageDetail(accountId: ownerAccountId!)),
+                              ChatroomPageDetail(recipientId: ownerAccountId!)),
                     );
                   },
                 );
@@ -705,7 +705,7 @@ class _RequestAdoptionPageState extends State<RequestAdoptionPage> {
                                   (value) => Navigator.of(context)
                                       .pushReplacement(MaterialPageRoute(
                                           builder: (_) => ChatroomPageDetail(
-                                              accountId: ownerAccountId!))));
+                                              recipientId: ownerAccountId!))));
                               // Navigator.push(
                               //   context,
                               //   MaterialPageRoute(
