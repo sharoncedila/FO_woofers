@@ -95,12 +95,6 @@ class _FeedsCardState extends State<FeedsCard> {
               const SizedBox(
                 height: 10,
               ),
-<<<<<<< HEAD
-              ImageNetwork(
-                  urlImage: feedsDetail.image,
-                  width: double.infinity,
-                  height: 375),
-=======
               Container(
                   child: (feedsDetail.image != null)
                       ? ImageNetwork(
@@ -112,7 +106,6 @@ class _FeedsCardState extends State<FeedsCard> {
               //     urlImage: feedsDetail.image,
               //     width: double.infinity,
               //     height: 375),
->>>>>>> UAT
               // const SizedBox(
               //   height: 15,
               // ),

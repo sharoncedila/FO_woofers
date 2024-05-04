@@ -16,10 +16,6 @@ class ChatroomPageDetail extends StatelessWidget {
   Widget build(BuildContext context) {
     print("Data adoption: $recipientId");
     TextEditingController messageController = TextEditingController();
-<<<<<<< HEAD
-    final _sendChatService = ChatroomService();
-=======
->>>>>>> UAT
 
     return Scaffold(
       backgroundColor: Colors.white,
@@ -36,33 +32,10 @@ class ChatroomPageDetail extends StatelessWidget {
           ),
         ),
       ),
-<<<<<<< HEAD
-      body: Stack(children: [
-        Chatroom(),
-        Positioned(
-          bottom:
-              70, // Adjust this value to position the button at the desired height
-          left: 0, // Align to the left side
-          right: 0, // Align to the right side
-          child: IconButton(
-            icon: Icon(Icons.send),
-            onPressed: () async {
-              final SendChatRequest request = SendChatRequest(
-                  recipientId: accountId, message: messageController.text);
-
-              WSChatInstance.sendMessage(request);
-            },
-          ),
-        ),
-        Align(
-          alignment: FractionalOffset.bottomCenter,
-          child: Container(
-=======
       body: Column(
         children: [
           Expanded(child: Chatroom(controller: _scrollController)),
           Container(
->>>>>>> UAT
             color: Colors.white,
             child: Row(
               children: [
