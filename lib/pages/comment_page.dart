@@ -12,11 +12,17 @@ import 'package:woofers/services/feeds/feeds_service.dart';
 class CommentPage extends StatelessWidget {
   final String feedsId;
   final _messageController = TextEditingController();
+  final ScrollController _scrollController = ScrollController();
   CommentPage({
     super.key,
     required this.feedsId,
   });
 
+<<<<<<< HEAD
+=======
+  TextEditingController commentController = TextEditingController();
+
+>>>>>>> UAT
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -35,6 +41,7 @@ class CommentPage extends StatelessWidget {
             ),
             textAlign: TextAlign.center,
           ),
+<<<<<<< HEAD
         ),
         body: Stack(
           children: [
@@ -238,4 +245,82 @@ class CommentPage extends StatelessWidget {
       ),
     );
   }
+=======
+        ),
+        body: Column(
+          children: [
+            Expanded(child: CommentList(controller: _scrollController)),
+            Container(
+              color: Colors.white,
+              child: Row(
+                children: [
+                  const SizedBox(
+                    width: 15,
+                  ),
+                  Expanded(
+                    child: Padding(
+                      padding: const EdgeInsets.all(8.0),
+                      child: TextFormField(
+                        maxLines: null,
+                        controller: commentController,
+                        keyboardType: TextInputType.multiline,
+                        decoration: const InputDecoration(
+                          labelText: 'Type your comment here',
+                          border: OutlineInputBorder(),
+                        ),
+                      ),
+                    ),
+                  ),
+                  IconButton(
+                    icon: const Icon(Icons.send),
+                    onPressed: () async {
+                      final LeaveCommentRequest request = LeaveCommentRequest(
+                          feedsId: feedsId, content: commentController.text);
+                      FeedsService().leaveCommentSection(request);
+                      FocusScope.of(context).unfocus();
+                    },
+                  ),
+                ],
+              ),
+            ),
+          ],
+        ));
+  }
+
+  Widget CommentList({required ScrollController controller}) {
+    return Column(
+      children: [
+        Expanded(
+          child: SingleChildScrollView(
+            controller: controller,
+            child: SingleChildScrollView(
+              child: FutureBuilder(
+                  future: FeedsService().openCommentSection(feedsId),
+                  builder: (context, snapshot) {
+                    if (snapshot.connectionState == ConnectionState.waiting) {
+                      return const Center(
+                          child: Text("Retrieving your data..."));
+                    }
+                    if (snapshot.hasError) {
+                      return const Center(child: Text("Error"));
+                    }
+                    if (!snapshot.hasData) {
+                      return const Center(
+                          child: Text("no comment available for this feeds"));
+                    }
+
+                    final commentList = snapshot.data!;
+                    return Wrap(
+                      children: commentList
+                          .map((e) => CommentCard(commentDetail: e))
+                          .toList(),
+                    );
+                  }),
+            ),
+          ),
+        ),
+      ],
+    );
+  }
+>>>>>>> UAT
 }

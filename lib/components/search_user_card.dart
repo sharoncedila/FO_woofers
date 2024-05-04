@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:woofers/model/chatlist_model.dart';
 import 'package:woofers/pages/chatroom_page.dart';
 
@@ -26,7 +27,7 @@ class SearchUserCardDetail extends StatelessWidget {
                 MaterialPageRoute(
                     //Other User Profile
                     builder: (context) =>
-                        ChatroomPageDetail(accountId: searchUserDetail.accountId!)),
+                        ChatroomPageDetail(recipientId: searchUserDetail.accountId!)),
               );
             },
             child: Row(
@@ -41,8 +42,9 @@ class SearchUserCardDetail extends StatelessWidget {
                         padding: const EdgeInsets.only(left: 10.0, top: 12),
                         child: Text(
                           searchUserDetail.username ?? "",
-                          style: const TextStyle(
-                              fontSize: 15, color: Colors.black),
+                          style: GoogleFonts.lora(
+                              fontSize: 15, color: Colors.black, 
+                              fontWeight: FontWeight.bold),
                         ),
                       ),
                       // const SizedBox(
@@ -57,7 +59,7 @@ class SearchUserCardDetail extends StatelessWidget {
                               context,
                               MaterialPageRoute(
                                   builder: (context) => ChatroomPageDetail(
-                                      accountId: searchUserDetail.accountId!)),
+                                      recipientId: searchUserDetail.accountId!)),
                             );
                           },
                         ),

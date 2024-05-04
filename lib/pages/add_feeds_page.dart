@@ -1,9 +1,14 @@
+import 'dart:io';
+
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:hexcolor/hexcolor.dart';
+import 'package:image_picker/image_picker.dart';
 import 'package:woofers/model/feeds_model.dart';
+import 'package:woofers/model/image_model.dart';
 import 'package:woofers/pages/feeds_page.dart';
 import 'package:woofers/services/feeds/feeds_service.dart';
+import 'package:woofers/services/image_service.dart';
 
 class AddFeedsPage extends StatefulWidget {
   const AddFeedsPage({super.key});
@@ -12,8 +17,47 @@ class AddFeedsPage extends StatefulWidget {
   _AddFeedsPageState createState() => _AddFeedsPageState();
 }
 
+
 class _AddFeedsPageState extends State<AddFeedsPage> {
+  String? uploadedImage;
   final _captionController = TextEditingController();
+  // UploadImageResponse? uploadedImage = await ImageService().uploadFeeds();
+
+  Future<void> uploadFeeds(File image) async {
+    try {
+      // const api = '/upload/feeds';
+      // final dio = await DioInstance.getInstance();
+      UploadImageResponse? pickedFile = await ImageService().uploadFeeds(image);
+          // await ImagePicker().pickImage(source: ImageSource.gallery);
+
+      // if (pickedFile != null) {
+      //   UploadImageResponse image = UploadImageResponse(pickedFile);
+      //   String fileName = image.path.split('/').last;
+      //   FormData formData = FormData.fromMap({
+      //     'file': await MultipartFile.fromFile(image.path, filename: fileName),
+      //   });
+      //   var response = await dio.post(api, data: formData);
+      //   final errorSchema = ErrorSchema.fromJson(response.data['errorSchema']);
+      //   if (errorSchema.errorCode != 'WOF-000') {
+      //     return UploadImageResponse.fromJson(
+      //         response.data['errorSchema']);
+      //   } else {
+      //     // String filename = response.data['outputSchema']['fileName'];
+      //     // print (filename);
+      //     return UploadImageResponse.fromJson(
+      //         response.data['outputSchema']);
+      //   }
+        if (pickedFile != null) {
+          setState(() {
+          uploadedImage = pickedFile.fileName;
+          print(uploadedImage);
+        });
+        }
+    } catch (error) {
+      print(error);
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -44,12 +88,24 @@ class _AddFeedsPageState extends State<AddFeedsPage> {
           height: 15,
         ),
         const Image(image: AssetImage('assets/dog_picture/dog1.jpg')),
+        IconButton(
+          onPressed: () async {
+            final pickedFile = await ImagePicker().pickImage(source: ImageSource.gallery);
+            if (pickedFile != null) {
+              File image = File(pickedFile.path);
+              uploadFeeds(image);
+            }
+            // ImageService().uploadFeeds();
+          },
+          icon: const Icon(Icons.camera)
+        ),
         const SizedBox(
           height: 15,
         ),
         Padding(
           padding: const EdgeInsets.only(left: 25, right: 25),
           child: TextField(
+            maxLength: 500,
             controller: _captionController,
             decoration: const InputDecoration(
               labelText: 'Enter your captions..',
@@ -83,14 +139,20 @@ class _AddFeedsPageState extends State<AddFeedsPage> {
             ),
             child: const Text('POST'),
             onPressed: () {
+              // ImageService().uploadFeeds();
+              // FutureBuilder(future: ImageService().uploadFeeds(), builder: ((context, snapshot) {
+              //   uploadedImage = snapshot.data;
+              //   return uploadedImage;
+              // }));
               final PostFeedsRequest request = PostFeedsRequest(
                 caption: _captionController.text,
-                image: null,
+                image: uploadedImage,
               );
 
               FeedsService().postFeeds(request).then((value) =>
                   Navigator.of(context).pushReplacement(
                       MaterialPageRoute(builder: (_) => const FeedsPage())));
+              // FeedsService().postFeeds();
             },
 
             /*

@@ -22,6 +22,7 @@ ResponseRegisterModel _$ResponseRegisterModelFromJson(
 /// @nodoc
 mixin _$ResponseRegisterModel {
   String? get username => throw _privateConstructorUsedError;
+  String? get fullname => throw _privateConstructorUsedError;
   String? get email => throw _privateConstructorUsedError;
   String? get provinceName => throw _privateConstructorUsedError;
   String? get phoneNumber => throw _privateConstructorUsedError;
@@ -43,6 +44,7 @@ abstract class $ResponseRegisterModelCopyWith<$Res> {
   @useResult
   $Res call(
       {String? username,
+      String? fullname,
       String? email,
       String? provinceName,
       String? phoneNumber,
@@ -66,6 +68,7 @@ class _$ResponseRegisterModelCopyWithImpl<$Res,
   @override
   $Res call({
     Object? username = freezed,
+    Object? fullname = freezed,
     Object? email = freezed,
     Object? provinceName = freezed,
     Object? phoneNumber = freezed,
@@ -77,6 +80,10 @@ class _$ResponseRegisterModelCopyWithImpl<$Res,
       username: freezed == username
           ? _value.username
           : username // ignore: cast_nullable_to_non_nullable
+              as String?,
+      fullname: freezed == fullname
+          ? _value.fullname
+          : fullname // ignore: cast_nullable_to_non_nullable
               as String?,
       email: freezed == email
           ? _value.email
@@ -117,6 +124,7 @@ abstract class _$$ResponseRegisterModelImplCopyWith<$Res>
   @useResult
   $Res call(
       {String? username,
+      String? fullname,
       String? email,
       String? provinceName,
       String? phoneNumber,
@@ -138,6 +146,7 @@ class __$$ResponseRegisterModelImplCopyWithImpl<$Res>
   @override
   $Res call({
     Object? username = freezed,
+    Object? fullname = freezed,
     Object? email = freezed,
     Object? provinceName = freezed,
     Object? phoneNumber = freezed,
@@ -149,6 +158,10 @@ class __$$ResponseRegisterModelImplCopyWithImpl<$Res>
       username: freezed == username
           ? _value.username
           : username // ignore: cast_nullable_to_non_nullable
+              as String?,
+      fullname: freezed == fullname
+          ? _value.fullname
+          : fullname // ignore: cast_nullable_to_non_nullable
               as String?,
       email: freezed == email
           ? _value.email
@@ -183,6 +196,7 @@ class __$$ResponseRegisterModelImplCopyWithImpl<$Res>
 class _$ResponseRegisterModelImpl implements _ResponseRegisterModel {
   _$ResponseRegisterModelImpl(
       {required this.username,
+      required this.fullname,
       required this.email,
       required this.provinceName,
       required this.phoneNumber,
@@ -195,6 +209,8 @@ class _$ResponseRegisterModelImpl implements _ResponseRegisterModel {
 
   @override
   final String? username;
+  @override
+  final String? fullname;
   @override
   final String? email;
   @override
@@ -210,7 +226,7 @@ class _$ResponseRegisterModelImpl implements _ResponseRegisterModel {
 
   @override
   String toString() {
-    return 'ResponseRegisterModel(username: $username, email: $email, provinceName: $provinceName, phoneNumber: $phoneNumber, accountId: $accountId, errorCode: $errorCode, errorMessage: $errorMessage)';
+    return 'ResponseRegisterModel(username: $username, fullname: $fullname, email: $email, provinceName: $provinceName, phoneNumber: $phoneNumber, accountId: $accountId, errorCode: $errorCode, errorMessage: $errorMessage)';
   }
 
   @override
@@ -220,6 +236,8 @@ class _$ResponseRegisterModelImpl implements _ResponseRegisterModel {
             other is _$ResponseRegisterModelImpl &&
             (identical(other.username, username) ||
                 other.username == username) &&
+            (identical(other.fullname, fullname) ||
+                other.fullname == fullname) &&
             (identical(other.email, email) || other.email == email) &&
             (identical(other.provinceName, provinceName) ||
                 other.provinceName == provinceName) &&
@@ -235,8 +253,8 @@ class _$ResponseRegisterModelImpl implements _ResponseRegisterModel {
 
   @JsonKey(ignore: true)
   @override
-  int get hashCode => Object.hash(runtimeType, username, email, provinceName,
-      phoneNumber, accountId, errorCode, errorMessage);
+  int get hashCode => Object.hash(runtimeType, username, fullname, email,
+      provinceName, phoneNumber, accountId, errorCode, errorMessage);
 
   @JsonKey(ignore: true)
   @override
@@ -256,6 +274,7 @@ class _$ResponseRegisterModelImpl implements _ResponseRegisterModel {
 abstract class _ResponseRegisterModel implements ResponseRegisterModel {
   factory _ResponseRegisterModel(
       {required final String? username,
+      required final String? fullname,
       required final String? email,
       required final String? provinceName,
       required final String? phoneNumber,
@@ -268,6 +287,8 @@ abstract class _ResponseRegisterModel implements ResponseRegisterModel {
 
   @override
   String? get username;
+  @override
+  String? get fullname;
   @override
   String? get email;
   @override
@@ -293,6 +314,7 @@ RequestRegisterModel _$RequestRegisterModelFromJson(Map<String, dynamic> json) {
 /// @nodoc
 mixin _$RequestRegisterModel {
   String get username => throw _privateConstructorUsedError;
+  String? get fullname => throw _privateConstructorUsedError;
   String get email => throw _privateConstructorUsedError;
   String get provinceName => throw _privateConstructorUsedError;
   String get phoneNumber => throw _privateConstructorUsedError;
@@ -312,6 +334,7 @@ abstract class $RequestRegisterModelCopyWith<$Res> {
   @useResult
   $Res call(
       {String username,
+      String? fullname,
       String email,
       String provinceName,
       String phoneNumber,
@@ -333,6 +356,7 @@ class _$RequestRegisterModelCopyWithImpl<$Res,
   @override
   $Res call({
     Object? username = null,
+    Object? fullname = freezed,
     Object? email = null,
     Object? provinceName = null,
     Object? phoneNumber = null,
@@ -343,6 +367,10 @@ class _$RequestRegisterModelCopyWithImpl<$Res,
           ? _value.username
           : username // ignore: cast_nullable_to_non_nullable
               as String,
+      fullname: freezed == fullname
+          ? _value.fullname
+          : fullname // ignore: cast_nullable_to_non_nullable
+              as String?,
       email: null == email
           ? _value.email
           : email // ignore: cast_nullable_to_non_nullable
@@ -373,6 +401,7 @@ abstract class _$$RequestRegisterModelImplCopyWith<$Res>
   @useResult
   $Res call(
       {String username,
+      String? fullname,
       String email,
       String provinceName,
       String phoneNumber,
@@ -391,6 +420,7 @@ class __$$RequestRegisterModelImplCopyWithImpl<$Res>
   @override
   $Res call({
     Object? username = null,
+    Object? fullname = freezed,
     Object? email = null,
     Object? provinceName = null,
     Object? phoneNumber = null,
@@ -401,6 +431,10 @@ class __$$RequestRegisterModelImplCopyWithImpl<$Res>
           ? _value.username
           : username // ignore: cast_nullable_to_non_nullable
               as String,
+      fullname: freezed == fullname
+          ? _value.fullname
+          : fullname // ignore: cast_nullable_to_non_nullable
+              as String?,
       email: null == email
           ? _value.email
           : email // ignore: cast_nullable_to_non_nullable
@@ -426,6 +460,7 @@ class __$$RequestRegisterModelImplCopyWithImpl<$Res>
 class _$RequestRegisterModelImpl implements _RequestRegisterModel {
   _$RequestRegisterModelImpl(
       {required this.username,
+      required this.fullname,
       required this.email,
       required this.provinceName,
       required this.phoneNumber,
@@ -437,6 +472,8 @@ class _$RequestRegisterModelImpl implements _RequestRegisterModel {
   @override
   final String username;
   @override
+  final String? fullname;
+  @override
   final String email;
   @override
   final String provinceName;
@@ -447,7 +484,7 @@ class _$RequestRegisterModelImpl implements _RequestRegisterModel {
 
   @override
   String toString() {
-    return 'RequestRegisterModel(username: $username, email: $email, provinceName: $provinceName, phoneNumber: $phoneNumber, password: $password)';
+    return 'RequestRegisterModel(username: $username, fullname: $fullname, email: $email, provinceName: $provinceName, phoneNumber: $phoneNumber, password: $password)';
   }
 
   @override
@@ -457,6 +494,8 @@ class _$RequestRegisterModelImpl implements _RequestRegisterModel {
             other is _$RequestRegisterModelImpl &&
             (identical(other.username, username) ||
                 other.username == username) &&
+            (identical(other.fullname, fullname) ||
+                other.fullname == fullname) &&
             (identical(other.email, email) || other.email == email) &&
             (identical(other.provinceName, provinceName) ||
                 other.provinceName == provinceName) &&
@@ -468,8 +507,8 @@ class _$RequestRegisterModelImpl implements _RequestRegisterModel {
 
   @JsonKey(ignore: true)
   @override
-  int get hashCode => Object.hash(
-      runtimeType, username, email, provinceName, phoneNumber, password);
+  int get hashCode => Object.hash(runtimeType, username, fullname, email,
+      provinceName, phoneNumber, password);
 
   @JsonKey(ignore: true)
   @override
@@ -490,6 +529,7 @@ class _$RequestRegisterModelImpl implements _RequestRegisterModel {
 abstract class _RequestRegisterModel implements RequestRegisterModel {
   factory _RequestRegisterModel(
       {required final String username,
+      required final String? fullname,
       required final String email,
       required final String provinceName,
       required final String phoneNumber,
@@ -500,6 +540,8 @@ abstract class _RequestRegisterModel implements RequestRegisterModel {
 
   @override
   String get username;
+  @override
+  String? get fullname;
   @override
   String get email;
   @override

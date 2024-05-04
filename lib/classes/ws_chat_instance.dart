@@ -1,8 +1,7 @@
 import 'dart:convert';
 import 'dart:io';
-import 'package:flutter/material.dart';
+
 import 'package:shared_preferences/shared_preferences.dart';
-import 'package:fluttertoast/fluttertoast.dart';
 import 'package:woofers/model/chatroom_model.dart';
 import 'package:woofers/model/websocket_model.dart';
 
@@ -48,7 +47,7 @@ class WSChatInstance {
     }
   }
 
-   static void sendMessage(SendChatRequest request) {
+  static void sendMessage(SendChatRequest request) {
     if (session != null && session!.readyState == WebSocket.open) {
       session!.add(jsonEncode(request.toJson()));
     } else {

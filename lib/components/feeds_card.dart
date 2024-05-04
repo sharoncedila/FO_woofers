@@ -95,10 +95,24 @@ class _FeedsCardState extends State<FeedsCard> {
               const SizedBox(
                 height: 10,
               ),
+<<<<<<< HEAD
               ImageNetwork(
                   urlImage: feedsDetail.image,
                   width: double.infinity,
                   height: 375),
+=======
+              Container(
+                  child: (feedsDetail.image != null)
+                      ? ImageNetwork(
+                          urlImage: feedsDetail.image,
+                          width: double.infinity,
+                          height: 375)
+                      : const Text("")),
+              // ImageNetwork(
+              //     urlImage: feedsDetail.image,
+              //     width: double.infinity,
+              //     height: 375),
+>>>>>>> UAT
               // const SizedBox(
               //   height: 15,
               // ),
@@ -172,13 +186,12 @@ class _FeedsCardState extends State<FeedsCard> {
                         feedsDetail.caption ?? '',
                         style:
                             const TextStyle(color: Colors.black, fontSize: 15),
-                        // "Dog Name: ${notificationDetail.dogName}",
-                      ),
-                      const SizedBox(
-                        height: 10,
                       ),
                     ],
-                  )
+                  ),
+                  const SizedBox(
+                    height: 15,
+                  ),
                   // )
                 ],
               )

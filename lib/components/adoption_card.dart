@@ -25,15 +25,16 @@ class DogCardDetail extends StatelessWidget {
           child: InkWell(
               onTap: () {
                 Navigator.push(
-                    context,
-                    MaterialPageRoute(
-                      builder: (context) => RequestAdoptionPage(dogId: adoptionDetail.dogId)),
-                      //builder: (context) => const FeedsPage(),
-                    );
+                  context,
+                  MaterialPageRoute(
+                      builder: (context) =>
+                          RequestAdoptionPage(dogId: adoptionDetail.dogId)),
+                  //builder: (context) => const FeedsPage(),
+                );
               },
               child: SizedBox(
                 width: MediaQuery.of(context).size.width / 2.3,
-                height: 200,
+                height: 220,
                 child: Column(
                   children: [
                     ClipRRect(
@@ -50,42 +51,61 @@ class DogCardDetail extends StatelessWidget {
                     Text(
                       adoptionDetail.dogName ?? "",
                       style: const TextStyle(
-                        color: Color.fromRGBO(40, 36, 36, 10000),
-                        fontSize: 17,
-                      ),
+                          color: Color.fromRGBO(40, 36, 36, 10000),
+                          fontSize: 17,
+                          fontWeight: FontWeight.bold),
                       textAlign: TextAlign.center,
                     ),
                     const SizedBox(
                       height: 1,
                     ),
-                    Padding(
-                      padding: const EdgeInsets.symmetric(
-                          horizontal: 1, vertical: 1),
-                      child: Row(
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        children: [
-                          Text(
-                            adoptionDetail.breedName ?? "",
-                            style: const TextStyle(
-                              color: Color.fromRGBO(40, 36, 36, 10000),
-                              fontSize: 14,
-                            ),
-                            textAlign: TextAlign.center,
-                          ),
-                          const SizedBox(
-                            width: 15,
-                          ),
-                          Text(
-                            "${adoptionDetail.age} y.o",
-                            style: const TextStyle(
-                              color: Color.fromRGBO(40, 36, 36, 10000),
-                              fontSize: 14,
-                            ),
-                            textAlign: TextAlign.center,
-                          ),
-                        ],
+                    Text(
+                      adoptionDetail.breedName ?? "",
+                      style: const TextStyle(
+                        color: Color.fromRGBO(40, 36, 36, 10000),
+                        fontSize: 14,
                       ),
+                      textAlign: TextAlign.center,
                     ),
+                    const SizedBox(
+                      width: 15,
+                    ),
+                    Text(
+                      "${adoptionDetail.age} years old",
+                      style: const TextStyle(
+                        color: Color.fromRGBO(40, 36, 36, 10000),
+                        fontSize: 14,
+                      ),
+                      textAlign: TextAlign.center,
+                    ),
+                    // Padding(
+                    //   padding: const EdgeInsets.symmetric(
+                    //       horizontal: 1, vertical: 1),
+                    // child: Row(
+                    //   mainAxisAlignment: MainAxisAlignment.center,
+                    //   children: [
+                    //     Text(
+                    //       adoptionDetail.breedName ?? "",
+                    //       style: const TextStyle(
+                    //         color: Color.fromRGBO(40, 36, 36, 10000),
+                    //         fontSize: 14,
+                    //       ),
+                    //       textAlign: TextAlign.center,
+                    //     ),
+                    //     const SizedBox(
+                    //       width: 15,
+                    //     ),
+                    //     Text(
+                    //       "${adoptionDetail.age} y.o",
+                    //       style: const TextStyle(
+                    //         color: Color.fromRGBO(40, 36, 36, 10000),
+                    //         fontSize: 14,
+                    //       ),
+                    //       textAlign: TextAlign.center,
+                    //     ),
+                    //   ],
+                    // ),
+                    // ),
                   ],
                 ),
               ))),

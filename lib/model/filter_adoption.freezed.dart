@@ -22,7 +22,6 @@ FilterAdoption _$FilterAdoptionFromJson(Map<String, dynamic> json) {
 mixin _$FilterAdoption {
   String? get breed => throw _privateConstructorUsedError;
   String? get province => throw _privateConstructorUsedError;
-  String? get gender => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -36,7 +35,7 @@ abstract class $FilterAdoptionCopyWith<$Res> {
           FilterAdoption value, $Res Function(FilterAdoption) then) =
       _$FilterAdoptionCopyWithImpl<$Res, FilterAdoption>;
   @useResult
-  $Res call({String? breed, String? province, String? gender});
+  $Res call({String? breed, String? province});
 }
 
 /// @nodoc
@@ -54,7 +53,6 @@ class _$FilterAdoptionCopyWithImpl<$Res, $Val extends FilterAdoption>
   $Res call({
     Object? breed = freezed,
     Object? province = freezed,
-    Object? gender = freezed,
   }) {
     return _then(_value.copyWith(
       breed: freezed == breed
@@ -64,10 +62,6 @@ class _$FilterAdoptionCopyWithImpl<$Res, $Val extends FilterAdoption>
       province: freezed == province
           ? _value.province
           : province // ignore: cast_nullable_to_non_nullable
-              as String?,
-      gender: freezed == gender
-          ? _value.gender
-          : gender // ignore: cast_nullable_to_non_nullable
               as String?,
     ) as $Val);
   }
@@ -81,7 +75,7 @@ abstract class _$$FilterAdoptionImplCopyWith<$Res>
       __$$FilterAdoptionImplCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({String? breed, String? province, String? gender});
+  $Res call({String? breed, String? province});
 }
 
 /// @nodoc
@@ -97,7 +91,6 @@ class __$$FilterAdoptionImplCopyWithImpl<$Res>
   $Res call({
     Object? breed = freezed,
     Object? province = freezed,
-    Object? gender = freezed,
   }) {
     return _then(_$FilterAdoptionImpl(
       breed: freezed == breed
@@ -108,10 +101,6 @@ class __$$FilterAdoptionImplCopyWithImpl<$Res>
           ? _value.province
           : province // ignore: cast_nullable_to_non_nullable
               as String?,
-      gender: freezed == gender
-          ? _value.gender
-          : gender // ignore: cast_nullable_to_non_nullable
-              as String?,
     ));
   }
 }
@@ -119,7 +108,7 @@ class __$$FilterAdoptionImplCopyWithImpl<$Res>
 /// @nodoc
 @JsonSerializable()
 class _$FilterAdoptionImpl implements _FilterAdoption {
-  _$FilterAdoptionImpl({this.breed, this.province, this.gender});
+  _$FilterAdoptionImpl({this.breed, this.province});
 
   factory _$FilterAdoptionImpl.fromJson(Map<String, dynamic> json) =>
       _$$FilterAdoptionImplFromJson(json);
@@ -128,12 +117,10 @@ class _$FilterAdoptionImpl implements _FilterAdoption {
   final String? breed;
   @override
   final String? province;
-  @override
-  final String? gender;
 
   @override
   String toString() {
-    return 'FilterAdoption(breed: $breed, province: $province, gender: $gender)';
+    return 'FilterAdoption(breed: $breed, province: $province)';
   }
 
   @override
@@ -143,13 +130,12 @@ class _$FilterAdoptionImpl implements _FilterAdoption {
             other is _$FilterAdoptionImpl &&
             (identical(other.breed, breed) || other.breed == breed) &&
             (identical(other.province, province) ||
-                other.province == province) &&
-            (identical(other.gender, gender) || other.gender == gender));
+                other.province == province));
   }
 
   @JsonKey(ignore: true)
   @override
-  int get hashCode => Object.hash(runtimeType, breed, province, gender);
+  int get hashCode => Object.hash(runtimeType, breed, province);
 
   @JsonKey(ignore: true)
   @override
@@ -167,10 +153,8 @@ class _$FilterAdoptionImpl implements _FilterAdoption {
 }
 
 abstract class _FilterAdoption implements FilterAdoption {
-  factory _FilterAdoption(
-      {final String? breed,
-      final String? province,
-      final String? gender}) = _$FilterAdoptionImpl;
+  factory _FilterAdoption({final String? breed, final String? province}) =
+      _$FilterAdoptionImpl;
 
   factory _FilterAdoption.fromJson(Map<String, dynamic> json) =
       _$FilterAdoptionImpl.fromJson;
@@ -179,8 +163,6 @@ abstract class _FilterAdoption implements FilterAdoption {
   String? get breed;
   @override
   String? get province;
-  @override
-  String? get gender;
   @override
   @JsonKey(ignore: true)
   _$$FilterAdoptionImplCopyWith<_$FilterAdoptionImpl> get copyWith =>
