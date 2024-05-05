@@ -4,7 +4,7 @@ import 'dart:io';
 import 'package:flutter/material.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 import 'package:shared_preferences/shared_preferences.dart';
-import 'package:woofers/model/websocket_model.dart';
+import 'package:woofers/model/notification_model.dart';
 
 class WSNotifInstance {
   static WebSocket? session;

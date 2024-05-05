@@ -4,7 +4,7 @@ import 'package:hexcolor/hexcolor.dart';
 import 'package:woofers/components/search_user_card.dart';
 import 'package:woofers/pages/chatlist_page.dart';
 import 'package:woofers/pages/notification_page.dart';
-import 'package:woofers/services/chat/chat_service.dart';
+import 'package:woofers/services/chat_service.dart';
 
 class SearchUserListPage extends StatefulWidget {
   final String userName;

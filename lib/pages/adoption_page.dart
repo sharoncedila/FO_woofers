@@ -2,11 +2,11 @@ import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:hexcolor/hexcolor.dart';
 import 'package:woofers/components/adoption_card.dart';
-import 'package:woofers/model/filter_adoption.dart';
+import 'package:woofers/model/adoption_model.dart';
 import 'package:woofers/pages/notification_page.dart';
-import 'package:woofers/services/adoption/adoption_service.dart';
-import 'package:woofers/services/dog/breed_services.dart';
-import 'package:woofers/services/province/province_service.dart';
+import 'package:woofers/services/adoption_service.dart';
+import 'package:woofers/services/dog_services.dart';
+import 'package:woofers/services/province_service.dart';
 
 class AdoptionPage extends StatefulWidget {
   const AdoptionPage({super.key});
@@ -132,7 +132,7 @@ class _AdoptionPageState extends State<AdoptionPage> {
                 // dropdown breed
                 Form(
                   child: FutureBuilder(
-                    future: RetrieveBreedService().retrieveAllBreed(),
+                    future: DogService().retrieveAllBreed(),
                     //initialData: initialBreedNames,
                     builder: (context, snapshot) {
                       if (snapshot.connectionState == ConnectionState.waiting) {

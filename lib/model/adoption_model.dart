@@ -11,7 +11,6 @@ class AdoptionDetail with _$AdoptionDetail {
       required String? gender,
       required String? age,
       required String? image,
-      // required String? provinceName,
       required String? errorCode,
       required String? errorMessage}) = _AdoptionDetail;
 
@@ -56,9 +55,7 @@ class OwnerData with _$OwnerData {
     required String? accountId,
     required String? username,
     required String? fullName,
-    // required String? email,
     required String? phoneNumber,
-    // required String? description,
     required String? image,
     required String? provinceName,
   }) = _OwnerData;
@@ -90,4 +87,24 @@ class ApproveRejectAdoptionRequest with _$ApproveRejectAdoptionRequest{
 
   factory ApproveRejectAdoptionRequest.fromJson(Map<String, dynamic> json) =>
       _$ApproveRejectAdoptionRequestFromJson(json);
+}
+
+@freezed
+class FilterAdoption with _$FilterAdoption {
+  factory FilterAdoption({
+    String? breed,
+    String? province,
+    // String? gender,
+  }) = _FilterAdoption;
+
+  factory FilterAdoption.fromJson(Map<String, dynamic> json) =>
+      _$FilterAdoptionFromJson(json);
+
+  Map<String, dynamic> toJson() {
+    Map<String, dynamic> map = {};
+    if (breed != null) map["breed"] = breed;
+    if (province != null) map["province"] = province;
+    // if (gender != null) map["gender"] = gender;
+    return map;
+  }
 }

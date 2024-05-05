@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:woofers/components/my_dog_card.dart';
 import 'package:woofers/pages/add_dog_page.dart';
-import 'package:woofers/services/dog/dog_services.dart';
+import 'package:woofers/services/dog_services.dart';
 
 void main() => runApp(const DogListPage());
 

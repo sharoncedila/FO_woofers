@@ -1,6 +1,6 @@
 import 'package:freezed_annotation/freezed_annotation.dart';
-part 'dog_profile_model.freezed.dart';
-part 'dog_profile_model.g.dart';
+part 'dog_model.freezed.dart';
+part 'dog_model.g.dart';
 
 @freezed
 class ResponseDogProfileModel with _$ResponseDogProfileModel {
@@ -41,16 +41,6 @@ class AddDogRequest with _$AddDogRequest {
 @freezed
 class AddDogResponse with _$AddDogResponse {
   factory AddDogResponse({
-    // required String? dogId,
-    // required String? breedName,
-    // required String? dogName,
-    // required String? gender,
-    // required String? dateOfBirth,
-    // required String? description,
-    // required String? vaccination,
-    // required String? image,
-    // required String? isOpenAdopt,
-    // required String? provinceName,
     required String? errorCode,
     required String? errorMessage,
   }) = _AddDogResponse;
@@ -62,16 +52,6 @@ class AddDogResponse with _$AddDogResponse {
 @freezed
 class EditDogResponse with _$EditDogResponse{
   factory EditDogResponse({
-    // required String? dogId,
-    // required String? breedName,
-    // required String? dogName,
-    // required String? gender,
-    // required String? dateOfBirth,
-    // required String? description,
-    // required String? vaccination,
-    // required String? image,
-    // required String? isOpenAdopt,
-    // required String? provinceName,
     required String? errorCode,
     required String? errorMessage,
   }) = _EditDogResponse;
@@ -125,4 +105,26 @@ class DeleteDogResponse with _$DeleteDogResponse{
 
   factory DeleteDogResponse.fromJson(Map<String, dynamic> json) =>
       _$DeleteDogResponseFromJson(json);
+}
+
+@freezed
+class Breed with _$Breed {
+  factory Breed({
+    required String? breedId,
+    required String breedName,
+    required String? errorCode,
+    required String? errorMessage,
+  }) = _Breed;
+
+  factory Breed.fromJson(Map<String, dynamic> json) => _$BreedFromJson(json);
+}
+
+@freezed
+class RetrieveAllBreedResponse with _$RetrieveAllBreedResponse {
+  factory RetrieveAllBreedResponse({
+    required List<Breed> breedList,
+  }) = _RetrieveAllBreedResponse;
+
+  factory RetrieveAllBreedResponse.fromJson(Map<String, dynamic> json) =>
+      _$RetrieveAllBreedResponseFromJson(json);
 }

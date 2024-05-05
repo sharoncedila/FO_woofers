@@ -1,9 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:woofers/model/chatlist_model.dart';
-import 'package:woofers/model/chatroom_model.dart';
+import 'package:woofers/model/chat_model.dart';
 import 'package:woofers/pages/chatroom_page.dart';
-import 'package:woofers/services/chat/chat_service.dart';
+import 'package:woofers/services/chat_service.dart';
 
 class ChatCardDetail extends StatefulWidget {
   final RetrieveChatlistResponse chatlistDetail;

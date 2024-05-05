@@ -1,9 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
 import 'package:woofers/model/adoption_model.dart';
 import 'package:woofers/model/notification_model.dart';
 import 'package:woofers/pages/notification_page.dart';
-import 'package:woofers/services/adoption/adoption_service.dart';
+import 'package:woofers/services/adoption_service.dart';
 
 class AdoptionNotificationCardDetail extends StatelessWidget {
   final ViewNotificationResponse notificationDetail;
@@ -21,14 +20,14 @@ class AdoptionNotificationCardDetail extends StatelessWidget {
         shape: RoundedRectangleBorder(
           borderRadius: BorderRadius.circular(20.0),
         ),
-        color: Color.fromARGB(156, 149, 255, 255),
+        color: const Color.fromARGB(156, 149, 255, 255),
         child: SizedBox(
           width: MediaQuery.of(context).size.width / 1,
           height: 100,
           child: Row(children: [
             const SizedBox(width: 15),
             // text keterangan
-            Container(
+            SizedBox(
               width: MediaQuery.of(context).size.width * 0.6,
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,

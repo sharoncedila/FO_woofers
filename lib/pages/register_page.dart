@@ -1,9 +1,9 @@
 import 'package:email_validator/email_validator.dart';
 import 'package:flutter/material.dart';
-import 'package:woofers/model/register_model.dart';
+import 'package:woofers/model/account_model.dart';
 import 'package:woofers/pages/login_page.dart';
-import 'package:woofers/services/account/register_service.dart';
-import 'package:woofers/services/province/province_service.dart';
+import 'package:woofers/services/account_service.dart';
+import 'package:woofers/services/province_service.dart';
 
 class RegisterPage extends StatelessWidget {
   const RegisterPage({super.key});
@@ -69,7 +69,7 @@ class _RegisterFormState extends State<RegisterForm> {
   final _phoneNumberController = TextEditingController();
   bool passwordVisible = true;
   bool passwordVisible2 = true;
-  final _registerService = RegisterService();
+  final _registerService = AccountService();
   String? _selectedProvince;
 
   late List<String?> provinceNames;

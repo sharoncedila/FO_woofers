@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:woofers/components/image_network.dart';
-import 'package:woofers/model/dog_profile_model.dart';
+import 'package:woofers/model/dog_model.dart';
 import 'package:woofers/pages/dog_profile_page.dart';
 import 'package:woofers/pages/other_dog_profile_page.dart';
 

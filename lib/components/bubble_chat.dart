@@ -2,7 +2,7 @@ import 'package:chat_bubbles/bubbles/bubble_special_three.dart';
 import 'package:chat_bubbles/message_bars/message_bar.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:woofers/model/chatroom_model.dart';
+import 'package:woofers/model/chat_model.dart';
 
 class BubbleChatCardDetail extends StatelessWidget {
   final recipientId;

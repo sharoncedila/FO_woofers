@@ -35,6 +35,36 @@ class LogoutResponse with _$LogoutResponse {
 }
 
 @freezed
+class ResponseRegisterModel with _$ResponseRegisterModel {
+  factory ResponseRegisterModel(
+      {required String? username,
+      required String? fullname,
+      required String? email,
+      required String? provinceName,
+      required String? phoneNumber,
+      required String? accountId,
+      required String? errorCode,
+      required String? errorMessage}) = _ResponseRegisterModel;
+
+  factory ResponseRegisterModel.fromJson(Map<String, dynamic> json) =>
+      _$ResponseRegisterModelFromJson(json);
+}
+
+@freezed
+class RequestRegisterModel with _$RequestRegisterModel {
+  factory RequestRegisterModel(
+      {required String username,
+      required String fullName,
+      required String email,
+      required String provinceName,
+      required String phoneNumber,
+      required String password}) = _RequestRegisterModel;
+
+  factory RequestRegisterModel.fromJson(Map<String, dynamic> json) =>
+      _$RequestRegisterModelFromJson(json);
+}
+
+@freezed
 class EditProfileRequest with _$EditProfileRequest {
   factory EditProfileRequest({
     required String? fullName,
@@ -46,4 +76,37 @@ class EditProfileRequest with _$EditProfileRequest {
 
   factory EditProfileRequest.fromJson(Map<String, dynamic> json) =>
       _$EditProfileRequestFromJson(json);
+}
+
+@freezed
+class ResponseUserProfileModel with _$ResponseUserProfileModel {
+  factory ResponseUserProfileModel(
+      {required String? username,
+      required String? fullName,
+      required String? email,
+      required String? provinceName,
+      required String? phoneNumber,
+      required String? description,
+      required String? image,
+      required String? errorCode,
+      required String? errorMessage}) = _ResponseUserProfileModel;
+
+  factory ResponseUserProfileModel.fromJson(Map<String, dynamic> json) =>
+      _$ResponseUserProfileModelFromJson(json);
+}
+
+@freezed
+class OtherUserProfileResponse with _$OtherUserProfileResponse {
+  factory OtherUserProfileResponse(
+      {required String? username,
+      required String? fullName,
+      required String? provinceName,
+      required String? phoneNumber,
+      required String? description,
+      required String? image,
+      required String? errorCode,
+      required String? errorMessage}) = _OtherUserProfileResponse;
+
+  factory OtherUserProfileResponse.fromJson(Map<String, dynamic> json) =>
+      _$OtherUserProfileResponseFromJson(json);
 }

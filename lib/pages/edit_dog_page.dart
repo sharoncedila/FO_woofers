@@ -7,12 +7,11 @@ import 'package:image_picker/image_picker.dart';
 import 'package:intl/intl.dart';
 import 'package:woofers/components/bottom_menu.dart';
 import 'package:woofers/components/image_network.dart';
-import 'package:woofers/model/dog_profile_model.dart';
+import 'package:woofers/model/dog_model.dart';
 import 'package:woofers/model/image_model.dart';
-import 'package:woofers/services/dog/breed_services.dart';
-import 'package:woofers/services/dog/dog_services.dart';
+import 'package:woofers/services/dog_services.dart';
 import 'package:woofers/services/image_service.dart';
-import 'package:woofers/services/province/province_service.dart';
+import 'package:woofers/services/province_service.dart';
 
 class EditDogPage extends StatefulWidget {
   final String dogId;
@@ -165,7 +164,7 @@ class _EditDogPageState extends State<EditDogPage> {
                               isSwitched = value;
                             });
                           },
-                         activeTrackColor: HexColor("#a0dcdc"),
+                          activeTrackColor: HexColor("#a0dcdc"),
                           activeColor: Colors.white,
                         ),
                       ],
@@ -269,8 +268,7 @@ class _EditDogPageState extends State<EditDogPage> {
                                 //child: Padding(
                                 //padding: const EdgeInsets.symmetric(),
                                 child: FutureBuilder(
-                                  future:
-                                      RetrieveBreedService().retrieveAllBreed(),
+                                  future: DogService().retrieveAllBreed(),
                                   //initialData: breedController.text,
                                   builder: (context, snapshot) {
                                     if (snapshot.connectionState ==
@@ -688,9 +686,9 @@ class _EditDogPageState extends State<EditDogPage> {
                                   }),
                             ),
                           ])),
-                    const SizedBox(
-                  width: 20,
-                ),
+                      const SizedBox(
+                        width: 20,
+                      ),
                     ],
                   ),
                   const SizedBox(
@@ -717,12 +715,13 @@ class _EditDogPageState extends State<EditDogPage> {
                                 },
                               ),
                             ),
-                            child: const Text('Save',
-                                // style: TextStyle(
-                                //     //color: Colors.grey[600],
-                                //     fontWeight: FontWeight.bold,
-                                //     fontSize: 18)
-                                ),
+                            child: const Text(
+                              'Save',
+                              // style: TextStyle(
+                              //     //color: Colors.grey[600],
+                              //     fontWeight: FontWeight.bold,
+                              //     fontSize: 18)
+                            ),
                             onPressed: () async {
                               if (_selectedProvince == '') {
                                 _selectedProvince = snapshot.data!.provinceName;
@@ -771,7 +770,7 @@ class _EditDogPageState extends State<EditDogPage> {
                               });
                             },
                           ),
-                        )),    
+                        )),
                   ),
                   const SizedBox(
                     height: 10,

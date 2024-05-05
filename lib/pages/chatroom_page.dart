@@ -3,8 +3,8 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:hexcolor/hexcolor.dart';
 import 'package:woofers/classes/ws_chat_instance.dart';
 import 'package:woofers/components/bubble_chat.dart';
-import 'package:woofers/model/chatroom_model.dart';
-import 'package:woofers/services/chat/chat_service.dart';
+import 'package:woofers/model/chat_model.dart';
+import 'package:woofers/services/chat_service.dart';
 
 class ChatroomPageDetail extends StatefulWidget {
   final String recipientId;

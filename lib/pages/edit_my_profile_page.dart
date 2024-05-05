@@ -8,11 +8,9 @@ import 'package:woofers/components/image_network.dart';
 import 'package:woofers/components/profile_page_template.dart';
 import 'package:woofers/model/account_model.dart';
 import 'package:woofers/model/image_model.dart';
-import 'package:woofers/model/user_profile_model.dart';
-import 'package:woofers/services/account/account_service.dart';
-import 'package:woofers/services/account/user_profile_services.dart';
+import 'package:woofers/services/account_service.dart';
 import 'package:woofers/services/image_service.dart';
-import 'package:woofers/services/province/province_service.dart';
+import 'package:woofers/services/province_service.dart';
 
 class EditMyProfile extends StatefulWidget {
   const EditMyProfile({super.key});
@@ -36,7 +34,7 @@ class _EditMyProfilePageState extends State<EditMyProfile> {
   late List<String?> provinceNames;
 
   final Future<ResponseUserProfileModel?> _account =
-      RetrieveAccountService().retrieveUserData();
+      AccountService().retrieveUserData();
 
   Future<void> uploadProfilePic(File image) async {
     try {

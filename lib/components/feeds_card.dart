@@ -5,7 +5,7 @@ import 'package:woofers/components/profile_page_template.dart';
 import 'package:woofers/model/feeds_model.dart';
 import 'package:woofers/pages/adoption_page.dart';
 import 'package:woofers/pages/comment_page.dart';
-import 'package:woofers/services/feeds/feeds_service.dart';
+import 'package:woofers/services/feeds_service.dart';
 
 class FeedsCard extends StatefulWidget {
   final ViewFeedsResponse feedsDetail;

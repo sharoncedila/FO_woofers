@@ -1,14 +1,11 @@
 import 'dart:io';
 import 'package:flutter/material.dart';
-import 'package:image_picker/image_picker.dart';
 import 'package:woofers/components/image_network.dart';
-import 'package:woofers/model/user_profile_model.dart';
+import 'package:woofers/model/account_model.dart';
 import 'package:woofers/pages/edit_my_profile_page.dart';
 import 'package:woofers/pages/login_page.dart';
-import 'package:woofers/services/account/user_profile_services.dart';
+import 'package:woofers/services/account_service.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:woofers/services/account/login_service.dart';
-import 'package:woofers/services/image_service.dart';
 
 void main() => runApp(const UserProfilePage());
 
@@ -22,8 +19,8 @@ class UserProfilePage extends StatefulWidget {
 class _UserProfilePageState extends State<UserProfilePage> {
   // const UserProfilePagetate({Key key}) : super(key: key);
   final Future<ResponseUserProfileModel?> _account =
-      RetrieveAccountService().retrieveUserData();
-  final _loginService = LoginService();
+      AccountService().retrieveUserData();
+  final _loginService = AccountService();
 
   @override
   Widget build(BuildContext context) {
@@ -48,7 +45,7 @@ class _UserProfilePageState extends State<UserProfilePage> {
                         // user profile picture
                         const SizedBox(height: 15),
                         FutureBuilder(
-                            future: RetrieveAccountService().retrieveUserData(),
+                            future: AccountService().retrieveUserData(),
                             builder: (context, snapshot) {
                               if (snapshot.connectionState ==
                                   ConnectionState.waiting) {

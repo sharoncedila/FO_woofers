@@ -1,5 +1,4 @@
 import 'package:woofers/classes/dio_instance.dart';
-import 'package:woofers/model/error_schema_model.dart';
 import 'package:woofers/model/notification_model.dart';
 
 class NotificationService {
@@ -9,7 +8,7 @@ class NotificationService {
       final dio = await DioInstance.getInstance();
 
       var response = await dio.get(api);
-      final errorSchema = ErrorSchema.fromJson(response.data!['errorSchema']);
+      final errorSchema = ViewNotificationResponse.fromJson(response.data!['errorSchema']);
       if (errorSchema.errorCode != 'WOF-000') {
         return [
           ViewNotificationResponse.fromJson(response.data['errorSchema'])
@@ -31,7 +30,7 @@ class NotificationService {
       final dio = await DioInstance.getInstance();
 
       var response = await dio.get(api);
-      final errorSchema = ErrorSchema.fromJson(response.data!['errorSchema']);
+      final errorSchema = ViewNotificationResponse.fromJson(response.data!['errorSchema']);
       if (errorSchema.errorCode != 'WOF-000') {
         return [
           ViewNotificationResponse.fromJson(response.data['errorSchema'])

@@ -6,11 +6,9 @@ part 'notification_model.g.dart';
 class ViewNotificationResponse with _$ViewNotificationResponse{
   factory ViewNotificationResponse({
     required String? notificationId,
-    // required String? accountId,
     required String? notifMessage,
     required String? sendDate,
     required String? status,
-    // required String? dogId,
     required String? dogName,
     required String? requesterId,
     required String? errorCode,
@@ -28,4 +26,27 @@ class AcceptRejectNotification with _$AcceptRejectNotification{
   }) = _AcceptRejectNotification;
 
   factory AcceptRejectNotification.fromJson(Map<String, dynamic> json) => _$AcceptRejectNotificationFromJson(json);
+}
+
+@freezed
+class WebSocketNotif with _$WebSocketNotif{
+  factory WebSocketNotif({
+    required String notificationMessage,
+    required String? errorCode,
+    required String? errorMessage,
+  }) = _WebSocketNotif;
+
+  factory WebSocketNotif.fromJson(Map<String, dynamic> json) => _$WebSocketNotifFromJson(json);
+}
+
+@freezed
+class WebSocketChat with _$WebSocketChat{
+  factory WebSocketChat({
+    required String? chatroomId,
+    required String? recipientId,
+    required String message,
+    required String? timestamp,
+  }) = _WebSocketChat;
+
+  factory WebSocketChat.fromJson(Map<String, dynamic> json) => _$WebSocketChatFromJson(json);
 }

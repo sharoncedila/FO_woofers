@@ -3,9 +3,8 @@ import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:woofers/components/bottom_menu.dart';
 import 'package:woofers/model/account_model.dart';
-import 'package:woofers/model/login_model.dart';
 import 'package:woofers/pages/register_page.dart';
-import 'package:woofers/services/account/login_service.dart';
+import 'package:woofers/services/account_service.dart';
 
 class LoginPage extends StatelessWidget {
   const LoginPage({super.key});
@@ -69,7 +68,7 @@ class _LoginFormState extends State<LoginForm> {
   // not a GlobalKey<LoginFormState>.
   final _formKey = GlobalKey<FormState>();
   bool passwordVisible = true;
-  final _loginService = LoginService();
+  final _loginService = AccountService();
   final _emailController = TextEditingController();
   final _passwordController = TextEditingController();
 

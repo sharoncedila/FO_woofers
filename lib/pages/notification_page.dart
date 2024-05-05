@@ -3,7 +3,7 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:hexcolor/hexcolor.dart';
 import 'package:woofers/components/notification_adoption_card.dart';
 import 'package:woofers/components/notification_comment_card.dart';
-import 'package:woofers/services/account/notification_service.dart';
+import 'package:woofers/services/notification_service.dart';
 
 class NotificationPage extends StatefulWidget {
   const NotificationPage({super.key});

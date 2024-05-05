@@ -6,11 +6,10 @@ import 'package:hexcolor/hexcolor.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:intl/intl.dart';
 import 'package:woofers/components/bottom_menu.dart';
-import 'package:woofers/model/dog_profile_model.dart';
-import 'package:woofers/services/dog/breed_services.dart';
-import 'package:woofers/services/dog/dog_services.dart';
+import 'package:woofers/model/dog_model.dart';
+import 'package:woofers/services/dog_services.dart';
 import 'package:woofers/services/image_service.dart';
-import 'package:woofers/services/province/province_service.dart';
+import 'package:woofers/services/province_service.dart';
 
 class AddDogPage extends StatefulWidget {
   const AddDogPage({
@@ -35,7 +34,6 @@ class _AddDogPageState extends State<AddDogPage> {
 
   late List<String?> provinceNames;
   late List<String?> breedNames;
-  
 
   Future<void> _selectDate(BuildContext context) async {
     final DateTime? pickedDate = await showDatePicker(
@@ -175,7 +173,7 @@ class _AddDogPageState extends State<AddDogPage> {
                             },
                           )),
                     ])),
-                    const SizedBox(
+                const SizedBox(
                   width: 20,
                 ),
               ],
@@ -212,7 +210,7 @@ class _AddDogPageState extends State<AddDogPage> {
                           //child: Padding(
                           //padding: const EdgeInsets.symmetric(),
                           child: FutureBuilder(
-                            future: RetrieveBreedService().retrieveAllBreed(),
+                            future: DogService().retrieveAllBreed(),
                             //initialData: breedController.text,
                             builder: (context, snapshot) {
                               if (snapshot.connectionState ==
@@ -605,7 +603,7 @@ class _AddDogPageState extends State<AddDogPage> {
                             }),
                       ),
                     ])),
-                    const SizedBox(
+                const SizedBox(
                   width: 20,
                 ),
               ],

@@ -5,7 +5,7 @@ import 'package:woofers/components/feeds_card.dart';
 import 'package:woofers/pages/add_feeds_page.dart';
 import 'package:woofers/pages/comment_page.dart';
 import 'package:woofers/pages/notification_page.dart';
-import 'package:woofers/services/feeds/feeds_service.dart';
+import 'package:woofers/services/feeds_service.dart';
 
 class FeedsPage extends StatefulWidget {
   const FeedsPage({super.key});

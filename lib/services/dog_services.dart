@@ -1,7 +1,7 @@
 import 'dart:convert';
+
 import 'package:woofers/classes/dio_instance.dart';
-import 'package:woofers/model/dog_profile_model.dart';
-import 'package:woofers/model/error_schema_model.dart';
+import 'package:woofers/model/dog_model.dart';
 
 class DogService {
   Future<ResponseDogProfileModel?> retrieveDogProfile(String dogId) async {
@@ -10,46 +10,21 @@ class DogService {
       final dio = await DioInstance.getInstance();
 
       var response = await dio.get(api);
-      final errorSchema = ErrorSchema.fromJson(response.data['errorSchema']);
 
-      if (errorSchema.errorCode != 'WOF-000') {
-        return ResponseDogProfileModel.fromJson(response.data['errorSchema']);
-      } else {
-        return ResponseDogProfileModel.fromJson(response.data['outputSchema']);
-      }
+      return ResponseDogProfileModel.fromJson(response.data['outputSchema']);
     } catch (error) {
       print(error);
     }
     return null;
   }
 
-// di profile page dog detail
-  // Future<ResponseDogProfileModel?> ResponseDogProfileModelPage (String dogId) async {
-  //   try {
-  //     String api = '/dogs/profile/dog-id/$dogId';
-  //     final dio = await DioInstance.getInstance();
-
-  //     var response = await dio.get(api);
-  //     final errorSchema = ErrorSchema.fromJson(response.data['errorSchema']);
-
-  //     if (errorSchema.errorCode != 'WOF-000') {
-  //       return ResponseDogProfileModel.fromJson(response.data['errorSchema']);
-  //     } else {
-  //       return ResponseDogProfileModel.fromJson(response.data['outputSchema']);
-  //     }
-  //   } catch (error) {
-  //     print(error);
-  //   }
-  // }
-
-
-  Future<AddDogResponse?> addNewDog(AddDogRequest request) async{
+  Future<AddDogResponse?> addNewDog(AddDogRequest request) async {
     try {
       String api = '/dogs/add';
       final dio = await DioInstance.getInstance();
 
       var response = await dio.post(api, data: jsonEncode(request.toJson()));
-      final errorSchema = ErrorSchema.fromJson(response.data['errorSchema']);
+      final errorSchema = AddDogResponse.fromJson(response.data['errorSchema']);
 
       if (errorSchema.errorCode != 'WOF-000') {
         return AddDogResponse.fromJson(response.data['errorSchema']);
@@ -59,24 +34,20 @@ class DogService {
     } catch (error) {
       print(error);
     }
+    return null;
   }
 
-  Future<List<ResponseDogCard>> retrieveDogList(
-      String accountId) async {
+  Future<List<ResponseDogCard>> retrieveDogList(String accountId) async {
     try {
       String api = '/account-dog/account-id/$accountId';
       final dio = await DioInstance.getInstance();
 
       var response = await dio.get(api);
-      final errorSchema = ErrorSchema.fromJson(response.data['errorSchema']);
 
-      if (errorSchema.errorCode != 'WOF-000') {
-        return [ResponseDogCard.fromJson(response.data['errorSchema'])];
-      } else {
         return (response.data['outputSchema']['dogList'] as List)
             .map((e) => ResponseDogCard.fromJson(e))
             .toList();
-      }
+
     } catch (error) {
       print(error);
       throw Exception(error);
@@ -89,7 +60,7 @@ class DogService {
       final dio = await DioInstance.getInstance();
 
       var response = await dio.post(api, data: jsonEncode(request.toJson()));
-      final errorSchema = ErrorSchema.fromJson(response.data['errorSchema']);
+      final errorSchema = EditDogResponse.fromJson(response.data['errorSchema']);
 
       if (errorSchema.errorCode != 'WOF-000') {
         return EditDogResponse.fromJson(response.data['errorSchema']);
@@ -101,13 +72,13 @@ class DogService {
     }
   }
 
-  Future<DeleteDogResponse> deleteDog(String dogId) async{
+  Future<DeleteDogResponse> deleteDog(String dogId) async {
     try {
       String api = '/dogs/delete/dog-id/$dogId';
       final dio = await DioInstance.getInstance();
 
       var response = await dio.delete(api);
-      final errorSchema = ErrorSchema.fromJson(response.data['errorSchema']);
+      final errorSchema = DeleteDogResponse.fromJson(response.data['errorSchema']);
 
       if (errorSchema.errorCode != 'WOF-000') {
         return DeleteDogResponse.fromJson(response.data['errorSchema']);
@@ -118,4 +89,17 @@ class DogService {
       throw Exception(error);
     }
   }
+
+Future<RetrieveAllBreedResponse> retrieveAllBreed() async {
+    try {
+      const api = '/breeds/all';
+      final dio = await DioInstance.getInstance();
+
+      var response = await dio.get(api);
+      return RetrieveAllBreedResponse.fromJson(response.data['outputSchema']);
+    } catch (error) {
+      throw Exception(error);
+    }
+  }
+
 }

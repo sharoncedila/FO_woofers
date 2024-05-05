@@ -8,7 +8,7 @@ import 'package:woofers/components/image_network.dart';
 import 'package:woofers/model/feeds_model.dart';
 import 'package:woofers/model/image_model.dart';
 import 'package:woofers/pages/feeds_page.dart';
-import 'package:woofers/services/feeds/feeds_service.dart';
+import 'package:woofers/services/feeds_service.dart';
 import 'package:woofers/services/image_service.dart';
 
 class AddFeedsPage extends StatefulWidget {

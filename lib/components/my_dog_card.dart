@@ -3,10 +3,10 @@ import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:woofers/components/image_network.dart';
-import 'package:woofers/model/dog_profile_model.dart';
+import 'package:woofers/model/dog_model.dart';
 import 'package:woofers/pages/dog_profile_page.dart';
 import 'package:woofers/pages/edit_dog_page.dart';
-import 'package:woofers/services/dog/dog_services.dart';
+import 'package:woofers/services/dog_services.dart';
 
 class MyDogCard extends StatelessWidget {
   final ResponseDogCard dogProfile;

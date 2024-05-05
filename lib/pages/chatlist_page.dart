@@ -2,10 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:hexcolor/hexcolor.dart';
 import 'package:woofers/components/chat_card.dart';
-import 'package:woofers/model/chatlist_model.dart';
 import 'package:woofers/pages/notification_page.dart';
 import 'package:woofers/pages/search_user_list_page.dart';
-import 'package:woofers/services/chat/chat_service.dart';
+import 'package:woofers/services/chat_service.dart';
 
 class ChatListPage extends StatefulWidget {
   const ChatListPage({super.key});

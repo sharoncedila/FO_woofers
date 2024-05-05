@@ -4,7 +4,7 @@ import 'package:hexcolor/hexcolor.dart';
 import 'package:woofers/components/image_network.dart';
 import 'package:woofers/model/adoption_model.dart';
 import 'package:woofers/pages/chatroom_page.dart';
-import 'package:woofers/services/adoption/adoption_service.dart';
+import 'package:woofers/services/adoption_service.dart';
 
 class RequestAdoptionPage extends StatefulWidget {
   final String dogId;

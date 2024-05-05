@@ -1,12 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:woofers/components/image_network.dart';
-import 'package:woofers/model/user_profile_model.dart';
-import 'package:woofers/pages/chatroom_page.dart';
-import 'package:woofers/pages/edit_my_profile_page.dart';
-import 'package:woofers/pages/login_page.dart';
-// import 'package:woofers/interfaces/profile/user_profile_interface.dart';
-import 'package:woofers/services/account/user_profile_services.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:woofers/components/image_network.dart';
+import 'package:woofers/pages/chatroom_page.dart';
+import 'package:woofers/services/account_service.dart';
 
 // class OtherProfilePage extends StatelessWidget {
 //   // const OtherProfilePage({super.key});
@@ -47,8 +43,7 @@ class OtherProfilePage extends StatelessWidget {
           // ),
           Expanded(
             child: FutureBuilder(
-                future:
-                    RetrieveAccountService().viewOtherUserProfile(accountId),
+                future: AccountService().viewOtherUserProfile(accountId),
                 builder: (context, snapshot) {
                   if (snapshot.connectionState == ConnectionState.waiting) {
                     return const Center(child: Text("Retrieving your data..."));
@@ -62,7 +57,7 @@ class OtherProfilePage extends StatelessWidget {
                         // user profile picture
                         // const SizedBox(height: 15),
                         FutureBuilder(
-                            future: RetrieveAccountService()
+                            future: AccountService()
                                 .viewOtherUserProfile(accountId),
                             builder: (context, snapshot) {
                               if (snapshot.connectionState ==
@@ -74,7 +69,6 @@ class OtherProfilePage extends StatelessWidget {
                                   height: 150,
                                 );
                               }
-                              
 
                               final imageURL = snapshot.data!.image;
                               if (imageURL == null) {
@@ -388,12 +382,13 @@ class OtherProfilePage extends StatelessWidget {
                                   fontSize: 18),
                             ),
                             onPressed: () {
-                              
                               Navigator.push(
                                   context,
                                   MaterialPageRoute(
                                     builder: (context) => ChatroomPageDetail(
-                                        recipientId: accountId, username: snapshot.data?.username,),
+                                      recipientId: accountId,
+                                      username: snapshot.data?.username,
+                                    ),
                                   ));
                             },
                           ),

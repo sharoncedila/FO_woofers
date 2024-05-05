@@ -1,13 +1,9 @@
-import 'package:chat_bubbles/chat_bubbles.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:hexcolor/hexcolor.dart';
 import 'package:woofers/components/comment_card.dart';
-import 'package:woofers/components/feeds_card.dart';
 import 'package:woofers/model/feeds_model.dart';
-import 'package:woofers/services/feeds/feeds_service.dart';
+import 'package:woofers/services/feeds_service.dart';
 
 class CommentPage extends StatelessWidget {
   final String feedsId;

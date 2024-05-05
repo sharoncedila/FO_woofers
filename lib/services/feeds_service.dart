@@ -2,7 +2,6 @@ import 'dart:convert';
 
 import 'package:flutter/cupertino.dart';
 import 'package:woofers/classes/dio_instance.dart';
-import 'package:woofers/model/error_schema_model.dart';
 import 'package:woofers/model/feeds_model.dart';
 import 'package:woofers/services/image_service.dart';
 
@@ -13,7 +12,7 @@ class FeedsService {
       final dio = await DioInstance.getInstance();
 
       var response = await dio.get(api);
-      final errorSchema = ErrorSchema.fromJson(response.data['errorSchema']);
+      final errorSchema = ViewFeedsResponse.fromJson(response.data['errorSchema']);
       if (errorSchema.errorCode != 'WOF-000') {
         return [ViewFeedsResponse.fromJson(response.data['errorSchema'])];
       } else {
@@ -32,14 +31,9 @@ class FeedsService {
       final dio = await DioInstance.getInstance();
 
       var response = await dio.get(api);
-      final errorSchema = ErrorSchema.fromJson(response.data['errorSchema']);
-      if (errorSchema.errorCode != 'WOF-000') {
-        return [OpenCommentsResponse.fromJson(response.data['errorSchema'])];
-      } else {
         return (response.data['outputSchema']['commentsList'] as List)
             .map((e) => OpenCommentsResponse.fromJson(e))
             .toList();
-      }
     } catch (error) {
       throw Exception(error);
     }
@@ -50,16 +44,8 @@ class FeedsService {
       const api = '/feeds/post';
       final dio = await DioInstance.getInstance();
 
-      // String uploadedImage;
-      // FutureBuilder(
-      //   future: ImageService().uploadFeeds(),
-      //   builder: ((context, snapshot) {
-      //     uploadedImage = snapshot.data.fileName;
-      //   })
-      // );
-
       var response = await dio.post(api, data: jsonEncode(request.toJson()));
-      final errorSchema = ErrorSchema.fromJson(response.data['errorSchema']);
+      final errorSchema = PostFeedsResponse.fromJson(response.data['errorSchema']);
       if (errorSchema.errorCode != 'WOF-000') {
         return PostFeedsResponse.fromJson(response.data['errorSchema']);
       } else {
@@ -77,7 +63,7 @@ class FeedsService {
       final dio = await DioInstance.getInstance();
 
       var response = await dio.post(api, data: jsonEncode(request.toJson()));
-      final errorSchema = ErrorSchema.fromJson(response.data['errorSchema']);
+      final errorSchema = LeaveCommentResponse.fromJson(response.data['errorSchema']);
       if (errorSchema.errorCode != 'WOF-000') {
         return LeaveCommentResponse.fromJson(response.data['errorSchema']);
       } else {
@@ -95,7 +81,7 @@ class FeedsService {
       final dio = await DioInstance.getInstance();
 
       var response = await dio.get(api);
-      final errorSchema = ErrorSchema.fromJson(response.data['errorSchema']);
+      final errorSchema = ViewFeedsResponse.fromJson(response.data['errorSchema']);
       if (errorSchema.errorCode != 'WOF-000') {
         return ViewFeedsResponse.fromJson(response.data['errorSchema']);
       } else {

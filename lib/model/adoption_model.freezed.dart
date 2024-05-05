@@ -25,8 +25,7 @@ mixin _$AdoptionDetail {
   String? get dogName => throw _privateConstructorUsedError;
   String? get gender => throw _privateConstructorUsedError;
   String? get age => throw _privateConstructorUsedError;
-  String? get image =>
-      throw _privateConstructorUsedError; // required String? provinceName,
+  String? get image => throw _privateConstructorUsedError;
   String? get errorCode => throw _privateConstructorUsedError;
   String? get errorMessage => throw _privateConstructorUsedError;
 
@@ -216,7 +215,6 @@ class _$AdoptionDetailImpl implements _AdoptionDetail {
   final String? age;
   @override
   final String? image;
-// required String? provinceName,
   @override
   final String? errorCode;
   @override
@@ -291,7 +289,7 @@ abstract class _AdoptionDetail implements AdoptionDetail {
   String? get age;
   @override
   String? get image;
-  @override // required String? provinceName,
+  @override
   String? get errorCode;
   @override
   String? get errorMessage;
@@ -853,10 +851,8 @@ OwnerData _$OwnerDataFromJson(Map<String, dynamic> json) {
 mixin _$OwnerData {
   String? get accountId => throw _privateConstructorUsedError;
   String? get username => throw _privateConstructorUsedError;
-  String? get fullName =>
-      throw _privateConstructorUsedError; // required String? email,
-  String? get phoneNumber =>
-      throw _privateConstructorUsedError; // required String? description,
+  String? get fullName => throw _privateConstructorUsedError;
+  String? get phoneNumber => throw _privateConstructorUsedError;
   String? get image => throw _privateConstructorUsedError;
   String? get provinceName => throw _privateConstructorUsedError;
 
@@ -1013,10 +1009,8 @@ class _$OwnerDataImpl implements _OwnerData {
   final String? username;
   @override
   final String? fullName;
-// required String? email,
   @override
   final String? phoneNumber;
-// required String? description,
   @override
   final String? image;
   @override
@@ -1082,9 +1076,9 @@ abstract class _OwnerData implements OwnerData {
   String? get username;
   @override
   String? get fullName;
-  @override // required String? email,
+  @override
   String? get phoneNumber;
-  @override // required String? description,
+  @override
   String? get image;
   @override
   String? get provinceName;
@@ -1490,4 +1484,159 @@ abstract class _ApproveRejectAdoptionRequest
   _$$ApproveRejectAdoptionRequestImplCopyWith<
           _$ApproveRejectAdoptionRequestImpl>
       get copyWith => throw _privateConstructorUsedError;
+}
+
+FilterAdoption _$FilterAdoptionFromJson(Map<String, dynamic> json) {
+  return _FilterAdoption.fromJson(json);
+}
+
+/// @nodoc
+mixin _$FilterAdoption {
+  String? get breed => throw _privateConstructorUsedError;
+  String? get province => throw _privateConstructorUsedError;
+
+  Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
+  @JsonKey(ignore: true)
+  $FilterAdoptionCopyWith<FilterAdoption> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class $FilterAdoptionCopyWith<$Res> {
+  factory $FilterAdoptionCopyWith(
+          FilterAdoption value, $Res Function(FilterAdoption) then) =
+      _$FilterAdoptionCopyWithImpl<$Res, FilterAdoption>;
+  @useResult
+  $Res call({String? breed, String? province});
+}
+
+/// @nodoc
+class _$FilterAdoptionCopyWithImpl<$Res, $Val extends FilterAdoption>
+    implements $FilterAdoptionCopyWith<$Res> {
+  _$FilterAdoptionCopyWithImpl(this._value, this._then);
+
+  // ignore: unused_field
+  final $Val _value;
+  // ignore: unused_field
+  final $Res Function($Val) _then;
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? breed = freezed,
+    Object? province = freezed,
+  }) {
+    return _then(_value.copyWith(
+      breed: freezed == breed
+          ? _value.breed
+          : breed // ignore: cast_nullable_to_non_nullable
+              as String?,
+      province: freezed == province
+          ? _value.province
+          : province // ignore: cast_nullable_to_non_nullable
+              as String?,
+    ) as $Val);
+  }
+}
+
+/// @nodoc
+abstract class _$$FilterAdoptionImplCopyWith<$Res>
+    implements $FilterAdoptionCopyWith<$Res> {
+  factory _$$FilterAdoptionImplCopyWith(_$FilterAdoptionImpl value,
+          $Res Function(_$FilterAdoptionImpl) then) =
+      __$$FilterAdoptionImplCopyWithImpl<$Res>;
+  @override
+  @useResult
+  $Res call({String? breed, String? province});
+}
+
+/// @nodoc
+class __$$FilterAdoptionImplCopyWithImpl<$Res>
+    extends _$FilterAdoptionCopyWithImpl<$Res, _$FilterAdoptionImpl>
+    implements _$$FilterAdoptionImplCopyWith<$Res> {
+  __$$FilterAdoptionImplCopyWithImpl(
+      _$FilterAdoptionImpl _value, $Res Function(_$FilterAdoptionImpl) _then)
+      : super(_value, _then);
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? breed = freezed,
+    Object? province = freezed,
+  }) {
+    return _then(_$FilterAdoptionImpl(
+      breed: freezed == breed
+          ? _value.breed
+          : breed // ignore: cast_nullable_to_non_nullable
+              as String?,
+      province: freezed == province
+          ? _value.province
+          : province // ignore: cast_nullable_to_non_nullable
+              as String?,
+    ));
+  }
+}
+
+/// @nodoc
+@JsonSerializable()
+class _$FilterAdoptionImpl implements _FilterAdoption {
+  _$FilterAdoptionImpl({this.breed, this.province});
+
+  factory _$FilterAdoptionImpl.fromJson(Map<String, dynamic> json) =>
+      _$$FilterAdoptionImplFromJson(json);
+
+  @override
+  final String? breed;
+  @override
+  final String? province;
+
+  @override
+  String toString() {
+    return 'FilterAdoption(breed: $breed, province: $province)';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$FilterAdoptionImpl &&
+            (identical(other.breed, breed) || other.breed == breed) &&
+            (identical(other.province, province) ||
+                other.province == province));
+  }
+
+  @JsonKey(ignore: true)
+  @override
+  int get hashCode => Object.hash(runtimeType, breed, province);
+
+  @JsonKey(ignore: true)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$FilterAdoptionImplCopyWith<_$FilterAdoptionImpl> get copyWith =>
+      __$$FilterAdoptionImplCopyWithImpl<_$FilterAdoptionImpl>(
+          this, _$identity);
+
+  @override
+  Map<String, dynamic> toJson() {
+    return _$$FilterAdoptionImplToJson(
+      this,
+    );
+  }
+}
+
+abstract class _FilterAdoption implements FilterAdoption {
+  factory _FilterAdoption({final String? breed, final String? province}) =
+      _$FilterAdoptionImpl;
+
+  factory _FilterAdoption.fromJson(Map<String, dynamic> json) =
+      _$FilterAdoptionImpl.fromJson;
+
+  @override
+  String? get breed;
+  @override
+  String? get province;
+  @override
+  @JsonKey(ignore: true)
+  _$$FilterAdoptionImplCopyWith<_$FilterAdoptionImpl> get copyWith =>
+      throw _privateConstructorUsedError;
 }

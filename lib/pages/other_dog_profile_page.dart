@@ -4,7 +4,7 @@ import 'package:hexcolor/hexcolor.dart';
 import 'package:woofers/components/image_network.dart';
 import 'package:woofers/pages/add_dog_page.dart';
 import 'package:woofers/pages/notification_page.dart';
-import 'package:woofers/services/dog/dog_services.dart';
+import 'package:woofers/services/dog_services.dart';
 
 class OtherDogProfilePage extends StatelessWidget {
   final String dogId;

@@ -2,8 +2,8 @@ import 'dart:convert';
 import 'dart:io';
 
 import 'package:shared_preferences/shared_preferences.dart';
-import 'package:woofers/model/chatroom_model.dart';
-import 'package:woofers/model/websocket_model.dart';
+import 'package:woofers/model/chat_model.dart';
+import 'package:woofers/model/notification_model.dart';
 
 class WSChatInstance {
   static WebSocket? session;

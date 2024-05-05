@@ -3,7 +3,6 @@ import 'package:dio/dio.dart';
 import 'package:http_parser/http_parser.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:woofers/classes/dio_instance.dart';
-import 'package:woofers/model/error_schema_model.dart';
 import 'package:woofers/model/image_model.dart';
 
 class ImageService {
@@ -23,7 +22,7 @@ class ImageService {
       });
 
       var response = await dio.post(api, data: formData);
-      final errorSchema = ErrorSchema.fromJson(response.data['errorSchema']);
+      final errorSchema = UploadImageResponse.fromJson(response.data['errorSchema']);
       if (errorSchema.errorCode != 'WOF-000') {
         return UploadImageResponse.fromJson(response.data['errorSchema']);
       } else {
@@ -51,7 +50,7 @@ class ImageService {
         ),
       });
       var response = await dio.post(api, data: formData);
-      final errorSchema = ErrorSchema.fromJson(response.data['errorSchema']);
+      final errorSchema = UploadImageResponse.fromJson(response.data['errorSchema']);
       if (errorSchema.errorCode != 'WOF-000') {
         return UploadImageResponse.fromJson(response.data['errorSchema']);
       } else {
@@ -83,7 +82,7 @@ class ImageService {
           'file': await MultipartFile.fromFile(image.path, filename: fileName),
         });
         var response = await dio.post(api, data: formData);
-        final errorSchema = ErrorSchema.fromJson(response.data['errorSchema']);
+        final errorSchema = UploadImageResponse.fromJson(response.data['errorSchema']);
         if (errorSchema.errorCode != 'WOF-000') {
           return UploadImageResponse.fromJson(response.data['errorSchema']);
         } else {
