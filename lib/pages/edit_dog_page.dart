@@ -35,6 +35,9 @@ class _EditDogPageState extends State<EditDogPage> {
   final _dogService = DogService();
   bool isSwitched = false;
 
+  late List<String?> provinceNames;
+  late List<String?> breedNames;
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -99,18 +102,19 @@ class _EditDogPageState extends State<EditDogPage> {
                   context: context,
                   initialDate: _selectedDate ?? DateTime.now(),
                   firstDate: DateTime(2000),
-                  lastDate: DateTime(2101),
+                  lastDate: DateTime.now(),
                 );
-                if (dogProfile.isOpenAdopt == 'true') {
-                  isSwitched = true;
-                } else if (dogProfile.isOpenAdopt == 'false') {
-                  isSwitched = false;
-                }
                 if (pickedDate != null && pickedDate != _selectedDate) {
                   setState(() {
                     _selectedDate = pickedDate;
                   });
                 }
+              }
+
+              if (dogProfile.isOpenAdopt == 'true') {
+                isSwitched = true;
+              } else if (dogProfile.isOpenAdopt == 'false') {
+                isSwitched = false;
               }
 
               final imageURL =
@@ -141,7 +145,7 @@ class _EditDogPageState extends State<EditDogPage> {
                               isSwitched = value;
                             });
                           },
-                          activeTrackColor: HexColor("#a0dcdc"),
+                         activeTrackColor: HexColor("#a0dcdc"),
                           activeColor: Colors.white,
                         ),
                       ],
@@ -192,7 +196,10 @@ class _EditDogPageState extends State<EditDogPage> {
                                     nameController.text = newValue!;
                                   },
                                 )),
-                          ]))
+                          ])),
+                      const SizedBox(
+                        width: 20,
+                      ),
                     ],
                   ),
 
@@ -285,7 +292,10 @@ class _EditDogPageState extends State<EditDogPage> {
                               ),
                             ),
                             // ),
-                          ]))
+                          ])),
+                      const SizedBox(
+                        width: 20,
+                      ),
                     ],
                   ),
 
@@ -358,7 +368,10 @@ class _EditDogPageState extends State<EditDogPage> {
                                 ),
                               ),
                             ),
-                          ]))
+                          ])),
+                      const SizedBox(
+                        width: 20,
+                      ),
                     ],
                   ),
 
@@ -429,7 +442,10 @@ class _EditDogPageState extends State<EditDogPage> {
                                     return null;
                                   },
                                 )),
-                          ]))
+                          ])),
+                      const SizedBox(
+                        width: 20,
+                      ),
                     ],
                   ),
 
@@ -528,7 +544,10 @@ class _EditDogPageState extends State<EditDogPage> {
                                 ),
                               ),
                             ),
-                          ]))
+                          ])),
+                      const SizedBox(
+                        width: 20,
+                      ),
                     ],
                   ),
 
@@ -567,6 +586,7 @@ class _EditDogPageState extends State<EditDogPage> {
                               height: 25,
                               child: TextFormField(
                                   controller: vaccineController,
+                                  maxLines: 5,
                                   decoration: InputDecoration(
                                     border: const UnderlineInputBorder(),
                                     // labelText: 'Username',
@@ -578,7 +598,10 @@ class _EditDogPageState extends State<EditDogPage> {
                                     vaccineController.text = newValue!;
                                   }),
                             ),
-                          ]))
+                          ])),
+                      const SizedBox(
+                        width: 20,
+                      ),
                     ],
                   ),
 
@@ -616,7 +639,7 @@ class _EditDogPageState extends State<EditDogPage> {
                             SizedBox(
                               height: 70,
                               child: TextFormField(
-                                  maxLines: null,
+                                  maxLines: 5,
                                   controller: descriptionController,
                                   decoration: InputDecoration(
                                     border: const UnderlineInputBorder(),
@@ -630,6 +653,9 @@ class _EditDogPageState extends State<EditDogPage> {
                                   }),
                             ),
                           ])),
+                    const SizedBox(
+                  width: 20,
+                ),
                     ],
                   ),
                   const SizedBox(
@@ -657,10 +683,11 @@ class _EditDogPageState extends State<EditDogPage> {
                               ),
                             ),
                             child: const Text('Save',
-                                style: TextStyle(
-                                    //color: Colors.grey[600],
-                                    fontWeight: FontWeight.bold,
-                                    fontSize: 18)),
+                                // style: TextStyle(
+                                //     //color: Colors.grey[600],
+                                //     fontWeight: FontWeight.bold,
+                                //     fontSize: 18)
+                                ),
                             onPressed: () async {
                               if (_selectedProvince == '') {
                                 _selectedProvince = snapshot.data!.provinceName;
@@ -708,8 +735,11 @@ class _EditDogPageState extends State<EditDogPage> {
                               });
                             },
                           ),
-                        )),
-                  )
+                        )),    
+                  ),
+                  const SizedBox(
+                    height: 10,
+                  ),
                 ],
               );
               // );

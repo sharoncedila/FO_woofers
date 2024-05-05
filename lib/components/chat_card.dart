@@ -5,16 +5,24 @@ import 'package:woofers/model/chatroom_model.dart';
 import 'package:woofers/pages/chatroom_page.dart';
 import 'package:woofers/services/chat/chat_service.dart';
 
-class ChatCardDetail extends StatelessWidget {
+class ChatCardDetail extends StatefulWidget {
   final RetrieveChatlistResponse chatlistDetail;
   ChatCardDetail({
     super.key,
     required this.chatlistDetail,
   });
-  final _openChatService = ChatroomService();
+  
+  @override
+  _ChatCardState createState() => _ChatCardState();
+}
 
+class _ChatCardState extends State<ChatCardDetail> {
+  final _openChatService = ChatroomService();
+  String? imageURL;
+ 
   @override
   Widget build(BuildContext context) {
+    RetrieveChatlistResponse chatlistDetail = widget.chatlistDetail;
     return Container(
       width: double.infinity,
       child: Padding(
@@ -33,8 +41,7 @@ class ChatCardDetail extends StatelessWidget {
               );*/
               String recipientId = chatlistDetail.recipientId!;
               String chatroomChatId = chatlistDetail.chatroomId!;
-              print('chatroom Id : $chatroomChatId');
-              print('recipient id : $recipientId');
+              String username = chatlistDetail.recipientUsername!;
               //String read = chatlistDetail.isRead!;
               final OpenChatRequest req = OpenChatRequest(
                   chatroomId: chatroomChatId, recipientId: recipientId);
@@ -42,7 +49,8 @@ class ChatCardDetail extends StatelessWidget {
                   Navigator.of(context).push(MaterialPageRoute(
                       builder: (_) => ChatroomPageDetail(
                           recipientId: recipientId,
-                          chatroomId: chatroomChatId))));
+                          chatroomId: chatroomChatId,
+                          username: username,))));
             },
             child: SizedBox(
               height: 80,
@@ -53,6 +61,44 @@ class ChatCardDetail extends StatelessWidget {
                   crossAxisAlignment: CrossAxisAlignment.start,
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
+                    //image profile
+                    /*
+                    (feedsDetail.profilePicture != null)
+                          ? InkWell(
+                              onTap: () {
+                                Navigator.push(
+                                  context,
+                                  MaterialPageRoute(
+                                      builder: (context) =>
+                                          OtherProfilePageTemplate(
+                                              accountId:
+                                                  feedsDetail.accountId ?? '')),
+                                );
+                              },
+                              child: ImageNetwork(
+                                urlImage: feedsDetail.profilePicture,
+                                width: 45,
+                                height: 45,
+                              ),
+                            )
+                          : InkWell(
+                              onTap: () {
+                                Navigator.push(
+                                  context,
+                                  MaterialPageRoute(
+                                    builder: (context) =>
+                                        OtherProfilePageTemplate(
+                                            accountId:
+                                                feedsDetail.accountId ?? ''),
+                                  ),
+                                );
+                              },
+                              child: const Image(
+                                  image: AssetImage(
+                                      'assets/woofers_icon/profile.jpg')))),
+                     */
+
+                    //username
                     Expanded(
                       child: Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
@@ -69,8 +115,8 @@ class ChatCardDetail extends StatelessWidget {
                           SizedBox(height: 5),
                           Text(
                             chatlistDetail.lastMessage ?? "",
-                            style: GoogleFonts.lora(
-                              fontSize: 13,
+                            style: GoogleFonts.archivoNarrow(
+                              fontSize: 15,
                               color: chatlistDetail.isRead! == "false"
                                   ? Colors.black
                                   : const Color.fromRGBO(40, 36, 36, 10000),

@@ -64,6 +64,11 @@ class _RequestAdoptionPageState extends State<RequestAdoptionPage> {
                     snapshot.data?.ownerData!.accountId == null
                         ? ""
                         : snapshot.data!.ownerData!.accountId;
+
+                        String? ownerUsername =
+                    snapshot.data?.ownerData!.username == null
+                        ? ""
+                        : snapshot.data!.ownerData!.username;
                 return IconButton(
                   icon: const Icon(Icons.chat),
                   onPressed: () {
@@ -71,7 +76,7 @@ class _RequestAdoptionPageState extends State<RequestAdoptionPage> {
                       context,
                       MaterialPageRoute(
                           builder: (context) =>
-                              ChatroomPageDetail(recipientId: ownerAccountId!)),
+                              ChatroomPageDetail(recipientId: ownerAccountId!, username: ownerUsername!)),
                     );
                   },
                 );
@@ -550,6 +555,55 @@ class _RequestAdoptionPageState extends State<RequestAdoptionPage> {
                       ))
                     ],
                   ),
+                  const SizedBox(
+                    height: 30,
+                  ),
+                  Row(
+                    children: [
+                      const SizedBox(
+                        width: 20,
+                      ),
+                      const Image(
+                        image: AssetImage('assets/woofers_icon/profile.jpg'),
+                        width: 35,
+                        height: 35,
+                      ),
+                      const SizedBox(
+                        width: 20,
+                      ),
+                      Expanded(
+                          child: Column(
+                        mainAxisAlignment: MainAxisAlignment.start,
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          Text(
+                            "fullname",
+                            style: TextStyle(
+                              color: Colors.black.withOpacity(0.5),
+                            ),
+                          ),
+                          SizedBox(
+                            height: 25,
+                            child: TextFormField(
+                              readOnly: true,
+                              enabled: false,
+                              decoration: InputDecoration(
+                                border: const UnderlineInputBorder(),
+                                // labelText: 'Username',
+                                labelText:
+                                    snapshot.data?.ownerData!.fullName == null
+                                        ? ""
+                                        : snapshot.data!.ownerData!.fullName,
+                                labelStyle: GoogleFonts.newsCycle(
+                                  color: Colors.black,
+                                ),
+                              ),
+                            ),
+                          ),
+                        ],
+                      ))
+                    ],
+                  ),
 
                   const SizedBox(
                     height: 20,
@@ -684,6 +738,10 @@ class _RequestAdoptionPageState extends State<RequestAdoptionPage> {
                                   snapshot.data?.ownerData!.accountId == null
                                       ? ""
                                       : snapshot.data!.ownerData!.accountId;
+                                      String? ownerUsername =
+                                  snapshot.data?.ownerData!.username == null
+                                      ? ""
+                                      : snapshot.data!.ownerData!.username;
                               final SendAdoptionNotification send =
                                   SendAdoptionNotification(
                                       dogId:
@@ -715,7 +773,7 @@ class _RequestAdoptionPageState extends State<RequestAdoptionPage> {
                                   (value) => Navigator.of(context)
                                       .pushReplacement(MaterialPageRoute(
                                           builder: (_) => ChatroomPageDetail(
-                                              recipientId: ownerAccountId!))));
+                                              recipientId: ownerAccountId!, username: ownerUsername!,))));
                               // Navigator.push(
                               //   context,
                               //   MaterialPageRoute(

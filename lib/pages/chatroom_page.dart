@@ -9,8 +9,10 @@ import 'package:woofers/services/chat/chat_service.dart';
 class ChatroomPageDetail extends StatefulWidget {
   final String recipientId;
   String? chatroomId;
+  String? username;
 
-  ChatroomPageDetail({super.key, required this.recipientId, this.chatroomId});
+  ChatroomPageDetail(
+      {super.key, required this.recipientId, this.chatroomId,  this.username});
 
   @override
   _ChatroomPageState createState() => _ChatroomPageState();
@@ -19,12 +21,17 @@ class ChatroomPageDetail extends StatefulWidget {
 class _ChatroomPageState extends State<ChatroomPageDetail> {
   final ScrollController _scrollController = ScrollController();
   String? recipientId;
+  String? chatroomId;
+  String? username;
 
   @override
   void initState() {
     super.initState();
     recipientId = widget.recipientId;
+    chatroomId = widget.chatroomId;
+    username = widget.username;
   }
+  
 
   @override
   Widget build(BuildContext context) {
@@ -37,8 +44,9 @@ class _ChatroomPageState extends State<ChatroomPageDetail> {
         elevation: 0,
         backgroundColor: HexColor("#a0dcdc"),
         title: Text(
-          "CHATS",
-          style: GoogleFonts.lora(
+          //"CHATS",
+          username!
+          ,style: GoogleFonts.lora(
             fontSize: 25,
             fontWeight: FontWeight.bold,
             color: const Color.fromRGBO(40, 36, 36, 10000),
@@ -74,7 +82,8 @@ class _ChatroomPageState extends State<ChatroomPageDetail> {
                   onPressed: () async {
                     final SendChatRequest request = SendChatRequest(
                         recipientId: recipientId,
-                        message: messageController.text);
+                        message: messageController.text,
+                        chatroomId: chatroomId);
                     WSChatInstance.sendMessage(request);
                     FocusScope.of(context).unfocus();
                   },

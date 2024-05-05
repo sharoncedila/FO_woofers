@@ -521,7 +521,10 @@ class DogProfilePage extends StatelessWidget {
                             );
                           },
                         ),
-                      ))
+                      )),
+                      const SizedBox(
+                    height: 20,
+                  ),
                 ],
               );
               // );

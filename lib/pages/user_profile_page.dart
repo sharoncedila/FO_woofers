@@ -1,15 +1,10 @@
 import 'dart:io';
-
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:woofers/components/image_network.dart';
 import 'package:woofers/model/user_profile_model.dart';
 import 'package:woofers/pages/edit_my_profile_page.dart';
 import 'package:woofers/pages/login_page.dart';
-import 'package:woofers/services/account/account_service.dart';
-// import 'package:woofers/interfaces/profile/user_profile_interface.dart';
 import 'package:woofers/services/account/user_profile_services.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:woofers/services/account/login_service.dart';
@@ -141,7 +136,7 @@ class _UserProfilePageState extends State<UserProfilePage> {
                         ),
 
                         // full name
-                        const SizedBox(height: 15),
+                        const SizedBox(height: 20),
                         Row(
                           children: [
                             const SizedBox(
@@ -192,7 +187,7 @@ class _UserProfilePageState extends State<UserProfilePage> {
                         ),
 
                         // email
-                        const SizedBox(height: 15),
+                        const SizedBox(height: 20),
                         Row(
                           children: [
                             const SizedBox(
@@ -246,7 +241,7 @@ class _UserProfilePageState extends State<UserProfilePage> {
                         ),
 
                         // province name
-                        const SizedBox(height: 15),
+                        const SizedBox(height: 20),
                         Row(
                           children: [
                             const SizedBox(
@@ -300,7 +295,7 @@ class _UserProfilePageState extends State<UserProfilePage> {
                         ),
 
                         // phone number
-                        const SizedBox(height: 15),
+                        const SizedBox(height: 20),
                         Row(
                           children: [
                             const SizedBox(
@@ -355,7 +350,7 @@ class _UserProfilePageState extends State<UserProfilePage> {
                         ),
 
                         // description
-                        const SizedBox(height: 15),
+                        const SizedBox(height: 20),
                         Row(
                           children: [
                             const SizedBox(
@@ -387,7 +382,7 @@ class _UserProfilePageState extends State<UserProfilePage> {
                                     ),
                                   ),
                                   Container(
-                                    height: 50,
+                                    height: 70,
                                     width: 325,
                                     child: TextFormField(
                                       maxLines: 2,

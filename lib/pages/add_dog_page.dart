@@ -31,13 +31,14 @@ class _AddDogPageState extends State<AddDogPage> {
 
   late List<String?> provinceNames;
   late List<String?> breedNames;
+  
 
   Future<void> _selectDate(BuildContext context) async {
     final DateTime? pickedDate = await showDatePicker(
       context: context,
       initialDate: selectedDate ?? DateTime.now(),
       firstDate: DateTime(2000),
-      lastDate: DateTime(2101),
+      lastDate: DateTime.now(),
     );
 
     if (pickedDate != null && pickedDate != selectedDate) {
@@ -73,42 +74,38 @@ class _AddDogPageState extends State<AddDogPage> {
     return SingleChildScrollView(
       child: Column(children: [
         Padding(
-            padding:
-                const EdgeInsets.only(right: 30), 
-                // Adjust the value as needed
-            child: Column(
-              children: [
-                const SizedBox(
+          padding: const EdgeInsets.only(right: 30),
+          // Adjust the value as needed
+          child: Column(children: [
+            const SizedBox(
               height: 15,
             ),
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.end,
-                children: [
-                  Text(
-                    'Open for adoption',
-                    style: GoogleFonts.lora(
-                      fontSize: 14,
-                      fontWeight: FontWeight.bold,
-                      color: const Color.fromRGBO(40, 36, 36, 10000),
-                    ),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.end,
+              children: [
+                Text(
+                  'Open for adoption',
+                  style: GoogleFonts.lora(
+                    fontSize: 14,
+                    fontWeight: FontWeight.bold,
+                    color: const Color.fromRGBO(40, 36, 36, 10000),
                   ),
-                  const SizedBox(width: 10), // Add space between text and switch
-                  Switch(
-                    value: isSwitched,
-                    onChanged: (value) {
-                      setState(() {
-                        isSwitched = value;
-                      });
-                    },
-                    activeTrackColor: HexColor("#a0dcdc"),
-                    activeColor: Colors.white,
-                  ),
-                ],
-              ),
-      ]
+                ),
+                const SizedBox(width: 10), // Add space between text and switch
+                Switch(
+                  value: isSwitched,
+                  onChanged: (value) {
+                    setState(() {
+                      isSwitched = value;
+                    });
+                  },
+                  activeTrackColor: HexColor("#a0dcdc"),
+                  activeColor: Colors.white,
+                ),
+              ],
             ),
-          ),
-        
+          ]),
+        ),
         Column(
           children: [
             const SizedBox(
@@ -158,7 +155,10 @@ class _AddDogPageState extends State<AddDogPage> {
                               nameController.text = newValue!;
                             },
                           )),
-                    ]))
+                    ])),
+                    const SizedBox(
+                  width: 20,
+                ),
               ],
             ),
 
@@ -198,7 +198,7 @@ class _AddDogPageState extends State<AddDogPage> {
                             builder: (context, snapshot) {
                               if (snapshot.connectionState ==
                                   ConnectionState.waiting) {
-                                return const Text("Breed");
+                                return const Text("");
                               }
                               if (snapshot.hasError) {
                                 return Text("Error: ${snapshot.error}");
@@ -244,7 +244,10 @@ class _AddDogPageState extends State<AddDogPage> {
                         ),
                       ),
                       // ),
-                    ]))
+                    ])),
+                const SizedBox(
+                  width: 20,
+                ),
               ],
             ),
 
@@ -314,7 +317,10 @@ class _AddDogPageState extends State<AddDogPage> {
                           ),
                         ),
                       ),
-                    ]))
+                    ])),
+                const SizedBox(
+                  width: 20,
+                ),
               ],
             ),
 
@@ -374,7 +380,10 @@ class _AddDogPageState extends State<AddDogPage> {
                               return null;
                             },
                           )),
-                    ]))
+                    ])),
+                const SizedBox(
+                  width: 20,
+                ),
               ],
             ),
 
@@ -464,7 +473,10 @@ class _AddDogPageState extends State<AddDogPage> {
                           ),
                         ),
                       ),
-                    ]))
+                    ])),
+                const SizedBox(
+                  width: 20,
+                ),
               ],
             ),
 
@@ -503,6 +515,7 @@ class _AddDogPageState extends State<AddDogPage> {
                         height: 50,
                         child: TextFormField(
                           controller: vaccineController,
+                          maxLines: 5,
                           decoration: InputDecoration(
                             border: const UnderlineInputBorder(),
                             // labelText: 'Username',
@@ -518,7 +531,10 @@ class _AddDogPageState extends State<AddDogPage> {
                           },
                         ),
                       ),
-                    ]))
+                    ])),
+                const SizedBox(
+                  width: 20,
+                ),
               ],
             ),
 
@@ -556,7 +572,7 @@ class _AddDogPageState extends State<AddDogPage> {
                       SizedBox(
                         height: 70,
                         child: TextFormField(
-                            maxLines: null,
+                            maxLines: 5,
                             controller: descriptionController,
                             decoration: InputDecoration(
                               border: const UnderlineInputBorder(),
@@ -570,6 +586,9 @@ class _AddDogPageState extends State<AddDogPage> {
                             }),
                       ),
                     ])),
+                    const SizedBox(
+                  width: 20,
+                ),
               ],
             ),
             const SizedBox(

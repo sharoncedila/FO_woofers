@@ -109,7 +109,7 @@ class _RegisterFormState extends State<RegisterForm> {
             ),
 
             // fullname form field
-            const SizedBox(height: 50),
+            const SizedBox(height: 15),
             Padding(
               padding: const EdgeInsets.symmetric(horizontal: 25),
               child: TextFormField(

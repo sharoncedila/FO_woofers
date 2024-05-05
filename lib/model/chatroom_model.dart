@@ -37,6 +37,7 @@ class OpenChatResponse with _$OpenChatResponse {
     // required String? chatMessageId,
     required String? message,
     required String? timestamp,
+    required String? image
     
   }) = _OpenChatResponse;
 

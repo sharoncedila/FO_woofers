@@ -363,6 +363,7 @@ mixin _$OpenChatResponse {
       throw _privateConstructorUsedError; // required String? chatMessageId,
   String? get message => throw _privateConstructorUsedError;
   String? get timestamp => throw _privateConstructorUsedError;
+  String? get image => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -381,7 +382,8 @@ abstract class $OpenChatResponseCopyWith<$Res> {
       String? errorCode,
       String? errorMessage,
       String? message,
-      String? timestamp});
+      String? timestamp,
+      String? image});
 }
 
 /// @nodoc
@@ -402,6 +404,7 @@ class _$OpenChatResponseCopyWithImpl<$Res, $Val extends OpenChatResponse>
     Object? errorMessage = freezed,
     Object? message = freezed,
     Object? timestamp = freezed,
+    Object? image = freezed,
   }) {
     return _then(_value.copyWith(
       senderId: freezed == senderId
@@ -424,6 +427,10 @@ class _$OpenChatResponseCopyWithImpl<$Res, $Val extends OpenChatResponse>
           ? _value.timestamp
           : timestamp // ignore: cast_nullable_to_non_nullable
               as String?,
+      image: freezed == image
+          ? _value.image
+          : image // ignore: cast_nullable_to_non_nullable
+              as String?,
     ) as $Val);
   }
 }
@@ -441,7 +448,8 @@ abstract class _$$OpenChatResponseImplCopyWith<$Res>
       String? errorCode,
       String? errorMessage,
       String? message,
-      String? timestamp});
+      String? timestamp,
+      String? image});
 }
 
 /// @nodoc
@@ -460,6 +468,7 @@ class __$$OpenChatResponseImplCopyWithImpl<$Res>
     Object? errorMessage = freezed,
     Object? message = freezed,
     Object? timestamp = freezed,
+    Object? image = freezed,
   }) {
     return _then(_$OpenChatResponseImpl(
       senderId: freezed == senderId
@@ -482,6 +491,10 @@ class __$$OpenChatResponseImplCopyWithImpl<$Res>
           ? _value.timestamp
           : timestamp // ignore: cast_nullable_to_non_nullable
               as String?,
+      image: freezed == image
+          ? _value.image
+          : image // ignore: cast_nullable_to_non_nullable
+              as String?,
     ));
   }
 }
@@ -494,7 +507,8 @@ class _$OpenChatResponseImpl implements _OpenChatResponse {
       required this.errorCode,
       required this.errorMessage,
       required this.message,
-      required this.timestamp});
+      required this.timestamp,
+      required this.image});
 
   factory _$OpenChatResponseImpl.fromJson(Map<String, dynamic> json) =>
       _$$OpenChatResponseImplFromJson(json);
@@ -514,10 +528,12 @@ class _$OpenChatResponseImpl implements _OpenChatResponse {
   final String? message;
   @override
   final String? timestamp;
+  @override
+  final String? image;
 
   @override
   String toString() {
-    return 'OpenChatResponse(senderId: $senderId, errorCode: $errorCode, errorMessage: $errorMessage, message: $message, timestamp: $timestamp)';
+    return 'OpenChatResponse(senderId: $senderId, errorCode: $errorCode, errorMessage: $errorMessage, message: $message, timestamp: $timestamp, image: $image)';
   }
 
   @override
@@ -533,13 +549,14 @@ class _$OpenChatResponseImpl implements _OpenChatResponse {
                 other.errorMessage == errorMessage) &&
             (identical(other.message, message) || other.message == message) &&
             (identical(other.timestamp, timestamp) ||
-                other.timestamp == timestamp));
+                other.timestamp == timestamp) &&
+            (identical(other.image, image) || other.image == image));
   }
 
   @JsonKey(ignore: true)
   @override
-  int get hashCode => Object.hash(
-      runtimeType, senderId, errorCode, errorMessage, message, timestamp);
+  int get hashCode => Object.hash(runtimeType, senderId, errorCode,
+      errorMessage, message, timestamp, image);
 
   @JsonKey(ignore: true)
   @override
@@ -562,7 +579,8 @@ abstract class _OpenChatResponse implements OpenChatResponse {
       required final String? errorCode,
       required final String? errorMessage,
       required final String? message,
-      required final String? timestamp}) = _$OpenChatResponseImpl;
+      required final String? timestamp,
+      required final String? image}) = _$OpenChatResponseImpl;
 
   factory _OpenChatResponse.fromJson(Map<String, dynamic> json) =
       _$OpenChatResponseImpl.fromJson;
@@ -579,6 +597,8 @@ abstract class _OpenChatResponse implements OpenChatResponse {
   String? get message;
   @override
   String? get timestamp;
+  @override
+  String? get image;
   @override
   @JsonKey(ignore: true)
   _$$OpenChatResponseImplCopyWith<_$OpenChatResponseImpl> get copyWith =>

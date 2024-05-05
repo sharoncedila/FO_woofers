@@ -74,6 +74,7 @@ class OtherProfilePage extends StatelessWidget {
                                   height: 150,
                                 );
                               }
+                              
 
                               final imageURL = snapshot.data!.image;
                               if (imageURL == null) {
@@ -387,11 +388,12 @@ class OtherProfilePage extends StatelessWidget {
                                   fontSize: 18),
                             ),
                             onPressed: () {
+                              
                               Navigator.push(
                                   context,
                                   MaterialPageRoute(
                                     builder: (context) => ChatroomPageDetail(
-                                        recipientId: accountId),
+                                        recipientId: accountId, username: snapshot.data?.username,),
                                   ));
                             },
                           ),

@@ -44,6 +44,7 @@ _$OpenChatResponseImpl _$$OpenChatResponseImplFromJson(
       errorMessage: json['errorMessage'] as String?,
       message: json['message'] as String?,
       timestamp: json['timestamp'] as String?,
+      image: json['image'] as String?,
     );
 
 Map<String, dynamic> _$$OpenChatResponseImplToJson(
@@ -54,6 +55,7 @@ Map<String, dynamic> _$$OpenChatResponseImplToJson(
       'errorMessage': instance.errorMessage,
       'message': instance.message,
       'timestamp': instance.timestamp,
+      'image': instance.image,
     };
 
 _$SendChatResponseImpl _$$SendChatResponseImplFromJson(

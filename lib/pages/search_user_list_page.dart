@@ -97,12 +97,11 @@ class _SearchUserListPageState extends State<SearchUserListPage> {
                   ),
                   Flexible(
                     child: TextFormField(
-                      readOnly: true,
                       controller: _searchController,
                       cursorColor: Colors.black,
                       decoration: const InputDecoration(
                           border: InputBorder.none,
-                          hintText: "Back to chatlist"),
+                          hintText: "Search for others"),
                       // onChanged: (value) {
                       //   _searchChat(
                       //       value); // Call searchChat function on text change
@@ -123,17 +122,45 @@ class _SearchUserListPageState extends State<SearchUserListPage> {
                           },
                         ),
                       ),
-                      child: const Icon(Icons.clear, color: Colors.black),
+                      child: const Icon(Icons.search, color: Colors.black),
                       onPressed: () async {
-                        //String wordSearch = _searchController.text;
+                        String wordSearch = _searchController.text;
                         //print(wordSearch);
                         Navigator.push(
                           context,
                           MaterialPageRoute(
                               builder: (context) =>
-                                  ChatListPage()),
+                              SearchUserListPage(userName: wordSearch)),
+                                  //ChatListPage()),
                         );
                       }),
+                      //clear search button
+                      // ElevatedButton(
+                      // style: ButtonStyle(
+                      //   backgroundColor: MaterialStateProperty.resolveWith(
+                      //     (Set<MaterialState> states) {
+                      //       if (states.contains(MaterialState.pressed)) {
+                      //         return Theme.of(context)
+                      //             .colorScheme
+                      //             .primary
+                      //             .withOpacity(0.5);
+                      //       }
+                      //       return null; // Use the component's default.
+                      //     },
+                      //   ),
+                      // ),
+                      // child: const Icon(Icons.clear, color: Colors.black),
+                      // onPressed: () async {
+                      //   //String wordSearch = _searchController.text;
+                      //   //print(wordSearch);
+                      //   Navigator.push(
+                      //     context,
+                      //     MaterialPageRoute(
+                      //         builder: (context) =>
+                      //            // SearchUserListPage(userName: wordSearch)),
+                      //     ChatListPage()),
+                      //   );
+                      // }),
                   //futur builder here
                   
                 ],

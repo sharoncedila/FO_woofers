@@ -1,5 +1,6 @@
 import 'dart:convert';
 import 'dart:io';
+import 'package:dio/dio.dart';
 import 'package:woofers/classes/dio_instance.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:woofers/classes/ws_notif_instance.dart';
@@ -8,11 +9,12 @@ import 'package:woofers/model/login_model.dart';
 
 class LoginService {
   Future<ResponseLoginModel?> login(RequestLoginModel loginReq) async {
+    Response? response;
     try {
       const api = '/accounts/login';
       final dio = await DioInstance.getInstance();
 
-      var response = await dio.post(api, data: jsonEncode(loginReq.toJson()));
+      response = await dio.post(api, data: jsonEncode(loginReq.toJson()));
       final errorSchema = ErrorSchema.fromJson(response.data['errorSchema']);
 
       if (errorSchema.errorCode != 'WOF-000') {
@@ -29,8 +31,13 @@ class LoginService {
       }
     } catch (error) {
       print(error);
+      if (response == null) {
+        throw new Exception("Error, response is null");
+      }
+      var errorSchema =
+          ResponseLoginModel.fromJson(response!.data['errorSchema']);
+      throw Exception(errorSchema.errorMessage);
     }
-    return null;
   }
 
   Future<LogoutResponse?> logout() async {
