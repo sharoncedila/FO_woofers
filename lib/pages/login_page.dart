@@ -2,6 +2,7 @@ import 'package:email_validator/email_validator.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:woofers/components/bottom_menu.dart';
+import 'package:woofers/model/account_model.dart';
 import 'package:woofers/model/login_model.dart';
 import 'package:woofers/pages/register_page.dart';
 import 'package:woofers/services/account/login_service.dart';

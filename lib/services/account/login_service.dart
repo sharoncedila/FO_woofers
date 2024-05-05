@@ -4,6 +4,7 @@ import 'package:dio/dio.dart';
 import 'package:woofers/classes/dio_instance.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:woofers/classes/ws_notif_instance.dart';
+import 'package:woofers/model/account_model.dart';
 import 'package:woofers/model/error_schema_model.dart';
 import 'package:woofers/model/login_model.dart';
 
