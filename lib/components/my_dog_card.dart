@@ -164,8 +164,48 @@ class MyDogCard extends StatelessWidget {
                                     style: TextButton.styleFrom(
                                         backgroundColor: Colors.red,
                                         fixedSize: const Size(75, 10)),
-                                    onPressed: () {
-                                      DogService().deleteDog(dogProfile.dogId);
+                                    // onPressed: () {
+                                    //   DogService().deleteDog(dogProfile.dogId);
+                                    // },
+                                    onPressed: () async {
+                                      showDialog(
+                                        context: context,
+                                        builder: (BuildContext context) {
+                                          return AlertDialog(
+                                            title: const Text('Confirmation'),
+                                            content: const Text(
+                                                'Are you sure want to delete this dog?'),
+                                            actions: <Widget>[
+                                              TextButton(
+                                                onPressed: () {
+                                                  Navigator.of(context)
+                                                      .pop(false);
+                                                },
+                                                child: const Text('No'),
+                                              ),
+                                              TextButton(
+                                                onPressed: () {
+                                                  Navigator.of(context)
+                                                      .pop(true);
+                                                },
+                                                child: const Text('Yes'),
+                                              ),
+                                            ],
+                                          );
+                                        },
+                                      ).then((value) {
+                                        // yess
+                                        if (value != null && value) {
+                                          DogService()
+                                              .deleteDog(dogProfile.dogId);
+                                        }
+                                        // no
+                                        // else {
+                                        //   // If 'No' is pressed or the dialog is dismissed
+                                        //   // print('User canceled');
+                                        //   // Perform the desired action or do nothing
+                                        // }
+                                      });
                                     },
                                     child: const Text(
                                       "Delete",
@@ -188,3 +228,50 @@ class MyDogCard extends StatelessWidget {
     // );
   }
 }
+
+
+
+/*
+onPressed: () async {
+                        showDialog(
+                          context: context,
+                          builder: (BuildContext context) {
+                            return AlertDialog(
+                              title: const Text('Confirmation'),
+                              content: const Text(
+                                  'Are you sure want to log out your account?'),
+                              actions: <Widget>[
+                                TextButton(
+                                  onPressed: () {
+                                    Navigator.of(context).pop(false);
+                                  },
+                                  child: const Text('No'),
+                                ),
+                                TextButton(
+                                  onPressed: () {
+                                    Navigator.of(context).pop(true);
+                                  },
+                                  child: const Text('Yes'),
+                                ),
+                              ],
+                            );
+                          },
+                        ).then((value) {
+                          // yess
+                          if (value != null && value) {
+                            _loginService.logout();
+                            Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                  builder: (context) => const LoginPage()),
+                            );
+                          }
+                          // no
+                          // else {
+                          //   // If 'No' is pressed or the dialog is dismissed
+                          //   // print('User canceled');
+                          //   // Perform the desired action or do nothing
+                          // }
+                        });
+                      },
+*/

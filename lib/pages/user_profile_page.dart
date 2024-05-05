@@ -277,7 +277,7 @@ class _UserProfilePageState extends State<UserProfilePage> {
                                     ),
                                   ),
                                   SizedBox(
-                                    // height: 25,
+                                    height: 25,
                                     width: 325,
                                     child: TextFormField(
                                       readOnly: true,

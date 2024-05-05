@@ -45,7 +45,7 @@ class ChatCardDetail extends StatelessWidget {
                           chatroomId: chatroomChatId))));
             },
             child: SizedBox(
-              height: 80,
+              height: 70,
               child: Padding(
                 padding:
                     const EdgeInsets.symmetric(vertical: 10, horizontal: 20),
