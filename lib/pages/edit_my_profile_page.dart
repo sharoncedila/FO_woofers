@@ -1,12 +1,16 @@
+import 'dart:io';
+
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:hexcolor/hexcolor.dart';
+import 'package:image_picker/image_picker.dart';
 import 'package:woofers/components/image_network.dart';
 import 'package:woofers/components/profile_page_template.dart';
 import 'package:woofers/model/account_model.dart';
 import 'package:woofers/model/user_profile_model.dart';
 import 'package:woofers/services/account/account_service.dart';
 import 'package:woofers/services/account/user_profile_services.dart';
+import 'package:woofers/services/image_service.dart';
 import 'package:woofers/services/province/province_service.dart';
 
 class EditMyProfile extends StatefulWidget {
@@ -105,6 +109,17 @@ class _EditMyProfilePageState extends State<EditMyProfile> {
                 children: [
                   const SizedBox(height: 15),
                   ImageNetwork(urlImage: imageURL, width: 150, height: 150),
+                   IconButton(
+                            onPressed: () async {
+                              final pickedFile = await ImagePicker()
+                                  .pickImage(source: ImageSource.gallery);
+                              if (pickedFile != null) {
+                                File image = File(pickedFile.path);
+                                ImageService().uploadProfilePicture(image);
+                              }
+                              // ImageService().uploadFeeds();
+                            },
+                            icon: const Icon(Icons.camera)),
                   const SizedBox(height: 15),
                   // username
                   Row(

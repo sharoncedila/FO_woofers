@@ -37,7 +37,7 @@ class NotificationService {
           ViewNotificationResponse.fromJson(response.data['errorSchema'])
         ];
       } else {
-        return (response.data['outputSchema']['commentList'] as List)
+        return (response.data['outputSchema']['notificationList'] as List)
             .map((e) => ViewNotificationResponse.fromJson(e))
             .toList();
       }

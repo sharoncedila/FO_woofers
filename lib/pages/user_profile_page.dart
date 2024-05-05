@@ -79,17 +79,17 @@ class _UserProfilePageState extends State<UserProfilePage> {
                                   urlImage: imageURL, width: 150, height: 150);
                             }),
 
-                        IconButton(
-                            onPressed: () async {
-                              final pickedFile = await ImagePicker()
-                                  .pickImage(source: ImageSource.gallery);
-                              if (pickedFile != null) {
-                                File image = File(pickedFile.path);
-                                ImageService().uploadProfilePicture(image);
-                              }
-                              // ImageService().uploadFeeds();
-                            },
-                            icon: const Icon(Icons.camera)),
+                        // IconButton(
+                        //     onPressed: () async {
+                        //       final pickedFile = await ImagePicker()
+                        //           .pickImage(source: ImageSource.gallery);
+                        //       if (pickedFile != null) {
+                        //         File image = File(pickedFile.path);
+                        //         ImageService().uploadProfilePicture(image);
+                        //       }
+                        //       // ImageService().uploadFeeds();
+                        //     },
+                        //     icon: const Icon(Icons.camera)),
 
                         // username
                         const SizedBox(height: 20),
@@ -476,40 +476,36 @@ class _UserProfilePageState extends State<UserProfilePage> {
                           context: context,
                           builder: (BuildContext context) {
                             return AlertDialog(
-                              title: Text('Confirmation'),
-                              content: Text(
+                              title: const Text('Confirmation'),
+                              content: const Text(
                                   'Are you sure want to log out your account?'),
                               actions: <Widget>[
                                 TextButton(
                                   onPressed: () {
-                                    // Perform action on cancel
                                     Navigator.of(context).pop(false);
                                   },
-                                  child: Text('No'),
+                                  child: const Text('No'),
                                 ),
                                 TextButton(
                                   onPressed: () {
-                                    // Perform action on confirm
                                     Navigator.of(context).pop(true);
                                   },
-                                  child: Text('Yes'),
+                                  child: const Text('Yes'),
                                 ),
                               ],
                             );
                           },
                         ).then((value) {
-                          // Process the result after the dialog is closed
+                          // yess
                           if (value != null && value) {
-                            // If 'Yes' is pressed
-                            // print('User confirmed');
                             _loginService.logout();
                             Navigator.push(
                               context,
                               MaterialPageRoute(
                                   builder: (context) => const LoginPage()),
                             );
-                            // Perform the desired action
                           }
+                          // no
                           // else {
                           //   // If 'No' is pressed or the dialog is dismissed
                           //   // print('User canceled');
@@ -517,14 +513,7 @@ class _UserProfilePageState extends State<UserProfilePage> {
                           // }
                         });
                       },
-                      // child: Text('Show Confirmation'),
                     ),
-                    // _loginService.logout();
-                    // Navigator.push(
-                    //   context,
-                    //   MaterialPageRoute(
-                    //       builder: (context) => const LoginPage()),
-                    // );
                   ])))
         ]));
   }
