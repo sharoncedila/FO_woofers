@@ -65,7 +65,7 @@ class ImageService {
 
   Future<UploadImageResponse?> uploadDogImage(String dogId, File image) async {
     try {
-      String api = '/upload/dog/$dogId';
+      String api = '/upload/dog?dog-id=$dogId';
       final dio = await DioInstance.getInstance();
 
       String fileName = image.path.split('/').last;

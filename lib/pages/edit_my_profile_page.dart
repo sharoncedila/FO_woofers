@@ -7,6 +7,7 @@ import 'package:image_picker/image_picker.dart';
 import 'package:woofers/components/image_network.dart';
 import 'package:woofers/components/profile_page_template.dart';
 import 'package:woofers/model/account_model.dart';
+import 'package:woofers/model/image_model.dart';
 import 'package:woofers/model/user_profile_model.dart';
 import 'package:woofers/services/account/account_service.dart';
 import 'package:woofers/services/account/user_profile_services.dart';
@@ -30,11 +31,26 @@ class _EditMyProfilePageState extends State<EditMyProfile> {
   final _descriptionController = TextEditingController();
   final _accountService = AccountService();
   String? _selectedProvince;
+  String? uploadedImage;
 
   late List<String?> provinceNames;
 
   final Future<ResponseUserProfileModel?> _account =
       RetrieveAccountService().retrieveUserData();
+
+  Future<void> uploadProfilePic(File image) async {
+    try {
+      UploadImageResponse? pickedFile = await ImageService().uploadProfilePicture(image);
+      if (pickedFile != null) {
+        setState(() {
+          uploadedImage = pickedFile.fileName;
+          print(uploadedImage);
+        });
+      }
+    } catch (error) {
+      print(error);
+    }
+  }
 
   @override
   void initState() {
@@ -115,7 +131,7 @@ class _EditMyProfilePageState extends State<EditMyProfile> {
                                   .pickImage(source: ImageSource.gallery);
                               if (pickedFile != null) {
                                 File image = File(pickedFile.path);
-                                ImageService().uploadProfilePicture(image);
+                                uploadProfilePic(image);
                               }
                               // ImageService().uploadFeeds();
                             },
@@ -465,7 +481,8 @@ class _EditMyProfilePageState extends State<EditMyProfile> {
                                       fullName: _fullnameController.text,
                                       provinceName: _selectedProvince,
                                       phoneNumber: _phoneNumberController.text,
-                                      description: _descriptionController.text);
+                                      description: _descriptionController.text,
+                                      image: uploadedImage);
 
                               _accountService
                                   .editAccountProfile(edit)

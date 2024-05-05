@@ -91,8 +91,8 @@ class EditDogRequest with _$EditDogRequest{
     required String? provinceName,
     required String? vaccination,
     required String? description,
-    required String? isOpenAdopt
-    // required String? image,
+    required String? isOpenAdopt,
+    String? image,
   }) = _EditDogRequest;
 
   factory EditDogRequest.fromJson(Map<String, dynamic> json) =>
