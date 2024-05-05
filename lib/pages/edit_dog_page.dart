@@ -8,6 +8,7 @@ import 'package:intl/intl.dart';
 import 'package:woofers/components/bottom_menu.dart';
 import 'package:woofers/components/image_network.dart';
 import 'package:woofers/model/dog_profile_model.dart';
+import 'package:woofers/model/image_model.dart';
 import 'package:woofers/services/dog/breed_services.dart';
 import 'package:woofers/services/dog/dog_services.dart';
 import 'package:woofers/services/image_service.dart';
@@ -36,8 +37,24 @@ class _EditDogPageState extends State<EditDogPage> {
   String? _selectedBreed;
   DateTime? _selectedDate;
   String? _selectedGender;
+  String? uploadedImage;
   final _dogService = DogService();
   bool isSwitched = false;
+
+  Future<void> uploadDogPic(String dogId, File image) async {
+    try {
+      UploadImageResponse? pickedFile =
+          await ImageService().uploadDogImage(dogId, image);
+      if (pickedFile != null) {
+        setState(() {
+          uploadedImage = pickedFile.fileName;
+          print(uploadedImage);
+        });
+      }
+    } catch (error) {
+      print(error);
+    }
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -166,8 +183,7 @@ class _EditDogPageState extends State<EditDogPage> {
                             .pickImage(source: ImageSource.gallery);
                         if (pickedFile != null) {
                           File image = File(pickedFile.path);
-                          ImageService()
-                              .uploadDogImage(snapshot.data!.dogId, image);
+                          uploadDogPic(snapshot.data!.dogId, image);
                         }
                         // ImageService().uploadFeeds();
                       },
@@ -704,10 +720,11 @@ class _EditDogPageState extends State<EditDogPage> {
                                   breedName: _selectedBreed,
                                   dateOfBirth: formattedDate,
                                   isOpenAdopt: isSwitched.toString(),
-                                  gender: selectedGender!,
+                                  gender: selectedGender,
                                   provinceName: _selectedProvince,
                                   vaccination: vaccineController.text,
-                                  description: descriptionController.text);
+                                  description: descriptionController.text,
+                                  image: uploadedImage);
 
                               _dogService
                                   .editDog(edit)

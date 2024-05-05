@@ -23,7 +23,7 @@ class ResponseRegisterModel with _$ResponseRegisterModel {
 class RequestRegisterModel with _$RequestRegisterModel {
   factory RequestRegisterModel(
       {required String username,
-      required String? fullname,
+      required String fullName,
       required String email,
       required String provinceName,
       required String phoneNumber,

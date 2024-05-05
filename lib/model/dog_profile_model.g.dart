@@ -98,6 +98,7 @@ _$EditDogRequestImpl _$$EditDogRequestImplFromJson(Map<String, dynamic> json) =>
       vaccination: json['vaccination'] as String?,
       description: json['description'] as String?,
       isOpenAdopt: json['isOpenAdopt'] as String?,
+      image: json['image'] as String?,
     );
 
 Map<String, dynamic> _$$EditDogRequestImplToJson(
@@ -112,6 +113,7 @@ Map<String, dynamic> _$$EditDogRequestImplToJson(
       'vaccination': instance.vaccination,
       'description': instance.description,
       'isOpenAdopt': instance.isOpenAdopt,
+      'image': instance.image,
     };
 
 _$ResponseDogCardImpl _$$ResponseDogCardImplFromJson(

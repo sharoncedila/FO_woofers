@@ -9,6 +9,7 @@ class EditProfileRequest with _$EditProfileRequest{
     required String? provinceName,
     required String? phoneNumber,
     required String? description,
+    String? image,
   }) = _EditProfileRequest;
 
   factory EditProfileRequest.fromJson(Map<String, dynamic> json) =>
