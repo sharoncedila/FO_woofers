@@ -63,7 +63,7 @@ class FeedsService {
       if (errorSchema.errorCode != 'WOF-000') {
         return PostFeedsResponse.fromJson(response.data['errorSchema']);
       } else {
-        return null;
+        return PostFeedsResponse.fromJson(response.data['outputSchema']);
       }
     } catch (error) {
       throw Exception(error);

@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:hexcolor/hexcolor.dart';
 import 'package:image_picker/image_picker.dart';
+import 'package:woofers/components/image_network.dart';
 import 'package:woofers/model/feeds_model.dart';
 import 'package:woofers/model/image_model.dart';
 import 'package:woofers/pages/feeds_page.dart';
@@ -19,6 +20,7 @@ class AddFeedsPage extends StatefulWidget {
 
 class _AddFeedsPageState extends State<AddFeedsPage> {
   String? uploadedImage;
+  String? tempImage;
   final _captionController = TextEditingController();
   // UploadImageResponse? uploadedImage = await ImageService().uploadFeeds();
 
@@ -66,7 +68,11 @@ class _AddFeedsPageState extends State<AddFeedsPage> {
           const SizedBox(
             height: 15,
           ),
-          const Image(image: AssetImage('assets/dog_picture/dog1.jpg')),
+          // const Image(image: AssetImage('assets/dog_picture/dog1.jpg')),
+          (uploadedImage == null)
+              ? const Image(image: AssetImage('assets/dog_picture/dog1.jpg'))
+              : ImageNetwork(
+                  urlImage: "/temp/${uploadedImage}", width: 150, height: 150),
           IconButton(
               onPressed: () async {
                 final pickedFile =
@@ -74,10 +80,15 @@ class _AddFeedsPageState extends State<AddFeedsPage> {
                 if (pickedFile != null) {
                   File image = File(pickedFile.path);
                   uploadFeeds(image);
+
+                  // setState(() {
+                  //   uploadedImage = pickedFile.path;
+                  //   // FeedsService()
+                  //   //     .likeFeeds(feedsDetail.feedsId ?? '');
+                  // });
                 }
-                // ImageService().uploadFeeds();
               },
-              icon: const Icon(Icons.camera)),
+              icon: const Icon(Icons.camera_alt)),
           const SizedBox(
             height: 15,
           ),
@@ -118,11 +129,6 @@ class _AddFeedsPageState extends State<AddFeedsPage> {
               ),
               child: const Text('POST'),
               onPressed: () {
-                // ImageService().uploadFeeds();
-                // FutureBuilder(future: ImageService().uploadFeeds(), builder: ((context, snapshot) {
-                //   uploadedImage = snapshot.data;
-                //   return uploadedImage;
-                // }));
                 final PostFeedsRequest request = PostFeedsRequest(
                   caption: _captionController.text,
                   image: uploadedImage,
@@ -131,20 +137,7 @@ class _AddFeedsPageState extends State<AddFeedsPage> {
                 FeedsService().postFeeds(request).then((value) =>
                     Navigator.of(context).pushReplacement(
                         MaterialPageRoute(builder: (_) => const FeedsPage())));
-                // FeedsService().postFeeds();
               },
-
-              /*
-            oonPressed: () {
-              print(_isLike);
-              setState(() {
-                _isLike = null;
-                print(_isLike);
-                FeedsService()
-                    .likeFeeds(feedsDetail.feedsId ?? '');
-              });
-            },
-            */
             ),
           ),
         ],

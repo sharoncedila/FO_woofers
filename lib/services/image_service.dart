@@ -95,9 +95,15 @@ class ImageService {
   //   }
   // }
 
-  Future<UploadImageResponse?> uploadDogImage(String dogId, File image) async {
+  Future<UploadImageResponse?> uploadDogImage(String? dogId, File image) async {
     try {
-      String api = '/upload/dog/$dogId';
+      String api;
+      if (dogId == null) {
+        api = '/upload/dog';
+      } else {
+        api = '/upload/dog?dog-id=$dogId';
+      }
+
       final dio = await DioInstance.getInstance();
       final pickedFile =
           await ImagePicker().pickImage(source: ImageSource.gallery);
