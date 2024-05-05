@@ -15,6 +15,7 @@ class LoginService {
       final dio = await DioInstance.getInstance();
 
       response = await dio.post(api, data: jsonEncode(loginReq.toJson()));
+      print(response);
       final errorSchema = ErrorSchema.fromJson(response.data['errorSchema']);
 
       if (errorSchema.errorCode != 'WOF-000') {
@@ -31,7 +32,8 @@ class LoginService {
       }
     } catch (error) {
       print(error);
-      if (response == null) {
+      //response = error.;
+      if (response!.data == null) {
         throw new Exception("Error, response is null");
       }
       var errorSchema =
