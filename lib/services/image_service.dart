@@ -88,4 +88,71 @@ class ImageService {
       print(error);
     }
   }
+<<<<<<< HEAD
+=======
+
+  //   String uploadFeeds() {
+  //   try {
+  //     const api = '/upload/feeds';
+  //     final dio = DioInstance.getInstance();
+  //     final pickedFile =
+  //         ImagePicker().pickImage(source: ImageSource.gallery);
+
+  //     if (pickedFile != null) {
+  //       File image = File(pickedFile.path);
+  //       String fileName = image.path.split('/').last;
+  //       FormData formData = FormData.fromMap({
+  //         'file': MultipartFile.fromFile(image.path, filename: fileName),
+  //       });
+  //       var response = dio.post(api, data: formData);
+  //       final errorSchema = ErrorSchema.fromJson(response.data['errorSchema']);
+  //       if (errorSchema.errorCode != 'WOF-000') {
+  //         return "";
+  //       } else {
+  //         String filename = response.data['outputSchema']['fileName'];
+  //         print (filename);
+  //         return filename;
+  //       }
+  //     } else {
+  //       print('no file chosen');
+  //     }
+  //   } catch (error) {
+  //     print(error);
+  //   }
+  // }
+
+  Future<UploadImageResponse?> uploadDogImage(String? dogId, File image) async {
+    try {
+      String api;
+      if (dogId == null) {
+        api = '/upload/dog';
+      } else {
+        api = '/upload/dog?dog-id=$dogId';
+      }
+
+      final dio = await DioInstance.getInstance();
+      final pickedFile =
+          await ImagePicker().pickImage(source: ImageSource.gallery);
+
+      if (pickedFile != null) {
+        File image = File(pickedFile.path);
+        String fileName = image.path.split('/').last;
+        FormData formData = FormData.fromMap({
+          'file': await MultipartFile.fromFile(image.path, filename: fileName),
+        });
+        var response = await dio.post(api, data: formData);
+        final errorSchema = ErrorSchema.fromJson(response.data['errorSchema']);
+        if (errorSchema.errorCode != 'WOF-000') {
+          return UploadImageResponse.fromJson(response.data['errorSchema']);
+        } else {
+          return UploadImageResponse.fromJson(response.data['outputSchema']);
+        }
+      } else {
+        print('no file chosen');
+      }
+    } catch (error) {
+      print(error);
+    }
+  }
+>>>>>>> SYE_20240425
 }

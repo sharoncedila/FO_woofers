@@ -1,11 +1,15 @@
+import 'dart:io';
+
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:hexcolor/hexcolor.dart';
+import 'package:image_picker/image_picker.dart';
 import 'package:intl/intl.dart';
 import 'package:woofers/components/bottom_menu.dart';
 import 'package:woofers/model/dog_profile_model.dart';
 import 'package:woofers/services/dog/breed_services.dart';
 import 'package:woofers/services/dog/dog_services.dart';
+import 'package:woofers/services/image_service.dart';
 import 'package:woofers/services/province/province_service.dart';
 
 class AddDogPage extends StatefulWidget {
@@ -73,42 +77,38 @@ class _AddDogPageState extends State<AddDogPage> {
     return SingleChildScrollView(
       child: Column(children: [
         Padding(
-            padding:
-                const EdgeInsets.only(right: 30), 
-                // Adjust the value as needed
-            child: Column(
-              children: [
-                const SizedBox(
+          padding: const EdgeInsets.only(right: 30),
+          // Adjust the value as needed
+          child: Column(children: [
+            const SizedBox(
               height: 15,
             ),
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.end,
-                children: [
-                  Text(
-                    'Open for adoption',
-                    style: GoogleFonts.lora(
-                      fontSize: 14,
-                      fontWeight: FontWeight.bold,
-                      color: const Color.fromRGBO(40, 36, 36, 10000),
-                    ),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.end,
+              children: [
+                Text(
+                  'Open for adoption',
+                  style: GoogleFonts.lora(
+                    fontSize: 14,
+                    fontWeight: FontWeight.bold,
+                    color: const Color.fromRGBO(40, 36, 36, 10000),
                   ),
-                  const SizedBox(width: 10), // Add space between text and switch
-                  Switch(
-                    value: isSwitched,
-                    onChanged: (value) {
-                      setState(() {
-                        isSwitched = value;
-                      });
-                    },
-                    activeTrackColor: HexColor("#a0dcdc"),
-                    activeColor: Colors.white,
-                  ),
-                ],
-              ),
-      ]
+                ),
+                const SizedBox(width: 10), // Add space between text and switch
+                Switch(
+                  value: isSwitched,
+                  onChanged: (value) {
+                    setState(() {
+                      isSwitched = value;
+                    });
+                  },
+                  activeTrackColor: HexColor("#a0dcdc"),
+                  activeColor: Colors.white,
+                ),
+              ],
             ),
-          ),
-        
+          ]),
+        ),
         Column(
           children: [
             const SizedBox(
@@ -118,6 +118,21 @@ class _AddDogPageState extends State<AddDogPage> {
             const SizedBox(
               height: 15,
             ),
+            // const SizedBox(
+            //         height: 15,
+            //       ),
+
+            IconButton(
+                onPressed: () async {
+                  final pickedFile = await ImagePicker()
+                      .pickImage(source: ImageSource.gallery);
+                  if (pickedFile != null) {
+                    File image = File(pickedFile.path);
+                    ImageService().uploadDogImage(null, image);
+                  }
+                  // ImageService().uploadFeeds();
+                },
+                icon: const Icon(Icons.camera)),
             const SizedBox(
               height: 15,
             ),

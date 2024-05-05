@@ -98,21 +98,21 @@ class DogProfilePage extends StatelessWidget {
                         )
                       : const Image(
                           image: AssetImage('assets/woofers_icon/profile.jpg')),
-                  const SizedBox(
-                    height: 15,
-                  ),
+                  // const SizedBox(
+                  //   height: 15,
+                  // ),
 
-                  IconButton(
-                      onPressed: () async {
-                        final pickedFile = await ImagePicker()
-                            .pickImage(source: ImageSource.gallery);
-                        if (pickedFile != null) {
-                          File image = File(pickedFile.path);
-                          ImageService().uploadDogImage(dogId, image);
-                        }
-                        // ImageService().uploadFeeds();
-                      },
-                      icon: const Icon(Icons.camera)),
+                  // IconButton(
+                  //     onPressed: () async {
+                  //       final pickedFile = await ImagePicker()
+                  //           .pickImage(source: ImageSource.gallery);
+                  //       if (pickedFile != null) {
+                  //         File image = File(pickedFile.path);
+                  //         ImageService().uploadDogImage(dogId, image);
+                  //       }
+                  //       // ImageService().uploadFeeds();
+                  //     },
+                  //     icon: const Icon(Icons.camera)),
 
                   // dog name
                   Row(
