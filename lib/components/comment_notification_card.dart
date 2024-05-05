@@ -7,9 +7,9 @@ import 'package:woofers/pages/user_profile_page.dart';
 import 'package:woofers/services/account/notification_service.dart';
 import 'package:woofers/services/adoption/adoption_service.dart';
 
-class NotificationCardDetail extends StatelessWidget {
+class CommentNotificationCardDetail extends StatelessWidget {
   final ViewNotificationResponse notificationDetail;
-  const NotificationCardDetail({
+  const CommentNotificationCardDetail({
     super.key,
     required this.notificationDetail,
   });

@@ -33,9 +33,9 @@ class _UserProfilePageState extends State<UserProfilePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: <Widget>[
+        body: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: <Widget>[
           const SizedBox(height: 10),
           Expanded(
             child: FutureBuilder(
@@ -427,62 +427,105 @@ class _UserProfilePageState extends State<UserProfilePage> {
           Padding(
               padding: const EdgeInsets.symmetric(vertical: 15),
               child: Center(
-                child:
-                    Row(mainAxisAlignment: MainAxisAlignment.center, children: [
-                  ElevatedButton(
-                    style: ButtonStyle(
-                      backgroundColor:
-                          MaterialStateProperty.resolveWith<Color?>(
-                        (Set<MaterialState> states) {
-                          if (states.contains(MaterialState.pressed)) {
-                            return Theme.of(context)
-                                .colorScheme
-                                .primary
-                                .withOpacity(0.5);
-                          }
-                          return null; // Use the component's default.
-                        },
+                  child: Row(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                    ElevatedButton(
+                      style: ButtonStyle(
+                        backgroundColor:
+                            MaterialStateProperty.resolveWith<Color?>(
+                          (Set<MaterialState> states) {
+                            if (states.contains(MaterialState.pressed)) {
+                              return Theme.of(context)
+                                  .colorScheme
+                                  .primary
+                                  .withOpacity(0.5);
+                            }
+                            return null; // Use the component's default.
+                          },
+                        ),
                       ),
+                      child: const Text('Edit'),
+                      onPressed: () {
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                              builder: (context) => const EditMyProfile()),
+                        );
+                      },
                     ),
-                    child: const Text('Edit'),
-                    onPressed: () {
-                      Navigator.push(
-                        context,
-                        MaterialPageRoute(
-                            builder: (context) => const EditMyProfile()),
-                      );
-                    },
-                  ),
-                  const SizedBox(width: 25),
-                  ElevatedButton(
-                    style: ButtonStyle(
-                      backgroundColor:
-                          MaterialStateProperty.resolveWith<Color?>(
-                        (Set<MaterialState> states) {
-                          if (states.contains(MaterialState.pressed)) {
-                            return Theme.of(context)
-                                .colorScheme
-                                .primary
-                                .withOpacity(0.5);
-                          }
-                          return null;
-                        },
+                    const SizedBox(width: 25),
+                    ElevatedButton(
+                      style: ButtonStyle(
+                        backgroundColor:
+                            MaterialStateProperty.resolveWith<Color?>(
+                          (Set<MaterialState> states) {
+                            if (states.contains(MaterialState.pressed)) {
+                              return Theme.of(context)
+                                  .colorScheme
+                                  .primary
+                                  .withOpacity(0.5);
+                            }
+                            return null;
+                          },
+                        ),
                       ),
+                      child: const Text('Logout'),
+                      onPressed: () async {
+                        showDialog(
+                          context: context,
+                          builder: (BuildContext context) {
+                            return AlertDialog(
+                              title: Text('Confirmation'),
+                              content: Text(
+                                  'Are you sure want to log out your account?'),
+                              actions: <Widget>[
+                                TextButton(
+                                  onPressed: () {
+                                    // Perform action on cancel
+                                    Navigator.of(context).pop(false);
+                                  },
+                                  child: Text('No'),
+                                ),
+                                TextButton(
+                                  onPressed: () {
+                                    // Perform action on confirm
+                                    Navigator.of(context).pop(true);
+                                  },
+                                  child: Text('Yes'),
+                                ),
+                              ],
+                            );
+                          },
+                        ).then((value) {
+                          // Process the result after the dialog is closed
+                          if (value != null && value) {
+                            // If 'Yes' is pressed
+                            // print('User confirmed');
+                            _loginService.logout();
+                            Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                  builder: (context) => const LoginPage()),
+                            );
+                            // Perform the desired action
+                          }
+                          // else {
+                          //   // If 'No' is pressed or the dialog is dismissed
+                          //   // print('User canceled');
+                          //   // Perform the desired action or do nothing
+                          // }
+                        });
+                      },
+                      // child: Text('Show Confirmation'),
                     ),
-                    child: const Text('Logout'),
-                    onPressed: () async {
-                      _loginService.logout();
-                      Navigator.push(
-                        context,
-                        MaterialPageRoute(
-                            builder: (context) => const LoginPage()),
-                      );
-                    },
-                  ),
-                ]),
-              )),
-        ],
-      ),
-    );
+                    // _loginService.logout();
+                    // Navigator.push(
+                    //   context,
+                    //   MaterialPageRoute(
+                    //       builder: (context) => const LoginPage()),
+                    // );
+                  ])))
+        ]));
   }
 }

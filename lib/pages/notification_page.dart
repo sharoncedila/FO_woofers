@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:hexcolor/hexcolor.dart';
-import 'package:woofers/components/notification.card.dart';
+import 'package:woofers/components/adoption_notification_card.dart';
+import 'package:woofers/components/comment_notification_card.dart';
 import 'package:woofers/services/account/notification_service.dart';
 
 class NotificationPage extends StatefulWidget {
@@ -15,32 +16,47 @@ class _NotificationPageState extends State<NotificationPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.white,
-      appBar: AppBar(
-        toolbarHeight: 75,
-        elevation: 0,
-        backgroundColor: HexColor("#a0dcdc"),
-        title: Text(
-          "WOOFERS",
-          style: GoogleFonts.lora(
-            fontSize: 25,
-            fontWeight: FontWeight.bold,
-            color: const Color.fromRGBO(40, 36, 36, 10000),
+        backgroundColor: Colors.white,
+        appBar: AppBar(
+          toolbarHeight: 75,
+          elevation: 0,
+          backgroundColor: HexColor("#a0dcdc"),
+          title: Text(
+            "WOOFERS",
+            style: GoogleFonts.lora(
+              fontSize: 25,
+              fontWeight: FontWeight.bold,
+              color: const Color.fromRGBO(40, 36, 36, 10000),
+            ),
           ),
+          centerTitle: true,
         ),
-        centerTitle: true,
-      ),
-      body: notificationList(), //commentList()
-    );
+        body: Column(
+          children: [
+            SizedBox(
+              width: MediaQuery.of(context).size.width * 0.95,
+              height: MediaQuery.of(context).size.height * 0.4,
+              child: adoptionNotificationList(),
+            ),
+            SizedBox(
+              width: MediaQuery.of(context).size.width * 0.95,
+              height: MediaQuery.of(context).size.height * 0.4,
+              child: commentNotificationList(),
+            )
+          ],
+        )
+
+        //adoptionNotificationList(), //commentNotificationList()
+        );
   }
 
-  Widget notificationList() {
+  Widget adoptionNotificationList() {
     return SingleChildScrollView(
       child: Center(
         child: Padding(
           padding: const EdgeInsets.symmetric(horizontal: 5, vertical: 10),
           child: FutureBuilder(
-            future: NotificationService().retrieveNotificationList(),
+            future: NotificationService().retrieveAdoptionList(),
             builder: ((context, snapshot) {
               if (snapshot.connectionState == ConnectionState.waiting) {
                 return const Center(child: Text("Retrieving your data..."));
@@ -54,7 +70,7 @@ class _NotificationPageState extends State<NotificationPage> {
               final adoptionList = snapshot.data!;
               return Wrap(
                 children: adoptionList
-                    .map((e) => NotificationCardDetail(notificationDetail: e))
+                    .map((e) => AdoptionNotificationCardDetail(notificationDetail: e))
                     .toList(),
               );
             }),
@@ -64,7 +80,7 @@ class _NotificationPageState extends State<NotificationPage> {
     );
   }
 
-  Widget commentList() {
+  Widget commentNotificationList() {
     return SingleChildScrollView(
       child: Center(
         child: Padding(
@@ -84,7 +100,7 @@ class _NotificationPageState extends State<NotificationPage> {
               final adoptionList = snapshot.data!;
               return Wrap(
                 children: adoptionList
-                    .map((e) => NotificationCardDetail(notificationDetail: e))
+                    .map((e) => CommentNotificationCardDetail(notificationDetail: e))
                     .toList(),
               );
             }),
