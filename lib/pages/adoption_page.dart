@@ -244,10 +244,10 @@ class _AdoptionPageState extends State<AdoptionPage> {
                   return const Center(child: Text("Retrieving your data..."));
                 }
                 if (snapshot.hasError) {
-                  return const Center(child: Text("Error"));
+                  return const Center(child: Text("No data available"));
                 }
                 if (!snapshot.hasData) {
-                  return const Text("No data");
+                  return const Text("No data available");
                 }
                 final adoptionList = snapshot.data!;
                 return Wrap(

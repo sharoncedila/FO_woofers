@@ -1,12 +1,17 @@
+import 'dart:io';
+
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:hexcolor/hexcolor.dart';
+import 'package:image_picker/image_picker.dart';
 import 'package:intl/intl.dart';
 import 'package:woofers/components/bottom_menu.dart';
 import 'package:woofers/components/image_network.dart';
 import 'package:woofers/model/dog_profile_model.dart';
+import 'package:woofers/model/image_model.dart';
 import 'package:woofers/services/dog/breed_services.dart';
 import 'package:woofers/services/dog/dog_services.dart';
+import 'package:woofers/services/image_service.dart';
 import 'package:woofers/services/province/province_service.dart';
 
 class EditDogPage extends StatefulWidget {
@@ -32,11 +37,29 @@ class _EditDogPageState extends State<EditDogPage> {
   String? _selectedBreed;
   DateTime? _selectedDate;
   String? _selectedGender;
+  String? uploadedImage;
   final _dogService = DogService();
   bool isSwitched = false;
 
+<<<<<<< HEAD
   late List<String?> provinceNames;
   late List<String?> breedNames;
+=======
+  Future<void> uploadDogPic(String dogId, File image) async {
+    try {
+      UploadImageResponse? pickedFile =
+          await ImageService().uploadDogImage(dogId, image);
+      if (pickedFile != null) {
+        setState(() {
+          uploadedImage = pickedFile.fileName;
+          print(uploadedImage);
+        });
+      }
+    } catch (error) {
+      print(error);
+    }
+  }
+>>>>>>> UAT
 
   @override
   Widget build(BuildContext context) {
@@ -156,6 +179,21 @@ class _EditDogPageState extends State<EditDogPage> {
                     height: 15,
                   ),
                   ImageNetwork(urlImage: imageURL, width: 150, height: 150),
+                  const SizedBox(
+                    height: 15,
+                  ),
+
+                  IconButton(
+                      onPressed: () async {
+                        final pickedFile = await ImagePicker()
+                            .pickImage(source: ImageSource.gallery);
+                        if (pickedFile != null) {
+                          File image = File(pickedFile.path);
+                          uploadDogPic(snapshot.data!.dogId, image);
+                        }
+                        // ImageService().uploadFeeds();
+                      },
+                      icon: const Icon(Icons.camera)),
                   const SizedBox(
                     height: 15,
                   ),
@@ -711,10 +749,11 @@ class _EditDogPageState extends State<EditDogPage> {
                                   breedName: _selectedBreed,
                                   dateOfBirth: formattedDate,
                                   isOpenAdopt: isSwitched.toString(),
-                                  gender: selectedGender!,
+                                  gender: selectedGender,
                                   provinceName: _selectedProvince,
                                   vaccination: vaccineController.text,
-                                  description: descriptionController.text);
+                                  description: descriptionController.text,
+                                  image: uploadedImage);
 
                               _dogService
                                   .editDog(edit)

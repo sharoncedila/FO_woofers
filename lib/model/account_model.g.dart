@@ -13,6 +13,7 @@ _$EditProfileRequestImpl _$$EditProfileRequestImplFromJson(
       provinceName: json['provinceName'] as String?,
       phoneNumber: json['phoneNumber'] as String?,
       description: json['description'] as String?,
+      image: json['image'] as String?,
     );
 
 Map<String, dynamic> _$$EditProfileRequestImplToJson(
@@ -22,4 +23,5 @@ Map<String, dynamic> _$$EditProfileRequestImplToJson(
       'provinceName': instance.provinceName,
       'phoneNumber': instance.phoneNumber,
       'description': instance.description,
+      'image': instance.image,
     };

@@ -123,15 +123,13 @@ class _RequestAdoptionPageState extends State<RequestAdoptionPage> {
                   const SizedBox(
                     height: 30,
                   ),
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.start,
-                    children: [
-                      const SizedBox(
+                  Row(mainAxisAlignment: MainAxisAlignment.start, children: [
+                    const SizedBox(
                       width: 30,
                     ),
-                      Text('Dog Information',
-                        style: GoogleFonts.lora(fontSize: 20)),]
-                  ),
+                    Text('Dog Information',
+                        style: GoogleFonts.lora(fontSize: 20)),
+                  ]),
 
                   const SizedBox(
                     height: 30,
@@ -728,12 +726,14 @@ class _RequestAdoptionPageState extends State<RequestAdoptionPage> {
                                 },
                               ),
                             ),
-                            child: const Text('Request To Adopt',
+                            child: const Text('REQUEST TO ADOPT',
                                 style: TextStyle(
                                     //color: Colors.grey[600],
                                     fontWeight: FontWeight.bold,
                                     fontSize: 18)),
+
                             onPressed: () async {
+<<<<<<< HEAD
                               String? ownerAccountId =
                                   snapshot.data?.ownerData!.accountId == null
                                       ? ""
@@ -746,29 +746,71 @@ class _RequestAdoptionPageState extends State<RequestAdoptionPage> {
                                   SendAdoptionNotification(
                                       dogId:
                                           snapshot.data?.dogData!.dogId == null
+=======
+                              showDialog(
+                                context: context,
+                                builder: (BuildContext context) {
+                                  return AlertDialog(
+                                    title: const Text('Confirmation'),
+                                    content: const Text(
+                                        'Are you sure want to adopt this dog?'),
+                                    actions: <Widget>[
+                                      TextButton(
+                                        onPressed: () {
+                                          Navigator.of(context).pop(false);
+                                        },
+                                        child: const Text('No'),
+                                      ),
+                                      TextButton(
+                                        onPressed: () {
+                                          Navigator.of(context).pop(true);
+                                        },
+                                        child: const Text('Yes'),
+                                      ),
+                                    ],
+                                  );
+                                },
+                              ).then((value) {
+                                // yess
+                                if (value != null && value) {
+                                  String? ownerAccountId =
+                                      snapshot.data?.ownerData!.accountId ==
+                                              null
+                                          ? ""
+                                          : snapshot.data!.ownerData!.accountId;
+                                  final SendAdoptionNotification send =
+                                      SendAdoptionNotification(
+                                          dogId: snapshot
+                                                      .data?.dogData!.dogId ==
+                                                  null
+>>>>>>> UAT
                                               ? ""
                                               : snapshot.data!.dogData!.dogId,
-                                      dogName:
-                                          snapshot.data?.dogData!.dogName ==
+                                          dogName: snapshot
+                                                      .data?.dogData!.dogName ==
                                                   null
                                               ? ""
                                               : snapshot.data!.dogData!.dogName,
-                                      breedName: snapshot
-                                                  .data?.dogData!.breedName ==
-                                              null
-                                          ? ""
-                                          : snapshot.data!.dogData!.breedName,
-                                      ownerId: snapshot
-                                                  .data?.ownerData!.accountId ==
-                                              null
-                                          ? ""
-                                          : snapshot.data!.ownerData!.accountId,
-                                      ownerUsername: snapshot
-                                                  .data?.ownerData!.username ==
-                                              null
-                                          ? ""
-                                          : snapshot.data!.ownerData!.username);
+                                          breedName: snapshot.data?.dogData!
+                                                      .breedName ==
+                                                  null
+                                              ? ""
+                                              : snapshot
+                                                  .data!.dogData!.breedName,
+                                          ownerId: snapshot.data?.ownerData!
+                                                      .accountId ==
+                                                  null
+                                              ? ""
+                                              : snapshot
+                                                  .data!.ownerData!.accountId,
+                                          ownerUsername: snapshot.data
+                                                      ?.ownerData!.username ==
+                                                  null
+                                              ? ""
+                                              : snapshot
+                                                  .data!.ownerData!.username);
 
+<<<<<<< HEAD
                               _adoptionService.sendAdoptNotif(send).then(
                                   (value) => Navigator.of(context)
                                       .pushReplacement(MaterialPageRoute(
@@ -780,7 +822,68 @@ class _RequestAdoptionPageState extends State<RequestAdoptionPage> {
                               //       builder: (context) => const ChatroomPage()),
                               //   //dogId: dogId)),
                               // );
+=======
+                                  _adoptionService.sendAdoptNotif(send).then(
+                                      (value) => Navigator.of(context)
+                                          .pushReplacement(MaterialPageRoute(
+                                              builder: (_) =>
+                                                  ChatroomPageDetail(
+                                                      recipientId:
+                                                          ownerAccountId!))));
+                                }
+                                // no
+                                // else {
+                                //   // If 'No' is pressed or the dialog is dismissed
+                                //   // print('User canceled');
+                                //   // Perform the desired action or do nothing
+                                // }
+                              });
+>>>>>>> UAT
                             },
+                            // onPressed: () async {
+                            //   String? ownerAccountId =
+                            //       snapshot.data?.ownerData!.accountId == null
+                            //           ? ""
+                            //           : snapshot.data!.ownerData!.accountId;
+                            //   final SendAdoptionNotification send =
+                            //       SendAdoptionNotification(
+                            //           dogId:
+                            //               snapshot.data?.dogData!.dogId == null
+                            //                   ? ""
+                            //                   : snapshot.data!.dogData!.dogId,
+                            //           dogName:
+                            //               snapshot.data?.dogData!.dogName ==
+                            //                       null
+                            //                   ? ""
+                            //                   : snapshot.data!.dogData!.dogName,
+                            //           breedName: snapshot
+                            //                       .data?.dogData!.breedName ==
+                            //                   null
+                            //               ? ""
+                            //               : snapshot.data!.dogData!.breedName,
+                            //           ownerId: snapshot
+                            //                       .data?.ownerData!.accountId ==
+                            //                   null
+                            //               ? ""
+                            //               : snapshot.data!.ownerData!.accountId,
+                            //           ownerUsername: snapshot
+                            //                       .data?.ownerData!.username ==
+                            //                   null
+                            //               ? ""
+                            //               : snapshot.data!.ownerData!.username);
+
+                            //   _adoptionService.sendAdoptNotif(send).then(
+                            //       (value) => Navigator.of(context)
+                            //           .pushReplacement(MaterialPageRoute(
+                            //               builder: (_) => ChatroomPageDetail(
+                            //                   recipientId: ownerAccountId!))));
+                            //   // Navigator.push(
+                            //   //   context,
+                            //   //   MaterialPageRoute(
+                            //   //       builder: (context) => const ChatroomPage()),
+                            //   //   //dogId: dogId)),
+                            //   // );
+                            // },
                           ),
                         )),
                   )
@@ -792,3 +895,50 @@ class _RequestAdoptionPageState extends State<RequestAdoptionPage> {
     );
   }
 }
+
+
+
+/*
+onPressed: () async {
+                        showDialog(
+                          context: context,
+                          builder: (BuildContext context) {
+                            return AlertDialog(
+                              title: const Text('Confirmation'),
+                              content: const Text(
+                                  'Are you sure want to log out your account?'),
+                              actions: <Widget>[
+                                TextButton(
+                                  onPressed: () {
+                                    Navigator.of(context).pop(false);
+                                  },
+                                  child: const Text('No'),
+                                ),
+                                TextButton(
+                                  onPressed: () {
+                                    Navigator.of(context).pop(true);
+                                  },
+                                  child: const Text('Yes'),
+                                ),
+                              ],
+                            );
+                          },
+                        ).then((value) {
+                          // yess
+                          if (value != null && value) {
+                            _loginService.logout();
+                            Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                  builder: (context) => const LoginPage()),
+                            );
+                          }
+                          // no
+                          // else {
+                          //   // If 'No' is pressed or the dialog is dismissed
+                          //   // print('User canceled');
+                          //   // Perform the desired action or do nothing
+                          // }
+                        });
+                      },
+*/

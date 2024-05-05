@@ -24,6 +24,7 @@ mixin _$EditProfileRequest {
   String? get provinceName => throw _privateConstructorUsedError;
   String? get phoneNumber => throw _privateConstructorUsedError;
   String? get description => throw _privateConstructorUsedError;
+  String? get image => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -41,7 +42,8 @@ abstract class $EditProfileRequestCopyWith<$Res> {
       {String? fullName,
       String? provinceName,
       String? phoneNumber,
-      String? description});
+      String? description,
+      String? image});
 }
 
 /// @nodoc
@@ -61,6 +63,7 @@ class _$EditProfileRequestCopyWithImpl<$Res, $Val extends EditProfileRequest>
     Object? provinceName = freezed,
     Object? phoneNumber = freezed,
     Object? description = freezed,
+    Object? image = freezed,
   }) {
     return _then(_value.copyWith(
       fullName: freezed == fullName
@@ -79,6 +82,10 @@ class _$EditProfileRequestCopyWithImpl<$Res, $Val extends EditProfileRequest>
           ? _value.description
           : description // ignore: cast_nullable_to_non_nullable
               as String?,
+      image: freezed == image
+          ? _value.image
+          : image // ignore: cast_nullable_to_non_nullable
+              as String?,
     ) as $Val);
   }
 }
@@ -95,7 +102,8 @@ abstract class _$$EditProfileRequestImplCopyWith<$Res>
       {String? fullName,
       String? provinceName,
       String? phoneNumber,
-      String? description});
+      String? description,
+      String? image});
 }
 
 /// @nodoc
@@ -113,6 +121,7 @@ class __$$EditProfileRequestImplCopyWithImpl<$Res>
     Object? provinceName = freezed,
     Object? phoneNumber = freezed,
     Object? description = freezed,
+    Object? image = freezed,
   }) {
     return _then(_$EditProfileRequestImpl(
       fullName: freezed == fullName
@@ -131,6 +140,10 @@ class __$$EditProfileRequestImplCopyWithImpl<$Res>
           ? _value.description
           : description // ignore: cast_nullable_to_non_nullable
               as String?,
+      image: freezed == image
+          ? _value.image
+          : image // ignore: cast_nullable_to_non_nullable
+              as String?,
     ));
   }
 }
@@ -142,7 +155,8 @@ class _$EditProfileRequestImpl implements _EditProfileRequest {
       {required this.fullName,
       required this.provinceName,
       required this.phoneNumber,
-      required this.description});
+      required this.description,
+      this.image});
 
   factory _$EditProfileRequestImpl.fromJson(Map<String, dynamic> json) =>
       _$$EditProfileRequestImplFromJson(json);
@@ -155,10 +169,12 @@ class _$EditProfileRequestImpl implements _EditProfileRequest {
   final String? phoneNumber;
   @override
   final String? description;
+  @override
+  final String? image;
 
   @override
   String toString() {
-    return 'EditProfileRequest(fullName: $fullName, provinceName: $provinceName, phoneNumber: $phoneNumber, description: $description)';
+    return 'EditProfileRequest(fullName: $fullName, provinceName: $provinceName, phoneNumber: $phoneNumber, description: $description, image: $image)';
   }
 
   @override
@@ -173,13 +189,14 @@ class _$EditProfileRequestImpl implements _EditProfileRequest {
             (identical(other.phoneNumber, phoneNumber) ||
                 other.phoneNumber == phoneNumber) &&
             (identical(other.description, description) ||
-                other.description == description));
+                other.description == description) &&
+            (identical(other.image, image) || other.image == image));
   }
 
   @JsonKey(ignore: true)
   @override
   int get hashCode => Object.hash(
-      runtimeType, fullName, provinceName, phoneNumber, description);
+      runtimeType, fullName, provinceName, phoneNumber, description, image);
 
   @JsonKey(ignore: true)
   @override
@@ -201,7 +218,8 @@ abstract class _EditProfileRequest implements EditProfileRequest {
       {required final String? fullName,
       required final String? provinceName,
       required final String? phoneNumber,
-      required final String? description}) = _$EditProfileRequestImpl;
+      required final String? description,
+      final String? image}) = _$EditProfileRequestImpl;
 
   factory _EditProfileRequest.fromJson(Map<String, dynamic> json) =
       _$EditProfileRequestImpl.fromJson;
@@ -214,6 +232,8 @@ abstract class _EditProfileRequest implements EditProfileRequest {
   String? get phoneNumber;
   @override
   String? get description;
+  @override
+  String? get image;
   @override
   @JsonKey(ignore: true)
   _$$EditProfileRequestImplCopyWith<_$EditProfileRequestImpl> get copyWith =>

@@ -1,12 +1,17 @@
+import 'dart:io';
+
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:hexcolor/hexcolor.dart';
+import 'package:image_picker/image_picker.dart';
 import 'package:woofers/components/image_network.dart';
 import 'package:woofers/components/profile_page_template.dart';
 import 'package:woofers/model/account_model.dart';
+import 'package:woofers/model/image_model.dart';
 import 'package:woofers/model/user_profile_model.dart';
 import 'package:woofers/services/account/account_service.dart';
 import 'package:woofers/services/account/user_profile_services.dart';
+import 'package:woofers/services/image_service.dart';
 import 'package:woofers/services/province/province_service.dart';
 
 class EditMyProfile extends StatefulWidget {
@@ -29,11 +34,26 @@ class _EditMyProfilePageState extends State<EditMyProfile> {
   final _descriptionController = TextEditingController();
   final _accountService = AccountService();
   String? _selectedProvince;
+  String? uploadedImage;
 
   late List<String?> provinceNames;
 
   final Future<ResponseUserProfileModel?> _account =
       RetrieveAccountService().retrieveUserData();
+
+  Future<void> uploadProfilePic(File image) async {
+    try {
+      UploadImageResponse? pickedFile = await ImageService().uploadProfilePicture(image);
+      if (pickedFile != null) {
+        setState(() {
+          uploadedImage = pickedFile.fileName;
+          print(uploadedImage);
+        });
+      }
+    } catch (error) {
+      print(error);
+    }
+  }
 
   @override
   void initState() {
@@ -101,7 +121,145 @@ class _EditMyProfilePageState extends State<EditMyProfile> {
             initialPhoneNumber = myProfile.phoneNumber ?? '';
             initialDescription = myProfile.description ?? '';
 
+<<<<<<< HEAD
             _selectedProvince = myProfile.provinceName ?? '';
+=======
+              final imageURL = myProfile.image ?? '';
+              return Column(
+                children: [
+                  const SizedBox(height: 15),
+                  ImageNetwork(urlImage: imageURL, width: 150, height: 150),
+                   IconButton(
+                            onPressed: () async {
+                              final pickedFile = await ImagePicker()
+                                  .pickImage(source: ImageSource.gallery);
+                              if (pickedFile != null) {
+                                File image = File(pickedFile.path);
+                                uploadProfilePic(image);
+                              }
+                              // ImageService().uploadFeeds();
+                            },
+                            icon: const Icon(Icons.camera)),
+                  const SizedBox(height: 15),
+                  // username
+                  Row(
+                    children: [
+                      const SizedBox(
+                        width: 20,
+                      ),
+                      const Icon(
+                        Icons.person_2_outlined,
+                        size: 35,
+                      ),
+                      const SizedBox(
+                        width: 20,
+                      ),
+                      Expanded(
+                          child: Column(
+                              mainAxisAlignment: MainAxisAlignment.start,
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              children: [
+                            Text(
+                              "username",
+                              style: TextStyle(
+                                color: Colors.black.withOpacity(0.5),
+                              ),
+                            ),
+                            SizedBox(
+                              height: 25,
+                              child: Text(username!,
+                                  style: GoogleFonts.newsCycle(
+                                    color: Colors.black,
+                                    fontSize: 16,
+                                  )),
+                            ),
+                          ]))
+                    ],
+                  ),
+                  const SizedBox(
+                    height: 20,
+                  ),
+                  // full name
+                  Row(
+                    children: [
+                      const SizedBox(
+                        width: 20,
+                      ),
+                      const Image(
+                        image: AssetImage('assets/woofers_icon/profile.jpg'),
+                        width: 35,
+                        height: 35,
+                      ),
+                      const SizedBox(
+                        width: 20,
+                      ),
+                      Expanded(
+                          child: Column(
+                              mainAxisAlignment: MainAxisAlignment.start,
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              children: [
+                            Text(
+                              "full name",
+                              style: TextStyle(
+                                color: Colors.black.withOpacity(0.5),
+                              ),
+                            ),
+                            SizedBox(
+                                height: 25,
+                                child: TextFormField(
+                                  controller: _fullnameController,
+                                  style: GoogleFonts.newsCycle(
+                                    color: Colors.black,
+                                  ),
+                                  onFieldSubmitted: (String? newValue) {
+                                    _fullnameController.text = newValue!;
+                                  },
+                                )),
+                          ]))
+                    ],
+                  ),
+                  const SizedBox(
+                    height: 20,
+                  ),
+                  //email
+                  Row(
+                    children: [
+                      const SizedBox(
+                        width: 20,
+                      ),
+                      const Icon(
+                        Icons.email_sharp,
+                        size: 35,
+                      ),
+                      const SizedBox(
+                        width: 20,
+                      ),
+                      Expanded(
+                          child: Column(
+                              mainAxisAlignment: MainAxisAlignment.start,
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              children: [
+                            Text(
+                              "email",
+                              style: TextStyle(
+                                color: Colors.black.withOpacity(0.5),
+                              ),
+                            ),
+                            SizedBox(
+                                height: 25,
+                                child: TextFormField(
+                                  readOnly: true,
+                                  decoration: InputDecoration(
+                                      border: const UnderlineInputBorder(),
+                                      labelText: email,
+                                      labelStyle: GoogleFonts.newsCycle(
+                                        color: Colors.black,
+                                      )),
+                                )),
+                          ]))
+                    ],
+                  ),
+>>>>>>> UAT
 
             _fullnameController.text = initialFullName ?? '';
             _phoneNumberController.text = initialPhoneNumber ?? '';
@@ -418,6 +576,7 @@ class _EditMyProfilePageState extends State<EditMyProfile> {
                                 _descriptionController.text = newValue!;
                               },
                             ),
+<<<<<<< HEAD
                           ),
                         ],
                       ),
@@ -445,6 +604,41 @@ class _EditMyProfilePageState extends State<EditMyProfile> {
                                     .withOpacity(0.5);
                               }
                               return null; // Use the component's default.
+=======
+                            child: const Text('Save',
+                                style: TextStyle(
+                                    //color: Colors.grey[600],
+                                    fontWeight: FontWeight.bold,
+                                    fontSize: 18)),
+                            onPressed: () async {
+                              _selectedProvince ??= snapshot.data!.provinceName;
+
+                              final EditProfileRequest edit =
+                                  EditProfileRequest(
+                                      fullName: _fullnameController.text,
+                                      provinceName: _selectedProvince,
+                                      phoneNumber: _phoneNumberController.text,
+                                      description: _descriptionController.text,
+                                      image: uploadedImage);
+
+                              _accountService
+                                  .editAccountProfile(edit)
+                                  .then((value) => Navigator.of(context)
+                                      .pushReplacement(MaterialPageRoute(
+                                          builder: (_) =>
+                                              const ProfilePageTemplate())))
+                                  .onError<Exception>((error, stackTrace) {
+                                showDialog(
+                                  context: context,
+                                  builder: (context) {
+                                    //return Text(error.toString());
+                                    return SimpleDialog(
+                                      children: [Text(error.toString())],
+                                    );
+                                  },
+                                );
+                              });
+>>>>>>> UAT
                             },
                           ),
                         ),
