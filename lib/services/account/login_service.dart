@@ -32,7 +32,8 @@ class LoginService {
         return ResponseLoginModel.fromJson(response.data['outputSchema']);
       }
     } catch (error) {
-      print(error);
+      print('error backend : $error');
+      print('Response backend : $response');
       //response = error.;
       if (response!.data == null) {
         throw new Exception("Error, response is null");
