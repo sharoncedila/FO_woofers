@@ -65,7 +65,7 @@ class _RequestAdoptionPageState extends State<RequestAdoptionPage> {
                         ? ""
                         : snapshot.data!.ownerData!.accountId;
 
-                        String? ownerUsername =
+                String? ownerUsername =
                     snapshot.data?.ownerData!.username == null
                         ? ""
                         : snapshot.data!.ownerData!.username;
@@ -75,8 +75,9 @@ class _RequestAdoptionPageState extends State<RequestAdoptionPage> {
                     Navigator.push(
                       context,
                       MaterialPageRoute(
-                          builder: (context) =>
-                              ChatroomPageDetail(recipientId: ownerAccountId!, username: ownerUsername!)),
+                          builder: (context) => ChatroomPageDetail(
+                              recipientId: ownerAccountId!,
+                              username: ownerUsername!)),
                     );
                   },
                 );
@@ -731,22 +732,7 @@ class _RequestAdoptionPageState extends State<RequestAdoptionPage> {
                                     //color: Colors.grey[600],
                                     fontWeight: FontWeight.bold,
                                     fontSize: 18)),
-
                             onPressed: () async {
-<<<<<<< HEAD
-                              String? ownerAccountId =
-                                  snapshot.data?.ownerData!.accountId == null
-                                      ? ""
-                                      : snapshot.data!.ownerData!.accountId;
-                                      String? ownerUsername =
-                                  snapshot.data?.ownerData!.username == null
-                                      ? ""
-                                      : snapshot.data!.ownerData!.username;
-                              final SendAdoptionNotification send =
-                                  SendAdoptionNotification(
-                                      dogId:
-                                          snapshot.data?.dogData!.dogId == null
-=======
                               showDialog(
                                 context: context,
                                 builder: (BuildContext context) {
@@ -778,12 +764,15 @@ class _RequestAdoptionPageState extends State<RequestAdoptionPage> {
                                               null
                                           ? ""
                                           : snapshot.data!.ownerData!.accountId;
+                                  String? ownerUsername =
+                                      snapshot.data?.ownerData!.username == null
+                                          ? ""
+                                          : snapshot.data!.ownerData!.username;
                                   final SendAdoptionNotification send =
                                       SendAdoptionNotification(
                                           dogId: snapshot
                                                       .data?.dogData!.dogId ==
                                                   null
->>>>>>> UAT
                                               ? ""
                                               : snapshot.data!.dogData!.dogId,
                                           dogName: snapshot
@@ -810,80 +799,18 @@ class _RequestAdoptionPageState extends State<RequestAdoptionPage> {
                                               : snapshot
                                                   .data!.ownerData!.username);
 
-<<<<<<< HEAD
-                              _adoptionService.sendAdoptNotif(send).then(
-                                  (value) => Navigator.of(context)
-                                      .pushReplacement(MaterialPageRoute(
-                                          builder: (_) => ChatroomPageDetail(
-                                              recipientId: ownerAccountId!, username: ownerUsername!,))));
-                              // Navigator.push(
-                              //   context,
-                              //   MaterialPageRoute(
-                              //       builder: (context) => const ChatroomPage()),
-                              //   //dogId: dogId)),
-                              // );
-=======
                                   _adoptionService.sendAdoptNotif(send).then(
                                       (value) => Navigator.of(context)
                                           .pushReplacement(MaterialPageRoute(
                                               builder: (_) =>
                                                   ChatroomPageDetail(
-                                                      recipientId:
-                                                          ownerAccountId!))));
+                                                    recipientId:
+                                                        ownerAccountId!,
+                                                    username: ownerUsername!,
+                                                  ))));
                                 }
-                                // no
-                                // else {
-                                //   // If 'No' is pressed or the dialog is dismissed
-                                //   // print('User canceled');
-                                //   // Perform the desired action or do nothing
-                                // }
                               });
->>>>>>> UAT
                             },
-                            // onPressed: () async {
-                            //   String? ownerAccountId =
-                            //       snapshot.data?.ownerData!.accountId == null
-                            //           ? ""
-                            //           : snapshot.data!.ownerData!.accountId;
-                            //   final SendAdoptionNotification send =
-                            //       SendAdoptionNotification(
-                            //           dogId:
-                            //               snapshot.data?.dogData!.dogId == null
-                            //                   ? ""
-                            //                   : snapshot.data!.dogData!.dogId,
-                            //           dogName:
-                            //               snapshot.data?.dogData!.dogName ==
-                            //                       null
-                            //                   ? ""
-                            //                   : snapshot.data!.dogData!.dogName,
-                            //           breedName: snapshot
-                            //                       .data?.dogData!.breedName ==
-                            //                   null
-                            //               ? ""
-                            //               : snapshot.data!.dogData!.breedName,
-                            //           ownerId: snapshot
-                            //                       .data?.ownerData!.accountId ==
-                            //                   null
-                            //               ? ""
-                            //               : snapshot.data!.ownerData!.accountId,
-                            //           ownerUsername: snapshot
-                            //                       .data?.ownerData!.username ==
-                            //                   null
-                            //               ? ""
-                            //               : snapshot.data!.ownerData!.username);
-
-                            //   _adoptionService.sendAdoptNotif(send).then(
-                            //       (value) => Navigator.of(context)
-                            //           .pushReplacement(MaterialPageRoute(
-                            //               builder: (_) => ChatroomPageDetail(
-                            //                   recipientId: ownerAccountId!))));
-                            //   // Navigator.push(
-                            //   //   context,
-                            //   //   MaterialPageRoute(
-                            //   //       builder: (context) => const ChatroomPage()),
-                            //   //   //dogId: dogId)),
-                            //   // );
-                            // },
                           ),
                         )),
                   )
@@ -895,50 +822,3 @@ class _RequestAdoptionPageState extends State<RequestAdoptionPage> {
     );
   }
 }
-
-
-
-/*
-onPressed: () async {
-                        showDialog(
-                          context: context,
-                          builder: (BuildContext context) {
-                            return AlertDialog(
-                              title: const Text('Confirmation'),
-                              content: const Text(
-                                  'Are you sure want to log out your account?'),
-                              actions: <Widget>[
-                                TextButton(
-                                  onPressed: () {
-                                    Navigator.of(context).pop(false);
-                                  },
-                                  child: const Text('No'),
-                                ),
-                                TextButton(
-                                  onPressed: () {
-                                    Navigator.of(context).pop(true);
-                                  },
-                                  child: const Text('Yes'),
-                                ),
-                              ],
-                            );
-                          },
-                        ).then((value) {
-                          // yess
-                          if (value != null && value) {
-                            _loginService.logout();
-                            Navigator.push(
-                              context,
-                              MaterialPageRoute(
-                                  builder: (context) => const LoginPage()),
-                            );
-                          }
-                          // no
-                          // else {
-                          //   // If 'No' is pressed or the dialog is dismissed
-                          //   // print('User canceled');
-                          //   // Perform the desired action or do nothing
-                          // }
-                        });
-                      },
-*/

@@ -15,7 +15,7 @@ import 'package:woofers/services/image_service.dart';
 import 'package:woofers/services/province/province_service.dart';
 
 class EditMyProfile extends StatefulWidget {
-  const EditMyProfile({Key? key}) : super(key: key);
+  const EditMyProfile({super.key});
 
   @override
   _EditMyProfilePageState createState() => _EditMyProfilePageState();
@@ -25,9 +25,6 @@ class _EditMyProfilePageState extends State<EditMyProfile> {
   late Future<List<String?>> _provinceFuture;
   String? username;
   String? email;
-  late String? initialFullName; // Store initial full name value
-  late String? initialPhoneNumber; // Store initial phone number value
-  late String? initialDescription; // Store initial description value
   final _fullnameController = TextEditingController();
   final _provinceController = TextEditingController();
   final _phoneNumberController = TextEditingController();
@@ -43,7 +40,8 @@ class _EditMyProfilePageState extends State<EditMyProfile> {
 
   Future<void> uploadProfilePic(File image) async {
     try {
-      UploadImageResponse? pickedFile = await ImageService().uploadProfilePicture(image);
+      UploadImageResponse? pickedFile =
+          await ImageService().uploadProfilePicture(image);
       if (pickedFile != null) {
         setState(() {
           uploadedImage = pickedFile.fileName;
@@ -99,47 +97,46 @@ class _EditMyProfilePageState extends State<EditMyProfile> {
     return SingleChildScrollView(
       child: Container(
         child: FutureBuilder(
-          future: _account,
-          builder: (context, snapshot) {
-            if (snapshot.connectionState == ConnectionState.waiting) {
-              return const Center(child: Text("Retrieving your data..."));
-            }
-            if (snapshot.hasError) {
-              return const Center(child: Text("Error"));
-            }
-            if (!snapshot.hasData) {
-              return const Center(
-                child: Text("No data available for this user"),
-              );
-            }
+            future: _account,
+            builder: (context, snapshot) {
+              if (snapshot.connectionState == ConnectionState.waiting) {
+                return const Center(child: Text("Retrieving your data..."));
+              }
+              if (snapshot.hasError) {
+                return const Center(child: Text("Error"));
+              }
+              if (!snapshot.hasData) {
+                return const Center(
+                  child: Text("No data available for this user"),
+                );
+              }
 
-            final myProfile = snapshot.data as ResponseUserProfileModel;
+              final myProfile = snapshot.data as ResponseUserProfileModel;
 
-            username = myProfile.username ?? '';
-            initialFullName = myProfile.fullName ?? '';
-            email = myProfile.email ?? '';
-            initialPhoneNumber = myProfile.phoneNumber ?? '';
-            initialDescription = myProfile.description ?? '';
+              // Assigning values to the text controllers
+              username = myProfile.username ?? '';
+              _fullnameController.text = myProfile.fullName ?? '';
+              email = myProfile.email ?? '';
+              _provinceController.text = myProfile.provinceName ?? '';
+              _phoneNumberController.text = myProfile.phoneNumber ?? '';
+              _descriptionController.text = myProfile.description ?? '';
 
-<<<<<<< HEAD
-            _selectedProvince = myProfile.provinceName ?? '';
-=======
               final imageURL = myProfile.image ?? '';
               return Column(
                 children: [
                   const SizedBox(height: 15),
                   ImageNetwork(urlImage: imageURL, width: 150, height: 150),
-                   IconButton(
-                            onPressed: () async {
-                              final pickedFile = await ImagePicker()
-                                  .pickImage(source: ImageSource.gallery);
-                              if (pickedFile != null) {
-                                File image = File(pickedFile.path);
-                                uploadProfilePic(image);
-                              }
-                              // ImageService().uploadFeeds();
-                            },
-                            icon: const Icon(Icons.camera)),
+                  IconButton(
+                      onPressed: () async {
+                        final pickedFile = await ImagePicker()
+                            .pickImage(source: ImageSource.gallery);
+                        if (pickedFile != null) {
+                          File image = File(pickedFile.path);
+                          uploadProfilePic(image);
+                        }
+                        // ImageService().uploadFeeds();
+                      },
+                      icon: const Icon(Icons.camera)),
                   const SizedBox(height: 15),
                   // username
                   Row(
@@ -259,352 +256,219 @@ class _EditMyProfilePageState extends State<EditMyProfile> {
                           ]))
                     ],
                   ),
->>>>>>> UAT
 
-            _fullnameController.text = initialFullName ?? '';
-            _phoneNumberController.text = initialPhoneNumber ?? '';
-            _descriptionController.text = initialDescription ?? '';
-
-            final imageURL = myProfile.image ?? '';
-            return Column(
-              children: [
-                const SizedBox(height: 15),
-                ImageNetwork(urlImage: imageURL, width: 150, height: 150),
-                const SizedBox(height: 15),
-                Row(
-                  children: [
-                    const SizedBox(
-                      width: 20,
-                    ),
-                    const Icon(
-                      Icons.person_2_outlined,
-                      size: 35,
-                    ),
-                    const SizedBox(
-                      width: 20,
-                    ),
-                    Expanded(
-                      child: Column(
-                        mainAxisAlignment: MainAxisAlignment.start,
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          Text(
-                            "username",
-                            style: TextStyle(
-                              color: Colors.black.withOpacity(0.5),
-                            ),
-                          ),
-                          SizedBox(
-                            height: 25,
-                            child: Text(username!,
-                                style: GoogleFonts.newsCycle(
-                                  color: Colors.black,
-                                  fontSize: 16,
-                                )),
-                          ),
-                        ],
+                  // province
+                  const SizedBox(height: 20),
+                  Row(
+                    children: [
+                      const SizedBox(
+                        width: 20,
                       ),
-                    )
-                  ],
-                ),
-                const SizedBox(
-                  height: 20,
-                ),
-                Row(
-                  children: [
-                    const SizedBox(
-                      width: 20,
-                    ),
-                    const Image(
-                      image: AssetImage('assets/woofers_icon/profile.jpg'),
-                      width: 35,
-                      height: 35,
-                    ),
-                    const SizedBox(
-                      width: 20,
-                    ),
-                    Expanded(
-                      child: Column(
-                        mainAxisAlignment: MainAxisAlignment.start,
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          Text(
-                            "full name",
-                            style: TextStyle(
-                              color: Colors.black.withOpacity(0.5),
-                            ),
-                          ),
-                          SizedBox(
-                            height: 25,
-                            child: TextFormField(
-                              controller: _fullnameController,
-                              style: GoogleFonts.newsCycle(
-                                color: Colors.black,
+                      const Icon(
+                        Icons.location_city_outlined,
+                        size: 35,
+                      ),
+                      const SizedBox(
+                        width: 20,
+                      ),
+                      Expanded(
+                        child: Column(
+                          mainAxisAlignment: MainAxisAlignment.start,
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            Text(
+                              "province name",
+                              style: TextStyle(
+                                color: Colors.black.withOpacity(0.5),
                               ),
-                              onFieldSubmitted: (String? newValue) {
-                                _fullnameController.text = newValue!;
-                              },
                             ),
-                          ),
-                        ],
-                      ),
-                    )
-                  ],
-                ),
-                const SizedBox(
-                  height: 20,
-                ),
-                Row(
-                  children: [
-                    const SizedBox(
-                      width: 20,
-                    ),
-                    const Icon(
-                      Icons.email_sharp,
-                      size: 35,
-                    ),
-                    const SizedBox(
-                      width: 20,
-                    ),
-                    Expanded(
-                      child: Column(
-                        mainAxisAlignment: MainAxisAlignment.start,
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          Text(
-                            "email",
-                            style: TextStyle(
-                              color: Colors.black.withOpacity(0.5),
-                            ),
-                          ),
-                          SizedBox(
-                            height: 25,
-                            child: TextFormField(
-                              readOnly: true,
-                              decoration: InputDecoration(
-                                border: const UnderlineInputBorder(),
-                                labelText: email,
-                                labelStyle: GoogleFonts.newsCycle(
-                                  color: Colors.black,
+                            SizedBox(
+                              height: 30,
+                              child: SingleChildScrollView(
+                                child: FutureBuilder(
+                                  future: _provinceFuture,
+                                  builder: (context, snapshot) {
+                                    if (snapshot.connectionState ==
+                                        ConnectionState.waiting) {
+                                      return const Text("");
+                                    }
+                                    if (snapshot.hasError) {
+                                      return Text("Error: ${snapshot.error}");
+                                    }
+                                    if (!snapshot.hasData) {
+                                      return const Text("No data");
+                                    }
+                                    final provinceNames =
+                                        snapshot.data as List<String?>;
+                                    return DropdownButtonFormField<String>(
+                                      value: _selectedProvince,
+                                      decoration: InputDecoration(
+                                        fillColor: Colors.white,
+                                        filled: true,
+                                        hintText: _provinceController.text,
+                                      ),
+                                      onChanged: (String? newValue) {
+                                        setState(() {
+                                          _selectedProvince =
+                                              newValue; // Update selected province directly
+                                        });
+                                      },
+                                      items: provinceNames.map((province) {
+                                        return DropdownMenuItem<String>(
+                                          value: province,
+                                          child: Text(
+                                            province!,
+                                            style: TextStyle(
+                                              fontSize: 16,
+                                              color: Colors.black,
+                                              fontFamily:
+                                                  GoogleFonts.newsCycle()
+                                                      .fontFamily,
+                                            ),
+                                          ),
+                                        );
+                                      }).toList(),
+                                      validator: (value) {
+                                        if (value == null || value.isEmpty) {
+                                          value = _provinceController.text;
+                                        }
+                                        return null;
+                                      },
+                                    );
+                                  },
                                 ),
                               ),
                             ),
-                          ),
-                        ],
+                          ],
+                        ),
                       ),
-                    )
-                  ],
-                ),
-                const SizedBox(height: 20),
-                Row(
-                  children: [
-                    const SizedBox(
-                      width: 20,
-                    ),
-                    const Icon(
-                      Icons.location_city_outlined,
-                      size: 35,
-                    ),
-                    const SizedBox(
-                      width: 20,
-                    ),
-                    Expanded(
-                      child: Column(
-                        mainAxisAlignment: MainAxisAlignment.start,
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          Text(
-                            "province name",
-                            style: TextStyle(
-                              color: Colors.black.withOpacity(0.5),
+                    ],
+                  ),
+
+                  // phone number
+                  const SizedBox(height: 15),
+                  Row(
+                    children: [
+                      const SizedBox(
+                        width: 20,
+                      ),
+                      const Icon(
+                        Icons.phone_android_sharp,
+                        size: 35,
+                      ),
+                      const SizedBox(
+                        width: 20,
+                      ),
+                      Expanded(
+                          child: Column(
+                              mainAxisAlignment: MainAxisAlignment.start,
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              children: [
+                            Text(
+                              "phone number",
+                              style: TextStyle(
+                                color: Colors.black.withOpacity(0.5),
+                              ),
                             ),
-                          ),
-                          const SizedBox(height: 5),
-                          SizedBox(
-                            height: 30,
-                            child: SingleChildScrollView(
-                              child: FutureBuilder(
-                                future: _provinceFuture,
-                                builder: (context, snapshot) {
-                                  if (snapshot.connectionState ==
-                                      ConnectionState.waiting) {
-                                    return const Text("");
+                            const SizedBox(height: 5),
+                            SizedBox(
+                              height: 25,
+                              child: TextFormField(
+                                controller: _phoneNumberController,
+                                keyboardType: TextInputType.number,
+                                style: GoogleFonts.newsCycle(
+                                  color: Colors.black,
+                                ),
+                                onFieldSubmitted: (String? newValue) {
+                                  _phoneNumberController.text = newValue!;
+                                },
+                                validator: (value) {
+                                  if (value == null || value.isEmpty) {
+                                    return 'Please fill phone number field';
                                   }
-                                  if (snapshot.hasError) {
-                                    return Text("Error: ${snapshot.error}");
+                                  const pattern =
+                                      r'^[+]*[(]{0,1}[0-9]{1,4}[)]{0,1}[-\s\./0-9]*$';
+                                  final regExp = RegExp(pattern);
+                                  if (!regExp.hasMatch(value)) {
+                                    return 'Please enter number only in this field';
                                   }
-                                  if (!snapshot.hasData) {
-                                    return const Text("No data");
+                                  if (value.length < 8) {
+                                    return 'Phone number should have at least 8 digits';
+                                  } else if (value.length > 13) {
+                                    return 'Phone number has maximum of 13 digits';
                                   }
-                                  final provinceNames =
-                                      snapshot.data as List<String?>;
-                                  return DropdownButtonFormField<String>(
-                                    value: _selectedProvince,
-                                    decoration: InputDecoration(
-                                      fillColor: Colors.white,
-                                      filled: true,
-                                      hintText: _provinceController.text,
-                                    ),
-                                    onChanged: (String? newValue) {
-                                      setState(() {
-                                        _selectedProvince = newValue;
-                                      });
-                                    },
-                                    items: provinceNames.map((province) {
-                                      return DropdownMenuItem<String>(
-                                        value: province,
-                                        child: Text(
-                                          province!,
-                                          style: TextStyle(
-                                            fontSize: 16,
-                                            color: Colors.black,
-                                            fontFamily: GoogleFonts.newsCycle()
-                                                .fontFamily,
-                                          ),
-                                        ),
-                                      );
-                                    }).toList(),
-                                    validator: (value) {
-                                      if (value == null || value.isEmpty) {
-                                        value = _provinceController.text;
-                                      }
-                                      return null;
-                                    },
-                                  );
+                                  return null;
                                 },
                               ),
                             ),
-                          ),
-                        ],
+                          ]))
+                    ],
+                  ),
+
+                  // description
+                  const SizedBox(height: 15),
+                  Row(
+                    children: [
+                      const SizedBox(
+                        width: 20,
                       ),
-                    ),
-                  ],
-                ),
-                const SizedBox(height: 15),
-                Row(
-                  children: [
-                    const SizedBox(
-                      width: 20,
-                    ),
-                    const Icon(
-                      Icons.phone_android_sharp,
-                      size: 35,
-                    ),
-                    const SizedBox(
-                      width: 20,
-                    ),
-                    Expanded(
-                      child: Column(
-                        mainAxisAlignment: MainAxisAlignment.start,
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          Text(
-                            "phone number",
-                            style: TextStyle(
-                              color: Colors.black.withOpacity(0.5),
-                            ),
-                          ),
-                          const SizedBox(height: 5),
-                          SizedBox(
-                            height: 25,
-                            child: TextFormField(
-                              controller: _phoneNumberController,
-                              keyboardType: TextInputType.number,
-                              style: GoogleFonts.newsCycle(
-                                color: Colors.black,
+                      const Icon(
+                        Icons.abc_outlined,
+                        size: 35,
+                      ),
+                      const SizedBox(
+                        width: 20,
+                      ),
+                      Expanded(
+                          child: Column(
+                              mainAxisAlignment: MainAxisAlignment.start,
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              children: [
+                            Text(
+                              "description",
+                              style: TextStyle(
+                                color: Colors.black.withOpacity(0.5),
                               ),
-                              onFieldSubmitted: (String? newValue) {
-                                _phoneNumberController.text = newValue!;
-                              },
-                              validator: (value) {
-                                if (value == null || value.isEmpty) {
-                                  return 'Please fill phone number field';
-                                }
-                                const pattern =
-                                    r'^[+]*[(]{0,1}[0-9]{1,4}[)]{0,1}[-\s\./0-9]*$';
-                                final regExp = RegExp(pattern);
-                                if (!regExp.hasMatch(value)) {
-                                  return 'Please enter number only in this field';
-                                }
-                                if (value.length < 8) {
-                                  return 'Phone number should have at least 8 digits';
-                                } else if (value.length > 13) {
-                                  return 'Phone number has maximum of 13 digits';
-                                }
-                                return null;
-                              },
                             ),
-                          ),
-                        ],
-                      ),
-                    ),
-                  ],
-                ),
-                const SizedBox(height: 20),
-                Row(
-                  children: [
-                    const SizedBox(
-                      width: 20,
-                    ),
-                    const Icon(
-                      Icons.abc_outlined,
-                      size: 35,
-                    ),
-                    const SizedBox(
-                      width: 20,
-                    ),
-                    Expanded(
-                      child: Column(
-                        mainAxisAlignment: MainAxisAlignment.start,
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          Text(
-                            "description",
-                            style: TextStyle(
-                              color: Colors.black.withOpacity(0.5),
+                            SizedBox(
+                              height: 50,
+                              child: TextFormField(
+                                  maxLines: null,
+                                  controller: _descriptionController,
+                                  style: GoogleFonts.newsCycle(
+                                    color: Colors.black,
+                                  ),
+                                  onFieldSubmitted: (String? newValue) {
+                                    _descriptionController.text = newValue!;
+                                  }),
                             ),
-                          ),
-                          SizedBox(
-                            height: 70,
-                            child: TextFormField(
-                              maxLines: 2,
-                              controller: _descriptionController,
-                              style: GoogleFonts.newsCycle(
-                                color: Colors.black,
+                          ])),
+                    ],
+                  ),
+                  const SizedBox(
+                    height: 20,
+                  ),
+                  Padding(
+                    padding: const EdgeInsets.only(bottom: 20.0),
+                    child: SizedBox(
+                        width: 125,
+                        height: 35,
+                        child: Expanded(
+                          child: ElevatedButton(
+                            style: ButtonStyle(
+                              backgroundColor:
+                                  MaterialStateProperty.resolveWith<Color?>(
+                                (Set<MaterialState> states) {
+                                  if (states.contains(MaterialState.pressed)) {
+                                    return Theme.of(context)
+                                        .colorScheme
+                                        .primary
+                                        .withOpacity(0.5);
+                                  }
+                                  return null; // Use the component's default.
+                                },
                               ),
-                              onFieldSubmitted: (String? newValue) {
-                                _descriptionController.text = newValue!;
-                              },
                             ),
-<<<<<<< HEAD
-                          ),
-                        ],
-                      ),
-                    ),
-                  ],
-                ),
-                const SizedBox(
-                  height: 20,
-                ),
-                Padding(
-                  padding: const EdgeInsets.only(bottom: 20.0),
-                  child: SizedBox(
-                    width: 125,
-                    height: 35,
-                    child: Expanded(
-                      child: ElevatedButton(
-                        style: ButtonStyle(
-                          backgroundColor:
-                              MaterialStateProperty.resolveWith<Color?>(
-                            (Set<MaterialState> states) {
-                              if (states.contains(MaterialState.pressed)) {
-                                return Theme.of(context)
-                                    .colorScheme
-                                    .primary
-                                    .withOpacity(0.5);
-                              }
-                              return null; // Use the component's default.
-=======
                             child: const Text('Save',
                                 style: TextStyle(
                                     //color: Colors.grey[600],
@@ -638,49 +502,13 @@ class _EditMyProfilePageState extends State<EditMyProfile> {
                                   },
                                 );
                               });
->>>>>>> UAT
                             },
                           ),
-                        ),
-                        child: const Text('Save',
-                            style: TextStyle(
-                              fontWeight: FontWeight.bold,
-                              fontSize: 18,
-                            )),
-                        onPressed: () async {
-                          final EditProfileRequest edit = EditProfileRequest(
-                            fullName: _fullnameController.text,
-                            provinceName: _selectedProvince ??
-                                snapshot.data!.provinceName,
-                            phoneNumber: _phoneNumberController.text,
-                            description: _descriptionController.text,
-                          );
-
-                          _accountService
-                              .editAccountProfile(edit)
-                              .then((value) => Navigator.of(context)
-                                  .pushReplacement(MaterialPageRoute(
-                                      builder: (_) =>
-                                          const ProfilePageTemplate())))
-                              .onError<Exception>((error, stackTrace) {
-                            showDialog(
-                              context: context,
-                              builder: (context) {
-                                return SimpleDialog(
-                                  children: [Text(error.toString())],
-                                );
-                              },
-                            );
-                          });
-                        },
-                      ),
-                    ),
-                  ),
-                )
-              ],
-            );
-          },
-        ),
+                        )),
+                  )
+                ],
+              );
+            }),
       ),
     );
   }

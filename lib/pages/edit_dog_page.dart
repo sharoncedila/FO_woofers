@@ -41,10 +41,8 @@ class _EditDogPageState extends State<EditDogPage> {
   final _dogService = DogService();
   bool isSwitched = false;
 
-<<<<<<< HEAD
   late List<String?> provinceNames;
   late List<String?> breedNames;
-=======
   Future<void> uploadDogPic(String dogId, File image) async {
     try {
       UploadImageResponse? pickedFile =
@@ -59,7 +57,6 @@ class _EditDogPageState extends State<EditDogPage> {
       print(error);
     }
   }
->>>>>>> UAT
 
   @override
   Widget build(BuildContext context) {
