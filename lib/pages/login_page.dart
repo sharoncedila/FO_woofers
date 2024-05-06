@@ -23,12 +23,12 @@ class LoginPage extends StatelessWidget {
             child: Column(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
-                const SizedBox(height: 50),
+                const SizedBox(height: 40),
                 // logo
                 Image.asset(
-                  'assets/woofers_icon/woofers.jpg',
-                  width: 100,
-                  height: 100,
+                  'assets/woofers_icon/woofers_logo.png',
+                  width: 150,
+                  height: 150,
                 ),
 
                 const SizedBox(height: 10),
@@ -212,12 +212,29 @@ class _LoginFormState extends State<LoginForm> {
                             MaterialPageRoute(
                                 builder: (_) => const BottomMenuBar())))
                         .onError<Exception>((error, stackTrace) {
+                      // showDialog(
+                      //   context: context,
+                      //   builder: (context) {
+                      //     //return Text(error.toString());
+                      //     return SimpleDialog(
+                      //       children: [Text(error.toString())],
+                      //     );
+                      //   },
+                      // );
                       showDialog(
                         context: context,
                         builder: (context) {
-                          //return Text(error.toString());
-                          return SimpleDialog(
-                            children: [Text(error.toString())],
+                          return AlertDialog(
+                            title: const Text("Error"),
+                            content: Text(error.toString()),
+                            actions: <Widget>[
+                              TextButton(
+                                onPressed: () {
+                                  Navigator.pop(context); // Close the dialog
+                                },
+                                child: const Text('OK'),
+                              ),
+                            ],
                           );
                         },
                       );
@@ -228,7 +245,7 @@ class _LoginFormState extends State<LoginForm> {
             ),
 
             // register now
-            const SizedBox(height: 10),
+            const SizedBox(height: 2),
             // register now
 
             Row(

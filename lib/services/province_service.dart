@@ -1,7 +1,7 @@
 import 'package:woofers/classes/dio_instance.dart';
 import 'package:woofers/model/province_model.dart';
 
-class RetrieveProvinceService {
+class ProvinceService {
   Future<RetrieveAllProvinceResponse> retrieveAllProvince() async {
     try {
       const api = '/provinces/all';

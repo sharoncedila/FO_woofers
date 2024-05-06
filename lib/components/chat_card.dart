@@ -16,7 +16,7 @@ class ChatCardDetail extends StatefulWidget {
 }
 
 class _ChatCardState extends State<ChatCardDetail> {
-  final _openChatService = ChatroomService();
+  final _openChatService = ChatService();
   String? imageURL;
  
   @override

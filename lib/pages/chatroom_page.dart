@@ -107,7 +107,7 @@ class _ChatroomPageState extends State<ChatroomPageDetail> {
                 padding:
                     const EdgeInsets.symmetric(horizontal: 5, vertical: 10),
                 child: FutureBuilder(
-                  future: ChatroomService()
+                  future: ChatService()
                       .openChatroom(OpenChatRequest(recipientId: recipientId)),
                   builder: ((context, snapshot) {
                     if (snapshot.connectionState == ConnectionState.waiting) {

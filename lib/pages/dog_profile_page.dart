@@ -37,25 +37,25 @@ class DogProfilePage extends StatelessWidget {
           ),
         ),
         actions: <Widget>[
-          IconButton(
-            icon: const Icon(Icons.notification_add_rounded),
-            onPressed: () {
-              Navigator.push(
-                context,
-                MaterialPageRoute(
-                    builder: (context) => const NotificationPage()),
-              );
-            },
-          ),
-          IconButton(
-            icon: const Icon(Icons.add_to_photos),
-            onPressed: () {
-              Navigator.push(
-                context,
-                MaterialPageRoute(builder: (context) => const AddDogPage()),
-              );
-            },
-          ),
+          // IconButton(
+          //   icon: const Icon(Icons.notification_add_rounded),
+          //   onPressed: () {
+          //     Navigator.push(
+          //       context,
+          //       MaterialPageRoute(
+          //           builder: (context) => const NotificationPage()),
+          //     );
+          //   },
+          // ),
+          // IconButton(
+          //   icon: const Icon(Icons.add_to_photos),
+          //   onPressed: () {
+          //     Navigator.push(
+          //       context,
+          //       MaterialPageRoute(builder: (context) => const AddDogPage()),
+          //     );
+          //   },
+          // ),
         ],
       ),
       body: dogProfileDetail(),
@@ -522,7 +522,7 @@ class DogProfilePage extends StatelessWidget {
                           },
                         ),
                       )),
-                      const SizedBox(
+                  const SizedBox(
                     height: 20,
                   ),
                 ],

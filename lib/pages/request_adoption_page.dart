@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:hexcolor/hexcolor.dart';
 import 'package:woofers/components/image_network.dart';
+import 'package:woofers/main.dart';
 import 'package:woofers/model/adoption_model.dart';
 import 'package:woofers/pages/chatroom_page.dart';
 import 'package:woofers/services/adoption_service.dart';
@@ -706,114 +707,126 @@ class _RequestAdoptionPageState extends State<RequestAdoptionPage> {
                   const SizedBox(
                     height: 20,
                   ),
-                  Padding(
-                    padding: const EdgeInsets.only(bottom: 50.0, top: 30),
-                    child: SizedBox(
-                        width: 210,
-                        height: 40,
-                        child: Expanded(
-                          child: ElevatedButton(
-                            style: ButtonStyle(
-                              backgroundColor:
-                                  MaterialStateProperty.resolveWith<Color?>(
-                                (Set<MaterialState> states) {
-                                  if (states.contains(MaterialState.pressed)) {
-                                    return Theme.of(context)
-                                        .colorScheme
-                                        .primary
-                                        .withOpacity(0.5);
-                                  }
-                                  return null; // Use the component's default.
-                                },
-                              ),
-                            ),
-                            child: const Text('REQUEST TO ADOPT',
-                                style: TextStyle(
-                                    //color: Colors.grey[600],
-                                    fontWeight: FontWeight.bold,
-                                    fontSize: 18)),
-                            onPressed: () async {
-                              showDialog(
-                                context: context,
-                                builder: (BuildContext context) {
-                                  return AlertDialog(
-                                    title: const Text('Confirmation'),
-                                    content: const Text(
-                                        'Are you sure want to adopt this dog?'),
-                                    actions: <Widget>[
-                                      TextButton(
-                                        onPressed: () {
-                                          Navigator.of(context).pop(false);
-                                        },
-                                        child: const Text('No'),
-                                      ),
-                                      TextButton(
-                                        onPressed: () {
-                                          Navigator.of(context).pop(true);
-                                        },
-                                        child: const Text('Yes'),
-                                      ),
-                                    ],
-                                  );
-                                },
-                              ).then((value) {
-                                // yess
-                                if (value != null && value) {
-                                  String? ownerAccountId =
-                                      snapshot.data?.ownerData!.accountId ==
-                                              null
-                                          ? ""
-                                          : snapshot.data!.ownerData!.accountId;
-                                  String? ownerUsername =
-                                      snapshot.data?.ownerData!.username == null
-                                          ? ""
-                                          : snapshot.data!.ownerData!.username;
-                                  final SendAdoptionNotification send =
-                                      SendAdoptionNotification(
-                                          dogId: snapshot
-                                                      .data?.dogData!.dogId ==
-                                                  null
-                                              ? ""
-                                              : snapshot.data!.dogData!.dogId,
-                                          dogName: snapshot
-                                                      .data?.dogData!.dogName ==
-                                                  null
-                                              ? ""
-                                              : snapshot.data!.dogData!.dogName,
-                                          breedName: snapshot.data?.dogData!
-                                                      .breedName ==
-                                                  null
-                                              ? ""
-                                              : snapshot
-                                                  .data!.dogData!.breedName,
-                                          ownerId: snapshot.data?.ownerData!
-                                                      .accountId ==
-                                                  null
-                                              ? ""
-                                              : snapshot
-                                                  .data!.ownerData!.accountId,
-                                          ownerUsername: snapshot.data
-                                                      ?.ownerData!.username ==
-                                                  null
-                                              ? ""
-                                              : snapshot
-                                                  .data!.ownerData!.username);
 
-                                  _adoptionService.sendAdoptNotif(send).then(
-                                      (value) => Navigator.of(context)
-                                          .pushReplacement(MaterialPageRoute(
-                                              builder: (_) =>
-                                                  ChatroomPageDetail(
-                                                    recipientId:
-                                                        ownerAccountId!,
-                                                    username: ownerUsername!,
-                                                  ))));
-                                }
-                              });
-                            },
-                          ),
-                        )),
-                  )
+                  (sharedPreference?.getString("accountId") !=
+                          snapshot.data?.ownerData?.accountId)
+                      ?
+                      // request to adopt button
+                      Padding(
+                          padding: const EdgeInsets.only(bottom: 50.0, top: 30),
+                          child: SizedBox(
+                              width: 210,
+                              height: 40,
+                              child: Expanded(
+                                child: ElevatedButton(
+                                  style: ButtonStyle(
+                                    backgroundColor: MaterialStateProperty
+                                        .resolveWith<Color?>(
+                                      (Set<MaterialState> states) {
+                                        if (states
+                                            .contains(MaterialState.pressed)) {
+                                          return Theme.of(context)
+                                              .colorScheme
+                                              .primary
+                                              .withOpacity(0.5);
+                                        }
+                                        return null; // Use the component's default.
+                                      },
+                                    ),
+                                  ),
+                                  child: const Text('REQUEST TO ADOPT',
+                                      style: TextStyle(
+                                          //color: Colors.grey[600],
+                                          fontWeight: FontWeight.bold,
+                                          fontSize: 18)),
+                                  onPressed: () async {
+                                    showDialog(
+                                      context: context,
+                                      builder: (BuildContext context) {
+                                        return AlertDialog(
+                                          title: const Text('Confirmation'),
+                                          content: const Text(
+                                              'Are you sure want to adopt this dog?'),
+                                          actions: <Widget>[
+                                            TextButton(
+                                              onPressed: () {
+                                                Navigator.of(context)
+                                                    .pop(false);
+                                              },
+                                              child: const Text('No'),
+                                            ),
+                                            TextButton(
+                                              onPressed: () {
+                                                Navigator.of(context).pop(true);
+                                              },
+                                              child: const Text('Yes'),
+                                            ),
+                                          ],
+                                        );
+                                      },
+                                    ).then((value) {
+                                      // yess
+                                      if (value != null && value) {
+                                        String? ownerAccountId = snapshot.data
+                                                    ?.ownerData!.accountId ==
+                                                null
+                                            ? ""
+                                            : snapshot
+                                                .data!.ownerData!.accountId;
+                                        String? ownerUsername = snapshot.data
+                                                    ?.ownerData!.username ==
+                                                null
+                                            ? ""
+                                            : snapshot
+                                                .data!.ownerData!.username;
+                                        final SendAdoptionNotification send = SendAdoptionNotification(
+                                            dogId: snapshot.data?.dogData!.dogId == null
+                                                ? ""
+                                                : snapshot.data!.dogData!.dogId,
+                                            dogName:
+                                                snapshot.data?.dogData!.dogName == null
+                                                    ? ""
+                                                    : snapshot
+                                                        .data!.dogData!.dogName,
+                                            breedName:
+                                                snapshot.data?.dogData!.breedName ==
+                                                        null
+                                                    ? ""
+                                                    : snapshot.data!.dogData!
+                                                        .breedName,
+                                            ownerId: snapshot.data?.ownerData!
+                                                        .accountId ==
+                                                    null
+                                                ? ""
+                                                : snapshot
+                                                    .data!.ownerData!.accountId,
+                                            ownerUsername: snapshot.data
+                                                        ?.ownerData!.username ==
+                                                    null
+                                                ? ""
+                                                : snapshot
+                                                    .data!.ownerData!.username);
+
+                                        _adoptionService
+                                            .sendAdoptNotif(send)
+                                            .then((value) => Navigator.of(
+                                                    context)
+                                                .pushReplacement(
+                                                    MaterialPageRoute(
+                                                        builder: (_) =>
+                                                            ChatroomPageDetail(
+                                                              recipientId:
+                                                                  ownerAccountId!,
+                                                              username:
+                                                                  ownerUsername!,
+                                                            ))));
+                                      }
+                                    });
+                                  },
+                                ),
+                              )),
+                        )
+                      : const SizedBox(),
                 ],
               );
               // );

@@ -26,7 +26,8 @@ mixin _$AdoptionDetail {
   String? get gender => throw _privateConstructorUsedError;
   String? get age => throw _privateConstructorUsedError;
   String? get image => throw _privateConstructorUsedError;
-  String? get errorCode => throw _privateConstructorUsedError;
+  String? get errorCode =>
+      throw _privateConstructorUsedError; // required String? accountId,
   String? get errorMessage => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
@@ -217,6 +218,7 @@ class _$AdoptionDetailImpl implements _AdoptionDetail {
   final String? image;
   @override
   final String? errorCode;
+// required String? accountId,
   @override
   final String? errorMessage;
 
@@ -291,7 +293,7 @@ abstract class _AdoptionDetail implements AdoptionDetail {
   String? get image;
   @override
   String? get errorCode;
-  @override
+  @override // required String? accountId,
   String? get errorMessage;
   @override
   @JsonKey(ignore: true)

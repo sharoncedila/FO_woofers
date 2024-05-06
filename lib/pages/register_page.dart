@@ -4,6 +4,7 @@ import 'package:woofers/model/account_model.dart';
 import 'package:woofers/pages/login_page.dart';
 import 'package:woofers/services/account_service.dart';
 import 'package:woofers/services/province_service.dart';
+import 'package:google_fonts/google_fonts.dart';
 
 class RegisterPage extends StatelessWidget {
   const RegisterPage({super.key});
@@ -22,20 +23,21 @@ class RegisterPage extends StatelessWidget {
               const SizedBox(height: 50),
               // logo
               Image.asset(
-                'assets/woofers_icon/woofers.jpg',
-                width: 100,
-                height: 100,
+                'assets/woofers_icon/woofers_logo.png',
+                width: 150,
+                height: 150,
               ),
 
               const SizedBox(height: 10),
               // WOOFERS
-              const Text(
+              Text(
                 'WOOFERS',
-                style: TextStyle(
-                    color: Colors.blue,
-                    fontWeight: FontWeight.bold,
-                    fontSize: 20,
-                    fontFamily: 'San Francisco'),
+                style: GoogleFonts.lora(
+                  fontSize: 18,
+                  //color: Colors.white,
+                  color: const Color.fromRGBO(40, 36, 36, 10000),
+                  fontWeight: FontWeight.bold,
+                ),
               ),
 
               const RegisterForm(),
@@ -84,7 +86,7 @@ class _RegisterFormState extends State<RegisterForm> {
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
             // username form field
-            const SizedBox(height: 50),
+            const SizedBox(height: 30),
             Padding(
               padding: const EdgeInsets.symmetric(horizontal: 25),
               child: TextFormField(
@@ -103,6 +105,11 @@ class _RegisterFormState extends State<RegisterForm> {
                 validator: (value) {
                   if (value == null || value.isEmpty) {
                     return 'Please fill username field';
+                  }
+                  const usernamepattern = "'.*[a-z].*'";
+                  final regExp = RegExp(usernamepattern);
+                  if (regExp.hasMatch(value)) {
+                    return 'Please enter only lowercase letter in this field';
                   }
                   return null;
                 },
@@ -129,6 +136,11 @@ class _RegisterFormState extends State<RegisterForm> {
                 validator: (value) {
                   if (value == null || value.isEmpty) {
                     return 'Please fill fullname field';
+                  }
+                  const fullnamevalidator = ".*[0-9].*";
+                  final regExp = RegExp(fullnamevalidator);
+                  if (!regExp.hasMatch(value)) {
+                    return 'Please enter only character in this field';
                   }
                   return null;
                 },
@@ -171,7 +183,7 @@ class _RegisterFormState extends State<RegisterForm> {
               child: Padding(
                 padding: const EdgeInsets.symmetric(horizontal: 25),
                 child: FutureBuilder(
-                  future: RetrieveProvinceService().retrieveAllProvince(),
+                  future: ProvinceService().retrieveAllProvince(),
                   //initialData: initialProvinceNames,
                   builder: (context, snapshot) {
                     if (snapshot.connectionState == ConnectionState.waiting) {
@@ -350,7 +362,7 @@ class _RegisterFormState extends State<RegisterForm> {
                     onPressed: () {
                       setState(
                         () {
-                          passwordVisible2 = !passwordVisible;
+                          passwordVisible2 = !passwordVisible2;
                         },
                       );
                     },
@@ -389,7 +401,7 @@ class _RegisterFormState extends State<RegisterForm> {
               ),
             ),
 
-            const SizedBox(height: 50),
+            const SizedBox(height: 30),
             SizedBox(
               width: 200,
               height: 45,
@@ -440,7 +452,7 @@ class _RegisterFormState extends State<RegisterForm> {
             ),
 
             // login now
-            const SizedBox(height: 10),
+            const SizedBox(height: 2),
             // login now
             Row(
               mainAxisAlignment: MainAxisAlignment.center,
