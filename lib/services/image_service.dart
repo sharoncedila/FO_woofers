@@ -34,6 +34,63 @@ class ImageService {
     return null;
   }
 
+  Future<UploadImageResponse?> uploadDogImage(String? dogId, File image) async {
+    try {
+      String api;
+      if (dogId == null) {
+        api = '/upload/dog';
+      } else {
+        api = '/upload/dog?dog-id=$dogId';
+      }
+
+      final dio = await DioInstance.getInstance();
+
+      String fileName = image.path.split('/').last;
+      String extension = fileName.split('.').last.toLowerCase();
+      FormData formData = FormData.fromMap({
+        'file': await MultipartFile.fromFile(
+          image.path,
+          filename: fileName,
+          contentType: MediaType('image', extension),
+        ),
+      });
+
+      var response = await dio.post(api, data: formData);
+      final errorSchema = UploadImageResponse.fromJson(response.data['errorSchema']);
+      if (errorSchema.errorCode != 'WOF-000') {
+        return UploadImageResponse.fromJson(response.data['errorSchema']);
+      } else {
+        return UploadImageResponse.fromJson(response.data['outputSchema']);
+      }
+    } catch (error) {
+      print(error);
+    }
+    return null;
+      // final pickedFile =
+          // await ImagePicker().pickImage(source: ImageSource.gallery);
+
+    //   if (pickedFile != null) {
+    //     File image = File(pickedFile.path);
+    //     String fileName = image.path.split('/').last;
+    //     FormData formData = FormData.fromMap({
+    //       'file': await MultipartFile.fromFile(image.path, filename: fileName),
+    //     });
+    //     var response = await dio.post(api, data: formData);
+    //     final errorSchema = UploadImageResponse.fromJson(response.data['errorSchema']);
+    //     if (errorSchema.errorCode != 'WOF-000') {
+    //       return UploadImageResponse.fromJson(response.data['errorSchema']);
+    //     } else {
+    //       return UploadImageResponse.fromJson(response.data['outputSchema']);
+    //     }
+    //   } else {
+    //     print('no file chosen');
+    //   }
+    // } catch (error) {
+    //   print(error);
+    // }
+    // return null;
+  }
+
   Future<UploadImageResponse?> uploadFeeds(File image) async {
     try {
       const api = '/upload/feeds';
@@ -62,38 +119,4 @@ class ImageService {
     return null;
   }
 
-  Future<UploadImageResponse?> uploadDogImage(String? dogId, File image) async {
-    try {
-      String api;
-      if (dogId == null) {
-        api = '/upload/dog';
-      } else {
-        api = '/upload/dog?dog-id=$dogId';
-      }
-
-      final dio = await DioInstance.getInstance();
-      final pickedFile =
-          await ImagePicker().pickImage(source: ImageSource.gallery);
-
-      if (pickedFile != null) {
-        File image = File(pickedFile.path);
-        String fileName = image.path.split('/').last;
-        FormData formData = FormData.fromMap({
-          'file': await MultipartFile.fromFile(image.path, filename: fileName),
-        });
-        var response = await dio.post(api, data: formData);
-        final errorSchema = UploadImageResponse.fromJson(response.data['errorSchema']);
-        if (errorSchema.errorCode != 'WOF-000') {
-          return UploadImageResponse.fromJson(response.data['errorSchema']);
-        } else {
-          return UploadImageResponse.fromJson(response.data['outputSchema']);
-        }
-      } else {
-        print('no file chosen');
-      }
-    } catch (error) {
-      print(error);
-    }
-    return null;
-  }
 }

@@ -9,6 +9,7 @@ import 'package:woofers/components/profile_page_template.dart';
 import 'package:woofers/model/account_model.dart';
 import 'package:woofers/model/image_model.dart';
 import 'package:woofers/services/account_service.dart';
+// import 'package:woofers/services/account_service.dart';
 import 'package:woofers/services/image_service.dart';
 import 'package:woofers/services/province_service.dart';
 
@@ -59,8 +60,7 @@ class _EditMyProfilePageState extends State<EditMyProfile> {
 
   Future<List<String?>> _fetchProvinceData() async {
     try {
-      final provinceResponse =
-          await RetrieveProvinceService().retrieveAllProvince();
+      final provinceResponse = await ProvinceService().retrieveAllProvince();
       return provinceResponse.provinceList
           .map((province) => province.provinceName)
           .toList();
@@ -112,18 +112,45 @@ class _EditMyProfilePageState extends State<EditMyProfile> {
               final myProfile = snapshot.data as ResponseUserProfileModel;
 
               // Assigning values to the text controllers
-              username = myProfile.username ?? '';
-              _fullnameController.text = myProfile.fullName ?? '';
-              email = myProfile.email ?? '';
-              _provinceController.text = myProfile.provinceName ?? '';
-              _phoneNumberController.text = myProfile.phoneNumber ?? '';
-              _descriptionController.text = myProfile.description ?? '';
 
-              final imageURL = myProfile.image ?? '';
+              if (_fullnameController.text == myProfile.fullName) {
+                _fullnameController.text = myProfile.fullName ?? '';
+              }
+              if (_provinceController.text == myProfile.provinceName) {
+                _provinceController.text = myProfile.provinceName ?? '';
+              }
+              if (_phoneNumberController.text == myProfile.phoneNumber) {
+                _phoneNumberController.text = myProfile.phoneNumber ?? '';
+              }
+              if (_descriptionController.text == myProfile.description) {
+                _descriptionController.text = myProfile.description ?? '';
+              }
+
+              // final imageURL = myProfile.image ?? '';
               return Column(
                 children: [
                   const SizedBox(height: 15),
-                  ImageNetwork(urlImage: imageURL, width: 150, height: 150),
+                  (uploadedImage == null && myProfile.image == null)
+                      ? const Image(
+                          image: AssetImage('assets/woofers_icon/profile.jpg'))
+                      : (uploadedImage != null && myProfile.image == null)
+                          ? ImageNetwork(
+                              urlImage: "/temp/${uploadedImage}",
+                              width: 150,
+                              height: 150)
+                          : ImageNetwork(
+                              urlImage: myProfile.image,
+                              width: 150,
+                              height: 150),
+
+                  // (myProfile.image == null)
+                  //     ? const Image(
+                  //         image: AssetImage('assets/woofers_icon/profile.jpg'),
+                  //         width: 150,
+                  //         height: 150,
+                  //       )
+                  //     : ImageNetwork(
+                  //         urlImage: myProfile.image, width: 150, height: 150),
                   IconButton(
                       onPressed: () async {
                         final pickedFile = await ImagePicker()
@@ -134,47 +161,8 @@ class _EditMyProfilePageState extends State<EditMyProfile> {
                         }
                         // ImageService().uploadFeeds();
                       },
-                      icon: const Icon(Icons.camera)),
+                      icon: const Icon(Icons.camera_alt)),
                   const SizedBox(height: 15),
-                  // username
-                  Row(
-                    children: [
-                      const SizedBox(
-                        width: 20,
-                      ),
-                      const Icon(
-                        Icons.person_2_outlined,
-                        size: 35,
-                      ),
-                      const SizedBox(
-                        width: 20,
-                      ),
-                      Expanded(
-                          child: Column(
-                              mainAxisAlignment: MainAxisAlignment.start,
-                              crossAxisAlignment: CrossAxisAlignment.start,
-                              children: [
-                            Text(
-                              "username",
-                              style: TextStyle(
-                                color: Colors.black.withOpacity(0.5),
-                              ),
-                            ),
-                            SizedBox(
-                              height: 25,
-                              child: Text(username!,
-                                  style: GoogleFonts.newsCycle(
-                                    color: Colors.black,
-                                    fontSize: 16,
-                                  )),
-                            ),
-                          ]))
-                    ],
-                  ),
-                  const SizedBox(
-                    height: 20,
-                  ),
-                  // full name
                   Row(
                     children: [
                       const SizedBox(
@@ -213,47 +201,7 @@ class _EditMyProfilePageState extends State<EditMyProfile> {
                           ]))
                     ],
                   ),
-                  const SizedBox(
-                    height: 20,
-                  ),
-                  //email
-                  Row(
-                    children: [
-                      const SizedBox(
-                        width: 20,
-                      ),
-                      const Icon(
-                        Icons.email_sharp,
-                        size: 35,
-                      ),
-                      const SizedBox(
-                        width: 20,
-                      ),
-                      Expanded(
-                          child: Column(
-                              mainAxisAlignment: MainAxisAlignment.start,
-                              crossAxisAlignment: CrossAxisAlignment.start,
-                              children: [
-                            Text(
-                              "email",
-                              style: TextStyle(
-                                color: Colors.black.withOpacity(0.5),
-                              ),
-                            ),
-                            SizedBox(
-                                height: 25,
-                                child: TextFormField(
-                                  readOnly: true,
-                                  decoration: InputDecoration(
-                                      border: const UnderlineInputBorder(),
-                                      labelText: email,
-                                      labelStyle: GoogleFonts.newsCycle(
-                                        color: Colors.black,
-                                      )),
-                                )),
-                          ]))
-                    ],
-                  ),
+                  // ),
 
                   // province
                   const SizedBox(height: 20),
@@ -281,7 +229,7 @@ class _EditMyProfilePageState extends State<EditMyProfile> {
                               ),
                             ),
                             SizedBox(
-                              height: 30,
+                              height: 50,
                               child: SingleChildScrollView(
                                 child: FutureBuilder(
                                   future: _provinceFuture,
@@ -429,9 +377,10 @@ class _EditMyProfilePageState extends State<EditMyProfile> {
                               ),
                             ),
                             SizedBox(
-                              height: 50,
+                              height: 75,
                               child: TextFormField(
-                                  maxLines: null,
+                                  maxLines: 3,
+                                  maxLength: 100,
                                   controller: _descriptionController,
                                   style: GoogleFonts.newsCycle(
                                     color: Colors.black,

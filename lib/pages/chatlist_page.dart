@@ -140,7 +140,7 @@ class _ChatListPageState extends State<ChatListPage> {
         Padding(
           padding: const EdgeInsets.symmetric(horizontal: 5, vertical: 10),
           child: FutureBuilder(
-            future: ChatroomService().retrieveChatroomList(),
+            future: ChatService().retrieveChatroomList(),
             builder: ((context, snapshot) {
               if (snapshot.connectionState == ConnectionState.waiting) {
                 return const Center(child: Text("Retrieving your data..."));

@@ -4,7 +4,7 @@ import 'package:woofers/classes/dio_instance.dart';
 import 'package:woofers/classes/ws_chat_instance.dart';
 import 'package:woofers/model/chat_model.dart';
 
-class ChatroomService {
+class ChatService {
 
   Future<List<RetrieveChatlistResponse>> retrieveChatroomList() async {
     try {

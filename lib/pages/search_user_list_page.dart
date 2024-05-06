@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:hexcolor/hexcolor.dart';
 import 'package:woofers/components/search_user_card.dart';
-import 'package:woofers/pages/chatlist_page.dart';
 import 'package:woofers/pages/notification_page.dart';
 import 'package:woofers/services/chat_service.dart';
 
@@ -170,7 +169,7 @@ class _SearchUserListPageState extends State<SearchUserListPage> {
               height: 15,
             ),
             FutureBuilder(
-                future: ChatroomService().searchChat(widget.userName),
+                future: ChatService().searchChat(widget.userName),
                 builder: (context, snapshot) {
                   if (snapshot.connectionState == ConnectionState.waiting) {
                     return const Center(

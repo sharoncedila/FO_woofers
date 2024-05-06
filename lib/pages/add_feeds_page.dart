@@ -21,6 +21,7 @@ class AddFeedsPage extends StatefulWidget {
 class _AddFeedsPageState extends State<AddFeedsPage> {
   String? uploadedImage;
   String? tempImage;
+  String? captionErrorMessage;
   final _captionController = TextEditingController();
   // UploadImageResponse? uploadedImage = await ImageService().uploadFeeds();
 
@@ -70,9 +71,14 @@ class _AddFeedsPageState extends State<AddFeedsPage> {
           ),
           // const Image(image: AssetImage('assets/dog_picture/dog1.jpg')),
           (uploadedImage == null)
-              ? const Image(image: AssetImage('assets/dog_picture/dog1.jpg'))
+              ? const Icon(
+                  Icons.broken_image_outlined,
+                  size: 300,
+                  color: Colors.black26,
+                )
+              // Image(image: AssetImage('assets/dog_picture/dog1.jpg'))
               : ImageNetwork(
-                  urlImage: "/temp/${uploadedImage}", width: 150, height: 150),
+                  urlImage: "/temp/${uploadedImage}", width: 300, height: 300),
           IconButton(
               onPressed: () async {
                 final pickedFile =
@@ -108,7 +114,15 @@ class _AddFeedsPageState extends State<AddFeedsPage> {
             ),
           ),
           const SizedBox(
-            height: 15,
+            height: 7,
+          ),
+          Text(captionErrorMessage ?? ""),
+          // (captionErrorMessage != null) ?? Text(captionErrorMessage) : "",
+          // if (captionErrorMessage != null) {
+          //   Text(captionErrorMessage!),
+          // },
+          const SizedBox(
+            height: 7,
           ),
           SizedBox(
             width: MediaQuery.of(context).size.width / 1.1,
@@ -129,14 +143,21 @@ class _AddFeedsPageState extends State<AddFeedsPage> {
               ),
               child: const Text('POST'),
               onPressed: () {
-                final PostFeedsRequest request = PostFeedsRequest(
-                  caption: _captionController.text,
-                  image: uploadedImage,
-                );
+                if (uploadedImage == null && _captionController.text == null) {
+                  setState(() {
+                    captionErrorMessage =
+                        "Please insert at least a feeds image or feeds caption..";
+                  });
+                } else {
+                  final PostFeedsRequest request = PostFeedsRequest(
+                    caption: _captionController.text,
+                    image: uploadedImage,
+                  );
 
-                FeedsService().postFeeds(request).then((value) =>
-                    Navigator.of(context).pushReplacement(
-                        MaterialPageRoute(builder: (_) => const FeedsPage())));
+                  FeedsService().postFeeds(request).then((value) =>
+                      Navigator.of(context).pushReplacement(MaterialPageRoute(
+                          builder: (_) => const FeedsPage())));
+                }
               },
             ),
           ),

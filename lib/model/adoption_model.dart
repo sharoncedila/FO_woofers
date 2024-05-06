@@ -12,6 +12,7 @@ class AdoptionDetail with _$AdoptionDetail {
       required String? age,
       required String? image,
       required String? errorCode,
+      // required String? accountId,
       required String? errorMessage}) = _AdoptionDetail;
 
   factory AdoptionDetail.fromJson(Map<String, dynamic> json) =>

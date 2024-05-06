@@ -370,6 +370,7 @@ mixin _$AddDogRequest {
   String? get provinceName => throw _privateConstructorUsedError;
   String? get vaccination => throw _privateConstructorUsedError;
   String? get description => throw _privateConstructorUsedError;
+  String? get image => throw _privateConstructorUsedError;
   bool? get isOpenAdopt => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
@@ -392,6 +393,7 @@ abstract class $AddDogRequestCopyWith<$Res> {
       String? provinceName,
       String? vaccination,
       String? description,
+      String? image,
       bool? isOpenAdopt});
 }
 
@@ -415,6 +417,7 @@ class _$AddDogRequestCopyWithImpl<$Res, $Val extends AddDogRequest>
     Object? provinceName = freezed,
     Object? vaccination = freezed,
     Object? description = freezed,
+    Object? image = freezed,
     Object? isOpenAdopt = freezed,
   }) {
     return _then(_value.copyWith(
@@ -446,6 +449,10 @@ class _$AddDogRequestCopyWithImpl<$Res, $Val extends AddDogRequest>
           ? _value.description
           : description // ignore: cast_nullable_to_non_nullable
               as String?,
+      image: freezed == image
+          ? _value.image
+          : image // ignore: cast_nullable_to_non_nullable
+              as String?,
       isOpenAdopt: freezed == isOpenAdopt
           ? _value.isOpenAdopt
           : isOpenAdopt // ignore: cast_nullable_to_non_nullable
@@ -470,6 +477,7 @@ abstract class _$$AddDogRequestImplCopyWith<$Res>
       String? provinceName,
       String? vaccination,
       String? description,
+      String? image,
       bool? isOpenAdopt});
 }
 
@@ -491,6 +499,7 @@ class __$$AddDogRequestImplCopyWithImpl<$Res>
     Object? provinceName = freezed,
     Object? vaccination = freezed,
     Object? description = freezed,
+    Object? image = freezed,
     Object? isOpenAdopt = freezed,
   }) {
     return _then(_$AddDogRequestImpl(
@@ -522,6 +531,10 @@ class __$$AddDogRequestImplCopyWithImpl<$Res>
           ? _value.description
           : description // ignore: cast_nullable_to_non_nullable
               as String?,
+      image: freezed == image
+          ? _value.image
+          : image // ignore: cast_nullable_to_non_nullable
+              as String?,
       isOpenAdopt: freezed == isOpenAdopt
           ? _value.isOpenAdopt
           : isOpenAdopt // ignore: cast_nullable_to_non_nullable
@@ -541,6 +554,7 @@ class _$AddDogRequestImpl implements _AddDogRequest {
       required this.provinceName,
       required this.vaccination,
       required this.description,
+      required this.image,
       required this.isOpenAdopt});
 
   factory _$AddDogRequestImpl.fromJson(Map<String, dynamic> json) =>
@@ -561,11 +575,13 @@ class _$AddDogRequestImpl implements _AddDogRequest {
   @override
   final String? description;
   @override
+  final String? image;
+  @override
   final bool? isOpenAdopt;
 
   @override
   String toString() {
-    return 'AddDogRequest(dogName: $dogName, breedName: $breedName, dateOfBirth: $dateOfBirth, gender: $gender, provinceName: $provinceName, vaccination: $vaccination, description: $description, isOpenAdopt: $isOpenAdopt)';
+    return 'AddDogRequest(dogName: $dogName, breedName: $breedName, dateOfBirth: $dateOfBirth, gender: $gender, provinceName: $provinceName, vaccination: $vaccination, description: $description, image: $image, isOpenAdopt: $isOpenAdopt)';
   }
 
   @override
@@ -585,6 +601,7 @@ class _$AddDogRequestImpl implements _AddDogRequest {
                 other.vaccination == vaccination) &&
             (identical(other.description, description) ||
                 other.description == description) &&
+            (identical(other.image, image) || other.image == image) &&
             (identical(other.isOpenAdopt, isOpenAdopt) ||
                 other.isOpenAdopt == isOpenAdopt));
   }
@@ -592,7 +609,7 @@ class _$AddDogRequestImpl implements _AddDogRequest {
   @JsonKey(ignore: true)
   @override
   int get hashCode => Object.hash(runtimeType, dogName, breedName, dateOfBirth,
-      gender, provinceName, vaccination, description, isOpenAdopt);
+      gender, provinceName, vaccination, description, image, isOpenAdopt);
 
   @JsonKey(ignore: true)
   @override
@@ -617,6 +634,7 @@ abstract class _AddDogRequest implements AddDogRequest {
       required final String? provinceName,
       required final String? vaccination,
       required final String? description,
+      required final String? image,
       required final bool? isOpenAdopt}) = _$AddDogRequestImpl;
 
   factory _AddDogRequest.fromJson(Map<String, dynamic> json) =
@@ -636,6 +654,8 @@ abstract class _AddDogRequest implements AddDogRequest {
   String? get vaccination;
   @override
   String? get description;
+  @override
+  String? get image;
   @override
   bool? get isOpenAdopt;
   @override

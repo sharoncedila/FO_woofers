@@ -1,11 +1,10 @@
-import 'dart:io';
 import 'package:flutter/material.dart';
 import 'package:woofers/components/image_network.dart';
 import 'package:woofers/model/account_model.dart';
 import 'package:woofers/pages/edit_my_profile_page.dart';
 import 'package:woofers/pages/login_page.dart';
-import 'package:woofers/services/account_service.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:woofers/services/account_service.dart';
 
 void main() => runApp(const UserProfilePage());
 
@@ -20,7 +19,7 @@ class _UserProfilePageState extends State<UserProfilePage> {
   // const UserProfilePagetate({Key key}) : super(key: key);
   final Future<ResponseUserProfileModel?> _account =
       AccountService().retrieveUserData();
-  final _loginService = AccountService();
+  final _logoutService = AccountService();
 
   @override
   Widget build(BuildContext context) {
@@ -65,23 +64,14 @@ class _UserProfilePageState extends State<UserProfilePage> {
                                   width: 150,
                                   height: 150,
                                 );
+                              } else {
+                                //masi kena disini err
+                                return ImageNetwork(
+                                    urlImage: imageURL,
+                                    width: 150,
+                                    height: 150);
                               }
-                              //masi kena disini err
-                              return ImageNetwork(
-                                  urlImage: imageURL, width: 150, height: 150);
                             }),
-
-                        // IconButton(
-                        //     onPressed: () async {
-                        //       final pickedFile = await ImagePicker()
-                        //           .pickImage(source: ImageSource.gallery);
-                        //       if (pickedFile != null) {
-                        //         File image = File(pickedFile.path);
-                        //         ImageService().uploadProfilePicture(image);
-                        //       }
-                        //       // ImageService().uploadFeeds();
-                        //     },
-                        //     icon: const Icon(Icons.camera)),
 
                         // username
                         const SizedBox(height: 20),
@@ -415,9 +405,9 @@ class _UserProfilePageState extends State<UserProfilePage> {
                   );
                 }),
           ),
-          const SizedBox(height: 25),
+          const SizedBox(height: 15),
           Padding(
-              padding: const EdgeInsets.symmetric(vertical: 15),
+              padding: const EdgeInsets.symmetric(vertical: 5),
               child: Center(
                   child: Row(
                       mainAxisAlignment: MainAxisAlignment.center,
@@ -490,7 +480,7 @@ class _UserProfilePageState extends State<UserProfilePage> {
                         ).then((value) {
                           // yess
                           if (value != null && value) {
-                            _loginService.logout();
+                            _logoutService.logout();
                             Navigator.push(
                               context,
                               MaterialPageRoute(

@@ -64,9 +64,10 @@ class CommentPage extends StatelessWidget {
                     onPressed: () async {
                       final LeaveCommentRequest request = LeaveCommentRequest(
                           feedsId: feedsId, content: commentController.text);
-                      FeedsService().leaveCommentSection(request);
-                      FocusScope.of(context).unfocus();
-                      commentController.clear();
+                      FeedsService().leaveCommentSection(request).then((_) {
+                        FocusScope.of(context).unfocus();
+                        commentController.clear();
+                      });
                     },
                   ),
                 ],
@@ -91,11 +92,10 @@ class CommentPage extends StatelessWidget {
                           child: Text("Retrieving your data..."));
                     }
                     if (snapshot.hasError) {
-                      return const Center(child: Text("Error"));
+                      return const Center(child: Text(""));
                     }
                     if (!snapshot.hasData) {
-                      return const Center(
-                          child: Text("no comment available for this feeds"));
+                      return const Center(child: Text(""));
                     }
 
                     final commentList = snapshot.data!;

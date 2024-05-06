@@ -70,6 +70,7 @@ class _FeedsCardState extends State<FeedsCard> {
                                 width: 45,
                                 height: 45,
                               ),
+                              borderRadius: BorderRadius.circular(50),
                             )
                           : InkWell(
                               onTap: () {

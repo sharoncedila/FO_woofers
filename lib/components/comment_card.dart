@@ -76,8 +76,12 @@ class CommentCard extends StatelessWidget {
                             );
                           },
                           child: const Image(
-                              image: AssetImage(
-                                  'assets/woofers_icon/profile.jpg'))),
+                            image:
+                                AssetImage('assets/woofers_icon/profile.jpg'),
+                            width: 45,
+                            height: 45,
+                          ),
+                        ),
                   const SizedBox(
                     width: 20,
                   ),
