@@ -1,0 +1,36 @@
+@startuml Login
+' Global param
+title Login
+autoactivate on
+
+' Global style configuration
+skinparam RoundCorner 0
+hide footbox
+
+' Sequence participant configuration
+actor User
+participant "_:LoginPage_" as Page <<view>>
+participant "_:AccountService_" as Service
+participant "_:Account" as Model <<model>>
+
+
+' Sequence diagram
+User -> Page: build
+User <-- Page: return LoginPage
+User -> Page: build
+alt Validation is Successful
+Page -> Model: RequestLoginModel req
+Page <-- Model: return RequestLoginModel
+Page -> Service: login(loginReq)
+Service -> Model: RequestLoginModel loginReg
+Service <-- Model: return ResponseLoginModel
+Page <-- Service: return ResponseLoginModel
+User <-- Page: return AdoptionPage
+else Validation Fails
+    User <-- Page: return ErrorMessage
+end
+
+
+
+
+@enduml
