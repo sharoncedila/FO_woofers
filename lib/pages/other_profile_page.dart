@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:woofers/components/image_network.dart';
+import 'package:woofers/main.dart';
 import 'package:woofers/pages/chatroom_page.dart';
 import 'package:woofers/services/account_service.dart';
 
@@ -356,43 +357,51 @@ class OtherProfilePage extends StatelessWidget {
                         ),
 
                         const SizedBox(height: 50),
-                        SizedBox(
-                          width: 200,
-                          height: 45,
-                          child: ElevatedButton(
-                            style: ButtonStyle(
-                              backgroundColor:
-                                  MaterialStateProperty.resolveWith<Color?>(
-                                (Set<MaterialState> states) {
-                                  if (states.contains(MaterialState.pressed)) {
-                                    return Theme.of(context)
-                                        .colorScheme
-                                        .primary
-                                        .withOpacity(0.5);
-                                  }
-                                  return null; // Use the component's default.
-                                },
-                              ),
-                            ),
-                            child: Text(
-                              'CONTACT ME',
-                              style: TextStyle(
-                                  color: Colors.grey[600],
-                                  fontWeight: FontWeight.bold,
-                                  fontSize: 18),
-                            ),
-                            onPressed: () {
-                              Navigator.push(
-                                  context,
-                                  MaterialPageRoute(
-                                    builder: (context) => ChatroomPageDetail(
-                                      recipientId: accountId,
-                                      username: snapshot.data?.username,
+
+                        (sharedPreference?.getString("accountId") != accountId)
+                            ?
+                            /* contact me */
+                            SizedBox(
+                                width: 200,
+                                height: 45,
+                                child: ElevatedButton(
+                                  style: ButtonStyle(
+                                    backgroundColor: MaterialStateProperty
+                                        .resolveWith<Color?>(
+                                      (Set<MaterialState> states) {
+                                        if (states
+                                            .contains(MaterialState.pressed)) {
+                                          return Theme.of(context)
+                                              .colorScheme
+                                              .primary
+                                              .withOpacity(0.5);
+                                        }
+                                        return null; // Use the component's default.
+                                      },
                                     ),
-                                  ));
-                            },
-                          ),
-                        ),
+                                  ),
+                                  child: Text(
+                                    'CONTACT ME',
+                                    style: TextStyle(
+                                        color: Colors.grey[600],
+                                        fontWeight: FontWeight.bold,
+                                        fontSize: 18),
+                                  ),
+                                  onPressed: () {
+                                    Navigator.push(
+                                        context,
+                                        MaterialPageRoute(
+                                          builder: (context) =>
+                                              ChatroomPageDetail(
+                                            recipientId: accountId,
+                                            username: snapshot.data?.username,
+                                          ),
+                                        ));
+                                  },
+                                ),
+                              )
+                            : const SizedBox()
+                        // */
                       ]),
                     );
                   }

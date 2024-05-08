@@ -45,6 +45,7 @@ _$AddDogRequestImpl _$$AddDogRequestImplFromJson(Map<String, dynamic> json) =>
       provinceName: json['provinceName'] as String?,
       vaccination: json['vaccination'] as String?,
       description: json['description'] as String?,
+      image: json['image'] as String?,
       isOpenAdopt: json['isOpenAdopt'] as bool?,
     );
 
@@ -57,6 +58,7 @@ Map<String, dynamic> _$$AddDogRequestImplToJson(_$AddDogRequestImpl instance) =>
       'provinceName': instance.provinceName,
       'vaccination': instance.vaccination,
       'description': instance.description,
+      'image': instance.image,
       'isOpenAdopt': instance.isOpenAdopt,
     };
 

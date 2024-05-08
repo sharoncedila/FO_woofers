@@ -128,12 +128,12 @@ class _EditDogPageState extends State<EditDogPage> {
                     _selectedDate = pickedDate;
                   });
                 }
-              }
 
-              if (dogProfile.isOpenAdopt == 'true') {
-                isSwitched = true;
-              } else if (dogProfile.isOpenAdopt == 'false') {
-                isSwitched = false;
+                if (dogProfile.isOpenAdopt == 'true') {
+                  isSwitched = true;
+                } else if (dogProfile.isOpenAdopt == 'false') {
+                  isSwitched = false;
+                }
               }
 
               final imageURL =
@@ -519,8 +519,8 @@ class _EditDogPageState extends State<EditDogPage> {
                                 //child: Padding(
                                 //padding: const EdgeInsets.symmetric(),
                                 child: FutureBuilder(
-                                  future: RetrieveProvinceService()
-                                      .retrieveAllProvince(),
+                                  future:
+                                      ProvinceService().retrieveAllProvince(),
                                   //initialData: breedController.text,
                                   builder: (context, snapshot) {
                                     if (snapshot.connectionState ==

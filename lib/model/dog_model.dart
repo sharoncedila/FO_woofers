@@ -31,6 +31,7 @@ class AddDogRequest with _$AddDogRequest {
     required String? provinceName,
     required String? vaccination,
     required String? description,
+    required String? image,
     required bool? isOpenAdopt,
   }) = _AddDogRequest;
 

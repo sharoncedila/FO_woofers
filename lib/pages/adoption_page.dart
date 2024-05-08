@@ -67,7 +67,7 @@ class _AdoptionPageState extends State<AdoptionPage> {
                 Form(
                   // padding: const EdgeInsets.symmetric(horizontal: 25),
                   child: FutureBuilder(
-                    future: RetrieveProvinceService().retrieveAllProvince(),
+                    future: ProvinceService().retrieveAllProvince(),
                     //initialData: initialProvinceNames,
                     builder: (context, snapshot) {
                       if (snapshot.connectionState == ConnectionState.waiting) {

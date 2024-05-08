@@ -58,7 +58,7 @@ class _NotificationPageState extends State<NotificationPage> {
               height: 30,
             ),
             Text(
-              "COMMENT LIST",
+              "ACTIVITIES",
               style: GoogleFonts.lora(
                 fontWeight: FontWeight.bold,
                 fontSize: 20,
