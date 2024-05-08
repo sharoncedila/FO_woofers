@@ -1,10 +1,10 @@
 import 'package:email_validator/email_validator.dart';
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:woofers/model/account_model.dart';
 import 'package:woofers/pages/login_page.dart';
 import 'package:woofers/services/account_service.dart';
 import 'package:woofers/services/province_service.dart';
-import 'package:google_fonts/google_fonts.dart';
 
 class RegisterPage extends StatelessWidget {
   const RegisterPage({super.key});
@@ -54,6 +54,79 @@ class RegisterForm extends StatefulWidget {
 
   @override
   _RegisterFormState createState() => _RegisterFormState();
+}
+
+class ProvinceDropdown extends StatefulWidget {
+  final Function(String?) onProvinceSelected;
+
+  const ProvinceDropdown({super.key, required this.onProvinceSelected});
+
+  @override
+  _ProvinceDropdownState createState() => _ProvinceDropdownState();
+}
+
+class _ProvinceDropdownState extends State<ProvinceDropdown> {
+  String? _selectedProvince;
+
+  @override
+  Widget build(BuildContext context) {
+    return SingleChildScrollView(
+      child: Padding(
+        padding: const EdgeInsets.symmetric(horizontal: 25),
+        child: FutureBuilder(
+          future: ProvinceService().retrieveAllProvince(),
+          builder: (context, snapshot) {
+            if (snapshot.connectionState == ConnectionState.waiting) {
+              return const Text("");
+            }
+            if (snapshot.hasError) {
+              return Text("Error: ${snapshot.error}");
+            }
+            if (!snapshot.hasData) {
+              return const Text("No data");
+            }
+            final provinceResponse = snapshot.data!;
+            final provinceNames = provinceResponse.provinceList
+                .map((e) => e.provinceName)
+                .toList();
+            return DropdownButtonFormField<String>(
+              value: _selectedProvince,
+              decoration: InputDecoration(
+                enabledBorder: const OutlineInputBorder(
+                  borderSide: BorderSide(color: Colors.white),
+                ),
+                focusedBorder: OutlineInputBorder(
+                  borderSide: BorderSide(color: Colors.grey.shade400),
+                ),
+                fillColor: Colors.grey.shade200,
+                filled: true,
+                hintText: 'Province',
+                hintStyle: TextStyle(color: Colors.grey[500]),
+              ),
+              onChanged: (String? newValue) {
+                setState(() {
+                  _selectedProvince = newValue;
+                });
+                widget.onProvinceSelected(newValue); // Notify parent widget
+              },
+              items: provinceNames.map((province) {
+                return DropdownMenuItem<String>(
+                  value: province,
+                  child: Text(province),
+                );
+              }).toList(),
+              validator: (value) {
+                if (value == null || value.isEmpty) {
+                  return 'Please choose your province';
+                }
+                return null;
+              },
+            );
+          },
+        ),
+      ),
+    );
+  }
 }
 
 class _RegisterFormState extends State<RegisterForm> {
@@ -179,64 +252,73 @@ class _RegisterFormState extends State<RegisterForm> {
 
             //province here
             const SizedBox(height: 15),
-            SingleChildScrollView(
-              child: Padding(
-                padding: const EdgeInsets.symmetric(horizontal: 25),
-                child: FutureBuilder(
-                  future: ProvinceService().retrieveAllProvince(),
-                  //initialData: initialProvinceNames,
-                  builder: (context, snapshot) {
-                    if (snapshot.connectionState == ConnectionState.waiting) {
-                      return const Text("Province");
-                    }
-                    if (snapshot.hasError) {
-                      return Text("Error: ${snapshot.error}");
-                    }
-                    if (!snapshot.hasData) {
-                      return const Text("No data");
-                    }
-                    final provinceResponse = snapshot.data!;
-                    final provinceNames = provinceResponse.provinceList
-                        .map((e) => e.provinceName)
-                        .toList();
-                    return DropdownButtonFormField<String>(
-                      value: _selectedProvince,
-                      decoration: InputDecoration(
-                        enabledBorder: const OutlineInputBorder(
-                          borderSide: BorderSide(color: Colors.white),
-                        ),
-                        focusedBorder: OutlineInputBorder(
-                          borderSide: BorderSide(color: Colors.grey.shade400),
-                        ),
-                        fillColor: Colors.grey.shade200,
-                        filled: true,
-                        hintText: 'Province',
-                        hintStyle: TextStyle(color: Colors.grey[500]),
-                      ),
-                      onChanged: (String? newValue) {
-                        if (newValue != null) {
-                          setState(() {
-                            _selectedProvince = newValue;
-                          });
-                        }
-                      },
-                      items: provinceNames.map((province) {
-                        return DropdownMenuItem<String>(
-                          value: province,
-                          child: Text(province),
-                        );
-                      }).toList(),
-                      validator: (value) {
-                        if (value == null || value.isEmpty) {
-                          return 'Please choose your province';
-                        }
-                        return null;
-                      },
-                    );
-                  },
-                ),
-              ),
+            // Extracted Province Dropdown
+            ProvinceDropdown(
+              onProvinceSelected: (newValue) {
+                setState(() {
+                  _selectedProvince = newValue;
+                });
+              },
             ),
+            
+            // SingleChildScrollView(
+            //   child: Padding(
+            //     padding: const EdgeInsets.symmetric(horizontal: 25),
+            //     child: FutureBuilder(
+            //       future: ProvinceService().retrieveAllProvince(),
+            //       //initialData: initialProvinceNames,
+            //       builder: (context, snapshot) {
+            //         if (snapshot.connectionState == ConnectionState.waiting) {
+            //           return const Text("Province");
+            //         }
+            //         if (snapshot.hasError) {
+            //           return Text("Error: ${snapshot.error}");
+            //         }
+            //         if (!snapshot.hasData) {
+            //           return const Text("No data");
+            //         }
+            //         final provinceResponse = snapshot.data!;
+            //         final provinceNames = provinceResponse.provinceList
+            //             .map((e) => e.provinceName)
+            //             .toList();
+            //         return DropdownButtonFormField<String>(
+            //           value: _selectedProvince,
+            //           decoration: InputDecoration(
+            //             enabledBorder: const OutlineInputBorder(
+            //               borderSide: BorderSide(color: Colors.white),
+            //             ),
+            //             focusedBorder: OutlineInputBorder(
+            //               borderSide: BorderSide(color: Colors.grey.shade400),
+            //             ),
+            //             fillColor: Colors.grey.shade200,
+            //             filled: true,
+            //             hintText: 'Province',
+            //             hintStyle: TextStyle(color: Colors.grey[500]),
+            //           ),
+            //           onChanged: (String? newValue) {
+            //             if (newValue != null) {
+            //               setState(() {
+            //                 _selectedProvince = newValue;
+            //               });
+            //             }
+            //           },
+            //           items: provinceNames.map((province) {
+            //             return DropdownMenuItem<String>(
+            //               value: province,
+            //               child: Text(province),
+            //             );
+            //           }).toList(),
+            //           validator: (value) {
+            //             if (value == null || value.isEmpty) {
+            //               return 'Please choose your province';
+            //             }
+            //             return null;
+            //           },
+            //         );
+            //       },
+            //     ),
+            //   ),
+            // ),
 
             // phone number form field
             const SizedBox(height: 15),

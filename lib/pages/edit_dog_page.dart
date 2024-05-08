@@ -39,8 +39,8 @@ class _EditDogPageState extends State<EditDogPage> {
   String? uploadedImage;
   final _dogService = DogService();
   bool isSwitched = false;
+  String? urlImage;
 
-  late List<String?> provinceNames;
   late List<String?> breedNames;
   Future<void> uploadDogPic(String dogId, File image) async {
     try {
@@ -52,6 +52,64 @@ class _EditDogPageState extends State<EditDogPage> {
           print(uploadedImage);
         });
       }
+    } catch (error) {
+      print(error);
+    }
+  }
+
+  @override
+  void initState() {
+    super.initState();
+    _loadDogProfile();
+    //_loadProvinceData();
+  }
+
+  // Future<void> _loadProvinceData() async {
+  //   try {
+  //     // Retrieve province data from service
+  //     final provinceResponse = await ProvinceService().retrieveAllProvince();
+  //     _provinceNames =
+  //         provinceResponse.provinceList.map((e) => e.provinceName).toList();
+  //     setState(() {
+  //       // Set initial selected province
+  //       _selectedProvince = _provinceNames.first;
+  //     });
+  //   } catch (error) {
+  //     print(error);
+  //   }
+  // }
+
+  Future<void> _loadDogProfile() async {
+    try {
+      ResponseDogProfileModel? dogProfile =
+          await DogService().retrieveDogProfile(widget.dogId);
+
+      // Set the state with the obtained values
+      setState(() {
+        nameController.text = dogProfile?.dogName ?? '';
+        breedController.text = dogProfile?.breedName ?? '';
+        dateOfBirthController.text = dogProfile?.dateOfBirth ?? '';
+        provinceController.text = dogProfile?.provinceName ?? '';
+        vaccineController.text = dogProfile?.vaccination ?? '';
+        descriptionController.text = dogProfile?.description ?? '';
+
+        if (dogProfile?.gender == 'M') {
+          _selectedGender = 'Male';
+        } else if (dogProfile?.gender == 'F') {
+          _selectedGender = 'Female';
+        }
+
+        final dateFormat = DateFormat('dd-MM-yyyy');
+        _selectedDate = dateFormat.parse(dogProfile?.dateOfBirth ?? '');
+
+        if (dogProfile?.isOpenAdopt == 'true') {
+          isSwitched = true;
+        } else if (dogProfile?.isOpenAdopt == 'false') {
+          isSwitched = false;
+        }
+
+        urlImage = dogProfile?.image == null ? "" : dogProfile!.image;
+      });
     } catch (error) {
       print(error);
     }
@@ -86,7 +144,16 @@ class _EditDogPageState extends State<EditDogPage> {
             future: DogService().retrieveDogProfile(widget.dogId),
             builder: (context, snapshot) {
               if (snapshot.connectionState == ConnectionState.waiting) {
-                return const Center(child: Text("Retrieving your data..."));
+                return Padding(
+                  padding: const EdgeInsets.all(160),
+                  child: Container(
+                    // Center the CircularProgressIndicator
+                    alignment: Alignment.center,
+                    color: Colors
+                        .transparent, // Ensure the container doesn't block interaction with underlying widgets
+                    child: const CircularProgressIndicator(),
+                  ),
+                );
               }
               if (snapshot.hasError) {
                 return const Center(child: Text("Error"));
@@ -98,14 +165,9 @@ class _EditDogPageState extends State<EditDogPage> {
 
               ResponseDogProfileModel dogProfile =
                   snapshot.data as ResponseDogProfileModel;
-
-              // Assigning values to the text controllers
-              nameController.text = dogProfile.dogName;
               breedController.text = dogProfile.breedName ?? '';
-              dateOfBirthController.text = dogProfile.dateOfBirth ?? '';
+              // dateOfBirthController.text = dogProfile.dateOfBirth ?? '';
               provinceController.text = dogProfile.provinceName ?? '';
-              vaccineController.text = dogProfile.vaccination ?? '';
-              descriptionController.text = dogProfile.description ?? '';
 
               if (dogProfile.gender == 'M') {
                 genderController.text = 'Male';
@@ -126,14 +188,16 @@ class _EditDogPageState extends State<EditDogPage> {
                 if (pickedDate != null && pickedDate != _selectedDate) {
                   setState(() {
                     _selectedDate = pickedDate;
+                    dateOfBirthController.text =
+                        DateFormat('dd-MM-yyyy').format(pickedDate);
                   });
                 }
 
-                if (dogProfile.isOpenAdopt == 'true') {
-                  isSwitched = true;
-                } else if (dogProfile.isOpenAdopt == 'false') {
-                  isSwitched = false;
-                }
+                // if (dogProfile.isOpenAdopt == 'true') {
+                //   isSwitched = true;
+                // } else if (dogProfile.isOpenAdopt == 'false') {
+                //   isSwitched = false;
+                // }
               }
 
               final imageURL =
@@ -273,7 +337,7 @@ class _EditDogPageState extends State<EditDogPage> {
                                   builder: (context, snapshot) {
                                     if (snapshot.connectionState ==
                                         ConnectionState.waiting) {
-                                      return const Text("Breed");
+                                      return const Text("");
                                     }
                                     if (snapshot.hasError) {
                                       return Text("Error: ${snapshot.error}");
@@ -525,7 +589,7 @@ class _EditDogPageState extends State<EditDogPage> {
                                   builder: (context, snapshot) {
                                     if (snapshot.connectionState ==
                                         ConnectionState.waiting) {
-                                      return const Text("Breed");
+                                      return const Text("");
                                     }
                                     if (snapshot.hasError) {
                                       return Text("Error: ${snapshot.error}");
@@ -616,10 +680,10 @@ class _EditDogPageState extends State<EditDogPage> {
                               ),
                             ),
                             SizedBox(
-                              height: 25,
+                              //height: 25,
                               child: TextFormField(
                                   controller: vaccineController,
-                                  maxLines: 5,
+                                  maxLines: null,
                                   decoration: InputDecoration(
                                     border: const UnderlineInputBorder(),
                                     // labelText: 'Username',
@@ -672,7 +736,7 @@ class _EditDogPageState extends State<EditDogPage> {
                             SizedBox(
                               height: 70,
                               child: TextFormField(
-                                  maxLines: 5,
+                                  maxLines: null,
                                   controller: descriptionController,
                                   decoration: InputDecoration(
                                     border: const UnderlineInputBorder(),
@@ -723,9 +787,9 @@ class _EditDogPageState extends State<EditDogPage> {
                               //     fontSize: 18)
                             ),
                             onPressed: () async {
-                              if (_selectedProvince == '') {
-                                _selectedProvince = snapshot.data!.provinceName;
-                              }
+                              _selectedProvince ??= snapshot.data!.provinceName;
+                              _selectedBreed ??= snapshot.data!.breedName;
+
                               String? selectedGender = _selectedGender;
                               if (_selectedGender == '') {
                                 _selectedGender = snapshot.data!.gender;
@@ -735,6 +799,7 @@ class _EditDogPageState extends State<EditDogPage> {
                               } else if (selectedGender == 'Female') {
                                 selectedGender = 'F';
                               }
+
                               String formattedDate = _selectedDate != null
                                   ? DateFormat('dd-MM-yyyy')
                                       .format(_selectedDate!)

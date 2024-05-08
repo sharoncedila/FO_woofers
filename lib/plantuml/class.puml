@@ -1,0 +1,30 @@
+@startuml
+
+' Define model classes
+class Model {
+    - id: int
+    - name: String
+    + getId(): int
+    + getName(): String
+    + setId(id: int): void
+    + setName(name: String): void
+}
+
+' Define view classes
+class View {
+    + displayData(data: String): void
+}
+
+' Define controller class
+class Controller {
+    - model: Model
+    - view: View
+    + Controller(model: Model, view: View)
+    + handleData(data: String): void
+}
+
+' Define relationships
+Controller --> Model: controls
+Controller --> View: controls
+
+@enduml

@@ -62,7 +62,16 @@ class OtherDogProfilePage extends StatelessWidget {
           future: DogService().retrieveDogProfile(dogId),
           builder: (context, snapshot) {
             if (snapshot.connectionState == ConnectionState.waiting) {
-              return const Center(child: Text("Retrieving your data..."));
+              return Padding(
+                padding: EdgeInsets.all(160),
+                child: Container(
+                  // Center the CircularProgressIndicator
+                  alignment: Alignment.center,
+                  color: Colors
+                      .transparent, // Ensure the container doesn't block interaction with underlying widgets
+                  child: const CircularProgressIndicator(),
+                ),
+              );
             }
             if (snapshot.hasError) {
               return const Center(child: Text("Error"));

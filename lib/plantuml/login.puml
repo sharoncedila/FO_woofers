@@ -15,9 +15,9 @@ participant "_:Account" as Model <<model>>
 
 
 ' Sequence diagram
-User -> Page: build
+User -> Page: build(context)
 User <-- Page: return LoginPage
-User -> Page: build
+User -> Page: build(context)
 alt Validation is Successful
 Page -> Model: RequestLoginModel req
 Page <-- Model: return RequestLoginModel
