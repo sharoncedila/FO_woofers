@@ -1,0 +1,29 @@
+@startuml View Notification Page
+' Global param
+title View Notification Page
+autoactivate on
+
+' Global style configuration
+skinparam RoundCorner 0
+hide footbox
+
+' Sequence participant configuration
+actor User
+participant "_:NotificationPage_" as Page <<view>>
+participant "_:AdoptionService_" as ServiceAdoption
+participant "_:CommentService" as ServiceComment
+participant "_:Notification_" as Model <<model>>
+participant "_:DioInstance_" as Dio
+
+' Sequence diagram
+User -> Page: build(context)
+Page -> Service : retrieveAdoptionList()
+Service -> Dio : get /notification/view
+Service <-- Dio : response
+Service -> Model : ResponseUserProfileModel.fromJson
+Service <-- Model : ResponseUserProfileModel
+Page <-- Service : ResponseUserProfileModel
+User <-- Page: UserProfilePage
+
+
+@enduml

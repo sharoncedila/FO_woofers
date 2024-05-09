@@ -8,6 +8,7 @@ import 'package:woofers/services/feeds_service.dart';
 class CommentPage extends StatelessWidget {
   final String feedsId;
   final _messageController = TextEditingController();
+  final _formKey = FormState();
   final ScrollController _scrollController = ScrollController();
   CommentPage({
     super.key,
@@ -18,6 +19,7 @@ class CommentPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final _formKey = GlobalKey<FormState>();
     return Scaffold(
         backgroundColor: Colors.white,
         appBar: AppBar(
@@ -36,6 +38,7 @@ class CommentPage extends StatelessWidget {
           ),
         ),
         body: Column(
+          mainAxisSize: MainAxisSize.max,
           children: [
             Expanded(child: CommentList(controller: _scrollController)),
             Container(
@@ -56,18 +59,26 @@ class CommentPage extends StatelessWidget {
                           labelText: 'Type your comment here',
                           border: OutlineInputBorder(),
                         ),
+                        // validator: (value) {
+                        //   if (value == null || value.isEmpty) {
+                        //     return 'Please enter your comment first';
+                        //   }
+                        //   return null;
+                        // },
                       ),
                     ),
                   ),
                   IconButton(
                     icon: const Icon(Icons.send),
                     onPressed: () async {
+                      // if (_formKey.currentState!.validate()) {
                       final LeaveCommentRequest request = LeaveCommentRequest(
                           feedsId: feedsId, content: commentController.text);
-                      FeedsService().leaveCommentSection(request).then((_) {
-                        FocusScope.of(context).unfocus();
-                        commentController.clear();
-                      });
+                      FeedsService().leaveCommentSection(request);
+                      FocusScope.of(context).unfocus();
+                      // }
+                      commentController.clear();
+                      // return null;
                     },
                   ),
                 ],
@@ -88,8 +99,16 @@ class CommentPage extends StatelessWidget {
                   future: FeedsService().openCommentSection(feedsId),
                   builder: (context, snapshot) {
                     if (snapshot.connectionState == ConnectionState.waiting) {
-                      return const Center(
-                          child: Text("Retrieving your data..."));
+                      return Padding(
+                        padding: EdgeInsets.all(160),
+                        child: Container(
+                          // Center the CircularProgressIndicator
+                          alignment: Alignment.center,
+                          color: Colors
+                              .transparent, // Ensure the container doesn't block interaction with underlying widgets
+                          child: const CircularProgressIndicator(),
+                        ),
+                      );
                     }
                     if (snapshot.hasError) {
                       return const Center(child: Text(""));

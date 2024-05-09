@@ -29,27 +29,6 @@ class OtherDogProfilePage extends StatelessWidget {
             color: const Color.fromRGBO(40, 36, 36, 10000),
           ),
         ),
-        actions: <Widget>[
-          IconButton(
-            icon: const Icon(Icons.notification_add_rounded),
-            onPressed: () {
-              Navigator.push(
-                context,
-                MaterialPageRoute(
-                    builder: (context) => const NotificationPage()),
-              );
-            },
-          ),
-          IconButton(
-            icon: const Icon(Icons.add_to_photos),
-            onPressed: () {
-              Navigator.push(
-                context,
-                MaterialPageRoute(builder: (context) => const AddDogPage()),
-              );
-            },
-          ),
-        ],
       ),
       body: dogProfileDetail(),
     );
@@ -62,7 +41,16 @@ class OtherDogProfilePage extends StatelessWidget {
           future: DogService().retrieveDogProfile(dogId),
           builder: (context, snapshot) {
             if (snapshot.connectionState == ConnectionState.waiting) {
-              return const Center(child: Text("Retrieving your data..."));
+              return Padding(
+                padding: EdgeInsets.all(160),
+                child: Container(
+                  // Center the CircularProgressIndicator
+                  alignment: Alignment.center,
+                  color: Colors
+                      .transparent, // Ensure the container doesn't block interaction with underlying widgets
+                  child: const CircularProgressIndicator(),
+                ),
+              );
             }
             if (snapshot.hasError) {
               return const Center(child: Text("Error"));

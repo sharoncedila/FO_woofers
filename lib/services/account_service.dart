@@ -21,7 +21,7 @@ class AccountService {
       } else {
         final accessToken = response.data['outputSchema']['accessToken'];
         final accountId = response.data['outputSchema']['accountId'];
-        print(sharedPreference);
+        // print(sharedPreference);
 
         await sharedPreference?.setString('spaccessToken', accessToken);
         if (accountId == null) {
@@ -29,8 +29,8 @@ class AccountService {
         } else {
           await sharedPreference?.setString('accountId', accountId);
           await sharedPreference?.setString('accessToken', accessToken);
-          print(sharedPreference?.getString('accountId'));
-          print(sharedPreference?.getString('accessToken'));
+          // print(sharedPreference?.getString('accountId'));
+          // print(sharedPreference?.getString('accessToken'));
         }
 
         await WSNotifInstance.connect();

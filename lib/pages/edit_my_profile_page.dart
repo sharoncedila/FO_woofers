@@ -56,6 +56,24 @@ class _EditMyProfilePageState extends State<EditMyProfile> {
   void initState() {
     super.initState();
     _provinceFuture = _fetchProvinceData();
+    _loadUserProfile();
+  }
+
+  Future<void> _loadUserProfile() async {
+    try {
+      ResponseUserProfileModel? userProfile =
+          await AccountService().retrieveUserData();
+
+      // Set the state with the obtained values
+      setState(() {
+        _fullnameController.text = userProfile?.fullName ?? '';
+        //_provin.text = userProfile?.breedName ?? '';
+        _phoneNumberController.text = userProfile?.phoneNumber ?? '';
+        _descriptionController.text = userProfile?.description ?? '';
+      });
+    } catch (error) {
+      print(error);
+    }
   }
 
   Future<List<String?>> _fetchProvinceData() async {
@@ -98,7 +116,16 @@ class _EditMyProfilePageState extends State<EditMyProfile> {
             future: _account,
             builder: (context, snapshot) {
               if (snapshot.connectionState == ConnectionState.waiting) {
-                return const Center(child: Text("Retrieving your data..."));
+                return Padding(
+                  padding: EdgeInsets.all(160),
+                  child: Container(
+                    // Center the CircularProgressIndicator
+                    alignment: Alignment.center,
+                    color: Colors
+                        .transparent, // Ensure the container doesn't block interaction with underlying widgets
+                    child: const CircularProgressIndicator(),
+                  ),
+                );
               }
               if (snapshot.hasError) {
                 return const Center(child: Text("Error"));
@@ -111,20 +138,25 @@ class _EditMyProfilePageState extends State<EditMyProfile> {
 
               final myProfile = snapshot.data as ResponseUserProfileModel;
 
+              _selectedProvince = myProfile.provinceName;
+
               // Assigning values to the text controllers
 
-              if (_fullnameController.text == myProfile.fullName) {
-                _fullnameController.text = myProfile.fullName ?? '';
-              }
-              if (_provinceController.text == myProfile.provinceName) {
-                _provinceController.text = myProfile.provinceName ?? '';
-              }
-              if (_phoneNumberController.text == myProfile.phoneNumber) {
-                _phoneNumberController.text = myProfile.phoneNumber ?? '';
-              }
-              if (_descriptionController.text == myProfile.description) {
-                _descriptionController.text = myProfile.description ?? '';
-              }
+              // if (_fullnameController.text == myProfile.fullName) {
+              //   _fullnameController.text = myProfile.fullName ?? '';
+              // }
+              // if (_provinceController.text == myProfile.provinceName) {
+              //   _provinceController.text = myProfile.provinceName ?? '';
+              // }
+              // print("province: $_provinceController");
+              // if (_phoneNumberController.text == myProfile.phoneNumber) {
+              //   _phoneNumberController.text = myProfile.phoneNumber ?? '';
+              // }
+              // if (_descriptionController.text == myProfile.description) {
+              //   _descriptionController.text = myProfile.description ?? '';
+              // }
+
+              //provinceController.text = dogProfile.provinceName ?? '';
 
               // final imageURL = myProfile.image ?? '';
               return Column(
@@ -142,15 +174,6 @@ class _EditMyProfilePageState extends State<EditMyProfile> {
                               urlImage: myProfile.image,
                               width: 150,
                               height: 150),
-
-                  // (myProfile.image == null)
-                  //     ? const Image(
-                  //         image: AssetImage('assets/woofers_icon/profile.jpg'),
-                  //         width: 150,
-                  //         height: 150,
-                  //       )
-                  //     : ImageNetwork(
-                  //         urlImage: myProfile.image, width: 150, height: 150),
                   IconButton(
                       onPressed: () async {
                         final pickedFile = await ImagePicker()
@@ -380,7 +403,7 @@ class _EditMyProfilePageState extends State<EditMyProfile> {
                               height: 75,
                               child: TextFormField(
                                   maxLines: 3,
-                                  maxLength: 100,
+                                  maxLength: 300,
                                   controller: _descriptionController,
                                   style: GoogleFonts.newsCycle(
                                     color: Colors.black,

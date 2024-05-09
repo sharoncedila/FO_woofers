@@ -33,7 +33,7 @@ class _FeedsPageState extends State<FeedsPage> {
         ),
         actions: <Widget>[
           IconButton(
-            icon: const Icon(Icons.notification_add_rounded),
+            icon: const Icon(Icons.notifications_on),
             onPressed: () {
               Navigator.push(
                 context,
@@ -63,7 +63,16 @@ class _FeedsPageState extends State<FeedsPage> {
           future: FeedsService().retrieveFeedsData(),
           builder: (context, snapshot) {
             if (snapshot.connectionState == ConnectionState.waiting) {
-              return const Center(child: Text("Retrieving your data..."));
+              return Padding(
+                padding: EdgeInsets.all(160),
+                child: Container(
+                  // Center the CircularProgressIndicator
+                  alignment: Alignment.center,
+                  color: Colors
+                      .transparent, // Ensure the container doesn't block interaction with underlying widgets
+                  child: const CircularProgressIndicator(),
+                ),
+              );
             }
             if (snapshot.hasError) {
               return const Center(child: Text("Error"));

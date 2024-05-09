@@ -52,7 +52,16 @@ class _RequestAdoptionPageState extends State<RequestAdoptionPage> {
               future: AdoptionService().retrieveAdoptConfirmation(widget.dogId),
               builder: (context, snapshot) {
                 if (snapshot.connectionState == ConnectionState.waiting) {
-                  return const Center(child: Text("Retrieving your data..."));
+                  return Padding(
+                    padding: EdgeInsets.all(160),
+                    child: Container(
+                      // Center the CircularProgressIndicator
+                      alignment: Alignment.center,
+                      color: Colors
+                          .transparent, // Ensure the container doesn't block interaction with underlying widgets
+                      child: const CircularProgressIndicator(),
+                    ),
+                  );
                 }
                 if (snapshot.hasError) {
                   return const Center(child: Text("Error"));
@@ -96,7 +105,16 @@ class _RequestAdoptionPageState extends State<RequestAdoptionPage> {
             future: AdoptionService().retrieveAdoptConfirmation(widget.dogId),
             builder: (context, snapshot) {
               if (snapshot.connectionState == ConnectionState.waiting) {
-                return const Center(child: Text("Retrieving your data..."));
+                return Padding(
+                  padding: EdgeInsets.all(160),
+                  child: Container(
+                    // Center the CircularProgressIndicator
+                    alignment: Alignment.center,
+                    color: Colors
+                        .transparent, // Ensure the container doesn't block interaction with underlying widgets
+                    child: const CircularProgressIndicator(),
+                  ),
+                );
               }
               if (snapshot.hasError) {
                 return const Center(child: Text("Error"));
@@ -412,11 +430,13 @@ class _RequestAdoptionPageState extends State<RequestAdoptionPage> {
                               ),
                             ),
                             SizedBox(
-                              height: 25,
+                              height: 25 ,
                               child: TextFormField(
+                                maxLines: 5,
                                 readOnly: true,
                                 enabled: false,
                                 decoration: InputDecoration(
+                                  // iconColor: Colors.red,
                                   border: const UnderlineInputBorder(),
                                   // labelText: 'Username',
                                   labelText:
@@ -779,7 +799,7 @@ class _RequestAdoptionPageState extends State<RequestAdoptionPage> {
                                             ? ""
                                             : snapshot
                                                 .data!.ownerData!.username;
-                                        final SendAdoptionNotification send = SendAdoptionNotification(
+                                        final SendAdoptionNotification adopt = SendAdoptionNotification(
                                             dogId: snapshot.data?.dogData!.dogId == null
                                                 ? ""
                                                 : snapshot.data!.dogData!.dogId,
@@ -808,7 +828,7 @@ class _RequestAdoptionPageState extends State<RequestAdoptionPage> {
                                                     .data!.ownerData!.username);
 
                                         _adoptionService
-                                            .sendAdoptNotif(send)
+                                            .sendAdoptNotif(adopt)
                                             .then((value) => Navigator.of(
                                                     context)
                                                 .pushReplacement(

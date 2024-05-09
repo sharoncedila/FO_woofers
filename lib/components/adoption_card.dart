@@ -3,9 +3,9 @@ import 'package:woofers/components/image_network.dart';
 import 'package:woofers/model/adoption_model.dart';
 import 'package:woofers/pages/request_adoption_page.dart';
 
-class DogCardDetail extends StatelessWidget {
+class AdoptionCardDetail extends StatelessWidget {
   final AdoptionDetail adoptionDetail;
-  const DogCardDetail({
+  const AdoptionCardDetail({
     super.key,
     required this.adoptionDetail,
   });
@@ -18,8 +18,11 @@ class DogCardDetail extends StatelessWidget {
           shadowColor: Colors.black,
           shape: RoundedRectangleBorder(
             borderRadius: BorderRadius.circular(20.0),
+            // bo
           ),
-          color: const Color.fromRGBO(160, 220, 220, 10),
+          
+          // color: const Color.fromRGBO(160, 220, 220, 10),
+          color: const Color.fromARGB(200, 255, 255, 255),
           child: InkWell(
               onTap: () {
                 Navigator.push(

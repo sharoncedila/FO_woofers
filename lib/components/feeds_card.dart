@@ -202,10 +202,10 @@ class _FeedsCardState extends State<FeedsCard> {
                       ),
                     ],
                   ),
-                  // Text(
-                  //   "     ${feedsDetail.likesCount ?? ''} likes",
-                  //   style: const TextStyle(color: Colors.grey, fontSize: 12),
-                  // ),
+                  Text(
+                    "     ${feedsDetail.likesCount ?? ''} likes",
+                    style: const TextStyle(color: Colors.grey, fontSize: 12),
+                  ),
                   const SizedBox(
                     height: 10,
                   ),

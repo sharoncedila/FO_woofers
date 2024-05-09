@@ -10,7 +10,7 @@ class DioInstance {
       final token = prefs.getString('accessToken');
       final accoundId = prefs.getString('accountId');
       instance ??= Dio(BaseOptions(
-        baseUrl: 'http://192.168.32.53:8080/woofers',
+        baseUrl: 'http://192.168.123.9:8080/woofers',
         headers: Map.from({"Authorization": "Bearer $token"}),
       ));
     }

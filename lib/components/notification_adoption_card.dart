@@ -52,6 +52,16 @@ class AdoptionNotificationCardDetail extends StatelessWidget {
                         ),
                         textAlign: TextAlign.left,
                       ),
+                      const SizedBox(width: 10),
+                      Text(
+                        notificationDetail.sendDate ?? '',
+                        style: const TextStyle(
+                          color: Color.fromRGBO(40, 36, 36, 100),
+                          fontSize: 11,
+                          // fontWeight: FontWeight.bold,
+                        ),
+                        textAlign: TextAlign.left,
+                      ),
                     ],
                   ),
                   const SizedBox(
