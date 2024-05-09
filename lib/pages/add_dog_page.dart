@@ -685,7 +685,7 @@ class _AddDogPageState extends State<AddDogPage> {
                                 : 'No date selected';
 
                             String? d = uploadedImage;
-                            final AddDogRequest add = AddDogRequest(
+                            final AddDogRequest request = AddDogRequest(
                                 dogName: nameController.text,
                                 breedName: selectedBreed,
                                 dateOfBirth: formattedDate,
@@ -697,7 +697,7 @@ class _AddDogPageState extends State<AddDogPage> {
                                 image: uploadedImage);
 
                             _dogService
-                                .addNewDog(add)
+                                .addNewDog(request)
                                 .then((value) => Navigator.of(context)
                                     .pushReplacement(MaterialPageRoute(
                                         builder: (_) => const BottomMenuBar())))

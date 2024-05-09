@@ -804,7 +804,7 @@ class _EditDogPageState extends State<EditDogPage> {
                                   ? DateFormat('dd-MM-yyyy')
                                       .format(_selectedDate!)
                                   : 'No date selected';
-                              final EditDogRequest edit = EditDogRequest(
+                              final EditDogRequest request = EditDogRequest(
                                   dogId: dogProfile.dogId,
                                   dogName: nameController.text,
                                   breedName: _selectedBreed,
@@ -817,7 +817,7 @@ class _EditDogPageState extends State<EditDogPage> {
                                   image: uploadedImage);
 
                               _dogService
-                                  .editDog(edit)
+                                  .editDog(request)
                                   .then((value) => Navigator.of(context)
                                       .pushReplacement(MaterialPageRoute(
                                           builder: (_) =>

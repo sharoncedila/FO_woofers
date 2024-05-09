@@ -797,7 +797,7 @@ class _RequestAdoptionPageState extends State<RequestAdoptionPage> {
                                             ? ""
                                             : snapshot
                                                 .data!.ownerData!.username;
-                                        final SendAdoptionNotification send = SendAdoptionNotification(
+                                        final SendAdoptionNotification adopt = SendAdoptionNotification(
                                             dogId: snapshot.data?.dogData!.dogId == null
                                                 ? ""
                                                 : snapshot.data!.dogData!.dogId,
@@ -826,7 +826,7 @@ class _RequestAdoptionPageState extends State<RequestAdoptionPage> {
                                                     .data!.ownerData!.username);
 
                                         _adoptionService
-                                            .sendAdoptNotif(send)
+                                            .sendAdoptNotif(adopt)
                                             .then((value) => Navigator.of(
                                                     context)
                                                 .pushReplacement(

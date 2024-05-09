@@ -202,12 +202,12 @@ class _LoginFormState extends State<LoginForm> {
                 ),
                 onPressed: () async {
                   if (_formKey.currentState!.validate()) {
-                    final RequestLoginModel req = RequestLoginModel(
+                    final RequestLoginModel loginReq = RequestLoginModel(
                         email: _emailController.text,
                         password: _passwordController.text);
 
                     _loginService
-                        .login(req)
+                        .login(loginReq)
                         .then((value) => Navigator.of(context).pushReplacement(
                             MaterialPageRoute(
                                 builder: (_) => const BottomMenuBar())))

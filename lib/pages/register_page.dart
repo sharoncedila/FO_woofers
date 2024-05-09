@@ -260,7 +260,7 @@ class _RegisterFormState extends State<RegisterForm> {
                 });
               },
             ),
-            
+
             // SingleChildScrollView(
             //   child: Padding(
             //     padding: const EdgeInsets.symmetric(horizontal: 25),
@@ -504,16 +504,17 @@ class _RegisterFormState extends State<RegisterForm> {
                 child: const Text('Register'),
                 onPressed: () async {
                   if (_formKey.currentState!.validate()) {
-                    final RequestRegisterModel req = RequestRegisterModel(
-                        email: _emailController.text,
-                        fullName: _fullnameController.text,
-                        password: _passwordController.text,
-                        username: _usernameController.text,
-                        provinceName: _selectedProvince!,
-                        phoneNumber: _phoneNumberController.text);
+                    final RequestRegisterModel registerReq =
+                        RequestRegisterModel(
+                            email: _emailController.text,
+                            fullName: _fullnameController.text,
+                            password: _passwordController.text,
+                            username: _usernameController.text,
+                            provinceName: _selectedProvince!,
+                            phoneNumber: _phoneNumberController.text);
 
                     _registerService
-                        .register(req)
+                        .register(registerReq)
                         .then((value) => Navigator.of(context).pushReplacement(
                             MaterialPageRoute(
                                 builder: (_) => const LoginPage())))

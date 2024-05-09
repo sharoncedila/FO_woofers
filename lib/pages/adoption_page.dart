@@ -261,7 +261,7 @@ class _AdoptionPageState extends State<AdoptionPage> {
                 final adoptionList = snapshot.data!;
                 return Wrap(
                   children: adoptionList
-                      .map((e) => DogCardDetail(adoptionDetail: e))
+                      .map((e) => AdoptionCardDetail(adoptionDetail: e))
                       .toList(),
                 );
               }),

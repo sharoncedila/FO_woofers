@@ -1,0 +1,34 @@
+@startuml ViewAdoptionPage
+' Global param
+title View Adoption Page
+autoactivate on
+
+' Global style configuration
+skinparam RoundCorner 0
+hide footbox
+
+' Sequence participant configuration
+actor User
+participant "_:AdoptionPage_" as Page <<view>>
+participant "_:AdoptionCardDetail" as Card <<view>>
+participant "_:AdoptionService_" as Service
+participant "_:Adoption" as Model <<model>>
+participant "-:DioInstance" as Dio
+
+
+' Sequence diagram
+User -> Page: build(context)
+Page -> Service : retrieveAdoptionList()
+Service -> Dio : get /adoption/view
+Service <-- Dio : response
+Service -> Model : List<AdoptionDetail>
+Service <-- Model : list<AdoptionDetail>
+Page <-- Service : list<AdoptionDetail>
+Page -> Card : build(context)
+Card -> Model : AdoptionDetail
+Card <-- Model : AdoptionDetail
+Page <-- Card : build(context)
+User <-- Page: AdoptionListPage
+
+
+@enduml

@@ -1,0 +1,31 @@
+@startuml AdoptConfirmation
+' Global param
+title Adopt Confirmation
+autoactivate on
+
+' Global style configuration
+skinparam RoundCorner 0
+hide footbox
+
+' Sequence participant configuration
+actor User
+participant "_: RequestAdoptionPage_" as Page <<view>>
+participant "_:AdoptionService_" as Service
+participant "_:Adoption_" as Model <<model>>
+participant "_:ImageNetwork_" as Image
+participant "_:DioInstance_" as Dio
+
+
+' Sequence diagram
+User -> Page: build(context)
+Page -> Service: retrieveAdoptConfirmation(dogId)
+Service -> Dio : get /adoption/confirmation/dog-id/$dogId
+Service <-- Dio : response
+Service -> Model : AdoptConfirmationRequest.fromJson(response)
+Service <-- Model : AdoptConfirmationRequest
+Page <-- Service : AdoptConfirmationRequest
+Page -> Image : ImageNetwork(urlImage, width, height)
+Page <-- Image : image
+User <-- Page: RequestAdoptionPage
+
+@enduml

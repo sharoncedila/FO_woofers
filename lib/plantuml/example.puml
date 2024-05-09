@@ -9,13 +9,13 @@ hide footbox
 
 ' Sequence participant configuration
 actor User
-participant "_:LoginPage_" as ViewPage <<view>>
-participant "_:AccountService_" as ViewService
-participant "_:AuthenticationController_" as Model
+participant "__:LoginPage__" as ViewPage <<view>>
+participant "__:UserService__" as ViewService
+participant "__:AuthenticationController__" as BackendController <<controller>>
 
 ' Sequence diagram
-User -> ViewPage: login
-ViewPage -> ViewService: login(loginReq)
+User -> ViewPage: Login
+ViewPage -> ViewService: login(loginForm)
 ViewService -> BackendController: POST /auth\nauthenticateUser(authRequest)
 
 BackendController -> "_:AuthenticationService_": authenticateUser(email, password)

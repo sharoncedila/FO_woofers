@@ -3,9 +3,9 @@ import 'package:woofers/components/image_network.dart';
 import 'package:woofers/model/adoption_model.dart';
 import 'package:woofers/pages/request_adoption_page.dart';
 
-class DogCardDetail extends StatelessWidget {
+class AdoptionCardDetail extends StatelessWidget {
   final AdoptionDetail adoptionDetail;
-  const DogCardDetail({
+  const AdoptionCardDetail({
     super.key,
     required this.adoptionDetail,
   });
