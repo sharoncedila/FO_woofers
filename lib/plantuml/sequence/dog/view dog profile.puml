@@ -1,0 +1,31 @@
+@startuml View Dog Profile
+' Global param
+title View Dog Profile
+autoactivate on
+
+' Global style configuration
+skinparam RoundCorner 0
+hide footbox
+
+' Sequence participant configuration
+actor User
+participant "_:DogProfilePage_" as Page <<view>>
+participant "_:DogService_" as Service
+participant "_:Dog" as Model <<model>>
+participant "_:ImageNetwork_" as Image
+participant "_:DioInstance_" as Dio
+
+' Sequence diagram
+User -> Page: build(context)
+Page -> Service : retrieveDogProfile(dogId)
+Service -> Dio : get /dogs/profile/dog-id/$dogId
+Service <-- Dio : response
+Service -> Model : ResponseDogProfileModel.fromJson(response)
+Service <-- Model : ResponseDogProfileModel
+Page <-- Service : ResponseDogProfileModel
+Page -> Image : ImageNetwork(urlImage, width, height)
+Page <-- Image : image
+User <-- Page: DogProfilePage
+
+
+@enduml

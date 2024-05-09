@@ -91,6 +91,7 @@ _$RetrieveChatlistResponseImpl _$$RetrieveChatlistResponseImplFromJson(
       isRead: json['isRead'] as String?,
       errorCode: json['errorCode'] as String?,
       errorMessage: json['errorMessage'] as String?,
+      profilePicture: json['profilePicture'] as String?,
     );
 
 Map<String, dynamic> _$$RetrieveChatlistResponseImplToJson(
@@ -104,6 +105,7 @@ Map<String, dynamic> _$$RetrieveChatlistResponseImplToJson(
       'isRead': instance.isRead,
       'errorCode': instance.errorCode,
       'errorMessage': instance.errorMessage,
+      'profilePicture': instance.profilePicture,
     };
 
 _$SearchChatResponseImpl _$$SearchChatResponseImplFromJson(

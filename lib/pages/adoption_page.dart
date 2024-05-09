@@ -71,7 +71,7 @@ class _AdoptionPageState extends State<AdoptionPage> {
                     //initialData: initialProvinceNames,
                     builder: (context, snapshot) {
                       if (snapshot.connectionState == ConnectionState.waiting) {
-                        return const Text("Province");
+                        return const Text('');
                       }
                       if (snapshot.hasError) {
                         return Text("Error: ${snapshot.error}");
@@ -136,7 +136,7 @@ class _AdoptionPageState extends State<AdoptionPage> {
                     //initialData: initialBreedNames,
                     builder: (context, snapshot) {
                       if (snapshot.connectionState == ConnectionState.waiting) {
-                        return const Text("Breed");
+                        return const Text('');
                       }
                       if (snapshot.hasError) {
                         return Text("Error: ${snapshot.error}");
@@ -241,7 +241,16 @@ class _AdoptionPageState extends State<AdoptionPage> {
               future: AdoptionService().retrieveAdoptionList(filterAdoption),
               builder: ((context, snapshot) {
                 if (snapshot.connectionState == ConnectionState.waiting) {
-                  return const Center(child: Text("Retrieving your data..."));
+                  return Padding(
+                    padding: EdgeInsets.all(160),
+                    child: Container(
+                      // Center the CircularProgressIndicator
+                      alignment: Alignment.center,
+                      color: Colors
+                          .transparent, // Ensure the container doesn't block interaction with underlying widgets
+                      child: const CircularProgressIndicator(),
+                    ),
+                  );
                 }
                 if (snapshot.hasError) {
                   return const Center(child: Text("No data available"));
@@ -252,7 +261,7 @@ class _AdoptionPageState extends State<AdoptionPage> {
                 final adoptionList = snapshot.data!;
                 return Wrap(
                   children: adoptionList
-                      .map((e) => DogCardDetail(adoptionDetail: e))
+                      .map((e) => AdoptionCardDetail(adoptionDetail: e))
                       .toList(),
                 );
               }),

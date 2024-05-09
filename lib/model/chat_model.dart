@@ -64,6 +64,7 @@ class RetrieveChatlistResponse with _$RetrieveChatlistResponse {
     required String? isRead,
     required String? errorCode,
     required String? errorMessage,
+    required String? profilePicture,
   }) = _RetrieveChatlistResponse;
 
   factory RetrieveChatlistResponse.fromJson(Map<String, dynamic> json) =>

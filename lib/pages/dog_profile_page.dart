@@ -1,24 +1,16 @@
-import 'dart:io';
-
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:hexcolor/hexcolor.dart';
-import 'package:image_picker/image_picker.dart';
 import 'package:woofers/components/image_network.dart';
-import 'package:woofers/model/dog_model.dart';
-import 'package:woofers/pages/add_dog_page.dart';
 import 'package:woofers/pages/edit_dog_page.dart';
-import 'package:woofers/pages/notification_page.dart';
 import 'package:woofers/services/dog_services.dart';
-import 'package:woofers/services/image_service.dart';
 
 class DogProfilePage extends StatelessWidget {
   final String dogId;
   const DogProfilePage({
-    //super.key, --FSO
-    Key? key,
+    super.key,
     required this.dogId,
-  }) : super(key: key);
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -36,7 +28,7 @@ class DogProfilePage extends StatelessWidget {
             color: const Color.fromRGBO(40, 36, 36, 10000),
           ),
         ),
-        actions: <Widget>[
+        actions: const <Widget>[
           // IconButton(
           //   icon: const Icon(Icons.notification_add_rounded),
           //   onPressed: () {
@@ -70,7 +62,16 @@ class DogProfilePage extends StatelessWidget {
             future: DogService().retrieveDogProfile(dogId),
             builder: (context, snapshot) {
               if (snapshot.connectionState == ConnectionState.waiting) {
-                return const Center(child: Text("Retrieving your data..."));
+                return Padding(
+                  padding: const EdgeInsets.all(160),
+                  child: Container(
+                    // Center the CircularProgressIndicator
+                    alignment: Alignment.center,
+                    color: Colors
+                        .transparent, // Ensure the container doesn't block interaction with underlying widgets
+                    child: const CircularProgressIndicator(),
+                  ),
+                );
               }
               if (snapshot.hasError) {
                 return const Center(child: Text("Error"));
@@ -86,6 +87,25 @@ class DogProfilePage extends StatelessWidget {
                   snapshot.data?.image == null ? "" : snapshot.data!.image;
               return Column(
                 children: [
+                  const SizedBox(
+                    height: 15,
+                  ),
+                  (snapshot.data?.isOpenAdopt == "true")
+                      ? Switch(
+                          value: true,
+                          onChanged:
+                              null, // Set to null to disable the toggle button
+                          activeTrackColor: HexColor("#a0dcdc"),
+                          activeColor: Colors.white,
+                        )
+                      : Switch(
+                          value: false,
+                          onChanged:
+                              null, // Set to null to disable the toggle button
+                          activeTrackColor: HexColor("#a0dcdc"),
+                          activeColor: Colors.white,
+                        ),
+
                   const SizedBox(
                     height: 15,
                   ),

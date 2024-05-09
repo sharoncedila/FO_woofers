@@ -855,6 +855,7 @@ mixin _$RetrieveChatlistResponse {
   String? get isRead => throw _privateConstructorUsedError;
   String? get errorCode => throw _privateConstructorUsedError;
   String? get errorMessage => throw _privateConstructorUsedError;
+  String? get profilePicture => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -876,7 +877,8 @@ abstract class $RetrieveChatlistResponseCopyWith<$Res> {
       String? lastMessage,
       String? isRead,
       String? errorCode,
-      String? errorMessage});
+      String? errorMessage,
+      String? profilePicture});
 }
 
 /// @nodoc
@@ -901,6 +903,7 @@ class _$RetrieveChatlistResponseCopyWithImpl<$Res,
     Object? isRead = freezed,
     Object? errorCode = freezed,
     Object? errorMessage = freezed,
+    Object? profilePicture = freezed,
   }) {
     return _then(_value.copyWith(
       chatroomId: freezed == chatroomId
@@ -935,6 +938,10 @@ class _$RetrieveChatlistResponseCopyWithImpl<$Res,
           ? _value.errorMessage
           : errorMessage // ignore: cast_nullable_to_non_nullable
               as String?,
+      profilePicture: freezed == profilePicture
+          ? _value.profilePicture
+          : profilePicture // ignore: cast_nullable_to_non_nullable
+              as String?,
     ) as $Val);
   }
 }
@@ -956,7 +963,8 @@ abstract class _$$RetrieveChatlistResponseImplCopyWith<$Res>
       String? lastMessage,
       String? isRead,
       String? errorCode,
-      String? errorMessage});
+      String? errorMessage,
+      String? profilePicture});
 }
 
 /// @nodoc
@@ -980,6 +988,7 @@ class __$$RetrieveChatlistResponseImplCopyWithImpl<$Res>
     Object? isRead = freezed,
     Object? errorCode = freezed,
     Object? errorMessage = freezed,
+    Object? profilePicture = freezed,
   }) {
     return _then(_$RetrieveChatlistResponseImpl(
       chatroomId: freezed == chatroomId
@@ -1014,6 +1023,10 @@ class __$$RetrieveChatlistResponseImplCopyWithImpl<$Res>
           ? _value.errorMessage
           : errorMessage // ignore: cast_nullable_to_non_nullable
               as String?,
+      profilePicture: freezed == profilePicture
+          ? _value.profilePicture
+          : profilePicture // ignore: cast_nullable_to_non_nullable
+              as String?,
     ));
   }
 }
@@ -1029,7 +1042,8 @@ class _$RetrieveChatlistResponseImpl implements _RetrieveChatlistResponse {
       required this.lastMessage,
       required this.isRead,
       required this.errorCode,
-      required this.errorMessage});
+      required this.errorMessage,
+      required this.profilePicture});
 
   factory _$RetrieveChatlistResponseImpl.fromJson(Map<String, dynamic> json) =>
       _$$RetrieveChatlistResponseImplFromJson(json);
@@ -1050,10 +1064,12 @@ class _$RetrieveChatlistResponseImpl implements _RetrieveChatlistResponse {
   final String? errorCode;
   @override
   final String? errorMessage;
+  @override
+  final String? profilePicture;
 
   @override
   String toString() {
-    return 'RetrieveChatlistResponse(chatroomId: $chatroomId, recipientId: $recipientId, recipientUsername: $recipientUsername, lastMessageTimestamp: $lastMessageTimestamp, lastMessage: $lastMessage, isRead: $isRead, errorCode: $errorCode, errorMessage: $errorMessage)';
+    return 'RetrieveChatlistResponse(chatroomId: $chatroomId, recipientId: $recipientId, recipientUsername: $recipientUsername, lastMessageTimestamp: $lastMessageTimestamp, lastMessage: $lastMessage, isRead: $isRead, errorCode: $errorCode, errorMessage: $errorMessage, profilePicture: $profilePicture)';
   }
 
   @override
@@ -1075,7 +1091,9 @@ class _$RetrieveChatlistResponseImpl implements _RetrieveChatlistResponse {
             (identical(other.errorCode, errorCode) ||
                 other.errorCode == errorCode) &&
             (identical(other.errorMessage, errorMessage) ||
-                other.errorMessage == errorMessage));
+                other.errorMessage == errorMessage) &&
+            (identical(other.profilePicture, profilePicture) ||
+                other.profilePicture == profilePicture));
   }
 
   @JsonKey(ignore: true)
@@ -1089,7 +1107,8 @@ class _$RetrieveChatlistResponseImpl implements _RetrieveChatlistResponse {
       lastMessage,
       isRead,
       errorCode,
-      errorMessage);
+      errorMessage,
+      profilePicture);
 
   @JsonKey(ignore: true)
   @override
@@ -1115,7 +1134,8 @@ abstract class _RetrieveChatlistResponse implements RetrieveChatlistResponse {
       required final String? lastMessage,
       required final String? isRead,
       required final String? errorCode,
-      required final String? errorMessage}) = _$RetrieveChatlistResponseImpl;
+      required final String? errorMessage,
+      required final String? profilePicture}) = _$RetrieveChatlistResponseImpl;
 
   factory _RetrieveChatlistResponse.fromJson(Map<String, dynamic> json) =
       _$RetrieveChatlistResponseImpl.fromJson;
@@ -1136,6 +1156,8 @@ abstract class _RetrieveChatlistResponse implements RetrieveChatlistResponse {
   String? get errorCode;
   @override
   String? get errorMessage;
+  @override
+  String? get profilePicture;
   @override
   @JsonKey(ignore: true)
   _$$RetrieveChatlistResponseImplCopyWith<_$RetrieveChatlistResponseImpl>

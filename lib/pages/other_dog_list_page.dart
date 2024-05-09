@@ -30,8 +30,16 @@ class OtherDogListPage extends StatelessWidget {
                     future: DogService().retrieveDogList(accountId),
                     builder: (context, snapshot) {
                       if (snapshot.connectionState == ConnectionState.waiting) {
-                        return const Center(
-                            child: Text("Retrieving your dog list data 2"));
+                        return Padding(
+                      padding: EdgeInsets.all(160),
+                      child: Container(
+                        // Center the CircularProgressIndicator
+                        alignment: Alignment.center,
+                        color: Colors
+                            .transparent, // Ensure the container doesn't block interaction with underlying widgets
+                        child: const CircularProgressIndicator(),
+                      ),
+                    );
                       }
                       if (snapshot.hasError) {
                         return const Center(child: Text("Error dogList"));

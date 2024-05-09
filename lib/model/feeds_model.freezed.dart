@@ -175,8 +175,7 @@ OpenCommentsResponse _$OpenCommentsResponseFromJson(Map<String, dynamic> json) {
 
 /// @nodoc
 mixin _$OpenCommentsResponse {
-  String? get username =>
-      throw _privateConstructorUsedError; // required String? commentId,
+  String? get username => throw _privateConstructorUsedError;
   String? get feedsId => throw _privateConstructorUsedError;
   String? get accountId => throw _privateConstructorUsedError;
   String? get content => throw _privateConstructorUsedError;
@@ -362,7 +361,6 @@ class _$OpenCommentsResponseImpl implements _OpenCommentsResponse {
 
   @override
   final String? username;
-// required String? commentId,
   @override
   final String? feedsId;
   @override
@@ -441,7 +439,7 @@ abstract class _OpenCommentsResponse implements OpenCommentsResponse {
 
   @override
   String? get username;
-  @override // required String? commentId,
+  @override
   String? get feedsId;
   @override
   String? get accountId;
@@ -982,11 +980,6 @@ LeaveCommentResponse _$LeaveCommentResponseFromJson(Map<String, dynamic> json) {
 
 /// @nodoc
 mixin _$LeaveCommentResponse {
-// required String commentId,
-// required String feedsId,
-// required String accountId,
-// required String content,
-// required String commentDate
   String? get errorCode => throw _privateConstructorUsedError;
   String? get errorMessage => throw _privateConstructorUsedError;
 
@@ -1082,11 +1075,6 @@ class _$LeaveCommentResponseImpl implements _LeaveCommentResponse {
   factory _$LeaveCommentResponseImpl.fromJson(Map<String, dynamic> json) =>
       _$$LeaveCommentResponseImplFromJson(json);
 
-// required String commentId,
-// required String feedsId,
-// required String accountId,
-// required String content,
-// required String commentDate
   @override
   final String? errorCode;
   @override
@@ -1136,11 +1124,7 @@ abstract class _LeaveCommentResponse implements LeaveCommentResponse {
   factory _LeaveCommentResponse.fromJson(Map<String, dynamic> json) =
       _$LeaveCommentResponseImpl.fromJson;
 
-  @override // required String commentId,
-// required String feedsId,
-// required String accountId,
-// required String content,
-// required String commentDate
+  @override
   String? get errorCode;
   @override
   String? get errorMessage;
@@ -1156,15 +1140,6 @@ PostFeedsResponse _$PostFeedsResponseFromJson(Map<String, dynamic> json) {
 
 /// @nodoc
 mixin _$PostFeedsResponse {
-// required String? feedsId,
-// required String? accountId,
-// required String? username,
-// required String? likesCount,
-// required String? caption,
-// required String? image,
-// required String? reportCount,
-// required String? postDate,
-// required String? deletedAt,
   String? get errorCode => throw _privateConstructorUsedError;
   String? get errorMessage => throw _privateConstructorUsedError;
 
@@ -1259,15 +1234,6 @@ class _$PostFeedsResponseImpl implements _PostFeedsResponse {
   factory _$PostFeedsResponseImpl.fromJson(Map<String, dynamic> json) =>
       _$$PostFeedsResponseImplFromJson(json);
 
-// required String? feedsId,
-// required String? accountId,
-// required String? username,
-// required String? likesCount,
-// required String? caption,
-// required String? image,
-// required String? reportCount,
-// required String? postDate,
-// required String? deletedAt,
   @override
   final String? errorCode;
   @override
@@ -1316,15 +1282,7 @@ abstract class _PostFeedsResponse implements PostFeedsResponse {
   factory _PostFeedsResponse.fromJson(Map<String, dynamic> json) =
       _$PostFeedsResponseImpl.fromJson;
 
-  @override // required String? feedsId,
-// required String? accountId,
-// required String? username,
-// required String? likesCount,
-// required String? caption,
-// required String? image,
-// required String? reportCount,
-// required String? postDate,
-// required String? deletedAt,
+  @override
   String? get errorCode;
   @override
   String? get errorMessage;
