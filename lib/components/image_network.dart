@@ -24,14 +24,14 @@ class ImageNetwork extends StatelessWidget {
         builder: (context, snapshot) {
           if (snapshot.connectionState == ConnectionState.waiting) {
             return Container(
-              color: Colors.red,
+              color: Colors.white,
               width: width,
               height: height,
             );
           }
 
           return Image(
-            image: NetworkImage("http://192.168.32.53:8080/woofers$urlImage",
+            image: NetworkImage("http://192.168.123.9:8080/woofers$urlImage",
                 headers:
                     Map.from({"Authorization": "Bearer ${snapshot.data}"})),
             width: width,

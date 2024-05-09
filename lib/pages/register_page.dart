@@ -108,7 +108,7 @@ class _RegisterFormState extends State<RegisterForm> {
                   }
                   const usernamepattern = "'.*[a-z].*'";
                   final regExp = RegExp(usernamepattern);
-                  if (regExp.hasMatch(value)) {
+                  if (!regExp.hasMatch(value)) {
                     return 'Please enter only lowercase letter in this field';
                   }
                   return null;
@@ -139,7 +139,7 @@ class _RegisterFormState extends State<RegisterForm> {
                   }
                   const fullnamevalidator = ".*[0-9].*";
                   final regExp = RegExp(fullnamevalidator);
-                  if (!regExp.hasMatch(value)) {
+                  if (regExp.hasMatch(value)) {
                     return 'Please enter only character in this field';
                   }
                   return null;
@@ -373,7 +373,7 @@ class _RegisterFormState extends State<RegisterForm> {
                 textInputAction: TextInputAction.done,
                 validator: (value) {
                   if (value == null || value.isEmpty) {
-                    return 'Please fill password field';
+                    return 'Please fill confirmation password field';
                   }
                   if (value.length < 8) {
                     return 'Password must contain more than equal to 8 characters';

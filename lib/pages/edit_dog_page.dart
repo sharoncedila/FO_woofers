@@ -172,11 +172,11 @@ class _EditDogPageState extends State<EditDogPage> {
                   ),
 
                   const SizedBox(
-                    height: 15,
+                    height: 10,
                   ),
                   ImageNetwork(urlImage: imageURL, width: 150, height: 150),
                   const SizedBox(
-                    height: 15,
+                    height: 10,
                   ),
 
                   IconButton(
@@ -189,9 +189,9 @@ class _EditDogPageState extends State<EditDogPage> {
                         }
                         // ImageService().uploadFeeds();
                       },
-                      icon: const Icon(Icons.camera)),
+                      icon: const Icon(Icons.camera_alt)),
                   const SizedBox(
-                    height: 15,
+                    height: 10,
                   ),
                   // dog name
                   Row(
@@ -616,10 +616,11 @@ class _EditDogPageState extends State<EditDogPage> {
                               ),
                             ),
                             SizedBox(
-                              height: 25,
+                              height: 75,
                               child: TextFormField(
                                   controller: vaccineController,
                                   maxLines: 5,
+                                  maxLength: 300,
                                   decoration: InputDecoration(
                                     border: const UnderlineInputBorder(),
                                     // labelText: 'Username',
@@ -673,6 +674,7 @@ class _EditDogPageState extends State<EditDogPage> {
                               height: 70,
                               child: TextFormField(
                                   maxLines: 5,
+                                  maxLength: 300,
                                   controller: descriptionController,
                                   decoration: InputDecoration(
                                     border: const UnderlineInputBorder(),

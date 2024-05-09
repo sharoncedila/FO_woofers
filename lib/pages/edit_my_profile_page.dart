@@ -380,7 +380,7 @@ class _EditMyProfilePageState extends State<EditMyProfile> {
                               height: 75,
                               child: TextFormField(
                                   maxLines: 3,
-                                  maxLength: 100,
+                                  maxLength: 300,
                                   controller: _descriptionController,
                                   style: GoogleFonts.newsCycle(
                                     color: Colors.black,

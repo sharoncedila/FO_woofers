@@ -12,7 +12,28 @@ class FeedsService {
       final dio = await DioInstance.getInstance();
 
       var response = await dio.get(api);
-      final errorSchema = ViewFeedsResponse.fromJson(response.data['errorSchema']);
+      final errorSchema =
+          ViewFeedsResponse.fromJson(response.data['errorSchema']);
+      if (errorSchema.errorCode != 'WOF-000') {
+        return [ViewFeedsResponse.fromJson(response.data['errorSchema'])];
+      } else {
+        return (response.data['outputSchema']['feedsContent'] as List)
+            .map((e) => ViewFeedsResponse.fromJson(e))
+            .toList();
+      }
+    } catch (error) {
+      throw Exception(error);
+    }
+  }
+
+  Future<List<ViewFeedsResponse>> retrieveSavedFeedsData() async {
+    try {
+      const api = '/feeds/saved';
+      final dio = await DioInstance.getInstance();
+
+      var response = await dio.get(api);
+      final errorSchema =
+          ViewFeedsResponse.fromJson(response.data['errorSchema']);
       if (errorSchema.errorCode != 'WOF-000') {
         return [ViewFeedsResponse.fromJson(response.data['errorSchema'])];
       } else {
@@ -31,9 +52,9 @@ class FeedsService {
       final dio = await DioInstance.getInstance();
 
       var response = await dio.get(api);
-        return (response.data['outputSchema']['commentsList'] as List)
-            .map((e) => OpenCommentsResponse.fromJson(e))
-            .toList();
+      return (response.data['outputSchema']['commentsList'] as List)
+          .map((e) => OpenCommentsResponse.fromJson(e))
+          .toList();
     } catch (error) {
       throw Exception(error);
     }
@@ -45,7 +66,8 @@ class FeedsService {
       final dio = await DioInstance.getInstance();
 
       var response = await dio.post(api, data: jsonEncode(request.toJson()));
-      final errorSchema = PostFeedsResponse.fromJson(response.data['errorSchema']);
+      final errorSchema =
+          PostFeedsResponse.fromJson(response.data['errorSchema']);
       if (errorSchema.errorCode != 'WOF-000') {
         return PostFeedsResponse.fromJson(response.data['errorSchema']);
       } else {
@@ -63,7 +85,8 @@ class FeedsService {
       final dio = await DioInstance.getInstance();
 
       var response = await dio.post(api, data: jsonEncode(request.toJson()));
-      final errorSchema = LeaveCommentResponse.fromJson(response.data['errorSchema']);
+      final errorSchema =
+          LeaveCommentResponse.fromJson(response.data['errorSchema']);
       if (errorSchema.errorCode != 'WOF-000') {
         return LeaveCommentResponse.fromJson(response.data['errorSchema']);
       } else {
@@ -81,7 +104,8 @@ class FeedsService {
       final dio = await DioInstance.getInstance();
 
       var response = await dio.get(api);
-      final errorSchema = ViewFeedsResponse.fromJson(response.data['errorSchema']);
+      final errorSchema =
+          ViewFeedsResponse.fromJson(response.data['errorSchema']);
       if (errorSchema.errorCode != 'WOF-000') {
         return ViewFeedsResponse.fromJson(response.data['errorSchema']);
       } else {

@@ -1,7 +1,6 @@
 import 'dart:io';
 import 'package:dio/dio.dart';
 import 'package:http_parser/http_parser.dart';
-import 'package:image_picker/image_picker.dart';
 import 'package:woofers/classes/dio_instance.dart';
 import 'package:woofers/model/image_model.dart';
 
@@ -66,29 +65,6 @@ class ImageService {
       print(error);
     }
     return null;
-      // final pickedFile =
-          // await ImagePicker().pickImage(source: ImageSource.gallery);
-
-    //   if (pickedFile != null) {
-    //     File image = File(pickedFile.path);
-    //     String fileName = image.path.split('/').last;
-    //     FormData formData = FormData.fromMap({
-    //       'file': await MultipartFile.fromFile(image.path, filename: fileName),
-    //     });
-    //     var response = await dio.post(api, data: formData);
-    //     final errorSchema = UploadImageResponse.fromJson(response.data['errorSchema']);
-    //     if (errorSchema.errorCode != 'WOF-000') {
-    //       return UploadImageResponse.fromJson(response.data['errorSchema']);
-    //     } else {
-    //       return UploadImageResponse.fromJson(response.data['outputSchema']);
-    //     }
-    //   } else {
-    //     print('no file chosen');
-    //   }
-    // } catch (error) {
-    //   print(error);
-    // }
-    // return null;
   }
 
   Future<UploadImageResponse?> uploadFeeds(File image) async {

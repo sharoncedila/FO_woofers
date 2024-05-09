@@ -33,7 +33,7 @@ class _FeedsPageState extends State<FeedsPage> {
         ),
         actions: <Widget>[
           IconButton(
-            icon: const Icon(Icons.notification_add_rounded),
+            icon: const Icon(Icons.notifications_on),
             onPressed: () {
               Navigator.push(
                 context,
