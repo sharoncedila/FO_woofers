@@ -9,10 +9,10 @@ hide footbox
 
 ' Sequence participant configuration
 actor User
-participant "_:RegisterPage_" as Page <<view>>
-participant "_:AccountService_" as Service
-participant "_:Account_" as Model <<model>>
-participant "_:DioInstance_" as Dio
+participant "__:RegisterPage__" as Page <<view>>
+participant "__:AccountService__" as Service
+participant "__:Account__" as Model <<model>>
+participant "__:DioInstance__" as Dio
 
 
 ' Sequence diagram
@@ -25,12 +25,12 @@ Page <-- Model: RequestRegisterModel
 Page -> Service: register(registerReq)
 Service -> Dio : post /accounts/register
 Service <-- Dio : response
-Service -> Model: ResponseRegisterModel.fromJson
+Service -> Model: ResponseRegisterModel.fromJson(response)
 Service <-- Model: ResponseRegisterModel
 Page <-- Service: ResponseRegisterModel
 User <-- Page: LoginPage
 else Validation Fails
-    User <-- Page: show error message
+User <-- Page: show error message
 end
 
 

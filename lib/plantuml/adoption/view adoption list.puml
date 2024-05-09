@@ -9,25 +9,39 @@ hide footbox
 
 ' Sequence participant configuration
 actor User
-participant "_:AdoptionPage_" as Page <<view>>
-participant "_:AdoptionCardDetail" as Card <<view>>
-participant "_:AdoptionService_" as Service
-participant "_:Adoption" as Model <<model>>
-participant "-:DioInstance" as Dio
+participant "__:AdoptionPage__" as Page <<view>>
+participant "__:AdoptionCardDetail__" as Card <<view>>
+participant "__:ProvinceService__" as ServiceProvince
+participant "__:DogService__" as ServiceDog
+participant "__:AdoptionService__" as ServiceAdoption
+participant "__:Province__" as ModelProvince <<model>>
+participant "__:Dog__" as ModelDog <<model>>
+participant "__:Adoption__" as ModelAdoption <<model>>
+participant "__:DioInstance__" as Dio
 
 
 ' Sequence diagram
 User -> Page: build(context)
-Page -> Service : retrieveAdoptionList()
-Service -> Dio : get /adoption/view
-Service <-- Dio : response
-Service -> Model : List<AdoptionDetail>
-Service <-- Model : list<AdoptionDetail>
-Page <-- Service : list<AdoptionDetail>
+Page -> ServiceProvince : retrieveAllProvince()
+ServiceProvince -> Dio : get /provinces/all
+ServiceProvince <-- Dio : response
+ServiceProvince -> ModelProvince : RetrieveAllProvinceResponse.fromJson(response)
+ServiceProvince <-- ModelProvince : RetrieveAllProvinceResponse
+Page <-- ServiceProvince : RetrieveAllProvinceResponse
+Page -> ServiceDog : retrieveAllBreed()
+ServiceDog -> Dio : get /breeds/all
+ServiceDog <-- Dio : response
+ServiceDog -> ModelDog : RetrieveAllBreedResponse.fromJson(response)
+ServiceDog <-- ModelDog : RetrieveAllBreedResponse
+Page <-- ServiceDog : RetrieveAllBreedResponse
+Page -> ServiceAdoption : retrieveAdoptionList(filterAdoption)
+ServiceAdoption -> Dio : get /adoption/view
+ServiceAdoption <-- Dio : response
+ServiceAdoption -> ModelAdoption : AdoptionDetail.fromJson(response)
+ServiceAdoption <-- ModelAdoption : AdoptionDetail
+Page <-- ServiceAdoption : list<AdoptionDetail>
 Page -> Card : build(context)
-Card -> Model : AdoptionDetail
-Card <-- Model : AdoptionDetail
-Page <-- Card : build(context)
+Page <-- Card : AdoptionCardDetail
 User <-- Page: AdoptionListPage
 
 

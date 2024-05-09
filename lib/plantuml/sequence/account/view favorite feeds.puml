@@ -1,0 +1,31 @@
+@startuml View Other Dog Profile
+' Global param
+title View Other Dog Profile
+autoactivate on
+
+' Global style configuration
+skinparam RoundCorner 0
+hide footbox
+
+' Sequence participant configuration
+actor User
+participant "__:FavoritFeedsPage__" as Page <<view>>
+participant "__:FeedsCard__" as Card <<view>>
+participant "__:FeedsService__" as Service
+participant "__:Feeds__" as Model <<model>>
+participant "__:DioInstance__" as Dio
+
+' Sequence diagram
+User -> Page: build(context)
+Page -> Service : retrieveSavedFeedsData()
+Service -> Dio : get /feeds/saved
+Service <-- Dio : response
+Service -> Model : ViewFeedsResponse.fromJson(response)
+Service <-- Model : ViewFeedsResponse
+Page <-- Service : list<ViewFeedsResponse>
+Page -> Card : build(context)
+Page <-- Card : FeedsCard
+User <-- Page : FavoritFeedsPage
+
+
+@enduml

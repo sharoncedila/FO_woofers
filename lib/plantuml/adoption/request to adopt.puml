@@ -9,17 +9,17 @@ hide footbox
 
 ' Sequence participant configuration
 actor User
-participant "_: RequestForAdoption_" as  Page <<view>>
-participant "_:AdoptionService_" as Service
-participant "_:_Adoption_" as Model <<model>>
-participant "_:DioInstance_" as Dio
+participant "__:RequestAdoptionPage__" as  Page <<view>>
+participant "__:AdoptionService__" as Service
+participant "__:Adoption__" as Model <<model>>
+participant "__:DioInstance__" as Dio
 
 
 ' Sequence diagram
 User -> Page: build(context)
 User <-- Page: return confirmation pop up
 alt confirm request adoption
-User -> Page: confirm request adoption
+User -> Page: confirm
 Page -> Model: sendAdoptNotif(dogId, dogName, breedName, ownerId, ownerUsername)
 Page <-- Model: SendAdoptionNotification
 Page -> Service: sendAdoptNotif(adopt)
@@ -30,7 +30,7 @@ Service <-- Model: SendAdoptionNotification
 Page <-- Service: SendAdoptionNotification
 User <-- Page: ChatroomPage
 else cancel request adoption
-User -> Page: cancel request adoption
+User -> Page: cancel
 User <-- Page: RequestAdoptionPage
 end
 

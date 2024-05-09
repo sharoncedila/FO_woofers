@@ -1,6 +1,6 @@
-@startuml View Dog Profile
+@startuml View Other Dog Profile
 ' Global param
-title View Dog Profile
+title View Other Dog Profile
 autoactivate on
 
 ' Global style configuration
@@ -9,7 +9,7 @@ hide footbox
 
 ' Sequence participant configuration
 actor User
-participant "__:DogProfilePage__" as Page <<view>>
+participant "__:OtherDogProfilePage__" as Page <<view>>
 participant "__:DogService__" as Service
 participant "__:Dog__" as Model <<model>>
 participant "__:ImageNetwork__" as Image
@@ -25,7 +25,7 @@ Service <-- Model : ResponseDogProfileModel
 Page <-- Service : ResponseDogProfileModel
 Page -> Image : ImageNetwork(urlImage, width, height)
 Page <-- Image : image
-User <-- Page: DogProfilePage
+User <-- Page: OtherDogProfilePage
 
 
 @enduml

@@ -91,6 +91,17 @@ class ApproveRejectAdoptionRequest with _$ApproveRejectAdoptionRequest{
 }
 
 @freezed
+class ApproveRejectAdoptionResponse with _$ApproveRejectAdoptionResponse{
+  factory ApproveRejectAdoptionResponse({
+    required String? notificationId,
+    required String? status
+  }) = _ApproveRejectAdoptionResponse;
+
+  factory ApproveRejectAdoptionResponse.fromJson(Map<String, dynamic> json) =>
+      _$ApproveRejectAdoptionResponseFromJson(json);
+}
+
+@freezed
 class FilterAdoption with _$FilterAdoption {
   factory FilterAdoption({
     String? breed,

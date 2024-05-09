@@ -133,6 +133,20 @@ Map<String, dynamic> _$$ApproveRejectAdoptionRequestImplToJson(
       'status': instance.status,
     };
 
+_$ApproveRejectAdoptionResponseImpl
+    _$$ApproveRejectAdoptionResponseImplFromJson(Map<String, dynamic> json) =>
+        _$ApproveRejectAdoptionResponseImpl(
+          notificationId: json['notificationId'] as String?,
+          status: json['status'] as String?,
+        );
+
+Map<String, dynamic> _$$ApproveRejectAdoptionResponseImplToJson(
+        _$ApproveRejectAdoptionResponseImpl instance) =>
+    <String, dynamic>{
+      'notificationId': instance.notificationId,
+      'status': instance.status,
+    };
+
 _$FilterAdoptionImpl _$$FilterAdoptionImplFromJson(Map<String, dynamic> json) =>
     _$FilterAdoptionImpl(
       breed: json['breed'] as String?,

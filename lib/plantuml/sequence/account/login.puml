@@ -9,10 +9,10 @@ hide footbox
 
 ' Sequence participant configuration
 actor User
-participant "_:LoginPage_" as Page <<view>>
-participant "_:AccountService_" as Service
-participant "_:Account_" as Model <<model>>
-participant "_:DioInstance_" as Dio
+participant "__:LoginPage__" as Page <<view>>
+participant "__:AccountService__" as Service
+participant "__:Account__" as Model <<model>>
+participant "__:DioInstance__" as Dio
 
 
 ' Sequence diagram
@@ -30,7 +30,7 @@ Service <-- Model: ResponseLoginModel
 Page <-- Service: ResponseLoginModel
 User <-- Page: AdoptionListPage
 else Validation Fails
-    User <-- Page: show error message
+User <-- Page: show error message
 end
 
 

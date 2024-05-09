@@ -1,6 +1,6 @@
-@startuml View Dog List
+@startuml View Other Dog List
 ' Global param
-title View Dog List
+title View Other Dog List
 autoactivate on
 
 ' Global style configuration
@@ -9,7 +9,7 @@ hide footbox
 
 ' Sequence participant configuration
 actor User
-participant "__:DogListPage__" as Page <<view>>
+participant "__:OtherDogListPage__" as Page <<view>>
 participant "__:MyDogCard__" as Card <<view>>
 participant "__:DogService__" as Service
 participant "__:Dog__" as Model <<model>>
@@ -25,8 +25,8 @@ Service -> Model : ResponseDogCard.fromJson(response)
 Service <-- Model : ResponseDogCard
 Page <-- Service : list<ResponseDogCard>
 Page -> Card : build(context)
-Page <-- Card : MyDogCard
-User <-- Page: DogListPage
+Page <-- Card : OtherDogCard
+User <-- Page: OtherDogListPage
 
 
 @enduml

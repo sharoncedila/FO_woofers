@@ -9,32 +9,39 @@ hide footbox
 
 ' Sequence participant configuration
 actor User
-participant "_: AddDogPage_" as Page <<view>>
-participant "_:DogService_" as Service
-participant "_:Dog_" as Model <<model>>
-participant "_:ImageNetwork_" as Image
-participant "_:DioInstance_" as Dio
+participant "__:AddDogPage__" as Page <<view>>
+participant "__:ImageService__" as ServiceImage
+participant "__:DogService__" as ServiceDog
+participant "__:Image__" as ModelImage <<model>>
+participant "__:Dog__" as ModelDog <<model>>
+participant "__:ImageNetwork__" as Image
+participant "__:DioInstance__" as Dio
 
 
 ' Sequence diagram
 User -> Page: build(context)
 User <-- Page: AddDogPage
 User -> Page: AddDogProfile()
-Page -> Image: uploadDogImage(dogId, image)
-Image -> Dio : post /upload/dog
-Image <-- Dio : response
+Page -> ServiceImage : uploadDogImage(dogId, image)
+ServiceImage -> Dio : post /upload/dog
+ServiceImage <-- Dio : response
+ServiceImage -> ModelImage : UploadImageResponse.fromJson(response)
+ServiceImage <-- ModelImage : UploadImageResponse
+Page <-- ServiceImage : UploadImageResponse
+Page -> Image : ImageNetwork(urlImage, width, height)
+Page <-- Image : image
 alt Validation is Successful
-Page -> Model: AddDogRequest(dogName, breedName, gender, provinceName, vaccination, description, dateOfBirth, isAdoption, image)
-Page <-- Model: AddDogRequest
-Page -> Service: addNewDog(request)
-Service -> Dio : post /dogs/add
-Service <-- Dio : response
-Service -> Model: AddDogResponse.fromJson(response)
-Service <-- Model: AddDogResponse
-Page <-- Service: AddDogResponse
+Page -> ModelDog: AddDogRequest(dogName, breedName, gender, provinceName, vaccination, description, dateOfBirth, isAdoption, image)
+Page <-- ModelDog: AddDogRequest
+Page -> ServiceDog: addNewDog(request)
+ServiceDog -> Dio : post /dogs/add
+ServiceDog <-- Dio : response
+ServiceDog -> ModelDog: AddDogResponse.fromJson(response)
+ServiceDog <-- ModelDog: AddDogResponse
+Page <-- ServiceDog: AddDogResponse
 User <-- Page: DogListPage
 else Validation Fails
-    User <-- Page: show error message
+User <-- Page: show error message
 end
 
 

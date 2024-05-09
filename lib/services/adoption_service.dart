@@ -10,8 +10,6 @@ class AdoptionService {
     try {
       const api = '/adoption/view';
       final dio = await DioInstance.getInstance();
-      print('try');
-      print(filterAdoption.toJson());
 
       var response =
           await dio.get(api, queryParameters: filterAdoption.toJson());
@@ -58,7 +56,7 @@ class AdoptionService {
     return null;
   }
 
-  Future<ApproveRejectAdoptionRequest?> approveRejectAdoption(
+  Future<ApproveRejectAdoptionResponse?> approveRejectAdoption(
       ApproveRejectAdoptionRequest request) async {
     try {
       String api = '/adoption/approve-reject-adoption';
@@ -66,7 +64,7 @@ class AdoptionService {
 
       var response = await dio.post(api, data: jsonEncode(request.toJson()));
 
-      return ApproveRejectAdoptionRequest.fromJson(
+      return ApproveRejectAdoptionResponse.fromJson(
           response.data['outputSchema']);
     } catch (error) {
       print(error);

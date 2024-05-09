@@ -9,21 +9,26 @@ hide footbox
 
 ' Sequence participant configuration
 actor User
-participant "_:NotificationPage_" as Page <<view>>
-participant "_:AdoptionService_" as ServiceAdoption
-participant "_:CommentService" as ServiceComment
-participant "_:Notification_" as Model <<model>>
-participant "_:DioInstance_" as Dio
+participant "__:NotificationPage__" as Page <<view>>
+participant "__:AdoptionNotificationCardDetail__" as CardAdopt <<view>>
+participant "__:CommentNotificationCardDetail__" as CardActivity <<view>>
+participant "__:NotificationService__" as Service
+participant "__:Notification__" as Model <<model>>
+participant "__:DioInstance__" as Dio
 
 ' Sequence diagram
 User -> Page: build(context)
-Page -> Service : retrieveAdoptionList()
+Page -> Service : retrieveNotificationList()
 Service -> Dio : get /notification/view
 Service <-- Dio : response
-Service -> Model : ResponseUserProfileModel.fromJson
-Service <-- Model : ResponseUserProfileModel
-Page <-- Service : ResponseUserProfileModel
-User <-- Page: UserProfilePage
+Service -> Model : ViewNotificationResponse.fromJson(response)
+Service <-- Model :  ViewNotificationResponse
+Page <-- Service : list<ViewNotificationResponse>
+Page -> CardAdopt : build(context)
+Page <-- CardAdopt : AdoptionNotificationCardDetail
+Page -> CardActivity : build(context)
+Page <-- CardActivity : CommentNotificationCardDetail
+User <-- Page: NotificationPage
 
 
 @enduml

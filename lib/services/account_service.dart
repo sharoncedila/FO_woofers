@@ -57,7 +57,7 @@ class AccountService {
 
       var response = await dio.get(api);
       final errorSchema =
-          ResponseLoginModel.fromJson(response.data['errorSchema']);
+          LogoutResponse.fromJson(response.data['errorSchema']);
 
       if (errorSchema.errorCode != 'WOF-000') {
         return LogoutResponse.fromJson(response.data['errorSchema']);

@@ -9,17 +9,17 @@ hide footbox
 
 ' Sequence participant configuration
 actor User
-participant "_:UserProfilePage" as Page <<view>>
-participant "_:AccountService_" as Service
-participant "_:Account_" as Model <<model>>
-participant "_:DioInstance_" as Dio
+participant "__:UserProfilePage__" as Page <<view>>
+participant "__:AccountService__" as Service
+participant "__:Account__" as Model <<model>>
+participant "__:DioInstance__" as Dio
 
 
 ' Sequence diagram
 User -> Page: build(context)
 User <-- Page: return confirmation pop up
 alt logout
-User -> Page: confirm logout
+User -> Page: confirm
 Page -> Service: logout()
 Service -> Dio: get /accounts/logout
 Service <-- Dio: response
@@ -28,7 +28,7 @@ Service <-- Model: LogoutResponse
 Page <-- Service: LogoutResponse
 User <-- Page: LoginPage
 else cancel logout
-User -> Page: cancel logout
+User -> Page: cancel
 User <-- Page: UserProfilePage
 end
 
