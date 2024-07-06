@@ -20,7 +20,7 @@ class AdoptionCardDetail extends StatelessWidget {
             borderRadius: BorderRadius.circular(20.0),
             // bo
           ),
-          
+
           // color: const Color.fromRGBO(160, 220, 220, 10),
           color: const Color.fromARGB(200, 255, 255, 255),
           child: InkWell(

@@ -8,8 +8,9 @@ class BubbleChatCardDetail extends StatelessWidget {
   final recipientId;
   final OpenChatResponse bubbleChatlistDetail;
   const BubbleChatCardDetail(
-      {super.key, required this.bubbleChatlistDetail, required this.recipientId});
-
+      {super.key,
+      required this.bubbleChatlistDetail,
+      required this.recipientId});
 
   @override
   Widget build(BuildContext context) {
@@ -21,28 +22,26 @@ class BubbleChatCardDetail extends StatelessWidget {
         padding: const EdgeInsets.symmetric(horizontal: 5, vertical: 5),
         // child: Card(
         //   color: Colors.white,
-          child: Column(
-            children: [
-              // const SizedBox(height: 20),
-               
-              
-              if (recipientId != bubbleChatlistDetail.senderId)
-                Column(
-                  children:[ BubbleSpecialThree(
-                    text: bubbleChatlistDetail.message!,
-                    color: const Color(0xFF1B97F3),
-                    tail: false,
-                    isSender: true,
-                    textStyle: GoogleFonts.archivoNarrow(
+        child: Column(
+          children: [
+            // const SizedBox(height: 20),
+
+            if (recipientId != bubbleChatlistDetail.senderId)
+              Column(children: [
+                BubbleSpecialThree(
+                  text: bubbleChatlistDetail.message!,
+                  color: const Color(0xFF1B97F3),
+                  tail: false,
+                  isSender: true,
+                  textStyle: GoogleFonts.archivoNarrow(
                     fontSize: 17,
                     color: Colors.black,
                     //fontWeight: FontWeight.w500,
                     decoration: TextDecoration.none,
                   ),
-                  ),
-                  Align(
+                ),
+                Align(
                   alignment: Alignment.bottomRight,
-                  
                   child: Padding(
                     padding: EdgeInsets.only(right: 20),
                     child: Text(
@@ -55,24 +54,22 @@ class BubbleChatCardDetail extends StatelessWidget {
                     ),
                   ),
                 ),
-              ]
-                )
-                
-              else
-                Column(
-                  children:[ BubbleSpecialThree(
-                    text: bubbleChatlistDetail.message!,
-                    color: const Color(0xFFE8E8EE),
-                    tail: false,
-                    isSender: false,
-                    textStyle: GoogleFonts.archivoNarrow(
+              ])
+            else
+              Column(children: [
+                BubbleSpecialThree(
+                  text: bubbleChatlistDetail.message!,
+                  color: const Color(0xFFE8E8EE),
+                  tail: false,
+                  isSender: false,
+                  textStyle: GoogleFonts.archivoNarrow(
                     fontSize: 17,
                     color: Colors.black,
                     //fontWeight: FontWeight.w500,
                     decoration: TextDecoration.none,
                   ),
-                  ),
-                  Align(
+                ),
+                Align(
                   alignment: Alignment.bottomLeft,
                   child: Padding(
                     padding: EdgeInsets.only(left: 20),
@@ -85,19 +82,18 @@ class BubbleChatCardDetail extends StatelessWidget {
                     ),
                   ),
                 ),
-              ]
-                ),
-              // Expanded(
-              //   child: Align(
-              //     alignment: FractionalOffset.bottomCenter,
-              //     child: MessageBar(
-              //       onSend: (_) => print(_),
-              //       actions: const [],
-              //     ),
-              //   ),
-              // ),
-            ],
-          ),
+              ]),
+            // Expanded(
+            //   child: Align(
+            //     alignment: FractionalOffset.bottomCenter,
+            //     child: MessageBar(
+            //       onSend: (_) => print(_),
+            //       actions: const [],
+            //     ),
+            //   ),
+            // ),
+          ],
+        ),
         //),
       ),
     );

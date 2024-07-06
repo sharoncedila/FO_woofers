@@ -17,25 +17,25 @@ class WSNotifInstance {
         HttpHeaders.authorizationHeader: 'Bearer $token',
       };
       session = await WebSocket.connect(
-          'ws://192.168.123.9:8080/woofers/app-notif',
+          'wss://woofers.arv.cx/woofers/app-notif',
           headers: headers);
-      print("Successfully Connect to WebSocket Notif Server");
+      //print("Successfully Connect to WebSocket Notif Server");
 
       session!.listen(
         (data) {
           final notif = WebSocketNotif.fromJson(jsonDecode(data));
-          print(notif.notificationMessage);
+          //print(notif.notificationMessage);
           _showNotification(notif.notificationMessage);
         },
         onError: (error) {
-          print("Error receiving message: $error");
+          //print("Error receiving message: $error");
         },
         onDone: () {
-          print("WebSocket connection closed");
+          //print("WebSocket connection closed");
         },
       );
     } catch (error) {
-      print("Fail Connect to WebSocket Server");
+      //print("Fail Connect to WebSocket Server");
     }
   }
 

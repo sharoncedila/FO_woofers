@@ -25,7 +25,7 @@ class _ChatCardState extends State<ChatCardDetail> {
     RetrieveChatlistResponse chatlistDetail = widget.chatlistDetail;
     return SizedBox(
       width: double.infinity,
-     
+
         child: InkWell(
           onTap: () async {
             String recipientId = chatlistDetail.recipientId!;

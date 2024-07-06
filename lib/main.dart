@@ -28,12 +28,12 @@ class _MyAppState extends State<MyApp> {
   Widget build(BuildContext context) {
     if (sharedPreference == null) {
       SharedPreferences.getInstance().then((value) {
-        print("value: " + value.toString());
+        // print("value: " + value.toString());
         sharedPreference = value;
       });
     }
 
-    return MaterialApp(
+    return const MaterialApp(
       debugShowCheckedModeBanner: false,
       // home: token == '' ? LoginPage() : UserProfilePage(),
       home: LoginPage(),

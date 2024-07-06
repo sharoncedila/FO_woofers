@@ -179,7 +179,8 @@ class _RegisterFormState extends State<RegisterForm> {
                   if (value == null || value.isEmpty) {
                     return 'Please fill username field';
                   }
-                  const usernamepattern = "'.*[a-z].*'";
+                  // "'.*"
+                  const usernamepattern = "^[a-z]+\$";
                   final regExp = RegExp(usernamepattern);
                   if (!regExp.hasMatch(value)) {
                     return 'Please enter only lowercase letter in this field';
@@ -260,65 +261,6 @@ class _RegisterFormState extends State<RegisterForm> {
                 });
               },
             ),
-
-            // SingleChildScrollView(
-            //   child: Padding(
-            //     padding: const EdgeInsets.symmetric(horizontal: 25),
-            //     child: FutureBuilder(
-            //       future: ProvinceService().retrieveAllProvince(),
-            //       //initialData: initialProvinceNames,
-            //       builder: (context, snapshot) {
-            //         if (snapshot.connectionState == ConnectionState.waiting) {
-            //           return const Text("Province");
-            //         }
-            //         if (snapshot.hasError) {
-            //           return Text("Error: ${snapshot.error}");
-            //         }
-            //         if (!snapshot.hasData) {
-            //           return const Text("No data");
-            //         }
-            //         final provinceResponse = snapshot.data!;
-            //         final provinceNames = provinceResponse.provinceList
-            //             .map((e) => e.provinceName)
-            //             .toList();
-            //         return DropdownButtonFormField<String>(
-            //           value: _selectedProvince,
-            //           decoration: InputDecoration(
-            //             enabledBorder: const OutlineInputBorder(
-            //               borderSide: BorderSide(color: Colors.white),
-            //             ),
-            //             focusedBorder: OutlineInputBorder(
-            //               borderSide: BorderSide(color: Colors.grey.shade400),
-            //             ),
-            //             fillColor: Colors.grey.shade200,
-            //             filled: true,
-            //             hintText: 'Province',
-            //             hintStyle: TextStyle(color: Colors.grey[500]),
-            //           ),
-            //           onChanged: (String? newValue) {
-            //             if (newValue != null) {
-            //               setState(() {
-            //                 _selectedProvince = newValue;
-            //               });
-            //             }
-            //           },
-            //           items: provinceNames.map((province) {
-            //             return DropdownMenuItem<String>(
-            //               value: province,
-            //               child: Text(province),
-            //             );
-            //           }).toList(),
-            //           validator: (value) {
-            //             if (value == null || value.isEmpty) {
-            //               return 'Please choose your province';
-            //             }
-            //             return null;
-            //           },
-            //         );
-            //       },
-            //     ),
-            //   ),
-            // ),
 
             // phone number form field
             const SizedBox(height: 15),

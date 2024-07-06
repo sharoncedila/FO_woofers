@@ -37,7 +37,7 @@ class _SearchUserListPageState extends State<SearchUserListPage> {
         ),
         actions: <Widget>[
           IconButton(
-            icon: const Icon(Icons.notification_add_rounded),
+            icon: const Icon(Icons.notifications_active),
             onPressed: () {
               Navigator.push(
                 context,
@@ -129,39 +129,38 @@ class _SearchUserListPageState extends State<SearchUserListPage> {
                           context,
                           MaterialPageRoute(
                               builder: (context) =>
-                              SearchUserListPage(userName: wordSearch)),
-                                  //ChatListPage()),
+                                  SearchUserListPage(userName: wordSearch)),
+                          //ChatListPage()),
                         );
                       }),
-                      //clear search button
-                      // ElevatedButton(
-                      // style: ButtonStyle(
-                      //   backgroundColor: MaterialStateProperty.resolveWith(
-                      //     (Set<MaterialState> states) {
-                      //       if (states.contains(MaterialState.pressed)) {
-                      //         return Theme.of(context)
-                      //             .colorScheme
-                      //             .primary
-                      //             .withOpacity(0.5);
-                      //       }
-                      //       return null; // Use the component's default.
-                      //     },
-                      //   ),
-                      // ),
-                      // child: const Icon(Icons.clear, color: Colors.black),
-                      // onPressed: () async {
-                      //   //String wordSearch = _searchController.text;
-                      //   //print(wordSearch);
-                      //   Navigator.push(
-                      //     context,
-                      //     MaterialPageRoute(
-                      //         builder: (context) =>
-                      //            // SearchUserListPage(userName: wordSearch)),
-                      //     ChatListPage()),
-                      //   );
-                      // }),
+                  //clear search button
+                  // ElevatedButton(
+                  // style: ButtonStyle(
+                  //   backgroundColor: MaterialStateProperty.resolveWith(
+                  //     (Set<MaterialState> states) {
+                  //       if (states.contains(MaterialState.pressed)) {
+                  //         return Theme.of(context)
+                  //             .colorScheme
+                  //             .primary
+                  //             .withOpacity(0.5);
+                  //       }
+                  //       return null; // Use the component's default.
+                  //     },
+                  //   ),
+                  // ),
+                  // child: const Icon(Icons.clear, color: Colors.black),
+                  // onPressed: () async {
+                  //   //String wordSearch = _searchController.text;
+                  //   //print(wordSearch);
+                  //   Navigator.push(
+                  //     context,
+                  //     MaterialPageRoute(
+                  //         builder: (context) =>
+                  //            // SearchUserListPage(userName: wordSearch)),
+                  //     ChatListPage()),
+                  //   );
+                  // }),
                   //futur builder here
-                  
                 ],
               ),
             ),

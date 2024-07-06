@@ -15,25 +15,24 @@ class WSChatInstance {
       var headers = {
         HttpHeaders.authorizationHeader: 'Bearer $token',
       };
-      session = await WebSocket.connect(
-          'ws://192.168.123.9:8080/woofers/send-chat',
+      session = await WebSocket.connect('wss://woofers.arv.cx/woofers/send-chat',
           headers: headers);
-      print("Successfully Connect to WebSocket Chat Server");
+      // print("Successfully Connect to WebSocket Chat Server");
 
       session!.listen(
         (data) {
-          final notif = WebSocketChat.fromJson(jsonDecode(data));
-          print(notif.message);
+          //final notif = WebSocketChat.fromJson(jsonDecode(data));
+          // print(notif.message);
         },
         onError: (error) {
-          print("Error receiving message: $error");
+          // print("Error receiving message: $error");
         },
         onDone: () {
-          print("WebSocket connection closed");
+          // print("WebSocket connection closed");
         },
       );
     } catch (error) {
-      print("Fail Connect to WebSocket Server");
+      // print("Fail Connect to WebSocket Server");
     }
   }
 
@@ -41,9 +40,9 @@ class WSChatInstance {
     if (session != null) {
       session!.close();
       session = null;
-      print("Disconnected from WebSocket Chat Server");
+      //print("Disconnected from WebSocket Chat Server");
     } else {
-      print("No WebSocket session to disconnect");
+      //print("No WebSocket session to disconnect");
     }
   }
 

@@ -98,6 +98,7 @@ class _EditMyProfilePageState extends State<EditMyProfile> {
         backgroundColor: HexColor("#a0dcdc"),
         title: Text(
           "EDIT MY PROFILE",
+          textAlign: TextAlign.left,
           style: GoogleFonts.lora(
             fontSize: 25,
             fontWeight: FontWeight.bold,

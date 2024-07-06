@@ -34,7 +34,7 @@ class _ChatListPageState extends State<ChatListPage> {
         ),
         actions: <Widget>[
           IconButton(
-            icon: const Icon(Icons.notification_add_rounded),
+            icon: const Icon(Icons.notifications_active),
             onPressed: () {
               Navigator.push(
                 context,
