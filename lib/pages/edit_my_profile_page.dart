@@ -4,8 +4,8 @@ import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:hexcolor/hexcolor.dart';
 import 'package:image_picker/image_picker.dart';
+import 'package:woofers/components/bottom_menu.dart';
 import 'package:woofers/components/image_network.dart';
-import 'package:woofers/components/profile_page_template.dart';
 import 'package:woofers/model/account_model.dart';
 import 'package:woofers/model/image_model.dart';
 import 'package:woofers/services/account_service.dart';
@@ -117,7 +117,7 @@ class _EditMyProfilePageState extends State<EditMyProfile> {
             builder: (context, snapshot) {
               if (snapshot.connectionState == ConnectionState.waiting) {
                 return Padding(
-                  padding: EdgeInsets.all(160),
+                  padding: const EdgeInsets.all(160),
                   child: Container(
                     // Center the CircularProgressIndicator
                     alignment: Alignment.center,
@@ -167,7 +167,7 @@ class _EditMyProfilePageState extends State<EditMyProfile> {
                           image: AssetImage('assets/woofers_icon/profile.jpg'))
                       : (uploadedImage != null && myProfile.image == null)
                           ? ImageNetwork(
-                              urlImage: "/temp/${uploadedImage}",
+                              urlImage: "/temp/$uploadedImage",
                               width: 150,
                               height: 150)
                           : ImageNetwork(
@@ -459,8 +459,9 @@ class _EditMyProfilePageState extends State<EditMyProfile> {
                                   .editAccountProfile(edit)
                                   .then((value) => Navigator.of(context)
                                       .pushReplacement(MaterialPageRoute(
-                                          builder: (_) =>
-                                              const ProfilePageTemplate())))
+                                          builder: (_) => const BottomMenuBar(
+                                                initialIndex: 3,
+                                              ))))
                                   .onError<Exception>((error, stackTrace) {
                                 showDialog(
                                   context: context,

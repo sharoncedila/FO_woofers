@@ -20,6 +20,7 @@ class _FeedsPageState extends State<FeedsPage> {
     return Scaffold(
       backgroundColor: Colors.white,
       appBar: AppBar(
+        automaticallyImplyLeading: false,
         toolbarHeight: 75,
         elevation: 0,
         backgroundColor: HexColor("#a0dcdc"),

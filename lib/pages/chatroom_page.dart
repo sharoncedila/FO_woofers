@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:hexcolor/hexcolor.dart';
 import 'package:woofers/classes/ws_chat_instance.dart';
+import 'package:woofers/components/bottom_menu.dart';
 import 'package:woofers/components/bubble_chat.dart';
 import 'package:woofers/model/chat_model.dart';
 import 'package:woofers/services/chat_service.dart';
@@ -12,7 +13,7 @@ class ChatroomPageDetail extends StatefulWidget {
   String? username;
 
   ChatroomPageDetail(
-      {super.key, required this.recipientId, this.chatroomId,  this.username});
+      {super.key, required this.recipientId, this.chatroomId, this.username});
 
   @override
   _ChatroomPageState createState() => _ChatroomPageState();
@@ -31,7 +32,6 @@ class ChatroomPageDetail extends StatefulWidget {
 //     chatroomId = widget.chatroomId;
 //     username = widget.username;
 //   }
-  
 
 //   @override
 //   Widget build(BuildContext context) {
@@ -117,6 +117,16 @@ class _ChatroomPageState extends State<ChatroomPageDetail> {
     return Scaffold(
       backgroundColor: Colors.white,
       appBar: AppBar(
+        leading: IconButton(
+            onPressed: () {
+              Navigator.pushReplacement(
+                  context,
+                  MaterialPageRoute(
+                      builder: (context) => const BottomMenuBar(
+                            initialIndex: 0,
+                          )));
+            },
+            icon: const Icon(Icons.arrow_back)),
         toolbarHeight: 75,
         elevation: 0,
         backgroundColor: HexColor("#a0dcdc"),
@@ -141,47 +151,47 @@ class _ChatroomPageState extends State<ChatroomPageDetail> {
                 // ),
                 Expanded(
                   child: //Padding(
-                    //padding: const EdgeInsets.all(7.0),
-                    //padding: EdgeInsets.only(left: 7, right: 7),
-                    //child:
-                     Container(
-                      decoration: BoxDecoration(
-                        color: Colors.grey[300], // Background color
-                        borderRadius:
-                            BorderRadius.circular(10), // Rounded corners
-                      ),
-                      child: Row(
-                        children: [
-                          const SizedBox(width: 40),
-                          Expanded(
-                            child: TextFormField(
-                              maxLines: null,
-                              controller: messageController,
-                              keyboardType: TextInputType.multiline,
-                              decoration: const InputDecoration(
-                                hintText: 'Type Here',
-                                border: InputBorder.none,
-                                //fillColor: Colors.green, // Remove the border
-                                contentPadding: EdgeInsets.symmetric(
-                                    vertical: 15), // Add vertical padding
-                              ),
+                      //padding: const EdgeInsets.all(7.0),
+                      //padding: EdgeInsets.only(left: 7, right: 7),
+                      //child:
+                      Container(
+                    decoration: BoxDecoration(
+                      color: Colors.grey[300], // Background color
+                      borderRadius:
+                          BorderRadius.circular(10), // Rounded corners
+                    ),
+                    child: Row(
+                      children: [
+                        const SizedBox(width: 40),
+                        Expanded(
+                          child: TextFormField(
+                            maxLines: null,
+                            controller: messageController,
+                            keyboardType: TextInputType.multiline,
+                            decoration: const InputDecoration(
+                              hintText: 'Type Here',
+                              border: InputBorder.none,
+                              //fillColor: Colors.green, // Remove the border
+                              contentPadding: EdgeInsets.symmetric(
+                                  vertical: 15), // Add vertical padding
                             ),
                           ),
-                          IconButton(
-                            icon: const Icon(Icons.send),
-                            onPressed: () async {
-                              final SendChatRequest request = SendChatRequest(
-                                  recipientId: recipientId,
-                                  message: messageController.text,
-                                  chatroomId: chatroomId);
-                              WSChatInstance.sendMessage(request);
-                              FocusScope.of(context).unfocus();
-                            },
-                          ),
-                          const SizedBox(width: 10),
-                        ],
-                      ),
+                        ),
+                        IconButton(
+                          icon: const Icon(Icons.send),
+                          onPressed: () async {
+                            final SendChatRequest request = SendChatRequest(
+                                recipientId: recipientId,
+                                message: messageController.text,
+                                chatroomId: chatroomId);
+                            WSChatInstance.sendMessage(request);
+                            FocusScope.of(context).unfocus();
+                          },
+                        ),
+                        const SizedBox(width: 10),
+                      ],
                     ),
+                  ),
                   //),
                 ),
               ],
@@ -208,7 +218,7 @@ class _ChatroomPageState extends State<ChatroomPageDetail> {
                   builder: ((context, snapshot) {
                     if (snapshot.connectionState == ConnectionState.waiting) {
                       return Padding(
-                        padding: EdgeInsets.all(160),
+                        padding: const EdgeInsets.all(160),
                         child: Container(
                           // Center the CircularProgressIndicator
                           alignment: Alignment.center,
