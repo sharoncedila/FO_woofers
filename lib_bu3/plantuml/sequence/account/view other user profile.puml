@@ -1,0 +1,31 @@
+@startuml View Other User Profile
+' Global param
+title View Other User Profile
+autoactivate on
+
+' Global style configuration
+skinparam RoundCorner 0
+hide footbox
+
+' Sequence participant configuration
+actor User
+participant "__:OtherProfilePage__" as Page <<view>>
+participant "__:AccountService__" as Service
+participant "__:Account__" as Model <<model>>
+participant "__:ImageNetwork__" as Image
+participant "__:DioInstance__" as Dio
+
+' Sequence diagram
+User -> Page: build(context)
+Page -> Service : viewOtherUserProfile(accountId)
+Service -> Dio : get /accounts/profile/other/$accountId
+Service <-- Dio : response
+Service -> Model : OtherUserProfileResponse.fromJson(response)
+Service <-- Model : OtherUserProfileResponse
+Page <-- Service : OtherUserProfileResponse
+Page -> Image : ImageNetwork(urlImage, width, height)
+Page <-- Image : image
+User <-- Page: OtherProfilePage
+
+
+@enduml

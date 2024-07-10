@@ -1,0 +1,31 @@
+@startuml FilterAdoption
+' Global param
+title  Filter Adoption
+autoactivate on
+
+' Global style configuration
+skinparam RoundCorner 0
+hide footbox
+
+' Sequence participant configuration
+actor User
+participant "__:AdoptionPage__" as  Page <<view>>
+participant "__:AdoptionCardDetail__" as Card <<view>>
+participant "__:AdoptionService__" as Service
+participant "__:Adoption__" as Model <<model>>
+participant "__:DioInstance__" as Dio
+
+
+' Sequence diagram
+User -> Page : build(context)
+Page -> Service : retrieveAdoptionList(filterAdoption)
+Service -> Dio : get /adoption/view
+Service <-- Dio : response
+Service -> Model : AdoptionDetail.fromJson(response)
+Service <-- Model : AdoptionDetail
+Page <-- Service : list<AdoptionDetail>
+Page -> Card : build(context)
+Page <-- Card : AdoptionCardDetail
+User <-- Page : AdoptionPage
+
+@enduml

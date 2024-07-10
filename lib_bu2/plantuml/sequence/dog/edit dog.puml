@@ -1,0 +1,56 @@
+@startuml AddDog
+' Global param
+title Edit Dog
+autoactivate on
+
+' Global style configuration
+skinparam RoundCorner 0
+hide footbox
+
+' Sequence participant configuration
+actor User
+participant "__:EditDogPage__" as Page <<view>>
+participant "__:DogService__" as ServiceDog
+participant "__:ImageService__" as ServiceImage
+participant "__:Image__" as ModelImage <<model>>
+participant "__:Dog__" as ModelDog <<model>>
+participant "__:ImageNetwork__" as Image
+participant "__:DioInstance__" as Dio
+
+
+' Sequence diagram
+User -> Page: build(context)
+Page -> ServiceDog: retrieveDogProfile(dogId)
+ServiceDog -> Dio: get /dogs/profile/dog-id/$dogId
+ServiceDog <-- Dio: response
+ServiceDog -> ModelDog: ResponseDogProfileModel.fromJson(response)
+ServiceDog <-- ModelDog: ResponseDogProfileModel
+Page <-- ServiceDog: ResponseDogProfileModel
+User <-- Page: EditDogPage
+User -> Page: editDogProfile()
+opt Upload new image
+Page -> ServiceImage: uploadDogImage(dogId, image)
+ServiceImage -> Dio : post /upload/dog?dog-id=$dogId
+ServiceImage <-- Dio : response
+ServiceImage -> ModelImage : UploadImageResponse.fromJson(response)
+ServiceImage <-- ModelImage : UploadImageResponse
+Page <-- ServiceImage : UploadImageResponse
+end
+alt Validation is Successful
+Page -> ModelDog: EditDogRequest(dogId, nameController, selectedBreed, selectedGender, selectedProvince, vaccineController, descriptionController, formattedDate, isSwitched, uploadedImage)
+Page <-- ModelDog: EditDogRequest
+Page -> ServiceDog: editDog(request)
+ServiceDog -> Dio : post /dogs/profile/edit
+ServiceDog <-- Dio : response
+ServiceDog -> ModelDog: EditDogResponse.fromJson(response)
+ServiceDog <-- ModelDog: EditDogResponse
+Page <-- ServiceDog: EditDogResponse
+User <-- Page: DogProfilePage
+else Validation Fails
+User <-- Page: show error message
+end
+
+
+
+
+@enduml

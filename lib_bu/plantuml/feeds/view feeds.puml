@@ -1,0 +1,31 @@
+@startuml View Feeds
+' Global param
+title View Feeds
+autoactivate on
+
+' Global style configuration
+skinparam RoundCorner 0
+hide footbox
+
+' Sequence participant configuration
+actor User
+participant "__:FeedsPage__" as Page <<view>>
+participant "__:FeedsCard__" as Card <<view>>
+participant "__:FeedsService__" as Service
+participant "__:Feeds__" as Model <<model>>
+participant "__:DioInstance__" as Dio
+
+' Sequence diagram
+User -> Page: build(context)
+Page -> Service : retrieveFeedsData()
+Service -> Dio : get /feeds/view
+Service <-- Dio : response
+Service -> Model : ViewFeedsResponse.fromJson(response)
+Service <-- Model : ViewFeedsResponse
+Page <-- Service : list<ViewFeedsResponse>
+Page -> Card : build(context)
+Page <-- Card : FeedsCard
+User <-- Page: FeedsPage
+
+
+@enduml

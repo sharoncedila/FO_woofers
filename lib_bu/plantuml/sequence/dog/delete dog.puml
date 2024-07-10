@@ -1,0 +1,39 @@
+@startuml DeleteDod
+' Global param
+title Delete Dog
+autoactivate on
+
+' Global style configuration
+skinparam RoundCorner 0
+hide footbox
+
+' Sequence participant configuration
+actor User
+participant "__:DogListPage__" as Page <<view>>
+participant "__:MyDogCard__" as Card <<view>>
+participant "__:DogService__" as Service
+participant "__:Dog__" as Model <<model>>
+participant "__:DioInstance__" as Dio
+
+
+' Sequence diagram
+User -> Page : build(context)
+User -> Card: build(context)
+User <-- Card: return confirmation pop up
+alt delete dog
+User -> Card: confirm
+Card -> Service: deleteDog(dogId)
+Service -> Dio: /dogs/delete/dog-id/$dogId
+Service <-- Dio: response
+Service -> Model: DeleteDogResponse.fromJson(response)
+Service <-- Model: DeleteDogResponse
+Card <-- Service: DeleteDogResponse
+Page <-- Card: MyDogCard
+User <-- Page : DogListPage
+else cancel delete dog
+User -> Card: cancel
+Page <-- Card: MyDogCard
+User <-- Page : DogListPage
+end
+
+@enduml

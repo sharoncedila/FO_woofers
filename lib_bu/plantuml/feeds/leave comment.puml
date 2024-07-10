@@ -1,0 +1,35 @@
+@startuml Leave Comment
+' Global param
+title Leave Comment
+autoactivate on
+
+' Global style configuration
+skinparam RoundCorner 0
+hide footbox
+
+' Sequence participant configuration
+actor User
+participant "__:CommentPage__" as Page <<view>>
+participant "__:CommentCard__" as Card <<view>>
+participant "__:FeedsService__" as Service
+participant "__:Feeds__" as Model <<model>>
+participant "__:DioInstance__" as Dio
+
+' Sequence diagram
+User -> Page: build(context)
+Page -> Card : build(context)
+Page <-- Card : CommentCard
+Page -> Model : LeaveCommentRequest(feedsId, commentController)
+Page <-- Model : LeaveCommentRequest
+Page -> Service : leaveCommentSection(request)
+Service -> Dio : post /feeds/comment
+Service <-- Dio : response
+Service -> Model : LeaveCommentResponse.fromJson(response)
+Service <-- Model : LeaveCommentResponse
+Page <-- Service : LeaveCommentResponse
+Page -> Card : build(context)
+Page <-- Card : CommentCard
+User <-- Page: CommentPage
+
+
+@enduml

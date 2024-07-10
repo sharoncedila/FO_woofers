@@ -1,0 +1,40 @@
+@startuml Post Feeds
+' Global param
+title Post Feeds
+autoactivate on
+
+' Global style configuration
+skinparam RoundCorner 0
+hide footbox
+
+' Sequence participant configuration
+actor User
+participant "__:AddFeedsPage__" as Page <<view>>
+participant "__:ImageService__" as ServiceImage
+participant "__:Image__" as ModelImage <<model>>
+participant "__:FeedsService__" as ServiceFeeds
+participant "__:Feeds__" as ModelFeeds <<model>>
+participant "__:DioInstance__" as Dio
+
+' Sequence diagram
+User -> Page: build(context)
+opt Upload feeds image
+Page -> ServiceImage : uploadFeeds(image)
+ServiceImage -> Dio : post /upload/feeds
+ServiceImage <-- Dio : response
+ServiceImage -> ModelImage : UploadImageResponse.fromJson(response)
+ServiceImage <-- ModelImage : UploadImageResponse
+Page <-- ServiceImage : UploadImageResponse
+end
+Page -> ModelFeeds : PostFeedsRequest(captionController, uploadedImage)
+Page <-- ModelFeeds : PostFeedsRequest
+Page -> ServiceFeeds : postFeeds(request)
+ServiceFeeds -> Dio : post /feeds/post
+ServiceFeeds <-- Dio : response
+ServiceFeeds -> ModelFeeds : PostFeedsResponse.fromJson(response)
+ServiceFeeds <-- ModelFeeds : PostFeedsResponse
+Page <-- ServiceFeeds : PostFeedsResponse
+User <-- Page: FeedsPage
+
+
+@enduml

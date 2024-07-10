@@ -1,0 +1,34 @@
+@startuml View Notification Page
+' Global param
+title View Notification Page
+autoactivate on
+
+' Global style configuration
+skinparam RoundCorner 0
+hide footbox
+
+' Sequence participant configuration
+actor User
+participant "__:NotificationPage__" as Page <<view>>
+participant "__:AdoptionNotificationCardDetail__" as CardAdopt <<view>>
+participant "__:CommentNotificationCardDetail__" as CardActivity <<view>>
+participant "__:NotificationService__" as Service
+participant "__:Notification__" as Model <<model>>
+participant "__:DioInstance__" as Dio
+
+' Sequence diagram
+User -> Page: build(context)
+Page -> Service : retrieveNotificationList()
+Service -> Dio : get /notification/view
+Service <-- Dio : response
+Service -> Model : ViewNotificationResponse.fromJson(response)
+Service <-- Model :  ViewNotificationResponse
+Page <-- Service : list<ViewNotificationResponse>
+Page -> CardAdopt : build(context)
+Page <-- CardAdopt : AdoptionNotificationCardDetail
+Page -> CardActivity : build(context)
+Page <-- CardActivity : CommentNotificationCardDetail
+User <-- Page: NotificationPage
+
+
+@enduml

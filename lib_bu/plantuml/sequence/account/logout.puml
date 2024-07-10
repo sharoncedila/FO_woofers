@@ -1,0 +1,38 @@
+@startuml Logout
+' Global param
+title Logout
+autoactivate on
+
+' Global style configuration
+skinparam RoundCorner 0
+hide footbox
+
+' Sequence participant configuration
+actor User
+participant "__:UserProfilePage__" as Page <<view>>
+participant "__:AccountService__" as Service
+participant "__:Account__" as Model <<model>>
+participant "__:DioInstance__" as Dio
+
+
+' Sequence diagram
+User -> Page: build(context)
+User <-- Page: return confirmation pop up
+alt logout
+User -> Page: confirm
+Page -> Service: logout()
+Service -> Dio: get /accounts/logout
+Service <-- Dio: response
+Service -> Model: LogoutResponse.fromJson(response)
+Service <-- Model: LogoutResponse
+Page <-- Service: LogoutResponse
+User <-- Page: LoginPage
+else cancel logout
+User -> Page: cancel
+User <-- Page: UserProfilePage
+end
+
+
+
+
+@enduml

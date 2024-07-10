@@ -17,8 +17,8 @@ participant "__:DioInstance__" as Dio
 
 
 ' Sequence diagram
-User -> Page : build(context)
-User -> Card: build(context)
+User -> Page: build(context) 
+Page -> Card: build(context)
 User <-- Card: return confirmation pop up
 alt delete dog
 User -> Card: confirm

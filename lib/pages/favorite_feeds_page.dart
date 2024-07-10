@@ -25,7 +25,7 @@ class _FavoritFeedsPageState extends State<FavoritFeedsPage> {
               return const Center(child: Text("Retrieving your data..."));
             }
             if (snapshot.hasError) {
-              return const Center(child: Text("Error"));
+              return const Center(child: Text("\n please like a feeds first"));
             }
             if (!snapshot.hasData) {
               return const Text('no feeds');

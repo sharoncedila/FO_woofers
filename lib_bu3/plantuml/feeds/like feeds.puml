@@ -1,0 +1,31 @@
+@startuml Like Feeds
+' Global param
+title Like Feeds
+autoactivate on
+
+' Global style configuration
+skinparam RoundCorner 0
+hide footbox
+
+' Sequence participant configuration
+actor User
+participant "__:FeedsPage__" as Page <<view>>
+participant "__:FeedsCard__" as Card <<view>>
+participant "__:FeedsService__" as Service
+participant "__:Feeds__" as Model <<model>>
+participant "__:DioInstance__" as Dio
+
+' Sequence diagram
+User -> Page: build(context)
+Page -> Card : build(context)
+Card -> Service : likeFeeds(feedsDetail)
+Service -> Dio : get /feeds/like/feeds-id/$feedsId
+Service <-- Dio : response
+Service -> Model : ViewFeedsResponse.fromJson(response)
+Service <-- Model : ViewFeedsResponse
+Card <-- Service : ViewFeedsResponse
+Page <-- Card : FeedsCard
+User <-- Page: FeedsPage
+
+
+@enduml

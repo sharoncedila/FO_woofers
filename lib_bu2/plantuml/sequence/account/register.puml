@@ -1,0 +1,37 @@
+@startuml Register
+' Global param
+title Register
+autoactivate on
+
+' Global style configuration
+skinparam RoundCorner 0
+hide footbox
+
+' Sequence participant configuration
+actor User
+participant "__:RegisterPage__" as Page <<view>>
+participant "__:AccountService__" as Service
+participant "__:Account__" as Model <<model>>
+participant "__:DioInstance__" as Dio
+
+
+' Sequence diagram
+User -> Page: build(context)
+User <-- Page: RegisterPage
+User -> Page: RegisterForm()
+alt Validation is Successful
+Page -> Model: RequestRegisterModel(email, fullname, password, username, provinceName,phoneNumber)
+Page <-- Model: RequestRegisterModel
+Page -> Service: register(registerReq)
+Service -> Dio : post /accounts/register
+Service <-- Dio : response
+Service -> Model: ResponseRegisterModel.fromJson(response)
+Service <-- Model: ResponseRegisterModel
+Page <-- Service: ResponseRegisterModel
+User <-- Page: LoginPage
+else Validation Fails
+User <-- Page: show error message
+end
+
+
+@enduml

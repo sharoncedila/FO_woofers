@@ -1,0 +1,33 @@
+@startuml Approve Reject Adoption
+' Global param
+title Approve Reject Adoption
+autoactivate on
+
+' Global style configuration
+skinparam RoundCorner 0
+hide footbox
+
+' Sequence participant configuration
+actor User
+participant "__:NotificationPage__" as Page <<view>>
+participant "__:AdoptionNotificationCardDetail__" as Card <<view>>
+participant "__:AdoptionService__" as Service
+participant "__:Adoption__" as Model <<model>>
+participant "__:DioInstance__" as Dio
+
+' Sequence diagram
+User -> Page : build(context)
+Page -> Card : build(context)
+Card -> Model : ApproveRejectAdoptionRequest(notificationId, status)
+Card <-- Model : ApproveRejectAdoptionRequest
+Card -> Service : approveRejectAdoption(request)
+Service -> Dio : post /adoption/approve-reject-adoption
+Service <-- Dio : response
+Service -> Model : ApproveRejectAdoptionResponse.fromJson(response)
+Service <-- Model : ApproveRejectAdoptionResponse
+Card <-- Service : ApproveRejectAdoptionResponse
+Page <-- Card : AdoptionNotificationCardDetail
+User <-- Page : NotificationPage
+
+
+@enduml

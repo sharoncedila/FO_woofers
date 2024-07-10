@@ -1,0 +1,60 @@
+@startuml Edit User Profile
+' Global param
+title Edit User Profile
+autoactivate on
+
+' Global style configuration
+skinparam RoundCorner 0
+hide footbox
+
+' Sequence participant configuration
+actor User
+participant "__:EditMyProfile__" as Page <<view>>
+participant "__:AccountService__" as ServiceAccount
+participant "__:ImageService__" as ServiceImage
+participant "__:Account__" as ModelAccount <<model>>
+participant "__:Image__" as ModelImage
+participant "__:ImageNetwork__" as Image
+participant "__:DioInstance__" as Dio
+
+
+' Sequence diagram
+User -> Page: build(context)
+Page -> ServiceAccount : retrieveUserData()
+ServiceAccount -> Dio : get /accounts/profile/view
+ServiceAccount <-- Dio : response
+ServiceAccount -> ModelAccount : ResponseUserProfileModel.fromJson(response)
+ServiceAccount <-- ModelAccount : ResponseUserProfileModel
+Page <-- ServiceAccount : ResponseUserProfileModel
+User <-- Page : EditMyProfile
+opt Upload new image
+User -> Page : uploadProfilePic(image)
+Page -> ServiceImage : uploadProfilePicture(image)
+ServiceImage -> Dio : post /upload/account
+ServiceImage <-- Dio : response
+ServiceImage -> ModelImage : UploadImageResponse.fromJson(response)
+ServiceImage <-- ModelImage : UploadImageResponse
+Page <-- ServiceImage : UploadImageResponse
+Page -> Image : ImageNetwork(uploadedImage, width, height)
+Page <-- Image : image
+end
+User -> Page : editMyProfile()
+alt Validation is successful
+Page -> ModelAccount : EditProfileRequest(fullnameController, selectedProvince, phoneNumberController, descriptionController, uploadedImage)
+Page <-- ModelAccount : EditProfileRequest
+Page -> ServiceAccount : editAccountProfile(edit)
+ServiceAccount -> Dio : post /accounts/profile/edit
+ServiceAccount <-- Dio : response
+ServiceAccount -> ModelAccount : ResponseUserProfileModel.fromJson(response)
+ServiceAccount <-- ModelAccount : ResponseUserProfileModel
+Page <-- ServiceAccount : ResponseUserProfileModel
+User <-- Page : UserProfilePage
+else Validation fails
+User <-- Page: show error message
+end
+
+
+
+
+
+@enduml

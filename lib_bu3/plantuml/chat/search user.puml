@@ -1,0 +1,31 @@
+@startuml Search User
+' Global param
+title Search User
+autoactivate on
+
+' Global style configuration
+skinparam RoundCorner 0
+hide footbox
+
+' Sequence participant configuration
+actor User
+participant "__:SearchUserListPage__" as Page <<view>>
+participant "__:SearchUserCardDetail__" as Card <<view>>
+participant "__:ChatService__" as Service
+participant "__:Chat__" as Model <<model>>
+participant "__:DioInstance__" as Dio
+
+' Sequence diagram
+User -> Page: build(context)
+Page -> Service : searchChat(userName)
+Service -> Dio : get /chats/search/keyword/$username
+Service <-- Dio : response
+Service -> Model : SearchChatResponse.fromJson(response)
+Service <-- Model : SearchChatResponse
+Page <-- Service : list<SearchChatResponse>
+Page -> Card : build(context)
+Page <-- Card : SearchUserCardDetail
+User <-- Page: ChatroomPageDetail
+
+
+@enduml

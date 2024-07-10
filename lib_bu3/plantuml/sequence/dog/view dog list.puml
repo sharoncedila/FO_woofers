@@ -1,0 +1,32 @@
+@startuml View Dog List
+' Global param
+title View Dog List
+autoactivate on
+
+' Global style configuration
+skinparam RoundCorner 0
+hide footbox
+
+' Sequence participant configuration
+actor User
+participant "__:DogListPage__" as Page <<view>>
+participant "__:MyDogCard__" as Card <<view>>
+participant "__:DogService__" as Service
+participant "__:Dog__" as Model <<model>>
+participant "__:DioInstance__" as Dio
+
+
+' Sequence diagram
+User -> Page: build(context)
+Page -> Service : retrieveDogList(accountId)
+Service -> Dio : get /account-dog/account-id/$accountId
+Service <-- Dio : response
+Service -> Model : ResponseDogCard.fromJson(response)
+Service <-- Model : ResponseDogCard
+Page <-- Service : list<ResponseDogCard>
+Page -> Card : build(context)
+Page <-- Card : MyDogCard
+User <-- Page: DogListPage
+
+
+@enduml
