@@ -43,10 +43,9 @@ class _DogListPageState extends State<DogListPage> {
               return Padding(
                 padding: EdgeInsets.all(160),
                 child: Container(
-                  // Center the CircularProgressIndicator
                   alignment: Alignment.center,
                   color: Colors
-                      .transparent, // Ensure the container doesn't block interaction with underlying widgets
+                      .transparent,
                   child: const CircularProgressIndicator(),
                 ),
               );
@@ -68,10 +67,9 @@ class _DogListPageState extends State<DogListPage> {
                         return Padding(
                           padding: EdgeInsets.all(160),
                           child: Container(
-                            // Center the CircularProgressIndicator
                             alignment: Alignment.center,
                             color: Colors
-                                .transparent, // Ensure the container doesn't block interaction with underlying widgets
+                                .transparent,
                             child: const CircularProgressIndicator(),
                           ),
                         );
@@ -87,7 +85,6 @@ class _DogListPageState extends State<DogListPage> {
                       return SingleChildScrollView(
                         
                         child: Column(
-                          // padding: const EdgeInsets.symmetric(horizontal: 5, vertical: 5),
                           children: [
                             IconButton(
                               icon: Icon(Icons.add),

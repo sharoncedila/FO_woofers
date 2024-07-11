@@ -29,25 +29,7 @@ class DogProfilePage extends StatelessWidget {
           ),
         ),
         actions: const <Widget>[
-          // IconButton(
-          //   icon: const Icon(Icons.notification_add_rounded),
-          //   onPressed: () {
-          //     Navigator.push(
-          //       context,
-          //       MaterialPageRoute(
-          //           builder: (context) => const NotificationPage()),
-          //     );
-          //   },
-          // ),
-          // IconButton(
-          //   icon: const Icon(Icons.add_to_photos),
-          //   onPressed: () {
-          //     Navigator.push(
-          //       context,
-          //       MaterialPageRoute(builder: (context) => const AddDogPage()),
-          //     );
-          //   },
-          // ),
+         
         ],
       ),
       body: dogProfileDetail(),
@@ -57,7 +39,6 @@ class DogProfilePage extends StatelessWidget {
   Widget dogProfileDetail() {
     return SingleChildScrollView(
       child: Container(
-        // SingleChildScrollView(
         child: FutureBuilder(
             future: DogService().retrieveDogProfile(dogId),
             builder: (context, snapshot) {
@@ -65,10 +46,9 @@ class DogProfilePage extends StatelessWidget {
                 return Padding(
                   padding: const EdgeInsets.all(160),
                   child: Container(
-                    // Center the CircularProgressIndicator
                     alignment: Alignment.center,
                     color: Colors
-                        .transparent, // Ensure the container doesn't block interaction with underlying widgets
+                        .transparent,
                     child: const CircularProgressIndicator(),
                   ),
                 );
@@ -81,7 +61,6 @@ class DogProfilePage extends StatelessWidget {
                     child: Text("no data available for this dog"));
               }
 
-              // snapshot.data?.dogName==null?"gagalambildata":snapshot.data!.dogName,
               final dogId = snapshot.data?.dogId ?? "";
               final imageURL =
                   snapshot.data?.image == null ? "" : snapshot.data!.image;
@@ -94,14 +73,14 @@ class DogProfilePage extends StatelessWidget {
                       ? Switch(
                           value: true,
                           onChanged:
-                              null, // Set to null to disable the toggle button
+                              null,
                           activeTrackColor: HexColor("#a0dcdc"),
                           activeColor: Colors.white,
                         )
                       : Switch(
                           value: false,
                           onChanged:
-                              null, // Set to null to disable the toggle button
+                              null,
                           activeTrackColor: HexColor("#a0dcdc"),
                           activeColor: Colors.white,
                         ),
@@ -109,7 +88,6 @@ class DogProfilePage extends StatelessWidget {
                   const SizedBox(
                     height: 15,
                   ),
-                  // ImageNetwork(urlImage: imageURL, width: 150, height: 150),
                   (imageURL != null)
                       ? ImageNetwork(
                           urlImage: imageURL,
@@ -118,34 +96,13 @@ class DogProfilePage extends StatelessWidget {
                         )
                       : const Image(
                           image: AssetImage('assets/woofers_icon/profile.jpg')),
-                  // const SizedBox(
-                  //   height: 15,
-                  // ),
-
-                  // IconButton(
-                  //     onPressed: () async {
-                  //       final pickedFile = await ImagePicker()
-                  //           .pickImage(source: ImageSource.gallery);
-                  //       if (pickedFile != null) {
-                  //         File image = File(pickedFile.path);
-                  //         ImageService().uploadDogImage(dogId, image);
-                  //       }
-                  //       // ImageService().uploadFeeds();
-                  //     },
-                  //     icon: const Icon(Icons.camera)),
-
-                  // dog name
+                  
                   Row(
                     children: [
                       const SizedBox(
                         width: 20,
                       ),
-                      // const Image(
-                      //   image:
-                      //       AssetImage('assets/woofers_icon/profile.jpg'),
-                      //   width: 35,
-                      //   height: 35,
-                      // ),
+                      
                       const Icon(
                         Icons.pets_sharp,
                         size: 35,
@@ -186,7 +143,6 @@ class DogProfilePage extends StatelessWidget {
                     ],
                   ),
 
-                  // doog breed
                   const SizedBox(height: 15),
                   Row(
                     children: [
@@ -197,12 +153,7 @@ class DogProfilePage extends StatelessWidget {
                         Icons.pets_outlined,
                         size: 35,
                       ),
-                      // const Image(
-                      //   image:
-                      //       AssetImage('assets/woofers_icon/profile.jpg'),
-                      //   width: 35,
-                      //   height: 35,
-                      // ),
+                      
                       const SizedBox(
                         width: 20,
                       ),
@@ -239,19 +190,14 @@ class DogProfilePage extends StatelessWidget {
                     ],
                   ),
 
-                  // date of birth
+                 //DOB
                   const SizedBox(height: 15),
                   Row(
                     children: [
                       const SizedBox(
                         width: 20,
                       ),
-                      // const Image(
-                      //   image:
-                      //       AssetImage('assets/woofers_icon/email.png'),
-                      //   width: 35,
-                      //   height: 35,
-                      // ),
+                      
                       const Icon(
                         Icons.calendar_month_outlined,
                         size: 35,
@@ -299,12 +245,7 @@ class DogProfilePage extends StatelessWidget {
                       const SizedBox(
                         width: 20,
                       ),
-                      // const Image(
-                      //   image: AssetImage(
-                      //       'assets/woofers_icon/province.png'),
-                      //   width: 35,
-                      //   height: 35,
-                      // ),
+                      
                       const Icon(
                         Icons.transgender_outlined,
                         size: 35,
@@ -354,12 +295,6 @@ class DogProfilePage extends StatelessWidget {
                       const SizedBox(
                         width: 20,
                       ),
-                      // const Image(
-                      //   image:
-                      //       AssetImage('assets/woofers_icon/province.png'),
-                      //   width: 35,
-                      //   height: 35,
-                      // ),
                       const Icon(
                         Icons.location_city_outlined,
                         size: 35,
@@ -407,12 +342,6 @@ class DogProfilePage extends StatelessWidget {
                       const SizedBox(
                         width: 20,
                       ),
-                      // const Image(
-                      //   image:
-                      //       AssetImage('assets/woofers_icon/phone.png'),
-                      //   width: 35,
-                      //   height: 35,
-                      // ),
                       const Icon(
                         Icons.medical_services_outlined,
                         size: 35,
@@ -462,12 +391,6 @@ class DogProfilePage extends StatelessWidget {
                       const SizedBox(
                         width: 20,
                       ),
-                      // const Image(
-                      //   image: AssetImage(
-                      //       'assets/woofers_icon/description.png'),
-                      //   width: 35,
-                      //   height: 35,
-                      // ),
                       const Icon(
                         Icons.abc_outlined,
                         size: 35,
