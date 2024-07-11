@@ -52,10 +52,6 @@ class MyDogCard extends StatelessWidget {
                             : const Image(
                                 image: AssetImage(
                                     'assets/woofers_icon/profile.jpg')),
-                        // ImageNetwork(
-                        //     urlImage: dogProfile.image,
-                        //     width: 135,
-                        //     height: 135),
                         const SizedBox(
                           width: 15,
                         ),
@@ -63,9 +59,6 @@ class MyDogCard extends StatelessWidget {
                           crossAxisAlignment: CrossAxisAlignment.start,
                           mainAxisAlignment: MainAxisAlignment.center,
                           children: [
-                            // Column(
-                            // children: [
-                            // name
                             Text(
                               dogProfile.dogName,
                               textAlign: TextAlign.left,
@@ -75,17 +68,14 @@ class MyDogCard extends StatelessWidget {
                                 color: const Color.fromRGBO(40, 36, 36, 10000),
                               ),
                             ),
-                            // breed
                             Text(
                               dogProfile.breedName ?? '',
                               textAlign: TextAlign.left,
                               style: GoogleFonts.lora(
                                 fontSize: 15,
-                                // fontWeight: FontWeight.bold,
                                 color: const Color.fromRGBO(40, 36, 36, 10000),
                               ),
                             ),
-                            // age
                             Row(
                               children: [
                                 Text(
@@ -93,7 +83,6 @@ class MyDogCard extends StatelessWidget {
                                   textAlign: TextAlign.left,
                                   style: GoogleFonts.lora(
                                     fontSize: 15,
-                                    // fontWeight: FontWeight.bold,
                                     color:
                                         const Color.fromRGBO(40, 36, 36, 10000),
                                   ),
@@ -103,39 +92,23 @@ class MyDogCard extends StatelessWidget {
                                   textAlign: TextAlign.left,
                                   style: GoogleFonts.lora(
                                     fontSize: 15,
-                                    // fontWeight: FontWeight.bold,
                                     color:
                                         const Color.fromRGBO(40, 36, 36, 10000),
                                   ),
                                 ),
                               ],
                             ),
-                            // ],
-                            // ),
                             const SizedBox(
                               height: 10,
                             ),
                             Row(
                               children: [
-                                // edit button
                                 SizedBox(
-                                  // height: 45,
-                                  // width: 35,
                                   child: TextButton(
                                     style: TextButton.styleFrom(
                                       backgroundColor: Colors.white,
                                       fixedSize: const Size(75, 10),
                                     ),
-                                    /*
-                                    onTap: () {
-                                    Navigator.push(
-                                      context,
-                                      MaterialPageRoute(
-                                        builder: (context) =>
-                                          DogProfilePage(dogId: dogProfile.dogId)),
-                                    );
-                                  },
-                                    */
                                     onPressed: () {
                                       Navigator.push(
                                         context,
@@ -149,7 +122,6 @@ class MyDogCard extends StatelessWidget {
                                       style: TextStyle(
                                         color: Colors.black,
                                         fontSize: 13,
-                                        // fontWeight: FontWeight.w300,
                                       ),
                                     ),
                                   ),
@@ -157,16 +129,12 @@ class MyDogCard extends StatelessWidget {
                                 const SizedBox(
                                   width: 15,
                                 ),
-                                // delete button
                                 SizedBox(
                                   height: 45,
                                   child: TextButton(
                                     style: TextButton.styleFrom(
                                         backgroundColor: Colors.red,
                                         fixedSize: const Size(75, 10)),
-                                    // onPressed: () {
-                                    //   DogService().deleteDog(dogProfile.dogId);
-                                    // },
                                     onPressed: () async {
                                       showDialog(
                                         context: context,
@@ -199,12 +167,6 @@ class MyDogCard extends StatelessWidget {
                                           DogService()
                                               .deleteDog(dogProfile.dogId);
                                         }
-                                        // no
-                                        // else {
-                                        //   // If 'No' is pressed or the dialog is dismissed
-                                        //   // print('User canceled');
-                                        //   // Perform the desired action or do nothing
-                                        // }
                                       });
                                     },
                                     child: const Text(
@@ -212,7 +174,6 @@ class MyDogCard extends StatelessWidget {
                                       style: TextStyle(
                                         color: Colors.white,
                                         fontSize: 13,
-                                        // fontWeight: FontWeight.w300,
                                       ),
                                     ),
                                   ),
@@ -225,53 +186,5 @@ class MyDogCard extends StatelessWidget {
                     ),
                   )))),
     );
-    // );
   }
 }
-
-
-
-/*
-onPressed: () async {
-                        showDialog(
-                          context: context,
-                          builder: (BuildContext context) {
-                            return AlertDialog(
-                              title: const Text('Confirmation'),
-                              content: const Text(
-                                  'Are you sure want to log out your account?'),
-                              actions: <Widget>[
-                                TextButton(
-                                  onPressed: () {
-                                    Navigator.of(context).pop(false);
-                                  },
-                                  child: const Text('No'),
-                                ),
-                                TextButton(
-                                  onPressed: () {
-                                    Navigator.of(context).pop(true);
-                                  },
-                                  child: const Text('Yes'),
-                                ),
-                              ],
-                            );
-                          },
-                        ).then((value) {
-                          // yess
-                          if (value != null && value) {
-                            _loginService.logout();
-                            Navigator.push(
-                              context,
-                              MaterialPageRoute(
-                                  builder: (context) => const LoginPage()),
-                            );
-                          }
-                          // no
-                          // else {
-                          //   // If 'No' is pressed or the dialog is dismissed
-                          //   // print('User canceled');
-                          //   // Perform the desired action or do nothing
-                          // }
-                        });
-                      },
-*/

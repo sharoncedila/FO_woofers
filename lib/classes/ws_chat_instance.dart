@@ -17,22 +17,9 @@ class WSChatInstance {
       };
       session =
           await WebSocket.connect('wss://woofers.arv.cx/woofers/send-chat',
-              // 'ws://192.168.68.143:8080/woofers/send-chat',
               headers: headers);
       print("Successfully Connect to WebSocket Chat Server");
       return session;
-      // session!.listen(
-      //   (data) {
-      //     final notif = WebSocketChat.fromJson(jsonDecode(data));
-      //     print(notif.message);
-      //   },
-      //   onError: (error) {
-      //     print("Error receiving message: $error");
-      //   },
-      //   onDone: () {
-      //     print("WebSocket connection closed");
-      //   },
-      // );
     } catch (error) {
       print("Fail Connect to WebSocket Server");
     }

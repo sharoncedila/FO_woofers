@@ -8,10 +8,8 @@ class DioInstance {
     if (instance == null) {
       final prefs = await SharedPreferences.getInstance();
       final token = prefs.getString('accessToken');
-      // final accoundId = prefs.getString('accountId');
       instance ??= Dio(BaseOptions(
         baseUrl: 'https://woofers.arv.cx/woofers',
-        // baseUrl: 'http://192.168.68.143:8080/woofers',
         headers: Map.from({"Authorization": "Bearer $token"}),
       ));
     }
@@ -23,25 +21,3 @@ class DioInstance {
     instance = null;
   }
 }
-
-// import 'package:dio/dio.dart';
-// import 'package:shared_preferences/shared_preferences.dart';
-
-// class DioInstance {
-//   static Dio? instance;
-
-//   static Future<Dio> getInstance() async {
-//     final prefs = await SharedPreferences.getInstance();
-//     final token = prefs.getString('accessToken');
-//     instance ??= Dio(BaseOptions(
-//       baseUrl: 'http://192.168.68.172:8080/woofers',
-//       headers: Map.from({"Authorization": "Bearer $token"}),
-//     ));
-
-//     return instance!;
-//   }
-
-//   static void setNull() {
-//     instance = null;
-//   }
-// }

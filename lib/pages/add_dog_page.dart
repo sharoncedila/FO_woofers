@@ -98,7 +98,6 @@ class _AddDogPageState extends State<AddDogPage> {
         child: Column(children: [
           Padding(
             padding: const EdgeInsets.only(right: 30),
-            // Adjust the value as needed
             child: Column(children: [
               const SizedBox(
                 height: 15,
@@ -115,7 +114,7 @@ class _AddDogPageState extends State<AddDogPage> {
                     ),
                   ),
                   const SizedBox(
-                      width: 10), // Add space between text and switch
+                      width: 10),
                   Switch(
                     value: isSwitched,
                     onChanged: (value) {
@@ -135,7 +134,6 @@ class _AddDogPageState extends State<AddDogPage> {
               const SizedBox(
                 height: 15,
               ),
-              // const Image(image: AssetImage('assets/dog_picture/dog1.jpg')),
               (uploadedImage == null)
                   ? const Icon(
                       Icons.pets,
@@ -158,7 +156,6 @@ class _AddDogPageState extends State<AddDogPage> {
                       File image = File(pickedFile.path);
                       uploadDogProfilePic(image);
                     }
-                    // ImageService().uploadFeeds();
                   },
                   icon: const Icon(Icons.camera_alt)),
               const SizedBox(
@@ -177,8 +174,6 @@ class _AddDogPageState extends State<AddDogPage> {
                   const SizedBox(
                     width: 20,
                   ),
-
-                  // dog name
                   Expanded(
                       child: Column(
                           mainAxisAlignment: MainAxisAlignment.start,
@@ -244,11 +239,8 @@ class _AddDogPageState extends State<AddDogPage> {
                         SizedBox(
                           height: 75,
                           child: SingleChildScrollView(
-                            //child: Padding(
-                            //padding: const EdgeInsets.symmetric(),
                             child: FutureBuilder(
                               future: DogService().retrieveAllBreed(),
-                              //initialData: breedController.text,
                               builder: (context, snapshot) {
                                 if (snapshot.connectionState ==
                                     ConnectionState.waiting) {
@@ -297,7 +289,6 @@ class _AddDogPageState extends State<AddDogPage> {
                             ),
                           ),
                         ),
-                        // ),
                       ])),
                   const SizedBox(
                     width: 20,
@@ -305,7 +296,6 @@ class _AddDogPageState extends State<AddDogPage> {
                 ],
               ),
 
-              // date of birth
               const SizedBox(height: 25),
               Row(
                 children: [
@@ -354,7 +344,7 @@ class _AddDogPageState extends State<AddDogPage> {
                                 ElevatedButton(
                                   style: ElevatedButton.styleFrom(
                                     backgroundColor: HexColor(
-                                        "#a0dcdc"), // Background color of the button
+                                        "#a0dcdc"),
                                   ),
                                   onPressed: () => _selectDate(context),
                                   child: Text(
@@ -378,7 +368,6 @@ class _AddDogPageState extends State<AddDogPage> {
                 ],
               ),
 
-              // gender
               const SizedBox(height: 25),
               Row(
                 children: [
@@ -427,12 +416,6 @@ class _AddDogPageState extends State<AddDogPage> {
                                   ),
                                 );
                               }).toList(),
-                              // validator: (value) {
-                              //   if (value == null || value.isEmpty) {
-                              //     value = 'Please choose your dog gender';
-                              //   }
-                              //   return null;
-                              // },
                             )),
                       ])),
                   const SizedBox(
@@ -441,19 +424,12 @@ class _AddDogPageState extends State<AddDogPage> {
                 ],
               ),
 
-              // province
               const SizedBox(height: 25),
               Row(
                 children: [
                   const SizedBox(
                     width: 20,
                   ),
-                  // const Image(
-                  //   image:
-                  //       AssetImage('assets/woofers_icon/province.png'),
-                  //   width: 35,
-                  //   height: 35,
-                  // ),
                   const Icon(
                     Icons.location_city_outlined,
                     size: 35,
@@ -533,19 +509,12 @@ class _AddDogPageState extends State<AddDogPage> {
                 ],
               ),
 
-              // vaccine
               const SizedBox(height: 25),
               Row(
                 children: [
                   const SizedBox(
                     width: 20,
                   ),
-                  // const Image(
-                  //   image:
-                  //       AssetImage('assets/woofers_icon/phone.png'),
-                  //   width: 35,
-                  //   height: 35,
-                  // ),
                   const Icon(
                     Icons.medical_services_outlined,
                     size: 35,
@@ -576,12 +545,6 @@ class _AddDogPageState extends State<AddDogPage> {
                                 color: Colors.black,
                               ),
                             ),
-                            // validator: (value) {
-                            //   if (value == null || value.isEmpty) {
-                            //     return 'Please fill vaccine field';
-                            //   }
-                            //   return null;
-                            // },
                           ),
                         ),
                       ])),
@@ -591,19 +554,12 @@ class _AddDogPageState extends State<AddDogPage> {
                 ],
               ),
 
-              // description
               const SizedBox(height: 25),
               Row(
                 children: [
                   const SizedBox(
                     width: 20,
                   ),
-                  // const Image(
-                  //   image: AssetImage(
-                  //       'assets/woofers_icon/description.png'),
-                  //   width: 35,
-                  //   height: 35,
-                  // ),
                   const Icon(
                     Icons.abc_outlined,
                     size: 35,
@@ -629,7 +585,6 @@ class _AddDogPageState extends State<AddDogPage> {
                               controller: descriptionController,
                               decoration: InputDecoration(
                                 border: const UnderlineInputBorder(),
-                                // labelText: 'Username',
                                 labelStyle: GoogleFonts.newsCycle(
                                   color: Colors.black,
                                 ),
@@ -664,13 +619,12 @@ class _AddDogPageState extends State<AddDogPage> {
                                     .primary
                                     .withOpacity(0.5);
                               }
-                              return null; // Use the component's default.
+                              return null;
                             },
                           ),
                         ),
                         child: const Text('Add',
                             style: TextStyle(
-                                //color: Colors.grey[600],
                                 fontWeight: FontWeight.bold,
                                 fontSize: 18)),
                         onPressed: () async {
@@ -708,7 +662,6 @@ class _AddDogPageState extends State<AddDogPage> {
                               showDialog(
                                 context: context,
                                 builder: (context) {
-                                  //return Text(error.toString());
                                   return SimpleDialog(
                                     children: [Text(error.toString())],
                                   );
@@ -725,8 +678,5 @@ class _AddDogPageState extends State<AddDogPage> {
         ]),
       ),
     );
-    // );
-    //       }),
-    // ),
   }
 }

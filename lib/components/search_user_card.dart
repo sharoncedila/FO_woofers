@@ -29,8 +29,6 @@ class SearchUserCardDetail extends StatelessWidget {
               Navigator.push(
                 context,
                 MaterialPageRoute(
-                    //Other User Profile
-
                     builder: (context) => ChatroomPageDetail(
                         recipientId: searchUserDetail.accountId!,
                         username: searchUserDetail.username,
@@ -55,9 +53,6 @@ class SearchUserCardDetail extends StatelessWidget {
                               fontWeight: FontWeight.bold),
                         ),
                       ),
-                      // const SizedBox(
-                      //   height: 3,
-                      // ),
                       Padding(
                         padding: const EdgeInsets.only(right: 10),
                         child: IconButton(

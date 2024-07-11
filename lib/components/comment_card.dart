@@ -10,20 +10,15 @@ class CommentCard extends StatelessWidget {
     super.key,
     required this.commentDetail,
   });
-  // const CommentCard ({super.key});
 
   @override
   Widget build(BuildContext context) {
     final imageURL = commentDetail.profilePicture;
-    // final imageURL;
     return Padding(
       padding: const EdgeInsets.only(left: 5, right: 5),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          // const SizedBox(
-          //   height: 5,
-          // ),
           Padding(
             padding: const EdgeInsets.only(bottom: 0),
             child: Container(
@@ -34,19 +29,10 @@ class CommentCard extends StatelessWidget {
                 borderRadius: BorderRadius.circular(33),
               ),
               child: Row(
-                //comment box-nya
                 children: [
                   const SizedBox(
                     width: 20,
                   ),
-                  // (imageURL == null)
-                  //     ? const Image(
-                  //         image: AssetImage(
-                  //             'assets/woofers_icon/profileImageTemplate.png'),
-                  //         width: 20,
-                  //         height: 20,
-                  //       )
-                  //     : ImageNetwork(urlImage: imageURL, width: 20, height: 20),
                   (commentDetail.profilePicture != null)
                       ? InkWell(
                           onTap: () {
@@ -93,7 +79,6 @@ class CommentCard extends StatelessWidget {
                         Row(
                           children: [
                             Text(
-                                // "Sharon Cedila",
                                 commentDetail.username ?? '',
                                 style: const TextStyle(
                                   fontSize: 10,
@@ -105,7 +90,6 @@ class CommentCard extends StatelessWidget {
                               width: 10,
                             ),
                             Text(
-                                // "12 mins",
                                 commentDetail.commentDate ?? '',
                                 style: TextStyle(
                                   fontSize: 10,
@@ -118,7 +102,6 @@ class CommentCard extends StatelessWidget {
                           height: 3,
                         ),
                         Text(
-                          // 'commentnya',
                           commentDetail.content ?? '',
                           style: GoogleFonts.archivoNarrow(
                             fontSize: 17,

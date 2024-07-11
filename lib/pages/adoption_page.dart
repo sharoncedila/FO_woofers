@@ -94,10 +94,8 @@ class _AdoptionPageState extends State<AdoptionPage> {
                   padding: const EdgeInsets.symmetric(horizontal: 5),
                   child: Row(
                     children: [
-                      // Province Dropdown
                       Expanded(
-                        flex: 11, // 35% of the row
-                        // fit: FlexFit.tight,
+                        flex: 11,
                         child: SizedBox(
                           height: 50,
                           child: DropdownButtonFormField<String>(
@@ -137,10 +135,8 @@ class _AdoptionPageState extends State<AdoptionPage> {
                         ),
                       ),
                       const SizedBox(width: 5),
-                      // Breed Dropdown
                       Expanded(
-                        flex: 11, // 35% of the row
-                        // fit: FlexFit.tight,
+                        flex: 11,
                         child: SizedBox(
                           height: 50,
                           child: Container(
@@ -183,9 +179,8 @@ class _AdoptionPageState extends State<AdoptionPage> {
                         ),
                       ),
                       const SizedBox(width: 1),
-                      // Search Icon
                       Flexible(
-                        flex: 2, // 15% of the row
+                        flex: 2,
                         fit: FlexFit.loose,
                         child: IconButton(
                           onPressed: () {
@@ -200,9 +195,8 @@ class _AdoptionPageState extends State<AdoptionPage> {
                           icon: const Icon(Icons.search_outlined),
                         ),
                       ),
-                      // Cancel Filter Icon
                       Flexible(
-                        flex: 2, // 15% of the row
+                        flex: 2,
                         fit: FlexFit.loose,
                         child: IconButton(
                           onPressed: () {

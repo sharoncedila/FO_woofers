@@ -18,7 +18,6 @@ class WSNotifInstance {
       };
       session = await WebSocket.connect(
           'wss://woofers.arv.cx/woofers/app-notif',
-          // 'ws://192.168.68.143:8080/woofers',
           headers: headers);
       print("Successfully Connect to WebSocket Notif Server");
 

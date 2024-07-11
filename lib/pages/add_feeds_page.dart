@@ -23,7 +23,6 @@ class _AddFeedsPageState extends State<AddFeedsPage> {
   String? tempImage;
   String? captionErrorMessage;
   final _captionController = TextEditingController();
-  // UploadImageResponse? uploadedImage = await ImageService().uploadFeeds();
 
   Future<void> uploadFeeds(File image) async {
     try {
@@ -69,14 +68,12 @@ class _AddFeedsPageState extends State<AddFeedsPage> {
           const SizedBox(
             height: 15,
           ),
-          // const Image(image: AssetImage('assets/dog_picture/dog1.jpg')),
           (uploadedImage == null)
               ? const Icon(
                   Icons.broken_image_outlined,
                   size: 300,
                   color: Colors.black26,
                 )
-              // Image(image: AssetImage('assets/dog_picture/dog1.jpg'))
               : ImageNetwork(
                   urlImage: "/temp/${uploadedImage}", width: 300, height: 300),
           IconButton(
@@ -86,12 +83,6 @@ class _AddFeedsPageState extends State<AddFeedsPage> {
                 if (pickedFile != null) {
                   File image = File(pickedFile.path);
                   uploadFeeds(image);
-
-                  // setState(() {
-                  //   uploadedImage = pickedFile.path;
-                  //   // FeedsService()
-                  //   //     .likeFeeds(feedsDetail.feedsId ?? '');
-                  // });
                 }
               },
               icon: const Icon(Icons.camera_alt)),
@@ -117,10 +108,6 @@ class _AddFeedsPageState extends State<AddFeedsPage> {
             height: 7,
           ),
           Text(captionErrorMessage ?? ""),
-          // (captionErrorMessage != null) ?? Text(captionErrorMessage) : "",
-          // if (captionErrorMessage != null) {
-          //   Text(captionErrorMessage!),
-          // },
           const SizedBox(
             height: 7,
           ),
@@ -137,7 +124,7 @@ class _AddFeedsPageState extends State<AddFeedsPage> {
                           .primary
                           .withOpacity(0.5);
                     }
-                    return null; // Use the component's default.
+                    return null;
                   },
                 ),
               ),

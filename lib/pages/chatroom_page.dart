@@ -61,7 +61,7 @@ class _ChatroomPageState extends State<ChatroomPageDetail> {
     session!.listen(
       (data) {
         final notif = WebSocketChat.fromJson(jsonDecode(data));
-        streamController.add(notif); // Add data to the stream
+        streamController.add(notif);
       },
       onError: (error) {
         print("Error receiving message: $error");
@@ -107,19 +107,6 @@ class _ChatroomPageState extends State<ChatroomPageDetail> {
             child: StreamBuilder<WebSocketChat>(
               stream: _streamController.stream,
               builder: (context, snapshot) {
-                // if (snapshot.hasData) {
-                //   final newMessage = snapshot.data!;
-                //   _chatMessages.add(
-                //     OpenChatResponse(
-                //       senderId: newMessage.recipientId,
-                //       errorCode: null,
-                //       errorMessage: null,
-                //       message: newMessage.message,
-                //       timestamp: newMessage.timestamp,
-                //       image: null,
-                //     ),
-                //   );
-                // }
                 return Chatroom(
                     controller: _scrollController, chatMessages: []);
               },

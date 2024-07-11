@@ -14,9 +14,7 @@ class AdoptionNotificationCardDetail extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      // padding: const EdgeInsets.symmetric(horizontal: 5, vertical: 5),
       child: Card(
-        // shadowColor: Colors.black,
         shape: RoundedRectangleBorder(
           borderRadius: BorderRadius.circular(20.0),
         ),
@@ -26,15 +24,12 @@ class AdoptionNotificationCardDetail extends StatelessWidget {
           height: 100,
           child: Row(children: [
             const SizedBox(width: 15),
-            // text keterangan
             SizedBox(
               width: MediaQuery.of(context).size.width * 0.6,
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 mainAxisAlignment: MainAxisAlignment.center,
-                // bagian kiri
                 children: [
-                  // icon dan nama anjing
                   Row(
                     children: [
                       Icon(
@@ -58,7 +53,6 @@ class AdoptionNotificationCardDetail extends StatelessWidget {
                         style: const TextStyle(
                           color: Color.fromRGBO(40, 36, 36, 100),
                           fontSize: 11,
-                          // fontWeight: FontWeight.bold,
                         ),
                         textAlign: TextAlign.left,
                       ),
@@ -67,7 +61,6 @@ class AdoptionNotificationCardDetail extends StatelessWidget {
                   const SizedBox(
                     height: 7,
                   ),
-                  // message
                   Text(
                     notificationDetail.notifMessage ?? "",
                     style: const TextStyle(
@@ -79,15 +72,11 @@ class AdoptionNotificationCardDetail extends StatelessWidget {
               ),
             ),
 
-            // button approve
             Center(
-              // alignment: Alignment.center,
               child: Container(
                 width: MediaQuery.of(context).size.width * 0.275,
                 alignment: Alignment.center,
-                // color: Colors.red,
                 child:
-                    // status PENDING and button OPEN
                     (notificationDetail.status == "OPEN")
                         ? Column(
                             mainAxisAlignment: MainAxisAlignment.center,
@@ -101,7 +90,7 @@ class AdoptionNotificationCardDetail extends StatelessWidget {
                                     BoxShadow(color: Colors.black),
                                   ],
                                   borderRadius: BorderRadius.circular(
-                                      8), // Border radius to round the corners
+                                      8),
                                 ),
                                 child: TextButton(
                                   onPressed: () async {
@@ -153,7 +142,7 @@ class AdoptionNotificationCardDetail extends StatelessWidget {
                                     "APPROVE",
                                     style: TextStyle(
                                         color: Colors
-                                            .black87, // Text color inside the box
+                                            .black87,
                                         fontSize: 12,
                                         fontWeight: FontWeight.bold),
                                   ),
@@ -170,7 +159,7 @@ class AdoptionNotificationCardDetail extends StatelessWidget {
                                     BoxShadow(color: Colors.black),
                                   ],
                                   borderRadius: BorderRadius.circular(
-                                      8), // Border radius to round the corners
+                                      8),
                                 ),
                                 child: TextButton(
                                   onPressed: () async {
@@ -199,7 +188,6 @@ class AdoptionNotificationCardDetail extends StatelessWidget {
                                         );
                                       },
                                     ).then((value) {
-                                      // yess
                                       if (value != null && value) {
                                         final ApproveRejectAdoptionRequest
                                             request =
@@ -222,7 +210,7 @@ class AdoptionNotificationCardDetail extends StatelessWidget {
                                     "REJECT",
                                     style: TextStyle(
                                       color: Colors
-                                          .white, // Text color inside the box
+                                          .white,
                                       fontSize: 12,
                                     ),
                                   ),
@@ -234,7 +222,7 @@ class AdoptionNotificationCardDetail extends StatelessWidget {
                             notificationDetail.status ?? "",
                             style: const TextStyle(
                                 color: Color.fromARGB(255, 65, 65,
-                                    65), // Text color inside the box
+                                    65),
                                 fontSize: 12,
                                 fontWeight: FontWeight.bold),
                           ),
@@ -247,50 +235,3 @@ class AdoptionNotificationCardDetail extends StatelessWidget {
     );
   }
 }
-
-
-
-/*
-onPressed: () async {
-                        showDialog(
-                          context: context,
-                          builder: (BuildContext context) {
-                            return AlertDialog(
-                              title: const Text('Confirmation'),
-                              content: const Text(
-                                  'Are you sure want to log out your account?'),
-                              actions: <Widget>[
-                                TextButton(
-                                  onPressed: () {
-                                    Navigator.of(context).pop(false);
-                                  },
-                                  child: const Text('No'),
-                                ),
-                                TextButton(
-                                  onPressed: () {
-                                    Navigator.of(context).pop(true);
-                                  },
-                                  child: const Text('Yes'),
-                                ),
-                              ],
-                            );
-                          },
-                        ).then((value) {
-                          // yess
-                          if (value != null && value) {
-                            _loginService.logout();
-                            Navigator.push(
-                              context,
-                              MaterialPageRoute(
-                                  builder: (context) => const LoginPage()),
-                            );
-                          }
-                          // no
-                          // else {
-                          //   // If 'No' is pressed or the dialog is dismissed
-                          //   // print('User canceled');
-                          //   // Perform the desired action or do nothing
-                          // }
-                        });
-                      },
-*/

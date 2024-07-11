@@ -12,7 +12,6 @@ class AdoptionDetail with _$AdoptionDetail {
       required String? age,
       required String? image,
       required String? errorCode,
-      // required String? accountId,
       required String? errorMessage}) = _AdoptionDetail;
 
   factory AdoptionDetail.fromJson(Map<String, dynamic> json) =>
@@ -106,7 +105,6 @@ class FilterAdoption with _$FilterAdoption {
   factory FilterAdoption({
     String? breed,
     String? province,
-    // String? gender,
   }) = _FilterAdoption;
 
   factory FilterAdoption.fromJson(Map<String, dynamic> json) =>
@@ -116,7 +114,6 @@ class FilterAdoption with _$FilterAdoption {
     Map<String, dynamic> map = {};
     if (breed != null) map["breed"] = breed;
     if (province != null) map["province"] = province;
-    // if (gender != null) map["gender"] = gender;
     return map;
   }
 }

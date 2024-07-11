@@ -15,11 +15,6 @@ class CommentNotificationCardDetail extends StatelessWidget {
         padding: const EdgeInsets.symmetric(horizontal: 5, vertical: 5),
         child: Container(
           width: MediaQuery.of(context).size.width,
-          // child: Card(
-          // shadowColor: Colors.black,
-          // shape: RoundedRectangleBorder(
-          //   borderRadius: BorderRadius.circular(20.0),
-          // ),
           color: Colors.white,
           child: Row(
             children: [
@@ -67,7 +62,6 @@ class CommentNotificationCardDetail extends StatelessWidget {
               ),
             ],
           ),
-          // ),
         ));
   }
 }

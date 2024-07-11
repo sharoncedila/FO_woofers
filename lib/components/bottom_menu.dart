@@ -25,7 +25,6 @@ class _BottomMenuBarState extends State<BottomMenuBar> {
 
   @override
   Widget build(BuildContext context) {
-    //final ThemeData theme = Theme.of(context);
     return Scaffold(
       bottomNavigationBar: NavigationBar(
         onDestinationSelected: (int index) {

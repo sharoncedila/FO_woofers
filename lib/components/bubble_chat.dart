@@ -13,19 +13,12 @@ class BubbleChatCardDetail extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    //other
-    // String currentId = recipientId;
 
     return SingleChildScrollView(
       child: Padding(
         padding: const EdgeInsets.symmetric(horizontal: 5, vertical: 5),
-        // child: Card(
-        //   color: Colors.white,
           child: Column(
             children: [
-              // const SizedBox(height: 20),
-               
-              
               if (recipientId != bubbleChatlistDetail.senderId)
                 Column(
                   children:[ BubbleSpecialThree(
@@ -36,17 +29,15 @@ class BubbleChatCardDetail extends StatelessWidget {
                     textStyle: GoogleFonts.archivoNarrow(
                     fontSize: 17,
                     color: Colors.black,
-                    //fontWeight: FontWeight.w500,
                     decoration: TextDecoration.none,
                   ),
-                  ),
+                ),
                   Align(
                   alignment: Alignment.bottomRight,
                   
                   child: Padding(
                     padding: EdgeInsets.only(right: 20),
                     child: Text(
-                      // Assuming the time is in a format like "HH:mm"
                       bubbleChatlistDetail.timestamp!,
                       style: TextStyle(
                         color: Colors.grey,
@@ -68,7 +59,6 @@ class BubbleChatCardDetail extends StatelessWidget {
                     textStyle: GoogleFonts.archivoNarrow(
                     fontSize: 17,
                     color: Colors.black,
-                    //fontWeight: FontWeight.w500,
                     decoration: TextDecoration.none,
                   ),
                   ),
@@ -86,16 +76,7 @@ class BubbleChatCardDetail extends StatelessWidget {
                   ),
                 ),
               ]
-                ),
-              // Expanded(
-              //   child: Align(
-              //     alignment: FractionalOffset.bottomCenter,
-              //     child: MessageBar(
-              //       onSend: (_) => print(_),
-              //       actions: const [],
-              //     ),
-              //   ),
-              // ),
+              ),
             ],
           ),
         //),

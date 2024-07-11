@@ -54,7 +54,6 @@ class _FeedsCardState extends State<FeedsCard> {
                       decoration: BoxDecoration(
                         color: Colors.black.withOpacity(0.6),
                         borderRadius: BorderRadius.circular(50),
-                        // border: Border.all(color: Colors.black.withOpacity(10))
                       ),
                       child: (feedsDetail.profilePicture != null)
                           ? InkWell(
@@ -98,9 +97,7 @@ class _FeedsCardState extends State<FeedsCard> {
                   Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
-                      // username
                       Text(
-                        // '10.43',
                         feedsDetail.username ?? '',
                         style: const TextStyle(
                           fontSize: 13,
@@ -111,7 +108,6 @@ class _FeedsCardState extends State<FeedsCard> {
                       const SizedBox(
                         height: 5,
                       ),
-                      // posting date
                       Text(
                         feedsDetail.postDate ?? '',
                         style: const TextStyle(
@@ -138,9 +134,6 @@ class _FeedsCardState extends State<FeedsCard> {
                 children: [
                   Row(
                     children: [
-                      // const SizedBox(
-                      //   width: 13,
-                      // ),
                       Padding(
                         padding: const EdgeInsets.symmetric(horizontal: 13),
                         child: Text(

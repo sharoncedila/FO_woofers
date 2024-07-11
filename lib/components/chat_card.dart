@@ -55,8 +55,6 @@ class _ChatCardState extends State<ChatCardDetail> {
               crossAxisAlignment: CrossAxisAlignment.start,
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
-                //image profile
-
                 (chatlistDetail.profilePicture != null)
                     ? InkWell(
                         borderRadius: BorderRadius.circular(50),
@@ -71,7 +69,6 @@ class _ChatCardState extends State<ChatCardDetail> {
                             image:
                                 AssetImage('assets/woofers_icon/profile.jpg'))),
                 const SizedBox(width: 10),
-                //username
                 Expanded(
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
@@ -83,7 +80,6 @@ class _ChatCardState extends State<ChatCardDetail> {
                             color: const Color.fromRGBO(40, 36, 36, 10000),
                             fontSize: 17,
                             fontStyle: FontStyle.italic,
-                            //fontWeight: FontWeight.bold,
                           ),
                         ),
                       ]),
