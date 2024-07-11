@@ -8,9 +8,10 @@ class DioInstance {
     if (instance == null) {
       final prefs = await SharedPreferences.getInstance();
       final token = prefs.getString('accessToken');
-      final accoundId = prefs.getString('accountId');
+      // final accoundId = prefs.getString('accountId');
       instance ??= Dio(BaseOptions(
-        baseUrl: 'http://192.168.123.9:8080/woofers',
+        baseUrl: 'https://woofers.arv.cx/woofers',
+        // baseUrl: 'http://192.168.68.143:8080/woofers',
         headers: Map.from({"Authorization": "Bearer $token"}),
       ));
     }

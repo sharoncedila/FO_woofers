@@ -1,4 +1,5 @@
 import 'dart:convert';
+import 'dart:io';
 
 import 'package:woofers/classes/dio_instance.dart';
 import 'package:woofers/classes/ws_chat_instance.dart';
@@ -39,7 +40,7 @@ class ChatService {
       if (errorSchema.errorCode != 'WOF-000') {
         return [OpenChatResponse.fromJson(response.data['errorSchema'])];
       } else {
-        await WSChatInstance.connect();
+        // await WSChatInstance.connect();
         return (response.data['outputSchema']['chatMessageList'] as List)
             .map((e) => OpenChatResponse.fromJson(e))
             .toList();

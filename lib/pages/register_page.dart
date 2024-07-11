@@ -179,7 +179,7 @@ class _RegisterFormState extends State<RegisterForm> {
                   if (value == null || value.isEmpty) {
                     return 'Please fill username field';
                   }
-                  const usernamepattern = "'.*[a-z].*'";
+                  const usernamepattern = r'^[a-z]+$';
                   final regExp = RegExp(usernamepattern);
                   if (!regExp.hasMatch(value)) {
                     return 'Please enter only lowercase letter in this field';

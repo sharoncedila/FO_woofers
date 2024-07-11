@@ -22,7 +22,7 @@ class NotificationService {
       print(error);
     }
     return null;
-  }
+  } 
 
   Future<List<ViewNotificationResponse>?> retrieveNotificationList() async {
     try {

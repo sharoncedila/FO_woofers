@@ -39,7 +39,7 @@ class AdoptionService {
       print(error);
     }
     return null;
-  }
+  } 
 
   Future<SendAdoptionNotification?> sendAdoptNotif(
       SendAdoptionNotification adopt) async {

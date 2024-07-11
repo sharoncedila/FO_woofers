@@ -5,13 +5,13 @@ import 'package:woofers/classes/dio_instance.dart';
 import 'package:woofers/model/feeds_model.dart';
 import 'package:woofers/services/image_service.dart';
 
-class FeedsService {
-  Future<List<ViewFeedsResponse>> retrieveFeedsData() async {
+class FeedsService { 
+  Future<List<ViewFeedsResponse>> retrieveFeedsData(PaginationFeeds paginationFeeds) async {
     try {
       const api = '/feeds/view';
       final dio = await DioInstance.getInstance();
 
-      var response = await dio.get(api);
+      var response = await dio.get(api, queryParameters: paginationFeeds.toJson());
       final errorSchema =
           ViewFeedsResponse.fromJson(response.data['errorSchema']);
       if (errorSchema.errorCode != 'WOF-000') {

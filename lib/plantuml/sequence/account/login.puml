@@ -9,6 +9,7 @@ hide footbox
 
 ' Sequence participant configuration
 actor User
+participant "__:WSChatInstance__" as ws
 participant "__:LoginPage__" as Page <<view>>
 participant "__:AccountService__" as Service
 participant "__:Account__" as Model <<model>>
@@ -16,6 +17,8 @@ participant "__:DioInstance__" as Dio
 
 
 ' Sequence diagram
+User -> ws: connect
+User <-- ws
 User -> Page: build(context)
 User <-- Page: LoginPage
 User -> Page: LoginForm()

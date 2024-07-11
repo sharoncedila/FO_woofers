@@ -13,6 +13,7 @@ participant "__:UserProfilePage__" as Page <<view>>
 participant "__:AccountService__" as Service
 participant "__:Account__" as Model <<model>>
 participant "__:DioInstance__" as Dio
+participant "__:WsNotifInstance__" as ws
 
 
 ' Sequence diagram
@@ -27,6 +28,8 @@ Service -> Model: LogoutResponse.fromJson(response)
 Service <-- Model: LogoutResponse
 Page <-- Service: LogoutResponse
 User <-- Page: LoginPage
+User -> ws: disconnect
+User <-- ws
 else cancel logout
 User -> Page: cancel
 User <-- Page: UserProfilePage

@@ -143,7 +143,7 @@ class _AddDogPageState extends State<AddDogPage> {
                       color: Colors.black38,
                     )
                   : ImageNetwork(
-                      urlImage: "/temp/${uploadedImage}",
+                      urlImage: "/temp/$uploadedImage",
                       width: 300,
                       height: 300),
               const SizedBox(
@@ -700,7 +700,10 @@ class _AddDogPageState extends State<AddDogPage> {
                                 .addNewDog(request)
                                 .then((value) => Navigator.of(context)
                                     .pushReplacement(MaterialPageRoute(
-                                        builder: (_) => const BottomMenuBar())))
+                                        builder: (_) => const BottomMenuBar(
+                                              initialIndex: 3,
+                                              profileInitialIndex: 1,
+                                            ))))
                                 .onError<Exception>((error, stackTrace) {
                               showDialog(
                                 context: context,

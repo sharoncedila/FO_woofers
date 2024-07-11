@@ -1468,3 +1468,141 @@ abstract class _LikeFeedsResponse implements LikeFeedsResponse {
   _$$LikeFeedsResponseImplCopyWith<_$LikeFeedsResponseImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
+
+PaginationFeeds _$PaginationFeedsFromJson(Map<String, dynamic> json) {
+  return _PaginationFeeds.fromJson(json);
+}
+
+/// @nodoc
+mixin _$PaginationFeeds {
+  String? get pageNumber => throw _privateConstructorUsedError;
+
+  Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
+  @JsonKey(ignore: true)
+  $PaginationFeedsCopyWith<PaginationFeeds> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class $PaginationFeedsCopyWith<$Res> {
+  factory $PaginationFeedsCopyWith(
+          PaginationFeeds value, $Res Function(PaginationFeeds) then) =
+      _$PaginationFeedsCopyWithImpl<$Res, PaginationFeeds>;
+  @useResult
+  $Res call({String? pageNumber});
+}
+
+/// @nodoc
+class _$PaginationFeedsCopyWithImpl<$Res, $Val extends PaginationFeeds>
+    implements $PaginationFeedsCopyWith<$Res> {
+  _$PaginationFeedsCopyWithImpl(this._value, this._then);
+
+  // ignore: unused_field
+  final $Val _value;
+  // ignore: unused_field
+  final $Res Function($Val) _then;
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? pageNumber = freezed,
+  }) {
+    return _then(_value.copyWith(
+      pageNumber: freezed == pageNumber
+          ? _value.pageNumber
+          : pageNumber // ignore: cast_nullable_to_non_nullable
+              as String?,
+    ) as $Val);
+  }
+}
+
+/// @nodoc
+abstract class _$$PaginationFeedsImplCopyWith<$Res>
+    implements $PaginationFeedsCopyWith<$Res> {
+  factory _$$PaginationFeedsImplCopyWith(_$PaginationFeedsImpl value,
+          $Res Function(_$PaginationFeedsImpl) then) =
+      __$$PaginationFeedsImplCopyWithImpl<$Res>;
+  @override
+  @useResult
+  $Res call({String? pageNumber});
+}
+
+/// @nodoc
+class __$$PaginationFeedsImplCopyWithImpl<$Res>
+    extends _$PaginationFeedsCopyWithImpl<$Res, _$PaginationFeedsImpl>
+    implements _$$PaginationFeedsImplCopyWith<$Res> {
+  __$$PaginationFeedsImplCopyWithImpl(
+      _$PaginationFeedsImpl _value, $Res Function(_$PaginationFeedsImpl) _then)
+      : super(_value, _then);
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? pageNumber = freezed,
+  }) {
+    return _then(_$PaginationFeedsImpl(
+      pageNumber: freezed == pageNumber
+          ? _value.pageNumber
+          : pageNumber // ignore: cast_nullable_to_non_nullable
+              as String?,
+    ));
+  }
+}
+
+/// @nodoc
+@JsonSerializable()
+class _$PaginationFeedsImpl implements _PaginationFeeds {
+  _$PaginationFeedsImpl({this.pageNumber});
+
+  factory _$PaginationFeedsImpl.fromJson(Map<String, dynamic> json) =>
+      _$$PaginationFeedsImplFromJson(json);
+
+  @override
+  final String? pageNumber;
+
+  @override
+  String toString() {
+    return 'PaginationFeeds(pageNumber: $pageNumber)';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$PaginationFeedsImpl &&
+            (identical(other.pageNumber, pageNumber) ||
+                other.pageNumber == pageNumber));
+  }
+
+  @JsonKey(ignore: true)
+  @override
+  int get hashCode => Object.hash(runtimeType, pageNumber);
+
+  @JsonKey(ignore: true)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$PaginationFeedsImplCopyWith<_$PaginationFeedsImpl> get copyWith =>
+      __$$PaginationFeedsImplCopyWithImpl<_$PaginationFeedsImpl>(
+          this, _$identity);
+
+  @override
+  Map<String, dynamic> toJson() {
+    return _$$PaginationFeedsImplToJson(
+      this,
+    );
+  }
+}
+
+abstract class _PaginationFeeds implements PaginationFeeds {
+  factory _PaginationFeeds({final String? pageNumber}) = _$PaginationFeedsImpl;
+
+  factory _PaginationFeeds.fromJson(Map<String, dynamic> json) =
+      _$PaginationFeedsImpl.fromJson;
+
+  @override
+  String? get pageNumber;
+  @override
+  @JsonKey(ignore: true)
+  _$$PaginationFeedsImplCopyWith<_$PaginationFeedsImpl> get copyWith =>
+      throw _privateConstructorUsedError;
+}

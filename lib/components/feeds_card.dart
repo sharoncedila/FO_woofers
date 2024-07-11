@@ -19,11 +19,14 @@ class _FeedsCardState extends State<FeedsCard> {
   String? feedsId;
   String? imageURL;
   String? isLike;
+  int? feedLikeCount;
 
   @override
   void initState() {
     super.initState();
     isLike = widget.feedsDetail.isLike;
+    ViewFeedsResponse feedsDetail = widget.feedsDetail;
+    feedLikeCount = int.tryParse(feedsDetail.likesCount ?? "0");
   }
 
   @override
@@ -65,10 +68,12 @@ class _FeedsCardState extends State<FeedsCard> {
                                                   feedsDetail.accountId ?? '')),
                                 );
                               },
-                              child: ImageNetwork(
-                                urlImage: feedsDetail.profilePicture,
-                                width: 45,
-                                height: 45,
+                              child: ClipOval(
+                                  child: ImageNetwork(
+                                  urlImage: feedsDetail.profilePicture,
+                                  width: 45,
+                                  height: 45,
+                                ),
                               ),
                               borderRadius: BorderRadius.circular(50),
                             )
@@ -88,7 +93,7 @@ class _FeedsCardState extends State<FeedsCard> {
                                   image: AssetImage(
                                       'assets/woofers_icon/profile.jpg')))),
                   const SizedBox(
-                    width: 15,
+                    width: 10,
                   ),
                   Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
@@ -133,18 +138,20 @@ class _FeedsCardState extends State<FeedsCard> {
                 children: [
                   Row(
                     children: [
-                      const SizedBox(
-                        width: 13,
-                      ),
-                      SizedBox(
-                        width: 375,
+                      // const SizedBox(
+                      //   width: 13,
+                      // ),
+                      Padding(
+                        padding: const EdgeInsets.symmetric(horizontal: 13),
                         child: Text(
                           feedsDetail.caption ?? '',
                           softWrap: true,
                           maxLines: 5,
                           overflow: TextOverflow.ellipsis,
                           style: const TextStyle(
-                              color: Colors.black, fontSize: 17),
+                            color: Colors.black,
+                            fontSize: 17,
+                          ),
                         ),
                       )
                     ],
@@ -162,10 +169,11 @@ class _FeedsCardState extends State<FeedsCard> {
                                     size: 23,
                                   ),
                                   onPressed: () {
+                                    FeedsService()
+                                        .likeFeeds(feedsDetail.feedsId ?? '');
                                     setState(() {
+                                      feedLikeCount = feedLikeCount! + 1;
                                       isLike = "true";
-                                      FeedsService()
-                                          .likeFeeds(feedsDetail.feedsId ?? '');
                                     });
                                   },
                                 )
@@ -176,10 +184,11 @@ class _FeedsCardState extends State<FeedsCard> {
                                     size: 23,
                                   ),
                                   onPressed: () {
+                                    FeedsService()
+                                        .likeFeeds(feedsDetail.feedsId ?? '');
                                     setState(() {
+                                      feedLikeCount = feedLikeCount! - 1;
                                       isLike = null;
-                                      FeedsService()
-                                          .likeFeeds(feedsDetail.feedsId ?? '');
                                     });
                                   },
                                 )
@@ -203,7 +212,7 @@ class _FeedsCardState extends State<FeedsCard> {
                     ],
                   ),
                   Text(
-                    "     ${feedsDetail.likesCount ?? ''} likes",
+                    "     ${feedLikeCount ?? ''} likes",
                     style: const TextStyle(color: Colors.grey, fontSize: 12),
                   ),
                   const SizedBox(

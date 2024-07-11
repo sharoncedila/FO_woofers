@@ -17,7 +17,8 @@ class WSNotifInstance {
         HttpHeaders.authorizationHeader: 'Bearer $token',
       };
       session = await WebSocket.connect(
-          'ws://192.168.123.9:8080/woofers/app-notif',
+          'wss://woofers.arv.cx/woofers/app-notif',
+          // 'ws://192.168.68.143:8080/woofers',
           headers: headers);
       print("Successfully Connect to WebSocket Notif Server");
 

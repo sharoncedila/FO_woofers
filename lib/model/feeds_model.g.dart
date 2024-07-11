@@ -135,3 +135,15 @@ Map<String, dynamic> _$$LikeFeedsResponseImplToJson(
       'errorCode': instance.errorCode,
       'errorMessage': instance.errorMessage,
     };
+
+_$PaginationFeedsImpl _$$PaginationFeedsImplFromJson(
+        Map<String, dynamic> json) =>
+    _$PaginationFeedsImpl(
+      pageNumber: json['pageNumber'] as String?,
+    );
+
+Map<String, dynamic> _$$PaginationFeedsImplToJson(
+        _$PaginationFeedsImpl instance) =>
+    <String, dynamic>{
+      'pageNumber': instance.pageNumber,
+    };

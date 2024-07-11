@@ -1,5 +1,8 @@
+import 'dart:io';
+
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:woofers/classes/ws_chat_instance.dart';
 import 'package:woofers/model/chat_model.dart';
 import 'package:woofers/pages/chatroom_page.dart';
 
@@ -21,7 +24,8 @@ class SearchUserCardDetail extends StatelessWidget {
           ),
           color: const Color.fromRGBO(160, 220, 220, 10),
           child: InkWell(
-            onTap: () {
+            onTap: () async {
+              WebSocket? session = await WSChatInstance.connect();
               Navigator.push(
                 context,
                 MaterialPageRoute(
@@ -29,7 +33,8 @@ class SearchUserCardDetail extends StatelessWidget {
 
                     builder: (context) => ChatroomPageDetail(
                         recipientId: searchUserDetail.accountId!,
-                        username: searchUserDetail.username)),
+                        username: searchUserDetail.username,
+                        session: session)),
               );
             },
             child: Row(

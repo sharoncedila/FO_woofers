@@ -8,30 +8,31 @@ import 'package:woofers/model/notification_model.dart';
 class WSChatInstance {
   static WebSocket? session;
 
-  static Future<void> connect() async {
+  static Future<WebSocket?> connect() async {
     try {
       final prefs = await SharedPreferences.getInstance();
       final token = prefs.getString('accessToken');
       var headers = {
         HttpHeaders.authorizationHeader: 'Bearer $token',
       };
-      session = await WebSocket.connect(
-          'ws://192.168.123.9:8080/woofers/send-chat',
-          headers: headers);
+      session =
+          await WebSocket.connect('wss://woofers.arv.cx/woofers/send-chat',
+              // 'ws://192.168.68.143:8080/woofers/send-chat',
+              headers: headers);
       print("Successfully Connect to WebSocket Chat Server");
-
-      session!.listen(
-        (data) {
-          final notif = WebSocketChat.fromJson(jsonDecode(data));
-          print(notif.message);
-        },
-        onError: (error) {
-          print("Error receiving message: $error");
-        },
-        onDone: () {
-          print("WebSocket connection closed");
-        },
-      );
+      return session;
+      // session!.listen(
+      //   (data) {
+      //     final notif = WebSocketChat.fromJson(jsonDecode(data));
+      //     print(notif.message);
+      //   },
+      //   onError: (error) {
+      //     print("Error receiving message: $error");
+      //   },
+      //   onDone: () {
+      //     print("WebSocket connection closed");
+      //   },
+      // );
     } catch (error) {
       print("Fail Connect to WebSocket Server");
     }

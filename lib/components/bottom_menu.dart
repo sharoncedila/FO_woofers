@@ -5,7 +5,9 @@ import 'package:woofers/pages/chatlist_page.dart';
 import 'package:woofers/pages/feeds_page.dart';
 
 class BottomMenuBar extends StatefulWidget {
-  const BottomMenuBar({super.key});
+  final int initialIndex;
+  final int profileInitialIndex;
+  const BottomMenuBar({super.key, this.initialIndex=1, this.profileInitialIndex=0});
 
   @override
   State<BottomMenuBar> createState() => _BottomMenuBarState();
@@ -13,10 +15,17 @@ class BottomMenuBar extends StatefulWidget {
 
 class _BottomMenuBarState extends State<BottomMenuBar> {
   int currentPageIndex = 1;
+  int currentProfileIndex = 0;
+
+  @override
+  void initState(){
+    currentPageIndex = widget.initialIndex;
+    currentProfileIndex = widget.profileInitialIndex;
+  }
 
   @override
   Widget build(BuildContext context) {
-    final ThemeData theme = Theme.of(context);
+    //final ThemeData theme = Theme.of(context);
     return Scaffold(
       bottomNavigationBar: NavigationBar(
         onDestinationSelected: (int index) {
@@ -62,7 +71,7 @@ class _BottomMenuBarState extends State<BottomMenuBar> {
         const ChatListPage(),
         const AdoptionPage(),
         const FeedsPage(),
-        const ProfilePageTemplate(),
+        ProfilePageTemplate(initialIndex: currentProfileIndex),
       ][currentPageIndex],
     );
   }

@@ -1,4 +1,6 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/widgets.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:hexcolor/hexcolor.dart';
 import 'package:woofers/components/adoption_card.dart';
@@ -16,257 +18,228 @@ class AdoptionPage extends StatefulWidget {
 }
 
 class _AdoptionPageState extends State<AdoptionPage> {
-  late List<String?> provinceNames;
-  String? _selectedProvince;
-  late List<String?> breedNames;
-  String? _selectedBreed;
-  // late List<String?> genderName = ['Female', 'Male'];
-  // String? _selectedGender;
-
+  List<String> provinceNames = [];
+  List<String> breedNames = [];
+  List<AdoptionDetail> adoptionList = [];
+  String? _selectedProvince, _selectedBreed;
+  bool isLoading = true;
   FilterAdoption filterAdoption = FilterAdoption();
+
+  @override
+  void initState() {
+    super.initState();
+    fetchInitialData();
+  }
+
+  Future<void> fetchInitialData() async {
+    try {
+      final provinceResponse = await ProvinceService().retrieveAllProvince();
+      final breedResponse = await DogService().retrieveAllBreed();
+
+      final adoptionResponse =
+          await AdoptionService().retrieveAdoptionList(filterAdoption);
+
+      setState(() {
+        provinceNames =
+            provinceResponse.provinceList.map((e) => e.provinceName).toList();
+        breedNames = breedResponse.breedList.map((e) => e.breedName).toList();
+        adoptionList = adoptionResponse;
+        isLoading = false;
+      });
+    } catch (e) {
+      print(e);
+      setState(() {
+        adoptionList = [];
+      });
+      isLoading = false;
+    }
+  }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        backgroundColor: Colors.white,
-        appBar: AppBar(
-          toolbarHeight: 75,
-          elevation: 0,
-          backgroundColor: HexColor("#a0dcdc"),
-          title: Text(
-            "WOOFERS",
-            style: GoogleFonts.lora(
-              fontSize: 25,
-              fontWeight: FontWeight.bold,
-              color: const Color.fromRGBO(40, 36, 36, 10000),
-            ),
+      backgroundColor: Colors.white,
+      appBar: AppBar(
+        automaticallyImplyLeading: false,
+        toolbarHeight: 75,
+        elevation: 0,
+        backgroundColor: HexColor("#a0dcdc"),
+        title: Text(
+          "WOOFERS",
+          style: GoogleFonts.lora(
+            fontSize: 25,
+            fontWeight: FontWeight.bold,
+            color: const Color.fromRGBO(40, 36, 36, 10000),
           ),
-          actions: <Widget>[
-            IconButton(
-              icon: const Icon(Icons.notifications_on),
-              onPressed: () {
-                Navigator.push(
-                  context,
-                  MaterialPageRoute(
-                      builder: (context) => const NotificationPage()),
-                );
-              },
-            ),
-          ],
         ),
-        body: Column(
-          children: [
-            const SizedBox(
-              height: 5,
-            ),
-            Row(
-              mainAxisAlignment: MainAxisAlignment.center,
+        actions: <Widget>[
+          IconButton(
+            icon: const Icon(Icons.notifications_on),
+            onPressed: () {
+              Navigator.push(
+                context,
+                MaterialPageRoute(
+                    builder: (context) => const NotificationPage()),
+              );
+            },
+          ),
+        ],
+      ),
+      body: isLoading
+          ? Center(child: CircularProgressIndicator())
+          : Column(
               children: [
-                const SizedBox(width: 5),
-                // dropdown province
-                Form(
-                  // padding: const EdgeInsets.symmetric(horizontal: 25),
-                  child: FutureBuilder(
-                    future: ProvinceService().retrieveAllProvince(),
-                    //initialData: initialProvinceNames,
-                    builder: (context, snapshot) {
-                      if (snapshot.connectionState == ConnectionState.waiting) {
-                        return const Text('');
-                      }
-                      if (snapshot.hasError) {
-                        return Text("Error: ${snapshot.error}");
-                      }
-                      if (!snapshot.hasData) {
-                        return const Text("No data");
-                      }
-
-                      final provinceResponse = snapshot.data!;
-                      final provinceNames = provinceResponse.provinceList
-                          .map((e) => e.provinceName)
-                          .toList();
-                      return SizedBox(
-                        height: 50,
-                        width: MediaQuery.of(context).size.width / 2.9,
-                        child: DropdownButtonFormField<String>(
-                          value: _selectedProvince,
-                          style: const TextStyle(
-                            fontSize: 9,
-                            color: Colors.black,
-                          ),
-                          decoration: InputDecoration(
-                            enabledBorder: const OutlineInputBorder(
-                              borderSide: BorderSide(
-                                color: Color.fromRGBO(160, 220, 220, 10),
+                const SizedBox(height: 5),
+                Padding(
+                  padding: const EdgeInsets.symmetric(horizontal: 5),
+                  child: Row(
+                    children: [
+                      // Province Dropdown
+                      Expanded(
+                        flex: 11, // 35% of the row
+                        // fit: FlexFit.tight,
+                        child: SizedBox(
+                          height: 50,
+                          child: DropdownButtonFormField<String>(
+                            value: _selectedProvince,
+                            style: const TextStyle(
+                              fontSize: 8,
+                              color: Colors.black,
+                            ),
+                            decoration: InputDecoration(
+                              enabledBorder: const OutlineInputBorder(
+                                borderSide: BorderSide(
+                                  color: Color.fromRGBO(160, 220, 220, 10),
+                                ),
                               ),
+                              focusedBorder: OutlineInputBorder(
+                                borderSide:
+                                    BorderSide(color: Colors.grey.shade400),
+                              ),
+                              fillColor: Colors.grey.shade200,
+                              filled: true,
+                              hintText: 'Province',
+                              hintStyle: TextStyle(color: Colors.grey[500]),
                             ),
-                            focusedBorder: OutlineInputBorder(
-                              borderSide:
-                                  BorderSide(color: Colors.grey.shade400),
-                            ),
-                            fillColor: Colors.grey.shade200,
-                            filled: true,
-                            hintText: 'Province',
-                            hintStyle: TextStyle(color: Colors.grey[500]),
-                            // isDense: true
-                          ),
-                          onChanged: (String? newValue) {
-                            if (newValue != null) {
+                            onChanged: (String? newValue) {
                               setState(() {
                                 _selectedProvince = newValue;
                               });
-                            }
-                          },
-                          items: provinceNames.map((province) {
-                            return DropdownMenuItem<String>(
-                              value: province,
-                              child: Text(province),
-                            );
-                          }).toList(),
+                            },
+                            items: provinceNames.map((province) {
+                              return DropdownMenuItem<String>(
+                                value: province,
+                                child: Text(province),
+                              );
+                            }).toList(),
+                            icon: const SizedBox.shrink(),
+                          ),
                         ),
-                      );
-                    },
-                  ),
-                ),
-
-                const SizedBox(width: 5),
-                // dropdown breed
-                Form(
-                  child: FutureBuilder(
-                    future: DogService().retrieveAllBreed(),
-                    //initialData: initialBreedNames,
-                    builder: (context, snapshot) {
-                      if (snapshot.connectionState == ConnectionState.waiting) {
-                        return const Text('');
-                      }
-                      if (snapshot.hasError) {
-                        return Text("Error: ${snapshot.error}");
-                      }
-                      if (!snapshot.hasData) {
-                        return const Text("No data");
-                      }
-
-                      final breedResponses = snapshot.data!;
-                      final breedNames = breedResponses.breedList
-                          .map((e) => e.breedName)
-                          .toList();
-                      return SizedBox(
-                        height: 50,
-                        width: MediaQuery.of(context).size.width / 2.6,
-                        child: DropdownButtonFormField<String>(
-                          value: _selectedBreed,
-                          style: const TextStyle(
-                            fontSize: 9,
-                            color: Colors.black,
-                          ),
-                          decoration: InputDecoration(
-                            enabledBorder: const OutlineInputBorder(
-                              borderSide: BorderSide(
-                                color: Color.fromRGBO(160, 220, 220, 10),
+                      ),
+                      const SizedBox(width: 5),
+                      // Breed Dropdown
+                      Expanded(
+                        flex: 11, // 35% of the row
+                        // fit: FlexFit.tight,
+                        child: SizedBox(
+                          height: 50,
+                          child: Container(
+                            width: double.infinity,
+                            child: DropdownButtonFormField<String>(
+                            value: _selectedBreed,
+                            style: const TextStyle(
+                              fontSize: 8,
+                              color: Colors.black,
+                            ),
+                            decoration: InputDecoration(
+                              enabledBorder: const OutlineInputBorder(
+                                borderSide: BorderSide(
+                                  color: Color.fromRGBO(160, 220, 220, 10),
+                                ),
                               ),
+                              focusedBorder: OutlineInputBorder(
+                                borderSide:
+                                    BorderSide(color: Colors.grey.shade400),
+                              ),
+                              fillColor: Colors.grey.shade200,
+                              filled: true,
+                              hintText: 'Breed',
+                              hintStyle: TextStyle(color: Colors.grey[500]),
                             ),
-                            focusedBorder: OutlineInputBorder(
-                              borderSide:
-                                  BorderSide(color: Colors.grey.shade400),
-                            ),
-                            fillColor: Colors.grey.shade200,
-                            filled: true,
-                            hintText: 'Breed',
-                            hintStyle: TextStyle(color: Colors.grey[500]),
-                          ),
-                          onChanged: (String? newValue) {
-                            if (newValue != null) {
+                            onChanged: (String? newValue) {
                               setState(() {
                                 _selectedBreed = newValue;
                               });
-                            }
-                          },
-                          items: breedNames.map((breed) {
-                            return DropdownMenuItem<String>(
-                              value: breed,
-                              child: Text(breed),
-                            );
-                          }).toList(),
+                            },
+                            items: breedNames.map((breed) {
+                              return DropdownMenuItem<String>(
+                                value: breed,
+                                child: Text(breed),
+                              );
+                            }).toList(),
+                            icon: const SizedBox.shrink(),
+                          ),
                         ),
-                      );
-                    },
+                        ),
+                      ),
+                      const SizedBox(width: 1),
+                      // Search Icon
+                      Flexible(
+                        flex: 2, // 15% of the row
+                        fit: FlexFit.loose,
+                        child: IconButton(
+                          onPressed: () {
+                            setState(() {
+                              filterAdoption = filterAdoption.copyWith(
+                                breed: _selectedBreed,
+                                province: _selectedProvince,
+                              );
+                              fetchInitialData();
+                            });
+                          },
+                          icon: const Icon(Icons.search_outlined),
+                        ),
+                      ),
+                      // Cancel Filter Icon
+                      Flexible(
+                        flex: 2, // 15% of the row
+                        fit: FlexFit.loose,
+                        child: IconButton(
+                          onPressed: () {
+                            setState(() {
+                              filterAdoption = filterAdoption.copyWith(
+                                breed: null,
+                                province: null,
+                              );
+                              fetchInitialData();
+                              _selectedProvince = null;
+                              _selectedBreed = null;
+                            });
+                          },
+                          icon: const Icon(Icons.cancel),
+                        ),
+                      ),
+                    ],
                   ),
                 ),
-
-                // search icon
-                // const SizedBox(width: 5),
-                IconButton(
-                  onPressed: () {
-                    setState(() {
-                      filterAdoption = filterAdoption.copyWith(
-                        breed: _selectedBreed,
-                        province: _selectedProvince,
-                        // gender: _selectedGender,
-                      );
-                    });
-                  },
-                  icon: const Icon(Icons.search_outlined),
-                  // iconSize: 5,
-                ),
-
-                // cancel filter
-                IconButton(
-                  onPressed: () {
-                    setState(() {
-                      filterAdoption = filterAdoption.copyWith(
-                        breed: null,
-                        province: null,
-                        // gender: _selectedGender,
-                      );
-                    });
-                  },
-                  icon: const Icon(Icons.cancel),
-                  // iconSize: 5,
-                )
+                Expanded(child: adoptionListWidget()),
               ],
             ),
-            adoptionList(),
-          ],
-        )
-        //adoptionList(),
-        );
+    );
   }
 
-  Widget adoptionList() {
-    return Expanded(
-      child: SingleChildScrollView(
-        child: Center(
-          child: Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 5, vertical: 10),
-            child: FutureBuilder(
-              future: AdoptionService().retrieveAdoptionList(filterAdoption),
-              builder: ((context, snapshot) {
-                if (snapshot.connectionState == ConnectionState.waiting) {
-                  return Padding(
-                    padding: EdgeInsets.all(160),
-                    child: Container(
-                      // Center the CircularProgressIndicator
-                      alignment: Alignment.center,
-                      color: Colors
-                          .transparent, // Ensure the container doesn't block interaction with underlying widgets
-                      child: const CircularProgressIndicator(),
-                    ),
-                  );
-                }
-                if (snapshot.hasError) {
-                  return const Center(child: Text("No data available"));
-                }
-                if (!snapshot.hasData) {
-                  return const Text("No data available");
-                }
-                final adoptionList = snapshot.data!;
-                return Wrap(
+  Widget adoptionListWidget() {
+    return SingleChildScrollView(
+      child: Center(
+        child: Padding(
+          padding: const EdgeInsets.symmetric(horizontal: 5, vertical: 10),
+          child: adoptionList.isEmpty
+              ? const Text("No data available")
+              : Wrap(
                   children: adoptionList
                       .map((e) => AdoptionCardDetail(adoptionDetail: e))
                       .toList(),
-                );
-              }),
-            ),
-          ),
+                ),
         ),
       ),
     );

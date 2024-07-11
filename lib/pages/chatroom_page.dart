@@ -1,106 +1,43 @@
+import 'dart:async';
+import 'dart:convert';
+import 'dart:io';
+
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:hexcolor/hexcolor.dart';
 import 'package:woofers/classes/ws_chat_instance.dart';
+import 'package:woofers/components/bottom_menu.dart';
 import 'package:woofers/components/bubble_chat.dart';
 import 'package:woofers/model/chat_model.dart';
+import 'package:woofers/model/notification_model.dart';
 import 'package:woofers/services/chat_service.dart';
 
 class ChatroomPageDetail extends StatefulWidget {
   final String recipientId;
   String? chatroomId;
   String? username;
+  WebSocket? session;
 
   ChatroomPageDetail(
-      {super.key, required this.recipientId, this.chatroomId,  this.username});
+      {super.key,
+      required this.recipientId,
+      this.chatroomId,
+      this.username,
+      this.session});
 
   @override
   _ChatroomPageState createState() => _ChatroomPageState();
 }
 
-// class _ChatroomPageState extends State<ChatroomPageDetail> {
-//   final ScrollController _scrollController = ScrollController();
-//   String? recipientId;
-//   String? chatroomId;
-//   String? username;
-
-//   @override
-//   void initState() {
-//     super.initState();
-//     recipientId = widget.recipientId;
-//     chatroomId = widget.chatroomId;
-//     username = widget.username;
-//   }
-  
-
-//   @override
-//   Widget build(BuildContext context) {
-//     TextEditingController messageController = TextEditingController();
-
-//     return Scaffold(
-//       backgroundColor: Colors.white,
-//       appBar: AppBar(
-//         toolbarHeight: 75,
-//         elevation: 0,
-//         backgroundColor: HexColor("#a0dcdc"),
-//         title: Text(
-//           //"CHATS",
-//           username!
-//           ,style: GoogleFonts.lora(
-//             fontSize: 25,
-//             fontWeight: FontWeight.bold,
-//             color: const Color.fromRGBO(40, 36, 36, 10000),
-//           ),
-//         ),
-//       ),
-//       body: Column(
-//         children: [
-//           Expanded(child: Chatroom(controller: _scrollController)),
-//           Container(
-//             color: Colors.white,
-//             child: Row(
-//               children: [
-//                 const SizedBox(
-//                   width: 15,
-//                 ),
-//                 Expanded(
-//                   child: Padding(
-//                     padding: const EdgeInsets.all(8.0),
-//                     child: TextFormField(
-//                       maxLines: null,
-//                       controller: messageController,
-//                       keyboardType: TextInputType.multiline,
-//                       decoration: const InputDecoration(
-//                         labelText: 'Type Here',
-//                         border: OutlineInputBorder(),
-//                       ),
-//                     ),
-//                   ),
-//                 ),
-//                 IconButton(
-//                   icon: const Icon(Icons.send),
-//                   onPressed: () async {
-//                     final SendChatRequest request = SendChatRequest(
-//                         recipientId: recipientId,
-//                         message: messageController.text,
-//                         chatroomId: chatroomId);
-//                     WSChatInstance.sendMessage(request);
-//                     FocusScope.of(context).unfocus();
-//                   },
-//                 ),
-//               ],
-//             ),
-//           ),
-//         ],
-//       ),
-//     );
-//   }
-
 class _ChatroomPageState extends State<ChatroomPageDetail> {
   final ScrollController _scrollController = ScrollController();
+  final StreamController<WebSocketChat> _streamController =
+      StreamController<WebSocketChat>();
+  List<OpenChatResponse> _chatMessages = [];
   String? recipientId;
   String? chatroomId;
   String? username;
+  WebSocket? session;
 
   @override
   void initState() {
@@ -108,6 +45,31 @@ class _ChatroomPageState extends State<ChatroomPageDetail> {
     recipientId = widget.recipientId;
     chatroomId = widget.chatroomId;
     username = widget.username;
+    session = widget.session;
+    listen(session, _streamController);
+  }
+
+  @override
+  void dispose() {
+    _streamController.close();
+    session?.close();
+    super.dispose();
+  }
+
+  static Future<void> listen(WebSocket? session,
+      StreamController<WebSocketChat> streamController) async {
+    session!.listen(
+      (data) {
+        final notif = WebSocketChat.fromJson(jsonDecode(data));
+        streamController.add(notif); // Add data to the stream
+      },
+      onError: (error) {
+        print("Error receiving message: $error");
+      },
+      onDone: () {
+        print("WebSocket connection closed");
+      },
+    );
   }
 
   @override
@@ -117,6 +79,16 @@ class _ChatroomPageState extends State<ChatroomPageDetail> {
     return Scaffold(
       backgroundColor: Colors.white,
       appBar: AppBar(
+        leading: IconButton(
+            onPressed: () {
+              Navigator.pushReplacement(
+                  context,
+                  MaterialPageRoute(
+                      builder: (context) => const BottomMenuBar(
+                            initialIndex: 0,
+                          )));
+            },
+            icon: const Icon(Icons.arrow_back)),
         toolbarHeight: 75,
         elevation: 0,
         backgroundColor: HexColor("#a0dcdc"),
@@ -131,58 +103,69 @@ class _ChatroomPageState extends State<ChatroomPageDetail> {
       ),
       body: Column(
         children: [
-          Expanded(child: Chatroom(controller: _scrollController)),
+          Expanded(
+            child: StreamBuilder<WebSocketChat>(
+              stream: _streamController.stream,
+              builder: (context, snapshot) {
+                // if (snapshot.hasData) {
+                //   final newMessage = snapshot.data!;
+                //   _chatMessages.add(
+                //     OpenChatResponse(
+                //       senderId: newMessage.recipientId,
+                //       errorCode: null,
+                //       errorMessage: null,
+                //       message: newMessage.message,
+                //       timestamp: newMessage.timestamp,
+                //       image: null,
+                //     ),
+                //   );
+                // }
+                return Chatroom(
+                    controller: _scrollController, chatMessages: []);
+              },
+            ),
+          ),
           Container(
             color: Colors.white,
             child: Row(
               children: [
-                // const SizedBox(
-                //   width: 15,
-                // ),
                 Expanded(
-                  child: //Padding(
-                    //padding: const EdgeInsets.all(7.0),
-                    //padding: EdgeInsets.only(left: 7, right: 7),
-                    //child:
-                     Container(
-                      decoration: BoxDecoration(
-                        color: Colors.grey[300], // Background color
-                        borderRadius:
-                            BorderRadius.circular(10), // Rounded corners
-                      ),
-                      child: Row(
-                        children: [
-                          const SizedBox(width: 40),
-                          Expanded(
-                            child: TextFormField(
-                              maxLines: null,
-                              controller: messageController,
-                              keyboardType: TextInputType.multiline,
-                              decoration: const InputDecoration(
-                                hintText: 'Type Here',
-                                border: InputBorder.none,
-                                //fillColor: Colors.green, // Remove the border
-                                contentPadding: EdgeInsets.symmetric(
-                                    vertical: 15), // Add vertical padding
-                              ),
+                  child: Container(
+                    decoration: BoxDecoration(
+                      color: Colors.grey[300],
+                      borderRadius: BorderRadius.circular(10),
+                    ),
+                    child: Row(
+                      children: [
+                        const SizedBox(width: 40),
+                        Expanded(
+                          child: TextFormField(
+                            maxLines: null,
+                            controller: messageController,
+                            keyboardType: TextInputType.multiline,
+                            decoration: const InputDecoration(
+                              hintText: 'Type Here',
+                              border: InputBorder.none,
+                              contentPadding:
+                                  EdgeInsets.symmetric(vertical: 15),
                             ),
                           ),
-                          IconButton(
-                            icon: const Icon(Icons.send),
-                            onPressed: () async {
-                              final SendChatRequest request = SendChatRequest(
-                                  recipientId: recipientId,
-                                  message: messageController.text,
-                                  chatroomId: chatroomId);
-                              WSChatInstance.sendMessage(request);
-                              FocusScope.of(context).unfocus();
-                            },
-                          ),
-                          const SizedBox(width: 10),
-                        ],
-                      ),
+                        ),
+                        IconButton(
+                          icon: const Icon(Icons.send),
+                          onPressed: () async {
+                            final SendChatRequest request = SendChatRequest(
+                                recipientId: recipientId,
+                                message: messageController.text,
+                                chatroomId: chatroomId);
+                            WSChatInstance.sendMessage(request);
+                            FocusScope.of(context).unfocus();
+                          },
+                        ),
+                        const SizedBox(width: 10),
+                      ],
                     ),
-                  //),
+                  ),
                 ),
               ],
             ),
@@ -192,7 +175,9 @@ class _ChatroomPageState extends State<ChatroomPageDetail> {
     );
   }
 
-  Widget Chatroom({required ScrollController controller}) {
+  Widget Chatroom(
+      {required ScrollController controller,
+      required List<OpenChatResponse> chatMessages}) {
     return Column(
       children: [
         Expanded(
@@ -208,12 +193,10 @@ class _ChatroomPageState extends State<ChatroomPageDetail> {
                   builder: ((context, snapshot) {
                     if (snapshot.connectionState == ConnectionState.waiting) {
                       return Padding(
-                        padding: EdgeInsets.all(160),
+                        padding: const EdgeInsets.all(160),
                         child: Container(
-                          // Center the CircularProgressIndicator
                           alignment: Alignment.center,
-                          color: Colors
-                              .transparent, // Ensure the container doesn't block interaction with underlying widgets
+                          color: Colors.transparent,
                           child: const CircularProgressIndicator(),
                         ),
                       );
@@ -232,15 +215,13 @@ class _ChatroomPageState extends State<ChatroomPageDetail> {
                       );
                     });
                     final chatList = snapshot.data!;
-                    print("Chatroom data: $chatList");
+                    _chatMessages = chatList;
                     return Wrap(
-                      children: chatList
+                      children: _chatMessages
                           .map((e) => BubbleChatCardDetail(
                               recipientId: recipientId,
                               bubbleChatlistDetail: e))
                           .toList(),
-                      //    ),
-                      //  ),
                     );
                   }),
                 ),

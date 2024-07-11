@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:woofers/classes/ws_notif_instance.dart';
+import 'package:woofers/components/bottom_menu.dart';
+import 'package:woofers/pages/adoption_page.dart';
 import 'package:woofers/pages/login_page.dart';
 
 SharedPreferences? sharedPreference;
@@ -37,6 +39,7 @@ class _MyAppState extends State<MyApp> {
       debugShowCheckedModeBanner: false,
       // home: token == '' ? LoginPage() : UserProfilePage(),
       home: LoginPage(),
+      // home: AdoptionPage(),
     );
   }
 }
