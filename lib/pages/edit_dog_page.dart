@@ -30,6 +30,7 @@ class _EditDogPageState extends State<EditDogPage> {
   TextEditingController dateOfBirthController = TextEditingController();
   TextEditingController genderController = TextEditingController();
   TextEditingController provinceController = TextEditingController();
+  TextEditingController addressController = TextEditingController();
   TextEditingController vaccineController = TextEditingController();
   TextEditingController descriptionController = TextEditingController();
   String? _selectedProvince;
@@ -61,14 +62,30 @@ class _EditDogPageState extends State<EditDogPage> {
   void initState() {
     super.initState();
     _loadDogProfile();
+    //_loadProvinceData();
   }
 
+  // Future<void> _loadProvinceData() async {
+  //   try {
+  //     // Retrieve province data from service
+  //     final provinceResponse = await ProvinceService().retrieveAllProvince();
+  //     _provinceNames =
+  //         provinceResponse.provinceList.map((e) => e.provinceName).toList();
+  //     setState(() {
+  //       // Set initial selected province
+  //       _selectedProvince = _provinceNames.first;
+  //     });
+  //   } catch (error) {
+  //     print(error);
+  //   }
+  // }
 
   Future<void> _loadDogProfile() async {
     try {
       ResponseDogProfileModel? dogProfile =
           await DogService().retrieveDogProfile(widget.dogId);
 
+      // Set the state with the obtained values
       setState(() {
         nameController.text = dogProfile?.dogName ?? '';
         breedController.text = dogProfile?.breedName ?? '';
@@ -131,9 +148,10 @@ class _EditDogPageState extends State<EditDogPage> {
                 return Padding(
                   padding: const EdgeInsets.all(160),
                   child: Container(
+                    // Center the CircularProgressIndicator
                     alignment: Alignment.center,
                     color: Colors
-                        .transparent, 
+                        .transparent, // Ensure the container doesn't block interaction with underlying widgets
                     child: const CircularProgressIndicator(),
                   ),
                 );
@@ -149,6 +167,7 @@ class _EditDogPageState extends State<EditDogPage> {
               ResponseDogProfileModel dogProfile =
                   snapshot.data as ResponseDogProfileModel;
               breedController.text = dogProfile.breedName ?? '';
+              // dateOfBirthController.text = dogProfile.dateOfBirth ?? '';
               provinceController.text = dogProfile.provinceName ?? '';
 
               if (dogProfile.gender == 'M') {
@@ -174,6 +193,12 @@ class _EditDogPageState extends State<EditDogPage> {
                         DateFormat('dd-MM-yyyy').format(pickedDate);
                   });
                 }
+
+                // if (dogProfile.isOpenAdopt == 'true') {
+                //   isSwitched = true;
+                // } else if (dogProfile.isOpenAdopt == 'false') {
+                //   isSwitched = false;
+                // }
               }
 
               final imageURL =
@@ -196,7 +221,7 @@ class _EditDogPageState extends State<EditDogPage> {
                           ),
                         ),
                         const SizedBox(
-                            width: 10), 
+                            width: 10), // Add space between text and switch
                         Switch(
                           value: isSwitched,
                           onChanged: (value) {
@@ -227,8 +252,9 @@ class _EditDogPageState extends State<EditDogPage> {
                           File image = File(pickedFile.path);
                           uploadDogPic(snapshot.data!.dogId, image);
                         }
+                        // ImageService().uploadFeeds();
                       },
-                      icon: const Icon(Icons.camera)),
+                      icon: const Icon(Icons.camera_alt)),
                   const SizedBox(
                     height: 15,
                   ),
@@ -304,8 +330,11 @@ class _EditDogPageState extends State<EditDogPage> {
                             SizedBox(
                               height: 50,
                               child: SingleChildScrollView(
+                                //child: Padding(
+                                //padding: const EdgeInsets.symmetric(),
                                 child: FutureBuilder(
                                   future: DogService().retrieveAllBreed(),
+                                  //initialData: breedController.text,
                                   builder: (context, snapshot) {
                                     if (snapshot.connectionState ==
                                         ConnectionState.waiting) {
@@ -451,6 +480,12 @@ class _EditDogPageState extends State<EditDogPage> {
                       const SizedBox(
                         width: 20,
                       ),
+                      // const Image(
+                      //   image: AssetImage(
+                      //       'assets/woofers_icon/province.png'),
+                      //   width: 35,
+                      //   height: 35,
+                      // ),
                       const Icon(
                         Icons.transgender_outlined,
                         size: 35,
@@ -519,6 +554,12 @@ class _EditDogPageState extends State<EditDogPage> {
                       const SizedBox(
                         width: 20,
                       ),
+                      // const Image(
+                      //   image:
+                      //       AssetImage('assets/woofers_icon/province.png'),
+                      //   width: 35,
+                      //   height: 35,
+                      // ),
                       const Icon(
                         Icons.location_city_outlined,
                         size: 35,
@@ -540,9 +581,12 @@ class _EditDogPageState extends State<EditDogPage> {
                             SizedBox(
                               height: 50,
                               child: SingleChildScrollView(
+                                //child: Padding(
+                                //padding: const EdgeInsets.symmetric(),
                                 child: FutureBuilder(
                                   future:
                                       ProvinceService().retrieveAllProvince(),
+                                  //initialData: breedController.text,
                                   builder: (context, snapshot) {
                                     if (snapshot.connectionState ==
                                         ConnectionState.waiting) {
@@ -605,6 +649,60 @@ class _EditDogPageState extends State<EditDogPage> {
                     ],
                   ),
 
+                  // address
+                  const SizedBox(height: 15),
+                  Row(
+                    children: [
+                      const SizedBox(
+                        width: 20,
+                      ),
+                      // const Image(
+                      //   image:
+                      //       AssetImage('assets/woofers_icon/phone.png'),
+                      //   width: 35,
+                      //   height: 35,
+                      // ),
+                      const Icon(
+                        Icons.location_on,
+                        size: 35,
+                      ),
+                      const SizedBox(
+                        width: 20,
+                      ),
+                      Expanded(
+                          child: Column(
+                              mainAxisAlignment: MainAxisAlignment.start,
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              children: [
+                            Text(
+                              "address",
+                              style: TextStyle(
+                                color: Colors.black.withOpacity(0.5),
+                              ),
+                            ),
+                            SizedBox(
+                              //height: 25,
+                              child: TextFormField(
+                                  controller: addressController,
+                                  maxLines: null,
+                                  decoration: const InputDecoration(
+                                    border:  UnderlineInputBorder(),
+                                    labelText: 'Mekarsari V Street number 10',
+                                    // labelStyle: GoogleFonts.newsCycle(
+                                    //   color: Colors.black,
+                                    // ),
+                                  ),
+                                  onFieldSubmitted: (String? newValue) {
+                                    addressController.text = newValue!;
+                                  }),
+                            ),
+                          ])),
+                      const SizedBox(
+                        width: 20,
+                      ),
+                    ],
+                  ),
+
                   // vaccine
                   const SizedBox(height: 15),
                   Row(
@@ -612,6 +710,12 @@ class _EditDogPageState extends State<EditDogPage> {
                       const SizedBox(
                         width: 20,
                       ),
+                      // const Image(
+                      //   image:
+                      //       AssetImage('assets/woofers_icon/phone.png'),
+                      //   width: 35,
+                      //   height: 35,
+                      // ),
                       const Icon(
                         Icons.medical_services_outlined,
                         size: 35,
@@ -660,6 +764,12 @@ class _EditDogPageState extends State<EditDogPage> {
                       const SizedBox(
                         width: 20,
                       ),
+                      // const Image(
+                      //   image: AssetImage(
+                      //       'assets/woofers_icon/description.png'),
+                      //   width: 35,
+                      //   height: 35,
+                      // ),
                       const Icon(
                         Icons.abc_outlined,
                         size: 35,
@@ -685,6 +795,7 @@ class _EditDogPageState extends State<EditDogPage> {
                                   controller: descriptionController,
                                   decoration: InputDecoration(
                                     border: const UnderlineInputBorder(),
+                                    // labelText: 'Username',
                                     labelStyle: GoogleFonts.newsCycle(
                                       color: Colors.black,
                                     ),
@@ -719,12 +830,16 @@ class _EditDogPageState extends State<EditDogPage> {
                                         .primary
                                         .withOpacity(0.5);
                                   }
-                                  return null; 
+                                  return null; // Use the component's default.
                                 },
                               ),
                             ),
                             child: const Text(
                               'Save',
+                              // style: TextStyle(
+                              //     //color: Colors.grey[600],
+                              //     fontWeight: FontWeight.bold,
+                              //     fontSize: 18)
                             ),
                             onPressed: () async {
                               _selectedProvince ??= snapshot.data!.provinceName;
@@ -768,6 +883,7 @@ class _EditDogPageState extends State<EditDogPage> {
                                 showDialog(
                                   context: context,
                                   builder: (context) {
+                                    //return Text(error.toString());
                                     return SimpleDialog(
                                       children: [Text(error.toString())],
                                     );

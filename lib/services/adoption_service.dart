@@ -5,11 +5,13 @@ import 'package:woofers/model/adoption_model.dart';
 
 class AdoptionService {
   // Adoption page
-  Future<List<AdoptionDetail>> retrieveAdoptionList(
+  Future<List<AdoptionDetail>> retrieveAdoptionList( 
       FilterAdoption filterAdoption) async {
     try {
       const api = '/adoption/view';
       final dio = await DioInstance.getInstance();
+      // print('try');
+      // print(filterAdoption.toJson());
 
       var response =
           await dio.get(api, queryParameters: filterAdoption.toJson());
@@ -39,7 +41,7 @@ class AdoptionService {
       print(error);
     }
     return null;
-  } 
+  }
 
   Future<SendAdoptionNotification?> sendAdoptNotif(
       SendAdoptionNotification adopt) async {

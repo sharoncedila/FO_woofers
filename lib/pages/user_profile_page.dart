@@ -290,6 +290,57 @@ class _UserProfilePageState extends State<UserProfilePage> {
                           ],
                         ),
 
+                        // address
+                        const SizedBox(height: 20),
+                        Row(
+                          children: [
+                            const SizedBox(
+                              width: 15,
+                            ),
+                            // const Image(
+                            //   image: AssetImage(
+                            //       'assets/woofers_icon/province.png'),
+                            //   width: 35,
+                            //   height: 35,
+                            const Icon(
+                              Icons.location_on,
+                              size: 35,
+                            ),
+                            const SizedBox(
+                              width: 20,
+                            ),
+                            Expanded(
+                                child: Column(
+                                    mainAxisAlignment: MainAxisAlignment.start,
+                                    crossAxisAlignment:
+                                        CrossAxisAlignment.start,
+                                    children: [
+                                  Text(
+                                    "address",
+                                    style: TextStyle(
+                                      color: Colors.black.withOpacity(0.5),
+                                    ),
+                                  ),
+                                  SizedBox(
+                                    height: 25,
+                                    width: 325,
+                                    child: TextFormField(
+                                      readOnly: true,
+                                      enabled: false,
+                                      decoration: InputDecoration(
+                                        border: const UnderlineInputBorder(),
+                                        // labelText: 'Username',
+                                        labelText: "Mekarsari V Street number 10",
+                                        labelStyle: GoogleFonts.newsCycle(
+                                          color: Colors.black,
+                                        ),
+                                      ),
+                                    ),
+                                  ),
+                                ]))
+                          ],
+                        ),
+
                         // phone number
                         const SizedBox(height: 20),
                         Row(

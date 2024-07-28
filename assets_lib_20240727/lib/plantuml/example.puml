@@ -1,0 +1,34 @@
+@startuml Login
+' Global param
+title Login
+autoactivate on
+
+' Global style configuration
+skinparam RoundCorner 0
+hide footbox
+
+' Sequence participant configuration
+actor User
+participant "__:LoginPage__" as ViewPage <<view>>
+participant "__:UserService__" as ViewService
+participant "__:AuthenticationController__" as BackendController <<controller>>
+
+' Sequence diagram
+User -> ViewPage: Login
+ViewPage -> ViewService: login(loginForm)
+ViewService -> BackendController: POST /auth\nauthenticateUser(authRequest)
+
+BackendController -> "_:AuthenticationService_": authenticateUser(email, password)
+  "_:AuthenticationService" -> ":UserService_": getUserByEmail(email)
+    "_:UserService" -> ":UserRepository_": findUserByEmail(email)
+    "_:UserService" <-- ":UserRepository_": user
+  "_:AuthenticationService" <-- ":UserService_": user
+  "_:AuthenticationService" -> ":AuthenticationService_": createToken(tokenPayload)
+  return accessToken
+BackendController <-- "_:AuthenticationService_": authenticatedResponse
+ViewService <-- BackendController: authenticationResponse
+
+ViewPage <-- ViewService: authenticatedResponse
+User <-- ViewPage
+
+@enduml
