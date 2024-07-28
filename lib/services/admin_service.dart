@@ -1,8 +1,9 @@
 import 'dart:convert';
+
 import 'package:dio/dio.dart';
 import 'package:woofers/classes/dio_instance.dart';
-import 'package:woofers/model/admin_model.dart';
 import 'package:woofers/main.dart';
+import 'package:woofers/model/admin_model.dart';
 
 class AdminService {
   Future<AdminLoginResponse?> adminLogin(
@@ -107,7 +108,7 @@ class AdminService {
 
   Future<AdminDeleteAccountResponse> deleteAccount(String accountId) async {
     try {
-      String api = '/admin/delete-accounts';
+      String api = '/admin/delete-accounts/$accountId';
       final dio = await DioInstance.getInstance();
 
       var response = await dio.delete(api);
@@ -128,7 +129,7 @@ class AdminService {
 
   static Future<AdminDeleteFeedsResponse> deleteFeeds(String feedsId) async {
     try {
-      String api = '/admin/delete-feeds';
+      String api = '/admin/delete-feeds/$feedsId';
       final dio = await DioInstance.getInstance();
 
       var response = await dio.delete(api);
@@ -148,7 +149,7 @@ class AdminService {
   static Future<AdminDeleteDogResponse> deleteDog(String dogId) async {
     try {
       //hrusnya da dogId ?
-      String api = '/admin/delete-dog';
+      String api = '/admin/delete-dog/$dogId';
       final dio = await DioInstance.getInstance();
 
       var response = await dio.delete(api);
