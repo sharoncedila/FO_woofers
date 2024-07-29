@@ -1,4 +1,4 @@
-@startuml AddDog
+@startuml Add Dog
 ' Global param
 title Add Dog
 autoactivate on
@@ -8,33 +8,40 @@ skinparam RoundCorner 0
 hide footbox
 
 ' Sequence participant configuration
-actor User
-participant "_: AddDogPage_" as Page <<view>>
-participant "_:DogService_" as Service
-participant "_:Dog_" as Model <<model>>
-participant "_:ImageNetwork_" as Image
-participant "_:DioInstance_" as Dio
+actor "Dog Owner" as User
+participant "__: AddDogPage__" as Page <<view>>
+participant "__:ImageService__" as ImageService
+participant "__:Image__" as ImageModel <<model>>
+participant "___:DogService__" as DogService
+participant "__:DioInstance__" as Dio
+participant "__:ImageNetwork__" as Image
+participant "__:Dog__" as DogModel <<model>>
 
 
 ' Sequence diagram
 User -> Page: build(context)
+Page -> ImageService: uploadDogImage(dogId, image)
+ImageService -> Dio : post /upload/dog
+ImageService <-- Dio : response
+ImageService -> ImageModel: UploadImageResponse.fromJson(response)
+ImageService <-- ImageModel: UploadImageResponse
+Page <-- ImageService: UploadImageResponse
+Page -> Image : ImageNetwork(urlImage, width, height)
+Page <-- Image : Image
 User <-- Page: AddDogPage
-User -> Page: AddDogProfile()
-Page -> Image: uploadDogImage(dogId, image)
-Image -> Dio : post /upload/dog
-Image <-- Dio : response
+User -> Page : addDogProfile()
 alt Validation is Successful
-Page -> Model: AddDogRequest(dogName, breedName, gender, provinceName, vaccination, description, dateOfBirth, isAdoption, image)
-Page <-- Model: AddDogRequest
-Page -> Service: addNewDog(request)
-Service -> Dio : post /dogs/add
-Service <-- Dio : response
-Service -> Model: AddDogResponse.fromJson(response)
-Service <-- Model: AddDogResponse
-Page <-- Service: AddDogResponse
+Page -> DogModel: AddDogRequest(dogName, breedName, dateOfBirth, isOpenAdopt, gender, provinceName, vaccination, description, address, image)
+Page <-- DogModel: AddDogRequest
+Page -> DogService: addNewDog(request)
+DogService -> Dio : post /dogs/add
+DogService <-- Dio : response
+DogService -> DogModel: AddDogResponse.fromJson(response)
+DogService <-- DogModel: AddDogResponse
+Page <-- DogService: AddDogResponse
 User <-- Page: DogListPage
 else Validation Fails
-    User <-- Page: show error message
+User <-- Page: show error message
 end
 
 

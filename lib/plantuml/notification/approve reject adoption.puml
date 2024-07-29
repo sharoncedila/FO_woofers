@@ -1,0 +1,37 @@
+@startuml Approve or Reject Adoption Request
+' Global param
+title Approve or Reject Adoption Request
+autoactivate on
+
+' Global style configuration
+skinparam RoundCorner 0
+hide footbox
+
+' Sequence participant configuration
+actor "Dog Owner" as User
+participant "__:AdoptionNotificationCardDetail__" as Card <<view>>
+participant "__:AdoptionService__" as Service
+participant "__:Adoption__" as Model <<model>>
+participant "__:DioInstance__" as Dio
+
+' Sequence diagram
+User -> Card : build(context)
+User <-- Card: return confirmation pop up
+alt confirm approve or reject
+User -> Card : confirm approve or reject adoption
+Card -> Model : ApproveRejectAdoptionRequest(notificationId, status)
+Card <-- Model : ApproveRejectAdoptionRequest
+Card -> Service : approveRejectAdoption(request)
+Service -> Dio : post /adoption/approve-reject-adoption
+Service <-- Dio : response
+Service -> Model : ApproveRejectAdoptionResponse.fromJson(response)
+Service <-- Model : ApproveRejectAdoptionResponse
+Card <-- Service : ApproveRejectAdoptionResponse
+User <-- Card : AdoptionNotificationCardDetail
+else cancel request adoption
+User -> Card : cancel approve or reject adoption
+User <-- Card : AdoptionNotificationCardDetail
+end
+
+
+@enduml

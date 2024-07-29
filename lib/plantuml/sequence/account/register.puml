@@ -8,24 +8,24 @@ skinparam RoundCorner 0
 hide footbox
 
 ' Sequence participant configuration
-actor User
-participant "_:RegisterPage_" as Page <<view>>
-participant "_:AccountService_" as Service
-participant "_:Account_" as Model <<model>>
-participant "_:DioInstance_" as Dio
+actor "Adopter / Dog Owner" as User
+participant "__:RegisterPage__" as Page <<view>>
+participant "__:AccountService__" as Service
+participant "__:Account__" as Model <<model>>
+participant "__:DioInstance__" as Dio
 
 
 ' Sequence diagram
-User -> Page: build(context)
-User <-- Page: RegisterPage
+User -> Page : build(context)
+User <-- Page : RegisterPage
 User -> Page: RegisterForm()
 alt Validation is Successful
-Page -> Model: RequestRegisterModel(email, fullname, password, username, provinceName,phoneNumber)
+Page -> Model: RequestRegisterModel(email, fullname, password, username, provinceName, phoneNumber, address)
 Page <-- Model: RequestRegisterModel
 Page -> Service: register(registerReq)
 Service -> Dio : post /accounts/register
 Service <-- Dio : response
-Service -> Model: ResponseRegisterModel.fromJson
+Service -> Model: ResponseRegisterModel.fromJson(response)
 Service <-- Model: ResponseRegisterModel
 Page <-- Service: ResponseRegisterModel
 User <-- Page: LoginPage

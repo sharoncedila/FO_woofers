@@ -1,6 +1,6 @@
-@startuml FilterAdoption
+@startuml Filter Adoption List
 ' Global param
-title  Filter Adoption
+title  Filter Adoption List
 autoactivate on
 
 ' Global style configuration
@@ -8,16 +8,31 @@ skinparam RoundCorner 0
 hide footbox
 
 ' Sequence participant configuration
-actor User
-participant "_:AdoptionPage_" as  Page <<view>>
-participant "_:AdoptionService_" as Service
-participant "_:_Adoption_" as Model <<model>>
-participant "_:DioInstance_" as Dio
+actor "Adopter" as User
+participant "__:AdoptionPage__" as Page <<view>>
+participant "__:AdoptionService__" as Service
+participant "__:DioInstance__" as Dio
+participant "__:AdoptionCardDetail__" as Card <<view>>
+participant "__:ImageNetwork__" as Image
+participant "__:Adoption__" as Model <<model>>
 
 
 ' Sequence diagram
 User -> Page: build(context)
+Page -> Service : retrieveAdoptionList(filterAdoption)
+Service -> Dio : get /adoption/view
+Service <-- Dio : response
+Service -> Model : AdoptionDetail.fromJson(response)
+Service <-- Model : AdoptionDetail
+Page <-- Service : List<AdoptionDetail>
+Page -> Card : build(context)
+Card -> Model : AdoptionDetail
+Card <-- Model : AdoptionDetail
+Card -> Image: ImageNetwork(urlImage, width, height)
+Card <-- Image: image
+Page <-- Card : AdoptionCardDetail
+User <-- Page: AdoptionListPage
 
-end
+' end
 
 @enduml

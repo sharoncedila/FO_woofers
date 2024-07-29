@@ -1,0 +1,30 @@
+@startuml Comment Feeds
+' Global param
+title Comment Feeds
+autoactivate on
+
+' Global style configuration
+skinparam RoundCorner 0
+hide footbox
+
+' Sequence participant configuration
+actor "Adopter / Dog Owner" as User
+participant "__:CommentCard__" as Card <<view>>
+participant "__:FeedsService__" as Service
+participant "__:Feeds__" as Model <<model>>
+participant "__:DioInstance__" as Dio
+
+' Sequence diagram
+User -> Card : build(context)
+Card -> Model : LeaveCommentRequest(feedsId, commentController)
+Card <-- Model : LeaveCommentRequest
+Card -> Service : leaveCommentSection(request)
+Service -> Dio : post /feeds/comment
+Service <-- Dio : response
+Service -> Model : LeaveCommentResponse.fromJson(response)
+Service <-- Model : LeaveCommentResponse
+Card <-- Service : LeaveCommentResponse
+User <-- Card: CommentCard
+
+
+@enduml

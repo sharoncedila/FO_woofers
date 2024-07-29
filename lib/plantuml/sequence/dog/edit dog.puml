@@ -1,6 +1,6 @@
-@startuml AddDog
+@startuml Edit Dog Profile
 ' Global param
-title Edit Dog
+title Edit Dog Profile
 autoactivate on
 
 ' Global style configuration
@@ -8,12 +8,14 @@ skinparam RoundCorner 0
 hide footbox
 
 ' Sequence participant configuration
-actor User
-participant "_: EditDogPage_" as Page <<view>>
-participant "_:DogService_" as Service
-participant "_:Dog_" as Model <<model>>
-participant "_:ImageNetwork_" as Image
-participant "_:DioInstance_" as Dio
+actor "Dog Owner" as User
+participant "__: EditDogPage__" as Page <<view>>
+participant "__:DogService__" as Service
+participant "__:Dog__" as Model <<model>>
+participant "__:ImageService__" as ImageService
+participant "__:DioInstance__" as Dio
+participant "__:Image__" as ImageModel <<model>>
+participant "__:ImageNetwork__" as Image
 
 
 ' Sequence diagram
@@ -25,12 +27,18 @@ Service -> Model: ResponseDogProfileModel.fromJson(response)
 Service <-- Model: ResponseDogProfileModel
 Page <-- Service: ResponseDogProfileModel
 User <-- Page: EditDogPage
+User -> Page: uploadDogPic(dogId, image)
+Page -> ImageService: uploadDogImage(dogId, image)
+ImageService -> Dio : post /upload/dog?dog-id=$dogId
+ImageService <-- Dio : response
+ImageService -> ImageModel: UploadImageResponse.fromJson(response)
+ImageService <-- ImageModel: UploadImageResponse
+Page <-- ImageService : UploadImageResponse
+Page -> Image : ImageNetwork(urlImage, width, height)
+Page <-- Image : Image
 User -> Page: editDogProfile()
-Page -> Image: uploadDogImage(dogId, image)
-Image -> Dio : post /upload/dog?dog-id=$dogId
-Image <-- Dio : response
 alt Validation is Successful
-Page -> Model: EditDogRequest(dogId, dogName, breedName, gender, provinceName, vaccination, description, dateOfBirth, isAdoption, image)
+Page -> Model: EditDogRequest(dogId, dogName, breedName, dateOfBirth, isOpenAdopt, gender, provinceName, vaccination, description, address, image)
 Page <-- Model: EditDogRequest
 Page -> Service: editDog(request)
 Service -> Dio : post /dogs/profile/edit

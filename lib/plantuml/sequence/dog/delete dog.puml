@@ -1,4 +1,4 @@
-@startuml DeleteDod
+@startuml Delete Dog
 ' Global param
 title Delete Dog
 autoactivate on
@@ -8,21 +8,20 @@ skinparam RoundCorner 0
 hide footbox
 
 ' Sequence participant configuration
-actor User
-participant "_: MyDogCard_" as Card <<view>>
-participant "_:DogService_" as Service
-participant "_:Dog_" as Model <<model>>
-participant "_:ImageNetwork_" as Image
-participant "_:DioInstance_" as Dio
+actor "Dog Owner" as User
+participant "__: MyDogCard__" as Card <<view>>
+participant "__:DogService__" as Service
+participant "__:Dog__" as Model <<model>>
+participant "__:DioInstance__" as Dio
 
 
 ' Sequence diagram
 User -> Card: build(context)
 User <-- Card: return confirmation pop up
-alt delete dog
+alt confirm delete dog
 User -> Card: confirm delete dog
 Card -> Service: deleteDog(dogId)
-Service -> Dio: /dogs/delete/dog-id/$dogId
+Service -> Dio: delete /dogs/delete/dog-id/$dogId
 Service <-- Dio: response
 Service -> Model: DeleteDogResponse.fromJson(response)
 Service <-- Model: DeleteDogResponse

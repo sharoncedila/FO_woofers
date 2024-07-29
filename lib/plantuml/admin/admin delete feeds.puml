@@ -1,0 +1,40 @@
+@startuml Delete Feed
+' Global param
+title Delete Feed
+autoactivate on
+
+' Global style configuration
+skinparam RoundCorner 0
+hide footbox
+
+' Sequence participant configuration
+actor Admin
+participant "__:AdminFeedsCard__" as Card <<view>>
+participant "__:AdminService__" as Service
+participant "__:Admin__" as Model <<model>>
+participant "__:DioInstance__" as Dio
+
+
+' Sequence diagram
+Admin -> Card : build(context)
+Admin <-- Card: return confirmation pop up
+alt confirm delete feeds
+Admin -> Card: confirm delete feeds
+Card -> Service: deleteFeeds(feedsId)
+Service -> Dio: delete /admin/delete-feeds/$feedsId
+Service <-- Dio: response
+Service -> Model: AdminDeleteFeedsResponse.fromJson(response)
+Service <-- Model: AdminDeleteFeedsResponse
+Card <-- Service: AdminDeleteFeedsResponse
+Admin <-- Card: AdminFeedsCard
+else cancel delete feeds
+Admin -> Card: cancel delete feeds
+Admin <-- Card: AdminFeedsCard
+end
+
+
+
+
+
+
+@enduml

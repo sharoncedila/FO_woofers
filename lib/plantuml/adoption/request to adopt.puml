@@ -1,6 +1,6 @@
-@startuml RequestToAdopt
+@startuml Request For Dog Adoption
 ' Global param
-title  Request To Adopt
+title  Request For Dog Adoption
 autoactivate on
 
 ' Global style configuration
@@ -8,19 +8,19 @@ skinparam RoundCorner 0
 hide footbox
 
 ' Sequence participant configuration
-actor User
-participant "_: RequestForAdoption_" as  Page <<view>>
-participant "_:AdoptionService_" as Service
-participant "_:_Adoption_" as Model <<model>>
-participant "_:DioInstance_" as Dio
+actor "Adopter" as User
+participant "__: RequestForAdoption__" as  Page <<view>>
+participant "__:AdoptionService__" as Service
+participant "__:_Adoption__" as Model <<model>>
+participant "__:DioInstance__" as Dio
 
 
 ' Sequence diagram
-User -> Page: build(context)
+User -> Page: reqAdoptDetail()
 User <-- Page: return confirmation pop up
 alt confirm request adoption
 User -> Page: confirm request adoption
-Page -> Model: sendAdoptNotif(dogId, dogName, breedName, ownerId, ownerUsername)
+Page -> Model: SendAdoptionNotification(dogId, dogName, breedName, ownerId, ownerUsername)
 Page <-- Model: SendAdoptionNotification
 Page -> Service: sendAdoptNotif(adopt)
 Service -> Dio: post /adoption/send-notification

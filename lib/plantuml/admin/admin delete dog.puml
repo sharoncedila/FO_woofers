@@ -1,0 +1,40 @@
+@startuml Admin Delete Dog
+' Global param
+title Admin Delete Dog
+autoactivate on
+
+' Global style configuration
+skinparam RoundCorner 0
+hide footbox
+
+' Sequence participant configuration
+actor Admin
+participant "__:AdminDogCard__" as Card <<view>>
+participant "__:AdminService__" as Service
+participant "__:Admin__" as Model <<model>>
+participant "__:DioInstance__" as Dio
+
+
+' Sequence diagram
+Admin -> Card : build(context)
+Admin <-- Card: return confirmation pop up
+alt confirm delete dog
+Admin -> Card: confirm delete dog
+Card -> Service: deleteDog(dogId)
+Service -> Dio: delete /admin/delete-dog/$dogId
+Service <-- Dio: response
+Service -> Model: AdminDeleteDogResponse.fromJson(response)
+Service <-- Model: AdminDeleteDogResponse
+Card <-- Service: AdminDeleteDogResponse
+Admin <-- Card: AdminDogCard
+else cancel delete dog
+Admin -> Card: cancel delete dog
+Admin <-- Card: AdminDogCard
+end
+
+
+
+
+
+
+@enduml

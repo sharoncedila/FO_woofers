@@ -8,22 +8,37 @@ skinparam RoundCorner 0
 hide footbox
 
 ' Sequence participant configuration
-actor User
-participant "_:NotificationPage_" as Page <<view>>
-participant "_:AdoptionService_" as ServiceAdoption
-participant "_:CommentService" as ServiceComment
-participant "_:Notification_" as Model <<model>>
-participant "_:DioInstance_" as Dio
+actor "Adopter / Dog Owner" as User
+participant "__:NotificationPage__" as Page <<view>>
+participant "__:NotificationService__" as Service
+participant "__:DioInstance__" as Dio
+participant "__:AdoptionNotificationCardDetail__" as AdoptNotifCard <<view>>
+participant "__:CommentNotificationCardDetail__" as CommentNotifCard <<view>>
+participant "__:Notification__" as Model <<model>>
 
 ' Sequence diagram
 User -> Page: build(context)
 Page -> Service : retrieveAdoptionList()
 Service -> Dio : get /notification/view
 Service <-- Dio : response
-Service -> Model : ResponseUserProfileModel.fromJson
-Service <-- Model : ResponseUserProfileModel
-Page <-- Service : ResponseUserProfileModel
-User <-- Page: UserProfilePage
+Service -> Model : ViewNotificationResponse.fromJson(response)
+Service <-- Model : ViewNotificationResponse
+Page <-- Service : ViewNotificationResponse
+Page -> AdoptNotifCard: build(context)
+AdoptNotifCard -> Model: ViewNotificationResponse
+AdoptNotifCard <-- Model: ViewNotificationResponse
+Page <-- AdoptNotifCard: AdoptionNotificationCardDetail
+Page -> Service : retrieveNotificationList()
+Service -> Dio : get /notification/view
+Service <-- Dio : response
+Service -> Model : ViewNotificationResponse.fromJson(response)
+Service <-- Model : ViewNotificationResponse
+Page <-- Service :ViewNotificationResponse
+Page -> CommentNotifCard : build(context)
+CommentNotifCard -> Model : ViewNotificationResponse
+CommentNotifCard <-- Model : ViewNotificationResponse
+Page <-- CommentNotifCard : CommentNotificationCardDetail
+User <-- Page: NotificationListPage
 
 
 @enduml

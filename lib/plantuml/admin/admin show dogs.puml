@@ -1,0 +1,40 @@
+@startuml View All Dogs Page
+' Global param
+title View All Dogs Page
+autoactivate on
+
+' Global style configuration
+skinparam RoundCorner 0
+hide footbox
+
+' Sequence participant configuration
+actor Admin
+participant "__:AdminDogsPage__" as Page <<view>>
+participant "__:AdminDogCard__" as Card <<view>>
+participant "__:AdminService__" as Service
+participant "__:Admin__" as Model <<model>>
+participant "__:ImageNetwork__" as Image
+participant "__:DioInstance__" as Dio
+
+
+' Sequence diagram
+Admin -> Page: build(context)
+Page -> Service : showDogs()
+Service -> Dio : get /admin/show-dogs
+Service <-- Dio : response
+Service -> Model : ShowDogsResponse.fromJson(response)
+Service <-- Model : ShowDogsResponse
+Page <-- Service : ShowDogsResponse
+Page -> Card : build(context)
+Card -> Model : Dog
+Card <-- Model : Dog
+Card -> Image : ImageNetwork(urlImage, width, height)
+Card <-- Image : Image
+Page <-- Card : AdminDogCard
+Admin <-- Page : AdminDogsPage
+
+
+
+
+
+@enduml

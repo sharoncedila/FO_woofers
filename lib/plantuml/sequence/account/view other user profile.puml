@@ -1,6 +1,6 @@
-@startuml View User Profile Page
+@startuml View Other User Profile Page
 ' Global param
-title View User Profile Page
+title View Other User Profile Page
 autoactivate on
 
 ' Global style configuration
@@ -9,24 +9,23 @@ hide footbox
 
 ' Sequence participant configuration
 actor "Adopter / Dog Owner" as User
-participant "__:UserProfilePage__" as Page <<view>>
+participant "__:OtherProfilePage__" as Page <<view>>
 participant "__:AccountService__" as Service
-participant "__:DioInstance__" as Dio
 participant "__:Account__" as Model <<model>>
 participant "__:ImageNetwork__" as Image
-
+participant "__:DioInstance__" as Dio
 
 ' Sequence diagram
 User -> Page: build(context)
-Page -> Service : retrieveUserData()
-Service -> Dio : get /accounts/profile/view
+Page -> Service : viewOtherUserProfile(accountId)
+Service -> Dio : get /accounts/profile/other/$accountId
 Service <-- Dio : response
-Service -> Model : ResponseUserProfileModel.fromJson(response)
-Service <-- Model : ResponseUserProfileModel
-Page <-- Service : ResponseUserProfileModel
+Service -> Model : OtherUserProfileResponse.fromJson(response)
+Service <-- Model : OtherUserProfileResponse
+Page <-- Service : OtherUserProfileResponse
 Page -> Image : ImageNetwork(urlImage, width, height)
 Page <-- Image : image
-User <-- Page: UserProfilePage
+User <-- Page: OtherProfilePage
 
 
 @enduml
