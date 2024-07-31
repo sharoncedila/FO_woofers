@@ -1,6 +1,6 @@
-@startuml View Dog List Page
+@startuml View Other Dog List Page
 ' Global param
-title View Dog List Page
+title View Other Dog List Page
 autoactivate on
 
 ' Global style configuration
@@ -8,14 +8,13 @@ skinparam RoundCorner 0
 hide footbox
 
 ' Sequence participant configuration
-actor "Dog Owner" as User
-participant "__:DogListPage__" as Page <<view>>
-participant "__:DogService__" as Service
-participant "__:DioInstance__" as Dio
+actor "Adopter / Dog Owner" as User
+participant "__:OtherDogListPage__" as Page <<view>>
 participant "__:MyDogCard__" as Card <<view>>
+participant "__:DogService__" as Service
 participant "__:Dog__" as Model <<model>>
+participant "__:DioInstance__" as Dio
 participant "__:ImageNetwork__" as Image
-
 
 
 ' Sequence diagram
@@ -31,8 +30,8 @@ Card -> Model : ResponseDogCard
 Card <-- Model : ResponseDogCard
 Card -> Image : ImageNetwork(urlImage, width, height)
 Card <-- Image : image
-Page <-- Card : MyDogCard
-User <-- Page: DogListPage
+Page <-- Card : OtherDogCard
+User <-- Page: OtherDogListPage
 
 
 @enduml

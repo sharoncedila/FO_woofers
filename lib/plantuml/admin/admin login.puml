@@ -1,0 +1,39 @@
+@startuml Admin Login
+' Global param
+title Admin Login
+autoactivate on
+
+' Global style configuration
+skinparam RoundCorner 0
+hide footbox
+
+' Sequence participant configuration
+actor Admin
+participant "__:AdminLoginPage__" as Page <<view>>
+participant "__:AdminService__" as Service
+participant "__:Admin__" as Model <<model>>
+participant "__:DioInstance__" as Dio
+
+
+' Sequence diagram
+Admin -> Page: build(context)
+Admin <-- Page: AdminLoginPage
+Admin -> Page: LoginForm()
+alt Validation is Successful
+Page -> Model: AdminLoginRequest(email, password)
+Page <-- Model: AdminLoginRequest
+Page -> Service: adminLogin(adminloginReq)
+Service -> Dio : post /admin/login
+Service <-- Dio : response
+Service -> Model: AdminLoginResponse.fromJson(response)
+Service <-- Model: AdminLoginResponse
+Page <-- Service: AdminLoginResponse
+Admin <-- Page: AdminUsersPage
+else Validation Fails
+    Admin <-- Page: show error message
+end
+
+
+
+
+@enduml

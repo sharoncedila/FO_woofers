@@ -1,0 +1,39 @@
+@startuml View All Users Page
+' Global param
+title View All Users Page
+autoactivate on
+
+' Global style configuration
+skinparam RoundCorner 0
+hide footbox
+
+' Sequence participant configuration
+actor Admin
+participant "__:AdminUsersPage__" as Page <<view>>
+participant "__:AdminUsersCard__" as Card <<view>>
+participant "__:AdminService__" as Service
+participant "__:Admin__" as Model <<model>>
+participant "__:ImageNetwork__" as Image
+participant "__:DioInstance__" as Dio
+
+
+' Sequence diagram
+Admin -> Page: build(context)
+Page -> Service : showAccounts()
+Service -> Dio : get /admin/show-accounts
+Service <-- Dio : response
+Service -> Model : ShowAccountsResponse.fromJson(response)
+Service <-- Model : ShowAccountsResponse
+Page <-- Service : ShowAccountsResponse
+Page -> Card : build(context)
+Card -> Model : Account
+Card <-- Model : Account
+Card -> Image : ImageNetwork(urlImage, width, height)
+Card <-- Image : Image
+Page <-- Card : AdminUsersCard
+Admin <-- Page : AdminUsersPage
+
+
+
+
+@enduml

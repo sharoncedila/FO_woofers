@@ -44,10 +44,9 @@ class DogService {
 
       var response = await dio.get(api);
 
-        return (response.data['outputSchema']['dogList'] as List)
-            .map((e) => ResponseDogCard.fromJson(e))
-            .toList();
-
+      return (response.data['outputSchema']['dogList'] as List)
+          .map((e) => ResponseDogCard.fromJson(e))
+          .toList();
     } catch (error) {
       print(error);
       throw Exception(error);
@@ -60,7 +59,8 @@ class DogService {
       final dio = await DioInstance.getInstance();
 
       var response = await dio.post(api, data: jsonEncode(request.toJson()));
-      final errorSchema = EditDogResponse.fromJson(response.data['errorSchema']);
+      final errorSchema =
+          EditDogResponse.fromJson(response.data['errorSchema']);
 
       if (errorSchema.errorCode != 'WOF-000') {
         return EditDogResponse.fromJson(response.data['errorSchema']);
@@ -78,7 +78,8 @@ class DogService {
       final dio = await DioInstance.getInstance();
 
       var response = await dio.delete(api);
-      final errorSchema = DeleteDogResponse.fromJson(response.data['errorSchema']);
+      final errorSchema =
+          DeleteDogResponse.fromJson(response.data['errorSchema']);
 
       if (errorSchema.errorCode != 'WOF-000') {
         return DeleteDogResponse.fromJson(response.data['errorSchema']);
@@ -90,7 +91,7 @@ class DogService {
     }
   }
 
-Future<RetrieveAllBreedResponse> retrieveAllBreed() async {
+  Future<RetrieveAllBreedResponse> retrieveAllBreed() async {
     try {
       const api = '/breeds/all';
       final dio = await DioInstance.getInstance();
@@ -101,5 +102,4 @@ Future<RetrieveAllBreedResponse> retrieveAllBreed() async {
       throw Exception(error);
     }
   }
-
 }

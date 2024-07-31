@@ -1,0 +1,28 @@
+@startuml (Un)Like Feeds
+' Global param
+title (Un)Like Feeds
+autoactivate on
+
+' Global style configuration
+skinparam RoundCorner 0
+hide footbox
+
+' Sequence participant configuration
+actor "Adopter / Dog Owner" as User
+participant "__:FeedsCard__" as Card <<view>>
+participant "__:FeedsService__" as Service
+participant "__:Feeds__" as Model <<model>>
+participant "__:DioInstance__" as Dio
+
+' Sequence diagram
+User -> Card : build(context)
+Card -> Service : likeFeeds(feedsId)
+Service -> Dio : get /feeds/like/feeds-id/$feedsId
+Service <-- Dio : response
+Service -> Model : ViewFeedsResponse.fromJson(response)
+Service <-- Model : ViewFeedsResponse
+Card <-- Service : ViewFeedsResponse
+User <-- Card : FeedsCard
+
+
+@enduml

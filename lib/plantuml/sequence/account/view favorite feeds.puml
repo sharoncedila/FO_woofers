@@ -1,0 +1,36 @@
+@startuml View Favorite Feeds Page
+' Global param
+title View Favorite Feeds Page
+autoactivate on
+
+' Global style configuration
+skinparam RoundCorner 0
+hide footbox
+
+' Sequence participant configuration
+actor "Adopter / Dog Owner" as User
+participant "__:FavoritFeedsPage__" as Page <<view>>
+participant "__:FeedsCard__" as Card <<view>>
+participant "__:FeedsService__" as Service
+participant "__:Feeds__" as Model <<model>>
+participant "__:DioInstance__" as Dio
+participant "__:ImageNetwork__" as Image
+
+' Sequence diagram
+User -> Page: build(context)
+Page -> Service : retrieveSavedFeedsData()
+Service -> Dio : get /feeds/saved
+Service <-- Dio : response
+Service -> Model : ViewFeedsResponse.fromJson(response)
+Service <-- Model : ViewFeedsResponse
+Page <-- Service : List<ViewFeedsResponse>
+Page -> Card : build(context)
+Card -> Model : ViewFeedsResponse
+Card <-- Model : ViewFeedsResponse
+Card -> Image : ImageNetwork(urlImage, width, height)
+Card <-- Image : Image
+Page <-- Card : FeedsCard
+User <-- Page : FavoritFeedsPage
+
+
+@enduml

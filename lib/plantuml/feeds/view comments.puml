@@ -1,0 +1,36 @@
+@startuml View Comment Page
+' Global param
+title View Comment Page
+autoactivate on
+
+' Global style configuration
+skinparam RoundCorner 0
+hide footbox
+
+' Sequence participant configuration
+actor "Adopter / Dog Owner" as User
+participant "__:CommentPage__" as Page <<view>>
+participant "__:CommentCard__" as Card <<view>>
+participant "__:FeedsService__" as Service
+participant "__:Feeds__" as Model <<model>>
+participant "__:DioInstance__" as Dio
+participant "__:ImageNetwork__" as Image
+
+' Sequence diagram
+User -> Page: build(context)
+Page -> Service : openCommentSection(feedsId)
+Service -> Dio : get /feeds/open-comments/feeds-id/$feedsId
+Service <-- Dio : response
+Service -> Model : OpenCommentsResponse.fromJson(response)
+Service <-- Model : OpenCommentsResponse
+Page <-- Service : List<OpenCommentsResponse>
+Page -> Card : build(context)
+Card -> Model : OpenCommentsResponse
+Card <-- Model : OpenCommentsResponse
+Card -> Image : ImageNetwork(urlImage, width, height)
+Card <-- Image : Image
+Page <-- Card : CommentCard
+User <-- Page: CommentPage
+
+
+@enduml

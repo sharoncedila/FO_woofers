@@ -430,7 +430,7 @@ class _RequestAdoptionPageState extends State<RequestAdoptionPage> {
                               ),
                             ),
                             SizedBox(
-                              height: 25 ,
+                              height: 25,
                               child: TextFormField(
                                 maxLines: 5,
                                 readOnly: true,

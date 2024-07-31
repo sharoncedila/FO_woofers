@@ -1,0 +1,41 @@
+@startuml View All Feeds Page
+' Global param
+title View All Feeds Page
+autoactivate on
+
+' Global style configuration
+skinparam RoundCorner 0
+hide footbox
+
+' Sequence participant configuration
+actor Admin
+participant "__:AdminFeedsPage__" as Page <<view>>
+participant "__:AdminFeedsCard__" as Card <<view>>
+participant "__:AdminService__" as Service
+participant "__:Admin__" as Model <<model>>
+participant "__:ImageNetwork__" as Image
+participant "__:DioInstance__" as Dio
+
+
+' Sequence diagram
+Admin -> Page: build(context)
+Page -> Service : showFeeds()
+Service -> Dio : get /admin/show-feeds
+Service <-- Dio : response
+Service -> Model : ShowFeedsResponse.fromJson(response)
+Service <-- Model : ShowFeedsResponse
+Page <-- Service : ShowFeedsResponse
+Page -> Card : build(context)
+Card -> Model : Feeds
+Card <-- Model : Feeds
+Card -> Image : ImageNetwork(urlImage, width, height)
+Card <-- Image : Image
+Page <-- Card : AdminFeedsCard
+Admin <-- Page : AdminFeedsPage
+
+
+
+
+
+
+@enduml

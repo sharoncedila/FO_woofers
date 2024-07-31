@@ -8,16 +8,16 @@ skinparam RoundCorner 0
 hide footbox
 
 ' Sequence participant configuration
-actor User
-participant "_:LoginPage_" as Page <<view>>
-participant "_:AccountService_" as Service
-participant "_:Account_" as Model <<model>>
-participant "_:DioInstance_" as Dio
+actor "Adopter / Dog Owner" as User
+participant "__:LoginPage__" as Page <<view>>
+participant "__:AccountService__" as Service
+participant "__:Account__" as Model <<model>>
+participant "__:DioInstance__" as Dio
 
 
 ' Sequence diagram
-User -> Page: build(context)
-User <-- Page: LoginPage
+User -> Page : build(context)
+User <-- Page : LoginPage
 User -> Page: LoginForm()
 alt Validation is Successful
 Page -> Model: RequestLoginModel(email, password)

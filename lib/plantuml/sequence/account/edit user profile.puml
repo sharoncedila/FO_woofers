@@ -1,0 +1,60 @@
+@startuml Edit User Profile
+' Global param
+title Edit User Profile
+autoactivate on
+
+' Global style configuration
+skinparam RoundCorner 0
+hide footbox
+
+' Sequence participant configuration
+actor "Adopter / Dog Owner" as User
+participant "__:EditMyProfile__" as Page <<view>>
+participant "__:AccountService__" as AccountService
+participant "__:ImageService__" as ImageService
+participant "__:Account__" as AccountModel <<model>>
+participant "__:Image__" as ImageModel <<model>>
+participant "__:ImageNetwork__" as Image
+participant "__:DioInstance__" as Dio
+
+
+' Sequence diagram
+User -> Page: build(context)
+Page -> AccountService : retrieveUserData()
+AccountService -> Dio : get /accounts/profile/view
+AccountService <-- Dio : response
+AccountService -> AccountModel : ResponseUserProfileModel.fromJson(response)
+AccountService <-- AccountModel : ResponseUserProfileModel
+Page <-- AccountService : ResponseUserProfileModel
+User <-- Page : EditMyProfilePage
+opt Upload image
+User -> Page : uploadProfilePic(image)
+Page -> ImageService : uploadProfilePicture(image)
+ImageService -> Dio : post /upload/account
+ImageService <-- Dio : response
+ImageService -> ImageModel : UploadImageResponse.fromJson(response)
+ImageService <-- ImageModel : UploadImageResponse
+Page <-- ImageService : UploadImageResponse
+Page -> Image : ImageNetwork(uploadedImage, width, height)
+Page <-- Image : image
+end
+User -> Page : editMyProfile()
+alt Validation is successful
+Page -> AccountModel : EditProfileRequest(fullnameController, selectedProvince, phoneNumberController, descriptionController, addressController, uploadedImage)
+Page <-- AccountModel : EditProfileRequest
+Page -> AccountService : editAccountProfile(edit)
+AccountService -> Dio : post /accounts/profile/edit
+AccountService <-- Dio : response
+AccountService -> AccountModel : ResponseUserProfileModel.fromJson(response)
+AccountService <-- AccountModel : ResponseUserProfileModel
+Page <-- AccountService : ResponseUserProfileModel
+User <-- Page : UserProfilePage
+else Validation fails
+User <-- Page: show error message
+end
+
+
+
+
+
+@enduml

@@ -1,6 +1,6 @@
-@startuml AdoptConfirmation
+@startuml View Adoption Confirmation Page
 ' Global param
-title Adopt Confirmation
+title View Adoption Confirmation Page
 autoactivate on
 
 ' Global style configuration
@@ -8,12 +8,12 @@ skinparam RoundCorner 0
 hide footbox
 
 ' Sequence participant configuration
-actor User
-participant "_: RequestAdoptionPage_" as Page <<view>>
-participant "_:AdoptionService_" as Service
-participant "_:Adoption_" as Model <<model>>
-participant "_:ImageNetwork_" as Image
-participant "_:DioInstance_" as Dio
+actor "Adopter" as User
+participant "__: RequestAdoptionPage__" as Page <<view>>
+participant "__:AdoptionService__" as Service
+participant "__:Adoption__" as Model <<model>>
+participant "__:DioInstance__" as Dio
+participant "__:ImageNetwork__" as Image
 
 
 ' Sequence diagram
