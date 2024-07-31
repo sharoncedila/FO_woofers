@@ -117,6 +117,7 @@ import 'package:shared_preferences/shared_preferences.dart';
 import 'package:woofers/components/admin_users_card.dart';
 import 'package:woofers/components/my_dog_card.dart';
 import 'package:woofers/pages/add_dog_page.dart';
+import 'package:woofers/services/admin_service.dart';
 import 'package:woofers/services/dog_services.dart';
 
 void main() => runApp(const AdminUsersPage());
@@ -186,12 +187,9 @@ class _AdminUsersPageState extends State<AdminUsersPage> {
             if (!snapshot.hasData) {
               return const Text("No data");
             }
-
-            String accountId =
-                snapshot.data == null ? "" : snapshot.requireData;
             return Expanded(
                 child: FutureBuilder(
-                    future: DogService().retrieveDogList(accountId),
+                    future: AdminService().showAccounts(),
                     builder: (context, snapshot) {
                       if (snapshot.connectionState == ConnectionState.waiting) {
                         return Padding(
@@ -212,15 +210,15 @@ class _AdminUsersPageState extends State<AdminUsersPage> {
                         return const Text("You do not have any dog.");
                       }
 
-                      final dogList = snapshot.data!;
+                      final userAdminList = viewAccountResponse;
                       return SingleChildScrollView(
-                        child: Column(
+                        child: Column(  
                             // padding: const EdgeInsets.symmetric(horizontal: 5, vertical: 5),
                             children: [
                               Wrap(
-                                children: dogList
+                                children: userAdminList
                                     .map((e) =>
-                                        AdminUsersCard(dogProfile: e))
+                                        AdminUsersCard(user: e))
                                     .toList(),
                               ),
                             ]),

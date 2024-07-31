@@ -1,14 +1,15 @@
 import 'package:flutter/material.dart';
 import 'package:woofers/components/image_network.dart';
 import 'package:woofers/model/account_model.dart';
+import 'package:woofers/model/admin_model.dart';
 import 'package:woofers/model/dog_model.dart';
 import 'package:woofers/pages/request_adoption_page.dart';
 
 class AdminUsersCard extends StatelessWidget {
-  final ResponseDogCard dogProfile;
+  final Account user;
   const AdminUsersCard({
     super.key,
-    required this.dogProfile,
+    required this.user,
   });
 
   @override
