@@ -1,0 +1,25 @@
+@startuml Message Other
+' Global param
+title Message Other
+autoactivate on
+
+' Global style configuration
+skinparam RoundCorner 0
+hide footbox
+
+' Sequence participant configuration
+actor "Adopter / Dog Owner" as User
+participant "__:ChatroomPageDetail__" as Page <<view>>
+participant "__:Chat__" as Model <<model>>
+participant "__:WSChatInstance__" as WebSocket
+
+' Sequence diagram
+User -> Page: build(context)
+Page -> Model : SendChatRequest(recipientId, messageController, chatroomId)
+Page <-- Model : SendChatRequest
+Page -> WebSocket : sendMessage(request)
+Page <-- WebSocket : void
+User <-- Page: ChatroomPageDetail
+
+
+@enduml
