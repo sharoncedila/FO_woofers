@@ -1,0 +1,33 @@
+@startuml View Chatroom Page
+' Global param
+title View Chatroom Page
+autoactivate on
+
+' Global style configuration
+skinparam RoundCorner 0
+hide footbox
+
+' Sequence participant configuration
+actor "Adopter / Dog Owner" as User
+participant "__:ChatroomPageDetail__" as Page <<view>>
+participant "__:BubbleChatCardDetail__" as Card <<view>>
+participant "__:ChatService__" as Service
+participant "__:Chat__" as Model <<model>>
+participant "__:DioInstance__" as Dio
+
+' Sequence diagram
+User -> Page: build(context)
+Page -> Model : OpenChatRequest(recipientId)
+Page <-- Model : OpenChatRequest
+Page -> Service : openChatroom(OpenChatRequest)
+Service -> Dio : post /chats/open-chat
+Service <-- Dio : response
+Service -> Model : OpenChatResponse.fromJson(response)
+Service <-- Model : OpenChatResponse
+Page <-- Service : List<OpenChatResponse>
+Page -> Card : build(context)
+Page <-- Card : BubbleChatCardDetail
+User <-- Page: ChatroomPageDetail
+
+
+@enduml

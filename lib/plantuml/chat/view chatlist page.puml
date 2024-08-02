@@ -1,0 +1,31 @@
+@startuml View Chatlist Page
+' Global param
+title View Chatlist Page
+autoactivate on
+
+' Global style configuration
+skinparam RoundCorner 0
+hide footbox
+
+' Sequence participant configuration
+actor "Adopter / Dog Owner" as User
+participant "__:ChatListPage__" as Page <<view>>
+participant "__:ChatCardDetail__" as Card <<view>>
+participant "__:ChatService__" as Service
+participant "__:Chat__" as Model <<model>>
+participant "__:DioInstance__" as Dio
+
+' Sequence diagram
+User -> Page: build(context)
+Page -> Service : retrieveChatroomList()
+Service -> Dio : get /chats/chatroom-list
+Service <-- Dio : response
+Service -> Model : RetrieveChatlistResponse.fromJson(response)
+Service <-- Model : RetrieveChatlistResponse
+Page <-- Service : List<RetrieveChatlistResponse>
+Page -> Card : build(context)
+Page <-- Card : ChatCardDetail
+User <-- Page: ChatListPage
+
+
+@enduml
