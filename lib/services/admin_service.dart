@@ -54,25 +54,25 @@ class AdminService {
       const api = '/admin/show-accounts';
       final dio = await DioInstance.getInstance();
 
-    //   var response = await dio.get(api);
-    //   final errorSchema =
-    //       ShowAccountsResponse.fromJson(response.data!['errorSchema']);
-    //   if (errorSchema.errorCode != 'WOF-000') {
-    //     return ShowAccountsResponse.fromJson(response.data['errorSchema']);
-    //   } else {
-    //     return ShowAccountsResponse.fromJson(response.data['outputSchema']);
-    //   }
-    // } catch (error) {
-    //   print(error);
-    // }
-    // return null;
-    var response = await dio.get(api);
+      //   var response = await dio.get(api);
+      //   final errorSchema =
+      //       ShowAccountsResponse.fromJson(response.data!['errorSchema']);
+      //   if (errorSchema.errorCode != 'WOF-000') {
+      //     return ShowAccountsResponse.fromJson(response.data['errorSchema']);
+      //   } else {
+      //     return ShowAccountsResponse.fromJson(response.data['outputSchema']);
+      //   }
+      // } catch (error) {
+      //   print(error);
+      // }
+      // return null;
+      var response = await dio.get(api);
       final errorSchema =
           ShowAccountsResponse.fromJson(response.data['errorSchema']);
       if (errorSchema.errorCode != 'WOF-000') {
         return [ShowAccountsResponse.fromJson(response.data['errorSchema'])];
       } else {
-        return (response.data['outputSchema']['accountList'] as List)
+        return (response.data['outputSchema']['accountList']  as List)
             .map((e) => ShowAccountsResponse.fromJson(e))
             .toList();
       }
@@ -86,19 +86,19 @@ class AdminService {
       const api = '/admin/show-dogs';
       final dio = await DioInstance.getInstance();
 
-    //   var response = await dio.get(api);
-    //   final errorSchema =
-    //       ShowDogsResponse.fromJson(response.data!['errorSchema']);
-    //   if (errorSchema.errorCode != 'WOF-000') {
-    //     return ShowDogsResponse.fromJson(response.data['errorSchema']);
-    //   } else {
-    //     return ShowDogsResponse.fromJson(response.data['outputSchema']);
-    //   }
-    // } catch (error) {
-    //   print(error);
-    // }
-    // return null;
-    var response = await dio.get(api);
+      //   var response = await dio.get(api);
+      //   final errorSchema =
+      //       ShowDogsResponse.fromJson(response.data!['errorSchema']);
+      //   if (errorSchema.errorCode != 'WOF-000') {
+      //     return ShowDogsResponse.fromJson(response.data['errorSchema']);
+      //   } else {
+      //     return ShowDogsResponse.fromJson(response.data['outputSchema']);
+      //   }
+      // } catch (error) {
+      //   print(error);
+      // }
+      // return null;
+      var response = await dio.get(api);
       final errorSchema =
           ShowDogsResponse.fromJson(response.data['errorSchema']);
       if (errorSchema.errorCode != 'WOF-000') {
@@ -118,13 +118,13 @@ class AdminService {
       const api = '/admin/show-feeds';
       final dio = await DioInstance.getInstance();
 
-      var response =
-          await dio.get(api);
+      var response = await dio.get(api);
       final errorSchema =
           ShowFeedsResponse.fromJson(response.data['errorSchema']);
       if (errorSchema.errorCode != 'WOF-000') {
         return [ShowFeedsResponse.fromJson(response.data['errorSchema'])];
       } else {
+        print(response.data['outputSchema']['feedsList']);
         return (response.data['outputSchema']['feedsList'] as List)
             .map((e) => ShowFeedsResponse.fromJson(e))
             .toList();
@@ -150,9 +150,9 @@ class AdminService {
     //return null;
   }
 
-  Future<AdminDeleteAccountResponse> deleteAccount(String accountId) async {
+  static Future<AdminDeleteAccountResponse> deleteAccount(String accountId) async {
     try {
-      String api = '/admin/delete-accounts/$accountId';
+      String api = '/admin/delete-account/$accountId';
       final dio = await DioInstance.getInstance();
 
       var response = await dio.delete(api);
@@ -207,6 +207,25 @@ class AdminService {
       }
     } catch (error) {
       throw Exception(error);
+    }
+  }
+
+  Future<AdminLogoutResponse?> logout() async {
+    try {
+      const api = '/admin/logout';
+      final dio = await DioInstance.getInstance();
+
+      var response = await dio.get(api);
+      final errorSchema =
+          AdminLogoutResponse.fromJson(response.data['errorSchema']);
+
+      if (errorSchema.errorCode != 'WOF-000') {
+        return AdminLogoutResponse.fromJson(response.data['errorSchema']);
+      } else {
+        return AdminLogoutResponse.fromJson(response.data['outputSchema']);
+      }
+    } catch (error) {
+      print(error);
     }
   }
 }

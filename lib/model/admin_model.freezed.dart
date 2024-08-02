@@ -1104,7 +1104,7 @@ mixin _$ShowAccountsResponse {
   String? get status => throw _privateConstructorUsedError;
   String? get errorCode => throw _privateConstructorUsedError;
   String? get errorMessage => throw _privateConstructorUsedError;
-  String get accountId => throw _privateConstructorUsedError;
+  String? get accountId => throw _privateConstructorUsedError;
   String? get username => throw _privateConstructorUsedError;
   String? get image => throw _privateConstructorUsedError;
 
@@ -1124,7 +1124,7 @@ abstract class $ShowAccountsResponseCopyWith<$Res> {
       {String? status,
       String? errorCode,
       String? errorMessage,
-      String accountId,
+      String? accountId,
       String? username,
       String? image});
 }
@@ -1146,7 +1146,7 @@ class _$ShowAccountsResponseCopyWithImpl<$Res,
     Object? status = freezed,
     Object? errorCode = freezed,
     Object? errorMessage = freezed,
-    Object? accountId = null,
+    Object? accountId = freezed,
     Object? username = freezed,
     Object? image = freezed,
   }) {
@@ -1163,10 +1163,10 @@ class _$ShowAccountsResponseCopyWithImpl<$Res,
           ? _value.errorMessage
           : errorMessage // ignore: cast_nullable_to_non_nullable
               as String?,
-      accountId: null == accountId
+      accountId: freezed == accountId
           ? _value.accountId
           : accountId // ignore: cast_nullable_to_non_nullable
-              as String,
+              as String?,
       username: freezed == username
           ? _value.username
           : username // ignore: cast_nullable_to_non_nullable
@@ -1191,7 +1191,7 @@ abstract class _$$ShowAccountsResponseImplCopyWith<$Res>
       {String? status,
       String? errorCode,
       String? errorMessage,
-      String accountId,
+      String? accountId,
       String? username,
       String? image});
 }
@@ -1210,7 +1210,7 @@ class __$$ShowAccountsResponseImplCopyWithImpl<$Res>
     Object? status = freezed,
     Object? errorCode = freezed,
     Object? errorMessage = freezed,
-    Object? accountId = null,
+    Object? accountId = freezed,
     Object? username = freezed,
     Object? image = freezed,
   }) {
@@ -1227,10 +1227,10 @@ class __$$ShowAccountsResponseImplCopyWithImpl<$Res>
           ? _value.errorMessage
           : errorMessage // ignore: cast_nullable_to_non_nullable
               as String?,
-      accountId: null == accountId
+      accountId: freezed == accountId
           ? _value.accountId
           : accountId // ignore: cast_nullable_to_non_nullable
-              as String,
+              as String?,
       username: freezed == username
           ? _value.username
           : username // ignore: cast_nullable_to_non_nullable
@@ -1264,7 +1264,7 @@ class _$ShowAccountsResponseImpl implements _ShowAccountsResponse {
   @override
   final String? errorMessage;
   @override
-  final String accountId;
+  final String? accountId;
   @override
   final String? username;
   @override
@@ -1318,7 +1318,7 @@ abstract class _ShowAccountsResponse implements ShowAccountsResponse {
       {required final String? status,
       required final String? errorCode,
       required final String? errorMessage,
-      required final String accountId,
+      required final String? accountId,
       required final String? username,
       required final String? image}) = _$ShowAccountsResponseImpl;
 
@@ -1332,7 +1332,7 @@ abstract class _ShowAccountsResponse implements ShowAccountsResponse {
   @override
   String? get errorMessage;
   @override
-  String get accountId;
+  String? get accountId;
   @override
   String? get username;
   @override
@@ -1349,8 +1349,8 @@ Dog _$DogFromJson(Map<String, dynamic> json) {
 
 /// @nodoc
 mixin _$Dog {
-  String get dogId => throw _privateConstructorUsedError;
-  String get dogName => throw _privateConstructorUsedError;
+  String? get dogId => throw _privateConstructorUsedError;
+  String? get dogName => throw _privateConstructorUsedError;
   String? get dogBreed => throw _privateConstructorUsedError;
   String? get image => throw _privateConstructorUsedError;
 
@@ -1364,7 +1364,7 @@ abstract class $DogCopyWith<$Res> {
   factory $DogCopyWith(Dog value, $Res Function(Dog) then) =
       _$DogCopyWithImpl<$Res, Dog>;
   @useResult
-  $Res call({String dogId, String dogName, String? dogBreed, String? image});
+  $Res call({String? dogId, String? dogName, String? dogBreed, String? image});
 }
 
 /// @nodoc
@@ -1379,20 +1379,20 @@ class _$DogCopyWithImpl<$Res, $Val extends Dog> implements $DogCopyWith<$Res> {
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? dogId = null,
-    Object? dogName = null,
+    Object? dogId = freezed,
+    Object? dogName = freezed,
     Object? dogBreed = freezed,
     Object? image = freezed,
   }) {
     return _then(_value.copyWith(
-      dogId: null == dogId
+      dogId: freezed == dogId
           ? _value.dogId
           : dogId // ignore: cast_nullable_to_non_nullable
-              as String,
-      dogName: null == dogName
+              as String?,
+      dogName: freezed == dogName
           ? _value.dogName
           : dogName // ignore: cast_nullable_to_non_nullable
-              as String,
+              as String?,
       dogBreed: freezed == dogBreed
           ? _value.dogBreed
           : dogBreed // ignore: cast_nullable_to_non_nullable
@@ -1411,7 +1411,7 @@ abstract class _$$DogImplCopyWith<$Res> implements $DogCopyWith<$Res> {
       __$$DogImplCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({String dogId, String dogName, String? dogBreed, String? image});
+  $Res call({String? dogId, String? dogName, String? dogBreed, String? image});
 }
 
 /// @nodoc
@@ -1423,20 +1423,20 @@ class __$$DogImplCopyWithImpl<$Res> extends _$DogCopyWithImpl<$Res, _$DogImpl>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? dogId = null,
-    Object? dogName = null,
+    Object? dogId = freezed,
+    Object? dogName = freezed,
     Object? dogBreed = freezed,
     Object? image = freezed,
   }) {
     return _then(_$DogImpl(
-      dogId: null == dogId
+      dogId: freezed == dogId
           ? _value.dogId
           : dogId // ignore: cast_nullable_to_non_nullable
-              as String,
-      dogName: null == dogName
+              as String?,
+      dogName: freezed == dogName
           ? _value.dogName
           : dogName // ignore: cast_nullable_to_non_nullable
-              as String,
+              as String?,
       dogBreed: freezed == dogBreed
           ? _value.dogBreed
           : dogBreed // ignore: cast_nullable_to_non_nullable
@@ -1462,9 +1462,9 @@ class _$DogImpl implements _Dog {
       _$$DogImplFromJson(json);
 
   @override
-  final String dogId;
+  final String? dogId;
   @override
-  final String dogName;
+  final String? dogName;
   @override
   final String? dogBreed;
   @override
@@ -1507,17 +1507,17 @@ class _$DogImpl implements _Dog {
 
 abstract class _Dog implements Dog {
   factory _Dog(
-      {required final String dogId,
-      required final String dogName,
+      {required final String? dogId,
+      required final String? dogName,
       required final String? dogBreed,
       final String? image}) = _$DogImpl;
 
   factory _Dog.fromJson(Map<String, dynamic> json) = _$DogImpl.fromJson;
 
   @override
-  String get dogId;
+  String? get dogId;
   @override
-  String get dogName;
+  String? get dogName;
   @override
   String? get dogBreed;
   @override
@@ -1536,8 +1536,8 @@ ShowDogsResponse _$ShowDogsResponseFromJson(Map<String, dynamic> json) {
 mixin _$ShowDogsResponse {
   String? get errorCode => throw _privateConstructorUsedError;
   String? get errorMessage => throw _privateConstructorUsedError;
-  String get dogId => throw _privateConstructorUsedError;
-  String get dogName => throw _privateConstructorUsedError;
+  String? get dogId => throw _privateConstructorUsedError;
+  String? get dogName => throw _privateConstructorUsedError;
   String? get dogBreed => throw _privateConstructorUsedError;
   String? get image => throw _privateConstructorUsedError;
 
@@ -1556,8 +1556,8 @@ abstract class $ShowDogsResponseCopyWith<$Res> {
   $Res call(
       {String? errorCode,
       String? errorMessage,
-      String dogId,
-      String dogName,
+      String? dogId,
+      String? dogName,
       String? dogBreed,
       String? image});
 }
@@ -1577,8 +1577,8 @@ class _$ShowDogsResponseCopyWithImpl<$Res, $Val extends ShowDogsResponse>
   $Res call({
     Object? errorCode = freezed,
     Object? errorMessage = freezed,
-    Object? dogId = null,
-    Object? dogName = null,
+    Object? dogId = freezed,
+    Object? dogName = freezed,
     Object? dogBreed = freezed,
     Object? image = freezed,
   }) {
@@ -1591,14 +1591,14 @@ class _$ShowDogsResponseCopyWithImpl<$Res, $Val extends ShowDogsResponse>
           ? _value.errorMessage
           : errorMessage // ignore: cast_nullable_to_non_nullable
               as String?,
-      dogId: null == dogId
+      dogId: freezed == dogId
           ? _value.dogId
           : dogId // ignore: cast_nullable_to_non_nullable
-              as String,
-      dogName: null == dogName
+              as String?,
+      dogName: freezed == dogName
           ? _value.dogName
           : dogName // ignore: cast_nullable_to_non_nullable
-              as String,
+              as String?,
       dogBreed: freezed == dogBreed
           ? _value.dogBreed
           : dogBreed // ignore: cast_nullable_to_non_nullable
@@ -1622,8 +1622,8 @@ abstract class _$$ShowDogsResponseImplCopyWith<$Res>
   $Res call(
       {String? errorCode,
       String? errorMessage,
-      String dogId,
-      String dogName,
+      String? dogId,
+      String? dogName,
       String? dogBreed,
       String? image});
 }
@@ -1641,8 +1641,8 @@ class __$$ShowDogsResponseImplCopyWithImpl<$Res>
   $Res call({
     Object? errorCode = freezed,
     Object? errorMessage = freezed,
-    Object? dogId = null,
-    Object? dogName = null,
+    Object? dogId = freezed,
+    Object? dogName = freezed,
     Object? dogBreed = freezed,
     Object? image = freezed,
   }) {
@@ -1655,14 +1655,14 @@ class __$$ShowDogsResponseImplCopyWithImpl<$Res>
           ? _value.errorMessage
           : errorMessage // ignore: cast_nullable_to_non_nullable
               as String?,
-      dogId: null == dogId
+      dogId: freezed == dogId
           ? _value.dogId
           : dogId // ignore: cast_nullable_to_non_nullable
-              as String,
-      dogName: null == dogName
+              as String?,
+      dogName: freezed == dogName
           ? _value.dogName
           : dogName // ignore: cast_nullable_to_non_nullable
-              as String,
+              as String?,
       dogBreed: freezed == dogBreed
           ? _value.dogBreed
           : dogBreed // ignore: cast_nullable_to_non_nullable
@@ -1694,9 +1694,9 @@ class _$ShowDogsResponseImpl implements _ShowDogsResponse {
   @override
   final String? errorMessage;
   @override
-  final String dogId;
+  final String? dogId;
   @override
-  final String dogName;
+  final String? dogName;
   @override
   final String? dogBreed;
   @override
@@ -1747,8 +1747,8 @@ abstract class _ShowDogsResponse implements ShowDogsResponse {
   factory _ShowDogsResponse(
       {required final String? errorCode,
       required final String? errorMessage,
-      required final String dogId,
-      required final String dogName,
+      required final String? dogId,
+      required final String? dogName,
       required final String? dogBreed,
       final String? image}) = _$ShowDogsResponseImpl;
 
@@ -1760,9 +1760,9 @@ abstract class _ShowDogsResponse implements ShowDogsResponse {
   @override
   String? get errorMessage;
   @override
-  String get dogId;
+  String? get dogId;
   @override
-  String get dogName;
+  String? get dogName;
   @override
   String? get dogBreed;
   @override
@@ -1780,7 +1780,7 @@ Feeds _$FeedsFromJson(Map<String, dynamic> json) {
 /// @nodoc
 mixin _$Feeds {
   String? get username => throw _privateConstructorUsedError;
-  String get feedsId => throw _privateConstructorUsedError;
+  String? get feedsId => throw _privateConstructorUsedError;
   String? get caption => throw _privateConstructorUsedError;
   String? get image => throw _privateConstructorUsedError;
   String? get postDate => throw _privateConstructorUsedError;
@@ -1800,7 +1800,7 @@ abstract class $FeedsCopyWith<$Res> {
   @useResult
   $Res call(
       {String? username,
-      String feedsId,
+      String? feedsId,
       String? caption,
       String? image,
       String? postDate,
@@ -1823,7 +1823,7 @@ class _$FeedsCopyWithImpl<$Res, $Val extends Feeds>
   @override
   $Res call({
     Object? username = freezed,
-    Object? feedsId = null,
+    Object? feedsId = freezed,
     Object? caption = freezed,
     Object? image = freezed,
     Object? postDate = freezed,
@@ -1836,10 +1836,10 @@ class _$FeedsCopyWithImpl<$Res, $Val extends Feeds>
           ? _value.username
           : username // ignore: cast_nullable_to_non_nullable
               as String?,
-      feedsId: null == feedsId
+      feedsId: freezed == feedsId
           ? _value.feedsId
           : feedsId // ignore: cast_nullable_to_non_nullable
-              as String,
+              as String?,
       caption: freezed == caption
           ? _value.caption
           : caption // ignore: cast_nullable_to_non_nullable
@@ -1877,7 +1877,7 @@ abstract class _$$FeedsImplCopyWith<$Res> implements $FeedsCopyWith<$Res> {
   @useResult
   $Res call(
       {String? username,
-      String feedsId,
+      String? feedsId,
       String? caption,
       String? image,
       String? postDate,
@@ -1898,7 +1898,7 @@ class __$$FeedsImplCopyWithImpl<$Res>
   @override
   $Res call({
     Object? username = freezed,
-    Object? feedsId = null,
+    Object? feedsId = freezed,
     Object? caption = freezed,
     Object? image = freezed,
     Object? postDate = freezed,
@@ -1911,10 +1911,10 @@ class __$$FeedsImplCopyWithImpl<$Res>
           ? _value.username
           : username // ignore: cast_nullable_to_non_nullable
               as String?,
-      feedsId: null == feedsId
+      feedsId: freezed == feedsId
           ? _value.feedsId
           : feedsId // ignore: cast_nullable_to_non_nullable
-              as String,
+              as String?,
       caption: freezed == caption
           ? _value.caption
           : caption // ignore: cast_nullable_to_non_nullable
@@ -1962,7 +1962,7 @@ class _$FeedsImpl implements _Feeds {
   @override
   final String? username;
   @override
-  final String feedsId;
+  final String? feedsId;
   @override
   final String? caption;
   @override
@@ -2023,7 +2023,7 @@ class _$FeedsImpl implements _Feeds {
 abstract class _Feeds implements Feeds {
   factory _Feeds(
       {required final String? username,
-      required final String feedsId,
+      required final String? feedsId,
       required final String? caption,
       required final String? image,
       required final String? postDate,
@@ -2036,7 +2036,7 @@ abstract class _Feeds implements Feeds {
   @override
   String? get username;
   @override
-  String get feedsId;
+  String? get feedsId;
   @override
   String? get caption;
   @override
@@ -2064,7 +2064,7 @@ mixin _$ShowFeedsResponse {
   String? get errorCode => throw _privateConstructorUsedError;
   String? get errorMessage => throw _privateConstructorUsedError;
   String? get username => throw _privateConstructorUsedError;
-  String get feedsId => throw _privateConstructorUsedError;
+  String? get feedsId => throw _privateConstructorUsedError;
   String? get caption => throw _privateConstructorUsedError;
   String? get image => throw _privateConstructorUsedError;
   String? get postDate => throw _privateConstructorUsedError;
@@ -2086,7 +2086,7 @@ abstract class $ShowFeedsResponseCopyWith<$Res> {
       {String? errorCode,
       String? errorMessage,
       String? username,
-      String feedsId,
+      String? feedsId,
       String? caption,
       String? image,
       String? postDate,
@@ -2109,7 +2109,7 @@ class _$ShowFeedsResponseCopyWithImpl<$Res, $Val extends ShowFeedsResponse>
     Object? errorCode = freezed,
     Object? errorMessage = freezed,
     Object? username = freezed,
-    Object? feedsId = null,
+    Object? feedsId = freezed,
     Object? caption = freezed,
     Object? image = freezed,
     Object? postDate = freezed,
@@ -2128,10 +2128,10 @@ class _$ShowFeedsResponseCopyWithImpl<$Res, $Val extends ShowFeedsResponse>
           ? _value.username
           : username // ignore: cast_nullable_to_non_nullable
               as String?,
-      feedsId: null == feedsId
+      feedsId: freezed == feedsId
           ? _value.feedsId
           : feedsId // ignore: cast_nullable_to_non_nullable
-              as String,
+              as String?,
       caption: freezed == caption
           ? _value.caption
           : caption // ignore: cast_nullable_to_non_nullable
@@ -2164,7 +2164,7 @@ abstract class _$$ShowFeedsResponseImplCopyWith<$Res>
       {String? errorCode,
       String? errorMessage,
       String? username,
-      String feedsId,
+      String? feedsId,
       String? caption,
       String? image,
       String? postDate,
@@ -2185,7 +2185,7 @@ class __$$ShowFeedsResponseImplCopyWithImpl<$Res>
     Object? errorCode = freezed,
     Object? errorMessage = freezed,
     Object? username = freezed,
-    Object? feedsId = null,
+    Object? feedsId = freezed,
     Object? caption = freezed,
     Object? image = freezed,
     Object? postDate = freezed,
@@ -2204,10 +2204,10 @@ class __$$ShowFeedsResponseImplCopyWithImpl<$Res>
           ? _value.username
           : username // ignore: cast_nullable_to_non_nullable
               as String?,
-      feedsId: null == feedsId
+      feedsId: freezed == feedsId
           ? _value.feedsId
           : feedsId // ignore: cast_nullable_to_non_nullable
-              as String,
+              as String?,
       caption: freezed == caption
           ? _value.caption
           : caption // ignore: cast_nullable_to_non_nullable
@@ -2251,7 +2251,7 @@ class _$ShowFeedsResponseImpl implements _ShowFeedsResponse {
   @override
   final String? username;
   @override
-  final String feedsId;
+  final String? feedsId;
   @override
   final String? caption;
   @override
@@ -2311,7 +2311,7 @@ abstract class _ShowFeedsResponse implements ShowFeedsResponse {
       {required final String? errorCode,
       required final String? errorMessage,
       required final String? username,
-      required final String feedsId,
+      required final String? feedsId,
       required final String? caption,
       required final String? image,
       required final String? postDate,
@@ -2327,7 +2327,7 @@ abstract class _ShowFeedsResponse implements ShowFeedsResponse {
   @override
   String? get username;
   @override
-  String get feedsId;
+  String? get feedsId;
   @override
   String? get caption;
   @override
@@ -2339,5 +2339,182 @@ abstract class _ShowFeedsResponse implements ShowFeedsResponse {
   @override
   @JsonKey(ignore: true)
   _$$ShowFeedsResponseImplCopyWith<_$ShowFeedsResponseImpl> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+AdminLogoutResponse _$AdminLogoutResponseFromJson(Map<String, dynamic> json) {
+  return _AdminLogoutResponse.fromJson(json);
+}
+
+/// @nodoc
+mixin _$AdminLogoutResponse {
+  String? get status => throw _privateConstructorUsedError;
+  String? get errorCode => throw _privateConstructorUsedError;
+  String? get errorMessage => throw _privateConstructorUsedError;
+
+  Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
+  @JsonKey(ignore: true)
+  $AdminLogoutResponseCopyWith<AdminLogoutResponse> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class $AdminLogoutResponseCopyWith<$Res> {
+  factory $AdminLogoutResponseCopyWith(
+          AdminLogoutResponse value, $Res Function(AdminLogoutResponse) then) =
+      _$AdminLogoutResponseCopyWithImpl<$Res, AdminLogoutResponse>;
+  @useResult
+  $Res call({String? status, String? errorCode, String? errorMessage});
+}
+
+/// @nodoc
+class _$AdminLogoutResponseCopyWithImpl<$Res, $Val extends AdminLogoutResponse>
+    implements $AdminLogoutResponseCopyWith<$Res> {
+  _$AdminLogoutResponseCopyWithImpl(this._value, this._then);
+
+  // ignore: unused_field
+  final $Val _value;
+  // ignore: unused_field
+  final $Res Function($Val) _then;
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? status = freezed,
+    Object? errorCode = freezed,
+    Object? errorMessage = freezed,
+  }) {
+    return _then(_value.copyWith(
+      status: freezed == status
+          ? _value.status
+          : status // ignore: cast_nullable_to_non_nullable
+              as String?,
+      errorCode: freezed == errorCode
+          ? _value.errorCode
+          : errorCode // ignore: cast_nullable_to_non_nullable
+              as String?,
+      errorMessage: freezed == errorMessage
+          ? _value.errorMessage
+          : errorMessage // ignore: cast_nullable_to_non_nullable
+              as String?,
+    ) as $Val);
+  }
+}
+
+/// @nodoc
+abstract class _$$AdminLogoutResponseImplCopyWith<$Res>
+    implements $AdminLogoutResponseCopyWith<$Res> {
+  factory _$$AdminLogoutResponseImplCopyWith(_$AdminLogoutResponseImpl value,
+          $Res Function(_$AdminLogoutResponseImpl) then) =
+      __$$AdminLogoutResponseImplCopyWithImpl<$Res>;
+  @override
+  @useResult
+  $Res call({String? status, String? errorCode, String? errorMessage});
+}
+
+/// @nodoc
+class __$$AdminLogoutResponseImplCopyWithImpl<$Res>
+    extends _$AdminLogoutResponseCopyWithImpl<$Res, _$AdminLogoutResponseImpl>
+    implements _$$AdminLogoutResponseImplCopyWith<$Res> {
+  __$$AdminLogoutResponseImplCopyWithImpl(_$AdminLogoutResponseImpl _value,
+      $Res Function(_$AdminLogoutResponseImpl) _then)
+      : super(_value, _then);
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? status = freezed,
+    Object? errorCode = freezed,
+    Object? errorMessage = freezed,
+  }) {
+    return _then(_$AdminLogoutResponseImpl(
+      status: freezed == status
+          ? _value.status
+          : status // ignore: cast_nullable_to_non_nullable
+              as String?,
+      errorCode: freezed == errorCode
+          ? _value.errorCode
+          : errorCode // ignore: cast_nullable_to_non_nullable
+              as String?,
+      errorMessage: freezed == errorMessage
+          ? _value.errorMessage
+          : errorMessage // ignore: cast_nullable_to_non_nullable
+              as String?,
+    ));
+  }
+}
+
+/// @nodoc
+@JsonSerializable()
+class _$AdminLogoutResponseImpl implements _AdminLogoutResponse {
+  _$AdminLogoutResponseImpl(
+      {required this.status,
+      required this.errorCode,
+      required this.errorMessage});
+
+  factory _$AdminLogoutResponseImpl.fromJson(Map<String, dynamic> json) =>
+      _$$AdminLogoutResponseImplFromJson(json);
+
+  @override
+  final String? status;
+  @override
+  final String? errorCode;
+  @override
+  final String? errorMessage;
+
+  @override
+  String toString() {
+    return 'AdminLogoutResponse(status: $status, errorCode: $errorCode, errorMessage: $errorMessage)';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$AdminLogoutResponseImpl &&
+            (identical(other.status, status) || other.status == status) &&
+            (identical(other.errorCode, errorCode) ||
+                other.errorCode == errorCode) &&
+            (identical(other.errorMessage, errorMessage) ||
+                other.errorMessage == errorMessage));
+  }
+
+  @JsonKey(ignore: true)
+  @override
+  int get hashCode => Object.hash(runtimeType, status, errorCode, errorMessage);
+
+  @JsonKey(ignore: true)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$AdminLogoutResponseImplCopyWith<_$AdminLogoutResponseImpl> get copyWith =>
+      __$$AdminLogoutResponseImplCopyWithImpl<_$AdminLogoutResponseImpl>(
+          this, _$identity);
+
+  @override
+  Map<String, dynamic> toJson() {
+    return _$$AdminLogoutResponseImplToJson(
+      this,
+    );
+  }
+}
+
+abstract class _AdminLogoutResponse implements AdminLogoutResponse {
+  factory _AdminLogoutResponse(
+      {required final String? status,
+      required final String? errorCode,
+      required final String? errorMessage}) = _$AdminLogoutResponseImpl;
+
+  factory _AdminLogoutResponse.fromJson(Map<String, dynamic> json) =
+      _$AdminLogoutResponseImpl.fromJson;
+
+  @override
+  String? get status;
+  @override
+  String? get errorCode;
+  @override
+  String? get errorMessage;
+  @override
+  @JsonKey(ignore: true)
+  _$$AdminLogoutResponseImplCopyWith<_$AdminLogoutResponseImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

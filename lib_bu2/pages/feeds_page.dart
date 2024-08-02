@@ -2,19 +2,66 @@ import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:hexcolor/hexcolor.dart';
 import 'package:woofers/components/feeds_card.dart';
+import 'package:woofers/model/feeds_model.dart';
 import 'package:woofers/pages/add_feeds_page.dart';
-import 'package:woofers/pages/comment_page.dart';
 import 'package:woofers/pages/notification_page.dart';
 import 'package:woofers/services/feeds_service.dart';
-
+ 
 class FeedsPage extends StatefulWidget {
   const FeedsPage({super.key});
-
+ 
   @override
   _FeedsPageState createState() => _FeedsPageState();
 }
-
+ 
 class _FeedsPageState extends State<FeedsPage> {
+  PaginationFeeds paginationFeeds = PaginationFeeds();
+  bool isLoading = false; // Initially, set to false
+  List<ViewFeedsResponse> feedsList = [];
+  final ScrollController _scrollController = ScrollController();
+ 
+  @override
+  void initState() {
+    super.initState();
+    fetchInitialData();
+ 
+    _scrollController.addListener(() {
+      if (_scrollController.position.pixels ==
+          _scrollController.position.maxScrollExtent) {
+        fetchInitialData();
+      }
+    });
+  }
+ 
+  Future<void> fetchInitialData() async {
+    if (isLoading) return;
+ 
+    setState(() {
+      isLoading = true;
+    });
+ 
+    try {
+      final viewFeedsResponse =
+          await FeedsService().retrieveFeedsData(paginationFeeds);
+ 
+      setState(() {
+        feedsList.addAll(viewFeedsResponse);
+        isLoading = false;
+      });
+    } catch (e) {
+      print(e);
+      setState(() {
+        isLoading = false;
+      });
+    }
+  }
+ 
+  @override
+  void dispose() {
+    _scrollController.dispose();
+    super.dispose();
+  }
+ 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -53,39 +100,19 @@ class _FeedsPageState extends State<FeedsPage> {
           ),
         ],
       ),
-      body: feedsList(),
-    );
-  }
-
-  Widget feedsList() {
-    return SingleChildScrollView(
-      child: FutureBuilder(
-          future: FeedsService().retrieveFeedsData(),
-          builder: (context, snapshot) {
-            if (snapshot.connectionState == ConnectionState.waiting) {
-              return Padding(
-                padding: EdgeInsets.all(160),
-                child: Container(
-                  // Center the CircularProgressIndicator
-                  alignment: Alignment.center,
-                  color: Colors
-                      .transparent, // Ensure the container doesn't block interaction with underlying widgets
-                  child: const CircularProgressIndicator(),
-                ),
-              );
-            }
-            if (snapshot.hasError) {
-              return const Center(child: Text("Error"));
-            }
-            if (!snapshot.hasData) {
-              return const Text('no feeds');
-            }
-            final feedsList = snapshot.data!;
-            return Wrap(
-              children:
-                  feedsList.map((e) => FeedsCard(feedsDetail: e)).toList(),
-            );
-          }),
+      body: ListView.builder(
+        controller: _scrollController,
+        itemCount: feedsList.length + 1,
+        itemBuilder: (context, index) {
+          if (index == feedsList.length) {
+            return isLoading
+                ? const Center(child: CircularProgressIndicator())
+                : const SizedBox.shrink();
+          }
+ 
+          return FeedsCard(feedsDetail: feedsList[index]);
+        },
+      ),
     );
   }
 }

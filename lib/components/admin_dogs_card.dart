@@ -124,7 +124,7 @@ class AdminDogCard extends StatelessWidget {
                             DogService()
                                 .deleteDog(dogProfile.dogId);
                             */
-                                AdminService.deleteDog(dog.dogId);
+                                AdminService.deleteDog(dog.dogId ?? '');
                               }
                             });
                           },

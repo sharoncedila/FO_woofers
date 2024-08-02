@@ -68,7 +68,7 @@ class _AdminFeedsPageState extends State<AdminFeedsPage> {
   }
 
   @override
-  final _logoutService = AccountService();
+  final _logoutService = AdminService();
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Colors.white,

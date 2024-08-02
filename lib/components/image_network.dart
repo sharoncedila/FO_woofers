@@ -31,7 +31,8 @@ class ImageNetwork extends StatelessWidget {
           }
 
           return Image(
-            image: NetworkImage("https://woofers.arv.cx/woofers$urlImage",
+            // image: NetworkImage("https://woofers.arv.cx/woofers$urlImage",
+            image: NetworkImage("http://192.168.100.32:8080/woofers$urlImage",
                 headers:
                     Map.from({"Authorization": "Bearer ${snapshot.data}"})),
             width: width,

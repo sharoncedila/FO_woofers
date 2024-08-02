@@ -73,7 +73,7 @@ class ShowAccountsResponse with _$ShowAccountsResponse {
       {required String? status,
       required String? errorCode,
       required String? errorMessage,
-      required String accountId,
+      required String? accountId,
       required String? username,
       required String? image}) = _ShowAccountsResponse;
 
@@ -84,8 +84,8 @@ class ShowAccountsResponse with _$ShowAccountsResponse {
 @freezed
 class Dog with _$Dog {
   factory Dog({
-    required String dogId,
-    required String dogName,
+    required String? dogId,
+    required String? dogName,
     required String? dogBreed,
     String? image,
   }) = _Dog;
@@ -98,8 +98,8 @@ class ShowDogsResponse with _$ShowDogsResponse {
   factory ShowDogsResponse({
     required String? errorCode,
     required String? errorMessage,
-    required String dogId,
-    required String dogName,
+    required String? dogId,
+    required String? dogName,
     required String? dogBreed,
     String? image
   }) = _ShowDogsResponse;
@@ -112,7 +112,7 @@ class ShowDogsResponse with _$ShowDogsResponse {
 class Feeds with _$Feeds {
   factory Feeds({
     required String? username,
-    required String feedsId,
+    required String? feedsId,
     required String? caption,
     required String? image,
     required String? postDate,
@@ -130,7 +130,7 @@ class ShowFeedsResponse with _$ShowFeedsResponse {
       {required String? errorCode,
       required String? errorMessage,
       required String? username,
-      required String feedsId,
+      required String? feedsId,
       required String? caption,
       required String? image,
       required String? postDate,
@@ -138,4 +138,15 @@ class ShowFeedsResponse with _$ShowFeedsResponse {
 
   factory ShowFeedsResponse.fromJson(Map<String, dynamic> json) =>
       _$ShowFeedsResponseFromJson(json);
+}
+
+@freezed
+class AdminLogoutResponse with _$AdminLogoutResponse {
+  factory AdminLogoutResponse(
+      {required String? status,
+      required String? errorCode,
+      required String? errorMessage}) = _AdminLogoutResponse;
+
+  factory AdminLogoutResponse.fromJson(Map<String, dynamic> json) =>
+      _$AdminLogoutResponseFromJson(json);
 }

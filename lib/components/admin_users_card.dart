@@ -144,7 +144,7 @@ class AdminAccountsCard extends StatelessWidget {
                             DogService()
                                 .deleteDog(dogProfile.dogId);
                             */
-                                AdminService.deleteDog(account.accountId);
+                                AdminService.deleteAccount(account.accountId ?? '');
                               }
                             });
                           },

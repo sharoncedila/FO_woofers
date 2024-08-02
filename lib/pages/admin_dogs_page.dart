@@ -64,7 +64,7 @@ class _AdminDogsPageState extends State<AdminDogsPage> {
   }
 
   @override
-  final _logoutService = AccountService();
+  final _logoutService = AdminService();
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Colors.white,

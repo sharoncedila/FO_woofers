@@ -162,7 +162,7 @@ class AdminFeedsCard extends StatelessWidget {
                             DogService()
                                 .deleteDog(dogProfile.dogId);
                             */
-                            AdminService.deleteFeeds(feed.feedsId);
+                            AdminService.deleteFeeds(feed.feedsId ?? '');
                           }
                         });
                       },

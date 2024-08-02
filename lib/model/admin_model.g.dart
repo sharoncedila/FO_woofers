@@ -106,7 +106,7 @@ _$ShowAccountsResponseImpl _$$ShowAccountsResponseImplFromJson(
       status: json['status'] as String?,
       errorCode: json['errorCode'] as String?,
       errorMessage: json['errorMessage'] as String?,
-      accountId: json['accountId'] as String,
+      accountId: json['accountId'] as String?,
       username: json['username'] as String?,
       image: json['image'] as String?,
     );
@@ -123,8 +123,8 @@ Map<String, dynamic> _$$ShowAccountsResponseImplToJson(
     };
 
 _$DogImpl _$$DogImplFromJson(Map<String, dynamic> json) => _$DogImpl(
-      dogId: json['dogId'] as String,
-      dogName: json['dogName'] as String,
+      dogId: json['dogId'] as String?,
+      dogName: json['dogName'] as String?,
       dogBreed: json['dogBreed'] as String?,
       image: json['image'] as String?,
     );
@@ -141,8 +141,8 @@ _$ShowDogsResponseImpl _$$ShowDogsResponseImplFromJson(
     _$ShowDogsResponseImpl(
       errorCode: json['errorCode'] as String?,
       errorMessage: json['errorMessage'] as String?,
-      dogId: json['dogId'] as String,
-      dogName: json['dogName'] as String,
+      dogId: json['dogId'] as String?,
+      dogName: json['dogName'] as String?,
       dogBreed: json['dogBreed'] as String?,
       image: json['image'] as String?,
     );
@@ -160,7 +160,7 @@ Map<String, dynamic> _$$ShowDogsResponseImplToJson(
 
 _$FeedsImpl _$$FeedsImplFromJson(Map<String, dynamic> json) => _$FeedsImpl(
       username: json['username'] as String?,
-      feedsId: json['feedsId'] as String,
+      feedsId: json['feedsId'] as String?,
       caption: json['caption'] as String?,
       image: json['image'] as String?,
       postDate: json['postDate'] as String?,
@@ -187,7 +187,7 @@ _$ShowFeedsResponseImpl _$$ShowFeedsResponseImplFromJson(
       errorCode: json['errorCode'] as String?,
       errorMessage: json['errorMessage'] as String?,
       username: json['username'] as String?,
-      feedsId: json['feedsId'] as String,
+      feedsId: json['feedsId'] as String?,
       caption: json['caption'] as String?,
       image: json['image'] as String?,
       postDate: json['postDate'] as String?,
@@ -205,4 +205,20 @@ Map<String, dynamic> _$$ShowFeedsResponseImplToJson(
       'image': instance.image,
       'postDate': instance.postDate,
       'profilePicture': instance.profilePicture,
+    };
+
+_$AdminLogoutResponseImpl _$$AdminLogoutResponseImplFromJson(
+        Map<String, dynamic> json) =>
+    _$AdminLogoutResponseImpl(
+      status: json['status'] as String?,
+      errorCode: json['errorCode'] as String?,
+      errorMessage: json['errorMessage'] as String?,
+    );
+
+Map<String, dynamic> _$$AdminLogoutResponseImplToJson(
+        _$AdminLogoutResponseImpl instance) =>
+    <String, dynamic>{
+      'status': instance.status,
+      'errorCode': instance.errorCode,
+      'errorMessage': instance.errorMessage,
     };
