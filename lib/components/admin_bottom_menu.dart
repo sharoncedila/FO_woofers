@@ -1,11 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:woofers/components/profile_page_template.dart';
 import 'package:woofers/pages/admin_dogs_page.dart';
 import 'package:woofers/pages/admin_feeds_page.dart';
 import 'package:woofers/pages/admin_users_page.dart';
-import 'package:woofers/pages/adoption_page.dart';
-import 'package:woofers/pages/chatlist_page.dart';
-import 'package:woofers/pages/feeds_page.dart';
 
 class AdminBottomMenuBar extends StatefulWidget {
   final int initialIndex;

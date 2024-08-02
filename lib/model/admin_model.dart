@@ -26,7 +26,7 @@ class AdminLoginRequest with _$AdminLoginRequest {
 class AdminLoginResponse with _$AdminLoginResponse {
   factory AdminLoginResponse(
       {required String? accountId,
-      required String? accessToken, 
+      required String? accessToken,
       required String? errorCode,
       required String? errorMessage}) = _AdminLoginResponse;
 
@@ -73,7 +73,9 @@ class ShowAccountsResponse with _$ShowAccountsResponse {
       {required String? status,
       required String? errorCode,
       required String? errorMessage,
-      required List<Account> breedList}) = _ShowAccountsResponse;
+      required String accountId,
+      required String? username,
+      required String? image}) = _ShowAccountsResponse;
 
   factory ShowAccountsResponse.fromJson(Map<String, dynamic> json) =>
       _$ShowAccountsResponseFromJson(json);
@@ -93,10 +95,14 @@ class Dog with _$Dog {
 
 @freezed
 class ShowDogsResponse with _$ShowDogsResponse {
-  factory ShowDogsResponse(
-      {required String? errorCode,
-      required String? errorMessage,
-      required List<Dog> dogList}) = _ShowDogsResponse;
+  factory ShowDogsResponse({
+    required String? errorCode,
+    required String? errorMessage,
+    required String dogId,
+    required String dogName,
+    required String? dogBreed,
+    String? image
+  }) = _ShowDogsResponse;
 
   factory ShowDogsResponse.fromJson(Map<String, dynamic> json) =>
       _$ShowDogsResponseFromJson(json);
@@ -123,7 +129,12 @@ class ShowFeedsResponse with _$ShowFeedsResponse {
   factory ShowFeedsResponse(
       {required String? errorCode,
       required String? errorMessage,
-      required List<Feeds> feedsList}) = _ShowFeedsResponse;
+      required String? username,
+      required String feedsId,
+      required String? caption,
+      required String? image,
+      required String? postDate,
+      required String? profilePicture}) = _ShowFeedsResponse;
 
   factory ShowFeedsResponse.fromJson(Map<String, dynamic> json) =>
       _$ShowFeedsResponseFromJson(json);

@@ -9,7 +9,7 @@ hide footbox
 
 ' Sequence participant configuration
 actor User
-participant "__:EditMyProfile__" as Page <<view>>
+participant "__:EditUserProfilePage__" as Page <<view>>
 participant "__:AccountService__" as ServiceAccount
 participant "__:ImageService__" as ServiceImage
 participant "__:Account__" as ModelAccount <<model>>

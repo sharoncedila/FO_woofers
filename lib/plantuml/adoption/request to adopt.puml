@@ -9,7 +9,7 @@ hide footbox
 
 ' Sequence participant configuration
 actor "Adopter" as User
-participant "__: RequestForAdoption__" as  Page <<view>>
+participant "__: RequestAdoptionPage__" as  Page <<view>>
 participant "__:AdoptionService__" as Service
 participant "__:_Adoption__" as Model <<model>>
 participant "__:DioInstance__" as Dio

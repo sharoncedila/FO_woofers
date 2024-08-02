@@ -6,7 +6,9 @@ import 'package:woofers/components/feeds_card.dart';
 import 'package:woofers/model/admin_model.dart';
 import 'package:woofers/model/feeds_model.dart';
 import 'package:woofers/pages/add_feeds_page.dart';
+import 'package:woofers/pages/login_page.dart';
 import 'package:woofers/pages/notification_page.dart';
+import 'package:woofers/services/account_service.dart';
 import 'package:woofers/services/admin_service.dart';
 import 'package:woofers/services/feeds_service.dart';
 
@@ -20,7 +22,7 @@ class AdminFeedsPage extends StatefulWidget {
 class _AdminFeedsPageState extends State<AdminFeedsPage> {
   PaginationFeeds paginationFeeds = PaginationFeeds();
   bool isLoading = false; // Initially, set to false
-  List<Feeds> feedAdminList = [];
+  List<ShowFeedsResponse> feedAdminList = [];
   final ScrollController _scrollController = ScrollController();
 
   @override
@@ -47,7 +49,7 @@ class _AdminFeedsPageState extends State<AdminFeedsPage> {
       final viewFeedsResponse = await AdminService().showFeeds();
 
       setState(() {
-        feedAdminList = viewFeedsResponse as List<Feeds>;
+        feedAdminList.addAll(viewFeedsResponse);
         isLoading = false;
       });
     } catch (e) {
@@ -66,6 +68,7 @@ class _AdminFeedsPageState extends State<AdminFeedsPage> {
   }
 
   @override
+  final _logoutService = AccountService();
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Colors.white,
@@ -81,6 +84,68 @@ class _AdminFeedsPageState extends State<AdminFeedsPage> {
             color: const Color.fromRGBO(40, 36, 36, 10000),
           ),
         ),
+        actions: <Widget>[
+          ElevatedButton(
+            style: ButtonStyle(
+              backgroundColor: MaterialStateProperty.resolveWith<Color?>(
+                (Set<MaterialState> states) {
+                  if (states.contains(MaterialState.pressed)) {
+                    return Theme.of(context)
+                        .colorScheme
+                        .primary
+                        .withOpacity(0.5);
+                  }
+                  return null;
+                },
+              ),
+            ),
+            child: const Text('Logout'),
+            onPressed: () async {
+              showDialog(
+                context: context,
+                builder: (BuildContext context) {
+                  return AlertDialog(
+                    title: const Text('Confirmation'),
+                    content: const Text(
+                        'Are you sure want to log out your account?'),
+                    actions: <Widget>[
+                      TextButton(
+                        onPressed: () {
+                          Navigator.of(context).pop(false);
+                        },
+                        child: const Text('No'),
+                      ),
+                      TextButton(
+                        onPressed: () {
+                          Navigator.of(context).pop(true);
+                        },
+                        child: const Text('Yes'),
+                      ),
+                    ],
+                  );
+                },
+              ).then((value) {
+                // yess
+                if (value != null && value) {
+                  _logoutService.logout();
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(builder: (context) => const LoginPage()),
+                  );
+                }
+                // no
+                // else {
+                //   // If 'No' is pressed or the dialog is dismissed
+                //   // print('User canceled');
+                //   // Perform the desired action or do nothing
+                // }
+              });
+            },
+          ),
+          const SizedBox(
+            width: 15,
+          ),
+        ],
       ),
       body: ListView.builder(
         controller: _scrollController,

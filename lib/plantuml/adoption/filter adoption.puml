@@ -26,7 +26,7 @@ Service -> Model : AdoptionDetail.fromJson(response)
 Service <-- Model : AdoptionDetail
 Page <-- Service : List<AdoptionDetail>
 Page -> Card : build(context)
-Card -> Model : AdoptionDetail
+Card -> Model : AdoptionDetail.fromJson(response)
 Card <-- Model : AdoptionDetail
 Card -> Image: ImageNetwork(urlImage, width, height)
 Card <-- Image: image

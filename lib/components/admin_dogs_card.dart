@@ -6,7 +6,7 @@ import 'package:woofers/pages/request_adoption_page.dart';
 import 'package:woofers/services/admin_service.dart';
 
 class AdminDogCard extends StatelessWidget {
-  final Dog dog;
+  final ShowDogsResponse dog;
   const AdminDogCard({
     super.key,
     required this.dog,

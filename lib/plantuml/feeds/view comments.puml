@@ -25,7 +25,7 @@ Service -> Model : OpenCommentsResponse.fromJson(response)
 Service <-- Model : OpenCommentsResponse
 Page <-- Service : List<OpenCommentsResponse>
 Page -> Card : build(context)
-Card -> Model : OpenCommentsResponse
+Card -> Model : OpenCommentsResponse.fromJson(response)
 Card <-- Model : OpenCommentsResponse
 Card -> Image : ImageNetwork(urlImage, width, height)
 Card <-- Image : Image

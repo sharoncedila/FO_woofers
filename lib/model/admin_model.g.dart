@@ -106,9 +106,9 @@ _$ShowAccountsResponseImpl _$$ShowAccountsResponseImplFromJson(
       status: json['status'] as String?,
       errorCode: json['errorCode'] as String?,
       errorMessage: json['errorMessage'] as String?,
-      breedList: (json['breedList'] as List<dynamic>)
-          .map((e) => Account.fromJson(e as Map<String, dynamic>))
-          .toList(),
+      accountId: json['accountId'] as String,
+      username: json['username'] as String?,
+      image: json['image'] as String?,
     );
 
 Map<String, dynamic> _$$ShowAccountsResponseImplToJson(
@@ -117,7 +117,9 @@ Map<String, dynamic> _$$ShowAccountsResponseImplToJson(
       'status': instance.status,
       'errorCode': instance.errorCode,
       'errorMessage': instance.errorMessage,
-      'breedList': instance.breedList,
+      'accountId': instance.accountId,
+      'username': instance.username,
+      'image': instance.image,
     };
 
 _$DogImpl _$$DogImplFromJson(Map<String, dynamic> json) => _$DogImpl(
@@ -139,9 +141,10 @@ _$ShowDogsResponseImpl _$$ShowDogsResponseImplFromJson(
     _$ShowDogsResponseImpl(
       errorCode: json['errorCode'] as String?,
       errorMessage: json['errorMessage'] as String?,
-      dogList: (json['dogList'] as List<dynamic>)
-          .map((e) => Dog.fromJson(e as Map<String, dynamic>))
-          .toList(),
+      dogId: json['dogId'] as String,
+      dogName: json['dogName'] as String,
+      dogBreed: json['dogBreed'] as String?,
+      image: json['image'] as String?,
     );
 
 Map<String, dynamic> _$$ShowDogsResponseImplToJson(
@@ -149,7 +152,10 @@ Map<String, dynamic> _$$ShowDogsResponseImplToJson(
     <String, dynamic>{
       'errorCode': instance.errorCode,
       'errorMessage': instance.errorMessage,
-      'dogList': instance.dogList,
+      'dogId': instance.dogId,
+      'dogName': instance.dogName,
+      'dogBreed': instance.dogBreed,
+      'image': instance.image,
     };
 
 _$FeedsImpl _$$FeedsImplFromJson(Map<String, dynamic> json) => _$FeedsImpl(
@@ -180,9 +186,12 @@ _$ShowFeedsResponseImpl _$$ShowFeedsResponseImplFromJson(
     _$ShowFeedsResponseImpl(
       errorCode: json['errorCode'] as String?,
       errorMessage: json['errorMessage'] as String?,
-      feedsList: (json['feedsList'] as List<dynamic>)
-          .map((e) => Feeds.fromJson(e as Map<String, dynamic>))
-          .toList(),
+      username: json['username'] as String?,
+      feedsId: json['feedsId'] as String,
+      caption: json['caption'] as String?,
+      image: json['image'] as String?,
+      postDate: json['postDate'] as String?,
+      profilePicture: json['profilePicture'] as String?,
     );
 
 Map<String, dynamic> _$$ShowFeedsResponseImplToJson(
@@ -190,5 +199,10 @@ Map<String, dynamic> _$$ShowFeedsResponseImplToJson(
     <String, dynamic>{
       'errorCode': instance.errorCode,
       'errorMessage': instance.errorMessage,
-      'feedsList': instance.feedsList,
+      'username': instance.username,
+      'feedsId': instance.feedsId,
+      'caption': instance.caption,
+      'image': instance.image,
+      'postDate': instance.postDate,
+      'profilePicture': instance.profilePicture,
     };

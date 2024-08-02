@@ -6,7 +6,7 @@ import 'package:woofers/model/feeds_model.dart';
 import 'package:woofers/services/admin_service.dart';
 
 class AdminFeedsCard extends StatelessWidget {
-  final Feeds feed;
+  final ShowFeedsResponse feed;
 
   const AdminFeedsCard({
     //Key? key, required this.feed}) : super(key: key);

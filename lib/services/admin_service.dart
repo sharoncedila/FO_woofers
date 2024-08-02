@@ -49,61 +49,105 @@ class AdminService {
     }
   }
 
-  Future<ShowAccountsResponse?> showAccounts() async {
+  Future<List<ShowAccountsResponse>> showAccounts() async {
     try {
       const api = '/admin/show-accounts';
       final dio = await DioInstance.getInstance();
 
-      var response = await dio.get(api);
+    //   var response = await dio.get(api);
+    //   final errorSchema =
+    //       ShowAccountsResponse.fromJson(response.data!['errorSchema']);
+    //   if (errorSchema.errorCode != 'WOF-000') {
+    //     return ShowAccountsResponse.fromJson(response.data['errorSchema']);
+    //   } else {
+    //     return ShowAccountsResponse.fromJson(response.data['outputSchema']);
+    //   }
+    // } catch (error) {
+    //   print(error);
+    // }
+    // return null;
+    var response = await dio.get(api);
       final errorSchema =
-          ShowAccountsResponse.fromJson(response.data!['errorSchema']);
+          ShowAccountsResponse.fromJson(response.data['errorSchema']);
       if (errorSchema.errorCode != 'WOF-000') {
-        return ShowAccountsResponse.fromJson(response.data['errorSchema']);
+        return [ShowAccountsResponse.fromJson(response.data['errorSchema'])];
       } else {
-        return ShowAccountsResponse.fromJson(response.data['outputSchema']);
+        return (response.data['outputSchema']['accountList'] as List)
+            .map((e) => ShowAccountsResponse.fromJson(e))
+            .toList();
       }
     } catch (error) {
-      print(error);
+      throw Exception(error);
     }
-    return null;
   }
 
-  Future<ShowDogsResponse?> showDogs() async {
+  Future<List<ShowDogsResponse>> showDogs() async {
     try {
       const api = '/admin/show-dogs';
       final dio = await DioInstance.getInstance();
 
-      var response = await dio.get(api);
+    //   var response = await dio.get(api);
+    //   final errorSchema =
+    //       ShowDogsResponse.fromJson(response.data!['errorSchema']);
+    //   if (errorSchema.errorCode != 'WOF-000') {
+    //     return ShowDogsResponse.fromJson(response.data['errorSchema']);
+    //   } else {
+    //     return ShowDogsResponse.fromJson(response.data['outputSchema']);
+    //   }
+    // } catch (error) {
+    //   print(error);
+    // }
+    // return null;
+    var response = await dio.get(api);
       final errorSchema =
-          ShowDogsResponse.fromJson(response.data!['errorSchema']);
+          ShowDogsResponse.fromJson(response.data['errorSchema']);
       if (errorSchema.errorCode != 'WOF-000') {
-        return ShowDogsResponse.fromJson(response.data['errorSchema']);
+        return [ShowDogsResponse.fromJson(response.data['errorSchema'])];
       } else {
-        return ShowDogsResponse.fromJson(response.data['outputSchema']);
+        return (response.data['outputSchema']['dogList'] as List)
+            .map((e) => ShowDogsResponse.fromJson(e))
+            .toList();
       }
     } catch (error) {
-      print(error);
+      throw Exception(error);
     }
-    return null;
   }
 
-  Future<ShowFeedsResponse?> showFeeds() async {
+  Future<List<ShowFeedsResponse>> showFeeds() async {
     try {
       const api = '/admin/show-feeds';
       final dio = await DioInstance.getInstance();
 
-      var response = await dio.get(api);
+      var response =
+          await dio.get(api);
       final errorSchema =
-          ShowFeedsResponse.fromJson(response.data!['errorSchema']);
+          ShowFeedsResponse.fromJson(response.data['errorSchema']);
       if (errorSchema.errorCode != 'WOF-000') {
-        return ShowFeedsResponse.fromJson(response.data['errorSchema']);
+        return [ShowFeedsResponse.fromJson(response.data['errorSchema'])];
       } else {
-        return ShowFeedsResponse.fromJson(response.data['outputSchema']);
+        return (response.data['outputSchema']['feedsList'] as List)
+            .map((e) => ShowFeedsResponse.fromJson(e))
+            .toList();
       }
     } catch (error) {
-      print(error);
+      throw Exception(error);
     }
-    return null;
+    // try {
+    //   const api = '/admin/show-feeds';
+    //   final dio = await DioInstance.getInstance();
+
+    //   var response = await dio.get(api);
+    //   final errorSchema =
+    //       ShowFeedsResponse.fromJson(response.data!['errorSchema']);
+    //   if (errorSchema.errorCode != 'WOF-000') {
+    //     return ShowFeedsResponse.fromJson(response.data['errorSchema']);
+    //   } else {
+    //     return ShowFeedsResponse.fromJson(response.data['outputSchema']);
+    //   }
+    // } catch (error) {
+    //   print(error);
+    // }
+    //return null;
   }
 
   Future<AdminDeleteAccountResponse> deleteAccount(String accountId) async {

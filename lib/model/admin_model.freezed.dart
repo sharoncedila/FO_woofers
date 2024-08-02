@@ -1104,7 +1104,9 @@ mixin _$ShowAccountsResponse {
   String? get status => throw _privateConstructorUsedError;
   String? get errorCode => throw _privateConstructorUsedError;
   String? get errorMessage => throw _privateConstructorUsedError;
-  List<Account> get breedList => throw _privateConstructorUsedError;
+  String get accountId => throw _privateConstructorUsedError;
+  String? get username => throw _privateConstructorUsedError;
+  String? get image => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -1122,7 +1124,9 @@ abstract class $ShowAccountsResponseCopyWith<$Res> {
       {String? status,
       String? errorCode,
       String? errorMessage,
-      List<Account> breedList});
+      String accountId,
+      String? username,
+      String? image});
 }
 
 /// @nodoc
@@ -1142,7 +1146,9 @@ class _$ShowAccountsResponseCopyWithImpl<$Res,
     Object? status = freezed,
     Object? errorCode = freezed,
     Object? errorMessage = freezed,
-    Object? breedList = null,
+    Object? accountId = null,
+    Object? username = freezed,
+    Object? image = freezed,
   }) {
     return _then(_value.copyWith(
       status: freezed == status
@@ -1157,10 +1163,18 @@ class _$ShowAccountsResponseCopyWithImpl<$Res,
           ? _value.errorMessage
           : errorMessage // ignore: cast_nullable_to_non_nullable
               as String?,
-      breedList: null == breedList
-          ? _value.breedList
-          : breedList // ignore: cast_nullable_to_non_nullable
-              as List<Account>,
+      accountId: null == accountId
+          ? _value.accountId
+          : accountId // ignore: cast_nullable_to_non_nullable
+              as String,
+      username: freezed == username
+          ? _value.username
+          : username // ignore: cast_nullable_to_non_nullable
+              as String?,
+      image: freezed == image
+          ? _value.image
+          : image // ignore: cast_nullable_to_non_nullable
+              as String?,
     ) as $Val);
   }
 }
@@ -1177,7 +1191,9 @@ abstract class _$$ShowAccountsResponseImplCopyWith<$Res>
       {String? status,
       String? errorCode,
       String? errorMessage,
-      List<Account> breedList});
+      String accountId,
+      String? username,
+      String? image});
 }
 
 /// @nodoc
@@ -1194,7 +1210,9 @@ class __$$ShowAccountsResponseImplCopyWithImpl<$Res>
     Object? status = freezed,
     Object? errorCode = freezed,
     Object? errorMessage = freezed,
-    Object? breedList = null,
+    Object? accountId = null,
+    Object? username = freezed,
+    Object? image = freezed,
   }) {
     return _then(_$ShowAccountsResponseImpl(
       status: freezed == status
@@ -1209,10 +1227,18 @@ class __$$ShowAccountsResponseImplCopyWithImpl<$Res>
           ? _value.errorMessage
           : errorMessage // ignore: cast_nullable_to_non_nullable
               as String?,
-      breedList: null == breedList
-          ? _value._breedList
-          : breedList // ignore: cast_nullable_to_non_nullable
-              as List<Account>,
+      accountId: null == accountId
+          ? _value.accountId
+          : accountId // ignore: cast_nullable_to_non_nullable
+              as String,
+      username: freezed == username
+          ? _value.username
+          : username // ignore: cast_nullable_to_non_nullable
+              as String?,
+      image: freezed == image
+          ? _value.image
+          : image // ignore: cast_nullable_to_non_nullable
+              as String?,
     ));
   }
 }
@@ -1224,8 +1250,9 @@ class _$ShowAccountsResponseImpl implements _ShowAccountsResponse {
       {required this.status,
       required this.errorCode,
       required this.errorMessage,
-      required final List<Account> breedList})
-      : _breedList = breedList;
+      required this.accountId,
+      required this.username,
+      required this.image});
 
   factory _$ShowAccountsResponseImpl.fromJson(Map<String, dynamic> json) =>
       _$$ShowAccountsResponseImplFromJson(json);
@@ -1236,17 +1263,16 @@ class _$ShowAccountsResponseImpl implements _ShowAccountsResponse {
   final String? errorCode;
   @override
   final String? errorMessage;
-  final List<Account> _breedList;
   @override
-  List<Account> get breedList {
-    if (_breedList is EqualUnmodifiableListView) return _breedList;
-    // ignore: implicit_dynamic_type
-    return EqualUnmodifiableListView(_breedList);
-  }
+  final String accountId;
+  @override
+  final String? username;
+  @override
+  final String? image;
 
   @override
   String toString() {
-    return 'ShowAccountsResponse(status: $status, errorCode: $errorCode, errorMessage: $errorMessage, breedList: $breedList)';
+    return 'ShowAccountsResponse(status: $status, errorCode: $errorCode, errorMessage: $errorMessage, accountId: $accountId, username: $username, image: $image)';
   }
 
   @override
@@ -1259,14 +1285,17 @@ class _$ShowAccountsResponseImpl implements _ShowAccountsResponse {
                 other.errorCode == errorCode) &&
             (identical(other.errorMessage, errorMessage) ||
                 other.errorMessage == errorMessage) &&
-            const DeepCollectionEquality()
-                .equals(other._breedList, _breedList));
+            (identical(other.accountId, accountId) ||
+                other.accountId == accountId) &&
+            (identical(other.username, username) ||
+                other.username == username) &&
+            (identical(other.image, image) || other.image == image));
   }
 
   @JsonKey(ignore: true)
   @override
-  int get hashCode => Object.hash(runtimeType, status, errorCode, errorMessage,
-      const DeepCollectionEquality().hash(_breedList));
+  int get hashCode => Object.hash(
+      runtimeType, status, errorCode, errorMessage, accountId, username, image);
 
   @JsonKey(ignore: true)
   @override
@@ -1289,7 +1318,9 @@ abstract class _ShowAccountsResponse implements ShowAccountsResponse {
       {required final String? status,
       required final String? errorCode,
       required final String? errorMessage,
-      required final List<Account> breedList}) = _$ShowAccountsResponseImpl;
+      required final String accountId,
+      required final String? username,
+      required final String? image}) = _$ShowAccountsResponseImpl;
 
   factory _ShowAccountsResponse.fromJson(Map<String, dynamic> json) =
       _$ShowAccountsResponseImpl.fromJson;
@@ -1301,7 +1332,11 @@ abstract class _ShowAccountsResponse implements ShowAccountsResponse {
   @override
   String? get errorMessage;
   @override
-  List<Account> get breedList;
+  String get accountId;
+  @override
+  String? get username;
+  @override
+  String? get image;
   @override
   @JsonKey(ignore: true)
   _$$ShowAccountsResponseImplCopyWith<_$ShowAccountsResponseImpl>
@@ -1501,7 +1536,10 @@ ShowDogsResponse _$ShowDogsResponseFromJson(Map<String, dynamic> json) {
 mixin _$ShowDogsResponse {
   String? get errorCode => throw _privateConstructorUsedError;
   String? get errorMessage => throw _privateConstructorUsedError;
-  List<Dog> get dogList => throw _privateConstructorUsedError;
+  String get dogId => throw _privateConstructorUsedError;
+  String get dogName => throw _privateConstructorUsedError;
+  String? get dogBreed => throw _privateConstructorUsedError;
+  String? get image => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -1515,7 +1553,13 @@ abstract class $ShowDogsResponseCopyWith<$Res> {
           ShowDogsResponse value, $Res Function(ShowDogsResponse) then) =
       _$ShowDogsResponseCopyWithImpl<$Res, ShowDogsResponse>;
   @useResult
-  $Res call({String? errorCode, String? errorMessage, List<Dog> dogList});
+  $Res call(
+      {String? errorCode,
+      String? errorMessage,
+      String dogId,
+      String dogName,
+      String? dogBreed,
+      String? image});
 }
 
 /// @nodoc
@@ -1533,7 +1577,10 @@ class _$ShowDogsResponseCopyWithImpl<$Res, $Val extends ShowDogsResponse>
   $Res call({
     Object? errorCode = freezed,
     Object? errorMessage = freezed,
-    Object? dogList = null,
+    Object? dogId = null,
+    Object? dogName = null,
+    Object? dogBreed = freezed,
+    Object? image = freezed,
   }) {
     return _then(_value.copyWith(
       errorCode: freezed == errorCode
@@ -1544,10 +1591,22 @@ class _$ShowDogsResponseCopyWithImpl<$Res, $Val extends ShowDogsResponse>
           ? _value.errorMessage
           : errorMessage // ignore: cast_nullable_to_non_nullable
               as String?,
-      dogList: null == dogList
-          ? _value.dogList
-          : dogList // ignore: cast_nullable_to_non_nullable
-              as List<Dog>,
+      dogId: null == dogId
+          ? _value.dogId
+          : dogId // ignore: cast_nullable_to_non_nullable
+              as String,
+      dogName: null == dogName
+          ? _value.dogName
+          : dogName // ignore: cast_nullable_to_non_nullable
+              as String,
+      dogBreed: freezed == dogBreed
+          ? _value.dogBreed
+          : dogBreed // ignore: cast_nullable_to_non_nullable
+              as String?,
+      image: freezed == image
+          ? _value.image
+          : image // ignore: cast_nullable_to_non_nullable
+              as String?,
     ) as $Val);
   }
 }
@@ -1560,7 +1619,13 @@ abstract class _$$ShowDogsResponseImplCopyWith<$Res>
       __$$ShowDogsResponseImplCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({String? errorCode, String? errorMessage, List<Dog> dogList});
+  $Res call(
+      {String? errorCode,
+      String? errorMessage,
+      String dogId,
+      String dogName,
+      String? dogBreed,
+      String? image});
 }
 
 /// @nodoc
@@ -1576,7 +1641,10 @@ class __$$ShowDogsResponseImplCopyWithImpl<$Res>
   $Res call({
     Object? errorCode = freezed,
     Object? errorMessage = freezed,
-    Object? dogList = null,
+    Object? dogId = null,
+    Object? dogName = null,
+    Object? dogBreed = freezed,
+    Object? image = freezed,
   }) {
     return _then(_$ShowDogsResponseImpl(
       errorCode: freezed == errorCode
@@ -1587,10 +1655,22 @@ class __$$ShowDogsResponseImplCopyWithImpl<$Res>
           ? _value.errorMessage
           : errorMessage // ignore: cast_nullable_to_non_nullable
               as String?,
-      dogList: null == dogList
-          ? _value._dogList
-          : dogList // ignore: cast_nullable_to_non_nullable
-              as List<Dog>,
+      dogId: null == dogId
+          ? _value.dogId
+          : dogId // ignore: cast_nullable_to_non_nullable
+              as String,
+      dogName: null == dogName
+          ? _value.dogName
+          : dogName // ignore: cast_nullable_to_non_nullable
+              as String,
+      dogBreed: freezed == dogBreed
+          ? _value.dogBreed
+          : dogBreed // ignore: cast_nullable_to_non_nullable
+              as String?,
+      image: freezed == image
+          ? _value.image
+          : image // ignore: cast_nullable_to_non_nullable
+              as String?,
     ));
   }
 }
@@ -1601,8 +1681,10 @@ class _$ShowDogsResponseImpl implements _ShowDogsResponse {
   _$ShowDogsResponseImpl(
       {required this.errorCode,
       required this.errorMessage,
-      required final List<Dog> dogList})
-      : _dogList = dogList;
+      required this.dogId,
+      required this.dogName,
+      required this.dogBreed,
+      this.image});
 
   factory _$ShowDogsResponseImpl.fromJson(Map<String, dynamic> json) =>
       _$$ShowDogsResponseImplFromJson(json);
@@ -1611,17 +1693,18 @@ class _$ShowDogsResponseImpl implements _ShowDogsResponse {
   final String? errorCode;
   @override
   final String? errorMessage;
-  final List<Dog> _dogList;
   @override
-  List<Dog> get dogList {
-    if (_dogList is EqualUnmodifiableListView) return _dogList;
-    // ignore: implicit_dynamic_type
-    return EqualUnmodifiableListView(_dogList);
-  }
+  final String dogId;
+  @override
+  final String dogName;
+  @override
+  final String? dogBreed;
+  @override
+  final String? image;
 
   @override
   String toString() {
-    return 'ShowDogsResponse(errorCode: $errorCode, errorMessage: $errorMessage, dogList: $dogList)';
+    return 'ShowDogsResponse(errorCode: $errorCode, errorMessage: $errorMessage, dogId: $dogId, dogName: $dogName, dogBreed: $dogBreed, image: $image)';
   }
 
   @override
@@ -1633,13 +1716,17 @@ class _$ShowDogsResponseImpl implements _ShowDogsResponse {
                 other.errorCode == errorCode) &&
             (identical(other.errorMessage, errorMessage) ||
                 other.errorMessage == errorMessage) &&
-            const DeepCollectionEquality().equals(other._dogList, _dogList));
+            (identical(other.dogId, dogId) || other.dogId == dogId) &&
+            (identical(other.dogName, dogName) || other.dogName == dogName) &&
+            (identical(other.dogBreed, dogBreed) ||
+                other.dogBreed == dogBreed) &&
+            (identical(other.image, image) || other.image == image));
   }
 
   @JsonKey(ignore: true)
   @override
-  int get hashCode => Object.hash(runtimeType, errorCode, errorMessage,
-      const DeepCollectionEquality().hash(_dogList));
+  int get hashCode => Object.hash(
+      runtimeType, errorCode, errorMessage, dogId, dogName, dogBreed, image);
 
   @JsonKey(ignore: true)
   @override
@@ -1660,7 +1747,10 @@ abstract class _ShowDogsResponse implements ShowDogsResponse {
   factory _ShowDogsResponse(
       {required final String? errorCode,
       required final String? errorMessage,
-      required final List<Dog> dogList}) = _$ShowDogsResponseImpl;
+      required final String dogId,
+      required final String dogName,
+      required final String? dogBreed,
+      final String? image}) = _$ShowDogsResponseImpl;
 
   factory _ShowDogsResponse.fromJson(Map<String, dynamic> json) =
       _$ShowDogsResponseImpl.fromJson;
@@ -1670,7 +1760,13 @@ abstract class _ShowDogsResponse implements ShowDogsResponse {
   @override
   String? get errorMessage;
   @override
-  List<Dog> get dogList;
+  String get dogId;
+  @override
+  String get dogName;
+  @override
+  String? get dogBreed;
+  @override
+  String? get image;
   @override
   @JsonKey(ignore: true)
   _$$ShowDogsResponseImplCopyWith<_$ShowDogsResponseImpl> get copyWith =>
@@ -1967,7 +2063,12 @@ ShowFeedsResponse _$ShowFeedsResponseFromJson(Map<String, dynamic> json) {
 mixin _$ShowFeedsResponse {
   String? get errorCode => throw _privateConstructorUsedError;
   String? get errorMessage => throw _privateConstructorUsedError;
-  List<Feeds> get feedsList => throw _privateConstructorUsedError;
+  String? get username => throw _privateConstructorUsedError;
+  String get feedsId => throw _privateConstructorUsedError;
+  String? get caption => throw _privateConstructorUsedError;
+  String? get image => throw _privateConstructorUsedError;
+  String? get postDate => throw _privateConstructorUsedError;
+  String? get profilePicture => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -1981,7 +2082,15 @@ abstract class $ShowFeedsResponseCopyWith<$Res> {
           ShowFeedsResponse value, $Res Function(ShowFeedsResponse) then) =
       _$ShowFeedsResponseCopyWithImpl<$Res, ShowFeedsResponse>;
   @useResult
-  $Res call({String? errorCode, String? errorMessage, List<Feeds> feedsList});
+  $Res call(
+      {String? errorCode,
+      String? errorMessage,
+      String? username,
+      String feedsId,
+      String? caption,
+      String? image,
+      String? postDate,
+      String? profilePicture});
 }
 
 /// @nodoc
@@ -1999,7 +2108,12 @@ class _$ShowFeedsResponseCopyWithImpl<$Res, $Val extends ShowFeedsResponse>
   $Res call({
     Object? errorCode = freezed,
     Object? errorMessage = freezed,
-    Object? feedsList = null,
+    Object? username = freezed,
+    Object? feedsId = null,
+    Object? caption = freezed,
+    Object? image = freezed,
+    Object? postDate = freezed,
+    Object? profilePicture = freezed,
   }) {
     return _then(_value.copyWith(
       errorCode: freezed == errorCode
@@ -2010,10 +2124,30 @@ class _$ShowFeedsResponseCopyWithImpl<$Res, $Val extends ShowFeedsResponse>
           ? _value.errorMessage
           : errorMessage // ignore: cast_nullable_to_non_nullable
               as String?,
-      feedsList: null == feedsList
-          ? _value.feedsList
-          : feedsList // ignore: cast_nullable_to_non_nullable
-              as List<Feeds>,
+      username: freezed == username
+          ? _value.username
+          : username // ignore: cast_nullable_to_non_nullable
+              as String?,
+      feedsId: null == feedsId
+          ? _value.feedsId
+          : feedsId // ignore: cast_nullable_to_non_nullable
+              as String,
+      caption: freezed == caption
+          ? _value.caption
+          : caption // ignore: cast_nullable_to_non_nullable
+              as String?,
+      image: freezed == image
+          ? _value.image
+          : image // ignore: cast_nullable_to_non_nullable
+              as String?,
+      postDate: freezed == postDate
+          ? _value.postDate
+          : postDate // ignore: cast_nullable_to_non_nullable
+              as String?,
+      profilePicture: freezed == profilePicture
+          ? _value.profilePicture
+          : profilePicture // ignore: cast_nullable_to_non_nullable
+              as String?,
     ) as $Val);
   }
 }
@@ -2026,7 +2160,15 @@ abstract class _$$ShowFeedsResponseImplCopyWith<$Res>
       __$$ShowFeedsResponseImplCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({String? errorCode, String? errorMessage, List<Feeds> feedsList});
+  $Res call(
+      {String? errorCode,
+      String? errorMessage,
+      String? username,
+      String feedsId,
+      String? caption,
+      String? image,
+      String? postDate,
+      String? profilePicture});
 }
 
 /// @nodoc
@@ -2042,7 +2184,12 @@ class __$$ShowFeedsResponseImplCopyWithImpl<$Res>
   $Res call({
     Object? errorCode = freezed,
     Object? errorMessage = freezed,
-    Object? feedsList = null,
+    Object? username = freezed,
+    Object? feedsId = null,
+    Object? caption = freezed,
+    Object? image = freezed,
+    Object? postDate = freezed,
+    Object? profilePicture = freezed,
   }) {
     return _then(_$ShowFeedsResponseImpl(
       errorCode: freezed == errorCode
@@ -2053,10 +2200,30 @@ class __$$ShowFeedsResponseImplCopyWithImpl<$Res>
           ? _value.errorMessage
           : errorMessage // ignore: cast_nullable_to_non_nullable
               as String?,
-      feedsList: null == feedsList
-          ? _value._feedsList
-          : feedsList // ignore: cast_nullable_to_non_nullable
-              as List<Feeds>,
+      username: freezed == username
+          ? _value.username
+          : username // ignore: cast_nullable_to_non_nullable
+              as String?,
+      feedsId: null == feedsId
+          ? _value.feedsId
+          : feedsId // ignore: cast_nullable_to_non_nullable
+              as String,
+      caption: freezed == caption
+          ? _value.caption
+          : caption // ignore: cast_nullable_to_non_nullable
+              as String?,
+      image: freezed == image
+          ? _value.image
+          : image // ignore: cast_nullable_to_non_nullable
+              as String?,
+      postDate: freezed == postDate
+          ? _value.postDate
+          : postDate // ignore: cast_nullable_to_non_nullable
+              as String?,
+      profilePicture: freezed == profilePicture
+          ? _value.profilePicture
+          : profilePicture // ignore: cast_nullable_to_non_nullable
+              as String?,
     ));
   }
 }
@@ -2067,8 +2234,12 @@ class _$ShowFeedsResponseImpl implements _ShowFeedsResponse {
   _$ShowFeedsResponseImpl(
       {required this.errorCode,
       required this.errorMessage,
-      required final List<Feeds> feedsList})
-      : _feedsList = feedsList;
+      required this.username,
+      required this.feedsId,
+      required this.caption,
+      required this.image,
+      required this.postDate,
+      required this.profilePicture});
 
   factory _$ShowFeedsResponseImpl.fromJson(Map<String, dynamic> json) =>
       _$$ShowFeedsResponseImplFromJson(json);
@@ -2077,17 +2248,22 @@ class _$ShowFeedsResponseImpl implements _ShowFeedsResponse {
   final String? errorCode;
   @override
   final String? errorMessage;
-  final List<Feeds> _feedsList;
   @override
-  List<Feeds> get feedsList {
-    if (_feedsList is EqualUnmodifiableListView) return _feedsList;
-    // ignore: implicit_dynamic_type
-    return EqualUnmodifiableListView(_feedsList);
-  }
+  final String? username;
+  @override
+  final String feedsId;
+  @override
+  final String? caption;
+  @override
+  final String? image;
+  @override
+  final String? postDate;
+  @override
+  final String? profilePicture;
 
   @override
   String toString() {
-    return 'ShowFeedsResponse(errorCode: $errorCode, errorMessage: $errorMessage, feedsList: $feedsList)';
+    return 'ShowFeedsResponse(errorCode: $errorCode, errorMessage: $errorMessage, username: $username, feedsId: $feedsId, caption: $caption, image: $image, postDate: $postDate, profilePicture: $profilePicture)';
   }
 
   @override
@@ -2099,14 +2275,21 @@ class _$ShowFeedsResponseImpl implements _ShowFeedsResponse {
                 other.errorCode == errorCode) &&
             (identical(other.errorMessage, errorMessage) ||
                 other.errorMessage == errorMessage) &&
-            const DeepCollectionEquality()
-                .equals(other._feedsList, _feedsList));
+            (identical(other.username, username) ||
+                other.username == username) &&
+            (identical(other.feedsId, feedsId) || other.feedsId == feedsId) &&
+            (identical(other.caption, caption) || other.caption == caption) &&
+            (identical(other.image, image) || other.image == image) &&
+            (identical(other.postDate, postDate) ||
+                other.postDate == postDate) &&
+            (identical(other.profilePicture, profilePicture) ||
+                other.profilePicture == profilePicture));
   }
 
   @JsonKey(ignore: true)
   @override
   int get hashCode => Object.hash(runtimeType, errorCode, errorMessage,
-      const DeepCollectionEquality().hash(_feedsList));
+      username, feedsId, caption, image, postDate, profilePicture);
 
   @JsonKey(ignore: true)
   @override
@@ -2127,7 +2310,12 @@ abstract class _ShowFeedsResponse implements ShowFeedsResponse {
   factory _ShowFeedsResponse(
       {required final String? errorCode,
       required final String? errorMessage,
-      required final List<Feeds> feedsList}) = _$ShowFeedsResponseImpl;
+      required final String? username,
+      required final String feedsId,
+      required final String? caption,
+      required final String? image,
+      required final String? postDate,
+      required final String? profilePicture}) = _$ShowFeedsResponseImpl;
 
   factory _ShowFeedsResponse.fromJson(Map<String, dynamic> json) =
       _$ShowFeedsResponseImpl.fromJson;
@@ -2137,7 +2325,17 @@ abstract class _ShowFeedsResponse implements ShowFeedsResponse {
   @override
   String? get errorMessage;
   @override
-  List<Feeds> get feedsList;
+  String? get username;
+  @override
+  String get feedsId;
+  @override
+  String? get caption;
+  @override
+  String? get image;
+  @override
+  String? get postDate;
+  @override
+  String? get profilePicture;
   @override
   @JsonKey(ignore: true)
   _$$ShowFeedsResponseImplCopyWith<_$ShowFeedsResponseImpl> get copyWith =>

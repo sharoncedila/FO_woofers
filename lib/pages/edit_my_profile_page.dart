@@ -118,7 +118,7 @@ class _EditMyProfilePageState extends State<EditMyProfile> {
             builder: (context, snapshot) {
               if (snapshot.connectionState == ConnectionState.waiting) {
                 return Padding(
-                  padding: EdgeInsets.all(160),
+                  padding: const EdgeInsets.all(160),
                   child: Container(
                     // Center the CircularProgressIndicator
                     alignment: Alignment.center,
@@ -168,7 +168,7 @@ class _EditMyProfilePageState extends State<EditMyProfile> {
                           image: AssetImage('assets/woofers_icon/profile.jpg'))
                       : (uploadedImage != null && myProfile.image == null)
                           ? ImageNetwork(
-                              urlImage: "/temp/${uploadedImage}",
+                              urlImage: "/temp/$uploadedImage",
                               width: 150,
                               height: 150)
                           : ImageNetwork(
@@ -315,7 +315,7 @@ class _EditMyProfilePageState extends State<EditMyProfile> {
                     ],
                   ),
 
-                 // address
+                  // address
                   const SizedBox(height: 20),
                   Row(
                     children: [
@@ -337,8 +337,7 @@ class _EditMyProfilePageState extends State<EditMyProfile> {
                       Expanded(
                           child: Column(
                               mainAxisAlignment: MainAxisAlignment.start,
-                              crossAxisAlignment:
-                                  CrossAxisAlignment.start,
+                              crossAxisAlignment: CrossAxisAlignment.start,
                               children: [
                             Text(
                               "address",
@@ -365,7 +364,6 @@ class _EditMyProfilePageState extends State<EditMyProfile> {
                           ]))
                     ],
                   ),
-
 
                   // phone number
                   const SizedBox(height: 15),
@@ -513,7 +511,7 @@ class _EditMyProfilePageState extends State<EditMyProfile> {
                                   .then((value) => Navigator.of(context)
                                       .pushReplacement(MaterialPageRoute(
                                           builder: (_) =>
-                                              const ProfilePageTemplate())))
+                                              ProfilePageTemplate())))
                                   .onError<Exception>((error, stackTrace) {
                                 showDialog(
                                   context: context,
